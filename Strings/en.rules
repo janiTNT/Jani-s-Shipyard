@@ -828,9 +828,11 @@ Resource
 Missions
 {
 	ClearHyperoid = "Clear Hyperoid Field"
-	ClearHyperoidDesc = "Many mining agencies are struggling to tackle on strange enemies guarding a giant \"Hyperoid\" asteroid, Which is likely full of resources. The {faction_name} alongside the mining companies have posted a bounty of {money} to be paid to any Cosmoteer that can clear the local area from these threats."
+	ClearHyperoidDesc = "Many mining agencies are struggling to tackle on strange enemies guarding a giant \"Hyperoid\" asteroid, Which is likely full of resources. The {faction_name} alongside the mining companies have posted a bounty of {money} to be paid to any Cosmoteer that can clear the local area from these threats."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	DefeatBossJani = "Defeat \"{target_ship}\" Boss"
-	DefeatBossJaniDesc = "There is Massive <b>{target_ship}</b> class \"Boss\" ship in the {mission_location} system terrorizing local ships. The {faction_name} have posted a bounty of {money} to be paid to any Cosmoteer that can eliminate it. Rumours state that the material the ship is built from is highly valuable and technologically advanced, and it may be highly useful to you to progress further."
+	DefeatBossJaniDesc = "There is Massive <b>{target_ship}</b> class \"Boss\" ship in the {mission_location} system terrorizing local ships. The {faction_name} have posted a bounty of {money} to be paid to any Cosmoteer that can eliminate it. Rumours state that the material the ship is built from is highly valuable and technologically advanced, and it may be highly useful to you to progress further."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 }
 Objectives
 {
