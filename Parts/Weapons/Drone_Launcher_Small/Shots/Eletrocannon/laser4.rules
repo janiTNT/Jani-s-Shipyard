@@ -1,0 +1,28 @@
+ID = "janiTNT.smallecannondrone.4"
+Range = &<baseecannon.rules>/Range
+IdealRange = &<baseecannon.rules>/IdealRange
+Speed = &<baseecannon.rules>/Speed
+
+Components : &<baseecannon.rules>/Components
+{
+	DeathByEnemyProximity : &<baseecannon.rules>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<baseecannon.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects : &<baseecannon.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<laser5.rules>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+			MediaEffects = &<baseecannon.rules>/Components/DeathByEnemyProximity/OnDeath/MediaEffects
+		}
+	}
+}

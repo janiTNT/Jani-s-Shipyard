@@ -1,0 +1,4 @@
+// This is a "fake" type of resource used to track the shield energy stored in supershields.
+ID = janiTNT.SuperShieldEnergy
+NameKey = "Resource/IonEnergy"
+ReturnToStorage = false

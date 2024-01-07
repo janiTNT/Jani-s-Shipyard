@@ -1,0 +1,158 @@
+ID = comilitebar
+NameKey = "Resource/Cosmilite"
+PluralNameKey = "Resource/CosmilitePlural"
+DescriptionKey = "Resource/CosmiliteDesc"
+BuyPrice = 1500
+//SellPrice = 600
+//AsteroidDensity = 40 / (&BuyPrice)
+MaxPerNugget = 3
+MaxStackSize = 20
+FlexGridPriorityKey = "flex_grid_cosmilite"
+FlexGridDefaultPriority = 1
+//CarrySpeed = 0.5
+DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
+/*
+DropRates
+{
+	PartDestroyed = 10%
+	PartSalvaged = 15%
+	PlayerPartDestroyed = 50%
+	PlayerPartSalvaged = 100%
+	StorageDestroyed = 100%
+	StorageSalvaged = 100%
+}
+*/
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "cosmic_bars1.png"
+		NormalsFile = "cosmic_bars_n1.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "cosmic_bars2.png"
+		NormalsFile = "cosmic_bars_n2.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "cosmic_bars3.png"
+		NormalsFile = "cosmic_bars_n3.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "cosmic_stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack10.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack11.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack12.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack13.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack14.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack15.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack16.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack17.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack18.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack19.png"
+		Size = [1, 1]
+	}
+	{
+		File = "cosmic_stack20.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

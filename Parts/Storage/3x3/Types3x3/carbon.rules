@@ -1,0 +1,37 @@
+Resource = carbon
+StackSize = (&<./data/resources/carbon/carbon.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = CarbonStorage
+	}
+	
+	CarbonStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = CarbonStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/carbon/carbon_stack_5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

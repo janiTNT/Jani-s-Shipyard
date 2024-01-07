@@ -1,0 +1,284 @@
+ID = "janiTNT.combatdronebase"
+Range = 650
+IdealRange = 550
+Speed = 30
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = .25
+		Density = 0.2
+		LinearDamping = 4
+		AngularDamping = 2
+		FrameOfReferenceDuration = 5
+		CollidesWithBullets = true
+	}
+	
+	TargetSearch
+	{
+	    Type = TargetSearch
+	    Interval = 0.5
+	    Range = 200
+	    TargetTypesByPriority = [ShipParts] //This piece of code i have found in ABH's escort drone, and is solely used to target new ships once the target is done for
+	}
+	
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 30
+		HasTarget = true
+	}
+	Death
+	{
+		Type = DeathByLifetime
+		HasTarget = false
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+	
+	Repulsion
+	{
+		Type = Acceleration
+		Acceleration = [-180 * 4, 0]
+		AccelerationOverTime = [0, 2]
+		Direction = Target
+	}
+	
+	/*DroneRepulsion
+	{
+		Type = ProximityAcceleration
+		Range = 3.5
+		Acceleration = -91 * 4
+		AccelerateTowardsShips = false
+		AccelerateTowardsBullets = true
+		AccelerateTowardsBulletCategories = [missile]
+		AccelerateTowardsFriendlies = true
+		AccelerateTowardsEnemies = true
+	}*/
+	
+	Targetable
+	{
+		Type = Targetable
+		Health = 1400
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath
+		{
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+	
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 360d
+		Delay = .3
+		TargetLeadPrediction = false
+		AvoidanceRaycastDistance = 100	
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 135 * 4
+	}
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+	
+	Sprite
+	{
+		Type = Sprite
+		IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../One1.png"
+				MipLevels = max
+			}
+			Size = [1, 1]
+		}
+
+		NormalsTexture
+		{
+			File = "../../One_n1.png"
+			MipLevels = max
+		}
+	}
+	
+	DeathByEnemyProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = .1
+		Range = 90
+		DetectsShips = true
+		DetectsBullets = false
+		StartDelay = 0.75
+		FactorEffectsWith = Targetable
+		
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<combatshot.txt>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [0d, 0d]
+					Distance = 0.6
+					InheritVelocity = true
+				}
+			]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/ships/terran/laser_blaster_large/shoot.wav"
+					Volume = 0.25
+					Speed = 1.5
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+	Hit
+	{
+		Type = SimpleHit
+
+		HitShield = &HitOperational
+		SourceShipCollisionDelay = 1.5/30
+		
+		
+		BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            Friendlies = true
+            OnlyBulletCategories = [missile, mine]
+        }
+		HitBullet
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitOperational
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 100
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitStructural
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 100
+				}
+				{
+					Type = Impulse;
+					Impulse = 1.5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-0.15, 0]
+		Rotation = 180d
+		MediaEffectsScale = .475
+		MediaEffects
+		[
+			&<../../drone_fire.rules>
+//			&<./data/shots/missile_he/particles/missile_he_thruster_fire.rules>
+//			&<./data/shots/missile_he/particles/missile_he_thruster_smoke.rules>
+		]
+	}
+	Plumes
+	{
+		Type = MediaEffects
+		Offset = [-22/64, 0]
+		Rotation = 180d
+		MediaEffectsScale = 1
+		MediaEffects
+		[
+			&<../../minidrone_plume.rules>
+			&<../../minidrone_plume_lights.rules>
+		]
+	}
+}

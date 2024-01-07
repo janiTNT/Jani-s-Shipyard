@@ -1,0 +1,39 @@
+// pathway
+Part : <geoponic_park_base.txt>/Part
+{
+	NameKey = "Parts/GeoponicPark20"
+	IconNameKey = "Parts/GeoponicPark20Icon"
+	ID = Lafiel.geoponic_park20
+	OtherIDs = ["geoponic_park20","Lafiel.geoponic_park21","geoponic_park21","Lafiel.geoponic_park22","geoponic_park22","Lafiel.geoponic_park23","geoponic_park23"]
+	Cost = 300
+	TypeCategories = [life_support,geoponic_park,pathway,uses_water]
+	ReceivableBuffs : ^/0/ReceivableBuffs
+	[
+		BuffWaterSeep
+	]
+
+	EditorIcon
+	{
+		Texture
+		{
+			File = "pathway_01.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components, <lawn_graphics.txt>
+	{
+		PathwayBlend : <pathways.txt>
+		{
+			Type = BlendSprite
+			Location = [0.5, 0.5]
+			BlendsWithCategories = [pathway]
+		}
+		BlueprintBlend
+		: <pathways_blueprints.txt>
+		{
+			Location = [0.5, 0.5]
+			BlendsWithCategories = [pathway]
+		}
+	}
+}

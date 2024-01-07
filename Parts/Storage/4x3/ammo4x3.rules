@@ -1,0 +1,177 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/AutoAStorage4x3"
+	IconNameKey = "Parts/AutoAStorage4x3Icon"
+	ID = janiTNT.AutoStorage_ammo_4x3 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Storage"
+	DescriptionKey = "Parts/AutoAStorage4x3Desc"
+	SelectionTypeID = "storage"
+	Resources
+	[
+		[steel, 96]
+		[coil, 12]
+	]
+	Size = [4, 3]
+	MaxHealth = 12000
+	IsRotateable = true
+	TypeCategories = [storage, uses_ammo, uses_missiles, uses_emps, uses_nukes, uses_mines]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
+	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon1.png"
+			SampleMode = Linear
+		}
+		Size = [64, 48]
+	}
+	Components : ^/0/Components
+	{
+		AmmoType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_ammo"
+			Default = 1
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		hyperiumToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 0
+		}
+		hyperiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = hyperiumToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/hyperium.rules>/Components
+		}
+		
+		bulletToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 1
+		}
+		bulletComponents
+		{
+			Type = ToggledComponents
+			Toggle = bulletToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/bullet.rules>/Components
+		}
+		
+		missile_part_heToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 2
+		}
+		missile_part_heComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_heToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/missile_part_he.rules>/Components
+		}
+		
+		missile_part_empToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 3
+		}
+		missile_part_empComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_empToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/missile_part_emp.rules>/Components
+		}
+		
+		missile_part_nukeToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 4
+		}
+		missile_part_nukeComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_nukeToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/missile_part_nuke.rules>/Components
+		}
+		
+		mine_partToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 5
+		}
+		mine_partComponents
+		{
+			Type = ToggledComponents
+			Toggle = mine_partToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/mine_part.rules>/Components
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 3]
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle = &<./Data/ships/terran/storage_4x3/storage_4x3.rules>/Part/Components/RoofDoorOpenToggle
+		RoofDoorSprite = &<./Data/ships/terran/storage_4x3/storage_4x3.rules>/Part/Components/RoofDoorSprite
+
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [2, 1.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 3]
+		}
+	}
+
+	Stats
+	{
+		StorageTiles = 12
+	}
+}

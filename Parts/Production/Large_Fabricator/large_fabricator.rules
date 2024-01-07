@@ -1,0 +1,412 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/LargeFabricator"
+	IconNameKey = "Parts/LargeFabricatorIcon"
+	ID = baseresources.fabricator_large_basic // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/LargeFabricatorDesc"
+	Resources
+	[
+		[steel, 120]
+		[coil2, 150]
+		[diamond, 8]
+	]
+	Size = [4, 4]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 16000
+	TypeCategories
+	[
+	//add more here
+	provides_goldium, uses_gold
+	uses_power, fabricator
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	AllowedDoorLocations
+	[
+		[-1, 2]
+		[-1, 3]
+		[0, 4]
+		[1, 4]
+		[2, 4]
+		[3, 4]
+		[4, 3]
+		[4, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ResourceStorageProxy, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+		
+		ResourceType
+		{
+			Type = UIToggle
+			ToggleID = "fabricator_large_type"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		GoldiumToggle
+		{
+			Type = ModeToggle
+			Mode = ResourceType
+			OnMode = 0
+		}
+		GoldiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = GoldiumToggle
+			IncludeInBlueprints = true
+			Components = &<goldium/goldium.rules>/Components
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		
+		ResourceConverterProxy
+		{
+			Type = ToggleProxy
+			ComponentID = ResourceConverter
+		}
+		
+		ResourceConverterProxy2
+		{
+			Type = TriggerProxy
+			ComponentID = ResourceConverter
+		}
+		
+		ResourceStorageProxy
+		{
+			Type = ToggleProxy
+			ComponentID = GoldStorage
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverterProxy2
+			Location = [2, 2]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/factory_ammo/bullet_create.wav"
+					Volume = .2
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+		
+		FloorSprite
+		{
+			Type = Sprite
+			OnlyWithFlip = false
+			Location = [2, 2]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor1.png"
+					Size = [4, 4]
+				}
+			]
+		}
+
+		FloorSpriteFlipped
+		{
+			Type = Sprite
+			OnlyWithFlip = true
+			Location = [2, 2]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor2.png"
+					Size = [4, 4]
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverterProxy //IMPORTANT
+			/*Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 4]
+					}
+				]
+			}*/
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [4, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle5.png"
+							"doodads_idle6.png"
+							"doodads_idle7.png"
+							"doodads_idle8.png"
+						]
+						Size = [4, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [4, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			OperationalLighting = &<./Data/ships/terran/factory_steel/factory_steel.rules>/Part/Components/Graphics/OperationalLighting
+			//Roof = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/Graphics/Roof
+			//OperationalRoofDoodad = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/Graphics/OperationalRoofDoodad
+			OperationalRoofLighting = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/Graphics/OperationalRoofLighting
+		}
+		
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [2, 2]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/RoofDoorSprite/OpenDamageLevels
+			ClosedDamageLevels = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/RoofDoorSprite/ClosedDamageLevels
+		}
+
+		Graphics2
+		{
+			Type = Graphics
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [62/64, -57/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [5, 5]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 0]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [87/64, 95/64]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [2, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+			Location = [2, 2]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [2, 2]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// No iron.
+				{
+					Toggle = ResourceStorageProxy
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+	}
+
+	Stats
+	{
+		PowerPerSteel = 100 / 1 / 1000
+		PowerPerSecond = 100 / 1 / 1000
+		SteelPowerUsage = [&../PowerPerSteel, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+}

@@ -1,0 +1,142 @@
+ID = "janiTNT.pulse_shot_sparkerdrone"
+Range = 350
+IdealRange = 150
+Speed = 275
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletLower1
+		Sprite
+		{
+			Texture
+			{
+				File = "pulse_shot.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [8*1.25, .25*1.25]
+		}
+		Offset = [-3.5*1.25, 0]
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .05
+	}
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Offset = [-3*1.25, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = pulse_shot_glow.png
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8*1.25, 2*1.25]
+			VertexColor = [255, 255, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.2
+		}
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .05
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 65 // Enough to get through one shield and lose half penetration.
+		PenetratesOperational = false
+
+        BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            //Friendlies = tru
+            OnlyBulletCategories = [missile, mine, bullet]
+        }
+		HitBullet
+		{
+			Offset = [-0.15, 0]
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 500
+				}
+			]
+
+			MediaEffects
+			[
+				&<pulse_shot_spikes.rules>
+				&<pulse_shot_sparks.rules>
+			]
+		}
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitShield
+
+		HitShield
+		{
+			Offset = [-0.15, 0]
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 560
+				}
+			]
+			MediaEffects = &../HitBullet/MediaEffects
+		}
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 70
+				}
+			]
+			MediaEffects = &../HitBullet/MediaEffects
+		}
+		HitStructural = &HitOperational
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+}

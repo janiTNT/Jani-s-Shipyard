@@ -1,0 +1,206 @@
+ID = "janiTNT.bossrocketmini"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 400
+IdealRange = 400
+Speed = 45
+ForgetTarget = true
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [1, 0.5]
+		Density = 2
+		RandomExtraSpeed = [0, 2]
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 160d
+		Delay = 0
+		//AvoidanceRaycastDistance = 250
+		//VelocityCompensation = 70%
+		ModifiesLinearVelocity = true
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 0.5
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 65 / 4
+	}
+
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-90 / 4, 0]
+		AccelerationOverTime = [0, .75]
+		Direction = FrameOfReferenceVelocity
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 6
+		//HasTarget = true
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "missile.png"
+				MipLevels = max
+			}
+			Size = [2, 2]
+			TargetBlendMode = Add
+			VertexColor = [180, 180, 180]
+		}
+		LerpScaleFrom = [1, 0]
+		LerpTime = 0.2
+	}
+
+	LightsSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 0.6
+		Spin = 500d
+		Z = .25
+		IsLight = true
+		//Offset = [24/64, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "lightshow.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [6, 6]
+			VertexColor = [180, 180, 180]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = .4
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-118/128, 0]
+		StartTime = 0.2
+		MediaEffectsScale = 0.25
+		Rotation = 180d
+		MediaEffects
+		[
+			&<missile_plume.rules>
+			&<missile_plume_light.rules>
+		]
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 3200 / 4
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5/30
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 18000
+					Radius = 8
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 100;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

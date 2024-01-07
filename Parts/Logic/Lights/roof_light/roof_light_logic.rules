@@ -1,0 +1,101 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/LogicRoofLight"
+	IconNameKey = "Parts/LogicRoofLightIcon"
+	ID = janiTNT.roof_light_logic // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicRoofLightDesc"
+	Resources
+	[
+		[steel, 6]
+		[coil, 1]
+	]
+	TypeCategories = [uses_power, logic]
+	Flammable = false
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	Size = [1, 1]
+	MaxHealth = 1000
+	AllowedDoorLocations = []
+	ForceBrushCompatibility = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, CommandToggle]
+			Mode = All
+		}
+
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "roof_light"
+			Default = White
+		}
+
+		LightStrength
+		{
+			Type = UIToggle
+			ToggleID = "light_strength"
+			Default = 0
+		}
+
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		Graphics : &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/Graphics
+		{
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		LightLowToggle = &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/LightLowToggle
+		LightLowComponents = &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/LightLowComponents
+
+		LightMedToggle = &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/LightMedToggle
+		LightMedComponents = &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/LightMedComponents
+
+		LightHighToggle = &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/LightHighToggle
+		LightHighComponents = &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/LightHighComponents
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+}

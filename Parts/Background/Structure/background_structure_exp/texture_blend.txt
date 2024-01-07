@@ -1,0 +1,181 @@
+Layer = "structure"
+BlendCheckRectType = Continuity
+RequireInternalWallsToBlend = true
+AmbiguousSprites // Totally not riped from ABH
+[
+	// No paths.
+	{
+		SituationCode = "11111111"
+		DamageLevels = [] //oh god the damage levels
+	}
+
+	// All four paths.
+	{
+		SituationCode = "*0*0*0*0"
+		DamageLevels
+		[
+			{
+				File = "pathway_01.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Three paths.
+	{
+		SituationCode = "*1*0*0*0"
+		DamageLevels
+		[
+			{
+				File = "pathway_01.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two paths joined at corner.
+	{
+		SituationCode = "*111*0*0"
+		DamageLevels
+		[
+			{
+				File = "pathway_02.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two paths joined at corner, with corner opposite.
+	{
+		SituationCode = "*101*0*0"
+		DamageLevels
+		[
+			{
+				File = "pathway_03.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall.
+	{
+		SituationCode = "*0*11111"
+		DamageLevels
+		[
+			{
+				File = "pathway_04.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall with corner on right.
+	{
+		SituationCode = "*0*10111"
+		DamageLevels
+		[
+			{
+				File = "pathway_05.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall with corner on left.
+	{
+		SituationCode = "*0*11101"
+		DamageLevels
+		[
+			{
+				File = "pathway_05.png"
+				Size = [1, 1]
+				MirrorU = true
+			}
+		]
+	}
+
+	// One wall, two corners.
+	{
+		SituationCode = "*0*10101"
+		DamageLevels
+		[
+			{
+				File = "pathway_07.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One corner.
+	{
+		SituationCode = "01111111"
+		DamageLevels
+		[
+			{
+				File = "pathway_08.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two corners adjacent.
+	{
+		SituationCode = "01011111"
+		DamageLevels
+		[
+			{
+				File = "pathway_09.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Three corners.
+	{
+		SituationCode = "01010111"
+		DamageLevels
+		[
+			{
+				File = "pathway_10.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two corners diagonal.
+	{
+		SituationCode = "01110111"
+		DamageLevels
+		[
+			{
+				File = "pathway_11.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Four corners.
+	{
+		SituationCode = "01010101"
+		DamageLevels
+		[
+			{
+				File = "pathway_12.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two paths parallel.
+	{
+		SituationCode = "*0*1*0*1"
+		DamageLevels
+		[
+			{
+				File = "pathway_01.png"
+				Size = [1, 1]
+				UVRotation = 1
+			}
+		]
+	}
+]

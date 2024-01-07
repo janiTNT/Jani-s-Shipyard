@@ -1,0 +1,59 @@
+Resource = cursedpage
+StackSize = (&<../../../../Resources/Cursed Pages/cursedpages.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = CursedStorage
+	}
+	
+	CursedStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/HeavyDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = CursedStorage
+	}
+	
+	FillSprites2 : &<hyperium.rules>/Components/FillSprites2
+	{
+		RangeLow = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 2 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = CursedStorage
+	}
+	
+	FillSprites3 : &<hyperium.rules>/Components/FillSprites3
+	{
+		RangeLow = 2 *(&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = CursedStorage
+	}
+	
+	FillSprites4 : &<hyperium.rules>/Components/FillSprites4
+	{
+		RangeLow = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ResourceStorage = CursedStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "../../../../Resources/Cursed Pages/stack5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

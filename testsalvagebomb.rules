@@ -1,0 +1,49 @@
+Part : <./data/ships/terran/explosive_charge/explosive_charge.rules>/Part
+{
+	NameKey = "Parts/ExplosiveChargeHAX"
+	IconNameKey = "Parts/ExplosiveChargeHAXIcon"
+	ID = janiTNT.testdeconstructorbomb
+	OtherIDs = [jahskhjkdajhkldjhklsajhkld]
+	Resources
+	[
+		[steel, 10]
+		[coil, 10]
+		[comilitebar, 10]
+	]
+	Components : ^/0/Components
+	{
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+
+			MediaEffects
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 250000000
+					Radius = 50
+					Delay = .05
+					ImpulsePerNDamage = 0
+					NDamage = 1000
+					DamageType = Salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						//OperationalHealth = true
+						//StructuralHealth = false
+						Friendlies = true
+					}
+				}
+			]
+		}
+	}
+
+	Stats
+	{
+		SimpleMaxDamage = &~/Part/Components/DestroyedEffects/HitEffects/0/TotalDamage
+		DamageArea = &~/Part/Components/DestroyedEffects/HitEffects/0/Radius
+	}
+}

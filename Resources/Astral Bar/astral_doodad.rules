@@ -1,0 +1,13 @@
+ID = janiTNT.astralbar
+Type = Resource
+DescriptionKey = "Resource/AstralBar"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "astralbar1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = astralbar

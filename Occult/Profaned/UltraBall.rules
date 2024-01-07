@@ -1,0 +1,1081 @@
+BeamCount = 25
+
+Part : <../base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidBallWeaponProfanedBoss"
+	DescriptionKey = "Parts/MegaroidBallWeaponProfanedBossDesc"
+	ID = janiTNT.lightball_verybig_profaned_boss // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		//[hyperium, 128 * 20]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeakpointDetector, JaniWeaponsDisabledBoss, JaniExistingSigilDetectionBoss]
+	Density = 3
+	AIValueFactor = 0
+	MaxHealth = 99999999
+	EditorReplacementPartID = ""
+	Size = [24, 8]
+	SelectionPriority = 1
+	SelectionTypeID = "weapons"
+	IsRotateable = true
+	TypeCategories = [armor, weapon]
+	InitialPenetrationResistance = 250
+	ContinuingPenetrationResistance = 50
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = 50% // Nuke resistance + +
+	GenerateRectCollider = false
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	EditorIcon
+	{
+		Texture = "../light_icon.png"
+		Size = [120, 120]
+	}
+	Components : ^/0/Components
+	{
+		DetonateEffects
+		{
+			Type = Graphics
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = JaniOrbDetectionCosmiliteBoss
+			GridDistance = 100
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+		
+		IsNotOperational
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational]
+			Invert = true
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 16
+		}
+		
+		Collider
+		{
+			Type = CircleCollider
+			Location = [12, 4]
+			Radius = 8
+			Density = 5
+		}
+		
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		/*Flamethrower
+		{
+			Type = FixedWeapon
+			Location = [1, .5] // Relative to upper-left corner of unrotated part.
+			//Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 4
+			TargetingArc = 90d
+			AIFirepowerRating = 400000
+			ProhibitShipRelativePointTargets = true
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}*/
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [12, 4]// Relative to upper-left corner of unrotated part.
+			//Rotation = -90d// Relative to unrotated part. Undone because its placed sideways (wack)
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 0.2
+			FiringArc = 360d
+			RotateSpeed = 1028d
+			FireThresholdAngle = 1d
+			IgnoreSourceShipLowLOSChecks = true
+			//AllowShipWideExplicitTargets = false
+			IgnoreJunkLOSChecks = true
+			CanBeGivenExplicitTarget = false
+			ShowTargetButtons = false
+			AIFirepowerRating = 0
+			Emitter = RayEmitter
+			FirePermissionToggle = FireModeToggle
+			//HoldTargetAfterCancel = &../RayEmitter/FireDelay
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipCenters
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+		
+		EmitterFanArcController
+		{
+		    Type = FanArcController
+		    ChainedTo = Turret
+		    GetTargetFrom = Turret
+		    MaxArc = 30d
+			//MinArc = 90d
+		    DefaultArc = &MaxArc
+		    ArcSizeFactor = 120%
+		    FanComponents
+		    [
+		        RayEmitter2,
+		        RayEmitter3,
+				RayEmitter4,
+				RayEmitter5,
+				RayEmitter6,
+				RayEmitter7,
+				RayEmitter8,
+				RayEmitter9,
+		        RayEmitter10,
+				RayEmitter11,
+				RayEmitter12,
+		        RayEmitter13,
+				RayEmitter,				
+				RayEmitter14,
+				RayEmitter15,
+				RayEmitter16,
+				RayEmitter17,
+				RayEmitter18,
+				RayEmitter19,
+				RayEmitter20,
+				RayEmitter21,
+				RayEmitter22,
+				RayEmitter23,
+				RayEmitter24,
+				RayEmitter25
+		    ]
+		}
+		
+		RayEmitter : <shots/solar_rays.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = EmitterFanArcController
+			Location = [1.5, 0]
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = SunbeamToggle
+			SourceShipLowCollisions = false
+		}
+
+		// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
+		RayEmitter2  = &RayEmitter
+		RayEmitter3  = &RayEmitter
+		RayEmitter4  = &RayEmitter
+		RayEmitter5  = &RayEmitter
+		RayEmitter6  = &RayEmitter
+		RayEmitter7  = &RayEmitter
+		RayEmitter8  = &RayEmitter
+		RayEmitter9  = &RayEmitter
+		RayEmitter10  = &RayEmitter
+		RayEmitter11  = &RayEmitter
+		RayEmitter12  = &RayEmitter
+		RayEmitter13  = &RayEmitter
+		RayEmitter14  = &RayEmitter
+		RayEmitter15  = &RayEmitter
+		RayEmitter16  = &RayEmitter
+		RayEmitter17  = &RayEmitter
+		RayEmitter18  = &RayEmitter
+		RayEmitter19  = &RayEmitter
+		RayEmitter20  = &RayEmitter
+		RayEmitter21  = &RayEmitter
+		RayEmitter22  = &RayEmitter
+		RayEmitter23  = &RayEmitter
+		RayEmitter24  = &RayEmitter
+		RayEmitter25  = &RayEmitter
+		
+		MinisunTimer
+		{
+			Type = Timer
+			OperationalToggle = SunbeamToggle
+			Duration = 10
+			AutoStart = true
+			Repeats = true
+		}
+		
+		MinisunEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [0, 0]
+			FireTrigger = MinisunTimer
+			GetTargetFrom = Turret
+			OperationalToggle = SunbeamToggle
+			//FireDelay = 0.75
+			Bullet = &<shots/minisun.rules>
+			//Spread = [-1.5d, 1.5d]
+		}
+		
+		MinisunEmitterPhase2
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [0, 0]
+			FireTrigger = MinisunTimer
+			GetTargetFrom = Turret
+			OperationalToggle = TwoSigilsRemainingBeams
+			FireDelay = 5
+			Bullet = &<shots/minisun.rules>
+			Spread = [-1.5d, 1.5d]
+		}
+		
+		FastMinisunEmitterPhase2
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [0, 0]
+			FireTrigger = FastMinisunTimer
+			GetTargetFrom = Turret
+			OperationalToggle = TwoSigilsRemainingFlames
+			FireDelay = 5
+			Bullet = &<shots/fastminisun.rules>
+			Spread = [-1.5d, 1.5d]
+		}
+		
+		FastMinisunTimer
+		{
+			Type = Timer
+			OperationalToggle = TwoSigilsRemainingFlames
+			Duration = 12
+			AutoStart = true
+			Repeats = true
+		}
+		
+		NanosunTimer
+		{
+			Type = Timer
+			OperationalToggle = OneSigilRemainingBeams
+			Duration = 6
+			AutoStart = true
+			Repeats = true
+		}
+		
+		NanosunFan
+		{
+		    Type = FanArcController
+		    ChainedTo = Turret
+		    GetTargetFrom = Turret
+		    MaxArc = 300d
+			MinArc = 300d
+		    DefaultArc = &MaxArc
+		    ArcSizeFactor = 100%
+		    FanComponents
+		    [
+		        NanoSunEmitter,
+		        NanoSunEmitter2,
+				NanoSunEmitter3,
+				NanoSunEmitter4,
+				NanoSunEmitter5,
+				NanoSunEmitter6
+		    ]
+		}
+		
+		NanoSunEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = NanosunFan
+			Location = [0, 0]
+			FireTrigger = NanosunTimer
+			GetTargetFrom = Turret
+			OperationalToggle = OneSigilRemainingBeams
+			FireDelay = 2
+			Bullet = &<shots/nanosun.rules>
+			Spread = [-15d, 15d]
+		}
+		
+		NanoSunEmitter2 = &NanoSunEmitter
+		NanoSunEmitter3 = &NanoSunEmitter
+		NanoSunEmitter4 = &NanoSunEmitter
+		NanoSunEmitter5 = &NanoSunEmitter
+		NanoSunEmitter6 = &NanoSunEmitter
+		
+		OneSigilRemainingBeams
+		{
+			Type = MultiToggle
+			Toggles = [SunbeamToggle, OnlyOneSigil]
+			Mode = All
+		}
+		
+		TwoSigilsRemainingBeams
+		{
+			Type = MultiToggle
+			Toggles = [SunbeamToggle, TwoSigilsRemainingCombo]
+			Mode = All
+		}
+		
+		TwoSigilsRemainingFlames
+		{
+			Type = MultiToggle
+			Toggles = [FlamethrowerToggle, TwoSigilsRemainingCombo]
+			Mode = All
+		}
+		
+		TwoSigilsRemainingCombo
+		{
+			Type = MultiToggle
+			Toggles = [TwoSigilsRemainingDET, OnlyOneSigil]
+			Mode = Any
+		}
+		
+		TwoSigilsRemainingDET
+		{
+			Type = BuffToggle
+			BuffType = JaniExistingSigilDetectionBoss
+			MinBuffValue = 1
+			MaxBuffValue = 3
+		}
+		
+		OnlyOneSigil
+		{
+			Type = MultiToggle
+			Toggles = [SigilDET]
+			Mode = All
+			Invert = true
+		}
+		
+		SigilDET
+		{
+			Type = BuffToggle
+			BuffType = JaniExistingSigilDetectionBoss
+			MinBuffValue = 1
+			MaxBuffValue = 999
+		}
+		
+		FlamethrowerToggle
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, FlamethrowerMode, EnemyPresenceToggle]
+			Mode = All
+		}
+		
+		SunbeamToggle
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, SunbeamMode, EnemyPresenceToggle]
+			Mode = All
+		}
+		
+		EnemyAndIsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle, EnemyPresenceToggle]
+			Mode = All
+		}
+		
+		FlamethrowerEmiter
+		{
+			Type = BulletEmitter
+			//ChainedTo = EmitterFanArcController
+			Location = [12, 4]
+			FireTrigger = FlamethrowerDelay
+			GetTargetFrom = Turret
+			OperationalToggle = FlamethrowerToggle
+			FireDelay = 0
+			Burst = 11
+			Bullet = &<shots/profaned_flames.rules>
+			Spread = [-15d, 15d]
+		}
+		
+		FlamethrowerDelay
+		{
+			Type = DelayTrigger
+			Trigger = FlameTicking
+			Delay = 10
+		}
+		
+		DisablingBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = JaniWeaponsDisabledBoss
+			GridDistance = 100
+			AllowDiagonals = true
+			BuffAmount = 1
+			OperationalToggle = FlamethrowerToggle
+		}
+		
+		FlameTicking
+		{
+			Type = Timer
+			OperationalToggle = FlamethrowerToggle
+			Duration = 0.3
+			AutoStart = true
+			Repeats = true
+		}
+		
+		SwapIncrementTimer
+		{
+			Type = Timer
+			OperationalToggle = EnemyAndIsOperational
+			Duration = 14.5
+			AutoStart = true
+			Repeats = true
+		}
+		
+		AttacksCycle
+		{
+			Type = ModeCycle
+			ModeRange = [0, 5]
+			IncrementTrigger = SwapIncrementTimer
+			StartingMode = 2 // Flameburst will be close to fight start
+		}
+		
+		SunbeamMode
+		{
+			Type = ModeToggle
+			Mode = AttacksCycle
+			OnModes = [1, 2] // skip zero xd
+		}
+		
+		HolyRaysMode
+		{
+			Type = ModeToggle
+			Mode = AttacksCycle
+			OnModes = [0]
+		}
+		
+		FlamethrowerMode
+		{
+			Type = ModeToggle
+			Mode = AttacksCycle
+			OnModes = [3, 4, 5]
+		}
+		
+		// Used for detecting the presence of enemy ships and providing distance. Does not actually shoot.
+		// Very similar to the stellarborn ship 
+		ProximityWeapon
+		{
+			Type = TurretWeapon
+			Location = [12, 4]
+			Rotation = 0d
+			FireInterval = 0
+			FiringArc = 0d
+			ValidArc = 360d
+			FireThresholdAngle = 0d
+			RotateSpeed = 0d
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			CanBeGivenExplicitTarget = false
+			ShowTargetButtons = false
+
+			AIFirepowerRating = 0
+			TargetingEmitter = ProximityEmitter
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipCenters
+				}
+			]
+		}
+
+		ProximityEmitter : <../Cosmilite/Shots/Beam3.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = ProximityWeapon
+			Location = [0, 0]
+			Range = 1000
+			FireTrigger
+			GetTargetFrom
+			Duration = 0
+		}
+
+		// For DistanceThreshold components, when no enemy is targeted, the distance is 0.
+		// Get around this issue by checking a lower bound of 0.5 (that should only include inside the ship)
+		DistanceToggleNear
+		{
+			Type = DistanceThreshold
+			GetDistanceFrom = ProximityWeapon
+			ThresholdDistance = 0.5
+		}
+		DistanceToggleFar
+		{
+			Type = DistanceThreshold
+			GetDistanceFrom = ProximityWeapon
+			ThresholdDistance = 1000
+			InvertToggle = true
+		}
+
+		EnemyPresenceToggle
+		{
+			Type = MultiToggle
+			Toggles = [DistanceToggleNear, DistanceToggleFar]
+			Mode = All
+		}
+		
+		HolyRayLeftOscillator
+		{
+			Type = Oscillator
+			Rotation = -180d
+			//ChainedTo = Turret
+			OperationalToggle = HolyBeamEmitterLeft
+			Location = [12, 4]
+			Angle = -360d
+			Interval = 40.0 * 6 * 2
+			//ResetWhenOperational = false
+			ResetWhenOperational = true
+		}
+		HolyRayRightOscillator : HolyRayLeftOscillator
+		{
+			OperationalToggle = HolyBeamEmitterRight
+			Location = [12, 4]
+			Angle = -(&../HolyRayLeftOscillator/Angle)
+		}
+		InitiateHolyRay
+		{
+			Type = ToggleTrigger
+			Toggle = FlamethrowerMode
+			TriggerWhenOff = true
+			TriggerWhenOn = false
+		}
+		HolyBeamEmitterLeft : <shots/HOLYBEAM.rules>
+		{
+			ChainedTo = HolyRayLeftOscillator
+			FireTrigger = HolybeamTrigger
+			Type = BeamEmitter
+			GetTargetFrom = Turret
+			//Location = [1.75 + 20, 0]
+			//OperationalToggle = SunbeamMode
+			Duration = 14 * 2
+			EffectsScaleFactor = HolybeamScale
+			SourceShipLowCollisions = false
+		}
+		HolyBeamEmitterRight : HolyBeamEmitterLeft
+		{
+			ChainedTo = HolyRayRightOscillator
+		}
+		HolybeamTrigger
+		{
+			Type = DelayTrigger
+			Trigger = InitiateHolyRay
+			Delay = 6
+		}	
+		HolybeamScale
+		{
+			Type = StaticValue
+			Value = 10
+		}
+			
+		ProviBallsEmitterFanArcController
+		{
+		    Type = FanArcController
+		    ChainedTo = Turret
+		    GetTargetFrom = Turret
+		    MaxArc = 360d
+			MinArc = 360d
+		    DefaultArc = &MaxArc
+		    ArcSizeFactor = 100%
+		    FanComponents
+		    [
+		        ProviBallsEmitter2,
+		        ProviBallsEmitter3,
+				ProviBallsEmitter4,
+				ProviBallsEmitter5,
+				ProviBallsEmitter6,
+				ProviBallsEmitter7,
+				ProviBallsEmitter8,
+				ProviBallsEmitter9,
+		        ProviBallsEmitter10,
+				ProviBallsEmitter11,
+				ProviBallsEmitter12,
+		        ProviBallsEmitter13,
+				ProviBallsEmitter14,
+				ProviBallsEmitter15,
+				ProviBallsEmitter16,
+				ProviBallsEmitter17,
+				ProviBallsEmitter18,
+				ProviBallsEmitter,	
+				ProviBallsEmitter19,
+				ProviBallsEmitter20,
+				ProviBallsEmitter21,
+				ProviBallsEmitter22,
+				ProviBallsEmitter23,
+				ProviBallsEmitter24,
+				ProviBallsEmitter25,
+				ProviBallsEmitter26,
+				ProviBallsEmitter27,
+				ProviBallsEmitter28,
+				ProviBallsEmitter29,
+				ProviBallsEmitter30,
+				ProviBallsEmitter31,
+				ProviBallsEmitter32,
+				ProviBallsEmitter33,
+				ProviBallsEmitter34,
+				ProviBallsEmitter35
+		    ]
+		}
+
+		ProviBallsEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = ProviBallsEmitterFanArcController
+			Location = [0, 0]
+			FireTrigger = ProviBallDelay
+			GetTargetFrom = Turret
+			OperationalToggle = FlamethrowerMode
+			FireDelay = 0
+			Bullet = &<shots/providencerandom.rules>
+			Spread = [-3d, 3d]
+		}
+
+		// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
+		ProviBallsEmitter2  = &ProviBallsEmitter
+		ProviBallsEmitter3  = &ProviBallsEmitter
+		ProviBallsEmitter4  = &ProviBallsEmitter
+		ProviBallsEmitter5  = &ProviBallsEmitter
+		ProviBallsEmitter6  = &ProviBallsEmitter
+		ProviBallsEmitter7  = &ProviBallsEmitter
+		ProviBallsEmitter8  = &ProviBallsEmitter
+		ProviBallsEmitter9  = &ProviBallsEmitter
+		ProviBallsEmitter10  = &ProviBallsEmitter
+		ProviBallsEmitter11  = &ProviBallsEmitter
+		ProviBallsEmitter12  = &ProviBallsEmitter
+		ProviBallsEmitter13  = &ProviBallsEmitter
+		ProviBallsEmitter14  = &ProviBallsEmitter
+		ProviBallsEmitter15  = &ProviBallsEmitter
+		ProviBallsEmitter16  = &ProviBallsEmitter
+		ProviBallsEmitter17  = &ProviBallsEmitter
+		ProviBallsEmitter18  = &ProviBallsEmitter
+		ProviBallsEmitter19  = &ProviBallsEmitter
+		ProviBallsEmitter20  = &ProviBallsEmitter
+		ProviBallsEmitter21  = &ProviBallsEmitter
+		ProviBallsEmitter22  = &ProviBallsEmitter
+		ProviBallsEmitter23  = &ProviBallsEmitter
+		ProviBallsEmitter24  = &ProviBallsEmitter
+		ProviBallsEmitter25  = &ProviBallsEmitter
+		ProviBallsEmitter26  = &ProviBallsEmitter
+		ProviBallsEmitter27  = &ProviBallsEmitter
+		ProviBallsEmitter28  = &ProviBallsEmitter
+		ProviBallsEmitter29  = &ProviBallsEmitter
+		ProviBallsEmitter30  = &ProviBallsEmitter
+		ProviBallsEmitter31  = &ProviBallsEmitter
+		ProviBallsEmitter32  = &ProviBallsEmitter
+		ProviBallsEmitter33  = &ProviBallsEmitter
+		ProviBallsEmitter34  = &ProviBallsEmitter
+		ProviBallsEmitter35  = &ProviBallsEmitter
+		
+		ProviBallDelay
+		{
+			Type = DelayTrigger
+			Trigger = ProviTicker
+			Delay = 8
+		}
+		
+		ProviTicker
+		{
+			Type = Timer
+			OperationalToggle = FlamethrowerToggle
+			Duration = 1.5
+			AutoStart = true
+			Repeats = true
+		}
+		
+		/*BoltEffectComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			InvertOperationalToggle = true
+			IncludeInBlueprints = false
+			Components
+			{
+				BoltEffect
+				{
+					Type = TriggeredEffects
+					ChainedTo = Turret
+					Trigger = Turret
+					Location = [0, 0]
+					AnchorMediaEffects = true
+
+					MediaEffects
+					[
+						&<../particles/bigflashfourth.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./data/ships/common/ftl_jump_in.wav"
+							Volume = 2
+							Speed = 1
+						}
+					]
+				}
+			}
+		}*/
+		
+		/*OperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			IncludeInBlueprints = false
+			Components
+			{*/
+				Graphics
+				{
+					Type = Graphics
+					OperationalToggle = FlamethrowerToggle
+					Location = [12, 4]
+					Floor
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [22, 22]
+								RotSpeed = 180d
+								SampleMode = Linear
+								VertexColor = [255*1.5, 205*1.5, 128*1.5]
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [21, 21]
+								RotSpeed = -100d
+								SampleMode = Linear
+								VertexColor = [255*1.5, 205*1.5, 128*1.5]
+							}
+						]
+					}
+					OperationalDoodad
+					{
+						Layer = "asteroid_lights_add"
+						//RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightballs.png"
+								Size = [28, 28]
+								RotSpeed = 200d
+								SampleMode = Linear
+								VertexColor = [255*0.5, 0, 0] //red
+								UVRotation = 1
+							}
+						]
+					}
+					OperationalLighting
+					{
+						Layer = "asteroid_lights_add"
+						//RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightballs.png"
+								Size = [28, 28]
+								RotSpeed = -200d
+								SampleMode = Linear
+								VertexColor = [255*0.5, 0, 0] //red
+								UVRotation = 1
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "asteroid_roof_lights_fancy"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/common/light_blob.png"
+								Size = [50, 50]
+								Z = 6.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+								VertexColor = [255*8, 205*8, 128*8]
+							}
+						]
+					}
+				}/*
+			}
+		}
+		
+		UnOperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsNotOperational
+			//InvertOperationalToggle = false
+			IncludeInBlueprints = false
+			Components
+			{
+				Graphics2
+				{
+					Type = Graphics
+					Location = [12, 1.5]
+					Floor
+					{
+						Layer = "asteroid"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../deadball.png"
+								NormalsFile = "../deadball_n.png"
+								Size = [20, 20]
+								RotSpeed = 0d
+							}
+						]
+					}
+				}
+			}
+		}*/
+		
+		/*Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "lightball.png"
+						Size = [2.15, 2.15]
+						RotSpeed = 180d
+						SampleMode = Linear
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "lightball.png"
+						Size = [2.15, 2.15]
+						RotSpeed = -100d
+						SampleMode = Linear
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "lightballs.png"
+						Size = [2.8, 2.8]
+						RotSpeed = -120d
+						SampleMode = Linear
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [10, 10]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*2.25, 255*2.25, 255*2.25]
+					}
+				]
+			}
+		}*/
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<../Particles/quarter_huge_part_exploding.rules>
+				//&<../Particles/salvage_complete_shrapnel_occult.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+			Location = [12, 4]
+		}
+		
+		DestroyedEffectsDeathBySigil
+		{
+			Type = DeathEffects
+			Location = [12, 4]
+			HitEffects
+			[
+				/*{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death
+					TotalDrain = -640 * 32
+					Radius = 22
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death2
+					TotalDrain = -640 * 32
+					Radius = 22
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}*/
+			]
+		}
+		
+		HealTrigger
+		{
+			Type = Timer
+			//OperationalToggle = BoomStorage
+			Duration = 0.5
+			AutoStart = true
+			Repeats = true
+		}
+		HealEffects
+		{
+			// This just heals
+
+			Type = TriggeredEffects
+			Trigger = HealTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = -320000
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = false
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/asteroid/rock/rock_1x1_blueprints.png"
+			Size = [24, 8]
+		}
+	}
+}

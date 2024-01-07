@@ -1,0 +1,409 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/FactorySplitter"
+	IconNameKey = "Parts/FactorySplitterIcon"
+	ID = baseresources.splitter_factory
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/FactorySplitterDesc"
+	Resources
+	[
+		[steel, 32]//800
+		[coil, 8]//800
+		[tristeel, 2]//400
+	]
+	Size = [2, 2]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 4000
+	TypeCategories = [provides_split, uses_unsplit, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	IsBuildable = false
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		ModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "splitter_mode"
+			AlwaysAllowInBuildMode = true
+			Default = 0
+			RequiresCommand = false
+		}
+		
+		SplitToggle
+		{
+			Type = ModeToggle
+			Mode = ModeToggle
+			OnMode = 0
+		}
+		
+		MergeToggle
+		{
+			Type = ModeToggle
+			Mode = ModeToggle
+			OnMode = 1
+		}
+		
+		IsSplitToggle
+		{
+			Type = MultiToggle
+			Toggles = [SplitToggle, IsOperational]
+			Mode = All
+		}
+		
+		IsMergeToggle
+		{
+			Type = MultiToggle
+			Toggles = [MergeToggle, IsOperational]
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		FloorSprite
+		{
+			Type = Sprite
+			Location = [1, 1]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor.png"
+					Size = [2, 2]
+				}
+			]
+		}
+		
+		ResourceType
+		{
+			Type = UIToggle
+			ToggleID = "splitter_type"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		
+		TristeelToggle
+		{
+			Type = ModeToggle
+			Mode = ResourceType
+			OnMode = 0
+		}
+		TristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = TristeelToggle
+			IncludeInBlueprints = true
+			Components = &<tristeel.rules>/Components
+		}
+		
+		UraniumToggle
+		{
+			Type = ModeToggle
+			Mode = ResourceType
+			OnMode = 1
+		}
+		UraniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = UraniumToggle
+			IncludeInBlueprints = true
+			Components = &<uranium.rules>/Components
+		}
+		
+		ResourceConverterSplitProxy
+		{
+			Type = ToggleProxy
+			ComponentID = ResourceConverterSplit
+		}
+		
+		ResourceConverterMergeProxy
+		{
+			Type = ToggleProxy
+			ComponentID = ResourceConverterMerge
+		}
+		
+		GraphicsSplit
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = SplitToggle
+			DoodadToggle = ResourceConverterSplitProxy //IMPORTANT
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -30/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -30/64]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+		
+		GraphicsMerge
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = MergeToggle
+			DoodadToggle =ResourceConverterMergeProxy
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -30/64]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on8.png"
+							"doodads_on7.png"
+							"doodads_on6.png"
+							"doodads_on5.png"
+							"doodads_on4.png"
+							"doodads_on3.png"
+							"doodads_on2.png"
+							"doodads_on1.png"
+						]
+						Size = [2, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_low"
+				Offset = [0, -30/64]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			//Roof = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/Components/Graphics/Roof
+			//OperationalRoofDoodad = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/Components/Graphics/OperationalRoofDoodad
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -17/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [3, 3]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}
+		}
+		
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [1, 1]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/Components/RoofDoorSprite/OpenDamageLevels
+			ClosedDamageLevels = &<./Data/ships/terran/factory_ammo/factory_ammo.rules>/Part/Components/RoofDoorSprite/ClosedDamageLevels
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+		
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 2]
+		}
+	}
+
+	Stats
+	{
+		PowerPerAmmo = 40 / 1 / 1000
+		PowerPerSecond = 40 / 0.5 / 1000
+		AmmoPowerUsage = [&../PowerPerAmmo, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+}

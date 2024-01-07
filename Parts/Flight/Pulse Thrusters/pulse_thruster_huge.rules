@@ -1,0 +1,263 @@
+Part : &<./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/PulseThrusterHuge"
+	IconNameKey = "Parts/PulseThrusterHugeIcon"
+	ID = janiTNT.pulse_thruster_huge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/PulseThrustersDesc"
+	Resources
+	[
+		[steel, 80]
+		[coil2, 20]
+		[tristeel, 10]
+	]
+	TypeCategories = [thruster, uses_power]
+	Size = [3, 3]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "thrusters"
+	MaxHealth = 9000
+	ProhibitRects
+	[
+		[default, [0, 6, 3, 11]]
+	]
+	ThrusterForce = 8000 * 0.75
+	ThrustIncreaseTime = { BaseValue=4; BuffType=Engine; BuffMode=Divide; }
+	ThrustRecoveryTime = 2
+	FuelUsage = 400 * 1.25
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	BlockedTravelCells
+	[
+		[1, 1]
+		[0, 2]
+		[1, 2]
+		[2, 2]
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[-1, 0]
+		[0, -1]
+		[1, -1]
+		[2, -1]
+		[3, 0]
+		[3, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "huge_icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components
+	{
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			AnimationSpeedFactor = MainThruster
+			AnimationSpeedFactorRenormalize = [0.75, 2.0]
+			Floor = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/Floor
+			OperationalDoodad = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/OperationalDoodad
+			NonOperationalDoodad = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/NonOperationalDoodad
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "huge_lights.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Walls = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/Walls
+		}
+
+		RoofToggle
+		{
+			Type = UIToggle
+			ToggleID = "thruster_roof_detail"
+			Default = 1
+			AlwaysAllowInBuildMode = true
+		}
+
+		LowDetail
+		{
+			Type = ModeToggle
+			Mode = RoofToggle
+			OnMode = 0
+		}
+		
+		LowComponents
+		{
+			Type = ToggledComponents
+			Toggle = LowDetail
+			IncludeInBlueprints = true
+			Components
+			{
+				LowQualityGrid
+				{
+					Type = SpriteGrid
+					Location = [.5, .5]
+					//GridSpacing = [0.25, 0.25]
+					GridSize = [3, 3]
+					RandomDamageLevels
+					[
+						[
+							{
+								File = "./Data/ships/terran/corridor/roof.png"
+								NormalsFile = "./Data/ships/terran/corridor/roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/corridor/roof_33.png"
+								NormalsFile = "./Data/ships/terran/corridor/roof_normals_33.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/corridor/roof_66.png"
+								NormalsFile = "./Data/ships/terran/corridor/roof_normals_66.png"
+								Size = [1, 1]
+							}
+						]
+					]
+					RandomUVRotation = true
+					Layer = "roofs"
+				}
+			}
+		}
+		
+		HighDetail
+		{
+			Type = ModeToggle
+			Mode = RoofToggle
+			OnMode = 1
+		}
+		
+		HighComponents
+		{
+			Type = ToggledComponents
+			Toggle = HighDetail
+			IncludeInBlueprints = true
+			Components
+			{
+				HighRoofGraphics
+				{
+					Type = Graphics
+					Location = [1.5, 1.5]
+					OperationalToggle = IsOperational
+					Roof = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/Roof
+					OperationalRoofDoodad = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/OperationalRoofDoodad
+					OperationalRoofLighting = &<./Data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/OperationalRoofLighting
+				}
+			}
+		}
+
+		NozzleGraphics
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+
+		MainThruster
+		{
+			Type = Thruster
+			Location = [1.5, 3]// Relative to upper-left corner of unrotated part.
+			Rotation = 90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+		LateralThruster : MainThruster
+		{
+			Rotation = 0d
+			MinActivation = -0.05
+			MaxActivation = 0.05
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			AllowAutoFire = false
+		}
+
+		NozzleCollider
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+
+		ThrustEffects
+		{
+			Type = ContinuousEffects
+			ChainedTo = MainThruster
+			Location = [0, 0]
+			FactorMediaEffectsIntensityWith = MainThruster
+			MediaEffects
+			[
+				&<particles/thruster_heat_huge.rules>
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Volume = .5
+					Speed = .75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		BurstTrigger
+		{
+			Type = ThresholdTrigger
+			AmountFrom = MainThruster
+			MinAmount = .5
+		}
+
+		BurstEffects
+		{
+			Type = TriggeredEffects
+			ChainedTo = MainThruster
+			Trigger = BurstTrigger
+			FactorMediaEffectsIntensityWith = MainThruster
+			AnchorMediaEffects = true
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					Volume = .75
+					Speed = .75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "huge_blueprints.png"
+			Size = [3, 3]
+			//Offset = [0, .5]
+		}
+	}
+
+	Stats
+	{
+		ThrusterForce = &~/Part/ThrusterForce
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
+		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&ThrusterPowerUsage) / 2
+		RecCrew = (&RecPower) * 4
+	}
+}

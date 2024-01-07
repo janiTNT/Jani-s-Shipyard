@@ -1,0 +1,37 @@
+Resource = goldium
+StackSize = (&<../../../../Resources/goldium/goldium.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = GoldiumStorage
+	}
+	
+	GoldiumStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = GoldiumStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "../../../../Resources/goldium/goldium_stack20.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

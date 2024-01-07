@@ -1,0 +1,68 @@
+Resource = missile_part_emp
+StackSize = (&<./data/resources/missile_part_emp/missile_part_emp.rules>/MaxStackSize)
+Components
+{	
+	EMPMissileStorage__Aephiex //compatibility
+	{
+		Type = MultiResourceStorage
+		ResourceType = &~/Resource
+		ResourceStorages = [TrueEMPMissileStorage]
+		AddMode = PrioritizeLeastEmptyCapacity
+		RemoveMode = PrioritizeMostEmptyCapacity
+	}
+	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = TrueEMPMissileStorage
+	}
+	
+	TrueEMPMissileStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = TrueEMPMissileStorage
+	}
+	
+	FillSprites2 : &<hyperium.rules>/Components/FillSprites2
+	{
+		RangeLow = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 2 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = TrueEMPMissileStorage
+	}
+	
+	FillSprites3 : &<hyperium.rules>/Components/FillSprites3
+	{
+		RangeLow = 2 *(&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = TrueEMPMissileStorage
+	}
+	
+	FillSprites4 : &<hyperium.rules>/Components/FillSprites4
+	{
+		RangeLow = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ResourceStorage = TrueEMPMissileStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/missile_part_emp/missile_part_emp_stack_10.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

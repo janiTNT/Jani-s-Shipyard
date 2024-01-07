@@ -1,0 +1,39 @@
+flareeffect = "flare.png"
+NoProton = "indicator_protons.png"
+NoDeuterium = "indicator_deuterium.png"
+NoHydrogen = "indicator_hydrogen.png"
+Radexplode
+[
+	&<RadioactiveExplode.txt>
+	
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "rad_part_destroyed.wav"
+		Volume = 1
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = .15
+		Duration = 1
+	}
+]
+RadexplodeBig
+[
+	&<RadioactiveExplode.txt>
+	&<GiantRadioactiveExplode.txt>
+	
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "rad_part_destroyed.wav"
+		Volume = 100
+		SpeedVariation = .25
+	}
+
+	: /BASE_SHAKE
+	{
+		ShakeAmount = 1
+		Duration = 2
+	}
+]

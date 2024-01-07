@@ -1,0 +1,98 @@
+Resource = sulfur
+StackSize = (&<./data/resources/sulfur/sulfur.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = SulfurStorage
+	}
+	
+	SulfurStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = SulfurStorage
+	}
+	
+	FillSprites2 : &<hyperium.rules>/Components/FillSprites2
+	{
+		RangeLow = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 2 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = SulfurStorage
+	}
+	
+	FillSprites3 : &<hyperium.rules>/Components/FillSprites3
+	{
+		RangeLow = 2 *(&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = SulfurStorage
+	}
+	
+	FillSprites4 : &<hyperium.rules>/Components/FillSprites4
+	{
+		RangeLow = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ResourceStorage = SulfurStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/sulfur/sulfur_stack_5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+	
+	DestroyedEffects2
+	{
+		Type = DeathEffects
+		FactorHitEffectsWith = SulfurStorage
+		HitEffects // Scaled with stack size.
+		[
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 6000 * (&<hyperium.rules>/StorageSize)
+				Radius = 3
+				Delay = .05
+				FireChancePerNDamage = 50%
+				NDamage = 1000
+				CrewKillChance = 10%
+				Filter
+				{
+					OperationalHealth = true
+					StructuralHealth = false
+					Friendlies = true
+				}
+			}
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 1200 * (&<hyperium.rules>/StorageSize)
+				Radius = 2
+				Delay = .05
+				Filter
+				{
+					OperationalHealth = false
+					StructuralHealth = true
+					Friendlies = true
+					Crew = false
+				}
+			}
+		]
+		MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		Location = &<hyperium.rules>/Components/IconGraphics/Location
+	}
+}

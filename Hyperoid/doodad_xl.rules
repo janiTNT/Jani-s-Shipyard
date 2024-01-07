@@ -1,0 +1,79 @@
+ID = janiTNT.hyperoid_xl
+Type = GeneratedShip
+DescriptionKey = "Doodads/Hyperoid_XL"
+CategoryKey = "Doodads/Asteroids"
+Icon
+{
+	Texture
+	{
+		File = "hyperroid_xl.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+Allegiance = -3 // Junk
+SpawnRadius = sqrt(&Generator/Stages/0/MaxParts) * (&<../Hyperoid.rules>/Hyperoid/ShipScale)
+Generator
+{
+	ShipRulesID = "janiTNT.hyperoid"
+	Stages
+	[
+		{
+			Type = AsteroidStage
+			Name = AsteroidStage
+			IsEnabled = true
+			Parts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			MinParts = 1600
+			MaxParts = 3200
+		}
+		{
+			Type = AsteroidWedgesStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			LargerParts
+			[
+				janiTNT.hyperock_1x1_soft
+				janiTNT.hyperock_2x2_soft
+				janiTNT.hyperock_3x3_soft
+			]
+			RandomizeReplaceOrder = true
+			Name = AsteroidWedgesStage
+			IsEnabled = true
+			WedgeParts
+			[
+				janiTNT.hyperock_1x1_wedge_soft
+				janiTNT.hyperock_1x2_wedge_soft
+			]
+		}
+		{
+			Type = EnlargeTilesStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			LargerParts
+			[
+				janiTNT.hyperock_4x4_soft
+				janiTNT.hyperock_3x3_soft
+				janiTNT.hyperock_2x2_soft
+			]
+			RandomizeReplaceOrder = true
+			Name = EnlargeTilesStage
+			IsEnabled = true
+		}
+		{
+			Type = ConvertTypeStage
+			Conversions = &<Mineables/hard_conversions.rules>/Conversions
+			ChanceAtCenter = 1.3
+			ChanceAtEdge = 0.8
+			Name = ConvertTypeStage
+			IsEnabled = true
+			ChanceExponent = 1.0
+		}
+	]
+}

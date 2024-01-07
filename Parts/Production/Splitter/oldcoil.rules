@@ -1,0 +1,89 @@
+Components
+{
+	CoilConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = coil
+		Storage = CoilStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = SplitToggle
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	CableConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = cut.coil
+		Storage = CableStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = MergeToggle
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	CoilStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = coil
+		GridRect = [0, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [12/64, 4/64, 6/64, 11/64]
+		SuppliesResources = true
+		SuppliesResourcesToggle = MergeToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+	CableStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = cut.coil
+		GridRect = [1, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [6/64, 4/64, 12/64, 11/64]
+		SuppliesResources = true
+		SuppliesResourcesToggle = SplitToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+		
+	ResourceConverterSplit
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsSplitToggle
+		From
+		[
+			{
+				Storage = CoilStorage
+				Quantity = 1
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 40
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = CableStorage
+		ToQuantity = 5
+		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+	}
+
+	ResourceConverterMerge
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsMergeToggle
+		From
+		[
+			{
+				Storage = CableStorage
+				Quantity = 5
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 40
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = CoilStorage
+		ToQuantity = 1
+		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+	}
+}

@@ -1,0 +1,148 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicGateNot"
+	IconNameKey = "Parts/LogicGateNotIcon"
+	ID = Skipydog.Logic_Gate_Not
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicGateNotDesc"
+	Resources
+	[
+		[steel, 2]
+		[cut.tristeel, 1]
+		[coil, 1]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	TypeCategories = [logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LogicStorage]
+			Invert = true
+			Mode = All
+		}
+		BuffProviderLogicBuffer
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 10
+			BuffArea = [0, -1, 1, 1]
+		}
+		LogicStorage
+		{
+			Type = ResourceStorage
+			ResourceType = fake
+			MaxResources = 1
+		}
+		SignalRemover
+		{
+			Type = ResourceConverter
+			OperationalToggle = LogicalSensorInvert
+			FromStorage = LogicStorage
+			FromQuantity = 1
+			MinFromQuantityForConversion = 0
+			Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		SignalAdder
+		{
+			Type = ResourceConverter
+			OperationalToggle = LogicalSensor
+			ToStorage = LogicStorage
+			ToQuantity = 1
+			Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		LogicalSensor
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal]
+			Invert = false
+			Mode = All
+		}
+		LogicalSensorInvert
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal]
+			Invert = true
+			Mode = All
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = LogicalSensor
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+	}
+}

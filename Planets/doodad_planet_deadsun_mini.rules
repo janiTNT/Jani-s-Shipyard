@@ -1,0 +1,23 @@
+ID = janiTNT.planet_sun_dead_mini
+Type = Planet
+DescriptionKey = "Doodads/PlanetDeadMiniSun"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "deadsun2.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = sun_dead
+TextureSize = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/TextureSize
+ScaleRange = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/ScaleRange
+RandomScaleRange = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/RandomScaleRange
+DefaultScale = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/DefaultScale
+//RenderStage
+DistanceRange = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/DistanceRange
+RandomDistanceRange = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/RandomDistanceRange
+DefaultDistance = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/DefaultDistance
+MinimapColorScale = &<./Data/doodads/planets/doodad_planet_mini_sun.rules>/MinimapColorScale

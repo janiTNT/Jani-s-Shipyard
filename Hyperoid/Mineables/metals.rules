@@ -1,0 +1,155 @@
+ID = janiTNT.metal_ore_hyperoid_m
+Type = GeneratedShip
+DescriptionKey = "Doodads/Hyperoid_Metal"
+CategoryKey = "Doodads/Asteroids"
+Icon
+{
+	Texture
+	{
+		File = "metals.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+Allegiance = -3 // Junk
+SpawnRadius = sqrt(&Generator/Stages/0/MaxParts) * (&<../../Hyperoid.rules>/Hyperoid/ShipScale)
+Generator
+{
+	ShipRulesID = "janiTNT.hyperoid"
+	Stages
+	[
+		{
+			Type = AsteroidStage
+			Name = AsteroidStage
+			IsEnabled = true
+			Parts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			MinParts = 800
+			MaxParts = 1600
+		}
+		{
+			Type = AsteroidDepositsStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			Name = AsteroidDepositsStage
+			IsEnabled = true
+			Parts
+			[
+				janiTNT.hyperdeposit_iron_4x
+				janiTNT.hyperdeposit_iron_9x
+				janiTNT.hyperdeposit_iron_16x
+			]
+			MinPartsFraction = 0.095 * (&<./Data/resources/iron/iron.rules>/AsteroidDensity)
+			MaxPartsFraction = 0.1 * (&<./Data/resources/iron/iron.rules>/AsteroidDensity)
+			MinPartsPerDeposit = 2
+			MaxPartsPerDeposit = 8
+		}
+		{
+			Type = AsteroidDepositsStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			Name = AsteroidDepositsStage
+			IsEnabled = true
+			Parts
+			[
+				janiTNT.hyperdeposit_tritanium_4x
+				janiTNT.hyperdeposit_tritanium_9x
+				janiTNT.hyperdeposit_tritanium_16x
+			]
+			MinPartsFraction = 0.1 * (&<./Data/resources/tritanium/tritanium.rules>/AsteroidDensity)
+			MaxPartsFraction = 0.15 * (&<./Data/resources/tritanium/tritanium.rules>/AsteroidDensity)
+			MinPartsPerDeposit = 2
+			MaxPartsPerDeposit = 4
+		}
+		{
+			Type = AsteroidDepositsStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			Name = AsteroidDepositsStage
+			IsEnabled = true
+			Parts
+			[
+				janiTNT.hyperdeposit_copper_4x
+				janiTNT.hyperdeposit_copper_9x
+				janiTNT.hyperdeposit_copper_16x
+			]
+			MinPartsFraction = 0.1 * (&<./Data/resources/copper/copper.rules>/AsteroidDensity)
+			MaxPartsFraction = 0.2  * (&<./Data/resources/copper/copper.rules>/AsteroidDensity)
+			MinPartsPerDeposit = 3
+			MaxPartsPerDeposit = 6
+		}
+		{
+			Type = AsteroidDepositsStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			Name = AsteroidDepositsStage
+			IsEnabled = true
+			Parts
+			[
+				janiTNT.hyperdeposit_gold_4x
+				janiTNT.hyperdeposit_gold_9x
+				janiTNT.hyperdeposit_gold_16x
+			]
+			MinPartsFraction = 0.075 * (&<./Data/resources/gold/gold.rules>/AsteroidDensity)
+			MaxPartsFraction = 0.1 * (&<./Data/resources/gold/gold.rules>/AsteroidDensity)
+			MinPartsPerDeposit = 3
+			MaxPartsPerDeposit = 6
+		}
+		{
+			Type = AsteroidWedgesStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			LargerParts
+			[
+				janiTNT.hyperock_1x1_soft
+				janiTNT.hyperock_2x2_soft
+				janiTNT.hyperock_3x3_soft
+			]
+			RandomizeReplaceOrder = true
+			Name = AsteroidWedgesStage
+			IsEnabled = true
+			WedgeParts
+			[
+				janiTNT.hyperock_1x1_wedge_soft
+				janiTNT.hyperock_1x2_wedge_soft
+			]
+		}
+		{
+			Type = EnlargeTilesStage
+			ReplaceableParts
+			[
+				janiTNT.hyperock_1x1_soft
+			]
+			LargerParts
+			[
+				janiTNT.hyperock_4x4_soft
+				janiTNT.hyperock_3x3_soft
+				janiTNT.hyperock_2x2_soft
+			]
+			RandomizeReplaceOrder = true
+			Name = EnlargeTilesStage
+			IsEnabled = true
+		}
+		{
+			Type = ConvertTypeStage
+			Conversions = &<hard_conversions.rules>/Conversions
+			ChanceAtCenter = 1.2
+			ChanceAtEdge = 0
+			Name = ConvertTypeStage
+			IsEnabled = true
+			ChanceExponent = 1.25
+		}
+	]
+}

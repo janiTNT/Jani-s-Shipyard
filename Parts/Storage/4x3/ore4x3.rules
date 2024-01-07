@@ -1,0 +1,191 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/AutoOStorage4x3"
+	IconNameKey = "Parts/AutoOStorage4x3Icon"
+	ID = janiTNT.AutoStorage_ore_4x3 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Storage"
+	DescriptionKey = "Parts/AutoOStorage4x3Desc"
+	SelectionTypeID = "storage"
+	Resources
+	[
+		[steel, 96]
+		[coil, 12]
+	]
+	Size = [4, 3]
+	MaxHealth = 12000
+	IsRotateable = true
+	TypeCategories = [storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
+	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon3.png"
+			SampleMode = Linear
+		}
+		Size = [64, 48]
+	}
+	Components : ^/0/Components
+	{
+		OreType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_ore"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		sulfurToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 0
+		}
+		sulfurComponents
+		{
+			Type = ToggledComponents
+			Toggle = sulfurToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/sulfur.rules>/Components
+		}
+		
+		ironToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 1
+		}
+		ironComponents
+		{
+			Type = ToggledComponents
+			Toggle = ironToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/iron.rules>/Components
+		}
+		
+		copperToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 2
+		}
+		copperComponents
+		{
+			Type = ToggledComponents
+			Toggle = copperToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/copper.rules>/Components
+		}
+		
+		tritaniumToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 3
+		}
+		tritaniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = tritaniumToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/tritanium.rules>/Components
+		}
+		
+		carbonToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 4
+		}
+		carbonComponents
+		{
+			Type = ToggledComponents
+			Toggle = carbonToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/carbon.rules>/Components
+		}
+		
+		goldToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 5
+		}
+		goldComponents
+		{
+			Type = ToggledComponents
+			Toggle = goldToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/gold.rules>/Components
+		}
+		
+		uraniumToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 6
+		}
+		uraniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = uraniumToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x3/uranium.rules>/Components
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 1.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 3]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 3]
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle = &<./Data/ships/terran/storage_4x3/storage_4x3.rules>/Part/Components/RoofDoorOpenToggle
+		RoofDoorSprite = &<./Data/ships/terran/storage_4x3/storage_4x3.rules>/Part/Components/RoofDoorSprite
+
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [2, 1.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 3]
+		}
+	}
+
+	Stats
+	{
+		StorageTiles = 12
+	}
+}

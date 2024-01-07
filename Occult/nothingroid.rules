@@ -1,0 +1,144 @@
+Part : <base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidEmpty"
+	DescriptionKey = "Parts/MegaroidEmptyDesc"
+	ID = janiTNT.nothingrock_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "armor"
+	EditorGroup = "BossParts"
+	Resources = []
+	/*Resources
+	[
+		[steel, 8 * 16]
+	]*/
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Density = 3
+	MaxHealth = 32000
+	TypeCategories = [nothing]
+	InitialPenetrationResistance = 2 * 7
+	ContinuingPenetrationResistance = 2 * 7
+	AIValueFactor = 0
+	ExplosiveDamageAbsorption = 0%
+	ExplosiveDamageResistance = 0%
+	GenerateRectCollider = false
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	EditorIcon
+	{
+		Texture = "nothing_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{	
+		BoomStorage
+		{
+			Type = ResourceStorage
+			ResourceType = sigil.death
+			MaxResources = 320
+			ToggleOnResources = 320
+			InitToMaxResources = 0
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		DetonateTrigger
+		{
+			Type = Timer
+			OperationalToggle = BoomStorage
+			Duration = 0.3
+			AutoStart = true
+			Repeats = true
+		}
+		DetonateEffects
+		{
+			// Spreads but is not destroyed
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death
+					TotalDrain = -640
+					Radius = 7
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+			]
+		}
+		DestroyedEffectsDeathBySigil
+		{
+			Type = DeathEffects
+			OperationalToggle = BoomStorage
+			HitEffects
+			[]
+			Location = [.5, .5]
+		}
+		
+		ClearPermission
+		{
+			Type = MultiToggle
+			Toggles = [CommandToggle]
+			Mode = All
+			Invert = true
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		ClearTrigger // deletes part if no sigil found
+		{
+			Type = Timer
+			OperationalToggle = ClearPermission
+			Duration = 5
+			AutoStart = true
+			Repeats = true
+		}
+		ClearEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = ClearTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = false
+					}
+				}
+			]
+		}
+		
+		DestroyedEffects : &<base_part_occult.rules>/Part/Components/DestroyedEffects
+		{
+			MediaEffects// prevents crashes because salvage effects and no collision causes gay
+			[
+				: /BASE_SHAKE 
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "nothing_icon.png"
+			Size = [1, 1]
+		}
+	}
+}

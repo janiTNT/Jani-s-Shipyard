@@ -1,0 +1,59 @@
+Resource = uranium
+StackSize = (&<./data/resources/uranium/uranium.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = UraniumStorage
+	}
+	
+	UraniumStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = UraniumStorage
+	}
+	
+	FillSprites2 : &<hyperium.rules>/Components/FillSprites2
+	{
+		RangeLow = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 2 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = UraniumStorage
+	}
+	
+	FillSprites3 : &<hyperium.rules>/Components/FillSprites3
+	{
+		RangeLow = 2 *(&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = UraniumStorage
+	}
+	
+	FillSprites4 : &<hyperium.rules>/Components/FillSprites4
+	{
+		RangeLow = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ResourceStorage = UraniumStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/uranium/uranium_stack_5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

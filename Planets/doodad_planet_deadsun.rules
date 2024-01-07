@@ -1,0 +1,49 @@
+ID = janiTNT.planet_sun_dead
+Type = Planet
+DescriptionKey = "Doodads/PlanetDeadSun"
+CategoryKey = "Doodads/Planets"
+Icon
+{
+	Texture
+	{
+		File = "deadsun1.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = sun_dead
+TextureSize = &<./Data/doodads/planets/doodad_planet_sun.rules>/TextureSize
+ScaleRange = &<./Data/doodads/planets/doodad_planet_sun.rules>/ScaleRange
+RandomScaleRange = &<./Data/doodads/planets/doodad_planet_sun.rules>/RandomScaleRange
+DefaultScale = &<./Data/doodads/planets/doodad_planet_sun.rules>/DefaultScale
+RenderStage = &<./Data/doodads/planets/doodad_planet_sun.rules>/RenderStage
+IsLightSource = &<./Data/doodads/planets/doodad_planet_sun.rules>/IsLightSource
+ShowInMinimap = &<./Data/doodads/planets/doodad_planet_sun.rules>/ShowInMinimap
+MinimapColorScale = &<./Data/doodads/planets/doodad_planet_sun.rules>/MinimapColorScale
+
+ProximityDamage : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage
+{
+	InstantKillRadius = 0.5 //yes
+	//RaycastDamage = [200, 50]
+	//RaycastDamageDistanceExponent = 0.5
+	RaycastDamageCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage/RaycastDamageCircle
+	{
+		Texture
+		{
+			File = "blueperimeter.png"
+			UMode = Wrap
+			SampleMode = Linear
+			MipLevels = max
+		}
+	}
+	RaycastDamageMinimapCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage/RaycastDamageMinimapCircle
+	{
+		Texture
+		{
+			File = "blueperimeter.png"
+			UMode = Wrap
+			SampleMode = Linear
+			MipLevels = max
+		}
+	}
+}

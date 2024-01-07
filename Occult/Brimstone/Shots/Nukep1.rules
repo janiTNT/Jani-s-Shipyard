@@ -1,0 +1,227 @@
+ID = "janiTNT.imperium_boss_nuke_phase1"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 2000
+IdealRange = 450
+Speed = 100
+Stage2 = &<Nukep2.rules>
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [3, 1]
+		Density = 2
+		LinearDamping = 2.5
+		FrameOfReferenceDuration = 1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 35d
+		Delay = .3
+		//AvoidanceRaycastDistance = 250
+		//VelocityCompensation = 80%
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 50
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = [4, 4.5]
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 1
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "nuke.png"
+				MipLevels = max
+			}
+			Size = [4, 3]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [1, 0.55]
+		LerpTime = 0.15
+	}
+
+	LightsSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 0.2
+		Spin = 500d
+		Z = .25
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/shots/missile_nuke/radiation.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			VertexColor = [255, 0, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = .4
+		}
+	}
+	
+	LaserSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Offset = [200/4, 0]
+		//Spin = 360d
+		Z = .25
+		LerpScaleFrom = [0.5, 0]
+		LerpTime = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "laser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [200/2, 2]
+			VertexColor = [256*0.75, 0, 0]
+			TargetBlendMode = Add
+		}
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 8000
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 200000* 2
+					Radius = 10 * 2^0.5
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 60000 * 2
+					Radius = 8 * 2^0.5 
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+			
+			MediaEffectsScale = 2
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

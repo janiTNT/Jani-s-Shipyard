@@ -1,0 +1,98 @@
+Part : <../megasoft_1x1.rules>/Part
+{
+	NameKey = "Parts/HyperDepositUranium4x"
+	DescriptionKey = "Resource/UraniumHardDesc"
+	ID = janiTNT.hyperdeposit_uranium_4x // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = []
+	SelectionTypeID = "deposit_uranium"
+	EditorGroup = "Uranium"
+	Resources
+	[
+		[uranium, 4 *16]
+	]
+	IsFlippable = true
+	IsRotateable = true
+	EditorIcon
+	{
+		Texture = "./data/ships/asteroid/deposit_uranium/deposit_uranium_1x_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Sprite1
+		{
+			Type = Sprite
+			Location = [0.25, 0.25]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "uranium1.png"
+						NormalsFile = "normal1.png"
+						Size = [.25, .25]
+					}
+				]
+				[
+					{
+						File = "uranium2.png"
+						NormalsFile = "normal2.png"
+						Size = [.25, .25]
+					}
+				]
+				&0
+			]
+			RandomUVRotation = true
+			Layer = "ore"
+		}
+		Light
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalRoofLighting
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [1.5, 1.5]
+						Z = 0.25 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [145*0.25, 213*0.25, 0*0.25]
+					}
+				]
+			}
+		}
+		Sprite2 : Sprite1
+		{
+			Location = [0.75, 0.25]
+		}
+		Sprite3 : Sprite1
+		{
+			Location = [0.25, 0.75]
+		}
+		Sprite4 : Sprite1
+		{
+			Location = [0.75, 0.75]
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/asteroid/deposit_uranium/deposit_uranium_1x_blueprints.png"
+			Size = [1, 1]
+		}
+		
+		CustomShipIcon
+		{
+			Type = CustomShipIcon
+			Icon : <./Data/resources/uranium/uranium.rules>/Overlay
+			{
+				Size = [32, 32]
+			}
+			Weight = &~/Part/Resources/0/1
+			PulseInterval = 2
+			PulseColor = [255, 255, 255, 64]
+			ShowAtZoom = 5
+		}
+	}
+}

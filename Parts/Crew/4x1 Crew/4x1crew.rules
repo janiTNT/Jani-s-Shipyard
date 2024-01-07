@@ -1,0 +1,393 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CrewQuartersLonger"
+	IconNameKey = "Parts/CrewQuartersLongerIcon"
+	ID = janiTNT.crew_quarters_4x1
+	OtherIDs = [juanTNT.crew_quarters_long_4]
+	EditorGroup = "Crew"
+	DescriptionKey = "Parts/CrewQuartersLongerDesc"
+	Resources
+	[
+		[steel, 48]
+	]
+	Size = [1, 4]
+	SelectionTypeID = "quarters"
+	MaxHealth = 4000
+	TypeCategories = [provides_crew]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	MaxDoors = 1
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		[0, -1]
+		[1, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [16, 64]
+	}
+	Components : ^/0/Components
+	{
+		CrewSource
+		{
+			Type = CrewSource
+			Crew = 6
+			ColorSRange = [0, 0.25]
+			ColorVRange = [0.5, 0.75]
+		}
+
+		LeftDoorToggle
+		{
+			Type = DoorPresenceToggle
+			AdjacentCell = [-1, 0]
+		}
+		RightDoorToggle
+		{
+			Type = DoorPresenceToggle
+			AdjacentCell = [1, 0]
+		}
+		TopOrNoneDoorToggle
+		{
+			Type = MultiToggle
+			Toggles = [LeftDoorToggle, RightDoorToggle]
+			Mode = None
+		}
+
+		LeftDoorComponents
+		{
+			Type = ToggledComponents
+			Toggle = LeftDoorToggle
+			Components
+			{
+				InteriorGraphicsLeft
+				{
+					Type = Graphics
+					Location = [.5, 2]
+					Floor
+					{
+						Layer = "floors"
+						DamageLevels
+						[
+							{
+								File = "floor_b1.png"
+								Size = [1, 4]
+								MirrorU = true
+							}
+							{
+								File = "floor_b2.png"
+								Size = [1, 4]
+								MirrorU = true
+							}
+							{
+								File = "floor_b3.png"
+								Size = [1, 4]
+								MirrorU = true
+							}
+						]
+					}
+					OperationalDoodad
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								AnimationFiles
+								[
+									"doodads_b1.png"
+									"doodads_b2.png"
+									"doodads_b3.png"
+									"doodads_b4.png"
+									"doodads_b5.png"
+									"doodads_b6.png"
+									"doodads_b7.png"
+									"doodads_b8.png"
+								]
+								Size = [1, 3]
+								AnimationInterval = 0.3
+								Offset = [0, -.5]
+								MirrorU = true
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "walls"
+						DamageLevels
+						[
+							{
+								File = "walls2.png"
+								Size = [1, 1]
+								Offset = [0, -1.5]
+								MirrorU = true
+							}
+						]
+					}
+				}
+
+				ColoredGraphicsLeft
+				{
+					Type = Graphics
+					Location = [.5, 2]
+					GetColorFrom = CrewSource
+					Floor
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								File = "sheets_b1.png"
+								Size = [1, 4]
+								MirrorU = true
+							}
+							{
+								File = "sheets_b2.png"
+								Size = [1, 4]
+								MirrorU = true
+							}
+							{
+								File = "sheets_b3.png"
+								Size = [1, 4]
+								MirrorU = true
+							}
+						]
+					}
+				}
+			}
+		}
+
+		RightDoorComponents
+		{
+			Type = ToggledComponents
+			Toggle = RightDoorToggle
+			Components
+			{
+				InteriorGraphicsRight
+				{
+					Type = Graphics
+					Location = [.5, 2]
+					Floor
+					{
+						Layer = "floors"
+						DamageLevels
+						[
+							{
+								File = "floor_b1.png"
+								Size = [1, 4]
+							}
+							{
+								File = "floor_b2.png"
+								Size = [1, 4]
+							}
+							{
+								File = "floor_b3.png"
+								Size = [1, 4]
+							}
+						]
+					}
+					OperationalDoodad
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								AnimationFiles
+								[
+									"doodads_b1.png"
+									"doodads_b2.png"
+									"doodads_b3.png"
+									"doodads_b4.png"
+									"doodads_b5.png"
+									"doodads_b6.png"
+									"doodads_b7.png"
+									"doodads_b8.png"
+								]
+								Size = [1, 3]
+								AnimationInterval = 0.3
+								Offset = [0, -.5]
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "walls"
+						DamageLevels
+						[
+							{
+								File = "walls2.png"
+								Size = [1, 1]
+								Offset = [0, -1.5]
+							}
+						]
+					}
+				}
+
+				ColoredGraphicsRight
+				{
+					Type = Graphics
+					Location = [.5, 2]
+					GetColorFrom = CrewSource
+					Floor
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								File = "sheets_b1.png"
+								Size = [1, 4]
+							}
+							{
+								File = "sheets_b2.png"
+								Size = [1, 4]
+							}
+							{
+								File = "sheets_b3.png"
+								Size = [1, 4]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		TopOrNoneDoorComponents
+		{
+			Type = ToggledComponents
+			Toggle = TopOrNoneDoorToggle
+			Components
+			{
+				InteriorGraphicsTop
+				{
+					Type = Graphics
+					Location = [.5, 2]
+					Floor
+					{
+						Layer = "floors"
+						DamageLevels
+						[
+							{
+								File = "floor_a1.png"
+								Size = [1, 4]
+							}
+							{
+								File = "floor_a2.png"
+								Size = [1, 4]
+							}
+							{
+								File = "floor_a3.png"
+								Size = [1, 4]
+							}
+						]
+					}
+					OperationalDoodad
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								AnimationFiles
+								[
+									"doodads_a1.png"
+									"doodads_a2.png"
+									"doodads_a3.png"
+									"doodads_a4.png"
+									"doodads_a5.png"
+									"doodads_a6.png"
+									"doodads_a7.png"
+									"doodads_a8.png"
+								]
+								Size = [1, 3]
+								Offset = [0, -.5]
+								AnimationInterval = 0.2
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "walls"
+						DamageLevels
+						[
+							{
+								File = "walls1.png"
+								Size = [1, 1]
+								Offset = [0, -1.5]
+							}
+						]
+					}
+				}
+
+				ColoredGraphicsTop
+				{
+					Type = Graphics
+					Location = [.5, 2]
+					GetColorFrom = CrewSource
+					Floor
+					{
+						Layer = "doodads_low"
+						DamageLevels
+						[
+							{
+								File = "sheets_a1.png"
+								Size = [1, 4]
+							}
+							{
+								File = "sheets_a2.png"
+								Size = [1, 4]
+							}
+							{
+								File = "sheets_a3.png"
+								Size = [1, 4]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		RoofGraphics
+		{
+			Type = Graphics
+			Location = [.5, 2]
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof1.png"
+						NormalsFile = "roof_n1.png"
+						Size = [1, 4]
+					}
+					{
+						File = "roof2.png"
+						NormalsFile = "roof_n2.png"
+						Size = [1, 4]
+					}
+					{
+						File = "roof3.png"
+						NormalsFile = "roof_n3.png"
+						Size = [1, 4]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 2]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 4]
+		}
+	}
+}

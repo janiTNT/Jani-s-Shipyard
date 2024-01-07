@@ -1,0 +1,109 @@
+Resource = hyperium
+StackSize = (&<./data/resources/hyperium/hyperium.rules>/MaxStackSize)
+StorageSize = 16
+Components
+{	
+	Consumer
+	{
+		Type = ResourceConsumer
+		ResourceType = &~/Resource
+		Storage = HyperiumStorage
+		DefaultPriority = &/PRIORITIES/Storage_Supply
+		//OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [-0.05, -.4]
+		OverridePriorityPart = cosmoteer.storage_2x2
+	}
+	
+	HyperiumStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&~/StorageSize)
+		UITileRect = [1.25 + 7/64, 1.25 + 7/64, 1.5 - 14/64, 1.5 - 14/64]
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+		SupplyToggleButtonOffset = [0.05, -.4]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+		IsIntermediateStorage = true
+		SuppliesResources = true
+	}
+	
+	FillSprites
+	{
+		Type = ResourceSprites
+		Location = [1, 1]
+		ResourceStorage = HyperiumStorage
+		Layer = "doodads_low"
+		RangeLow = 0
+		RangeHigh = (&~/StackSize) * (&~/StorageSize) / 4
+		ResourceLevels
+		[
+			{
+				File = "../E1.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../E2.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../E3.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../E4.png"
+				Size = [2, 2]
+			}
+		]
+	}
+	
+	FillSprites2 : &FillSprites
+	{
+		Location = [1, 3]
+		Rotation = -90d
+		RangeLow = (&~/StackSize) * (&~/StorageSize) / 4
+		RangeHigh = 2 * (&~/StackSize) * (&~/StorageSize) / 4
+	}
+	
+	FillSprites3 : &FillSprites
+	{
+		Location = [3, 3]
+		Rotation = -180d
+		RangeLow = 2 *(&~/StackSize) * (&~/StorageSize) / 4
+		RangeHigh = 3 * (&~/StackSize) * (&~/StorageSize) / 4
+	}
+	
+	FillSprites4 : &FillSprites
+	{
+		Location = [3, 1]
+		Rotation = -270d
+		RangeLow = 3 * (&~/StackSize) * (&~/StorageSize) / 4
+		RangeHigh = (&~/StackSize) * (&~/StorageSize)
+	}
+	
+	IconGraphics
+	{
+		Type = Graphics
+		Location = [2, 2]
+		//OperationalToggle = IsOperational
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"./data/resources/hyperium/hyperium_stack_20-1.png"
+						"./data/resources/hyperium/hyperium_stack_20-2.png"
+						"./data/resources/hyperium/hyperium_stack_20-3.png"
+						"./data/resources/hyperium/hyperium_stack_20-4.png"
+					]
+					AnimationInterval = 0.1
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

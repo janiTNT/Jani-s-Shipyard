@@ -1,0 +1,38 @@
+Part : <pike.rules>/Part
+{
+	NameKey = "Parts/FTL_pikebeam"
+	IconNameKey = "Parts/FTL_pikebeamLeftIcon"
+	ID = janiTNT.FTL_pike_beam_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ProhibitRects
+	[
+		[fighter, [-1, -1, 1, 1]]// TO ENSURE COMPATIBILITY
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_l.png"
+			SampleMode = Linear
+		}
+		Size = [256/3, 144/3]
+	}
+	Components : ^/0/Components
+	{
+		Collider  : &<pike.rules>/Part/Components/Collider
+		{
+			Type = CircleCollider
+			Location = [.4, -0.475]
+		}
+		
+		Turret : &<pike.rules>/Part/Components/Turret
+		{
+			Location = [.4, -0.475]// Slightly higher.
+			Rotation = -180d
+		}
+		
+		TurretHolder : &<pike.rules>/Part/Components/TurretHolder
+		{
+			Location = [.4, -.5]
+		}
+	}
+}

@@ -1,0 +1,160 @@
+ID = "janiTNT.providencebullethell_healing"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 10000
+IdealRange = 250
+Speed = 100
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 6
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Sprite1
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 500d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [3, 3]
+			TargetBlendMode = Add
+			VertexColor = [255*0.8, 205*1.5, 128*0.8]
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 3
+	}
+	
+	Sprite2 : & Sprite1
+	{
+		Spin = -274d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [2.75, 2.75]
+			TargetBlendMode = Add
+			VertexColor = [255*0.8, 205*1.5, 128*0.8]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			VertexColor = [255*2, 205*4, 128*2]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 3
+	}
+
+	/*Targetable
+	{
+		Type = Targetable
+		Health = 7200
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}*/
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = -16000
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		//FactorEffectsWith = Targetable
+		Penetration = 1
+		PenetrationSpeed = 30
+		
+		SourceShipLowCollisions = false
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = -128000
+					Radius = 20
+					Slices = 1
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 80;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly = &HitOperational
+	}
+}

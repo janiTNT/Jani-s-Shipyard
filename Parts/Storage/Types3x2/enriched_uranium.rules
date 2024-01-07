@@ -1,0 +1,44 @@
+Resource = enriched_uranium
+StackSize = (&<./data/resources/enriched_uranium/enriched_uranium.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = EnrichedUraniumStorage
+	}
+	
+	EnrichedUraniumStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = EnrichedUraniumStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/enriched_uranium/enriched_uranium_stack_10.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+	
+	DestroyedEffects2
+	{
+		Type = DeathEffects
+		MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		Location = &<hyperium.rules>/Components/IconGraphics/Location
+	}
+}

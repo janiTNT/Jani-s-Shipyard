@@ -1,0 +1,205 @@
+ID = "janiTNT.GodSlayerFireballBoss"
+Range = 1500
+IdealRange = [800, 470]
+IdealRadius = [5, 50]
+Speed = 220
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+	
+	/*Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 90d
+		Delay = 0.75
+		//AvoidanceRaycastDistance = 250
+		//VelocityCompensation = 70%
+		ModifiesLinearVelocity = true
+	}*/
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 4000
+		TargetCategory = "laser"
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 80000
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+		Penetration = 50
+		PenetrationSpeed = 30
+		
+		SourceShipLowCollisions = false
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 80000
+					Radius = 8
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 80;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		PenetratingStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+	
+	AnimatedSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = RailgunHitSparks
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "../../../TheseAssetsAreFromCalamityMod/DoGFireball.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [8, 4]
+				//TargetBlendMode = Add
+			}
+			FrameCount = 6
+			FrameSize = [128, 64]
+			FramesPerRow = 6
+			FramesPerSecond = 20
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [20, 20]
+			VertexColor = [252, 109, 202]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

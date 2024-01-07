@@ -1,0 +1,144 @@
+ID = "janiTNT.imperium_boss_wall"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 2000
+IdealRange = 450
+Speed = 400
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [11, 88]
+		Density = 1000
+		LinearDamping = 2.5
+		FrameOfReferenceDuration = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 80//full cycle.
+		//Lifetime = 15
+		/*OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<HellblastHandler1.rules>
+					Count = 1
+					InheritVelocity = true
+				}
+			]
+		}*/
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "wallsigil.png"
+				MipLevels = max
+			}
+			Size = [22, 44]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [1, 0]
+		LerpTime = 0.2
+	}
+	
+	SpriteWider
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "wallsigil.png"
+				MipLevels = max
+			}
+			Size = [22, 88]
+			TargetBlendMode = Add
+			VertexColor = [20, 20, 20, 255]
+		}
+		LerpScaleFrom = [1, 0]
+		LerpTime = 1
+	}
+
+
+	/*Targetable
+	{
+		Type = Targetable
+		Health = 8000
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}*/
+
+	Hit
+	{
+		Type = SimpleHit
+		FriendlyShipLowCollisions = false
+		FriendlyShipHighCollisions = false
+
+		ShieldCollisions = { Shields=false; }
+
+		HitShield {}
+		
+		HitOperational
+		{
+			Bounce = true
+			
+			MediaEffectsScale = 3
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 0.2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

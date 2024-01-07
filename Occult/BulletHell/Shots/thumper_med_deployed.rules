@@ -1,0 +1,250 @@
+ID = "janiTNT.ThumperProjectileMedDeployed"
+Range = 580
+IdealRange = [500, 570]
+IdealRadius = [5, 50]
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 5.25
+		Density = 2
+		LinearDamping = 3.5
+		AngularDamping = 1
+		CollidesWithBullets = true
+		FrameOfReferenceDuration = 0
+	}
+
+
+	DeployDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = 15
+
+		OnDeath
+		{
+			MediaEffects
+			[
+				&<particles/thumper_death.rules>
+			]
+		}
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 24000
+		TargetCategory = "bumper"
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=false; Junk=false}
+
+        	BulletCollisions
+        	{
+           		Enemies = true
+            		Junk = true
+            		Friendlies = true
+            		OnlyBulletCategories = [bumper]
+        	}
+
+		HitBullet
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Impulse;
+					Impulse = 800;
+				}
+			]
+		}
+
+		HitCrew = &HitOperational
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Bounce = true
+			Offset = [0, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 12000
+					Radius = 6
+					Slices = 1
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 200;
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/thumper_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<particles/thumper_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Offset = [0, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		LerpScaleFrom = [1000, 1000]
+		LerpTime = 0.2
+		StartTime = 1/30
+		Sprite
+		{
+			Texture
+			{
+				File = "CircleShineSoft.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [0.012, 0.012]
+			VertexColor = [255, 176, 251]
+			TargetBlendMode = Add
+		}
+	}
+
+	DangerSprite
+	{
+		Type = Sprite
+		Offset = [0, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		LerpScaleFrom = [0.9, 0.9]
+		LerpTime = 0.25
+		StartTime = 1/30
+		Sprite
+		{
+			Texture
+			{
+				File = "CircleShineBright.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			VertexColor = [242, 63, 135]
+			TargetBlendMode = Add
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		StartTime = 1/30
+		LerpScaleFrom = [1000, 1000]
+		LerpTime = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [0.028, 0.028]
+			VertexColor = [241, 163, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+
+	DangerGlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		StartTime = 1/30
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [28, 28]
+			VertexColor = [242, 63, 135]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

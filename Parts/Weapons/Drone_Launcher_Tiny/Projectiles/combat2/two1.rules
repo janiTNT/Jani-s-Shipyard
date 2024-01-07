@@ -1,0 +1,38 @@
+ID = "janiTNT.combatdroneMK_2.1"
+Range = &<twobase.rules>/Range
+IdealRange = &<twobase.rules>/IdealRange
+Speed = 30
+
+Components : &<twobase.rules>/Components
+{
+	Repulsion
+	{
+		Type = Acceleration
+		Acceleration = 0
+	}
+	DeathByEnemyProximity : &<twobase.rules>/Components/DeathByEnemyProximity
+	{
+		StartDelay = 1
+		OnDeath : &<twobase.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects : &<twobase.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<two2.rules>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+			MediaEffects = &<twobase.rules>/Components/DeathByEnemyProximity/OnDeath/MediaEffects
+		}
+	}
+	Hit : &<twobase.rules>/Components/Hit
+	{
+		SourcePartCollisionDelay = 1
+	}
+}

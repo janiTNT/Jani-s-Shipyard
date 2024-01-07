@@ -1,0 +1,928 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/BFGSuperWeaponFull"
+	IconNameKey = "Parts/BFGSuperWeaponFullIcon"
+	ID = janiTNT.BFG10k
+	OtherIDs = [juanTNT.BFG10k_fullsize]
+	EditorGroup = "WeaponsEnergy"
+	DescriptionKey = "Parts/BFGSuperWeaponFullDesc"
+	Cost = 1000 * 120 * 120
+	Resources
+	[
+		[steel, 28800]//720.000 dollar
+		[coil2, 1440]// 432.000
+		//[comilitebar, 566]// 848.000
+		[tristeel, 566]// temp
+	]
+	AIValueFactor = 1000 * 120 * 120
+	EditorReplacementPartID = ""
+	Size = [120, 120]
+	SelectionPriority = 0
+	SelectionTypeID = "reactors"
+	MaxHealth = 250 * 120 * 120 // weak but not
+	AutoDoorMaxPathLength = 5
+	TypeCategories = [weapon, is_crewed, uses_BFG, superweapon, BFG, uses_enriched_uranium, uses_power]
+	CrewCongestedSpeedFactor = 1
+	CrewSpeedFactor = 1.5 // mfw insanely long travel times are painful
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	UnderlyingPartPerTile = cosmoteer.structure
+	CreatePartPerTileWhenGrabbed = ""
+	IgnoreRotationForMirroredSelection = true
+	Density = 2
+	ProhibitedBy : ^/0/ProhibitedBy [tall, ultratall]
+	ProhibitRects
+	[
+		[ultratall, [-120, -120, 240, 120]]
+		[ultratall, [-120, 0, 120, 120]]
+		[ultratall, [120, 0, 120, 120]]
+		[ultratall, [-120, 120, 240, 120]]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "ref3.png"
+			SampleMode = Linear
+		}
+		Size = [20, 72]
+	}
+	Components : ^/0/Components
+	{	
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, UraniumPrereq]
+			Mode = All
+		}
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 500
+		}
+		
+		//Layer One
+		CrewLocation1
+		{
+			Type = CrewLocation
+			Location = [50, 110]
+			Rotation = 180d
+		}
+		CrewLocation2
+		{
+			Type = CrewLocation
+			Location = [70, 110]
+			Rotation = 180d
+		}
+		CrewLocation3
+		{
+			Type = CrewLocation
+			Location = [110, 50]
+			Rotation = 90d
+		}
+		CrewLocation4
+		{
+			Type = CrewLocation
+			Location = [110, 70]
+			Rotation = 90d
+		}
+		CrewLocation5
+		{
+			Type = CrewLocation
+			Location = [10, 50]
+			Rotation = -90d
+		}
+		CrewLocation6
+		{
+			Type = CrewLocation
+			Location = [10, 70]
+			Rotation = -90d
+		}
+		CrewLocation7
+		{
+			Type = CrewLocation
+			Location = [50, 10]
+			Rotation = 0d  // 180d
+		}
+		CrewLocation8
+		{
+			Type = CrewLocation
+			Location = [70, 10]
+			Rotation = 0d
+		}
+		//Layer Two	
+		CrewLocation9
+		{
+			Type = CrewLocation
+			Location = [50, 115]
+			Rotation = 180d
+		}
+		CrewLocation10
+		{
+			Type = CrewLocation
+			Location = [70, 115]
+			Rotation = 180d
+		}
+		CrewLocation11
+		{
+			Type = CrewLocation
+			Location = [115, 50]
+			Rotation = 90d
+		}
+		CrewLocation12
+		{
+			Type = CrewLocation
+			Location = [115, 70]
+			Rotation = 90d
+		}
+		CrewLocation13
+		{
+			Type = CrewLocation
+			Location = [5, 50]
+			Rotation = -90d
+		}
+		CrewLocation14
+		{
+			Type = CrewLocation
+			Location = [5, 70]
+			Rotation = -90d
+		}
+		CrewLocation15
+		{
+			Type = CrewLocation
+			Location = [50, 5]
+			Rotation = 0d  // 180d
+		}
+		CrewLocation16
+		{
+			Type = CrewLocation
+			Location = [70, 5]
+			Rotation = 0d  //  180d
+		}
+		
+		//Layer Two
+		CrewLocation17
+		{
+			Type = CrewLocation
+			ChainedTo = Turret
+			Location = [-3, 0]
+			Rotation = 90d
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 17
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage, UraniumPrereq]
+			CrewDestinations
+			[
+				&../../CrewLocation1/Location
+				&../../CrewLocation2/Location
+				&../../CrewLocation3/Location
+				&../../CrewLocation4/Location
+				&../../CrewLocation5/Location
+				&../../CrewLocation6/Location
+				&../../CrewLocation7/Location
+				&../../CrewLocation8/Location
+				&../../CrewLocation9/Location
+				&../../CrewLocation10/Location
+				&../../CrewLocation11/Location
+				&../../CrewLocation12/Location
+				&../../CrewLocation13/Location
+				&../../CrewLocation14/Location
+				&../../CrewLocation15/Location
+				&../../CrewLocation16/Location
+				[63, 60]
+			]
+			CrewLocations
+			[
+				CrewLocation1
+				CrewLocation2
+				CrewLocation3
+				CrewLocation4
+				CrewLocation5
+				CrewLocation6
+				CrewLocation7
+				CrewLocation8
+				CrewLocation9
+				CrewLocation10
+				CrewLocation11
+				CrewLocation12
+				CrewLocation13
+				CrewLocation14
+				CrewLocation15
+				CrewLocation16
+				CrewLocation17
+			]
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = 55
+			IsHigh = true
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [60, 60]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 10
+			FiringArc = 360d
+			RotateSpeed = 5d
+			FireThresholdAngle = 0.005d
+			AIFirepowerRating = 400000
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+			IgnoreSourceShipLOSChecks = true
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreSourceShipHighLOSChecks = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Turret
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [50, 00]
+			OperationalToggle = IsOperational
+			FireDelay = 3.1
+			Bullet = &<shot.txt>
+			ResourceUsage
+			[
+				{
+					ResourceStorage = BatteryStorage
+					ResourcesUsed = 200000
+					MinResourcesUsed = 199000
+				}
+				{
+					ResourceStorage = LoadedUranium
+					ResourcesUsed = 50
+					MinResourcesUsed = 50
+				}
+			]
+			Recoil = 400000
+		}
+		StunEffect
+		{
+			Type = TriggeredEffects
+			Location = [60, 60]
+			Trigger = BulletEmitter
+
+			HitEffects
+			[
+				{
+					Type = AreaCrewStun
+					Duration = 4
+					Falloff = 2
+					Radius = 300
+					Filter { Friendlies=true; IgnoreInvulnerability=true; }
+					Cumulative = true
+					HitShipOnly = false
+				}
+			]
+		}
+		
+		UraniumPrereq
+		{
+			Type = MultiResourceStorage
+			ResourceType = enriched_uranium
+			ResourceStorages = [EnrichedUraniumStorage, LoadedUranium]
+			ToggleOnResources = (&../BulletEmitter/ResourceUsage/1/ResourcesUsed)
+			ToggleOffResources = (&ToggleOnResources) - 1
+		}
+		
+		UraniumLoader
+		{
+			Type = ResourceConverter
+			FromStorage = EnrichedUraniumStorage
+			ToStorage = LoadedUranium
+			FromQuantity = 1
+			ToQuantity = 1
+			Interval = .05
+		}
+		LoadEffects
+		{
+			Type = TriggeredEffects
+			Trigger = UraniumLoader
+			MediaEffects = &/COMMON_EFFECTS/AmmoLoad
+		}
+		
+		EnrichedUraniumStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = enriched_uranium
+			GridRect = [55, 65, 10, 5]
+			Layer = "doodads_low"
+			SpriteInset = [11/64, 11/64, 11/64, 11/64]
+		}
+		
+		LoadedUranium
+		{
+			Type = ResourceStorage
+			ResourceType = enriched_uranium
+			MaxResources = (&../BulletEmitter/ResourceUsage/1/ResourcesUsed)
+			DelayBeforeReadyToUse = .25
+			AnticipateMoreResourcesFrom = [EnrichedUraniumStorage]
+			ToggleOnResources = (&MaxResources)
+			ToggleOffResources = (&ToggleOnResources) - 1
+			UITileRect = [59.5, 55.5, 1, 1]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			DropResourcesWhenDestroyed = true
+		}
+		UraniumConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = enriched_uranium
+			Storage = EnrichedUraniumStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			AdditionalStorageForJobPriority = [LoadedUranium]
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -6]
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 200000 * 2
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 1000
+			OperationalToggle = PowerToggle
+		}
+		
+		UranSprites
+		{
+			Type = ResourceSprites
+			ChainedTo = Turret //we dont want recoil on crew
+			Location = [0, 0]
+			ResourceStorage = LoadedUranium
+			Layer = "doodads_low"
+			HasZeroResourceSprite = true
+			Rotation = 90d
+			Round = Down
+			ResourceLevels
+			[
+				{
+					File = "barrel thing1.png"
+					Size = [2, 16]
+				}
+				{
+					File = "barrel thing2.png"
+					Size = [2, 16]
+				}
+				{
+					File = "barrel thing3.png"
+					Size = [2, 16]
+				}
+			]
+		}
+
+		ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Turret
+			Location = [150, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "Charge.wav"
+					Volume = 5
+					DynamicVolume
+					{
+						MinDistance = 0
+						MaxDistance = 60
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 400
+						ZoomFalloff = 2
+					}
+
+					DynamicFilter
+					{
+						MinDistance = 0
+						MaxDistance = 2
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 60
+						ZoomFalloff = 2
+
+						Filter
+						{
+							FilterType = LowPassAmplify
+							FromFrequency = 7350
+							ToFrequency = 500
+							FrequencyFactorExponent = 0.5
+						}
+					}
+				}
+			]
+		}
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Projectile
+			Rotation = -90d
+			Trigger = BulletEmitter
+			Location = [0, -150]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/shockwave.txt>
+				&<particles/SideShockwave.txt>
+				&<particles/backfire.txt>
+				&<particles/bfg_flash_round.txt>
+				&<particles/bfg_flash_round_light.rules>
+				&<particles/spew.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "BFGShoot.wav"
+					Volume = 5
+					DynamicVolume
+					{
+						MinDistance = 0
+						MaxDistance = 60
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 400
+						ZoomFalloff = 2
+					}
+
+					DynamicFilter
+					{
+						MinDistance = 0
+						MaxDistance = 2
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 60
+						ZoomFalloff = 2
+
+						Filter
+						{
+							FilterType = LowPassAmplify
+							FromFrequency = 7350
+							ToFrequency = 500
+							FrequencyFactorExponent = 0.5
+						}
+					}
+				}
+			]
+		}
+		
+		FireEffect2
+		{
+			Type = TriggeredEffects
+			ChainedTo = Projectile
+			Rotation = -90d
+			Trigger = BulletEmitter
+			Location = [0, 150]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<particles/bfg_flash_round.txt>
+				&<particles/smallshockwaves.txt>
+			]
+		}
+		
+		ProjectileToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = BulletEmitter
+			OffTrigger = Projectile
+			//OperationalToggle = IsOperational
+		}
+
+		Projectile
+		{
+			Type = RailgunProjectile
+			ChainedTo = Turret //THIS LOOKS LIKE ITS BUGGED
+			Location = [0, 0]
+			Rotation = 90d
+			OperationalToggle = ProjectileToggle
+			YStartOffset = 0 //20 temporarily disabled. please wait for a fix.
+			YEndOffset = 0
+			XStartOffset = 0
+			XEndOffset = 0
+			SpeedStart = 15
+			SpeedEnd = 2
+			Interpolate = true // WARNING: Only use this for interpolating graphics. Using it for game logic will cause multiplayer desyncs.
+			SpeedValueExponent = .25
+		}
+		
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Projectile
+			Location = [0, 0]
+			//Rotation = 90d
+			//OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "BFG"
+				DamageLevels
+				[
+					{
+						File = "ref3.png"
+						NormalsFile = "ref3_normals.png"
+						Size = [108, 350]
+					}
+				]
+			}
+		}
+		
+		PowerSprite
+		{
+			Type = Sprite
+			ChainedTo = Projectile
+			Location = [0, 0]
+			//Rotation = 90d
+			Layer = "roof_turrets"
+			ResetAnimationTrigger = Turret
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"powering2.png"
+					"powering3.png"
+					"powering4.png"
+					"powering5.png"
+					"powering6.png"
+					"powering7.png"
+					"powering8.png"
+					"powering9.png"
+					"powering10.png"
+					"powering11.png"
+					"powering12.png"
+					"powering13.png"
+					"powering1.png"// Loop back to beginning and clamp there.
+				]
+				Size = [108, 350]
+				AnimationInterval = 0.25833333 * 1.001 //0.23846154 //0.775
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+		
+		ChargeToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = Turret
+			OffTrigger = BulletEmitter
+			//OperationalToggle = IsOperational
+		}
+		
+		ChargeLoop
+		{
+			Type = ContinuousEffects
+			ChainedTo = Projectile
+			Rotation = -90d
+			Location = [0, -159]
+			OperationalToggle = ChargeToggle
+			AnchorMediaEffects = true
+			MediaEffects
+			[
+				// &<particles/vaccum.txt>
+				&<particles/bfg_vaccum.rules>
+			]
+		}
+		
+		LowTurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret //we dont want recoil on crew
+			OperationalToggle = IsOperational
+			Location = [0, 0]
+			Rotation = 90d
+			Floor
+			{
+				Layer = "walls"
+				Offset = [0, 2]
+				DamageLevels
+				[
+					{
+						File = "lowturret.png"
+						Size = [3, 4]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, .5 + 2]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lowturret_doodad1.png"
+							"lowturret_doodad2.png"
+							"lowturret_doodad3.png"
+							"lowturret_doodad4.png"
+							"lowturret_doodad5.png"
+							"lowturret_doodad6.png"
+							"lowturret_doodad7.png"
+							"lowturret_doodad8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+		}
+		
+		LowRealTurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Projectile
+			Location = [0, 0]
+			//Rotation = 90d
+			OperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "internal_shadow.png"
+						Size = [108, 108]
+					}
+				]
+			}
+			Floor
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "uacthing.png"
+						Size = [60, 120]
+					}
+				]
+			}
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [60, 60]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [120, 120]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [120, 120]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [120, 120]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/terran/corridor/roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [120, 120]
+					}
+				]
+			}
+		}
+		
+		FunnyGraphics
+		{
+			Type = Graphics
+			Location = [60, 60]
+			OperationalToggle = ChargeToggle
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights2.png"
+						Size = [120, 120]
+						RotSpeed = 360d
+					}
+				]
+			}
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [60, 60]
+
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/huge_part_explode_debris.rules>
+				&<./Data/common_effects/particles/explosions/huge_part_explode_smoke.rules>
+				&<SuperHugePartExplode.txt>
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = 2
+					Duration = 4
+				}
+			]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 900000
+					Radius = 180
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [60, 60]
+			Layer = "indicators"
+			Indicators
+			[
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [20, 20]
+					}
+				}
+				// No uranium.
+				{
+					Toggle = UraniumPrereq
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [20, 20]
+					}
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [20, 20]
+					}
+				}
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [20, 20]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./Data/ships/terran/reactor_large/blueprints.png"
+			Size = [120, 120]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		
+		RecPower = (&../StatsByCategory/0/Stats/PowerPerSecond)
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+	
+	
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/LaserBoltSmall"
+			Stats
+			{
+				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourceUsage/0/ResourcesUsed) / 1000
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+	]
+}

@@ -1,0 +1,67 @@
+Resource = coil2
+StackSize = (&<./data/resources/coil2/coil2.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = Coil2Storage
+	}
+	
+	Coil2Storage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				Sound = "./data/resources/coil/coil_deliver.wav"
+				Volume = 1.0
+				SpeedVariation = .05
+			}
+		]
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = Coil2Storage
+	}
+	
+	FillSprites2 : &<hyperium.rules>/Components/FillSprites2
+	{
+		RangeLow = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 2 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = Coil2Storage
+	}
+	
+	FillSprites3 : &<hyperium.rules>/Components/FillSprites3
+	{
+		RangeLow = 2 *(&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		ResourceStorage = Coil2Storage
+	}
+	
+	FillSprites4 : &<hyperium.rules>/Components/FillSprites4
+	{
+		RangeLow = 3 * (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 4
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ResourceStorage = Coil2Storage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/coil2/coil2_stack_20.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

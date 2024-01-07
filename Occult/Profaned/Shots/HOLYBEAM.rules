@@ -1,0 +1,278 @@
+Range = 1500
+//StretchRange = 1200
+IdealRange = 1500
+Duration = 1
+HitInterval = .05
+Width = 2
+HitEffectsScaleOverRange = [1, 1]
+MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+PenetratesStructure = false
+
+BeamMediaEffects
+[
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = ./data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			_noiseTexture
+			{
+				File = ./data/common_effects/particles/noise_grainy.png
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "../../Cosmilite/Shots/whitebeam.shader"
+			//Shader = "./data/planets/planet.shader"
+			_extraBeginLength = 0
+			_extraEndLength = 0.25
+			_sizePulseFactor = 1.2
+			_sizePulseInterval = .03
+			_sizePulseUOffsetFactor = -.03
+			_endCapSize = 4
+			Size = [100%, 3.5]
+			VertexColor = [255*1, 205*1, 128*1, 217]
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = 1
+		FadeOutTime = 1
+		RandomTimeOffset = [0, 1]
+		Bucket = Upper1
+	}
+
+	// Beam lighting.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 7]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [255*1.5, 205*1.5, 128*1.5, 255]
+			_z = 0.4
+			_litReflectiveStrength = 12
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.1
+			_nrmlStrengthLimit = 1.0
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = 1
+		FadeOutTime = .25
+	}
+	
+	&<solar_rays_glints.rules>
+	{
+		Type = Beam
+		IsFancy = true
+		BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
+			Size = [100%, 12]
+			VertexColor = [255, 255, 255, 255]
+
+			_extraBeginLength = 2
+			_extraEndLength = 5
+			_extraEndArc = 3d
+			_minAlpha = .5
+
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi2.png
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+				VMode = Wrap
+			}
+			_displacementStrength = 1
+			_displacementSpeed = .09
+
+			_color1 = [2*1.25, 3*1.25, 1*1.25, 255]
+			_color2 = [191*1.25, 168*1.25, 92*1.25, 255]
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = InverseSourceAlpha
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+
+			_noiseTex
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+		}
+		FadeInTime = 1
+		FadeOutTime = 0.25
+		//SpeedOverIntensity = [1, 1]
+		Bucket = TractorBeam
+		CaptureBackBuffer = true
+		LengthSmoothSpeed = 6
+		MinIntensity = -Infinity
+	}
+
+	: 3
+	{
+		IsFancy = false
+		IsSimple = true
+		BeamSprite : ^/0/BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam_simple.shader"
+			TargetBlendMode
+			{
+				SourceRgbFactor = One
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+			_color1 = [2, 3, 1, 255]
+			_color2 = [191, 168, 92, 255]
+		}
+		CaptureBackBuffer = false
+	}
+	
+	/*{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 50]
+			_extraBeginLength = (&Size/1) * 2
+			_extraEndLength = (&Size/1) * 2
+			VertexColor = [191, 168, 92]
+			_z = 1
+			_litReflectiveStrength = 0.8
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0
+			_nrmlStrengthLimit = 1.0
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = .25
+		FadeOutTime = .25
+	}*/
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "./data/shots/ion_beam/ion_beam.wav"
+		Volume = 1
+		MaxConcurrent = 0 // Unlimited
+		MaxConcurrentVolume = 1
+		RampUpTime = 1
+		RampDownTime = 2
+		//VolumeOverIntensity = 1
+		//SpeedOverIntensity = [1, 2]
+		RampAffectsSpeedIntensity = true
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+]
+
+HitShield = &HitOperational
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 75000
+		}
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 120000
+			Radius = 7
+		}
+		/*{
+			Type = Impulse
+			Impulse = 100
+		}*/
+	]
+
+	MediaEffects
+	[
+		//&<./data/doodads/planets/particles/sun_damage.rules>
+		
+		&<../../Cosmilite/Shots/particles/white_beam_hit.rules>/Particles
+
+		&<../../Cosmilite/Shots/particles/sparks_white.rules>/Particles
+
+		&<../../Cosmilite/Shots/particles/spikes_white.rules>/Particles
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = 2
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+
+		: /BASE_SHAKE
+		{
+			ShakeAmount = .05
+			Duration = .5
+		}
+	]
+}
+
+HitStructural = &HitOperational

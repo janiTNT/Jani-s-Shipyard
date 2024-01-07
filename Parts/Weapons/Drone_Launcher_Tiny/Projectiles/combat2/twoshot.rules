@@ -1,0 +1,202 @@
+ID = "janiTNT.combat_shot_mk2"
+Range = 300
+IdealRange = 150
+Speed = 280
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.0001
+		//LinearDamping = 4
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 400
+		TargetCategory = "laser"
+		
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 100d
+		Delay = .05
+		ModifiesLinearVelocity = true
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	/*Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 280 * 4
+	}*/
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 672
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 10
+		PenetrationSpeed = 80
+		
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			HitEffects
+			[	
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 2000
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		PenetratingStructural = &HitStructural
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+	Sprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletLower1
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "./data/shots/laser_bolt_small/laser_bolt_small.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [1.15, 1.15]
+			}
+			FrameCount = 8
+			FrameSize = [128, 128]
+			FramesPerRow = 2
+			FramesPerSecond = 80
+		}
+	}
+	
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [3.5, 3.5]
+			VertexColor = [255, 0, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

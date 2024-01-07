@@ -1,0 +1,187 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/StationArmor1x2Wedge"
+	IconNameKey = "Parts/StationArmor1x2WedgeIcon"
+	ID = janiTNT.stationarmorwedge_1x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [juanTNT.stationarmorwedge_1x2_L, juanTNT.stationarmorwedge_1x2_R]
+	FlipWhenLoadingIDs = [juanTNT.stationarmorwedge_1x2_R]
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/StationArmor1x2WedgeDesc"
+	EditorReplacementPartID = ""
+	Resources
+	[
+		[steel, 8]
+		[cut.tristeel, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 2]
+	IsFlippable = true
+	AllowedContiguity = [Right, Bottom]
+	SelectionTypeID = "armor"
+	MaxHealth = 12000
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = 50%
+	TypeCategories = [armor]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = cosmoteer.structure_1x2_wedge
+	CreatePartPerTileWhenGrabbed = ""
+	InitialPenetrationResistance = 10
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0
+	Density = 25
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [TopRight, Right]
+		}
+		{
+			Key = [0, 1]
+			Value = [Right, BottomRight, Bottom, BottomLeft]
+		}
+	]
+	InternalWallsByCell
+	[
+	 	{
+	 		Key = [0, 0]
+	 		Value = [BottomLeft, Left, TopLeft, Top]
+	 	}
+	 	{
+	 		Key = [0, 1]
+	 		Value = [Left, TopLeft]
+	 	}
+	]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 1]; InternalCell=[0, 2]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [0, 3, 2, 1]
+	FlipVRotate = [2, 1, 0, 3]
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "longwedge_f.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 2]
+				[0, 2]
+			]
+		}
+
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 2000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "longwedge_f.png"
+						Size = [1, 2]
+					}
+					{
+						File = "longwedge_f2.png"
+						Size = [1, 2]
+					}
+					{
+						File = "longwedge_f3.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{
+						File = "longwedge_a.png"
+						NormalsFile = "./data/ships/terran/armor_1x2_wedge/external_wall_normals.png"
+						Size = [1, 2]
+					}
+					{
+						File = "longwedge_a2.png"
+						NormalsFile = "./data/ships/terran/armor_1x2_wedge/external_wall_normals_33.png"
+						Size = [1, 2]
+					}
+					{
+						File = "longwedge_a3.png"
+						NormalsFile = "./data/ships/terran/armor_1x2_wedge/external_wall_normals_66.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "longwedge_roof.png"
+						NormalsFile = "longwedge_roof_n.png"
+						Size = [1, 2]
+					}
+					{
+						File = "longwedge_roof2.png"
+						NormalsFile = "longwedge_roof_n.png"
+						Size = [1, 2]
+					}
+					{
+						File = "longwedge_roof3.png"
+						NormalsFile = "longwedge_roof_n.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "longwedge_b.png"
+			Size = [1, 2]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

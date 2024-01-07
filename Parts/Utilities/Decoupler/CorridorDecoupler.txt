@@ -1,0 +1,173 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/DecouplerBoomer"
+	IconNameKey = "Parts/DecouplerBoomerIcon"
+	ID = janiTNT.Decoupler_Corridor // Meet the... uhhh
+	OtherIDs = [juanTNT.Part_Decoupler_Corridor]
+	EditorGroups = ["Utilities"]
+	DescriptionKey = "Parts/DecouplerBoomerDescC"
+	Cost = 200
+	Resources
+	[
+		[steel, 4]
+		[coil, 1]
+	]
+	TypeCategories = [explosives, corridor]
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5
+	Size = [1, 1]
+	SelectionPriority = 1
+	MaxHealth = 100
+	IsWalled = false
+	GeneratorRequiresDoor = false
+	DestroyedPartHealthFraction = 100%
+	UnderlyingPartPerTile = "janiTNT.Decoupler_Boomed"
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon2.png"
+			SampleMode = Linear
+		}
+		Size = [32, 48]
+	}
+	Components : ^/0/Components
+	{
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		LogicRepeatingTrigger
+		{
+			Type = Timer
+			Duration = .05
+			OperationalToggle = LogicSignal
+			AutoStart = true
+			Repeats = true
+		}
+		LogicDetonateEffects
+		{
+			// SKIPY
+
+			Type = TriggeredEffects
+			Trigger = LogicRepeatingTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
+		
+		WallsBlend : <./Data/ships/terran/walls/walls.rules>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+		
+		DetonateTrigger
+		{
+			Type = UITrigger
+			TriggerID = "detonate"
+			RequiresCommand = false
+		}
+		DetonateEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+			// the only reason i used this is because repair was being dumb
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 8000
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, 0]
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/small_part_explode.rules>
+				&<./Data/common_effects/particles/explosions/med_part_explode_flash.rules>
+				&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/med_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Floor
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"bomb1.png"
+							"bomb2.png"
+							"bomb3.png"
+							"bomb4.png"
+							"bomb5.png"
+							"bomb4.png"
+							"bomb3.png"
+							"bomb2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints2.png"
+			Size = [1, 1]
+		}
+		
+		BlueprintWalls : <./Data/ships/terran/walls/blueprint_walls.rules>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+	}
+}

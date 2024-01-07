@@ -1,0 +1,464 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicTBm"
+	IconNameKey = "Parts/LogicTBmIcon"
+	ID = janiTNT.logic_tractor_beam
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicTBmDesc"
+	Size = [1, 1]
+	Resources
+	[
+		[steel, 8]
+		[coil, 8]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, PowerportBuff]
+	TypeCategories = [logic, Port_IN]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [BatteryStorage, PowerToggle]
+			Invert = false
+			Mode = All
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		
+		Collider
+		{
+			Type = CircleCollider
+			Location = [0.5, 0.5]
+			Radius = .1
+			Density = 1
+			IsHigh = true
+		}
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 3
+		}
+
+		/*FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 0
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}*/
+		
+		Graphics : &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/Graphics
+		{
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[]
+			}
+		}
+		
+		Targeter
+		{
+			Type = UITargeter
+			TargeterID = logic_tractor_beam
+			Weapon = Turret
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [.5, .5] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			//AutoFireToggle = AutoFireToggle
+			FireInterval = .2
+			FiringArc = 360d
+			RotateSpeed = 120d
+			FireThresholdAngle = 1d
+			IgnoreFriendlyShipLowLOSChecks = true
+			//AllowShipWideExplicitTargets = false
+			//ShowTargetButtons = false
+			HoldTargetAfterCancel = 0.5
+			AIFirepowerRating = 0
+			Emitter = Emitter
+			DefaultDirectControlBinding = 2
+			FirePermissionToggle = IsOperational
+			
+			TargetSearchesPerSecond = 0
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+			AllowDirectControl = false
+			AllowRotationToggle = PowerToggle
+			
+			AutoTargets []
+
+			OverrideTargetNineSlice : <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+			{
+				VertexColor = [102, 102, 255, 255]
+				TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+				TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+				TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+				LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+				CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+				RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+				BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+				BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+				BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+			}
+
+			OverrideTargetCircle : <./Data/commands/weapon_target.rules>/TargetCircle
+			{
+				VertexColor = [102, 102, 255, 255]
+			}
+
+			OverrideTargetLine : <./Data/commands/weapon_target.rules>/TargetLine
+			{
+				LineSprite : ^/0/LineSprite
+				{
+					VertexColor = [102, 102, 255, 191]
+				}
+
+				BeginCapSprite : ^/0/BeginCapSprite
+				{
+					VertexColor = [102, 102, 255, 191]
+				}
+
+				EndCapSprite : ^/0/EndCapSprite
+				{
+					VertexColor = [102, 102, 255, 191]
+				}
+			}
+
+			OverrideReticleSprite
+			{
+				Texture
+				{
+					File = "./Data/gui/game/parts/tractor_beam_reticle.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [2, 2]
+				VertexColor = [102, 102, 255, 255]
+			}
+		}
+		TurretGraphics : &<./data/ships/terran/resource_collector/resource_collector.rules>/Part/Components/TurretGraphics1
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Rotation = 90d
+			OperationalToggle = IsOperational
+			DoodadToggle = Emitter
+			ShowToggledDoodadsWhenNotOperational = false
+		}
+		
+		TractorModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "tractor_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1]
+			AvailableChoices = [1, 2] 
+		}
+
+		TractorModeTetherToggle
+		{
+			Type = ModeToggle
+			Mode = TractorModeToggle
+			OnMode = 0
+		}
+		TractorModeTetherComponents
+		{
+			Type = ToggledComponents
+			Toggle = TractorModeTetherToggle
+			Components
+			{
+				BeamRegulator
+				{
+					Type = BeamRegulator
+					Emitter = Emitter
+					BeamLengthRange = [-(&~/Part/Components/Emitter/Range), &~/Part/Components/Emitter/Range]
+					RelativeToInitHitLength = true
+					OutputValueRange = [-1, 1]
+				}
+			}
+		}
+
+		TractorModePullToggle
+		{
+			Type = ModeToggle
+			Mode = TractorModeToggle
+			OnMode = 1
+		}
+		TractorModePullComponents
+		{
+			Type = ToggledComponents
+			Toggle = TractorModePullToggle
+			Components
+			{
+				BeamRegulator
+				{
+					Type = BeamRegulator
+					Emitter = Emitter
+					BeamLengthRange = [0, &~/Part/Components/Emitter/StretchRange]
+					OutputValueRange = [1, 1]
+				}
+			}
+		}
+
+		TractorModePushToggle
+		{
+			Type = ModeToggle
+			Mode = TractorModeToggle
+			OnMode = 2
+		}
+		TractorModePushComponents
+		{
+			Type = ToggledComponents
+			Toggle = TractorModePushToggle
+			Components
+			{
+				BeamRegulator
+				{
+					Type = BeamRegulator
+					Emitter = Emitter
+					BeamLengthRange = [0, &~/Part/Components/Emitter/Range]
+					OutputValueRange = [-1, -1]
+				}
+			}
+		}
+
+		BeamRegulatorProxy
+		{
+			Type = ValueProxy
+			ComponentID = BeamRegulator
+		}
+		AbsBeamRegulator
+		{
+			Type = MultiValue
+			Values = [BeamRegulatorProxy]
+			Mode = Add
+			Abs = true
+		}
+		
+		/*BeamTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = LogicSignal
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}*/
+		
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		
+		BeamTrigger
+		{
+			Type = Timer
+			OperationalToggle = XorFinal
+			Duration = .25
+			AutoStart = true
+			Repeats = true
+		}
+		
+		Emitter : <./Data/shots/tractor_beam/tractor_beam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			Location = [15/64, 0]
+			FireTrigger = BeamTrigger
+			GetTargetFrom = Turret
+			OperationalToggle = IsOperational
+			ResourceStorage = BatteryStorage
+			FriendlyShipLowCollisions = false
+			ResourcesUsed = 50
+			ValueOverRampUp = [.25, 1]
+			ResourceUsageScaleOverRampUp = [.25, 1]
+			MinResourcesUsed = 1
+			EffectsScaleFactor = BeamRegulatorProxy
+			ResourceScaleFactor = AbsBeamRegulator
+			ValueScaleFactor = BeamRegulatorProxy
+			
+			BeamMediaEffects = &<./Data/shots/collector_beam/collector_beam.rules>/BeamMediaEffects
+			//TractorImpulse = 1000 * 0.25
+			Range = 125
+			StretchRange = 250
+			IdealRange = 100
+			
+			HitOperational
+			{
+				HitEffects
+				[
+					{
+						Type = Impulse
+						Impulse = -(10) / 2
+					}
+					{
+						Type = Feedback
+						HitEffects
+						[
+							{
+								Type = Impulse
+								Impulse = (10) / 2
+							}
+						]
+					}
+				]
+			}
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		/*BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 1000
+			OperationalToggle = PowerToggle
+			
+			//killer
+		}*/
+		
+		BaseGraphics
+		{
+			Type = Graphics
+			Location = [-64, 420]
+		}
+		
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

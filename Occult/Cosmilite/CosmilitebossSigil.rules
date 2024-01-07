@@ -1,0 +1,810 @@
+Part : <../base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaSigilCosmiliteBoss"
+	DescriptionKey = "Parts/MegaSigilCosmiliteBossDesc"
+	ID = janiTNT.megasigil4x2_cosmiliteboss // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		//[steel, 8 * 32]
+		[hyperium, 128]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniOrbDetectionCosmiliteBoss]
+	Density = 3
+	SelectionPriority = 1
+	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
+	SelectionTypeID = "sigils"
+	EditorReplacementPartID = "cosmoteer.megarock_1x1"
+	MaxHealth = 32000 * 8 * 2 * 4
+	UnderlyingPartPerTile = ""
+	ContiguityOriginPriority = 1
+	UnderlyingPart = janiTNT.lootorb_cosmilite
+	DestroyedPartHealthFraction = 100%
+	Size = [4, 2]
+	TypeCategories = [armor, command]
+	InitialPenetrationResistance = 50
+	ContinuingPenetrationResistance = 50
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 60%, salvage = 100%}
+	EditorIcon
+	{
+		Texture = "../sigilicon.png"
+		Size = [100, 50]
+	}
+	Components : ^/0/Components
+	{
+		// COSMILITE BOSS SPECIFIC STUFF
+		
+		CanShootPart2Weapons
+		{
+			Type = MultiToggle
+			Toggles = [Part2Toggle]
+			Mode = All
+			Invert = true
+		}
+		Part2Toggle
+		{
+			Type = BuffToggle
+			BuffType = JaniOrbDetectionCosmiliteBoss
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		
+		CanUseDOG_P2
+		{
+			Type = MultiToggle
+			Toggles = [CanShootPart2Weapons, BeenHitToggle]
+			Mode = All
+		}
+		CanUseDOG_P1
+		{
+			Type = MultiToggle
+			Toggles = [CanShootPart2Weapons, NotHitToggle]
+			Mode = All
+		}
+		NotHitToggle
+		{
+			Type = HealthToggle
+			MinHealthFraction = 0.9999
+			MaxHealthFraction = 1
+		}
+		BeenHitToggle
+		{
+			Type = HealthToggle
+			MinHealthFraction = 0
+			MaxHealthFraction = 0.9999
+		}
+		
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [2, 1]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = CanShootPart2Weapons
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 6
+			FiringArc = 360d
+			RotateSpeed = 90d
+			FireThresholdAngle = 1d
+			IgnoreSourceShipLowLOSChecks = true
+			AIFirepowerRating = 20000
+			Emitter = BoltEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = &../BoltEmitter/FireDelay
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = Turret
+		}
+		
+		EmitterFanArcController
+		{
+		    Type = FanArcController
+		    ChainedTo = Turret
+		    GetTargetFrom = Turret
+		    MaxArc = 90d
+			MinArc = 90d
+		    DefaultArc = &MaxArc
+		    ArcSizeFactor = 75%
+		    FanComponents
+		    [
+		        BoltEmitter2,
+		        BoltEmitter3,
+				BoltEmitter4,
+				BoltEmitter5,
+				BoltEmitter6,
+				BoltEmitter7,
+				BoltEmitter8,
+		        BoltEmitter,
+		        BoltEmitter9,
+		        BoltEmitter10,
+				BoltEmitter11,
+				BoltEmitter12,
+				BoltEmitter13,
+				BoltEmitter14,
+				BoltEmitter15
+		    ]
+		}
+
+		BoltEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = EmitterFanArcController
+			Location = [1.5, 0]
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			OperationalToggle = CanUseDOG_P1
+			FireDelay = 0.75
+			Bullet = &<shots/deathbolt.rules>
+			//Spread = [-1.5d, 1.5d]
+		}
+
+		// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
+		BoltEmitter2  = &BoltEmitter
+		BoltEmitter3  = &BoltEmitter
+		BoltEmitter4  = &BoltEmitter
+		BoltEmitter5  = &BoltEmitter
+		BoltEmitter6  = &BoltEmitter
+		BoltEmitter7  = &BoltEmitter
+		BoltEmitter8  = &BoltEmitter
+		BoltEmitter9  = &BoltEmitter
+		BoltEmitter10  = &BoltEmitter
+		BoltEmitter11  = &BoltEmitter
+		BoltEmitter12  = &BoltEmitter
+		BoltEmitter13  = &BoltEmitter
+		BoltEmitter14  = &BoltEmitter
+		BoltEmitter15  = &BoltEmitter
+		
+		BoltEffectComponents
+		{
+			Type = ToggledComponents
+			Toggle = CanUseDOG_P1
+			InvertOperationalToggle = true
+			IncludeInBlueprints = false
+			Components
+			{
+				BoltEffect
+				{
+					Type = TriggeredEffects
+					ChainedTo = Turret
+					Trigger = Turret
+					Location = [0, 0]
+					AnchorMediaEffects = true
+
+					MediaEffects
+					[
+						&<../particles/bigflashfourth.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./data/ships/common/ftl_jump_in.wav"
+							Volume = 2
+							Speed = 1
+						}
+					]
+				}
+			}
+		}
+		
+		//Cosmic Guardian Spawner
+		
+		Phase1SpawnerTimer
+		{
+			Type = Timer
+			OperationalToggle = CanUseDOG_P1
+			Duration = 12
+			AutoStart = true
+			Repeats = true
+		}
+		
+		Phase2SpawnerTimer
+		{
+			Type = Timer
+			OperationalToggle = BeenHitToggle
+			Duration = 16 //trolls
+			AutoStart = true
+			Repeats = true
+		}
+		
+		GuardianYeeterModuleSuperExOmegaFireSuperDuperCoolComponentNameINeedMoreSleepEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [0, 0]
+			FireTrigger = Phase1SpawnerTimer
+			GetTargetFrom = Turret
+			OperationalToggle = CanUseDOG_P1
+			//FireDelay = 0.75
+			Bullet = &<shots/cosmicguardianspawner.rules>
+			Spread = [-360d, 360d]
+		}
+		GuardianEmitter2 = &GuardianYeeterModuleSuperExOmegaFireSuperDuperCoolComponentNameINeedMoreSleepEmitter
+		BigFatWormPhaseOneSumminingPortalBigShotProjectileYeeterTrollfaceAgony
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [0, 0]
+			FireTrigger = Phase1SpawnerTimer
+			GetTargetFrom = Turret
+			OperationalToggle = CanUseDOG_P1
+			//FireDelay = 0.75
+			Bullet = &<shots/DoGp1_portal.rules>
+			Spread = [-360d, 360d]
+		}
+		FinalWormEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [0, 0]
+			FireTrigger = Phase2SpawnerTimer
+			GetTargetFrom = Turret
+			OperationalToggle = CanUseDOG_P2
+			//FireDelay = 0.75
+			Bullet = &<shots/DoGp2_portal.rules>
+			Spread = [-360d, 360d]
+		}
+		
+		
+		
+		// COSMILITE BOSS SPECIFIC STUFF
+		
+		Sprite : &<../armoroid.rules>/Part/Components/Sprite
+		{
+			Type = SpriteGrid
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		CommandProvider
+		{
+			Type = CommandProvider
+			OperationalToggle = PowerToggle
+			CommandPoints = 180
+		}
+		
+		Sensor
+		{
+			Type = Sensor
+			OperationalToggle = PowerToggle
+			SightRadius = 1600
+			RadarRadius = 3200
+		}
+		
+		BoomStorage2: &<../base_part_occult_2.rules>/Part/Components/BoomStorage
+		{
+		}
+
+		BoomMultiToggle
+		{
+			Type = MultiToggle
+			Toggles = [BoomStorage, BoomStorage2]
+			Mode = Any
+			Invert = false
+		}
+
+		DetonateTrigger: &<../base_part_occult.rules>/Part/Components/DetonateTrigger
+		{
+			Type = Timer
+			OperationalToggle = BoomMultiToggle
+			Duration = 0.5
+			AutoStart = true
+			Repeats = true
+		}
+		
+				ShieldingOn
+		{
+			Type = MultiToggle
+			Toggles = [CanShootPart2Weapons, ShieldStorage]
+			Mode = All
+		}
+		
+		ShieldStorage
+		{
+			Type = ResourceStorage
+			ResourceType = fake
+			MaxResources = 18000 * 4
+			ToggleOnResources = 17001 * 4
+			StartingResources = &MaxResources
+			InitToMaxResources = &MaxResources
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		ShieldGen
+		{
+			Type = ResourceConverter
+			ToStorage = ShieldStorage
+			ToQuantity = 4000
+			Interval = 1
+		}
+
+		ProgressBar95
+		{
+			Type = ProgressBar
+			OperationalToggle = CanShootPart2Weapons
+			ShowProgressFor = ShieldStorage
+			LowColor = [0, 0, 255]
+			HighColor = [0, 0, 255]
+			FullColor = [0, 0, 255]
+			Height = 10
+		}
+
+		ArcShield
+		{
+			Type = ArcShield
+			Radius = 12
+			Arc = 270d
+			OperationalToggle = ShieldingOn
+			PenetrationResistance = [99, 50]
+			DrainResourcesFrom = ShieldStorage
+			ResourceDrainPerDamage = .5
+			Rotation = -90d
+			Location = [2, 1]
+
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [0, 0, 255, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = .25
+					FadeOutTime = .25
+					FadeFromScale = .8
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 8
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .4
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 127, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .3
+						_xScale = 2
+						TargetBlendMode = Add
+						Size = [0, 0.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Upper1 //grin
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/terran/shield_gen_small/shield_loop.wav"
+					Volume = .15
+					Speed = .5
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .3
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						MinDistance = .75
+						MaxDistance = 1.5
+					}
+					IgnoreIntensity = true
+				}
+			]
+
+			HitMediaEffects
+			[
+				{
+					Type = ArcShield
+					FadeInTime = .1
+					FadeOutTime = .5
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = 20d
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_waveSpeed = -2
+						_waveAlpha = .75
+						_waveCurveInterval = 1
+						_waveCurveMagnitude = .5
+						_waveCurveUOffsetPerSecond = 0
+						//TargetBlendMode = Add
+						_fullPowerColor1 = [0, 140, 255, 127]
+						_lowPowerColor1 = [255, 0, 0, 200]
+						_fullPowerColor2 = [250, 50, 200, 127]
+						_lowPowerColor2 = [230, 20, 150, 127]
+						_lowPowerThicknessExponent = .3
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 1]
+					}
+					ArcSpriteSegments = 6
+					Bucket = Upper3
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = &<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/HitMediaEffects/1/RandomSounds
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+					SpeedVariation = .25
+					MaxConcurrent = 10
+				}
+			]
+		}
+
+		ShieldOperationEffects
+		{
+			Type = ToggleEffects
+			ChainedTo = ArcShield
+			Location = [&~/Part/Components/ArcShield/Radius, 0]
+			Toggle = ShieldingOn
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/shield_gen_small/activate.wav"
+					Volume = .5
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+			ToggledOffMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/shield_gen_small/deactivate.wav"
+					Volume = .5
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			//OperationalToggle = IsOperational
+			Location = [2, 1]
+			OperationalDoodad
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = false
+				DamageLevels
+				[
+					{
+						File = "bosssigil.png"
+						Size = [4, 2]
+					}
+				]
+			}
+		}
+		
+		DestroyedEffectsDeathBySigil
+		{
+			Type = DeathEffects
+			//OperationalToggle = BoomStorage
+			HitEffects
+			[
+				/*{
+					Type = ExplosiveDamage
+					TotalDamage = 600000
+					Radius = 20
+					ExpandDuration = .8
+					ExpandStartRadius = 1
+					RadiusEffectScaleExponent = 0.5
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+						Self = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 60000
+					Radius = 8
+					ExpandDuration = .8
+					ExpandStartRadius = 1
+					RadiusEffectScaleExponent = 0.5
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+						Self = true
+					}
+				}*/
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death
+					TotalDrain = -5120 * 8
+					Radius = 20
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death2
+					TotalDrain = -5120 * 8
+					Radius = 20
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+			]
+			Location = [2, 1]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			Location = [2, 1]
+			WhenSalvaged = true
+			
+			HitEffects
+			[
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death
+					TotalDrain = -5120 * 8
+					Radius = 20
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death2
+					TotalDrain = -5120 * 8
+					Radius = 20
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+			]
+			MediaEffectsScale = 2.5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<particles/missile_nuke_smoke.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/common/ftl_jump_in.wav"
+					Volume = 5
+					Speed = 0.25
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+				
+				//&<quarter_huge_part_exploding.rules>
+				//&<salvage_complete_shrapnel_occult.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .8
+					Duration = 8
+				}
+			]
+		}
+
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffectsScale = 2.5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<particles/missile_nuke_smoke.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/common/ftl_jump_in.wav"
+					Volume = 5
+					Speed = 0.25
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+				
+				//&<quarter_huge_part_exploding.rules>
+				//&<salvage_complete_shrapnel_occult.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .8
+					Duration = 8
+				}
+			]
+			Location = [2, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "../sigilbp.png"
+			Size = [4, 2]
+		}
+	}
+}

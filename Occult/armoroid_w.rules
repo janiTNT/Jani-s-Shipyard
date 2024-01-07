@@ -1,0 +1,116 @@
+Part : <base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidArmorWedge"
+	DescriptionKey = "Parts/MegaroidArmorDesc"
+	ID = janiTNT.megarockarmor_1x1_wedge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "armor"
+	EditorGroup = "BossParts"
+	Resources = []
+
+	MaxHealth = 32000 / 2
+	IsRotateable = true
+	AllowedContiguity = [Right, Bottom]
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	TypeCategories = [armor]
+	InitialPenetrationResistance = 1.5 * 7
+	ContinuingPenetrationResistance = 1.5 * 7
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	
+	IsFlippable = false
+
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture = "armoroid_W_icon.png"
+		Size = [32, 32]
+	}
+	Components : <./data/ships/megaroid/megarock/megarock_1x1_wedge.rules>/Part/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Density = 3
+			Vertices
+			[
+				[1, 0]
+				[1, 1]
+				[0, 1]
+				[.39, .39]
+			]
+		}
+		BoomStorage
+		{
+			Type = ResourceStorage
+			ResourceType = sigil.death
+			MaxResources = 320
+			ToggleOnResources = 320
+			InitToMaxResources = 0
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BoomStorage2
+		{
+			Type = ResourceStorage
+			ResourceType = sigil.death2
+			MaxResources = 320
+			ToggleOnResources = 320
+			InitToMaxResources = 0
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		DetonateTrigger
+		{
+			Type = Timer
+			OperationalToggle = BoomMultiToggle
+			Duration = 0.75
+			AutoStart = true
+			Repeats = true
+		}
+		
+		BoomMultiToggle
+		{
+			Type = MultiToggle
+			Toggles = [BoomStorage, BoomStorage2]
+			Mode = Any
+			Invert = false
+		}
+		
+		
+		DetonateEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = false
+					}
+				}
+			]
+		}
+		DestroyedEffects : &<base_part_occult.rules>/Part/Components/DestroyedEffects
+		{
+			Location = [.5, .5]
+		}
+		
+		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		{
+			Location = [.5, .5]
+			HitEffects = []
+		}
+	}
+}

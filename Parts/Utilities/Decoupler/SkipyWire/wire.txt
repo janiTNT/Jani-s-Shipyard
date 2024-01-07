@@ -1,0 +1,207 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/Wire"
+	IconNameKey = "Parts/Wire_Icon"
+	ID = Skipydog.Wire
+	OtherIDs = [Wire]
+	EditorGroup = "Power"
+	DescriptionKey = "Parts/Wire_Desc"
+	Cost = 200
+	AIValue = (&Cost) * 2
+	Size = [1, 1]
+	SelectionPriority = 0
+	SelectionTypeID = "wires"
+	CreatePartPerTileWhenDestroyed = ""
+	Density = 0.4
+	MaxHealth = 2000
+	PenetrationResistance = 1
+	IsContiguityOrigin = true
+	TypeCategories = [uses_power, wire]
+	AllowedDoorLocations
+	[
+	]
+	RequiresCategories = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+
+		BatteryStorage
+		{
+			Type = AmmoStorage
+			AmmoType = battery
+			MaxAmmo = 500
+		}
+
+		//----------- Share Power to another part in front of it --------------
+		AmmoProxyTop
+		{
+			Type = AmmoStorageProxy
+			AmmoType = battery
+			PartLocation = [0, -1]
+			ComponentID = BatteryStorage
+/*			PartCriteria
+			{
+				ExcludePartCategories = [ftl]
+//				Category = uses_power
+			}
+*/		}
+
+		ProxyConverter
+		{
+  		Type = AmmoConverter
+		FromStorage = BatteryStorage
+   		ToStorage = AmmoProxyTop
+		FromQuantity = 200
+   		ToQuantity = 200
+    		Interval = 0.05
+		}
+		//-----------------------------------------------------------------
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.05
+					}
+				]
+			}
+/*			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+*/			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "walls_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+
+		BatterySprites
+		{
+			Type = AmmoSprites
+			Location = [0.5, 0.5]
+			AmmoStorage = BatteryStorage
+			Layer = "doodads_high"
+			AmmoLevels
+			[
+				{
+					File = "batteries0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [0.5, 0.5]
+		}
+	}
+}

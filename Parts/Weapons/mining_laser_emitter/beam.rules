@@ -1,0 +1,215 @@
+Range = 400
+IdealRange = 350
+Width = .2
+HitInterval = .1
+PenetratesStructure = false
+SourceShipLowCollisions = false
+//FriendlyShipLowCollisions = true
+HitEffectsScaleOverRange = [1, 0.95]
+CrewCollisions = {Enemies=true; Junk=true}
+HitCrew = &HitOperational
+
+BeamMediaEffects
+[
+	// The beam itself.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "./Data/crew/salvage_beam.png"
+				SampleMode = Linear
+				MipLevels = 1
+				UVMode = Clamp
+			}
+			_noiseTexture
+			{
+				File = ./Data/common_effects/particles/noise_marble.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+			Shader = "beam_shader.shader"
+			_extraBeginLength = 0.1
+			_extraEndLength = 0.7
+			_sizePulseFactor = 1.5
+			_sizePulseInterval = .25
+			_sizePulseUOffsetFactor = -.00075
+			_endCapSize = .125
+			Size = [100%, 1.3]
+			VertexColor = [255, 255, 255, 255]
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = InverseDestAlpha
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		FadeInTime = .1
+		FadeOutTime = .1
+		RandomTimeOffset = [0, 1]
+		Bucket = Upper1
+	}
+
+	// Beam lighting.
+	{
+		Type = Beam
+		BeamSprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Shader = "./Data/common_effects/fancy_beam_light.shader"
+			Size = [100%, 2.65]
+			_extraBeginLength = (&Size/1) / 2
+			_extraEndLength = (&Size/1) / 2
+			VertexColor = [255, 127, 64, 255]
+			_z = 0.15
+			_litReflectiveStrength = 8
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.25
+			_nrmlStrengthLimit = 0.2
+			TargetBlendMode
+			{
+				SourceRgbFactor = InverseDestColor
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Upper4
+		IsLight = true
+		FadeInTime = .5
+		FadeOutTime = .2
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "./Data/shots/mining_beam_small/mining_beam.wav"
+		Volume = 1
+		Speed = 1
+		MaxConcurrent = 1
+		RampUpTime = .8
+		RampDownTime = .8
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
+	}
+
+	: /BASE_SOUNDS/AudioExterior
+	{
+		Sound = "./Data/shots/ion_beam/ion_beam.wav"
+		Volume = 0.75
+		Speed = 2
+		MaxConcurrent = 1
+		MaxConcurrentVolume = 1
+		RampUpTime = .25
+		RampDownTime = .25
+	}
+]
+
+HitShield = &HitOperational
+HitStructural = &HitOperational
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = TargetFilter
+			Filter
+			{
+				ExcludePartCategories = [mining_prism]
+			}
+			AllowNoTarget = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 1200/20 * 2.15
+					DamageType = Salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						Enemies = false
+						Junk = false
+						ExcludePartCategories = [mining_prism, asteroid]
+					}
+				}
+				{
+					Type = Damage
+					Damage = 64000/20 * 2.15
+					DamageType = Salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [mining_prism]
+						OnlyPartCategories = [asteroid]
+						Shields = false
+					}
+				}
+			]
+		}
+		{
+			Type = Damage
+			Damage = 1200/20 * 2.15
+			DamageType = Salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+				ExcludePartCategories = [asteroid]
+			}
+		}
+		{
+			Type = Damage
+			Damage = 64000/20 * 2.15
+			DamageType = Salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+				OnlyPartCategories = [asteroid]
+				Shields = false
+			}
+		}
+		{
+			Type = ResourceDrain
+			ResourceType = mining_energy
+			Amount = -1000
+			Filter
+			{
+				Friendlies = true
+				IgnoreInvulnerability = true
+				OnlyPartCategories = [mining_prism]
+			}
+		}
+	]
+
+	MediaEffects
+	[
+		: &<./Data/shots/mining_beam_small/particles/mining_beam_hit_sparks.rules>
+		{
+			Filter
+			{
+				ExcludePartCategories = [mining_prism]
+			}
+		}
+	]
+}

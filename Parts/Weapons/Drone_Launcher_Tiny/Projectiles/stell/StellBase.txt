@@ -1,0 +1,342 @@
+ID = "janiTNT.stell_base"
+Range = 1000
+IdealRange = 900
+Speed = 0
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = .4
+		Density = 1
+		LinearDamping = 8
+		AngularDamping = 2
+		FrameOfReferenceDuration = 1
+		CollidesWithBullets = true
+	}
+	
+	TargetSearch
+	{
+	    Type = TargetSearch
+	    Interval = 0.5
+	    Range = 250
+	    TargetTypesByPriority = [ShipParts] //This piece of code i have found in ABH's escort drone, and is solely used to target new ships once the target is done for
+	}
+	
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 120
+		HasTarget = true
+		OnDeath = &../Hit/HitFriendly
+	}
+	Death
+	{
+		Type = DeathByLifetime
+		HasTarget = false
+		// Lifetime will be auto-calculated based on range and speed.
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	Targetable
+	{
+		Type = Targetable
+		Health = 6000
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath
+		{
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+		}
+	}	
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 200d
+		Delay = .3
+		TargetLeadPrediction = false //true
+		AvoidanceRaycastDistance = 100
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 25 * 8
+	}
+	Repulsion
+	{
+		Type = Acceleration
+		Acceleration = [-40 * 8, 0]
+		AccelerationOverTime = [0, 2]
+		Direction = Target
+	}
+	
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+	
+	DeathByEnemyProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = .3
+		Range = 140
+		DetectsShips = true
+		DetectsBullets = false
+		StartDelay = 0.75
+		FactorEffectsWith = Targetable
+		
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<stellshot.rules>
+					Count = 1
+					Spread = [-6d, 6d]
+					Arc = [0d, 0d]
+					Distance = 0.2
+					InheritVelocity = true
+				}
+			]
+			MediaEffects
+			[
+				//&<particles/stellsmokin.txt>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/ships/terran/cannon_med/shoot.wav"
+					Volume = 0.25
+					Speed = 1.75
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+	Hit
+	{
+		Type = SimpleHit
+
+		HitShield = &HitOperational
+		SourceShipCollisionDelay = 1.5/30
+		
+		BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            Friendlies = true
+            OnlyBulletCategories = [missile, mine]
+        }
+		HitBullet
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitOperational
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 250
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitStructural
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 300
+				}
+				{
+					Type = Impulse;
+					Impulse = 1.5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+	
+	/*ShootSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletMiddle1
+		EndTime = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "stellfire.png"
+					MipLevels = max
+				}
+				Size = [1, 1]
+			}
+			FrameCount = 4
+			FrameSize = [64, 64]
+			FramesPerRow = 4
+			FramesPerSecond = 8
+			//WrapMode = Clamp
+		}
+		NormalsTexture
+		{
+			File = "stellfire_n.png"
+			MipLevels = max
+		}
+	}
+	
+	RunSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletMiddle1
+		StartTime = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "stell_idle.png"
+					MipLevels = max
+				}
+				Size = [1, 1]
+			}
+			FrameCount = 2
+			FrameSize = [64, 64]
+			FramesPerRow = 2
+			FramesPerSecond = 20
+			//WrapMode = Clamp
+		}
+		NormalsTexture
+		{
+			File = "stell_idle_n.png"
+			MipLevels = max
+		}
+	}*/
+	/*MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [0, 0]
+		MediaEffectsScale = .4
+		MediaEffects
+		[
+			&<particles/stellsmoke.txt>
+		]
+	}*/
+}
+ShootSprite
+{
+	Type = AnimatedSprite
+	RenderBucket = BulletMiddle1
+	EndTime = 0.5
+	Animation
+	{
+		AtlasSprite
+		{
+			Texture
+			{
+				File = "stellfire.png"
+				MipLevels = max
+			}
+			Size = [1, 1]
+		}
+		FrameCount = 4
+		FrameSize = [64, 64]
+		FramesPerRow = 4
+		FramesPerSecond = 8
+		//WrapMode = Clamp
+	}
+	NormalsTexture
+	{
+		File = "stellfire_n.png"
+		MipLevels = max
+	}
+}
+
+RunSprite
+{
+	Type = AnimatedSprite
+	RenderBucket = BulletMiddle1
+	StartTime = 0.5
+	Animation
+	{
+		AtlasSprite
+		{
+			Texture
+			{
+				File = "stell_idle.png"
+				MipLevels = max
+			}
+			Size = [1, 1]
+		}
+		FrameCount = 2
+		FrameSize = [64, 64]
+		FramesPerRow = 2
+		FramesPerSecond = 20
+		//WrapMode = Clamp
+	}
+	NormalsTexture
+	{
+		File = "stell_idle_n.png"
+		MipLevels = max
+	}
+}

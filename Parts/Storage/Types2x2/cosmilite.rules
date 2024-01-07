@@ -1,0 +1,37 @@
+Resource = comilitebar
+StackSize = (&<../../../Resources/Cosmic Bar/cosmic_bar.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = CosmiliteStorage
+	}
+	
+	CosmiliteStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = CosmiliteStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "../../../Resources/Cosmic Bar/Cosmic_stack20.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

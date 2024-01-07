@@ -1,0 +1,221 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/TerranPlanet"
+	IconNameKey = "Parts/TerranPlanetIcon"
+	ID = JuanTNT.Terranplanet
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/TerranPlanetDesc"
+	Cost = 8000000
+	Size = [100, 100]
+	SelectionTypeID = "armor"
+	CreatePartPerTileWhenGrabbed = ""
+	MaxHealth = 800000
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = -50%
+	TypeCategories = [armor]
+	Flammable = false
+	InitialPenetrationResistance = 7
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 3
+	CreatePartPerTileWhenDestroyed = ""
+	Density = 0
+	IsRotateable = true
+	IsWalled = false
+	ExternalWalls = None
+	ProhibitAbove = 5
+	ProhibitLeft = 5
+	ProhibitRight = 5
+	ProhibitBelow = 5
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	GenerateRectCollider = false
+	ThrusterForce = 30000
+	EditorIcon
+	{
+		Texture
+		{
+			File = "armor.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmitterCollider
+		{
+			Type = CircleCollider
+			Location = [50, 50]
+			Radius = 73
+			Density = 2
+		}
+		CommandProvider
+		{
+			Type = CommandProvider
+		}
+		CrewSource
+		{
+			Type = CrewSource
+			Crew = 1
+			ColorSRange = [0, 0.25]
+			ColorVRange = [0.5, 0.75]
+		}
+		Sensor
+		{
+			Type = Sensor
+			SightRadius = 500
+		}
+		RepeatingTrigger
+		{
+			Type = Timer
+			Duration = 0.2
+			AutoStart = true
+			Repeats = true
+		}
+		GravityGen
+		{
+			Type = TriggeredEffects
+			Location = [50, 50]
+			Trigger = RepeatingTrigger
+			HitEffects
+			[
+				{
+					Type = AreaImpulse
+					Radius = 200
+					Impulse = -0.7
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						IgnoreInvulnerability = true
+						Enemies = true
+					}
+				}
+			]
+		}
+		Thruster1
+		{
+			Type = Thruster
+			Location = [50, 50]
+			Rotation = 0d
+			Force = &../../ThrusterForce
+			MinActivation = -1
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			ActivationIncreaseTime = 0.1
+			ActivationRecoveryTime = 0.1
+		}
+
+		Thruster2
+		{
+			Type = Thruster
+			Location = [50, 50] // Relative to upper-left corner of unrotated part.
+			Rotation = 90d // Relative to unrotated part.
+			Force = &../../ThrusterForce
+			MinActivation = -1
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			ActivationIncreaseTime = 0
+			ActivationRecoveryTime = 0
+		}
+		Thruster3
+		{
+			Type = Thruster
+			Location = [100, 50] // Relative to upper-left corner of unrotated part.
+			Rotation = 90d // Relative to unrotated part.
+			Force = &../../ThrusterForce
+			MinActivation = -1
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			ActivationIncreaseTime = 0
+			ActivationRecoveryTime = 0
+		}
+		Thruster4
+		{
+			Type = Thruster
+			Location = [0, 50] // Relative to upper-left corner of unrotated part.
+			Rotation = 90d // Relative to unrotated part.
+			Force = &../../ThrusterForce
+			MinActivation = -1
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			ActivationIncreaseTime = 0
+			ActivationRecoveryTime = 0
+		}
+		Thruster5
+		{
+			Type = Thruster
+			Location = [50, 100]
+			Rotation = 0d
+			Force = &../../ThrusterForce
+			MinActivation = -1
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			ActivationIncreaseTime = 0.1
+			ActivationRecoveryTime = 0.1
+		}
+		Thruster6
+		{
+			Type = Thruster
+			Location = [50, 0]
+			Rotation = 0d
+			Force = &../../ThrusterForce
+			MinActivation = -1
+			MaxActivation = 1
+			MinUncommandedActivation = 0
+			MaxUncommandedActivation = 0
+			ActivationIncreaseTime = 0.1
+			ActivationRecoveryTime = 0.1
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [50, 50]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "armor_66.png"
+						Size = [50, 50]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "armor.png"
+						Size = [150, 150]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects
+			[
+				&<SuperHugePartExplode.txt>
+			]
+			Location = [50, 50]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [100, 100]
+		}
+	}
+
+}

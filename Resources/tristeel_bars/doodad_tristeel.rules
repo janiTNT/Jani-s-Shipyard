@@ -1,0 +1,13 @@
+ID = baseresources.cut.tristeel
+Type = Resource
+DescriptionKey = "Resource/CutTristeel"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "tristeel_bars5.png"
+		MipLevels = 2
+	}
+}
+ResourceType = cut.tristeel

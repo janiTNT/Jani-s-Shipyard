@@ -1,0 +1,20 @@
+ID = "juanTNT.combatdroneMK_2.14"
+Range = &<2combatbase.txt>/Range
+IdealRange = &<2combatbase.txt>/IdealRange
+Speed = -15
+ReceivableBuffs = [Improve_Weapon_Range]
+
+Components : &<2combatbase.txt>/Components
+{
+	DeathByEnemyProximity : &<2combatbase.txt>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<2combatbase.txt>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<2combatbase.txt>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects : &<2combatbase.txt>/Components/DeathByEnemyProximity/OnDeath/MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit.txt>
+			]
+		}
+	}
+}

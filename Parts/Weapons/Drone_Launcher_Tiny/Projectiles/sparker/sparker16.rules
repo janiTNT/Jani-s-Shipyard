@@ -1,0 +1,16 @@
+ID = "janiTNT.sparkerbase.16"
+Range = &<sparkerbase.rules>/Range
+IdealRange = &<sparkerbase.rules>/IdealRange
+Speed = -5
+
+Components : &<sparkerbase.rules>/Components
+{
+	DeathByEnemyProximity : &<sparkerbase.rules>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<sparkerbase.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<sparkerbase.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects = &<sparkerbase.rules>/Components/Targetable/OnDeath/MediaEffects
+		}
+	}
+}

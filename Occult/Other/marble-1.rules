@@ -1,0 +1,228 @@
+ID = "janiTNT.GuardianMarble"
+Range = 8000
+IdealRange = [120, 700]
+IdealRadius = [5, 50]
+Speed = 20
+
+Components
+{	
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1.6
+		Density = 0.5
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 10000
+		TargetCategory = "mine"
+	}
+
+	/*Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 8d
+		Delay = 0.5
+		ModifiesLinearVelocity = true
+	}*/
+
+	/*Retarget
+	{
+		Type = SameShipRetarget
+	}*/
+
+	Hit
+	{
+		Type = SimpleHit
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+        	BulletCollisions
+        	{
+           		Enemies = true
+            		Junk = true
+            		Friendlies = true
+            		OnlyBulletCategories = [mine]
+        	}
+
+		HitBullet
+		{
+			Bounce = true
+		}
+
+		HitOperational
+		{
+			Bounce = true
+
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				/*{
+					Type = ExplosiveDamage
+					TotalDamage = 150000
+					Radius = 9
+					Slices = 1
+					Filter
+					{
+						Friendlies = false
+					}
+				}*/
+				{
+					Type = Impulse;
+					Impulse = 1400;
+				}
+
+				{
+					Type = ResourceDrain
+					ResourceType = sigil.trigger
+					Amount = -1
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				//&<./data/common_effects/particles/explosions/big_part_explode.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_flash.rules>
+				/* &<./data/common_effects/particles/explosions/big_part_explode_sparks.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_smoke.rules>
+				&<bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}*/
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = ResourceDrain
+					ResourceType = sigil.trigger
+					Amount = -1
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/common_effects/particles/explosions/big_part_explode_flash.rules>
+			]
+		}
+
+
+		HitShield
+		{
+			HitEffects
+			[
+				{
+					Type = ResourceDrain
+					TreatShieldAsPart = true
+					ResourceType = sigil.trigger
+					Amount = -1
+					Filter
+					{
+						Friendlies = false
+					}
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Offset = [0, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "../lightball.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4, 4]
+			VertexColor = [255, 100, 122]
+			TargetBlendMode = Add
+		}
+	}
+
+	Sprite2
+	{
+		Type = Sprite
+		Offset = [0, 0]
+		Spin = -197d
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "../lightball.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4, 4]
+			VertexColor = [255, 100, 122]
+			TargetBlendMode = Add
+		}
+	}
+	
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [10,10]
+			VertexColor = [255, 205, 128]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

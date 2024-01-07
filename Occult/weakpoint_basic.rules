@@ -1,0 +1,360 @@
+Part : <base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidWeakpoint"
+	DescriptionKey = "Parts/MegaroidWeakpointDesc"
+	ID = janiTNT.weakpointbasic_2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		[hyperium, 32]
+	]
+	IsRotateable = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Density = 3
+	MaxHealth = 32000
+	//AIValueFactor = 2
+	EditorReplacementPartID = ""
+	SelectionPriority = 1
+	SelectionTypeID = "weapons"
+	Size = [2, 2]
+	TypeCategories = [armor, weapon]
+	InitialPenetrationResistance = 50
+	ContinuingPenetrationResistance = 50
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	GenerateRectCollider = false
+	AIValueFactor = 999 // make sure enemy ai destroys these first i think
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	EditorIcon
+	{
+		Texture = "weakpoint.png"
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ShieldStorage]
+			Mode = All
+		}
+		
+		WeakpointSystemProvider
+		{
+			Type = GridBuffProvider
+			BuffType = JaniWeakpointDetector
+			GridDistance = 150
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		
+		ShieldStorage
+		{
+			Type = ResourceStorage
+			ResourceType = fake
+			MaxResources = 5000
+			ToggleOnResources = 4001
+			StartingResources = &MaxResources
+			InitToMaxResources = &MaxResources
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		ShieldGen
+		{
+			Type = ResourceConverter
+			ToStorage = ShieldStorage
+			ToQuantity = 750
+			Interval = 0.5
+		}
+
+		ProgressBar98
+		{
+			Type = ProgressBar
+			//OperationalToggle = IsOperational
+			ShowProgressFor = ShieldStorage
+			LowColor = [0, 0, 255]
+			HighColor = [0, 0, 255]
+			FullColor = [0, 0, 255]
+			Height = 10
+		}
+
+		ArcShield
+		{
+			Type = ArcShield
+			Radius = 2.5
+			Arc = 270d
+			OperationalToggle = IsOperational
+			PenetrationResistance = [99, 50]
+			DrainResourcesFrom = ShieldStorage
+			ResourceDrainPerDamage = .5
+			Rotation = -90d
+			Location = [1, 1]
+
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [0, 0, 255, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = .25
+					FadeOutTime = .25
+					FadeFromScale = .8
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 8
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .4
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [0, 127, 255, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .3
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 0.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/terran/shield_gen_small/shield_loop.wav"
+					Volume = .15
+					Speed = .5
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .3
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						MinDistance = .75
+						MaxDistance = 1.5
+					}
+					IgnoreIntensity = true
+				}
+			]
+
+			HitMediaEffects
+			[
+				{
+					Type = ArcShield
+					FadeInTime = .1
+					FadeOutTime = .5
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = 20d
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_waveSpeed = -2
+						_waveAlpha = .75
+						_waveCurveInterval = 1
+						_waveCurveMagnitude = .5
+						_waveCurveUOffsetPerSecond = 0
+						//TargetBlendMode = Add
+						_fullPowerColor1 = [0, 140, 255, 127]
+						_lowPowerColor1 = [255, 0, 0, 200]
+						_fullPowerColor2 = [250, 50, 200, 127]
+						_lowPowerColor2 = [230, 20, 150, 127]
+						_lowPowerThicknessExponent = .3
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 1]
+					}
+					ArcSpriteSegments = 6
+					Bucket = Upper3
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = &<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/HitMediaEffects/1/RandomSounds
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+					SpeedVariation = .25
+					MaxConcurrent = 10
+				}
+			]
+		}
+
+		ShieldOperationEffects
+		{
+			Type = ToggleEffects
+			ChainedTo = ArcShield
+			Location = [&~/Part/Components/ArcShield/Radius, 0]
+			Toggle = IsOperational
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/shield_gen_small/activate.wav"
+					Volume = .5
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+			ToggledOffMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/shield_gen_small/deactivate.wav"
+					Volume = .5
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+		}
+		
+		
+		Collider
+		{
+			Type = CircleCollider
+			Location = [1, 1]
+			Radius = .5
+			Density = 5
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "weakpoint.png"
+						Size = [2, 2]
+						RotSpeed = 180d
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*2, 255*2, 255*2]
+					}
+				]
+			}
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects
+			[
+				&<particles/quarter_huge_part_exploding.rules>
+				&<particles/salvage_complete_shrapnel_occult.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+			Location = [1, 1]
+		}
+		
+		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		{
+			Location = [1, 1]
+		}
+
+		Blueprints = &<./Data/ships/asteroid/rock/rock_2x2.rules>/Part/Components/Blueprints
+	}
+}

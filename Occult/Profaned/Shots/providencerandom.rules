@@ -1,0 +1,67 @@
+ID = "janiTNT.providencebullethell_randomizer"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 10000
+IdealRange = 250
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 0
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = Random
+					RandomOptions
+					[
+						{
+							RandomWeight = 4
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<providenceattack.rules>
+									Count = 1
+									InheritVelocity = true
+								}
+							]
+						}
+						{
+							RandomWeight = 1
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<providencehealing.rules>
+									Count = 1
+									InheritVelocity = true
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+	
+	/*Type = SimpleHit
+		
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects[]
+		}
+		HitStructural = &HitOperational
+	}*/
+}

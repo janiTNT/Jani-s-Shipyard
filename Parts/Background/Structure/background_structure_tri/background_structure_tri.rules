@@ -1,0 +1,120 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Background_Structure_Wedge"
+	IconNameKey = "Parts/Background_Structure_WedgeIcon"
+	ID = Skipydog.background_structure_tri
+	EditorGroup = "Structure"
+	DescriptionKey = "Parts/Background_StructureDesc"
+	Cost = 500
+	Resources
+	[
+		[tristeel, 2]
+	]
+	Size = [1, 1]
+	SelectionTypeID = "structure"
+	MaxHealth = 2000
+	AllowedContiguity = [Right, Bottom]
+	
+	SalvageProgressMediaEffects
+	
+	HealthType = Structural
+	TypeCategories = [background_structure]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	ConstructionDuration = 0.5
+	RepairDuration = 0.5
+	UnderlyingPartPerTile = ""
+	TempConstructionPartPerTile = cosmoteer.structure
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 0.5
+	IsRotateable = true
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "floor.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "strutcolor"
+			Default = Black
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			GetColorFrom = ColorPicker
+			Floor
+			{
+				Layer = "bgstructure"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						NormalsFile = "normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						NormalsFile = "normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						NormalsFile = "normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [0.5, 0.5]
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+}

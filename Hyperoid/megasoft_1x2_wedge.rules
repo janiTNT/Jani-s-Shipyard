@@ -1,0 +1,190 @@
+Part : <base_part_hyperoid.rules>/Part
+{
+	NameKey = "Parts/HyperoidWedge1x2_soft"
+	DescriptionKey = "Parts/RockDesc"
+	ID = janiTNT.hyperock_1x2_wedge_soft // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	FlipWhenLoadingIDs = [janiTNT.hyperock_1x2_wedge_soft_R]
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+
+	Size = [1, 2]
+	MaxHealth = 160000 *4*4
+	IsFlippable = true
+	IsRotateable = true
+	EditorReplacementPartID = janiTNT.hyperock_1x1_soft
+	AllowedContiguity = [Right, Bottom]
+	FlipHRotate = [0, 3, 2, 1]
+	FlipVRotate = [2, 1, 0, 3]
+	GenerateRectCollider = false
+
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [TopRight, Right]
+		}
+		{
+			Key = [0, 1]
+			Value = [Right, BottomRight, Bottom, BottomLeft]
+		}
+	]
+	InternalWallsByCell
+	[
+	 	{
+	 		Key = [0, 0]
+	 		Value = [BottomLeft, Left, TopLeft, Top]
+	 	}
+	 	{
+	 		Key = [0, 1]
+	 		Value = [Left, TopLeft]
+	 	}
+	]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 1]; InternalCell=[0, 2]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	EditorIcon
+	{
+		Texture = "./Data/ships/asteroid/rock/rock_1x2_wedge_icon.png"
+		Size = [32, 64]
+	}
+	Components : &<./Data/ships/megaroid/megarock/megarock_1x2_wedge.rules>/Part/Components
+	{
+		SpriteGrid1 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 1.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid2 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [2.5*0.25, 2.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid3 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 2.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid4 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [2.5*0.25, 3.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid5 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 3.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid6 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [2.5*0.25, 4.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid7 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 4.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid8 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [2.5*0.25, 5.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid9 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 5.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid10 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [1.5*0.25, 6.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid11 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [2.5*0.25, 6.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid12 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 6.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid13 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [1.5*0.25, 7.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid14 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [2.5*0.25, 7.5*0.25]
+			Type = Sprite
+		}
+		
+		SpriteGrid15 : &<megasoft_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			Location = [3.5*0.25, 7.5*0.25]
+			Type = Sprite
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<salvage_complete_asteroid_pebbles.rules>
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		DeathEffects : SalvagedEffects
+		{
+			WhenSalvaged = false
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			Floor
+			{
+				Layer = "asteroid"
+				DamageLevels
+				[
+					{
+						File = "walls16.png"
+						NormalsFile = "walls_normals16.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+	}
+}

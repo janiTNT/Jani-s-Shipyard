@@ -1,0 +1,234 @@
+Part : &<./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/PulseThrusterSmall"
+	IconNameKey = "Parts/PulseThrusterSmallIcon"
+	ID = janiTNT.pulse_thruster_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/PulseThrustersDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil, 3]
+	]
+	TypeCategories = [thruster, uses_power]
+	Size = [1, 1]
+	MaxHealth = 1000
+	ProhibitBelow = 0
+	ThrusterForce = 400 * 0.75
+	ThrustIncreaseTime = 0
+	ThrustRecoveryTime = 0
+	FuelUsage = 30 * 1.25
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		[0, -1]
+		[1, 0]
+	]
+	ProhibitRects
+	[
+		[default, [0, 2, 1, 4]]
+	]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "thrusters"
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "small_icon.png"
+			SampleMode = Linear
+		}
+		Size = [21.33, 21.33]
+	}
+	Components : &<./data/ships/terran/thruster_small/thruster_small.rules>/Part/Components
+	{
+		MainThruster : &<./data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/MainThruster
+		{
+			Location = [0.5, 1]// Relative to upper-left corner of unrotated part.
+			Force = &../../ThrusterForce
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+		LateralThruster : MainThruster
+		{
+			Rotation = 0d
+			MinActivation = -0.05
+			MaxActivation = 0.05
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			AllowAutoFire = false
+		}
+
+		NozzleCollider
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			AnimationSpeedFactor = MainThruster
+			AnimationSpeedFactorRenormalize = [0.75, 2.0]
+			Floor = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/Floor
+			OperationalDoodad = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/OperationalDoodad
+			NonOperationalDoodad = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/NonOperationalDoodad
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "small_lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/Walls
+		}
+		
+		RoofToggle
+		{
+			Type = UIToggle
+			ToggleID = "thruster_roof_detail"
+			Default = 1
+			AlwaysAllowInBuildMode = true
+		}
+
+		LowDetail
+		{
+			Type = ModeToggle
+			Mode = RoofToggle
+			OnMode = 0
+		}
+		
+		LowComponents
+		{
+			Type = ToggledComponents
+			Toggle = LowDetail
+			IncludeInBlueprints = true
+			Components
+			{
+				LowQualityGrid
+				{
+					Type = SpriteGrid
+					Location = [.5, .5]
+					//GridSpacing = [0.25, 0.25]
+					GridSize = [1, 1]
+					RandomDamageLevels
+					[
+						[
+							{
+								File = "./Data/ships/terran/corridor/roof.png"
+								NormalsFile = "./Data/ships/terran/corridor/roof_normals.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/corridor/roof_33.png"
+								NormalsFile = "./Data/ships/terran/corridor/roof_normals_33.png"
+								Size = [1, 1]
+							}
+							{
+								File = "./Data/ships/terran/corridor/roof_66.png"
+								NormalsFile = "./Data/ships/terran/corridor/roof_normals_66.png"
+								Size = [1, 1]
+							}
+						]
+					]
+					RandomUVRotation = true
+					Layer = "roofs"
+				}
+			}
+		}
+		
+		HighDetail
+		{
+			Type = ModeToggle
+			Mode = RoofToggle
+			OnMode = 1
+		}
+		
+		HighComponents
+		{
+			Type = ToggledComponents
+			Toggle = HighDetail
+			IncludeInBlueprints = true
+			Components
+			{
+				HighRoofGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					OperationalToggle = IsOperational
+					Roof = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/Roof
+					OperationalRoofDoodad = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/OperationalRoofDoodad
+					OperationalRoofLighting = &<./Data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/Graphics/OperationalRoofLighting
+				}
+			}
+		}
+		NozzleGraphics
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+		ThrustEffects
+		{
+			Type = ContinuousEffects
+			ChainedTo = MainThruster
+			Location = [0, 0]
+			FactorMediaEffectsIntensityWith = MainThruster
+			MediaEffects
+			[
+				&<particles/thruster_heat_small.rules>
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Volume = .075
+					Speed = 2
+					MaxConcurrentVolume = .15
+				}
+			]
+		}
+
+		BurstEffects
+		{
+			Type = TriggeredEffects
+			ChainedTo = MainThruster
+			Trigger = BurstTrigger
+			FactorMediaEffectsIntensityWith = MainThruster
+			AnchorMediaEffects = true
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					Volume = .125
+					Speed = 2
+					MaxConcurrentVolume = .25
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "small_blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		ThrusterForce = &~/Part/ThrusterForce
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime
+		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
+		PowerCapacity = (&<./data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&ThrusterPowerUsage) / 2
+		RecCrew = (&RecPower) * 4
+	}
+}

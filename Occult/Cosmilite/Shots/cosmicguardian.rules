@@ -1,0 +1,260 @@
+ID = "janiTNT.cosmicguardiancalamity_boss"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 800
+IdealRange = 400
+Speed = 140
+//ForgetTarget = true
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [16, 2]
+		Density = 2
+		RandomExtraSpeed = [0, 2]
+	}
+	
+	/*Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.3
+		Density = 2
+	}*/
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = [0, -1]
+		AccelerationOverTime = [0, 5]
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 110d
+		Delay = 0.25
+		//AvoidanceRaycastDistance = 250
+		//VelocityCompensation = 70%
+		ModifiesLinearVelocity = true
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 1
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	/*Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 80
+	}
+
+	NegativeAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [-90 , 0]
+		AccelerationOverTime = [0, .5]
+		Direction = FrameOfReferenceVelocity
+	}*/
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 20
+		//HasTarget = true
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../../TheseAssetsAreFromCalamityMod/cosmicguardian.png"
+				MipLevels = max
+			}
+			Size = [6*4, 2*4]
+			//TargetBlendMode = Add
+			//VertexColor = [180, 180, 180]
+		}
+		LerpScaleFrom = [1, 0]
+		LerpTime = 0.1
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 8000
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 80000 * 1.25
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+		Penetration = 100
+		ShieldPenetrationFactor = 8
+		PenetrationSpeed = 80
+		
+		SourceShipLowCollisions = false
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 20;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 1000
+					DamagePool = DamagePool
+					DoPooledDamageFirst = true
+				}
+			]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = .75
+					SpeedVariation = .2
+				}
+			]
+		}
+		PenetratingStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		FinishedPenetratingOperational
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/common/ftl_jump_out.wav"
+					Volume = 1
+					Speed = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		FinishedPenetratingStructural
+		{
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = .75
+					SpeedVariation = .2
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,175 @@
+ID = "janiTNT.stell_shot"
+Range = 400
+IdealRange = 400
+Speed = 200
+
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.0001
+		//LinearDamping = 2
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 500
+		TargetCategory = "bullet"
+		
+		OnDeath = &../Hit/HitStructural
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 20d
+		Delay = 0.5
+		ModifiesLinearVelocity = true
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	/*Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 200 * 2
+	}*/
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		//RenderBucket = Lower
+		Sprite
+		{
+			Texture
+			{
+				File = "projectile.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [2, 1]
+		}
+		Offset = [-.5, 0]
+		LerpScaleFrom = [.25, .25]
+		LerpTime = .2
+	}
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.2
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [3.5, 3.5]
+			VertexColor = [200, 200, 100]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+		LerpScaleFrom = [.1, .1]
+		LerpTime = .2
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 2500
+	}
+	
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 15
+		PenetrationSpeed = 25
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 100
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse
+					Impulse = 20
+				}
+			]
+
+			MediaEffects = &<./Data/shots/bullet_med/bullet_med.rules>/Components/Hit/HitOperational/MediaEffects
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 2000
+				}
+				{
+					Type = Impulse
+					Impulse = 10
+				}
+			]
+
+			MediaEffects = &<./Data/shots/bullet_med/bullet_med.rules>/Components/Hit/HitStructural/MediaEffects
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 100
+					DamagePool = DamagePool
+				}
+				{
+					Type = Fire
+					FireChance = .1
+				}
+				{
+					Type = Impulse
+					Impulse = 20
+				}
+			]
+
+			MediaEffects = &<./Data/shots/bullet_med/bullet_med.rules>/Components/Hit/PenetratingOperational/MediaEffects
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+}

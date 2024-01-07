@@ -1,0 +1,60 @@
+ID = "janiTNT.missile_nuke_roof_stage2"
+Range = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Range
+IdealRange = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/IdealRange
+Speed = 0
+
+Components
+{
+	Physics = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/Physics
+
+	BoostAcceleration = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/BoostAcceleration
+
+	DeathByDistanceTraveled = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/DeathByDistanceTraveled
+	DeathByDistanceTraveledTargeted = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/DeathByDistanceTraveledTargeted
+	
+	Targetable = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Targetable
+	
+	Sprite : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Sprite
+	{
+		RenderBucket = Upper2
+	}
+
+	RadiationSpriteSmall : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/RadiationSpriteSmall
+	{
+		RenderBucket = Upper3
+	}
+
+	RadiationSpriteBig : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/RadiationSpriteBig
+	{
+		RenderBucket = Upper1
+	}
+
+	MediaEffects : &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/MediaEffects
+	{
+		MediaEffects
+		[
+			:<./data/shots/missile_nuke/particles/missile_nuke_thruster_plume.rules>
+			{
+				Bucket = BulletUpper2
+			}
+			:<./data/shots/missile_nuke/particles/missile_nuke_thruster_plume_light.rules>
+			{
+				Bucket = Upper4
+			}
+			:<./data/shots/missile_nuke/particles/missile_nuke_thruster_smoke.rules>
+			{
+				Bucket = BulletTrailUpper
+			}
+			:<./data/shots/missile_nuke/particles/missile_nuke_thruster_fire.rules>
+			{
+				Bucket = RoofCannonShoot
+			}
+		]
+	}
+
+	Hit : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Hit
+	{
+		SourcePartCollisionDelay = 3
+		SourceShipLowCollisions = false
+	}
+}

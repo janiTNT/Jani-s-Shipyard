@@ -1,0 +1,16 @@
+ID = "janiTNT.smalllaserdrone.end"
+Range = &<baselaser.rules>/Range
+IdealRange = &<baselaser.rules>/IdealRange
+Speed = &<baselaser.rules>/Speed
+
+Components : &<baselaser.rules>/Components
+{
+	DeathByEnemyProximity : &<baselaser.rules>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<baselaser.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<baselaser.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects = &<baselaser.rules>/Components/Targetable/OnDeath/MediaEffects
+		}
+	}
+}

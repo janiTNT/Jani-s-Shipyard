@@ -1,0 +1,19 @@
+ID = "janiTNT.combatdrone.final"
+Range = &<combatbase.txt>/Range
+IdealRange = &<combatbase.txt>/IdealRange
+Speed = -10
+
+Components : &<combatbase.txt>/Components
+{
+	DeathByEnemyProximity : &<combatbase.txt>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<combatbase.txt>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<combatbase.txt>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects : &<combatbase.txt>/Components/Targetable/OnDeath/MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_flash.rules>
+			]
+		}
+	}
+}

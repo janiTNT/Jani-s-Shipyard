@@ -1,0 +1,173 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/StationArmorWedge"
+	IconNameKey = "Parts/StationArmorWedgeIcon"
+	ID = janiTNT.stationarmorwedge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [juanTNT.stationarmorwedge]
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/StationArmorWedgeDesc"
+	Resources
+	[
+		[steel, 4]
+		[cut.tristeel, 2]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	AllowedContiguity = [Right, Bottom]
+	SelectionTypeID = "armor"
+	MaxHealth = 12000 / 2
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = 50%
+	TypeCategories = [armor]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = cosmoteer.structure_wedge
+	CreatePartPerTileWhenGrabbed = ""
+	InitialPenetrationResistance = 7
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0
+	Density = 25
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "wedge_a.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 1]
+				[0, 1]
+			]
+		}
+
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 1000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "wedge_f.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "wedge_f2.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "wedge_f3.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{
+						File = "wedge_a.png"
+						NormalsFile = "./data/ships/terran/armor_wedge/external_wall_normals.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "wedge_a2.png"
+						NormalsFile = "./data/ships/terran/armor_wedge/external_wall_normals_33.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "wedge_a3.png"
+						NormalsFile = "./data/ships/terran/armor_wedge/external_wall_normals_66.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "wedge_roof.png"
+						NormalsFile = "wedge_roof_n.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "wedge_roof2.png"
+						NormalsFile = "wedge_roof_n.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+					{
+						File = "wedge_roof3.png"
+						NormalsFile = "wedge_roof_n.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "wedge_b.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

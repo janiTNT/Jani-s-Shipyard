@@ -1,0 +1,203 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/AutoBStorage4x4"
+	IconNameKey = "Parts/AutoBStorage4x4Icon"
+	ID = janiTNT.AutoStorage_build_4x4 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Storage"
+	DescriptionKey = "Parts/AutoBStorage4x4Desc"
+	SelectionTypeID = "storage"
+	Resources
+	[
+		[steel, 128]
+		[coil, 16]
+	]
+	Size = [4, 4]
+	MaxHealth = 16000
+	IsRotateable = true
+	TypeCategories = [storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon2.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		BuildType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_material"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		steelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 0
+		}
+		steelComponents
+		{
+			Type = ToggledComponents
+			Toggle = steelToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/steel.rules>/Components
+		}
+		
+		coilToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 1
+		}
+		coilComponents
+		{
+			Type = ToggledComponents
+			Toggle = coilToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/coil.rules>/Components
+		}
+		
+		coil2Toggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 2
+		}
+		coil2Components
+		{
+			Type = ToggledComponents
+			Toggle = coil2Toggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/coil2.rules>/Components
+		}
+		
+		tristeelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 3
+		}
+		tristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = tristeelToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/tristeel.rules>/Components
+		}
+		
+		diamondToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 4
+		}
+		diamondComponents
+		{
+			Type = ToggledComponents
+			Toggle = diamondToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/diamond.rules>/Components
+		}
+		
+		processorToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 5
+		}
+		processorComponents
+		{
+			Type = ToggledComponents
+			Toggle = processorToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/processor.rules>/Components
+		}
+		
+		enriched_uraniumToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 6
+		}
+		enriched_uraniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = enriched_uraniumToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/enriched_uranium.rules>/Components
+		}
+		
+		goldiumToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 7
+		}
+		goldiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = goldiumToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/goldium.rules>/Components
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [2, 2]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [4, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [4, 4]
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle = &<./Data/ships/terran/storage_4x4/storage_4x4.rules>/Part/Components/RoofDoorOpenToggle
+		RoofDoorSprite = &<./Data/ships/terran/storage_4x4/storage_4x4.rules>/Part/Components/RoofDoorSprite
+
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [2, 2]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [4, 4]
+		}
+	}
+
+	Stats
+	{
+		StorageTiles = 16
+	}
+}

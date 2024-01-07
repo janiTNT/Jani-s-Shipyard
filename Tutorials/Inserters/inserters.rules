@@ -1,0 +1,38 @@
+ID = inserter
+TitleKey = "Tutorials/Inserters/Title"
+TabNameKey = "Codex/JaniTutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('Inserter') or game.HasTechUnlocked('janiTNT.inserters')"
+Entries
+[
+	{
+		Image { Texture { File="setup.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Inserter"
+	}
+	{
+		Image { Texture { File="nukes.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Factory"
+	}
+	{
+		Image { Texture { File="Storage_Tests.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Storage"
+	}
+	{
+		Image { Texture { File="Power_Port.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Powering"
+	}
+	{
+		Image { Texture { File="Crew Capacity.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Capacity"
+	}
+	{
+		Image { Texture { File="Types.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Types"
+	}
+	{
+		Image { Texture { File="Deckgun_Example.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Inserters/Example"
+	}
+	{
+		TextKey = "Tutorials/Inserters/Tip"
+	}
+]

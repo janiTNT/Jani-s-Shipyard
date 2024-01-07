@@ -1,0 +1,80 @@
+ID = "janiTNT.supremecalamitasbullethell_randomizer"
+Range = 10000
+IdealRange = 250
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = [15, 20]
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = Random
+					RandomOptions
+					[
+						{
+							RandomWeight = 1
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<BrimstoneHellblast.rules>
+									Count = 1
+									Arc = [180d, 0d]
+									Spread = [-20d, 20d]
+									InheritVelocity = true
+								}
+							]
+						}
+						{
+							RandomWeight = 3 //HAAAAHAHAHHAHAAAAAAAAAAAAAAA
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<BrimstoneHellblast.rules>
+									Count = 2
+									Arc = [160d, 40d]
+									Spread = [-20d, 20d]
+									InheritVelocity = true
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+	
+	GlowSprite // visible if something happens
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 8]
+			VertexColor = [5, 0, 0]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+}

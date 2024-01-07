@@ -1,0 +1,13 @@
+ID = janiTNT.comilitebar
+Type = Resource
+DescriptionKey = "Resource/Cosmilite"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "cosmic_bars3.png"
+		MipLevels = 2
+	}
+}
+ResourceType = comilitebar

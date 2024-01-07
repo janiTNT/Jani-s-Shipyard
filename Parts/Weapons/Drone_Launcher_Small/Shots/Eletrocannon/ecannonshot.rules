@@ -1,0 +1,169 @@
+ID = "janiTNT.small_drone_eletrobullet"
+Range = 350
+IdealRange = 250
+Speed = 300
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.15
+		Density = 0.0001
+		//LinearDamping = 4
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 200
+		TargetCategory = "laser"
+		
+		//OnDeath = &../Hit/HitFriendly
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 130d
+		Delay = 0
+		ModifiesLinearVelocity = true
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 500
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 50 // Enough to get through one shield and lose half penetration.
+		PenetratesOperational = false
+		PenetrationSpeed = 80
+		
+		HitShield : &HitOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				: ../../HitOperational/HitEffects/0
+				{
+					Amount = 900 * 1.8
+					TreatShieldAsPart = true
+				}
+			]
+
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			HitEffects
+			[
+				{
+					Type = ResourceDrain
+					ResourceType = battery
+					Amount = 600 * 1.8
+
+					MediaEffectsOnDrain = &<./Data/shots/disruptor_bolt/disruptor_bolt.rules>/Components/Hit/HitOperational/HitEffects/0/MediaEffectsOnDrain
+				}
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+				}
+			]
+
+			MediaEffects
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 3000
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+				}
+			]
+
+			MediaEffects = &<./Data/shots/disruptor_bolt/disruptor_bolt.rules>/Components/Hit/HitStructural/MediaEffects
+		}
+		//HitFriendly
+		//{
+		//	MediaEffects = &<./Data/shots/disruptor_bolt/disruptor_bolt.rules>/Components/Hit/HitFriendly/MediaEffects
+		//}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		PenetratingStructural = &HitStructural
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+	
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [6, 6]
+			VertexColor = [231, 255, 2]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		FactorEffectsWith = Hit
+		FactorEffectsExponent = 0.5
+		MediaEffects
+		[
+			&<./data/shots/disruptor_bolt/particles/disruptor_bolt_lightning.rules>
+		]
+	}
+}

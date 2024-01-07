@@ -1,0 +1,191 @@
+Layer = "asteroid"
+AmbiguousSprites
+[
+	// No walls.
+	{
+		SituationCode = "11111111"
+		DamageLevels = []
+	}
+
+	// All four walls.
+	{
+		SituationCode = "*0*0*0*0"
+		DamageLevels
+		[
+			{
+				File = "walls1.png"
+				NormalsFile = "walls_normals1.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Three walls.
+	{
+		SituationCode = "*1*0*0*0"
+		DamageLevels
+		[
+			{
+				File = "walls2.png"
+				NormalsFile = "walls_normals2.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two walls joined at corner.
+	{
+		SituationCode = "*111*0*0"
+		DamageLevels
+		[
+			{
+				File = "walls3.png"
+				NormalsFile = "walls_normals3.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two walls joined at corner, with corner opposite.
+	{
+		SituationCode = "*101*0*0"
+		DamageLevels
+		[
+			{
+				File = "walls4.png"
+				NormalsFile = "walls_normals4.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall.
+	{
+		SituationCode = "*0*11111"
+		DamageLevels
+		[
+			{
+				File = "walls5.png"
+				NormalsFile = "walls_normals5.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall with corner on right.
+	{
+		SituationCode = "*0*10111"
+		DamageLevels
+		[
+			{
+				File = "walls6.png"
+				NormalsFile = "walls_normals6.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall with corner on left.
+	{
+		SituationCode = "*0*11101"
+		DamageLevels
+		[
+			{
+				File = "walls7.png"
+				NormalsFile = "walls_normals7.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall, two corners.
+	{
+		SituationCode = "*0*10101"
+		DamageLevels
+		[
+			{
+				File = "walls8.png"
+				NormalsFile = "walls_normals8.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One corner.
+	{
+		SituationCode = "01111111"
+		DamageLevels
+		[
+			{
+				File = "walls9.png"
+				NormalsFile = "walls_normals9.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two corners adjacent.
+	{
+		SituationCode = "01011111"
+		DamageLevels
+		[
+			{
+				File = "walls10.png"
+				NormalsFile = "walls_normals10.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Three corners.
+	{
+		SituationCode = "01010111"
+		DamageLevels
+		[
+			{
+				File = "walls11.png"
+				NormalsFile = "walls_normals11.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two corners diagonal.
+	{
+		SituationCode = "01110111"
+		DamageLevels
+		[
+			{
+				File = "walls12.png"
+				NormalsFile = "walls_normals12.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Four corners.
+	{
+		SituationCode = "01010101"
+		DamageLevels
+		[
+			{
+				File = "walls13.png"
+				NormalsFile = "walls_normals13.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two walls parallel.
+	{
+		SituationCode = "*0*1*0*1"
+		DamageLevels
+		[
+			{
+				File = "walls14.png"
+				NormalsFile = "walls_normals14.png"
+				Size = [1, 1]
+			}
+		]
+	}
+]

@@ -1,0 +1,86 @@
+ID = "janiTNT.stell.17"
+Range = &<StellBase.txt>/Range
+IdealRange = &<StellBase.txt>/IdealRange
+Speed = &<StellBase.txt>/Speed
+
+
+Components : &<StellBase.txt>/Components
+{
+	ShootSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletMiddle1
+		EndTime = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "stellfire.png"
+					MipLevels = max
+				}
+				Size = [1, 1]
+			}
+			FrameCount = 4
+			FrameSize = [64, 64]
+			FramesPerRow = 4
+			FramesPerSecond = 8
+			//WrapMode = Clamp
+		}
+		NormalsTexture
+		{
+			File = "stellfire_n.png"
+			MipLevels = max
+		}
+	}
+
+	RunSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletMiddle1
+		StartTime = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "stell_idle.png"
+					MipLevels = max
+				}
+				Size = [1, 1]
+			}
+			FrameCount = 2
+			FrameSize = [64, 64]
+			FramesPerRow = 2
+			FramesPerSecond = 20
+			//WrapMode = Clamp
+		}
+		NormalsTexture
+		{
+			File = "stell_idle_n.png"
+			MipLevels = max
+		}
+	}
+	
+	DeathByEnemyProximity : &<StellBase.txt>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<StellBase.txt>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects : &<StellBase.txt>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<Stell18.txt>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+		}
+	}
+}

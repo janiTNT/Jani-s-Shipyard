@@ -1,0 +1,91 @@
+Components
+{
+	GoldStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = gold
+		GridRect = [0, 2, 2, 2]
+		Layer = "doodads_low"
+		SpriteInset = [8/64, 6/64, 2/64, 9/64]
+		RandomSpriteRotation = true
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+	}
+	GoldConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = gold
+		Storage = GoldStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [0, -.4]
+	}
+
+	GoldiumStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = goldium
+		GridRect = [2, 2, 2, 2]
+		Layer = "doodads_low"
+		SpriteInset = [2/64, 6/64, 8/64, 9/64]
+		SuppliesResources = true
+		SupplyToggleButtonOffset = [0, -.4]
+		RandomSpriteRotation = true
+		InitToMaxResources = 0
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+	}
+
+	ResourceConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsOperational
+		From
+		[
+			{
+				Storage = GoldStorage
+				Quantity = 1
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 100
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = GoldiumStorage
+		ToQuantity = 1
+		Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+	}
+	
+	GoldiumGraphics
+	{
+		Type = Graphics
+		Location = [2, 2]
+		OperationalToggle = IsOperational
+		DoodadToggle = ResourceConverter
+		ToggleOnDoodad
+		{
+			Layer = "walls" //walls layer so the Gold and Goldium are draw over the belts
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"goldium1.png"
+						"goldium2.png"
+						"goldium3.png"
+						"goldium4.png"
+						"goldium5.png"
+						"goldium6.png"
+						"goldium7.png"
+						"goldium8.png"
+					]
+					Size = [4, 1]
+					AnimationInterval = 0.125
+				}
+			]
+		}
+	}
+}

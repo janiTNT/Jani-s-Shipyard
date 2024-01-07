@@ -1,0 +1,260 @@
+Part : <base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidThrustCR"
+	DescriptionKey = "Parts/MegaroidThrustCRDesc"
+	ID = janiTNT.megarock_core_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		//[steel, 8 * 16]
+		//[processor, 2]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBoss]
+	Density = 3
+	MaxHealth = 32000
+	AIValueFactor = 0
+	SelectionPriority = 1
+	SelectionTypeID = "cores"
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	TypeCategories = [armor, thruster]
+	InitialPenetrationResistance = 2 * 7
+	ContinuingPenetrationResistance = 2 * 7
+	CrewSpeedFactor = 0.25
+	EditorIcon
+	{
+		Texture = "armoroid_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		FunctionEnabled
+		{
+			Type = MultiToggle
+			Toggles = [BigAttackMode]
+			Mode = All
+			Invert = true
+		}
+		BigAttackMode
+		{
+			Type = BuffToggle
+			BuffType = JaniWeaponsDisabledBoss
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		
+		Sprite = &<armoroid.rules>/Part/Components/Sprite
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "secondary"
+				RandomUVRotation = false
+				DamageLevels
+				[
+					{
+						File = "core.png"
+						NormalsFile = "core_n.png"
+						Size = [1, 1]
+						//RotSpeed = 180d
+					}
+				]
+			}
+		}
+		
+		CrewSource
+		{
+			Type = CrewSource
+			Crew = 1
+			//IdleRect = [0.4, 0.4, 0.1, 0.1]
+			ColorSRange = [0, 0.25]
+			ColorVRange = [0.5, 0.75]
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.5,0.5]	//seat
+			//Rotation = 180d yes, borrowed straight from kroom's forge
+		}
+		
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			//PrerequisitesBeforeCrewing = [PowerToggle]
+			//HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[0.5,0.5]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+		
+		/*Airlock
+		{
+			Type = Airlock
+			//OperationalToggle = PowerToggle
+			EnterExitPoint = [.5, .5]
+			NuggetEjectVelocity = 2
+			NuggetEjectDirection = [-100d, -80d]
+			NuggetEjectDoorOpenDuration = 0.65
+			UITileRect = [10/64, 10/64, 1 - 20/64, 1 - 20/64]
+
+			CrewEnterEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/airlock/crew_enter.wav"
+					SpeedVariation = .1
+				}
+			]
+
+			CrewLeaveEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/airlock/crew_leave.wav"
+					SpeedVariation = .1
+				}
+			]
+		}*/
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 1000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		MainThruster// Used 4 thrusters instead of 2 with special paramters because thruster noise
+		{
+			Type = Thruster
+			Location = [.5, .5]// Relative to upper-left corner of unrotated part.
+			Rotation = 90d// Relative to unrotated part.
+			OperationalToggle = FunctionEnabled
+			Force = 25000
+			MinActivation = 0
+			MaxActivation = 1
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = 0.5
+			ActivationRecoveryTime = 0.5
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = 0
+		}
+		Thruster2 : MainThruster
+		{
+			Rotation = 0d
+			AllowAutoFire = false
+		}
+		Thruster3 : MainThruster
+		{
+			Rotation = 180d
+			AllowAutoFire = false
+		}
+		Thruster4 : MainThruster
+		{
+			Rotation = 270d
+			AllowAutoFire = false
+		}
+		
+		/*ThrustEffects
+		{
+			Type = ContinuousEffects
+			Location = [0.5, 0.5]
+			FactorMediaEffectsIntensityWith = MainThruster
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/tractor_beam/tractor_beam.wav"
+					Volume = 0.2
+					MaxConcurrent = 1
+					MaxConcurrentVolume = 0.2 //augh
+					RampUpTime = .5
+					RampDownTime = .5
+					VolumeOverIntensity = [0, 1]
+					SpeedOverIntensity = [0, 0.5]
+					RampAffectsSpeedIntensity = true
+				}
+			]
+		}
+		ThrustEffects2 : ThrustEffects
+		{
+			FactorMediaEffectsIntensityWith = Thruster2
+		}
+		ThrustEffects3 : ThrustEffects
+		{
+			FactorMediaEffectsIntensityWith = Thruster3
+		}
+		ThrustEffects4 : ThrustEffects
+		{
+			FactorMediaEffectsIntensityWith = Thruster4
+		}*/
+		
+		ClearPermission
+		{
+			Type = MultiToggle
+			Toggles = [CommandToggle]
+			Mode = All
+			Invert = true
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		ClearTrigger // deletes part if no sigil found
+		{
+			Type = Timer
+			OperationalToggle = ClearPermission
+			Duration = 10
+			AutoStart = true
+			Repeats = true
+		}
+		ClearEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = ClearTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = false
+					}
+				}
+			]
+		}
+		
+		DestroyedEffects : &<base_part_occult.rules>/Part/Components/DestroyedEffects
+		{
+			Location = [.5, .5]
+		}
+		
+		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		{
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "core_bp.png"
+			Size = [1, 1]
+		}
+	}
+}

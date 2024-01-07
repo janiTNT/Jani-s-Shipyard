@@ -1,0 +1,326 @@
+MaxPerNugget = 6000
+
+NestedNuggetSprites
+[
+	// Vanilla 1x size.
+	[
+		{
+			File = "./Data/resources/battery/battery_small.png"
+			NormalsFile = "./Data/resources/battery/battery_small_normals.png"
+			Size = [1, 1]
+			Offset = [15/64, 0]
+			UVRotation = 3
+		}
+	]
+
+	// Vanilla 2x size.
+	[
+		{
+			File = "./Data/resources/battery/battery_med_fill1.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med_fill2.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med_fill3.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med_fill4.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med_fill5.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med_fill6.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med_fill7.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_med.png"
+			NormalsFile = "./Data/resources/battery/battery_med_normals.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+	]
+
+	// Vanilla 3x size.
+	[
+		{
+			File = "./Data/resources/battery/battery_large_fill1.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill2.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill3.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill4.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill5.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill6.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill7.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill8.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill9.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill10.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large_fill11.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_large.png"
+			NormalsFile = "./Data/resources/battery/battery_large_normals.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+	]
+	
+	// 4x size.
+	[
+		{
+			File = "battery_4_fill1.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill2.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill3.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill4.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill5.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill6.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill7.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4.png"
+			NormalsFile = "./Data/resources/battery/battery_med_normals.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+	]
+	// 5x size can be same as 4x I suppose
+	[
+		{
+			File = "battery_4_fill1.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill2.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill3.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill4.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill5.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill6.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4_fill7.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_4.png"
+			NormalsFile = "./Data/resources/battery/battery_med_normals.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+	]
+	// 6x size.
+	[
+		{
+			File = "battery_6_fill1.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill2.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill3.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill4.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill5.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill6.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill7.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill8.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill9.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill10.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6_fill11.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_6.png"
+			NormalsFile = "./Data/resources/battery/battery_large_normals.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+	]
+]

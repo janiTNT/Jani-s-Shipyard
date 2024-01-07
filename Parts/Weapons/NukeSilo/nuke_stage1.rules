@@ -1,0 +1,105 @@
+ID = "janiTNT.missile_nuke_roof_stage1"
+Range = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Range
+IdealRange = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/IdealRange
+Speed = 0
+Stage2 = &<nuke_stage2.rules>
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = .6
+		Density = 0.5
+		LinearDamping = 2.5
+		FrameOfReferenceDuration = 1
+	}
+	
+	Homing = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Homing
+
+	Acceleration : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Acceleration
+	{
+		//Acceleration = 10
+		Acceleration = [0, 50]
+		AccelerationOverTime = [0, 1.5]
+	}
+	
+	Targetable = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Targetable
+
+	DeployDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = 1.5
+		FactorEffectsWith = Targetable
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 1
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+				{
+					Type = AreaCrewStun
+					Duration = 0.4
+					Falloff = 1
+					Radius = 9
+					Filter { Friendlies=true; IgnoreInvulnerability=true; }
+					Cumulative = true
+					//HitShipOnly = true
+				}
+			]
+		}
+	}
+	
+	SpinSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = Upper2
+		//Rotation = -90d
+		EndTime = 0.8
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "nuke_rotate.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [151/64, 1.5]
+			}
+			FrameCount = 4
+			FrameSize = [151, 96]
+			FramesPerRow = 4
+			FramesPerSecond = 4 / 0.825
+		}
+		NormalsTexture
+		{
+			File = "nuke_rotate_n.png"
+			MipLevels = max
+		}
+	}
+
+	Sprite : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Sprite
+	{
+		StartTime = 0.8
+		RenderBucket = Upper2
+	}
+
+	Hit : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/Hit
+	{
+		SourcePartCollisionDelay = 3
+		SourceShipLowCollisions = false
+		
+		HitFriendly
+		{
+			Bounce = true
+		}
+	}
+}

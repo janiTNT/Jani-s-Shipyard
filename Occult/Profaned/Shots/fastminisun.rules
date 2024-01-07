@@ -1,0 +1,201 @@
+ID = "janiTNT.sunmonster_boss_fast"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 10000
+IdealRange = 250
+Speed = 40
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 1
+		LinearDamping = 1 * 0.25
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 90d
+		Delay = 1
+		//AvoidanceRaycastDistance = 250
+		VelocityCompensation = 80%
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 1
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 30 * 0.25
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 10
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Sprite1
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 500d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [13, 13]
+			TargetBlendMode = Add
+			VertexColor = [255*2, 205*0.8, 128*0.8]
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 1
+	}
+	
+	Sprite2 : & Sprite1
+	{
+		Spin = -274d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [14, 14]
+			TargetBlendMode = Add
+			VertexColor = [255*2, 205*0.8, 128*0.8]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [60, 60]
+			VertexColor = [255*6, 205*2, 128*2]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 1
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 7200 * 25
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 6000000 / 10
+					Radius = 40 / 3
+					/*Filter
+					{
+						Friendlies = true
+					}*/
+				}
+				{
+					Type = Impulse;
+					Impulse = 100;
+				}
+			]
+			
+			MediaEffectsScale = 20
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffectsScale = 20
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

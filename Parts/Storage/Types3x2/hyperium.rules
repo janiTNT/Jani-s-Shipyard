@@ -1,0 +1,91 @@
+Resource = hyperium
+StackSize = (&<./data/resources/hyperium/hyperium.rules>/MaxStackSize)
+StorageSize = 6
+Components
+{	
+	Consumer
+	{
+		Type = ResourceConsumer
+		ResourceType = &~/Resource
+		Storage = HyperiumStorage
+		DefaultPriority = &/PRIORITIES/Storage_Supply
+		//OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [-0.02, -.3]
+		OverridePriorityPart = cosmoteer.storage_2x2
+	}
+	
+	HyperiumStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&~/StorageSize)
+		UITileRect = [0.5 + 0.75, 0.75, 0.5, 0.5]
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+		SupplyToggleButtonOffset = [0.02, -.3]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+		IsIntermediateStorage = true
+		SuppliesResources = true
+	}
+	
+	FillSprites
+	{
+		Type = ResourceSprites
+		Location = [1.5, 1]
+		ResourceStorage = HyperiumStorage
+		Layer = "doodads_low"
+		ResourceLevels
+		[
+			{
+				File = "../B1.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../B2.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../B3.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../B4.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../B5.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../B6.png"
+				Size = [2, 2]
+			}
+		]
+	}
+	
+	IconGraphics
+	{
+		Type = Graphics
+		Location = [1.5, 1]
+		//OperationalToggle = IsOperational
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"./data/resources/hyperium/hyperium_stack_20-1.png"
+						"./data/resources/hyperium/hyperium_stack_20-2.png"
+						"./data/resources/hyperium/hyperium_stack_20-3.png"
+						"./data/resources/hyperium/hyperium_stack_20-4.png"
+					]
+					AnimationInterval = 0.1
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

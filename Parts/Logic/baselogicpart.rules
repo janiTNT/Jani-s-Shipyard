@@ -1,0 +1,106 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Corridor"
+	IconNameKey = "Parts/CorridorIcon"
+	ID = Skipydog.Logic_Wire 
+	DescriptionKey = "Parts/CorridorDesc"
+	Resources
+	[
+		[steel, 2]
+		[coil, 1]
+	]
+	SelectionPriority = 0
+	SelectionTypeID = "logic"
+	AIValueFactor = 0
+	Size = [1, 1]
+	Flammable = false
+	MaxHealth = 1000
+	CreatePartPerTileWhenGrabbed = ""
+	ExplosiveDamageAbsorption = 100%
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	TypeCategories = [logic]
+	//ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsRotateable = true
+	CrewSpeedFactor = 0
+	IsWalled = true
+	IsSelfDestructible = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "./data/ships/terran/corridor/icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		/*ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = White
+		}
+		
+		BaseColoredGraphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			GetColorFrom = ColorPicker
+			OperationalLighting
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "color.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}*/
+		
+		BaseGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor1.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor2.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/terran/corridor/blueprints.png"
+			Size = [1, 1]
+		}
+	}
+}

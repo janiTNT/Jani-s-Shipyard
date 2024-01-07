@@ -1,0 +1,327 @@
+ID = "janiTNT.imperium_boss_meganuke"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 8000
+IdealRange = 1200
+Speed = 80
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 1
+		LinearDamping = 1
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 90d
+		Delay = 3
+		//AvoidanceRaycastDistance = 250
+		VelocityCompensation = 10%
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 2
+		Range = 800
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = [50, 15]
+		AccelerationOverTime = [0, 1.8]
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 20
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = AreaCrewStun
+					Duration = 5
+					Falloff = 2
+					Radius = 100
+					//Filter { Friendlies=true; IgnoreInvulnerability=true; }
+					Cumulative = true
+					HitShipOnly = false
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 2000000
+					Radius = 80
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Slices = 1
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 600000
+					Radius = 80
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Delay = .5
+					Slices = 1
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+					}
+				}
+				/*{
+					Type = AreaDamage
+					Damage = 9000
+					Radius = 80 //150
+					Falloff = 0%
+					//Delay = 0
+					Filter
+					{
+						Shields = false
+						ExcludePartCategories = [asteroid]
+					}
+				}
+				{
+					Type = AreaDamage
+					Damage = 6000 //90000
+					Radius = 80
+					Delay = .5
+					//Falloff = 100%
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+					}
+				}*/
+			]
+			MediaEffectsScale = 10
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "Hypernuke.png"
+				MipLevels = max
+			}
+			Size = [8, 6]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 1
+	}
+
+	LightsSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 0.2
+		Spin = 500d
+		Z = .25
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/shots/missile_nuke/radiation.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [28, 28]
+			VertexColor = [255, 0, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = .4
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 1
+	}
+	
+	AuraSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 0.2
+		Spin = 100d
+		Sprite
+		{
+			Texture
+			{
+				File = "HypernukeRing.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [160 * 1.175, 160 * 1.175]
+			VertexColor = [64, 0, 64]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 5
+	}
+	
+	WarnSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 18
+		Spin = -100d
+		Sprite
+		{
+			Texture
+			{
+				File = "HypernukeRing.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [160 * 1.175, 160 * 1.175]
+			VertexColor = [128, 0, 0]
+			TargetBlendMode = Add
+		}
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-142/64, 0]
+		StartTime = 1
+		Rotation = 180d
+		MediaEffects
+		[
+			&<NukePlume.rules>
+			&<NukePlumeLight.rules>
+		]
+	}
+
+	/*Targetable
+	{
+		Type = Targetable
+		Health = 7200 * 100
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}*/
+
+	/*Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 6000000
+					Radius = 40
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 100;
+				}
+			]
+			
+			MediaEffectsScale = 40
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffectsScale = 40
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}*/
+}

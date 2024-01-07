@@ -1,0 +1,69 @@
+Particles : <./Data/shots/ion_beam/particles/ion_beam_hit.rules>
+{
+	Def : ^/0/Def
+	{
+		Initializers
+		[
+			{
+				Type = LocationToWorldSpace
+				DataOut = energy
+				ValueType = Float
+				Value = 1
+				Name = "Convert location to world space."
+				Enabled = true
+				UpdateAfterInit = false
+				LocationIn = location
+				LocationOut = location
+			}
+			{
+				Type = SetRandom
+				LocationIn = location
+				LocationOut = location
+				Name = "Random Rotation"
+				Enabled = true
+				UpdateAfterInit = false
+				RotationIn = rot
+				RotationOut = rot
+				DataOut = rot
+				ValueType = Angle
+				FromValue = 0d
+				ToValue = 360d
+			}
+			{
+				Type = AddFrameOfReference
+				Name = "Add frame of reference"
+				VelocityIn = velocity
+				VelocityOut = velocity
+				Enabled = true
+				VelocityInOut = velocity
+				RotationIn = rot
+				RotationOut = rot
+				UpdateAfterInit = false
+			}
+			{
+				Type = ScaleFromIntensity
+				ScaleOut = scale
+				ScaleFactor = 0.25
+				IntensityExponent = 0.5
+				Name = ""
+				Enabled = true
+				UpdateAfterInit = false
+			}
+			{
+				Type = ScaleToWorldSpace
+				ScaleIn = scale
+				ScaleOut = scale
+				Name = ""
+				Enabled = true
+				UpdateAfterInit = false
+			}
+		]
+		Material : ^/0/Material
+		{
+			Texture : ^/0/Texture
+			{
+				File = "ourple_beam_hit.png"
+			}
+		}
+	}
+}

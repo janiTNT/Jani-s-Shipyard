@@ -1,0 +1,158 @@
+Part : <./data/ships/base_part.rules>/Part
+{
+	CrewKillChanceWhenDestroyed = 0%
+	CrewThrowSpeedWhenDestroyed = 25
+	Size = [1, 1]
+	Density = 1
+	IsCrewSalvageable = false
+	Flammable = false
+	UnderlyingPartPerTile = ""
+	CreatePartPerTileWhenGrabbed = ""
+	EditorReplacementPartID = janiTNT.megarockarmor_1x1
+	AllowedDoorLocations = []
+	IsRotateable = true
+	IsFlippable = true
+	IgnoreRotationForMirroredSelection = false
+	CrewSpeedFactor = 0
+
+	SalvageProgressMediaEffectsTimeout = 1
+	SalvageProgressMediaEffects
+	[
+		&<./data/ships/common/particles/salvage_progress_sparks.rules>
+		&<./data/ships/common/particles/salvage_progress_ship_quad.rules>
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			//Location = [0.5, 0.5]
+			WhenSalvaged = true
+			MediaEffects
+			[
+				&<particles/salvage_complete_shrapnel_occult.rules>
+				&<./data/ships/common/particles/salvage_complete_ship_flash.rules>
+				&<./data/ships/common/particles/salvage_complete_ship_smoke.rules>
+
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+			]
+		}
+		BoomStorage
+		{
+			Type = ResourceStorage
+			ResourceType = sigil.death
+			MaxResources = 320
+			ToggleOnResources = 320
+			InitToMaxResources = 0
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		DetonateTrigger
+		{
+			Type = Timer
+			OperationalToggle = BoomStorage
+			Duration = 0.3
+			AutoStart = true
+			Repeats = true
+		}
+		DetonateEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = false
+					}
+				}
+			]
+		}
+		DestroyedEffectsDeathBySigil
+		{
+			Type = DeathEffects
+			OperationalToggle = BoomStorage
+			HitEffects
+			[
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = sigil.death
+					TotalDrain = -640
+					Radius = 7
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+						Friendlies = true
+						Self = true
+					}
+				}
+			]
+		}
+		HealTrigger
+		{
+			Type = Timer
+			//OperationalToggle = BoomStorage
+			Duration = 2
+			AutoStart = true
+			Repeats = true
+		}
+		HealEffects
+		{
+			// This just heals
+
+			Type = TriggeredEffects
+			Trigger = HealTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = -750
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = false
+					}
+				}
+			]
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects
+			[
+				&<particles/quarter_huge_part_exploding.rules>
+				&<particles/salvage_complete_shrapnel_occult.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+			Location = [.5, .5]
+		}
+	}
+}

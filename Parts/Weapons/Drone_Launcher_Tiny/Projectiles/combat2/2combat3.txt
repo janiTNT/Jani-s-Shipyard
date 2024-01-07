@@ -1,0 +1,29 @@
+ID = "juanTNT.combatdroneMK_2.3"
+Range = &<2combatbase.txt>/Range
+IdealRange = &<2combatbase.txt>/IdealRange
+Speed = -15
+ReceivableBuffs = [Improve_Weapon_Range]
+
+Components : &<2combatbase.txt>/Components
+{
+	DeathByEnemyProximity : &<2combatbase.txt>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<2combatbase.txt>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects : &<2combatbase.txt>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<2combat4.txt>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+			MediaEffects = &<2combatbase.txt>/Components/DeathByEnemyProximity/OnDeath/MediaEffects
+		}
+	}
+}

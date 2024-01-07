@@ -1,0 +1,462 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/MiningPrism"
+	IconNameKey = "Parts/MiningPrismIcon"
+	ID = janiTNT.Mining_beam_prism // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [juanTNT.Mining_beam_prism]
+	SelectionTypeID = mining_prism
+	EditorGroups = ["WeaponsEnergy", "Utilities"]
+	DescriptionKey = "Parts/MiningPrismDesc"
+	Resources
+	[
+		[steel, 32]
+		[coil, 2]
+		[diamond, 1]
+	]
+	AIValueFactor = 5
+	Size = [2, 2]
+	SelectionPriority = 1
+	MaxHealth = 8000
+	TypeCategories = [weapon, ion, mining_prism, ion_beam_prism, armor, mining]
+	ProhibitedBy : ^/0/ProhibitedBy [tall]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	InitialPenetrationResistance = 100
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	IsWalled = false
+	IgnoreRotationForMirroredSelection = true
+	CrewSpeedFactor = 0
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	NoAutoDoors = true
+	//IsExternal = true
+	//ExternalWalls = [None]
+	//InternalWalls = [All]
+	GenerateRectCollider = true
+	CreatePartPerTileWhenGrabbed = armor
+	EditorReplacementPartID = armor
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_prism.png"
+			SampleMode = Linear
+		}
+		Size = [48, 48]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		TurretToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+
+		Collider
+		{
+			Type = CircleCollider
+			Location = [1, 1]
+			Radius = .3
+			Density = 5
+			//Density = -25
+			IsHigh = true
+		}
+
+		MiningEnergy
+		{
+			Type = IonEnergyStorage
+			ResourceType = mining_energy
+			ReductionFactorPerBeam = .85
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1/1000
+			IsDrainable = true
+		}
+
+		BeamTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = MiningEnergy
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+
+		Targeter
+		{
+			Type = UITargeter
+			TargeterID = prism_aim
+			Weapons = [Turret, MiningBeamChainToggle]
+		}
+
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 1] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = TurretToggle
+			FireInterval = &<mining_laser_small.rules>/Part/Components/Weapon/FireInterval
+			FiringArc = 360d
+			CanSalvage = true
+			RotateSpeed = 60d
+			FireThresholdAngle = 0.15d
+			AIFirepowerRating = 0
+			AddAIFirepowerRatingsWhenTargetedByPartCategories = [miningbeam, mining_prism]
+			TargetingEmitter = BeamEmitter
+			SuppressWholeShipTargetOverlaysForPartsFilter = &FriendlyPrismFilter
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &FriendlyPrismFilter
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingPartsFilter = &FriendlyPrismFilter
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenTargetingPartsFilter = &FriendlyPrismFilter
+			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
+			SaveSelfTargetPartCategories = [mining_prism]
+			SaveShipRelativeTargets = true
+			//HoldTargetAfterCancel = 0.1
+			FirePermissionToggle = FireModeToggle
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			AutoTargetCrewSafetyDist = 8
+
+			FriendlyPrismFilter
+			{
+				Enemies = false
+				Junk = false
+				OnlyPartCategories = [mining_prism]
+			}
+
+			AutoTargets
+			[
+				{
+					TargetType = Salvage
+				}
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+				{
+					TargetType = Crew
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		MiningBeamChainToggle
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			OperationalToggle = PowerToggle
+			AutoFireToggle = AutoFireToggle
+			FireInterval = .2
+			AIFirepowerRating = 0
+			AddAIFirepowerRatingsWhenTargetedByPartCategories = [miningbeam, mining_prism]
+			TargetingEmitter = BeamEmitter
+			ChainFireToggleComponent = MiningBeamChainToggle
+			AllowEnemyStructureAutoTargeting = true
+			ProhibitTargetPartsFilter = &../Turret/FriendlyPrismFilter // Don't force fire on friendly ion prisms!
+			ProhibitShipRelativePointTargets = true
+			SuppressWholeShipTargetOverlaysForPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressFirepowerEstimationWhenTargetingPartsFilter = &../Turret/FriendlyPrismFilter
+			SuppressFirepowerEstimationWhenNotTargetingShipRelativePoints = true
+			SaveSelfTargetPartCategories = [mining_prism]
+			SaveShipRelativeTargets = true
+			DefaultDirectControlBinding = 0
+			FirePermissionToggle = FireModeToggle
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+			
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}
+
+		BeamEmitter : <beam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			FireTrigger = BeamTrigger
+			GetTargetFrom = Turret
+			ResourceStorage = MiningEnergy
+			ResourcesUsed = 1000
+			MinResourcesUsed = 1
+			FireDelay = &HitInterval // Needed to let multiple beams accumulate their energy.
+			Duration = &HitInterval // Can't be longer than HitInterval or it can create positive feedback loops.
+			EffectsScaleFactor = MiningEnergy
+			ValueScaleFactor = MiningEnergy
+			ResourceScaleFactor = MiningEnergy
+			UpdateScaleFactorsPerEmit = true
+		}
+		
+		Floor
+		{
+			Type = SpriteGrid
+			Location = [.5, .5]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "./Data/ships/terran/armor/armor.png"
+						//NormalsFile = "./Data/ships/terran/armor/armor_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/armor/armor_33.png"
+						//NormalsFile = "./Data/ships/asteroid/rock/rock_4x4_v1_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/armor/armor_66.png"
+						//NormalsFile = "./Data/ships/asteroid/rock/rock_4x4_v1_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "floors"
+		}
+		
+		Walls
+		{
+			Type = SpriteGrid
+			Location = [.5, .5]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "./Data/ships/terran/armor/armor.png"
+						//NormalsFile = "./Data/ships/terran/armor/armor_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/armor/armor_33.png"
+						//NormalsFile = "./Data/ships/asteroid/rock/rock_4x4_v1_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/armor/armor_66.png"
+						//NormalsFile = "./Data/ships/asteroid/rock/rock_4x4_v1_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "walls"
+		}
+		
+		Roofs
+		{
+			Type = SpriteGrid
+			Location = [.5, .5]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "./Data/ships/terran/armor/roof.png"
+						NormalsFile = "./Data/ships/terran/armor/roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/armor/roof_33.png"
+						NormalsFile = "./Data/ships/terran/armor/roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/armor/roof_66.png"
+						NormalsFile = "./Data/ships/terran/armor/roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "roofs"
+		}
+
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Location = [0, 0]
+			Rotation = 90d
+			OperationalToggle = BeamEmitter
+			Walls
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "shadow.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"energy1.png"
+							"energy2.png"
+							"energy3.png"
+							"energy4.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.02//375
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "prism.png"
+						NormalsFile = "prism_n.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		DestroyedEffectsCold = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/Components/DestroyedEffectsCold
+
+		DestroyedEffectsHot = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/Components/DestroyedEffectsHot
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints_prism.png"
+			Size = [2, 2]
+			Offset = [0, 0]
+		}
+	}
+
+	Stats
+	{
+
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/IonBeam"
+			Stats
+			{
+				Range = &~/Part/Components/BeamEmitter/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				ShotSpeed = Infinity
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+
+				ReductionFactorPerBeam = &~/Part/Components/MiningEnergy/ReductionFactorPerBeam
+				BeamDamageFalloff
+				[
+					(1 - (&../ReductionFactorPerBeam)) * 100
+					(&../ReductionFactorPerBeam)^0 * 100
+					(&../ReductionFactorPerBeam)^1 * 100
+					(&../ReductionFactorPerBeam)^2 * 100
+					(&../ReductionFactorPerBeam)^3 * 100
+					(&../ReductionFactorPerBeam)^4 * 100
+				]
+			}
+		}
+	]
+}

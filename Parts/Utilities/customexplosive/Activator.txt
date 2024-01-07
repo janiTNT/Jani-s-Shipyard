@@ -1,0 +1,424 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CustomExplosivesActivator"
+	IconNameKey = "Parts/CustomExplosivesActivatorIcon"
+	ID = juanTNT.custom_explosive_activator // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Utilities"
+	DescriptionKey = "Parts/CustomExplosivesActivatorDesc"
+	TypeCategories = [explosives]
+	Size = [1, 1]
+	SelectionPriority = 1
+	MaxHealth = 1000
+	Density = 2
+	CreatePartPerTileWhenDestroyed = ""
+	CrewSpeedFactor = 0
+	AllowedDoorLocations = []
+	Resources
+	[
+		[steel, 32]// 25 = 800
+		[coil2, 4] // 300 = 1200
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ExplosiveBuff, DisableExplosivesBuff, NukeExplosiveBuff, Logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+	//XXXXXXXXXXX SKIPY 
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		LogicRepeatingTrigger
+		{
+			Type = Timer
+			Duration = .05
+			OperationalToggle = LogicSignal
+			AutoStart = true
+			Repeats = true
+		}
+		LogicDetonateEffects
+		{
+			// SKIPY
+
+			Type = TriggeredEffects
+			Trigger = LogicRepeatingTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
+		
+	//XXXXXXXXXXX SKIPY 
+		DetonateTrigger
+		{
+			Type = UITrigger
+			TriggerID = "detonate"
+			RequiresCommand = false
+		}
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = DisableExplosivesBuff
+			GridDistance = 40
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		CanExplode1
+		{
+			Type = MultiToggle
+			Toggles = [ActivatorSpamBuffToggle]
+			Mode = All
+			Invert = true
+		}
+		ActivatorSpamBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = DisableExplosivesBuff
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		
+		
+		AllowNukeBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = ExplosiveBuff
+			MinBuffValue = 8
+			MaxBuffValue = 999999999
+		}
+		HasNukeBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = NukeExplosiveBuff
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		AllowNuke
+		{
+			Type = MultiToggle
+			Toggles = [AllowNukeBuffToggle, HasNukeBuffToggle, CanExplode1]
+			Mode = All
+		}
+
+		DetonateEffects
+		{
+			// This just destroys the part, which in turn will trigger the DeathEffects, causing the actual collateral damage.
+
+			Type = TriggeredEffects
+			Trigger = DetonateTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
+		
+		NukeDestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+			OperationalToggle = AllowNuke
+
+			HitEffects
+			[
+				//Extremly jank solution but it works
+				{
+					Type = SpawnBullets
+					Bullet
+					{
+						ID = "juanTNT.nukedie"
+						Range = 1
+						IdealRange = 1
+						IdealRadius = 1
+						Speed = 0
+						ReceivableBuffs = [NukeExplosiveBuff]
+
+						Components
+						{
+							Physics
+							{
+								Type = CirclePhysics
+								Radius = 0.01
+								Density = 0.001
+							}
+
+							Death
+							{
+								Type = DeathByLifetime
+								Lifetime = 0
+								OnDeath
+								{
+									MediaEffectsScale = { BaseValue=0.9; BuffType=NukeExplosiveBuff; BuffMode=Multiply; }
+									MediaEffects
+									[
+										&<./Data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+										&<./Data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+
+										: /BASE_SOUNDS/AudioExterior
+										{
+											Sound = "./Data/shots/missile_nuke/missile_nuke_hit.wav"
+											Volume = 1
+										}
+
+										: /BASE_SHAKE
+										{
+											ShakeAmount = .35
+											Duration = .75
+										}
+									]
+								}
+							}
+						}
+					}
+					Count = 1
+					Distance = 1
+					InheritVelocity = true
+					ScaleCount = false
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=230000; BuffType=NukeExplosiveBuff; BuffMode=Multiply; }
+					Radius = { BaseValue=10; BuffType=NukeExplosiveBuff; BuffMode=Multiply; Exponent=0.5;}
+					Delay = .1
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=80000; BuffType=NukeExplosiveBuff; BuffMode=Multiply; }
+					Radius = { BaseValue=9; BuffType=NukeExplosiveBuff; BuffMode=Multiply; Exponent=0.5; }
+					Delay = .2
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+		/*
+		use a BuffToggle set with Invert = true and tie it to the IsOperational toggle. The BuffToggle should correspond to a Buff coming from a BuffProvider that is set to the range that you want the part to not work when placed at that range from another part.	
+		
+		*/
+			Type = DeathEffects
+			Location = [.5, .5]
+			OperationalToggle = CanExplode1
+
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet
+					{
+						ID = "juanTNT.xploddie"
+						Range = 1
+						IdealRange = 1
+						IdealRadius = 1
+						Speed = 0
+						ReceivableBuffs = [ExplosiveBuff]
+
+						Components
+						{
+							Physics
+							{
+								Type = CirclePhysics
+								Radius = 0.01
+								Density = 0.001
+							}
+
+							Death
+							{
+								Type = DeathByLifetime
+								Lifetime = 0
+								OnDeath
+								{
+									MediaEffectsScale = { BaseValue=0.75; BuffType=ExplosiveBuff; BuffMode=Multiply; }
+									MediaEffects
+									[
+										&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+										&<./Data/common_effects/particles/explosions/med_part_explode_debris.rules>
+										&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
+										&<./Data/ships/terran/explosive_charge/particles/explosive_charge_shockwave.rules>
+										&<./Data/common_effects/particles/explosions/med_part_explode_smoke.rules>
+										&<./Data/common_effects/particles/explosions/med_part_explode_sparks.rules>
+
+										: /BASE_SOUNDS/AudioExterior
+										{
+											Sound = "./Data/common_effects/sounds/big_part_destroyed.wav"
+											Volume = 2
+											SpeedVariation = .25
+										}
+
+										: /BASE_SHAKE
+										{
+											ShakeAmount = .15
+											Duration = 1
+										}
+										
+										//&<./Data/shots/bullet_railgun/particles/bullet_flash_railgun.txt>
+									]
+								}
+							}
+						}
+					}
+					Count = 1
+					Distance = 1
+					InheritVelocity = true
+					ScaleCount = false
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=28000; BuffType=ExplosiveBuff; BuffMode=Multiply; }
+					Radius = { BaseValue=2.5; BuffType=ExplosiveBuff; BuffMode=Multiply; Exponent=0.5; }
+					Delay = .05
+					ImpulsePerNDamage = 100
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=10000; BuffType=ExplosiveBuff; BuffMode=Multiply; }
+					Radius = { BaseValue=2; BuffType=ExplosiveBuff; BuffMode=Multiply; Exponent=0.5; }
+					Delay = .1
+					ImpulsePerNDamage = 50
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+		}
+		
+		EmptyDestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+			
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/med_part_destroyed.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .35
+					Duration = .75
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "Doodads.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"IgniterDoodads1.png"
+							"IgniterDoodads2.png"
+							"IgniterDoodads3.png"
+							"IgniterDoodads4.png"
+							"IgniterDoodads5.png"
+							"IgniterDoodads4.png"
+							"IgniterDoodads3.png"
+							"IgniterDoodads2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/Components/Graphics/Roof
+			OperationalRoofDoodad = &<./Data/ships/terran/explosive_charge/explosive_charge.rules>/Part/Components/Graphics/OperationalRoofDoodad
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints1.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		SimpleDamage = &~/Part/Components/DestroyedEffects/HitEffects/1/TotalDamage/BaseValue
+		DamageArea = &~/Part/Components/DestroyedEffects/HitEffects/1/Radius/BaseValue
+	}
+}

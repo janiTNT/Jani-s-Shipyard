@@ -1,0 +1,238 @@
+Part : <../../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicPiston1x1"
+	IconNameKey = "Parts/LogicPiston1x1Icon"
+	ID = janiTNT.Logic_Piston_1x1
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicPiston1x1Desc"
+	Resources
+	[
+		[steel, 4]
+		[coil, 4]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	AllowedContiguity = [Bottom, Left, Right]
+	ExternalWalls = [TopLeft, TopRight, Left, Right, BottomLeft, BottomRight, Bottom]
+	InternalWalls = [Top]
+	TypeCategories = [logic, pistons]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "floor1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [XorFinal]
+			Mode = All
+		}
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+//|||||||||||||||||||||||| XOR END ||||||||||||||||||||||||
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		BaseGraphics
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor1.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor2.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		GraphicsPistonhead
+		{
+			Type = Graphics
+			ChainedTo = HeadSlider
+			Location = [0.5, 0.5]
+			Floor
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "head.png"
+						NormalsFile = "head_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Offset = [0, -(2/64)]
+				DamageLevels
+				[
+					{
+						File = "roofhead_-2px.png"
+						NormalsFile = "roofhead_-2px_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				Offset = [0, -1]
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/walls/External04.png"
+						NormalsFile = "./data/ships/terran/walls/External_normals04.png"
+						UVRotation = 2
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/walls/External04_33.png"
+						NormalsFile = "./data/ships/terran/walls/External_normals04_33.png"
+						UVRotation = 2
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/walls/External04_66.png"
+						NormalsFile = "./data/ships/terran/walls/External_normals04_66.png"
+						UVRotation = 2
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		GraphicsTubes
+		{
+			Type = Graphics
+			ChainedTo = TubeSlider
+			Location = [0.5, 0.5]
+			OperationalToggle = ShowToobes
+			OperationalLighting
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "tubes.png"
+						NormalsFile = "tubes_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		ExtentionTween
+		{
+			Type = ValueTween
+			OnTweenDuration = 0.5
+			OffTweenDuration = 0.5
+			IsOnToggle = IsOperational
+		}
+		HeadSlider
+		{
+			Type = TransformLerp
+			ValueFrom = ExtentionTween
+			StartLocation = [0, 0]
+			EndLocation = [0, -1]
+		}
+		TubeSlider
+		{
+			Type = TransformLerp
+			ValueFrom = ExtentionTween
+			StartLocation = [0, 0]
+			EndLocation = [0, -0.75]
+		}
+		ShowToobes
+		{
+			Type = ThresholdToggle
+			ValueFrom = ExtentionTween
+			MinAmount = 2%
+		}
+		
+		HeadCollider
+		{
+			Type = PolygonCollider
+			ChainedTo = HeadSlider
+			Vertices
+			[
+				[0, 0]
+				[0, 1]
+				[1, 1]
+				[1, 0]
+			]
+			Density = 1
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "floor1.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+	}
+}

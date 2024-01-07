@@ -1,0 +1,4 @@
+// This is a "fake" type of resource used to track if a guardian part should immediately self destruct and spread itself.
+ID = sigil.death
+NameKey = "Resource/IonEnergy"
+ReturnToStorage = false

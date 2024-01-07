@@ -1,0 +1,89 @@
+Components
+{
+	SteelConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = steel
+		Storage = SteelStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = SplitToggle
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	BarConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = cut.steel
+		Storage = BarStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = MergeToggle
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	SteelStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = steel
+		GridRect = [0, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [12/64, 4/64, 6/64, 11/64]
+		SuppliesResources = true
+		SuppliesResourcesToggle = MergeToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+	BarStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = cut.steel
+		GridRect = [1, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [6/64, 4/64, 12/64, 11/64]
+		SuppliesResources = true
+		SuppliesResourcesToggle = SplitToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+		
+	ResourceConverterSplit
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsSplitToggle
+		From
+		[
+			{
+				Storage = SteelStorage
+				Quantity = 1
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 40
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = BarStorage
+		ToQuantity = 5
+		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+	}
+
+	ResourceConverterMerge
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsMergeToggle
+		From
+		[
+			{
+				Storage = BarStorage
+				Quantity = 5
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 40
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = SteelStorage
+		ToQuantity = 1
+		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+	}
+}

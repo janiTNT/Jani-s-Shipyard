@@ -1,0 +1,560 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ControlRoom1x1KROOM"
+	IconNameKey = "Parts/ControlRoom1x1KROOMIcon"
+	ID = janiTNT.Controlroom1x1_kroom // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [Kroom.Control_Room01_1x1]
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/ControlRoom1x1KROOMDesc"
+	Resources
+	[
+		[steel, 20]//500
+		[coil2, 10]//3000
+		[processor, 1]//2500
+	]
+	AIValueFactor = 5
+	Size = [1, 1]
+	SelectionPriority = 0
+	SelectionTypeID = "control_room"
+	MaxHealth = 500
+	ContiguityOriginPriority = 1
+	TypeCategories = [command, uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsLowPriorityDeconstruction = true
+	AllowedDoorLocations
+	[
+		[0, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "kroom_icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		CrewSource
+		{
+			Type = CrewSource
+			Crew = 1
+			IdleRect = [0.45, 0.75, 0.1, 0.1]
+			ColorSRange = [0, 0.25]
+			ColorVRange = [0.5, 0.75]
+		}
+		
+		Airlock
+		{
+			Type = Airlock
+			OperationalToggle = PowerToggle
+			EnterExitPoint = [.5, .66]
+			NuggetEjectVelocity = 2
+			NuggetEjectDirection = [-100d, -80d]
+			NuggetEjectDoorOpenDuration = 0.65
+			UITileRect = [10/64, 10/64, 1 - 20/64, 1 - 20/64]
+
+			CrewEnterEffects = &<./data/ships/terran/airlock/airlock.rules>/Part/Components/Airlock/CrewEnterEffects
+
+			CrewLeaveEffects = &<./data/ships/terran/airlock/airlock.rules>/Part/Components/Airlock/CrewLeaveEffects
+		}
+		
+		AirlockOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 1
+		}
+		
+		AirVentingSprite
+		{
+			Type = OpenCloseSprite
+			Location = [.5, .5]
+			OperationalToggle = AirlockOpenToggle
+			Layer = "doodads_low"
+			OpenAtlasSprite
+			{
+				AnimationFiles
+				[
+					"./data/ships/terran/airlock/air1.png"
+					"./data/ships/terran/airlock/air2.png"
+					"./data/ships/terran/airlock/air3.png"
+					"./data/ships/terran/airlock/air4.png"
+
+					"./data/ships/terran/airlock/air5.png"
+					"./data/ships/terran/airlock/air6.png"
+					"./data/ships/terran/airlock/air7.png"
+					"./data/ships/terran/airlock/air8.png"
+
+					"./data/ships/terran/airlock/air9.png"
+					"./data/ships/terran/airlock/air10.png"
+					"./data/ships/terran/airlock/air11.png"
+					"./data/ships/terran/airlock/air12.png"
+
+					"./data/ships/terran/airlock/air0.png"
+				]
+				Size = [1, 1]
+				AnimationInterval = 0.04
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+			ClosedAtlasSprite
+			{
+				AnimationFiles
+				[
+					"./data/ships/terran/airlock/air12.png"
+					"./data/ships/terran/airlock/air11.png"
+					"./data/ships/terran/airlock/air10.png"
+					"./data/ships/terran/airlock/air9.png"
+
+					"./data/ships/terran/airlock/air8.png"
+					"./data/ships/terran/airlock/air7.png"
+					"./data/ships/terran/airlock/air6.png"
+					"./data/ships/terran/airlock/air5.png"
+
+					"./data/ships/terran/airlock/air4.png"
+					"./data/ships/terran/airlock/air3.png"
+					"./data/ships/terran/airlock/air2.png"
+					"./data/ships/terran/airlock/air1.png"
+
+					"./data/ships/terran/airlock/air0.png"
+				]
+				Size = [1, 1]
+				AnimationInterval = 0.04
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Mode = All
+		}
+		
+		IsSharing
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, PartCrew]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/ControlRoom_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+			AllowNonContiguousCrewSearch = true
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 250
+			MinFromQuantityForConversion = 1
+			Interval = 25
+		}
+
+		//CODE COMPLETLY TAKEN FROM KROOM'S FORGE.   MINOR EDITS FOR COMPATIBILITY
+		//----------- Share Power to adjacent parts --------------
+		ResourceProxyTop
+		{
+			Type = ResourceStorageProxy
+			ResourceType = battery
+			PartLocation = [0, -1]
+			ComponentID = BatteryStorage
+//			PartCriteria
+//			{
+//				Category = uses_power
+//			}
+		}
+		ResourceProxyBottom : ResourceProxyTop
+		{
+			PartLocation = [0, 1]
+		}
+		ResourceProxyLeft : ResourceProxyTop
+		{
+			PartLocation = [-1, 0]
+		}
+		ResourceProxyRight : ResourceProxyTop
+		{
+			PartLocation = [1, 0]
+		}
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			OperationalToggle = PowerShareToggle
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage, ResourceProxyTop, ResourceProxyBottom, ResourceProxyLeft, ResourceProxyRight]
+//			AddMode = PrioritizeLeastAmmo
+//			RemoveMode = PrioritizeMostAmmo
+			AddMode = DistributeEvenly//PrioritizeMostEmptyCapacity
+			RemoveMode = PrioritizeLeastEmptyCapacity
+		}
+		PowerTransfer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsSharing
+			//FromStorage = CombinedBatteryStorage
+			//ToStorage = CombinedBatteryStorage
+			//FromQuantity = 500
+			//ToQuantity = 500
+			From// Make it 100% sure it can transfer, does not waste any power whatsoever.
+			[
+				{
+					Storage = CombinedBatteryStorage
+					Quantity = 500
+					MinQuantityForConversion = 500
+				}
+			]
+			To
+			[
+				{
+					Storage = CombinedBatteryStorage
+					Quantity = 500
+					MinQuantityForConversion = 500
+				}
+			]
+			Interval = 0.2
+		}
+		//------------------------------------------------------------------
+
+		CommandProvider
+		{
+			Type = CommandProvider
+			OperationalToggle = IsOperational
+			CommandPoints = 10
+		}
+		
+		Sensor
+		{
+			Type = Sensor
+			OperationalToggle = IsOperational
+			SightRadius = 250
+			RadarRadius = 1100
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.5,0.66]	//seat
+			//Rotation = 180d yes, borrowed straight from kroom's forge
+		}
+		
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[0.5,0.66]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.125
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.25
+					}
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.5
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "kroom.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "kroom_walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "kroom_glow.png"
+						Size = [1, 1]
+					}
+				]
+			}
+
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -.075]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [2.5, 2.5]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [36*1.0, 255*1.0, 52*1.0]//[50*1.0,100*1.0, 255*1.0]
+					}
+				]
+			}
+		}
+
+		Graphics2
+		{
+			Type = Graphics
+			Location = [0.5, 49/64]
+			OperationalToggle = IsOperational
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/control_room_small/radar.png"
+						NormalsFile = "./data/ships/terran/control_room_small/radar_normals.png"
+						RotSpeed = 180d * 1.25
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/control_room_small/radar.png"
+						NormalsFile = "./data/ships/terran/control_room_small/radar_normals.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 0.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 2000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [0.5, 0.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [0.5, 0.5]
+		}
+
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/control_room_small/operating.wav"
+					Volume = .1
+					MaxConcurrentVolume = .3
+					Speed = .75
+					MaxConcurrent = 1
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints2.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerUsageContinuousMinutes = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 60
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		SightRange = &~/Part/Components/Sensor/SightRadius
+		RadarRange = &~/Part/Components/Sensor/RadarRadius
+
+		RecPower = (&PowerUsageContinuousMinutes) / 60
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+}

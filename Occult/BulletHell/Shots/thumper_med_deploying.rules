@@ -1,0 +1,201 @@
+ID = "janiTNT.ThumperProjectileMedDeploying"
+Range = 580
+IdealRange = [500, 570]
+IdealRadius = [5, 50]
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 5.25
+		Density = 1
+		LinearDamping = 0.5
+		AngularDamping = 1
+		//CollidesWithBullets = true
+		FrameOfReferenceDuration = 1
+	}
+
+	DeployDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = 0.5
+		FactorEffectsWith = Targetable
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<thumper_med_deployed.rules>
+					Count = 1
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = .8
+					Speed = 2
+					SpeedVariation = 0.75
+				}
+			]
+		}
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 24000
+		TargetCategory = "deploying_bumper" //exists just incase
+	}
+
+
+	AccelerationStop
+	{
+		Type = Acceleration
+		Acceleration = [-1200, -250]
+		AccelerationOverTime = [0, 0.15]
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=false; Junk=false}
+		HitCrew = &HitOperational
+		
+		HitShield = &HitOperational
+		HitOperational
+		{
+ 			Bounce = true
+			Offset = [0, 0]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Offset = [0, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		LerpScaleFrom = [1.333, 1.333]
+		LerpTime = 0.5
+		StartTime = 1/30
+		Sprite
+		{
+			Texture
+			{
+				File = "CircleShineSoft.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			VertexColor = [173, 148, 255]
+			TargetBlendMode = Add
+		}
+	}
+
+	DangerSprite
+	{
+		Type = Sprite
+		Offset = [0, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "CircleShineBright.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			VertexColor = [242, 63, 135]
+			TargetBlendMode = Add
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		StartTime = 1/30
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [28, 28]
+			VertexColor = [241, 163, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+
+	DangerGlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		StartTime = 1/30
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [28, 28]
+			VertexColor = [242, 63, 135]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

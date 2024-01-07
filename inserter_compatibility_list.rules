@@ -1,0 +1,232 @@
+Actions //THIS CODE IS FROM AEPHIEX, I HAVE ASKED PERMISSION A LONG TIME AGO. MORE WILL BE ADDED AS DEMAND IS HERE.
+[
+	// ####################################################################################################
+	// # Aephiex Own Mod.
+	// ####################################################################################################
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2918609970/terran/storage_missile_he/storage_missile_he.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ HEMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2918609970/terran/storage_missile_nuke/storage_missile_nuke.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ NukeMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2918609970/terran/storage_missile_emp/storage_missile_emp.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ EMPMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	
+	// ####################################################################################################
+	// # Galactic Allegiance - Missile Silo
+	// ####################################################################################################
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2879478059/Parts/Projectile_Weapons/missile_silo/missile_silo.rules>/Part/Components/HEMissilesComponents/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ CombinedMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+
+	// ####################################################################################################
+	// # Standalone Missile Silo - Missile Silo
+	// ####################################################################################################
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2903389522/Parts/Projectile_Weapons/missile_silo/missile_silo.rules>/Part/Components/HEMissilesComponents/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ CombinedMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+
+	// ####################################################################################################
+	// # Standalone Missile Silo - Torpedo Tube
+	// ####################################################################################################
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2903389522/Parts/Projectile_Weapons/missile_silo_singletube/missile_silo_singletube.rules>/Part/Components/HEMissilesComponents/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ CombinedMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+
+	// ####################################################################################################
+	// # Modular Missiles
+	// ####################################################################################################
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2886141879/parts/modular_missile_loader/modular_missile_loader.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ CombinedHEMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+				OperationalToggle = HEMissilesToggle
+			}
+
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_emp
+				ResourceStorages = [ EMPMissileStorageReverseProxy ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+				OperationalToggle = EMPMissilesToggle
+			}
+
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_nuke
+				ResourceStorages = [ NukeMissileStorageReverseProxy ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+				OperationalToggle = NukeMissilesToggle
+			}
+		}
+	}
+
+	// ####################################################################################################
+	// # Advanced Missile Launcher
+	// ####################################################################################################
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2892943426/advanced_launcher/he/advanced_launcher_he.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ MissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2892943426/advanced_launcher/emp/advanced_launcher_emp.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_emp
+				ResourceStorages = [ AmmoStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2892943426/advanced_launcher/nuke/advanced_launcher_nuke.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_nuke
+				ResourceStorages = [ AmmoStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+
+	/*{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2892943426/advanced_launcher/mine/advanced_launcher_mine.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			MineStorage__Aephiex
+			{
+				Type = MultiResourceStorage
+				ResourceType = mine_part
+				ResourceStorages = [ AmmoStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}*/
+]

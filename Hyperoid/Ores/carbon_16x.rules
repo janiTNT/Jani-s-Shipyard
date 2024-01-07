@@ -1,0 +1,131 @@
+Part : <../megasoft_1x1.rules>/Part
+{
+	NameKey = "Parts/HyperDepositCarbon16x"
+	DescriptionKey = "Resource/CarbonHardDesc"
+	ID = janiTNT.hyperdeposit_carbon_16x // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = []
+	SelectionTypeID = "deposit_carbon"
+	EditorGroup = "Carbon"
+	Resources
+	[
+		[carbon, 16 *16]
+	]
+	IsFlippable = true
+	IsRotateable = true
+	EditorIcon
+	{
+		Texture = "./data/ships/asteroid/deposit_carbon/deposit_carbon_3x_icon.png"
+		Size = [45, 45]
+	}
+	Components : ^/0/Components
+	{
+		Sprite1
+		{
+			Type = Sprite
+			Location = [1/8, 1/8]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "carbon1.png"
+						NormalsFile = "normal1.png"
+						Size = [.25, .25]
+					}
+				]
+				[
+					{
+						File = "carbon2.png"
+						NormalsFile = "normal2.png"
+						Size = [.25, .25]
+					}
+				]
+				&0
+			]
+			RandomUVRotation = true
+			Layer = "ore"
+		}
+		Sprite2 : Sprite1
+		{
+			Location = [1/8, 3/8]
+		}
+		Sprite3 : Sprite1
+		{
+			Location = [1/8, 5/8]
+		}
+		Sprite4 : Sprite1
+		{
+			Location = [1/8, 7/8]
+		}
+		
+		Sprite5 : Sprite1
+		{
+			Location = [3/8, 1/8]
+		}
+		Sprite6 : Sprite1
+		{
+			Location = [3/8, 3/8]
+		}
+		Sprite7 : Sprite1
+		{
+			Location = [3/8, 5/8]
+		}
+		Sprite8 : Sprite1
+		{
+			Location = [3/8, 7/8]
+		}
+		
+		Sprite9 : Sprite1
+		{
+			Location = [5/8, 1/8]
+		}
+		Sprite10 : Sprite1
+		{
+			Location = [5/8, 3/8]
+		}
+		Sprite11 : Sprite1
+		{
+			Location = [5/8, 5/8]
+		}
+		Sprite12 : Sprite1
+		{
+			Location = [5/8, 7/8]
+		}
+		
+		Sprite13 : Sprite1
+		{
+			Location = [7/8, 1/8]
+		}
+		Sprite14 : Sprite1
+		{
+			Location = [7/8, 3/8]
+		}
+		Sprite15 : Sprite1
+		{
+			Location = [7/8, 5/8]
+		}
+		Sprite16 : Sprite1
+		{
+			Location = [7/8, 7/8]
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/asteroid/deposit_carbon/deposit_carbon_3x_blueprints.png"
+			Size = [1, 1]
+		}
+		
+		CustomShipIcon
+		{
+			Type = CustomShipIcon
+			Icon : <./Data/resources/carbon/carbon.rules>/Overlay
+			{
+				Size = [32, 32]
+			}
+			Weight = &~/Part/Resources/0/1
+			PulseInterval = 2
+			PulseColor = [255, 255, 255, 64]
+			ShowAtZoom = 5
+		}
+	}
+}

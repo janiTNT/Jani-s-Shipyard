@@ -1,0 +1,111 @@
+ID = astralbar
+NameKey = "Resource/AstralBar"
+PluralNameKey = "Resource/AstralBarPlural"
+DescriptionKey = "Resource/AstralBarDesc"
+BuyPrice = 3000
+//SellPrice = 600
+//AsteroidDensity = 40 / (&BuyPrice)
+MaxPerNugget = 3
+MaxStackSize = 20
+FlexGridPriorityKey = "flex_grid_astral"
+FlexGridDefaultPriority = 1
+//CarrySpeed = 0.5
+DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
+/*
+DropRates
+{
+	PartDestroyed = 10%
+	PartSalvaged = 15%
+	PlayerPartDestroyed = 50%
+	PlayerPartSalvaged = 100%
+	StorageDestroyed = 100%
+	StorageSalvaged = 100%
+}
+*/
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "astralbar1.png"
+		NormalsFile = "astralbar_n1.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "astralbar2.png"
+		NormalsFile = "astralbar_n2.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack10.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

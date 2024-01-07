@@ -1,0 +1,16 @@
+ID = "janiTNT.smallcannondrone.end"
+Range = &<basecannon.rules>/Range
+IdealRange = &<basecannon.rules>/IdealRange
+Speed = &<basecannon.rules>/Speed
+
+Components : &<basecannon.rules>/Components
+{
+	DeathByEnemyProximity : &<basecannon.rules>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<basecannon.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<basecannon.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects = &<basecannon.rules>/Components/Targetable/OnDeath/MediaEffects
+		}
+	}
+}

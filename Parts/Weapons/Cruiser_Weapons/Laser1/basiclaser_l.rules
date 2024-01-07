@@ -1,0 +1,89 @@
+Part : <basiclaser.rules>/Part
+{
+	NameKey = "Parts/FTL_defenselaser"
+	IconNameKey = "Parts/FTL_defenselaserLeftIcon"
+	ID = janiTNT.FTL_defense_laser_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ProhibitRects
+	[
+		[fighter, [-1, -1, 1, 1]]// TO ENSURE COMPATIBILITY
+	]
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		[1, 0]
+		[0, 1]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_l.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		Collider : &<basiclaser.rules>/Part/Components/Collider
+		{
+			Location = [.25, -0.375]
+		}
+		
+		Turret : &<basiclaser.rules>/Part/Components/Turret
+		{
+			Location = [.25, -0.375]// Slightly higher.
+			Rotation = -180d
+		}
+		
+		TurretHolder : &<basiclaser.rules>/Part/Components/TurretHolder
+		{
+			Location = [.25, -.5]
+		}
+		
+		/*Graphics : &<basiclaser.rules>/Part/Components/Graphics
+		{
+			WallsStencil
+			{
+				Layer = "walls_stencil"
+				Offset = [-0.25, -1]
+				DamageLevels
+				[
+					{
+						File = "../base/basicmount_stencil.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}*/
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/LaserBoltSmall"
+			Stats
+			{
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
+				Damage = [&../DamagePerShot, &../DamagePerSecond]
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				Arc = deg(&~/Part/Components/Turret/FiringArc)
+				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
+				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
+				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
+				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+			}
+		}
+	]
+}

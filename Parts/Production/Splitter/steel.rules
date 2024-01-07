@@ -1,0 +1,153 @@
+Components
+{
+	SteelConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = steel
+		Storage = SteelStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = SplitToggle
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	BarConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = cut.steel
+		Storage = BarStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = MergeToggle
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	SteelStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = steel
+		GridRect = [0, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [12/64, 4/64, 6/64, 11/64]
+		SuppliesResources = true
+		SuppliesResourcesToggle = MergeToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+	BarStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = cut.steel
+		GridRect = [1, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [6/64, 4/64, 12/64, 11/64]
+		SuppliesResources = true
+		SuppliesResourcesToggle = SplitToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+	InBarStorage
+	{
+		Type = ResourceStorage
+		OperationalToggle = IsOperational
+		ResourceType = cut.steel
+		MaxResources = 5 + 1
+		StartingAmmo = 0
+		ToggleOnResources = 5
+		ToggleOffResources = (&ToggleOnResources) - 1
+	}
+	SteelSplitter
+	{
+		Type = InlineResourceConverter
+		ResourceType = steel
+		FromStorage = SteelStorage
+		FromQuantity = 1
+		ToQuantity = 5
+	}
+		
+	ResourceConverterSplit
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsSplitToggle
+		From
+		[
+			{
+				Storage = SteelSplitter
+				Quantity = 1
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 40
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = BarStorage
+		ToQuantity = 1
+		Interval = { BaseValue=0.1; BuffType=Factory; BuffMode=Divide; }
+	}
+
+	ResourceConverterMerge
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsMergeToggle
+		From
+		[
+			{
+				Storage = BarStorage
+				Quantity = 1
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 10
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = InBarStorage
+		ToQuantity = 1
+		Interval = { BaseValue=0.1; BuffType=Factory; BuffMode=Divide; }
+	}
+	
+	ResourceConverterMergeX
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsMergeToggle
+		From
+		[
+			{
+				Storage = InBarStorage
+				Quantity = 5
+			}
+		]
+		ToStorage = SteelStorage
+		ToQuantity = 1
+		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+	}
+	
+	ConvertEffectsA
+	{
+		Type = TriggeredEffects
+		Trigger = ResourceConverterSplit
+		Location = [1, 1]
+		MediaEffects = &/COMMON_EFFECTS/ResourcePickup
+	}
+	ConvertEffectsB
+	{
+		Type = TriggeredEffects
+		Trigger = ResourceConverterMerge
+		Location = [1, 1]
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				Sound = "./Data/ships/terran/factory_ammo/bullet_create.wav"
+				Volume = .075
+				SpeedVariation = .1
+			}
+		]
+	}
+	ConvertEffectsC
+	{
+		Type = TriggeredEffects
+		Trigger = ResourceConverterMergeX
+		Location = [1, 1]
+		MediaEffects = &/COMMON_EFFECTS/MetalDeliver
+	}
+}

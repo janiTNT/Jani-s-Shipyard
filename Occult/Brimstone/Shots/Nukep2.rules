@@ -1,0 +1,82 @@
+ID = "janiTNT.imperium_boss_nuke_phase2"
+Range = &<Nukep1.rules>/Range
+IdealRange = &<Nukep1.rules>/IdealRange
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [3, 1]
+		Density = 2
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	BoostAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [0, 500]
+		AccelerationOverTime = [0, 0.6]
+	}
+	
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+	}
+	DeathByDistanceTraveledTargeted
+	{
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range) * 2
+		HasTarget = true
+	}
+	
+	LaserSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Offset = [200/4, 0]
+		//Spin = 360d
+		Z = .25
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "laser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [200/2, 2]
+			VertexColor = [256*0.75, 0, 0]
+			TargetBlendMode = Add
+		}
+	}
+
+	Sprite = &<Nukep1.rules>/Components/Sprite
+
+	LightsSprite = &<Nukep1.rules>/Components/LightsSprite
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-102/64, 0]
+		StartTime = 0.2
+		Rotation = 180d
+		MediaEffects
+		[
+			&<NukePlume.rules>
+			&<NukePlumeLight.rules>
+		]
+	}
+
+	Targetable = &<Nukep1.rules>/Components/Targetable
+
+	Hit = &<Nukep1.rules>/Components/Hit
+}

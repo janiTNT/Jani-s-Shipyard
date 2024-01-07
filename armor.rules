@@ -1,0 +1,17 @@
+Part : <./Data/ships/terran/armor/armor.rules>/Part
+{
+	NameKey = "Parts/Armor"
+	IconNameKey = "Parts/ArmorIcon"
+	ID = janiTNT.sus // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [among]
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/ArmorDesc"
+	IsBuildable = false //THIS IS JUST FOR ADDING RESOURCES TO BUILD MENU
+	Resources
+	[
+		[goldium, 5]
+		//[cut.steel, 5]
+		[cut.tristeel, 5]
+		//[cut.coil, 5]
+	]
+}

@@ -1,0 +1,123 @@
+Conversions
+[
+	{
+		From = janiTNT.hyperock_1x1_wedge_soft
+		To = janiTNT.hyperock_1x1_wedge
+	}
+	{
+		From = janiTNT.hyperock_1x2_wedge_soft
+		To = janiTNT.hyperock_1x2_wedge
+	}
+	{
+		From = janiTNT.hyperock_1x1_soft
+		To = janiTNT.hyperock_1x1
+	}
+	{
+		From = janiTNT.hyperock_2x2_soft
+		To = janiTNT.hyperock_2x2
+	}
+	{
+		From = janiTNT.hyperock_3x3_soft
+		To = janiTNT.hyperock_3x3
+	}
+	{
+		From = janiTNT.hyperock_4x4_soft
+		To = janiTNT.hyperock_4x4
+	}
+	{
+		From = janiTNT.hyperdeposit_hyperium_4x
+		To = janiTNT.hyperdeposit_hyperium_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_hyperium_9x
+		To = janiTNT.hyperdeposit_hyperium_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_hyperium_16x
+		To = janiTNT.hyperdeposit_hyperium_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_iron_4x
+		To = janiTNT.hyperdeposit_iron_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_iron_9x
+		To = janiTNT.hyperdeposit_iron_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_iron_16x
+		To = janiTNT.hyperdeposit_iron_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_sulfur_4x
+		To = janiTNT.hyperdeposit_sulfur_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_sulfur_9x
+		To = janiTNT.hyperdeposit_sulfur_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_sulfur_16x
+		To = janiTNT.hyperdeposit_sulfur_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_copper_4x
+		To = janiTNT.hyperdeposit_copper_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_copper_9x
+		To = janiTNT.hyperdeposit_copper_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_copper_16x
+		To = janiTNT.hyperdeposit_copper_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_tritanium_4x
+		To = janiTNT.hyperdeposit_tritanium_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_tritanium_9x
+		To = janiTNT.hyperdeposit_tritanium_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_tritanium_16x
+		To = janiTNT.hyperdeposit_tritanium_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_gold_4x
+		To = janiTNT.hyperdeposit_gold_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_gold_9x
+		To = janiTNT.hyperdeposit_gold_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_gold_16x
+		To = janiTNT.hyperdeposit_gold_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_carbon_4x
+		To = janiTNT.hyperdeposit_carbon_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_carbon_9x
+		To = janiTNT.hyperdeposit_carbon_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_carbon_16x
+		To = janiTNT.hyperdeposit_carbon_16x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_uranium_4x
+		To = janiTNT.hyperdeposit_uranium_4x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_uranium_9x
+		To = janiTNT.hyperdeposit_uranium_9x_hard
+	}
+	{
+		From = janiTNT.hyperdeposit_uranium_16x
+		To = janiTNT.hyperdeposit_uranium_16x_hard
+	}
+]

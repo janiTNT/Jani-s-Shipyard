@@ -1,0 +1,93 @@
+Resource = missile_part_nuke
+StackSize = (&<./data/resources/missile_part_nuke/missile_part_nuke.rules>/MaxStackSize)
+Components
+{	
+	NukeMissileStorage__Aephiex //compatibility
+	{
+		Type = MultiResourceStorage
+		ResourceType = &~/Resource
+		ResourceStorages = [TrueNUKEMissileStorage]
+		AddMode = PrioritizeLeastEmptyCapacity
+		RemoveMode = PrioritizeMostEmptyCapacity
+	}
+	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = TrueNUKEMissileStorage
+	}
+	
+	TrueNUKEMissileStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 2
+		ResourceStorage = TrueNUKEMissileStorage
+	}
+	
+	FillSprites2 : &<hyperium.rules>/Components/FillSprites2
+	{
+		RangeLow = (&~/StackSize) * (&<hyperium.rules>/StorageSize) / 2
+		RangeHigh = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ResourceStorage = TrueNUKEMissileStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/missile_part_nuke/missile_part_nuke_stack_10.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+	
+	DestroyedEffects2
+	{
+		Type = DeathEffects
+		FactorHitEffectsWith = TrueNUKEMissileStorage
+		HitEffects // Scaled with stack size.
+		[
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 6000 * (&<hyperium.rules>/StorageSize)
+				Radius = 3
+				Delay = .05
+				FireChancePerNDamage = 50%
+				NDamage = 1000
+				CrewKillChance = 10%
+				Filter
+				{
+					OperationalHealth = true
+					StructuralHealth = false
+					Friendlies = true
+				}
+			}
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 1200 * (&<hyperium.rules>/StorageSize)
+				Radius = 2
+				Delay = .05
+				Filter
+				{
+					OperationalHealth = false
+					StructuralHealth = true
+					Friendlies = true
+					Crew = false
+				}
+			}
+		]
+		MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+		Location = &<hyperium.rules>/Components/IconGraphics/Location
+	}
+}

@@ -1,0 +1,24 @@
+Particles : <spikes_base.rules>/Particles
+{
+	EmitterDef : ^/0/EmitterDef
+	{
+		PreInitializers : ^/0/PreInitializers
+		[
+			{
+				Type = SetValue
+				DataOut = base_color
+				ValueType = Color
+				Value
+				{
+					Rf = 1
+					Gf = 0
+					Bf = 0.5
+					Af = 0.11764706
+				}
+				Name = "Base color"
+				Enabled = true
+				UpdateAfterInit = false
+			}
+		]
+	}
+}

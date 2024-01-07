@@ -1,0 +1,51 @@
+Part : <./data/ships/base_part.rules>/Part
+{
+	Size = [1, 1]
+	Density = 10
+	MaxHealth = 160000 *4*4
+	IsCrewSalvageable = false
+	Flammable = false
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	UnderlyingPartPerTile = ""
+	AllowedDoorLocations = []
+	IsRotateable = false
+	IgnoreRotationForMirroredSelection = true
+	CrewSpeedFactor = 0
+	TypeCategories = [asteroid]
+	InitialPenetrationResistance = 160 * 4^2
+	ContinuingPenetrationResistance = 160 * 4^2
+
+	SalvageProgressMediaEffectsTimeout = 1.5
+	SalvageProgressMediaEffects
+	[
+		&<./data/ships/common/particles/salvage_progress_asteroid_quad.rules>
+	]
+
+	Components : ^/0/Components
+	{
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				&<salvage_complete_asteroid_pebbles.rules>
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		DeathEffects : SalvagedEffects
+		{
+			WhenSalvaged = false
+		}
+	}
+}

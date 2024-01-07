@@ -1,0 +1,146 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ArmorWedge"
+	IconNameKey = "Parts/ArmorWedgeIcon"
+	ID = janiTNT.armor_plate_flat9 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/ArmorWedgeDesc"
+	Resources
+	[
+		[steel, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	AllowedContiguity = [Right, Bottom, Top, Left]
+	SelectionTypeID = "armor"
+	MaxHealth = 2000
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = 50%
+	TypeCategories = [armor]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Flammable = false
+	UnderlyingPartPerTile = ""
+	CreatePartPerTileWhenGrabbed = ""
+	InitialPenetrationResistance = 3
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0
+	Density = 3
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [Right, BottomRight, Bottom]
+	InternalWalls = [Top, TopLeft, Left]
+	/*VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		//{ExternalCell=[0, 1]; InternalCell=[1, 0]}
+	]*/
+	AllowedDoorLocations = []
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GeneratorRequiresDoor = false
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon9.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[0.75, 0]
+				[1, 0]
+				[1, 1]
+				[0, 1]
+				[0, 0.75]
+				[0.75, 0.75]
+			]
+		}
+
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 500
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor9.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{
+						File = "armor9.png"
+						NormalsFile = "wall_n9.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof9.png"
+						NormalsFile = "roof_n9.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints9.png"
+			Size = [1, 1]
+		}
+
+		/*ConstructionStructureSprite
+		{
+			Type = Sprite
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "structure"
+			Location = [.5, .5]
+			AtlasSprite = &<../structure_wedge/structure_wedge.rules>/Part/Components/Graphics/Floor/DamageLevels/0
+		}*/
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

@@ -1,0 +1,175 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/AutoMStorage2x2"
+	IconNameKey = "Parts/AutoMStorage2x2Icon"
+	ID = janiTNT.AutoStorage_mod_2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Storage"
+	DescriptionKey = "Parts/AutoMStorage2x2Desc"
+	SelectionTypeID = "storage"
+	Resources
+	[
+		[steel, 32]
+		[coil, 4]
+	]
+	Size = [2, 2]
+	IsRotateable = true
+	MaxHealth = 4000
+	TypeCategories = [storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon7.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		ModType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_modded"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		goldiumToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 0
+		}
+		goldiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = goldiumToggle
+			IncludeInBlueprints = true
+			Components = &<Types2x2/goldium.rules>/Components
+		}
+		
+		cuttristeelToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 1
+		}
+		cuttristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = cuttristeelToggle
+			IncludeInBlueprints = true
+			Components = &<Types2x2/cuttristeel.rules>/Components
+		}
+		
+		cosmiliteToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 2
+		}
+		cosmiliteComponents
+		{
+			Type = ToggledComponents
+			Toggle = cosmiliteToggle
+			IncludeInBlueprints = true
+			Components = &<Types2x2/cosmilite.rules>/Components
+		}
+		
+		astralToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 3
+		}
+		astralComponents
+		{
+			Type = ToggledComponents
+			Toggle = astralToggle
+			IncludeInBlueprints = true
+			Components = &<Types2x2/astral.rules>/Components
+		}
+		
+		profanedcoreToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 4
+		}
+		profanedcoreComponents
+		{
+			Type = ToggledComponents
+			Toggle = profanedcoreToggle
+			IncludeInBlueprints = true
+			Components = &<Types2x2/profanedcore.rules>/Components
+		}
+		
+		cursedpagesToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 5
+		}
+		cursedpagesComponents
+		{
+			Type = ToggledComponents
+			Toggle = cursedpagesToggle
+			IncludeInBlueprints = true
+			Components = &<Types2x2/cursedpages.rules>/Components
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor1.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls1.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+
+		RoofDoorOpenToggle = &<./Data/ships/terran/storage_2x2/storage_2x2.rules>/Part/Components/RoofDoorOpenToggle
+		RoofDoorSprite = &<./Data/ships/terran/storage_2x2/storage_2x2.rules>/Part/Components/RoofDoorSprite
+
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
+			Location = [1, 1]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints1.png"
+			Size = [2, 2]
+		}
+	}
+
+	Stats
+	{
+		StorageTiles = 4
+	}
+}

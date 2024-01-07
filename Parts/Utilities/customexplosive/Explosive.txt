@@ -1,0 +1,128 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CustomExplosives"
+	IconNameKey = "Parts/CustomExplosivesIcon"
+	ID = juanTNT.custom_explosive // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Utilities"
+	DescriptionKey = "Parts/CustomExplosivesDesc"
+	TypeCategories = [explosives]
+	ExplosiveDamageAbsorption = 10%
+	ExplosiveDamageResistance = -100%
+	Size = [1, 1]
+	Density = 2
+	SelectionPriority = 1
+	MaxHealth = 500
+	CreatePartPerTileWhenDestroyed = ""
+	CrewSpeedFactor = 0
+	AllowedDoorLocations = []
+	Resources
+	[
+		[steel, 16] //400
+		[coil, 6] //600
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon2.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		BoomBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = ExplosiveBuff
+			BuffAmount = 100%
+			GridDistance = 20
+			AllowDiagonals = true
+		}
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/med_part_explode.rules>
+				&<./Data/common_effects/particles/explosions/med_part_explode_debris.rules>
+				&<./Data/common_effects/particles/explosions/big_part_explode_flash.rules>
+				&<./Data/ships/terran/explosive_charge/particles/explosive_charge_shockwave.rules>
+				&<./Data/common_effects/particles/explosions/med_part_explode_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "Explosive.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"explosivedoodads1.png"
+							"explosivedoodads2.png"
+							"explosivedoodads3.png"
+							"explosivedoodads4.png"
+							"explosivedoodads5.png"
+							"explosivedoodads6.png"
+							"explosivedoodads7.png"
+							"explosivedoodads8.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = .1
+						AnimationStartTime = Zero
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints2.png"
+			Size = [1, 1]
+		}
+	}
+}

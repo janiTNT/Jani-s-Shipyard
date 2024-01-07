@@ -1,0 +1,111 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Background_Dock_Underlay"
+	IconNameKey = "Parts/Background_Dock_UnderlayIcon"
+	ID = Skipydog.background_dock_underlay
+	EditorGroup = "Structure"
+	DescriptionKey = "Parts/Background_Dock_UnderlayDesc"
+	Resources
+	[
+		[tristeel, 24]
+	]
+	Size = [1, 1]
+	SelectionTypeID = "docking"
+	SelectionPriority = 1
+	MaxHealth = 4000
+	AllowedContiguity = [Top, Bottom]
+	HealthType = Structural
+	TypeCategories = [background_structure]
+	//ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	
+	SalvageProgressMediaEffects
+	
+	Flammable = false
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	ConstructionDuration = 0.5
+	RepairDuration = 0.5
+	UnderlyingPartPerTile = ""
+	TempConstructionPartPerTile = cosmoteer.structure
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 0.5
+	IsRotateable = true
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "../Dock.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	<dock_base.rules>/Part/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			GetColorFrom = ColorPicker1
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "bgstructure"
+				DamageLevels
+				[
+					{
+						File = "../../Structure/background_structure_small/floor.png"
+						NormalsFile = "../../Structure/background_structure_small/normals.png"
+						UVRotation = 1
+						Size = [1, 1]
+					}
+					{
+						File = "../../Structure/background_structure_small/floor_33.png"
+						NormalsFile = "../../Structure/background_structure_small/normals_33.png"
+						UVRotation = 1
+						Size = [1, 1]
+					}
+					{
+						File = "../../Structure/background_structure_small/floor_66.png"
+						NormalsFile = "../../Structure/background_structure_small/normals_66.png"
+						UVRotation = 1
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [0.5, -5.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "../../Structure/background_structure_small/blueprints.png"
+			UVRotation = 1
+			Size = [1, 1]
+			Offset = [0, 0]
+		}
+	}
+}

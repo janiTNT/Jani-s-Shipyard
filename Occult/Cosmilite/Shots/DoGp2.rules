@@ -1,0 +1,316 @@
+ID = "janiTNT.devourerofgodsphase2calamity_boss"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 2000
+IdealRange = 2000
+Speed = 400
+//ForgetTarget = true
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [105 * 2, 2 * 2] //TODO
+		Density = 8
+		//RandomExtraSpeed = [0, 2]
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 110d / 8
+		Delay = 1
+		//AvoidanceRaycastDistance = 250
+		//VelocityCompensation = 70%
+		ModifiesLinearVelocity = true
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = [0, -3]
+		AccelerationOverTime = [0, 5]
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 1
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 60 //hell
+		//HasTarget = true
+	}
+
+	HeadSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletHitSparks
+		Offset = [114, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "../../../TheseAssetsAreFromCalamityMod/DevourerS1.png"
+				MipLevels = max
+			}
+			Size = [4*4, 3*4]
+			//TargetBlendMode = Add
+			//VertexColor = [180, 180, 180]
+		}
+		//LerpScaleFrom = [1, 0]
+		//LerpTime = 0 //doesnt seem to work lets keep it there
+		StartTime = 0
+	}
+	
+	Sprite1
+	{
+		Type = Sprite
+		Offset = [114 + (-11 * 1), 0]
+		RenderBucket = BulletHitSparks
+		Sprite
+		{
+			Texture
+			{
+				File = "../../../TheseAssetsAreFromCalamityMod/DevourerS2.png"
+				MipLevels = max
+			}
+			Size = [4*4, 2*4]
+			//TargetBlendMode = Add
+			//VertexColor = [180, 180, 180]
+		}
+		//LerpScaleFrom = [1, 0]
+		//LerpTime = 0 //doesnt seem to work lets keep it there
+		StartTime = 11 * 1 / (&~/Speed)
+	}
+	
+	Sprite2 : &Sprite1
+	{Offset = [114 + (-11 * 2), 0]; StartTime = 11 * 2 / (&~/Speed);}
+	Sprite3 : &Sprite1
+	{Offset = [114 + (-11 * 3), 0]; StartTime = 11 * 3 / (&~/Speed);}
+	Sprite4 : &Sprite1
+	{Offset = [114 + (-11 * 4), 0]; StartTime = 11 * 4 / (&~/Speed);}
+	Sprite5 : &Sprite1
+	{Offset = [114 + (-11 * 5), 0]; StartTime = 11 * 5 / (&~/Speed);}
+	Sprite6 : &Sprite1
+	{Offset = [114 + (-11 * 6), 0]; StartTime = 11 * 6 / (&~/Speed);}
+	Sprite7 : &Sprite1
+	{Offset = [114 + (-11 * 7), 0]; StartTime = 11 * 7 / (&~/Speed);}
+	Sprite8 : &Sprite1
+	{Offset = [114 + (-11 * 8), 0]; StartTime = 11 * 8 / (&~/Speed);}
+	Sprite9 : &Sprite1
+	{Offset = [114 + (-11 * 9), 0]; StartTime = 11 * 9 / (&~/Speed);}
+	Sprite10 : &Sprite1
+	{Offset = [114 + (-11 * 10), 0]; StartTime = 11 * 10 / (&~/Speed);}
+	Sprite11 : &Sprite1
+	{Offset = [114 + (-11 * 11), 0]; StartTime = 11 * 11 / (&~/Speed);}
+	Sprite12 : &Sprite1
+	{Offset = [114 + (-11 * 12), 0]; StartTime = 11 * 12 / (&~/Speed);}
+	Sprite13 : &Sprite1
+	{Offset = [114 + (-11 * 13), 0]; StartTime = 11 * 13 / (&~/Speed);}
+	Sprite14 : &Sprite1
+	{Offset = [114 + (-11 * 14), 0]; StartTime = 11 * 14 / (&~/Speed);}
+	Sprite15 : &Sprite1
+	{Offset = [114 + (-11 * 15), 0]; StartTime = 11 * 15 / (&~/Speed);}
+	Sprite16 : &Sprite1
+	{Offset = [114 + (-11 * 16), 0]; StartTime = 11 * 16 / (&~/Speed);}
+	Sprite17 : &Sprite1
+	{Offset = [114 + (-11 * 17), 0]; StartTime = 11 * 17 / (&~/Speed);}
+	Sprite18 : &Sprite1
+	{Offset = [114 + (-11 * 18), 0]; StartTime = 11 * 18 / (&~/Speed);}
+	Sprite19 : &Sprite1
+	{Offset = [114 + (-11 * 19), 0]; StartTime = 11 * 19 / (&~/Speed);}
+	Sprite20 : &Sprite1
+	{Offset = [114 + (-11 * 20), 0]; StartTime = 11 * 20 / (&~/Speed);}
+	TailSprite
+	{
+		Type = Sprite
+		Offset = [114 + (-11 * 21), 0]
+		RenderBucket = BulletHitSparks
+		Sprite
+		{
+			Texture
+			{
+				File = "../../../TheseAssetsAreFromCalamityMod/DevourerS3.png"
+				MipLevels = max
+			}
+			Size = [4*4, 2*4]
+			//TargetBlendMode = Add
+			//VertexColor = [180, 180, 180]
+		}
+		//LerpScaleFrom = [1, 0]
+		//LerpTime = 0 //doesnt seem to work lets keep it there
+		StartTime = 11 * 21 / (&~/Speed)
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 32000 * 2
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 80000 * 16 * 4
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+		Penetration = 1200
+		PenetrationSpeed = 200
+		
+		SourceShipLowCollisions = false
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+		ShieldPenetrationFactor = 1 / 16
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [11 * 21/2, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 20;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			Offset = [11 * 21/2, 0]
+			ReduceEffectsByPenetration = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 8000
+					DamagePool = DamagePool
+					DoPooledDamageFirst = true
+				}
+			]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+			]
+		}
+		PenetratingStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		FinishedPenetratingOperational
+		{
+			Offset = [11 * 21/2, 0]
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = 1.5
+					SpeedVariation = .2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		FinishedPenetratingStructural
+		{
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "../../../TheseAssetsAreFromCalamityMod/OtherworldlyHit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+			]
+		}
+	}
+}

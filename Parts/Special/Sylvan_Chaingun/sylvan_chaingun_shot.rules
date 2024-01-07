@@ -1,0 +1,24 @@
+Range = 650
+
+CrewCollisions = {Enemies=true; Junk=true}
+HitCrew = &HitOperational
+
+BeamMediaEffects = &<./data/shots/chaingun_shot/chaingun_shot.rules>/BeamMediaEffects
+
+HitShield = &HitOperational
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 600 * 2
+		}
+		{
+			Type = Impulse;
+			Impulse = 20;
+		}
+	]
+	MediaEffects = &<./data/shots/chaingun_shot/chaingun_shot.rules>/HitOperational/MediaEffects
+}
+HitStructural = &HitOperational

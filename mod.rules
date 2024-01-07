@@ -1,0 +1,1236 @@
+﻿ID = "janiTNT.TechMod"
+Name = "[Beta] Jani's Shipyard"
+Author = "JaniTNT"
+Version = "Modern 1.19 Beta"
+Logo = "newlogo.png"
+CompatibleGameVersions = ["0.24.0", "0.24.1", "0.24.2", "0.24.3", "0.24.4", "0.24.5", "0.24.6", "0.24.7", "0.24.8", "0.24.9", "0.24.10", "0.24.11", "0.24.12", "0.24.13", "0.24.14", "0.24.15"]
+ModifiesMultiplayer = true
+Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
+" - Mod previously known as Juan's Workshop or Juans Shipyard\n"\
+"Discord : @janitnt \n"\
+"Official Discord Server: discord.gg/avT5xBnZdK (Come see sneak peeks and vote on important mod polls!)\n\n"\
+"<b>Special Credits</b>\n\n"\
+"Skipydog : huge support and inspiration, friend, permission to port a lot of logic parts, new Occult parts, code help, and more.\n"\
+"Ultranova : missile silo roof sprite editing permission, plus some bits of code, possibly some Blatant *inspiration*, and more.\n"\
+"Kroom : permission to port their 1x1 Cockpit from their classic mod, Kroom's forge.\n"\
+"Aephiex : Slight Compatibility with their advanced storages + AI core mod's code (just used the name for compatibility)\n"\
+"syy1125 : Code from leviathan boss \"Stellarborn\" in order to use in this mod's Bossfights. Spritework and whatnot for batteries in order to ensure compatibility.\n"\
+"\n\nBlock shading's sprites were taken from the game Mindustry by Anuke"\
+"\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource."
+StringsFolder = "Strings"
+
+/*
+CanBuild
+{
+	Type = MultiToggle
+	Toggles
+	[
+		{Toggle = IsOperational}
+		{Toggle = MaceStorage, invert = true}
+		{Toggle = SiliconStorage}
+		{Toggle = MissileStorage}
+		{Toggle = DaggerStorage}
+	]
+	Mode = All
+}
+*/
+
+Actions : &<inserter_compatibility_list.rules>/Actions
+[
+	{	Action = AddMany
+
+		AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+
+		ManyToAdd
+		[
+			&<Parts/Flight/Command Room/control_room_tiny.rules>/Part
+			&<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part
+			
+			&<Parts/Utilities/customexplosive/Activator.txt>/Part
+			&<Parts/Utilities/customexplosive/Explosive.txt>/Part
+			&<Parts/Utilities/customexplosive/NukeExplosive.txt>/Part
+			&<Parts/Power/Reactoraux/reac.txt>/Part
+			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part
+			&<Parts/Power/Radiator/Radiator.txt>/Part
+			&<Parts/Power/Port/port.rules>/Part
+			
+			&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part
+			&<Parts/Weapons/mining_laser_emitter/prism.rules>/Part
+			&<Parts/Weapons/BGF10k/BFG10k.rules>/Part
+			&<Parts/Weapons/NukeSilo/nukesilo.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser2/burst1_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2_l_alt.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1/spetum_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike_l_alt.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Focus1/dirk.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Focus1/dirk_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part
+			
+			&<Parts/Decorative/StationArmor/main.rules>/Part
+			&<Parts/Decorative/StationArmor/long.rules>/Part
+			&<Parts/Decorative/StationArmor/wedge.rules>/Part
+			&<Parts/Decorative/StationArmor/longwedge.rules>/Part
+			&<Parts/Decorative/StationArmor/three.rules>/Part
+			&<Parts/Decorative/StationArmor/t.rules>/Part
+			
+			&<Parts/Decorative/ArmorBits/block1.rules>/Part
+			&<Parts/Decorative/ArmorBits/block2.rules>/Part
+			&<Parts/Decorative/ArmorBits/block3.rules>/Part
+			&<Parts/Decorative/ArmorBits/block4.rules>/Part
+			&<Parts/Decorative/ArmorBits/block5.rules>/Part
+			&<Parts/Decorative/ArmorBits/block6.rules>/Part
+			&<Parts/Decorative/ArmorBits/block7.rules>/Part
+			&<Parts/Decorative/ArmorBits/block8.rules>/Part
+			&<Parts/Decorative/ArmorBits/block9.rules>/Part
+			
+			&<Parts/Decorative/Sheetmetals/sheet.steel>/Part
+			&<Parts/Decorative/Sheetmetals/sheet.copper>/Part
+			&<Parts/Decorative/Sheetmetals/sheet.tristeel>/Part
+			
+			//&<Parts/Defense/Overdrive Shield/OverdriveShield.rules>/Part
+			
+			&<Parts/Utilities/Decoupler/Decoupler.txt>/Part
+			&<Parts/Utilities/Decoupler/CorridorDecoupler.txt>/Part
+			&<Parts/Utilities/Decoupler/Decoupler_Boomed.txt>/Part			
+			
+			&<Parts/Crew/1x1 Crew/Crew1x1.rules>/Part
+			&<Parts/Crew/3x1 Crew/Crew3x1.rules>/Part
+			&<Parts/Crew/3x2 Crew/3x2crew.rules>/Part
+			&<Parts/Crew/4x1 Crew/4x1crew.rules>/Part
+			&<Parts/Crew/4x3 Crew/4x3crew.rules>/Part
+			
+			&<Parts/Production/Large_Fabricator/large_fabricator.rules>/Part
+			&<Parts/Production/Splitter/splitter.rules>/Part
+			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
+			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
+			//&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
+			
+			&<Parts/Production/inserter/inserter.rules>/Part
+			&<Parts/Production/inserter/inserterConstruction.rules>/Part
+			&<Parts/Production/inserter/inserterModded.rules>/Part
+			&<Parts/Production/inserter/inserterOres.rules>/Part
+			
+			&<Parts/Production/Long inserter/Longinserter.rules>/Part
+			&<Parts/Production/Long inserter/LonginserterConstruction.rules>/Part
+			&<Parts/Production/Long inserter/LonginserterModded.rules>/Part
+			&<Parts/Production/Long inserter/LonginserterOres.rules>/Part
+			
+			&<Parts/Production/Stack inserter/Stackinserter.rules>/Part
+			&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part
+			&<Parts/Production/Stack inserter/StackinserterModded.rules>/Part
+			&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part
+			
+			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
+			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
+			&<Parts/Background/Structure/background_structure_block/background_structure_block.rules>/Part
+			&<Parts/Background/Structure/background_structure_invertwedge/background_structure_invertwedge.rules>/Part
+			&<Parts/Background/Structure/background_structure_tri/background_structure_tri.rules>/Part
+			
+			&<Parts/Background/Dock/Underlay/dock_underlay.rules>/Part
+			&<Parts/Background/Dock/Grid/dock.rules>/Part
+			
+			&<Parts/Storage/ammo2x2.rules>/Part
+			&<Parts/Storage/build2x2.rules>/Part
+			&<Parts/Storage/mod2x2.rules>/Part
+			&<Parts/Storage/ore2x2.rules>/Part
+			
+			&<Parts/Storage/ammo3x2.rules>/Part
+			&<Parts/Storage/build3x2.rules>/Part
+			&<Parts/Storage/mod3x2.rules>/Part
+			&<Parts/Storage/ore3x2.rules>/Part
+			
+			&<Parts/Storage/3x3/ammo3x3.rules>/Part
+			&<Parts/Storage/3x3/build3x3.rules>/Part
+			&<Parts/Storage/3x3/mod3x3.rules>/Part
+			&<Parts/Storage/3x3/ore3x3.rules>/Part
+			
+			&<Parts/Storage/4x3/ammo4x3.rules>/Part
+			&<Parts/Storage/4x3/build4x3.rules>/Part
+			&<Parts/Storage/4x3/mod4x3.rules>/Part
+			&<Parts/Storage/4x3/ore4x3.rules>/Part
+			
+			&<Parts/Storage/4x4/ammo4x4.rules>/Part
+			&<Parts/Storage/4x4/build4x4.rules>/Part
+			&<Parts/Storage/4x4/mod4x4.rules>/Part
+			&<Parts/Storage/4x4/ore4x4.rules>/Part
+			
+			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part
+			&<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part
+			//&<Parts/Weapons/Drone_launcher_Medium/drone_launcher_med.rules>/Part
+			//&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
+			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
+			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Par
+			
+			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part
+			
+			&<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part
+			&<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part
+			&<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part
+			&<Parts/Flight/Pulse Thrusters/pulse_thruster_huge.rules>/Part
+			
+			&<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part
+			&<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part
+			&<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part
+			
+			&<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part
+			&<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part
+			&<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part
+			
+			
+			&<Parts/Logic/Wires/Wire1/Wire1.rules>/Part
+			&<Parts/Logic/Wires/Wire2/Wire2.rules>/Part
+			&<Parts/Logic/Wires/Split1/Split1.rules>/Part
+			&<Parts/Logic/Wires/Split2/Split2.rules>/Part
+			&<Parts/Logic/Wires/Split3/Split3.rules>/Part
+			
+			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part
+			
+			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part
+			
+			&<Parts/Logic/Util/Pistons/1x1/piston1x1.rules>/Part
+			
+			&<Parts/Logic/Util/MiniTB/MiniTB.rules>/Part
+			
+			//DEV PARTS
+			
+			//&<testsalvagebomb.rules>/Part
+			
+			
+			//Special... unfinished
+			
+			//&<Parts/Special/sylvan_chaingun/sylvan_chaingun.rules>/Part
+			//&<Parts/Special/sylvan_shield/sylvan_shield.rules>/Part
+			
+		]//&<armor.rules>/Part
+	}
+	{	Action = AddMany
+
+		AddTo = "<ships/terran/terran.rules>/Terran/Doors"
+
+		ManyToAdd
+		[
+			&<Parts/Decorative/tristeel_door/door.rules>
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_toggles.rules>/PartToggles"
+		ManyToAdd = &<gui/part_toggles.rules>/PartToggles
+	}
+	{
+		Action = AddMany
+		AddTo = "<./Data/gui/game/parts/part_colors.rules>/PartColors"
+		ManyToAdd = &<gui/part_colors.rules>/PartColors
+	}
+	{	Action = AddMany
+
+		AddTo = "<./Data/cosmoteer.rules>/Ships"
+
+		ManyToAdd
+		[
+			&<Hyperoid.rules>/Hyperoid
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<./Data/modes/career/sysgen.rules>/Spawners"
+
+		ManyToAdd
+		[
+			&<Occult/bosssysgen.rules>
+			&<Hyperoid/Hyperoid_sysgen.rules>
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<./Data/codex/tutorials/tutorials.rules>/CodexPages"
+
+		ManyToAdd
+		[
+			&<Tutorials/Inserters/Inserters.rules>
+			&<Tutorials/Bosses/bossesbeta.rules>
+		]
+	}
+	/*{	Action = AddMany
+
+		AddTo = "<./Data/music/music.rules>/RootTrack/IntroTracks"
+
+		ManyToAdd
+		[
+			&<cluster_jetstream.rules>
+		]
+	}*/
+	{	Action = Overrides
+
+		OverrideIn = "<./Data/gui/game/designer/editor_groups.rules>"
+		
+		Overrides
+		{
+			Technologies
+			{
+				NameKey = "EditorGroups/Technologies"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/Techs.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			Logic
+			{
+				NameKey = "EditorGroups/Logic"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/group_logic.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			BossParts
+			{
+				NameKey = "EditorGroups/BossParts"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/group_bosses.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		}
+	}
+	{	Action = Overrides
+
+		OverrideIn = "<./Data/planets/planets.rules>/Styles"
+		
+		Overrides
+		{
+			sun_dead = &<planets/planet_deadsun.rules>
+		}
+	}
+	{	Action = AddMany
+
+		AddTo = "<doodads/doodads.rules>/Doodads"
+
+		ManyToAdd
+		[
+			&<Hyperoid/doodad_l.rules>
+			&<Hyperoid/doodad_xl.rules>
+			&<Hyperoid/Mineables/common.rules>
+			&<Hyperoid/Mineables/metals.rules>
+			&<Hyperoid/Mineables/rares.rules>
+			
+			&<Hyperoid/poi.rules>
+			&<Occult/bossPOI.rules>
+//			&<resources/steel_bars/doodad_steel.rules>
+//			&<resources/cables/doodad_cable.rules>
+			&<resources/goldium/doodad_goldium.rules>
+			&<resources/tristeel_bars/doodad_tristeel.rules>
+			
+			&<resources/Cosmic Bar/cosmic_doodad.rules>
+			&<resources/Astral Bar/astral_doodad.rules>
+			&<resources/Profaned Core/profaned_doodad.rules>
+			&<resources/Cursed Pages/cursed_doodad.rules>
+			
+			&<planets/doodad_planet_deadsun.rules>
+			&<planets/doodad_planet_deadsun_mini.rules>
+			
+			/*{
+				ID = janiTNT.lightsource
+				Type = POI
+				DescriptionKey = "Doodads/POILightsource"
+				CategoryKey = "Doodads/POI"
+				Icon = &HudIcon
+				IndicatorSort = 1
+				IsLightSource = true
+				ShowInMinimap = true
+				HudIcon
+				{
+					Texture
+					{
+						File = "lightsource.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					Size = [32, 32]
+				}
+			}*/
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<modes/career/career.rules>/CombatDifficultyLevels"
+
+		ManyToAdd
+		[
+			{
+				ID = "mod_diffl"
+				NameKey = "CombatDifficulty/ModdedDifficulty1"
+				TipKey = "CombatDifficulty/ModdedDifficulty1Tip"
+				DamageVsEnemies = 90%
+				DamageFromEnemies = 100%
+				ResourceDrainVsEnemies = 90%
+				ResourceDrainFromEnemies = 100%
+				FireChanceVsEnemies = 100%
+				FireChanceFromEnemies = 100%
+				EnemyCombatNoBuildRadius = 800
+				EnemyCombatNoBuildDuration = 5
+			}
+			{
+				ID = "mod_diff2"
+				NameKey = "CombatDifficulty/ModdedDifficulty2"
+				TipKey = "CombatDifficulty/ModdedDifficulty2Tip"
+				DamageVsEnemies = 75%
+				DamageFromEnemies = 100%
+				ResourceDrainVsEnemies = 75%
+				ResourceDrainFromEnemies = 100%
+				FireChanceVsEnemies = 100%
+				FireChanceFromEnemies = 100%
+				EnemyCombatNoBuildRadius = 800
+				EnemyCombatNoBuildDuration = 5
+			}
+			{
+				ID = "mod_diff3"
+				NameKey = "CombatDifficulty/ModdedDifficulty3"
+				TipKey = "CombatDifficulty/ModdedDifficulty3Tip"
+				DamageVsEnemies = 60%
+				DamageFromEnemies = 110%
+				ResourceDrainVsEnemies = 60%
+				ResourceDrainFromEnemies = 110%
+				FireChanceVsEnemies = 100%
+				FireChanceFromEnemies = 100%
+				EnemyCombatNoBuildRadius = 800
+				EnemyCombatNoBuildDuration = 5
+			}
+			{
+				ID = "trollphysics"
+				NameKey = "CombatDifficulty/TrollPhy"
+				TipKey = "CombatDifficulty/TrollPhyTip"
+				DamageVsEnemies = 69%
+				DamageFromEnemies = 69%
+				ResourceDrainVsEnemies = 69%
+				ResourceDrainFromEnemies = 69%
+				FireChanceVsEnemies = 69%
+				FireChanceFromEnemies = 69%
+				EnemyCombatNoBuildRadius = 800
+				EnemyCombatNoBuildDuration = 30
+			}
+		]
+	}
+	{	
+		Action = Overrides
+
+		OverrideIn = "<gui/text_sprites.rules>"
+
+		Overrides
+		{
+			janiwh
+			{
+				Texture
+				{
+					File = "janiwh.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+			sjaniwh
+			{
+				Texture
+				{
+					File = "sjaniwh.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+			}
+		}
+	}
+	{	Action = AddMany
+
+		AddTo = "<roof_decals/roof_decals.rules>/Groups"
+
+		ManyToAdd
+		[
+			{
+				Folders = ["BlockShading"]
+				NameKey = "DecalGroups/Blockshading"
+				Icon
+				{
+					Texture
+					{
+						File = "blockshading.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	//{
+	//	Action = AddMany
+	//	AddTo = "<modes/career/techs.rules>/Techs/19/Prerequisites"// Adds fuel room as a required thing to research engine rooms, assuming no techs were deleted in the code.
+	//	ManyToAdd = [janiTNT.fuelroom]
+	//}
+	{	Action = AddMany
+
+		AddTo = "<modes/career/techs.rules>/Techs"
+
+		ManyToAdd = &<techs.rules>/Techs
+	}
+	{
+		Action = AddMany
+		AddTo = "<modes/career/career.rules>/BaseTradeShip/ResourcesCarried"
+		ManyToAdd
+		[
+			{ ResourceType=goldium;         RandomWeight=2.5;  RandomQuantity=[50%, 100%]; }
+			{ ResourceType=cut.tristeel;         RandomWeight=2.5;  RandomQuantity=[100%, 100%]; }
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<modes/career/career.rules>/TradeRoutes/StationResourceTradeDeltas"
+		ManyToAdd
+		[
+			{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
+			{ ResourceType=cut.tristeel;          DesiredDelta=[-60, 60]; }
+		]
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/buffs/buffs.rules>"
+		Overrides = &<Buffs/Buffs.txt>
+	}
+	//Aephiex Stuff
+	{
+		Action = Overrides
+		OverrideIn = "<buffs/buffs.rules>/AephiexAITerminal"
+		CreateIfNotExisting = true
+		Overrides
+		{
+		}
+	}
+	//Aephiex Stuff
+	/*{
+		Action = Overrides
+		OverrideIn = "<./Data/resources/battery/battery.rules>"
+		Overrides
+		{
+			MaxPerNugget = 4000	
+		}
+	}*/
+	{
+		Action = Replace
+		Replace = "<resources/battery/battery.rules>/MaxPerNugget"
+		IgnoreIfNotExisting = false //CreateIfNotExisting doesnt exist for replace
+		With = &<resources/battery_leviathan/battery.rules>/MaxPerNugget
+	}
+	{
+		Action = Replace
+		Replace = "<resources/battery/battery.rules>/NestedNuggetSprites"
+		IgnoreIfNotExisting = false //CreateIfNotExisting doesnt exist for replace
+		With = &<resources/battery_leviathan/battery.rules>/NestedNuggetSprites
+	}
+	{	Action = AddMany
+
+		AddTo = "<resources/resources.rules>/Resources"
+
+		ManyToAdd
+		[
+			&<resources/Heat/Heat.rules>
+			&<resources/Plasma/Plasma.rules>
+			&<resources/Mining Energy/mining_energy.rules>
+			&<resources/SigilDeath/sigildeath.rules>
+			&<resources/SigilDeath/sigildeath2.rules>
+			&<resources/SuperShieldEnergy/SuperShieldEnergy.rules>
+			
+//			&<resources/steel_bars/steel_bars.rules>
+//			&<resources/cables/cables.rules>
+			&<resources/goldium/goldium.rules>
+			&<resources/tristeel_bars/tristeel_bars.rules>
+			
+			&<resources/Cosmic Bar/cosmic_bar.rules>
+			&<resources/Astral Bar/astralbar.rules>
+			&<resources/Profaned Core/profaned_core.rules>
+			&<resources/Cursed Pages/cursedpages.rules>
+		]
+	}
+	/*{
+		Action = AddMany
+		AddTo = "<./Data/resources/battery/battery.rules>/NestedNuggetSprites"
+		ManyToAdd
+		[
+			[
+				{
+					File = "resources/battery/battery_huge.png"
+					NormalsFile = "resources/battery/battery_huge_normals.png"
+					Size = [1, 1]
+					Offset = [17/64, 0]
+					UVRotation = 3
+				}
+			]
+		]
+	}*/
+	{
+		Action = Add
+		AddTo = "<cosmoteer.rules>"
+		Name = "JANI_COMMON"
+		ToAdd = &<common/common.txt>
+	}
+	// Add custom roof decals.
+	{
+		Action = Add
+		AddTo = "<roof_decals/roof_decals.rules>/Groups/1/Folders"
+		ToAdd = "shapes"
+	}
+	{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_stats.rules>/PartStats"
+		//OnlyIfNotExisting = true
+		ManyToAdd
+		[
+			{
+				ID = InserterPowerUsage
+				FormatKey = "Stats/InserterPowerUsageFmt"
+			}
+			{
+				ID = HeatUsageContinuous
+				FormatKey = "Stats/HeatUsageContFmt"
+			}
+			{
+				ID = EngineRoomBuffEffectiveness
+				FormatKey = "Stats/EngineRoomBuffEffectivenessFmt"
+			}
+			{
+				ID = JaniBurstShots
+				FormatKey = "Stats/JaniBurstShotsFmt"
+			}
+			{
+				ID = DrainTime
+				FormatKey = "Stats/DrainTimeFmt"
+			}
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.rules>/Terran/RenderLayers"
+		OnlyIfNotExisting = true
+		ManyToAdd
+		[
+			//Sigh
+			{
+				Key = "FTLlowturrets"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = -780
+					RenderStage = Low
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/parts_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/parts.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+					GhostMaterial
+					{
+						Shader = "./data/ships/common/parts_ghost.shader"
+					}
+				}
+			}
+			// BFG Roof turret.
+			{
+				Key = "BFG"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 1400
+					RenderStage = High
+					IsRoof = true
+					Inflate = .0001
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/roof_uncolored_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/roof_uncolored.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+				}
+			}
+			// Background Structure.
+			{
+				Key = "bgstructure"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = -900
+					RenderStage = Lowest
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/parts_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/parts.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+					GhostMaterial
+					{
+						Shader = "./data/ships/common/parts_ghost.shader"
+					}
+				}
+			}
+			// Drone Construction
+			{
+				Key = "drone_construction"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 13
+					RenderStage = High
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+						//Compression = FullAlpha
+					}
+					Material
+					{
+						Shader = "common/construction_drone.shader"
+						_hotColor = [0, 255, 187, 255]
+						_coldColor = [0, 94, 255, 255]
+						_noiseTexture
+						{
+							File = "./Data/common_effects/particles/noise_gradient.png"
+							SampleMode = Linear
+							MipLevels = 7
+							UVMode = Wrap
+						}
+					}
+					DiffuseMaterial
+					{
+						Shader = "common/construction_drone_diffuse.shader"
+						_hotColor = [0, 255, 187, 255]
+						_coldColor = [0, 94, 255, 255]
+						_noiseTexture
+						{
+							File = "./Data/common_effects/particles/noise_gradient.png"
+							SampleMode = Linear
+							MipLevels = 7
+							UVMode = Wrap
+						}
+					}
+					NormalsMaterial
+					{
+						Shader = "common/construction_drone_normals.shader"
+						_noiseTexture
+						{
+							File = "./Data/common_effects/particles/noise_gradient.png"
+							SampleMode = Linear
+							MipLevels = 7
+							UVMode = Wrap
+						}
+					}
+				}
+			}
+			/*// TEMPORARY Fire LAYER DUE TO REMOVAL OF FIRE LAYER
+			{
+				Key = "fire" // Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 300
+					RenderStage = High
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/parts.shader"
+					}
+				}
+			}*/
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<ships/megaroid/megaroid.rules>/Megaroid/RenderLayers"
+		OnlyIfNotExisting = true
+		ManyToAdd
+		[
+			{
+				Key = "secondary"// Secondary Asteroid bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 20	// high enough so crew gon
+					RenderStage = High	// Never enough.
+					DrawWithShipGhost = false
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/roof_uncolored_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/roof_uncolored.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+				}
+			}
+			// Additive lights.
+			{
+				Key = "asteroid_lights_add"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 200
+					RenderStage = High
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/parts.shader"
+						TargetBlendMode
+						{
+							SourceRgbFactor = One
+							DestRgbFactor = One
+							RgbOperator = Add
+							SourceAlphaFactor = Zero
+							DestAlphaFactor = One
+							AlphaOperator = Add
+						}
+					}
+				}
+			}
+			// Asteroid additive lights.
+			{
+				Key = "asteroid_roof_lights_fancy"// Asteroid bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 1300
+					RenderStage = Highest
+					//IsRoof = true
+					DrawWithFancyLightingOnly = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+						SampleMode = Linear
+					}
+					LightMaterial
+					{
+						Shader = "./data/ships/common/roof_light.shader"
+
+						TargetBlendMode
+						{
+							SourceRgbFactor = InverseDestColor
+							DestRgbFactor = One
+							RgbOperator = Add
+							SourceAlphaFactor = Zero
+							DestAlphaFactor = One
+							AlphaOperator = Add
+						}
+					}
+				}
+			}
+		]
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/missile_launcher/he/missile_launcher_he.rules>/Components"
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [CombinedMissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/missile_launcher/emp/missile_launcher_emp.rules>/Components"
+		Overrides
+		{
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_emp
+				ResourceStorages = [MissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/missile_launcher/nuke/missile_launcher_nuke.rules>/Components"
+		Overrides
+		{
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_nuke
+				ResourceStorages = [MissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/factory_he/factory_he.rules>/Part/Components"
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [MissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/factory_emp/factory_emp.rules>/Part/Components"
+		Overrides
+		{
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_emp
+				ResourceStorages = [MissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/factory_nuke/factory_nuke.rules>/Part/Components"
+		Overrides
+		{
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_nuke
+				ResourceStorages = [MissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{	Action = AddMany
+
+		AddTo = "<ships/megaroid/megaroid.rules>/Megaroid/Parts"
+
+		ManyToAdd
+		[
+			&<Occult/sigilsmall.rules>/Part
+			&<Occult/armoroid.rules>/Part
+			&<Occult/armoroid_2.rules>/Part
+			&<Occult/armoroid_w.rules>/Part
+			&<Occult/armoroid_w2.rules>/Part
+			&<Occult/lightball_core.rules>/Part
+			&<Occult/lightball_large.rules>/Part
+			&<Occult/shipcore.rules>/Part
+			&<Occult/thrustcores.rules>/Part
+			&<Occult/shield2x1.rules>/Part
+			&<Occult/weakpoint_basic.rules>/Part
+			&<Occult/nothingroid.rules>/Part
+			&<Occult/BulletHell/ThumperSpawner.rules>/Part
+			&<Occult/BulletHell/BurstThumperSpawner.rules>/Part
+			
+			&<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
+			&<Occult/Cosmilite/armoroid_cosmilite_wide.rules>/Part
+			&<Occult/Cosmilite/missilesigil.rules>/Part
+			&<Occult/Cosmilite/Beamball.rules>/Part
+			&<Occult/Cosmilite/CosmilitebossSigil.rules>/Part
+			&<Occult/Cosmilite/lootorb.rules>/Part
+			
+			&<Occult/Profaned/armoroid_profaned.rules>/Part
+			&<Occult/Profaned/Barrageball.rules>/Part
+			&<Occult/Profaned/Pdball.rules>/Part
+			&<Occult/Profaned/UltraBall.rules>/Part
+			&<Occult/Profaned/ProfanedbossSigil.rules>/Part
+			&<Occult/Profaned/ProfanedbossSigil2.rules>/Part
+			&<Occult/Profaned/lootorb.rules>/Part
+			
+			&<Occult/Brimstone/BrimstonebossSigil.rules>/Part
+			&<Occult/Brimstone/NukeSigil.rules>/Part
+			&<Occult/Brimstone/BrimSphere.rules>/Part
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<builtin_ships/builtins.rules>/Ships"
+
+		ManyToAdd
+		[
+			{ File="Ships/Occult Riptide.ship.png"; Tags=[HyperoidGuardian] Tier=6;  Difficulty=3; }
+			//{ File="Occult/Twiceliver Guardian .ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }//remove todo quick NOW
+			{ File="Ships/MicroReaper.ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }
+			{ File="Ships/Godslayer Guardian.ship.png"; Tags=[janibossship] Tier=16;  Difficulty=3; }
+			{ File="Ships/Sol Profanatus.ship.png"; Tags=[janibossship] Tier=20;  Difficulty=3; }
+		]
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./data/modes/career/career.rules>/MissionMetatypes"
+		Overrides
+		{
+			ClearHyperoidGuardians
+			{
+				NameKey = "Missions/ClearHyperoid"
+				DescriptionKey = "Missions/ClearHyperoidDesc"
+				CategoryID = bounties
+			}
+			DefeatBossJani
+			{
+				NameKey = "Missions/DefeatBossJani"
+				DescriptionKey = "Missions/DefeatBossJaniDesc"
+				CategoryID = bounties
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./data/ai/ai.rules>"
+		Overrides
+		{
+			BossAICosmilite
+			{
+				NameKey = "AI/JaniBossAICosmilite"
+				UpdateInterval = [.5, 1] // A random range. Slower than the average AI.
+				IsAvailableInCreativeMode = true
+				IsAvailableInMultiplayer = true
+
+				StrategyModules
+				[
+					{
+						Type = AreaPatrol
+						DefaultPatrolRadius = 800
+						AvoidableDoodadTags = [sun, station]
+						AvoidableDoodadBuffer = 100
+					}
+					{
+						Type = FollowFleetLeader
+					}
+					{
+						Type = AggroEnemies
+						TargetSwitchThresholdFactor = 2
+						TargetDistanceFactorExponent = 0.5
+						TargetFirepowerCacheTime = 10
+						AcquireAggroWithinRadar = true
+						ReleaseAggroWithinRadar = true
+					}
+				]
+
+				TacticsModules
+				[
+					{
+						Type = DefaultAttackRadiusAndRotation
+						AttackRotationSwitchThresholdFactor = 1.25
+						AttackRotationsToCheck = 8
+						UseSavedAboveHealth = 0%
+					}
+					{
+						Type = RandomAttackAngle
+						AttackAngleChangeInterval = [10, 20]
+						AttackAngleChangeDelta = [-50d, 50d]
+						CoordinateFlanking = true
+					}
+				]
+
+				TargetingModules
+				[
+					{
+						Type = ValueTargeter
+						TargetChecksPerUpdate = 10
+						TargetSwitchThresholdFactor = 2
+						TargetValueFactorPerPenetrationDist = .75
+					}
+				]
+			}
+		}
+	}
+	
+	//Disabled random replacement of stuff.
+	/*{
+		Action = Replace
+		Replace = "<./data/modes/career/sysgen_planets.rules>/SubSpawners/0"
+		With
+		//{
+			{
+				Type = Doodads
+				DoodadTypes
+				[
+					{ Type=cosmoteer.planet_sun;     ChanceWeight=4; }
+					{ Type=janiTNT.planet_sun_dead;       ChanceWeight=1; }
+				]
+			}
+		//}
+		//IgnoreIfNotExisting = true
+	}
+	{
+		Action = Replace
+		Replace = "<./data/modes/creative/planets_generator.rules>/Spawners/0"
+		With
+		//{
+			{
+				Type = Doodads
+				DoodadTypes
+				[
+					{ Type=cosmoteer.planet_sun;     ChanceWeight=4; }
+					{ Type=janiTNT.planet_sun_dead;       ChanceWeight=1; }
+				]
+			}
+		//}
+		//IgnoreIfNotExisting = true
+	}*/
+	
+	
+	//SPOOKY SECRET FEATURE
+	//ONLY ADDS A BACKGROUND THAT IS DARKER
+	
+	// REMOVE THE // ON THE LINES OF THIS TO ENABLE!!!
+	
+//	{	Action = AddMany
+//
+//		AddTo = "<backgrounds/backgrounds.rules>/Styles"
+//
+//		ManyToAdd
+//		[
+//			&<bg_hyperdark.rules>/Background
+//		]
+//	}
+	{	Action = AddMany
+
+		AddTo = "<gui/game/parts/part_targeters.rules>/PartTargeters"
+
+		ManyToAdd
+		[
+			// Logic Tractor beam.
+			{
+				TargeterID = "logic_tractor_beam"
+				DefaultHotkey = [PlatformCmdCtrl, T]
+				DefaultCancelHotkey = [PlatformCmdCtrl, Shift, T]
+				TargetTypes = [Parts, ShipLocalPoint]
+				HasCancelButton = false
+				ButtonToolTipKey = "PartTargeters/TractorBeam"
+				CancelButtonToolTipKey = "PartTargeters/TractorBeamCancel"
+				SnapToAngles = [0d, 45d, 90d, 135d, 180d, 225d, 270d, 315d]
+				TentativeTargetLine = &<./Data/commands/weapon_target.rules>/TargetLine
+				SnapToAngleDistance = 20
+
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/tractor_beam.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+
+				CancelButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/cancel_tractor_beam.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+
+				Cursor
+				{
+					File = "./data/gui/game/parts/cursor_tractor_beam.png"
+					HotSpot = [8, 8]
+					Scale = .5
+				}
+
+				OverrideTentativeTargetNineSlice : <./Data/gui/game/sim_gui.rules>/TentativePartNineSlice
+				{
+					VertexColor = [102, 102, 255, 255]
+					TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+					TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+					TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+					LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+					CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+					RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+					BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+					BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+					BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+				}
+
+				OverrideTentativeTargetCircle : <./Data/commands/weapon_target.rules>/TentativeTargetCircle
+				{
+					VertexColor = [102, 102, 255, 127]
+				}
+			}
+		]
+	}
+]
+ShipLibraries
+[
+	{
+		Folder = "Ships"
+		NameKey = "JaniBossShips"
+		TooltipKey = "JaniBossShipsTip" // Optional
+	}
+]

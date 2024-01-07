@@ -1,0 +1,147 @@
+NameKey = "Parts/TriSteelDoor"
+IconNameKey = "Parts/TriSteelDoorIcon"
+ID = janiTNT.tristeel_door_baseresources // Door IDs must always be in the form of "author_name.door_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla doors.
+Resources
+[
+	[cut.tristeel, 2]
+]
+Layer = "doors"
+StencilLayer = "walls_stencil"
+EditorGroup = "Utilities"
+DescriptionKey = "Parts/TriSteelDoorDesc"
+EditorIcon
+{
+	Texture
+	{
+		File = "door1.png"
+		SampleMode = Linear
+	}
+	Size = [32, 32]
+}
+
+HorizontalOpenSprite
+{
+	AnimationFiles
+	[
+		"door1.png"
+		"door2.png"
+		"door3.png"
+		"door4.png"
+		"door5.png"
+		"door6.png"
+		"door7.png"
+		"door8.png"
+		"door9.png"
+		"door10.png"
+		"door11.png"
+		"door12.png"
+	]
+	Size = [1, 1]
+	UVRotation = 1
+	AnimationInterval = 0.02
+	AnimationStartTime = MinValue
+	ClampAnimation = true
+}
+
+VerticalOpenSprite
+{
+	AnimationFiles
+	[
+		"door1.png"
+		"door2.png"
+		"door3.png"
+		"door4.png"
+		"door5.png"
+		"door6.png"
+		"door7.png"
+		"door8.png"
+		"door9.png"
+		"door10.png"
+		"door11.png"
+		"door12.png"
+	]
+	Size = [1, 1]
+	UVRotation = 0
+	AnimationInterval = 0.02
+	AnimationStartTime = MinValue
+	ClampAnimation = true
+}
+
+HorizontalClosedSprite
+{
+	AnimationFiles
+	[
+		"door12.png"
+		"door11.png"
+		"door10.png"
+		"door9.png"
+		"door8.png"
+		"door7.png"
+		"door6.png"
+		"door5.png"
+		"door4.png"
+		"door3.png"
+		"door2.png"
+		"door1.png"
+	]
+	Size = [1, 1]
+	UVRotation = 1
+	AnimationInterval = 0.04
+	AnimationStartTime = MinValue
+	ClampAnimation = true
+}
+
+VerticalClosedSprite
+{
+	AnimationFiles
+	[
+		"door12.png"
+		"door11.png"
+		"door10.png"
+		"door9.png"
+		"door8.png"
+		"door7.png"
+		"door6.png"
+		"door5.png"
+		"door4.png"
+		"door3.png"
+		"door2.png"
+		"door1.png"
+	]
+	Size = [1, 1]
+	UVRotation = 0
+	AnimationInterval = 0.04
+	AnimationStartTime = MinValue
+	ClampAnimation = true
+}
+
+HorizontalStencilSprite
+{
+	File = "./Data/ships/terran/door/stencil.png"
+	Size = [1, 1]
+	UVRotation = 1
+}
+
+VerticalStencilSprite
+{
+	File = "./Data/ships/terran/door/stencil.png"
+	Size = [1, 1]
+	UVRotation = 0
+}
+
+HorizontalBlueprintSprite
+{
+	File = "blueprints.png"
+	Size = [1, 1]
+	UVRotation = 1
+}
+
+VerticalBlueprintSprite
+{
+	File = "blueprints.png"
+	Size = [1, 1]
+	UVRotation = 0
+}
+
+HorizontalDoorSize = [1, .5]
+VerticalDoorSize = [.5, 1]

@@ -1,0 +1,122 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicWireSplitter3"
+	IconNameKey = "Parts/LogicWireSplitter3Icon"
+	ID = Skipydog.Logic_Splitter_3
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicWireSplitterDesc"
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	TypeCategories = [logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		BuffProviderLogic
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 10
+			BuffArea = [1, 0, 1, 1]
+		}
+		BuffProviderLogic2
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 10
+			BuffArea = [0, 1, 1, 1]
+		}
+		BuffProviderLogic3
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 10
+			BuffArea = [-1, 0, 1, 1]
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal]
+			Invert = false
+			Mode = All
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		//-----------------------------------------------------------------
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [2, 2]
+						Offset = [0, 0.5]
+					}
+				]
+			}
+		}
+	}
+}

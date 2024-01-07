@@ -1,0 +1,13 @@
+ID = janiTNT.profanedcore
+Type = Resource
+DescriptionKey = "Resource/ProfanedCore"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "core.png"
+		MipLevels = 2
+	}
+}
+ResourceType = profanedcore

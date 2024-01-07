@@ -1,0 +1,350 @@
+Components
+{
+	EletroCannon
+	{
+		Type = ResourceStorage
+		OperationalToggle = IsOperational
+		ResourceType = fake
+		MaxResources = 1
+		DelayBeforeReadyToUse = 0.5
+		//DropResourcesWhenDestroyed = true
+		//DropResourcesWhenRemoved = true
+		InitToMaxResources = 0
+	}
+	
+	CanBuild
+	{
+		Type = MultiToggle
+		Toggles
+		[
+			{Toggle = IsOperational}
+			{Toggle = SteelReq}
+			{Toggle = EletroCannon, invert = true}
+		]
+		Mode = All
+	}
+	SteelReq
+	{
+		Type = MultiResourceStorage
+		ResourceType = steel
+		ResourceStorages = [SteelStorage]
+		ToggleOnResources = 8
+		ToggleOffResources = 7
+	}
+
+	BuildConverter
+	{
+		Type = ResourceConverter
+		From
+		[
+			{
+				Storage = BatteryStorage
+				Quantity = 250
+				MinQuantityForConversion = 1
+			}
+		]
+		OperationalToggle = CanBuild
+		ToStorage = BuildStorage
+		ToQuantity = 1
+		Interval = 6 / 20
+	}
+	
+	BuildStorage
+	{
+		Type = ResourceStorage
+		ResourceType = fake
+		MaxResources = 20
+		DelayBeforeReadyToUse = 0
+		StartingResources = 0
+		InitToMaxResources = 0
+		InitToMaxResourcesPVP = 0
+	}
+	
+	BuiltConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = CanBuild
+		From
+		[
+			{
+				Storage = BuildStorage
+				Quantity = 20
+			}
+			{
+				Storage = SteelStorage
+				Quantity = 8
+			}
+		]
+		ToStorage = EletroCannon
+		ToQuantity = 1
+		Interval = 0.15
+	}
+	
+	Weapon
+	{
+		Type = TurretWeapon
+		Location = [1, 1]
+		Rotation = -90d
+		Emitter = Emitter
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = 0
+		FiringArc = 0d
+		TargetingArc = 360d
+		ValidArc = 360d
+		FireThresholdAngle = (&TargetingArc) / 2
+		RotateSpeed = 0d
+		AllowFireWithBlockedLOS = true
+		AIFirepowerRating = 4800 * 0.8
+		FirePermissionToggle = FireModeToggle
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+				EnableInDirectControlMode = true
+			}
+		]
+
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = Weapon
+	}
+
+	Emitter
+	{
+		Type = BulletEmitter
+		ChainedTo = Weapon
+		OperationalToggle = IsOperational
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		ResourceStorage = EletroCannon
+		ResourcesUsed = 1
+		//Bullet = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>
+		Bullet = &<shots/Eletrocannon/laser1.rules>
+		TargetLeadPrediction = false
+		Recoil = 200
+	}
+
+	LaunchEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = Weapon
+		Trigger = Weapon
+
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				Sound = "./Data/ships/terran/missile_launcher/shoot.wav"
+				Speed = 1.0
+				SpeedVariation = .1
+			}
+		]
+	}
+	
+	DroneSprite
+	{
+		Type = ResourceSprites
+		Location = [1, 1]
+		Rotation = -90d
+		ResourceStorage = EletroCannon
+		Layer = "weapons"
+		ResourceLevels
+		[
+			{
+				File = "eletrocannon.png"
+				NormalsFile = "eletrocannon_n.png"
+				Size = [3, 2]
+			}
+		]
+	}
+	DroneBuildSprite
+	{
+		Type = ResourceSprites
+		Location = [1, 1]
+		Rotation = -90d
+		ResourceStorage = BuildStorage
+		Layer = "drone_construction"
+		ResourceLevels
+		[
+			{
+				File = "eletrocannonmask.png"
+				NormalsFile = "eletrocannon_n.png"
+				Size = [3, 2]
+				VertexColor = [0, 0, 0, 255]
+			}
+			: &0
+			{VertexColor = [8, 8, 8, 255];}
+			: &0
+			{VertexColor = [16, 16, 16, 255];}
+			: &0
+			{VertexColor = [24, 24, 24, 255];}
+			: &0
+			{VertexColor = [32, 32, 32, 255];}
+			: &0
+			{VertexColor = [40, 40, 40, 255];}
+			: &0
+			{VertexColor = [48, 48, 48, 255];}
+			: &0
+			{VertexColor = [56, 56, 56, 255];}
+			: &0
+			{VertexColor = [64, 64, 64, 255];}
+			: &0
+			{VertexColor = [72, 72, 72, 255];}
+			: &0
+			{VertexColor = [80, 80, 80, 255];}
+			: &0
+			{VertexColor = [88, 88, 88, 255];}
+			: &0
+			{VertexColor = [96, 96, 96, 255];}
+			: &0
+			{VertexColor = [104, 104, 104, 255];}
+			: &0
+			{VertexColor = [112, 112, 112, 255];}
+			: &0
+			{VertexColor = [120, 120, 120, 255];}
+			: &0
+			{VertexColor = [128, 128, 128, 255];}
+			: &0
+			{VertexColor = [136, 136, 136, 255];}
+			: &0
+			{VertexColor = [144, 144, 144, 255];}
+			: &0
+			{VertexColor = [152, 152, 152, 255];}
+			: &0
+			{VertexColor = [160, 160, 160, 255];}
+			: &0
+			{VertexColor = [168, 168, 168, 255];}
+			: &0
+			{VertexColor = [176, 176, 176, 255];}
+			: &0
+			{VertexColor = [184, 184, 184, 255];}
+			: &0
+			{VertexColor = [192, 192, 192, 255];}
+			: &0
+			{VertexColor = [200, 200, 200, 255];}
+			: &0
+			{VertexColor = [208, 208, 208, 255];}
+			: &0
+			{VertexColor = [216, 216, 216, 255];}
+			: &0
+			{VertexColor = [224, 224, 224, 255];}
+			: &0
+			{VertexColor = [232, 232, 232, 255];}
+			: &0
+			{VertexColor = [240, 240, 240, 255];}
+			: &0
+			{VertexColor = [248, 248, 248, 255];}
+			: &0
+			{VertexColor = [256, 256, 256, 255] ;}
+		]
+	}
+	HatchSprites
+	{
+		Type = ResourceSprites
+		Location = [1, 2.5 - 2/64]
+		ResourceStorage = EletroCannon
+		Layer = "doodads_high"
+		HasZeroResourceSprite = true
+		ResourceLevels
+		[
+			{
+				File = "../NukeSilo/hatch1.png"
+				Size = [2, 1]
+			}
+			{
+				File = "../NukeSilo/hatch3.png"
+				Size = [2, 1]
+			}
+		]
+	}
+	DestroyedEffects
+	{
+		Type = DeathEffects
+		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+		Location = [1, 2]
+
+		HitEffects
+		[
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 20000
+				Radius = 5
+				Delay = .05
+				FireChancePerNDamage = 50%
+				NDamage = 1000
+				CrewKillChance = 50%
+				Filter
+				{
+					OperationalHealth = true
+					StructuralHealth = false
+					Friendlies = true
+				}
+			}
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 7500
+				Radius = 4
+				Delay = .05
+				Filter
+				{
+					OperationalHealth = false
+					StructuralHealth = true
+					Friendlies = true
+					Crew = false
+				}
+			}
+		]
+	}
+	Indicators
+	{
+		Type = IndicatorSprites
+		Location = [1, 2]
+		Layer = "indicators"
+		Indicators
+		[
+			// Turned off.
+			{
+				Toggle = PowerToggle
+				AtlasSprite
+				{
+					File = &/INDICATORS/PowerOff
+					Size = [1, 1]
+				}
+			}
+
+			// Out of steel.
+			{
+				Toggle = SteelReq
+				Delay = 8
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoResource
+					Size = [1, 1]
+				}
+			}
+
+			// No crew.
+			{
+				Toggle = PartCrew
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoCrew
+					Size = [1, 1]
+				}
+			}
+		]
+	}
+}

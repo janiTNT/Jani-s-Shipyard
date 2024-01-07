@@ -1,0 +1,210 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Background_Dock"
+	IconNameKey = "Parts/Background_DockIcon"
+	ID = Skipydog.background_dock
+	EditorGroup = "Structure"
+	DescriptionKey = "Parts/Background_DockDesc"
+	Cost = 3500
+	Size = [3, 3]
+	Resources
+	[
+		[tristeel, 20]
+	]
+	SelectionTypeID = "docking"
+	MaxHealth = 3000
+	SelectionPriority = 1
+	HealthType = Structural
+	TypeCategories = [background_structure]
+	Flammable = false
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	ConstructionDuration = 0.5
+	RepairDuration = 0.5
+	UnderlyingPartPerTile = ""
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 0.5
+	IsRotateable = true
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "../Dock.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		ColorPicker1
+		{
+			Type = UIColor
+			ColorID = "strutcolor"
+			Default = Black
+		}
+		
+		ColorPicker2
+		{
+			Type = UIColor
+			ColorID = "roof_light"
+			Default = White
+		}
+		
+		ColorPicker3
+		{
+			Type = UIColor
+			ColorID = "hullpartscolor"
+			Default = White
+		}
+		
+		StructureGrid
+		{
+			Type = SpriteGrid
+			Location = [.5, .5]
+			GetColorFrom = ColorPicker1
+			GridSize = [3, 3]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../../Structure/background_structure_block/floor.png"
+						NormalsFile = "../../Structure/background_structure_block/normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../../Structure/background_structure_block/floor_33.png"
+						NormalsFile = "../../Structure/background_structure_block/normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "../../Structure/background_structure_block/floor_66.png"
+						NormalsFile = "../../Structure/background_structure_block/normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "bgstructure"
+		}
+		
+		DockGraphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			GetColorFrom = ColorPicker3
+			Floor
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "../Dock.png"
+						NormalsFile = "../Dock_n.png"
+						Size = [3, 3]
+					}
+					/*{
+						File = "floor_33.png"
+						NormalsFile = "normals_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "floor_66.png"
+						NormalsFile = "normals_66.png"
+						Size = [3, 3]
+					}*/
+				]
+			}
+		}
+		
+		ColliderComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			Components
+			{
+				EmitterCollider
+				{
+					Type = CircleCollider
+					Location = [1.5, 1.5]
+					Radius = 0.8
+					Density = .1
+				}
+				
+				EmitterCollider2 = &EmitterCollider
+				EmitterCollider3 = &EmitterCollider
+				OperationalGraphicsBase
+				{
+					Type = Graphics
+					Location = [1.5, 1.5]
+					GetColorFrom = ColorPicker2
+					OperationalRoofDoodad
+					{
+						Layer = "floors"
+						Offset = [0, 0]
+						DamageLevels
+						[
+							{
+								File = "../Dock_lights.png"
+								Size = [3, 3]
+							}
+						]
+					}
+					OperationalRoofLighting
+					{
+						Layer = "roof_lights_fancy"
+						DamageLevels
+						[
+							{
+								File = "../Dock_lights_fancy.png"
+								Size = [3, 3]
+								Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+								VertexColor = [255*4.5, 255*4.5, 255*4.5]
+							}
+						]
+					}
+				}
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "../../Structure/background_structure_block/blueprints.png"
+			UVRotation = 1
+			Size = [3, 3]
+			Offset = [0, 0]
+		}
+	}
+}

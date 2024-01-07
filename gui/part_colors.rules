@@ -1,0 +1,59 @@
+PartColors
+[
+	// BG Structure Color
+	{
+		ColorID = "strutcolor"
+		ButtonToolTipKey = "PartColors/StrutColor"
+		ColoredSprite
+		{
+			Texture
+			{
+				File = "strutcolor.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
+		SortOrder = 99
+		ShowInEditor = true
+		ValueRange = [0.5, 1]
+		SaturationRange = [0, 0.8]
+	}
+	{
+		ColorID = "hullpartscolor"
+		ButtonToolTipKey = "PartColors/HullColor"
+		ColoredSprite
+		{
+			Texture
+			{
+				File = "hullcolor.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
+		SortOrder = 99
+		ShowInEditor = true
+		ValueRange = [0.5, 1]
+		SaturationRange = [0, 0.6]
+	}
+	// Logic Color
+	{
+		ColorID = "logiccolor"
+		ButtonToolTipKey = "PartColors/LogicColor"
+		ColoredSprite
+		{
+			Texture
+			{
+				File = "logiccolor.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
+		SortOrder = 99
+		ShowInEditor = true
+		ValueRange = [0.5, 1]
+		SaturationRange = [0, 0.9]
+	}
+]

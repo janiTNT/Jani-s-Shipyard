@@ -1,0 +1,203 @@
+ID = "janiTNT.profanedflameattack"
+Range = 800
+IdealRange = [75, 190]
+IdealRadius = [5, 50]
+Speed = 250
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+		RandomExtraSpeed = [-40, 40]
+		LinearDamping = .5
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		Lifetime = [4, 4.8]
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 20.0
+		PenetrationSpeed = 20
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		SourceShipLowCollisions = false
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 12000
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = AreaFires
+					FireChancePerTile = .3
+					FireRadius = 10
+					Radius = 1
+					FireFalloff = 0
+					Delay = 0.75
+					AllowFriendlyFires = true
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse
+					Impulse = 180
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+				&<./data/shots/bullet_deck/particles/bullet_smoke_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_flash_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/bullet_deck/bullet_deck_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .2
+					Duration = .75
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [0.5, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 10000
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 90
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/bullet_large/particles/bullet_hit_large.rules>
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+				&<./data/shots/bullet_deck/particles/bullet_flash_deck_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/bullet_deck/bullet_deck_hit_structure.wav"
+					Volume = .5
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 20000
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Fire
+					FireChance = .8
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse
+					Impulse = 180
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Offset = [-1.5, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [22, 22]
+			VertexColor = [255, 200, 100]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.125
+		}
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffects
+		[
+			&<profaned_flames_trail.rules>
+		]
+	}
+}

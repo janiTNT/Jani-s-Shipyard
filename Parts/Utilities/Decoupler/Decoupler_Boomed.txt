@@ -1,0 +1,84 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/DecouplerBoomer"
+	IconNameKey = "Parts/DecouplerBoomerIconB"
+	ID = janiTNT.Decoupler_Boomed // MEET THE DEMOMAN
+	OtherIDs = [juanTNT.Part_Decoupler_Boomed]
+	EditorGroups = ["Utilities"]
+	DescriptionKey = "Parts/DecouplerBoomerDescD"
+	Cost = 100
+	Resources
+	[
+		[steel, 4]
+	]
+	AllowedContiguity = [Bottom, Left, Right]
+	IsWalled = true
+	ExternalWalls = [All]
+	InternalWalls = [TopLeft, Top, TopRight]
+	TypeCategories = [structure]
+	FullRefundTime = 0
+	Size = [1, 1]
+	SelectionPriority = 1
+	MaxHealth = 100
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0
+	AllowedDoorLocations = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "damagedfloor.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			Location = [.5, .5]
+
+			MediaEffects
+			[
+				&<./Data/common_effects/particles/explosions/small_part_explode_smoke.rules>
+				&<./Data/common_effects/particles/explosions/small_part_explode.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/common_effects/sounds/med_part_destroyed.wav"
+					Volume = 0.5
+					SpeedVariation = .25
+				}
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "damagedfloor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "amog.png"
+			Size = [1, 1]
+		}
+	}
+}

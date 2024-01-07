@@ -1,0 +1,201 @@
+Hyperoid : <./Data/ships/base_ship.rules>
+{
+	ID = janiTNT.hyperoid // Ship IDs must always be in the form of "author_name.ship_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla ships.
+	NameKey = "ShipClasses/Hyperoid"
+	DefaultPartID = janiTNT.hyperock_1x1
+	ShipScale = 4.0 * 4
+	ImmuneToEnvDamage = true
+	JunkBlocksWeaponLOS = true
+	ExternalWalls = &<Hyperoid/external_walls.rules>
+	OverrideConstructionMode = InstantCredits
+
+	Blueprints : &<./Data/ships/base_ship.rules>/Blueprints
+	{
+		ExternalWalls = &<./Data/ships/asteroid/asteroid_walls/external_blueprint_walls.rules>
+	}
+
+	Roofs : <./Data/ships/base_ship.rules>/Roofs
+	{
+		RoofTexturesFolders = ["./Data/roof_textures"]
+		DefaultRoofTexture = "bumpy1"
+		
+		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups
+
+		DefaultBaseColor
+		{
+			H = 36
+			S = 0.13
+			V = 0.66
+			A = 190
+		}
+	}
+
+	Parts
+	[
+		//&<Hyperoid/test.rules>/Part
+		
+		&<Hyperoid/megasoft_1x1.rules>/Part
+		&<Hyperoid/megasoft_2x2.rules>/Part
+		&<Hyperoid/megasoft_3x3.rules>/Part
+		&<Hyperoid/megasoft_4x4.rules>/Part
+		&<Hyperoid/megasoft_1x1_wedge.rules>/Part
+		&<Hyperoid/megasoft_1x2_wedge.rules>/Part
+		
+		&<Hyperoid/megarock_1x1.rules>/Part
+		&<Hyperoid/megarock_2x2.rules>/Part
+		&<Hyperoid/megarock_3x3.rules>/Part
+		&<Hyperoid/megarock_4x4.rules>/Part
+		&<Hyperoid/megarock_1x1_wedge.rules>/Part
+		&<Hyperoid/megarock_1x2_wedge.rules>/Part
+		
+		&<Hyperoid/Ores/hyperium_4x.rules>/Part
+		&<Hyperoid/Ores/hyperium_9x.rules>/Part
+		&<Hyperoid/Ores/hyperium_16x.rules>/Part
+		&<Hyperoid/Ores/hyperium_4x_hard.rules>/Part
+		&<Hyperoid/Ores/hyperium_9x_hard.rules>/Part
+		&<Hyperoid/Ores/hyperium_16x_hard.rules>/Part
+		
+		&<Hyperoid/Ores/iron_4x.rules>/Part
+		&<Hyperoid/Ores/iron_9x.rules>/Part
+		&<Hyperoid/Ores/iron_16x.rules>/Part
+		&<Hyperoid/Ores/iron_4x_hard.rules>/Part
+		&<Hyperoid/Ores/iron_9x_hard.rules>/Part
+		&<Hyperoid/Ores/iron_16x_hard.rules>/Part
+		
+		&<Hyperoid/Ores/sulfur_4x.rules>/Part
+		&<Hyperoid/Ores/sulfur_9x.rules>/Part
+		&<Hyperoid/Ores/sulfur_16x.rules>/Part
+		&<Hyperoid/Ores/sulfur_4x_hard.rules>/Part
+		&<Hyperoid/Ores/sulfur_9x_hard.rules>/Part
+		&<Hyperoid/Ores/sulfur_16x_hard.rules>/Part
+		
+		&<Hyperoid/Ores/copper_4x.rules>/Part
+		&<Hyperoid/Ores/copper_9x.rules>/Part
+		&<Hyperoid/Ores/copper_16x.rules>/Part
+		&<Hyperoid/Ores/copper_4x_hard.rules>/Part
+		&<Hyperoid/Ores/copper_9x_hard.rules>/Part
+		&<Hyperoid/Ores/copper_16x_hard.rules>/Part
+				
+		&<Hyperoid/Ores/carbon_4x.rules>/Part
+		&<Hyperoid/Ores/carbon_9x.rules>/Part
+		&<Hyperoid/Ores/carbon_16x.rules>/Part
+		&<Hyperoid/Ores/carbon_4x_hard.rules>/Part
+		&<Hyperoid/Ores/carbon_9x_hard.rules>/Part
+		&<Hyperoid/Ores/carbon_16x_hard.rules>/Part
+		
+		&<Hyperoid/Ores/tritanium_4x.rules>/Part
+		&<Hyperoid/Ores/tritanium_9x.rules>/Part
+		&<Hyperoid/Ores/tritanium_16x.rules>/Part
+		&<Hyperoid/Ores/tritanium_4x_hard.rules>/Part
+		&<Hyperoid/Ores/tritanium_9x_hard.rules>/Part
+		&<Hyperoid/Ores/tritanium_16x_hard.rules>/Part
+		
+		&<Hyperoid/Ores/gold_4x.rules>/Part
+		&<Hyperoid/Ores/gold_9x.rules>/Part
+		&<Hyperoid/Ores/gold_16x.rules>/Part
+		&<Hyperoid/Ores/gold_4x_hard.rules>/Part
+		&<Hyperoid/Ores/gold_9x_hard.rules>/Part
+		&<Hyperoid/Ores/gold_16x_hard.rules>/Part
+		
+		&<Hyperoid/Ores/uranium_4x.rules>/Part
+		&<Hyperoid/Ores/uranium_9x.rules>/Part
+		&<Hyperoid/Ores/uranium_16x.rules>/Part
+		&<Hyperoid/Ores/uranium_4x_hard.rules>/Part
+		&<Hyperoid/Ores/uranium_9x_hard.rules>/Part
+		&<Hyperoid/Ores/uranium_16x_hard.rules>/Part
+	]
+
+	RenderLayers
+	[
+		{
+			Key = "asteroid"// Asteroid bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -75	// low enough so the crew can be rendered over the external walls
+				RenderStage = Low	// low enough so the crew can be rendered over the external walls
+				DrawWithShipGhost = true
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "./Data/ships/common/roof_colored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "./Data/ships/common/roof_colored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "./Data/ships/common/normals.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "./Data/ships/common/parts_ghost.shader"
+				}
+			}
+		}
+		{
+			Key = "ore"// Asteroid bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = -50	// low enough so the crew can be rendered over the external walls
+				RenderStage = Low	// low enough so the crew can be rendered over the external walls
+				DrawWithShipGhost = false
+				HasNormals = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+				}
+				Material
+				{
+					Shader = "./Data/ships/common/roof_colored_lit.shader"
+				}
+				DiffuseMaterial
+				{
+					Shader = "./Data/ships/common/roof_colored.shader"
+				}
+				NormalsMaterial
+				{
+					Shader = "./Data/ships/common/normals.shader"
+				}
+				GhostMaterial
+				{
+					Shader = "./Data/ships/common/parts_ghost.shader"
+				}
+			}
+		}
+		// Asteroid additive lights.
+		{
+			Key = "asteroid_roof_lights_fancy"// Asteroid bucket layer.
+			Value // The actual material.
+			{
+				UniqueBucket = 1300
+				RenderStage = Highest
+				//IsRoof = true
+				DrawWithFancyLightingOnly = true
+				AtlasTextureParams
+				{
+					MipLevels = 7 // Assumes 64x64 min part sprite size.
+					SampleMode = Linear
+				}
+				LightMaterial
+				{
+					Shader = "./data/ships/common/roof_light.shader"
+
+					TargetBlendMode
+					{
+						SourceRgbFactor = InverseDestColor
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+			}
+		}
+	]
+}

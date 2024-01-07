@@ -1,0 +1,70 @@
+Part : <ThumperSpawner.rules>/Part
+{
+	NameKey = "Parts/MegaroidBallweaponThumperBurst"
+	DescriptionKey = "Parts/MegaroidBallWeaponThumperBurstDesc"
+	ID = Skipydog.thumper_projectile_spawner_burst // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [janiTNT.thumper_projectile_spawner_burst]
+	Components : ^/0/Components
+	{
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 1]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 16
+			FiringArc = 360d
+			RotateSpeed = 90d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 4800 * 2
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+				{
+				    TargetType = Crew
+				    Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [1, 0]
+			OperationalToggle = PowerToggle
+			FireDelay = 0
+			Bullet = &<shots/thumper_med.rules>
+			Spread = [-8d, 8d]
+			Burst = 4
+			BurstDelay = 1
+		}
+	}
+}

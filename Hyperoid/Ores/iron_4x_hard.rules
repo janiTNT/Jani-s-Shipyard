@@ -1,0 +1,80 @@
+Part : <../megarock_1x1.rules>/Part
+{
+	NameKey = "Parts/HyperDepositIron4xHard"
+	DescriptionKey = "Resource/IronHardDesc"
+	ID = janiTNT.hyperdeposit_iron_4x_hard // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = []
+	SelectionTypeID = "deposit_iron"
+	EditorGroup = "Iron"
+	Resources
+	[
+		[iron, 4 *16]
+	]
+	IsFlippable = true
+	IsRotateable = true
+	EditorIcon
+	{
+		Texture = "./data/ships/asteroid/deposit_iron/deposit_iron_hard_1x_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Sprite1
+		{
+			Type = Sprite
+			Location = [0.25, 0.25]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "iron1.png"
+						NormalsFile = "normal1.png"
+						Size = [.25, .25]
+					}
+				]
+				[
+					{
+						File = "iron2.png"
+						NormalsFile = "normal2.png"
+						Size = [.25, .25]
+					}
+				]
+				&0
+			]
+			RandomUVRotation = true
+			Layer = "ore"
+		}
+		Sprite2 : Sprite1
+		{
+			Location = [0.75, 0.25]
+		}
+		Sprite3 : Sprite1
+		{
+			Location = [0.25, 0.75]
+		}
+		Sprite4 : Sprite1
+		{
+			Location = [0.75, 0.75]
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/asteroid/deposit_iron/deposit_iron_hard_1x_blueprints.png"
+			Size = [1, 1]
+		}
+		
+		CustomShipIcon
+		{
+			Type = CustomShipIcon
+			Icon : <./Data/resources/iron/iron.rules>/Overlay
+			{
+				Size = [32, 32]
+			}
+			Weight = &~/Part/Resources/0/1
+			PulseInterval = 2
+			PulseColor = [255, 255, 255, 64]
+			ShowAtZoom = 5
+		}
+	}
+}

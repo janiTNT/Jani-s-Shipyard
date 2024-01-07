@@ -1,0 +1,160 @@
+ID = "juanTNT.combat_drone_shot_mk2"
+Range = { BaseValue=80; BuffType=Improve_Weapon_Range; BuffMode=Multiply; }
+IdealRange = [25, { BaseValue=75; BuffType=Improve_Weapon_Range; BuffMode=Multiply; }]
+Speed = 55
+ReceivableBuffs = [Improve_Weapon_Range]
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.001
+		LinearDamping = 2
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 350
+		TargetCategory = "laser"
+		
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 85d
+		Delay = .05
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 55 * 4
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = Lower
+		Sprite
+		{
+			Texture
+			{
+				File = "laser2.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [2.25, 1.25]
+		}
+		Offset = [-.25, 0]
+		LerpScaleFrom = [.25, 1]
+		LerpTime = .25
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1750
+					Slices = 1
+					Radius = 4
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_sparks.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 800
+				}
+				{
+					Type = Impulse;
+					Impulse = 2;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.txt>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.txt>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+	MediaEffects
+	{
+		Type = MediaEffects
+		FactorEffectsWith = Hit
+		FactorEffectsExponent = 0.5
+		MediaEffects
+		[
+			&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_glow.txt>
+			&<./Data/shots/laser_bolt_small/particles/laser_bolt_small_glow.txt>
+		]
+	}
+}

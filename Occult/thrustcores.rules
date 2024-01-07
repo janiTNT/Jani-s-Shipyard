@@ -1,0 +1,149 @@
+Part : <base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidMonoThrustCR"
+	DescriptionKey = "Parts/MegaroidMonoThrustCRDesc"
+	ID = janiTNT.megarock_thruster_2x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		//[steel, 8 * 16]
+		//[processor, 2]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBoss]
+	Density = 3
+	MaxHealth = 32000 * 2
+	AIValueFactor = 0
+	SelectionPriority = 1
+	SelectionTypeID = "cores"
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	TypeCategories = [armor, thruster]
+	InitialPenetrationResistance = 2 * 7
+	Size = [2, 1]
+	ContinuingPenetrationResistance = 2 * 7
+	CrewSpeedFactor = 0.25
+	EditorIcon
+	{
+		Texture = "armoroid_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		FunctionEnabled
+		{
+			Type = MultiToggle
+			Toggles = [BigAttackMode]
+			Mode = All
+			Invert = true
+		}
+		BigAttackMode
+		{
+			Type = BuffToggle
+			BuffType = JaniWeaponsDisabledBoss
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		
+		Sprite : &<armoroid.rules>/Part/Components/Sprite
+		{
+			Type = SpriteGrid
+		}
+		
+		Graphics
+		{
+			Type = SpriteGrid
+			Location = [0.5, 0.5]
+			DamageLevels
+			[
+				{
+					File = "core.png"
+					NormalsFile = "core_n.png"
+					Size = [1, 1]
+				}
+			]
+			Layer = "secondary"
+		}
+		
+		Sigil
+		{
+			Type = Graphics
+			//OperationalToggle = IsOperational
+			Location = [1, 0.75]
+			OperationalDoodad
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = false
+				DamageLevels
+				[
+					{
+						File = "thrustsigil.png"
+						Size = [0.5, 0.5]
+					}
+				]
+			}
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 1000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		MainThruster
+		{
+			Type = Thruster
+			Location = [1, 1]// Relative to upper-left corner of unrotated part.
+			Rotation = 90d// Relative to unrotated part.
+			OperationalToggle = FunctionEnabled
+			Force = 200000
+			MinActivation = 0
+			MaxActivation = 1
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = 0.5
+			ActivationRecoveryTime = 0.5
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = 0
+		}
+		
+		ThrustEffects
+		{
+			Type = ContinuousEffects
+			ChainedTo = MainThruster
+			Location = [0, 0]
+			FactorMediaEffectsIntensityWith = MainThruster
+			//MediaEffectsScale = 16
+			MediaEffects
+			[
+				&<Particles/Thruster_plume.rules>
+				&<Particles/Thruster_plume_light.rules>
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Volume = .075
+					Speed = 2
+					MaxConcurrentVolume = .15
+				}
+			]
+		}
+		
+		DestroyedEffects : &<base_part_occult.rules>/Part/Components/DestroyedEffects
+		{
+			Location = [1, .5]
+		}
+		
+		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		{
+			Location = [1, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "core_bp.png"
+			Size = [2, 1]
+		}
+	}
+}

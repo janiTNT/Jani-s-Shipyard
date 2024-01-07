@@ -1,0 +1,46 @@
+Particles : <sparks_base.rules>/Particles
+{
+	EmitterDef : ^/0/EmitterDef
+	{
+		PreInitializers : ^/0/PreInitializers
+		[
+			{
+				Type = SetValue
+				DataOut = color
+				ValueType = Color
+				Value
+				{
+					Rf = 1
+					Gf = 0.09803922
+					Bf = 0.5
+					Af = 0.19607843
+				}
+				Name = Color
+				Enabled = false
+				UpdateAfterInit = false
+			}
+			{
+				Type = SetRandom
+				DataOut = base_color
+				ValueType = Color
+				FromValue
+				{
+					Rf = 1
+					Gf = 0.09803922
+					Bf = 0.5
+					Af = 0.3137255
+				}
+				ToValue
+				{
+					Rf = 1
+					Gf = 0.23529412
+					Bf = 0.2
+					Af = 0.5882353
+				}
+				Name = "Random Color"
+				Enabled = true
+				UpdateAfterInit = false
+			}
+		]
+	}
+}

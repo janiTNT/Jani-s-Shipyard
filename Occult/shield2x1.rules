@@ -1,0 +1,322 @@
+Part : <base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegashieldSmall"
+	DescriptionKey = "Parts/MegashieldSmallDesc"
+	ID = janiTNT.megashield2x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		//[steel, 8 * 32]
+		[hyperium, 32]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Density = 3
+	SelectionPriority = 1
+	SelectionTypeID = "defenses"
+	EditorReplacementPartID = "cosmoteer.megarock_1x1"
+	MaxHealth = 32000 * 2
+	Size = [2, 1]
+	TypeCategories = [armor, shield]
+	InitialPenetrationResistance = 2 * 7
+	ContinuingPenetrationResistance = 2 * 7
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	EditorIcon
+	{
+		Texture = "armoroid_icon.png"
+		Size = [80, 40]
+	}
+	Components : ^/0/Components
+	{
+		Sprite : &<armoroid.rules>/Part/Components/Sprite
+		{
+			Type = SpriteGrid
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle, ShieldStorage]
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 3
+		}
+		
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		ShieldStorage
+		{
+			Type = ResourceStorage
+			ResourceType = fake
+			MaxResources = 18000
+			ToggleOnResources = 17001
+			StartingResources = &MaxResources
+			InitToMaxResources = &MaxResources
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		ShieldGen
+		{
+			Type = ResourceConverter
+			ToStorage = ShieldStorage
+			ToQuantity = 1000
+			Interval = 0.75
+		}
+
+		ProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = ShieldStorage
+			LowColor = [0, 0, 255]
+			HighColor = [0, 0, 255]
+			FullColor = [0, 0, 255]
+			Height = 10
+		}
+
+		ArcShield
+		{
+			Type = ArcShield
+			Radius = 6
+			Arc = 90d
+			OperationalToggle = IsOperational
+			PenetrationResistance = [50, 30]
+			DrainResourcesFrom = ShieldStorage
+			ResourceDrainPerDamage = .5
+			Rotation = -90d
+			Location = [1, .5]
+
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [0, 0, 255, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1.5]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = &~/Part/Components/ArcShield/Arc
+					FadeInTime = .25
+					FadeOutTime = .25
+					FadeFromScale = .8
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = 1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .4
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [54, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [250, 0, 150, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .3
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 0.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/terran/shield_gen_small/shield_loop.wav"
+					Volume = .15
+					Speed = .5
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .3
+					DynamicVolume : ^/0/DynamicVolume
+					{
+						MinDistance = .75
+						MaxDistance = 1.5
+					}
+					IgnoreIntensity = true
+				}
+			]
+
+			HitMediaEffects
+			[
+				{
+					Type = ArcShield
+					FadeInTime = .1
+					FadeOutTime = .5
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = 20d
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_waveSpeed = -2
+						_waveAlpha = .75
+						_waveCurveInterval = 1
+						_waveCurveMagnitude = .5
+						_waveCurveUOffsetPerSecond = 0
+						//TargetBlendMode = Add
+						_fullPowerColor1 = [0, 140, 255, 127]
+						_lowPowerColor1 = [255, 0, 0, 200]
+						_fullPowerColor2 = [250, 50, 200, 127]
+						_lowPowerColor2 = [230, 20, 150, 127]
+						_lowPowerThicknessExponent = .3
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 1]
+					}
+					ArcSpriteSegments = 6
+					Bucket = Upper3
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = &<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/HitMediaEffects/1/RandomSounds
+					Volume = 1
+					Speed = 1
+					IgnoreIntensity = true
+					SpeedVariation = .25
+					MaxConcurrent = 10
+				}
+			]
+		}
+
+		ShieldOperationEffects
+		{
+			Type = ToggleEffects
+			ChainedTo = ArcShield
+			Location = [&~/Part/Components/ArcShield/Radius, 0]
+			Toggle = IsOperational
+			ToggledOnMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/shield_gen_small/activate.wav"
+					Volume = .5
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+			ToggledOffMediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/shield_gen_small/deactivate.wav"
+					Volume = .5
+					Speed = 1
+					IgnoreIntensity = true
+				}
+			]
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational
+			Location = [1, 0.25]
+			OperationalDoodad
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = false
+				DamageLevels
+				[
+					{
+						File = "shieldsigil.png"
+						Size = [0.25, 0.25]
+					}
+				]
+			}
+		}
+		
+		DestroyedEffects : &<base_part_occult.rules>/Part/Components/DestroyedEffects
+		{
+			Location = [1, .5]
+		}
+
+		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		{
+			Location = [1, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "shieldbp.png"
+			Size = [2, 1]
+		}
+	}
+}

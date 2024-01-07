@@ -1,0 +1,45 @@
+Resource = coil
+StackSize = (&<./data/resources/coil/coil.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = CoilStorage
+	}
+	
+	CoilStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				Sound = "./data/resources/coil/coil_deliver.wav"
+				Volume = 1.0
+				SpeedVariation = .05
+			}
+		]
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = CoilStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/coil/coil_stack_20.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

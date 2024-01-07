@@ -1,0 +1,366 @@
+Part : <../base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidBallweaponThumper"
+	DescriptionKey = "Parts/MegaroidBallWeaponThumperDesc"
+	ID = Skipydog.thumper_projectile_spawner // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [janiTNT.thumper_projectile_spawner]
+	EditorGroup = "BossParts"
+	Resources
+	[
+		[hyperium, 32]
+	]
+	IsRotateable = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Density = 3
+	MaxHealth = 32000 * 2
+	AIValueFactor = 2
+	EditorReplacementPartID = ""
+	SelectionPriority = 1
+	SelectionTypeID = "weapons"
+	Size = [2, 2]
+	TypeCategories = [armor, weapon]
+	InitialPenetrationResistance = 1
+	ContinuingPenetrationResistance = 1
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	GenerateRectCollider = false
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	EditorIcon
+	{
+		Texture = "../light_icon.png"
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+		
+		IsNotOperational
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational]
+			Invert = true
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 3
+		}
+		
+		Collider
+		{
+			Type = CircleCollider
+			Location = [1, 1]
+			Radius = .5
+			Density = 5
+		}
+		
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		
+		OperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			IncludeInBlueprints = false
+			Components
+			{
+				Graphics
+				{
+					Type = Graphics
+					Location = [1, 1]
+					Floor
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [1.55, 1.55]
+								RotSpeed = 180d
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [1.5, 1.5]
+								RotSpeed = -100d
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "asteroid_roof_lights_fancy"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/common/light_blob.png"
+								Size = [6, 6]
+								Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+								VertexColor = [255*2, 255*2, 255*2]
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		UnOperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsNotOperational
+			InvertOperationalToggle = true
+			IncludeInBlueprints = false
+			Components
+			{
+				Graphics2
+				{
+					Type = Graphics
+					Location = [1, 1]
+					Floor
+					{
+						Layer = "asteroid"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../deadball.png"
+								NormalsFile = "../deadball_n.png"
+								Size = [1.5, 1.5]
+								RotSpeed = 0d
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		/*Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			Floor
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../lightball.png"
+						Size = [1.55, 1.55]
+						RotSpeed = 180d
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../lightball.png"
+						Size = [1.5, 1.5]
+						RotSpeed = -100d
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*2, 255*2, 255*2]
+					}
+				]
+			}
+		}*/
+		
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [1, 1]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 0.8
+			FiringArc = 360d
+			RotateSpeed = 90d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 4800 * 2
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+				{
+				    TargetType = Crew
+				    Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = Turret
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [1, 0]
+			OperationalToggle = PowerToggle
+			FireDelay = .1
+			Bullet = &<shots/thumper_med.rules>
+			Spread = [-1.5d, 1.5d]
+			//ResourceStorage = BatteryStorage
+			//ResourcesUsed = 200
+			//MinResourcesUsed = 1
+		}
+
+		/*ChargeEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Turret
+			Location = [0.5, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_launcher/rail.wav"
+					//Sound = "./data/common_effects/sounds/thruster_burst.wav"
+					Volume = .3
+					Speed = 2
+				}
+			]
+		}*/
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitter
+			Location = [0, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				//&<bigflashfourth.rules>
+				//&<particles/laser_blaster_small_shoot.rules>
+				//&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = 0.4
+					Speed = 0.7
+					SpeedVariation = .15
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					//Sound = "./data/common_effects/sounds/thruster_burst.wav"
+					Sound = "./data/ships/terran/laser_blaster_small/shoot.wav"
+					Volume = 1.6
+					Speed = 0.25
+					SpeedVariation = .075
+				}
+			]
+		}
+		
+		DestroyedEffects : &<../base_part_occult.rules>/Part/Components/DestroyedEffects
+		{
+			Location = [1, 1]
+		}
+		
+		DestroyedEffectsDeathBySigil : &<../base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		{
+			Location = [1, 1]
+		}
+
+		Blueprints = &<./Data/ships/asteroid/rock/rock_2x2.rules>/Part/Components/Blueprints
+	}
+}

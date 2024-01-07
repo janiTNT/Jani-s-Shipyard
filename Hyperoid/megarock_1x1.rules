@@ -1,0 +1,29 @@
+Part : <base_part_hyperoid.rules>/Part
+{
+	NameKey = "Parts/Hyperoid1x1"
+	DescriptionKey = "Parts/RockDesc"
+	ID = janiTNT.hyperock_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [juanTNT.hyperock_1x1]//heh.
+	SelectionTypeID = "rock"
+	EditorGroup = "Rock"
+	Resources = []
+	MaxHealth = 160000 * 4*4 *2
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsCrewSalvageable = false
+	EditorIcon
+	{
+		Texture = "./Data/ships/asteroid/rock/rock_hard_4x4_icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+	
+		SpriteGrid1 : &<megarock_4x4.rules>/Part/Components/SpriteGrid1
+		{
+			GridSpacing = [0.25, 0.25]
+			GridSize = [4, 4]
+		}
+
+		Blueprints = &<./Data/ships/asteroid/rock/rock_1x1_hard.rules>/Part/Components/Blueprints
+	}
+}

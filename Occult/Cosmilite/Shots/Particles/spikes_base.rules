@@ -1,0 +1,102 @@
+Particles
+{
+	Type = Particles
+	Def = &<./Data/shots/ion_beam/particles/ion_beam_hit_spikes.rules>/Def
+	EmitterDef
+	{
+		EmitPerSecond = 50
+		EmitPerOneShot
+		{
+			Min = 0
+			Max = 0
+		}
+		PreInitializers
+		[
+			{
+				Type = ScaleFromIntensity
+				ScaleOut = intensity_scale
+				ScaleFactor = 5
+				IntensityExponent = 0.5
+				Name = ""
+				Enabled = true
+				UpdateAfterInit = false
+			}
+			{
+				Type = SetRandom
+				DataOut = rot
+				ValueType = Angle
+				FromValue = 0d
+				ToValue = 360d
+				Name = "Random Rotation"
+				Enabled = true
+				UpdateAfterInit = false
+			}
+			{
+				Type = SetRandom
+				DataOut = base_scale
+				ValueType = Float
+				FromValue = 0.8 / 4
+				ToValue = 1.5 / 4
+				Name = "Random Scale"
+				Enabled = true
+				UpdateAfterInit = false
+			}
+			{
+				Type = Operator
+				DataType = Float
+				AIn = base_scale
+				BIn = intensity_scale
+				ResultOut = base_scale
+				Operator = Multiply
+				Name = "apply intensity scale"
+				Enabled = true
+				UpdateAfterInit = false
+			}
+		]
+		PostInitializers = []
+	}
+	Bucket = IonHitSpikes
+	UseRealTime = false
+	PenetratingBucket
+	MinIntensity = 0
+	IsFancy = true
+	IsFancyLight = false
+	IsSimple = false
+	Sharing = Global
+	UnsharedRenderInWorldSpace = false
+	DontEmitWhenOffScreen = true
+	DontEmitWhenOffScreenSizeInflate = 5
+	UseCustomShapeForOffScreenCheck = false
+	MaxEmissionZoom = 3.4028235E+38
+	ScaleEmissionWithIntensity = false
+	ScaleEmissionWithBeamLength = false
+	ScaleEmissionWithWorldVelocity = false
+	ScaleEmissionWithPartSize = false
+	ScaleEmissionWithPartPhysicalSize = false
+	CaptureBackBuffer = false
+	Filter
+	{
+		Ships = true
+		OperationalHealth = true
+		StructuralHealth = true
+		OnlyPartCategories
+		ExcludePartCategories
+		Shields = true
+		Bullets = true
+		OnlyBulletCategories
+		ExcludeBulletCategories
+		Crew = true
+		Nuggets = true
+		IgnoreInvulnerability = true
+		Self
+		TargetedSelf
+		Friendlies = true
+		TargetedFriendlies
+		Enemies = true
+		TargetedEnemies
+		Junk = true
+		TargetedJunk
+	}
+	Delay = 0
+	IgnoreIntensity = false
+}

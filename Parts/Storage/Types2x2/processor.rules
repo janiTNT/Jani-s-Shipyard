@@ -1,0 +1,46 @@
+Resource = processor
+StackSize = (&<./data/resources/processor/processor.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = ProcessorStorage
+	}
+	
+	ProcessorStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				Sound = "./Data/common_effects/sounds/metal_deliver.wav"
+				Volume = 0.75
+				Speed = 2
+				SpeedVariation = .05
+			}
+		]
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = ProcessorStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/processor/processor_stack_5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

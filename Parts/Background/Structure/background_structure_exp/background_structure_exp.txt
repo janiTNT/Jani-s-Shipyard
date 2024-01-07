@@ -1,0 +1,82 @@
+Part : /BASE_PART
+{
+	NameKey = "Parts/Background_Structure_Small"
+	IconNameKey = "Parts/Background_Structure_Small_Icon"
+	ID = Skipydog.background_structure_exp
+	EditorGroup = "Misc"
+	DescriptionKey = "Parts/Background_Structure_Desc"
+	Cost = 500
+	Size = [1, 1]
+	SelectionTypeID = "structure"
+	MaxHealth = 500
+	//AllowedContiguity = [Right, Left]
+	HealthType = Structural
+	TypeCategories = [background_structure]
+	Flammable = false
+	ConstructionDuration = 0.5
+	RepairDuration = 0.5
+	UnderlyingPartPerTile = ""
+	TempConstructionPartPerTile = cosmoteer.structure
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 0.5
+	IsRotateable = true
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		TextureBlend : <texture_blend.txt> // Thank you ABH
+		{
+			Type = BlendSprite
+			Location = [0.5, 0.5]
+			BlendsWithCategories = [background_structure]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [0.5, 0.5]
+		}
+
+		BlueprintBlend
+		: <texture_blend_blueprints.txt>
+		{
+			Location = [0.5, 0.5]
+			BlendsWithCategories = [background_structure]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+}

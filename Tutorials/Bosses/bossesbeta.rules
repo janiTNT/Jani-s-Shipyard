@@ -1,0 +1,10 @@
+ID = janiTNT.betawarning.bosses.1
+TitleKey = "Tutorials/Bossfights/BetaWarning1Title"
+TabNameKey = "Codex/JaniTutorials"
+ShowCondition = "? sim.HasShipWithLabelInSight('janiboss')"
+Entries
+[
+	{
+		TextKey = "Tutorials/Bossfights/BetaWarning1"
+	}
+]

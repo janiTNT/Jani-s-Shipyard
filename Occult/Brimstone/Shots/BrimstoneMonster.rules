@@ -1,0 +1,365 @@
+ID = "janiTNT.brimstonemonster_boss"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 10000
+IdealRange = 250
+Speed = 10
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		//Radius = 34 //Perfect...
+		Radius = 28
+		Density = 3
+		LinearDamping = 1 * 0.25
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 45d
+		Delay = 0
+		//AvoidanceRaycastDistance = 250
+		VelocityCompensation = 80%
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 1
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 80 * 0.25
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 70
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Sprite1
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		RotOffset = 90d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../../TheseAssetsAreFromCalamityMod/BrimstoneMonster.png"
+				MipLevels = max
+			}
+			//UVRotation = 1
+			Size = [72, 72]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0.1, 0.1]
+		LerpTime = 1.5
+	}
+	
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [150, 150]
+			VertexColor = [255*2, 205*2, 128*2]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 3
+	}
+
+	/*Targetable
+	{
+		Type = Targetable
+		Health = 7200 * 100
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}*/
+	
+	/*DamagePool
+	{
+		Type = DamagePool
+		Damage = 80000 * 16 //quarter of DoG, yes its gonna break because big collider
+	}*/
+	
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1800000
+					Radius = 50
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Slices = 1
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 600000
+					Radius = 40
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Delay = .5
+					Slices = 1
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+					}
+				}
+				{
+					Type = SpawnBullets
+					Bullet = &<brimstonedart.rules>
+					Count = 32
+					Spread = [-6d, 6d]
+					Distance = 0
+					InheritVelocity = false
+				}
+				{
+					Type = SpawnBullets
+					Bullet = &<Sunbombp2.rules>
+					Count = 3
+					Spread = [-8d, 8d]
+					Distance = 0
+					InheritVelocity = false
+				}
+			]
+			
+			MediaEffectsScale = 10
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects = []
+		}
+
+		HitFriendly
+		{
+			MediaEffectsScale = 10
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+	
+	/*Hit
+	{
+		Type = PenetratingHit
+		//FactorEffectsWith = Targetable
+		Penetration = 1200
+		PenetrationSpeed = 200
+		
+		SourceShipLowCollisions = false
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+		ShieldPenetrationFactor = 1 / 16
+		
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 40000
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 20;
+				}
+			]
+			
+			MediaEffectsScale = 40
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffectsScale = 40
+			Bounce = true
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 12000
+					DamagePool = DamagePool
+					DoPooledDamageFirst = true
+				}
+			]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 0.1
+				}
+			]
+		}
+		PenetratingStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		FinishedPenetratingOperational
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		FinishedPenetratingStructural
+		{
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 0.1
+				}
+			]
+		}
+	}*/
+}

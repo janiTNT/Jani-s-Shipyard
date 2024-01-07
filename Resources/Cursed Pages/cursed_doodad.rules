@@ -1,0 +1,13 @@
+ID = janiTNT.cursedpage
+Type = Resource
+DescriptionKey = "Resource/CursedPage"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "sheets1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = cursedpage

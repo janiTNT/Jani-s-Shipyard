@@ -1,0 +1,113 @@
+ID = "janiTNT.hell_sunmonster_small_phase2"
+Range = 500
+IdealRange = 250
+Speed = 40
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 3
+		Density = 1
+		LinearDamping = 0
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 0d
+		Delay = 0
+		//AvoidanceRaycastDistance = 250
+		VelocityCompensation = 80%
+	}
+	
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	BoostAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [25, 0]
+		AccelerationOverTime = [0, 2]
+	}
+	
+	DeathByLifetime
+	{
+		Type = DeathByDistanceTraveled
+		// Distance auto-computed from range.
+		HasTarget = false
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	DeathByDistanceTraveledTargeted
+	{
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range) * 2
+		HasTarget = true
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	Targetable = &<SunBombp1.rules>/Components/Targetable
+	
+	Hit = &<SunBombp1.rules>/Components/Hit
+	
+	GlowSprite = &<SunBombp1.rules>/Components/GlowSprite
+	
+	Sprite2 : &<SunBombp1.rules>/Components/Sprite2
+	{
+		LerpTime = 0
+	}
+	
+	Sprite1 : &<SunBombp1.rules>/Components/Sprite1
+	{
+		LerpTime = 0
+	}
+
+	Sprite3
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 500d
+		Offset = [-3, 0]
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [18, 18]
+			TargetBlendMode = Add
+			VertexColor = [255*0.2, 205*0.02, 128*0.02]
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+	Sprite4
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = -200d
+		//IsLit = true
+		Offset = [-6, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [16, 16]
+			TargetBlendMode = Add
+			VertexColor = [255*0.15, 205*0.01, 128*0.01]
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.75
+	}
+}

@@ -1,0 +1,1103 @@
+PartToggles
+[
+	// Fabricator type
+	{
+		ToggleID = "fabricator_large_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// GOLDIUM
+			{
+				ChoiceID = "fabricator_large_type_goldium"
+				ButtonToolTipKey = "PartToggles/FabricatorType_Goldium"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/goldium/goldium1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Splitter Mode
+	{
+		ToggleID = "splitter_mode"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		ShowInEditor = true
+		SortOrder = 1
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "splitter_split"
+				ButtonToolTipKey = "PartToggles/splitter_split"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Parts/Production/Splitter/toggle1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "splitter_merge"
+				ButtonToolTipKey = "PartToggles/splitter_merge"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Parts/Production/Splitter/toggle2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Splitter Type
+	{
+		ToggleID = "splitter_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Steel Steel Steel
+			{
+				ChoiceID = "splitter_large_type_tristeel"
+				ButtonToolTipKey = "PartToggles/SplitterType_Tristeel"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/tristeel_bars/tristeel_bars5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Steel Steel Steel
+			{
+				ChoiceID = "splitter_large_type_uranium"
+				ButtonToolTipKey = "PartToggles/SplitterType_Uranium"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/enriched_uranium/enriched_uranium.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Resource CATEGORIES
+	/*{
+		ToggleID = "resource_conveyor_category"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Hyperium
+			{
+				ChoiceID = "Ammos"
+				ButtonToolTipKey = "PartToggles/Ammos"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "ammo.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Bullet
+			{
+				ChoiceID = "Builds"
+				ButtonToolTipKey = "PartToggles/Builds"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "construction.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// HE
+			{
+				ChoiceID = "Ores"
+				ButtonToolTipKey = "PartToggles/Ores"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "ores.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}*/
+	// Resource Type AMMO
+	{
+		ToggleID = "resource_conveyor_mode_ammo"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Hyperium
+			{
+				ChoiceID = "resource_0"
+				ButtonToolTipKey = "PartToggles/resource_0"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/hyperium/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Bullet
+			{
+				ChoiceID = "resource_1"
+				ButtonToolTipKey = "PartToggles/resource_1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/bullet/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// HE
+			{
+				ChoiceID = "resource_2"
+				ButtonToolTipKey = "PartToggles/resource_2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/missile_part_he/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Emp
+			{
+				ChoiceID = "resource_3"
+				ButtonToolTipKey = "PartToggles/resource_3"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/missile_part_emp/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Nuke
+			{
+				ChoiceID = "resource_4"
+				ButtonToolTipKey = "PartToggles/resource_4"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/missile_part_nuke/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Mine
+			{
+				ChoiceID = "resource_5"
+				ButtonToolTipKey = "PartToggles/resource_5"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/mine_part/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Resource Type MATERIAL
+	{
+		ToggleID = "resource_conveyor_mode_material"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Steel
+			{
+				ChoiceID = "resource_6"
+				ButtonToolTipKey = "PartToggles/resource_6"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/steel/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Coil
+			{
+				ChoiceID = "resource_7"
+				ButtonToolTipKey = "PartToggles/resource_7"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/coil/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Coil2
+			{
+				ChoiceID = "resource_8"
+				ButtonToolTipKey = "PartToggles/resource_8"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/coil2/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// tristeel
+			{
+				ChoiceID = "resource_9"
+				ButtonToolTipKey = "PartToggles/resource_9"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/tristeel/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Diamond
+			{
+				ChoiceID = "resource_10"
+				ButtonToolTipKey = "PartToggles/resource_10"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/diamond/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// processor
+			{
+				ChoiceID = "resource_11"
+				ButtonToolTipKey = "PartToggles/resource_11"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/processor/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// enriched
+			{
+				ChoiceID = "resource_12"
+				ButtonToolTipKey = "PartToggles/resource_12"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/enriched_uranium/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// goldium
+			{
+				ChoiceID = "resource_goldium"
+				ButtonToolTipKey = "PartToggles/resource_goldium"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/goldium/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Resource Type MODDED
+	{
+		ToggleID = "resource_conveyor_mode_modded"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// goldium
+			{
+				ChoiceID = "resource_goldium_new"
+				ButtonToolTipKey = "PartToggles/resource_goldium"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/goldium/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// tristeel bars
+			{
+				ChoiceID = "resource_cuttristeel"
+				ButtonToolTipKey = "PartToggles/resource_cuttristeel"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/tristeel_bars/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// cosmilite bars
+			{
+				ChoiceID = "resource_cosmilite"
+				ButtonToolTipKey = "PartToggles/resource_cosmilite"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Cosmic Bar/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Astral Bars
+			{
+				ChoiceID = "resource_astralbar"
+				ButtonToolTipKey = "PartToggles/resource_astralbar"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Astral Bar/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// profaned core
+			{
+				ChoiceID = "resource_profanedcore"
+				ButtonToolTipKey = "PartToggles/resource_profanedcore"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Profaned Core/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// pages of evil calamitas
+			{
+				ChoiceID = "resource_cursedpage"
+				ButtonToolTipKey = "PartToggles/resource_cursedpage"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Cursed Pages/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Resource Type ORE
+	{
+		ToggleID = "resource_conveyor_mode_ore"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Sulfur
+			{
+				ChoiceID = "resource_13"
+				ButtonToolTipKey = "PartToggles/resource_13"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/sulfur/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Sulfur
+			{
+				ChoiceID = "resource_14"
+				ButtonToolTipKey = "PartToggles/resource_14"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/iron/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Copper
+			{
+				ChoiceID = "resource_15"
+				ButtonToolTipKey = "PartToggles/resource_15"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/copper/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Tritanium
+			{
+				ChoiceID = "resource_16"
+				ButtonToolTipKey = "PartToggles/resource_16"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/tritanium/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Carbon
+			{
+				ChoiceID = "resource_17"
+				ButtonToolTipKey = "PartToggles/resource_17"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/carbon/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Gold
+			{
+				ChoiceID = "resource_18"
+				ButtonToolTipKey = "PartToggles/resource_18"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/gold/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Uranium
+			{
+				ChoiceID = "resource_19"
+				ButtonToolTipKey = "PartToggles/resource_19"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/uranium/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	//TINY DRONE TYPE
+	{
+		ToggleID = "tinydronetype"
+		Style = Popout
+		ShowInEditor = true
+		MultipleModesDisplayOrder = Last
+		Choices
+		[
+			// Combat mk1
+			{
+				ChoiceID = "DroneCombat1"
+				ButtonToolTipKey = "PartToggles/DroneCombat1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tdrone_type1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// DroneCombat2
+			{
+				ChoiceID = "DroneCombat2"
+				ButtonToolTipKey = "PartToggles/DroneCombat2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tdrone_type2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Stell From Mindustry v7 
+			{
+				ChoiceID = "StellDrone"
+				ButtonToolTipKey = "PartToggles/StellDrone"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tdrone_type3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Sparker
+			{
+				ChoiceID = "Sparker"
+				ButtonToolTipKey = "PartToggles/Sparker"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "tdrone_type5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	//Small DRONE TYPE
+	{
+		ToggleID = "smalldronetype"
+		Style = Popout
+		ShowInEditor = true
+		MultipleModesDisplayOrder = Last
+		Choices
+		[
+			// Laser
+			{
+				ChoiceID = "DroneSmallLaser"
+				ButtonToolTipKey = "PartToggles/DroneSmallLaser"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "sdrone_type1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Cannon
+			{
+				ChoiceID = "DroneMedCannon"
+				ButtonToolTipKey = "PartToggles/DroneMedCannon"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "sdrone_type2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// EletroCannon
+			{
+				ChoiceID = "DroneEletroCannon"
+				ButtonToolTipKey = "PartToggles/DroneEletroCannon"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "sdrone_type3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Thruster Detail Mode
+	{
+		ToggleID = "thruster_roof_detail"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		ShowInEditor = true
+		SortOrder = 1
+		Choices
+		[
+			// Low
+			{
+				ChoiceID = "thrusterdetail_low"
+				ButtonToolTipKey = "PartToggles/thrusterdetail_low"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Detail1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Full
+			{
+				ChoiceID = "thrusterdetail_high"
+				ButtonToolTipKey = "PartToggles/thrusterdetail_high"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Detail3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Lengths
+	{
+		ToggleID = "advships_length_value"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Zero.
+			{
+				ChoiceID = "advships_lengths_zero"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// One.
+			{
+				ChoiceID = "advships_lengths_one"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Two.
+			{
+				ChoiceID = "advships_lengths_two"
+				//ButtonToolTipKey = "PartToggles/MissileType_EMP"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Three.
+			{
+				ChoiceID = "advships_lengths_three"
+				//ButtonToolTipKey = "PartToggles/MissileType_Nuke"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Four.
+			{
+				ChoiceID = "advships_lengths_four"
+				//ButtonToolTipKey = "PartToggles/MissileType_Mine"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Five.
+			{
+				ChoiceID = "advships_lengths_five"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length6.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Six.
+			{
+				ChoiceID = "advships_lengths_six"
+				//ButtonToolTipKey = "PartToggles/MissileType_EMP"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length7.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Seven.
+			{
+				ChoiceID = "advships_lengths_seven"
+				//ButtonToolTipKey = "PartToggles/MissileType_Nuke"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length8.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Eight.
+			{
+				ChoiceID = "advships_lengths_Eight"
+				//ButtonToolTipKey = "PartToggles/MissileType_Mine"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length9.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Nine.
+			{
+				ChoiceID = "advships_lengths_nine"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "length10.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+
+	// Widths
+	{
+		ToggleID = "advships_width_value"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Zero.
+			{
+				ChoiceID = "advships_widths_zero"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// One.
+			{
+				ChoiceID = "advships_widths_one"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Two.
+			{
+				ChoiceID = "advships_widths_two"
+				//ButtonToolTipKey = "PartToggles/MissileType_EMP"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Three.
+			{
+				ChoiceID = "advships_widths_three"
+				//ButtonToolTipKey = "PartToggles/MissileType_Nuke"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Four.
+			{
+				ChoiceID = "advships_widths_four"
+				//ButtonToolTipKey = "PartToggles/MissileType_Mine"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Five.
+			{
+				ChoiceID = "advships_widths_five"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width6.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Six.
+			{
+				ChoiceID = "advships_widths_six"
+				//ButtonToolTipKey = "PartToggles/MissileType_EMP"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width7.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Seven.
+			{
+				ChoiceID = "advships_widths_seven"
+				//ButtonToolTipKey = "PartToggles/MissileType_Nuke"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width8.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Eight.
+			{
+				ChoiceID = "advships_widths_Eight"
+				//ButtonToolTipKey = "PartToggles/MissileType_Mine"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width9.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// Nine.
+			{
+				ChoiceID = "advships_widths_nine"
+				//ButtonToolTipKey = "PartToggles/MissileType_HE"
+				//DefaultHotkey = []
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "width10.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Invert Logic
+	{
+		ToggleID = "skipydog_invert_input_toggle"
+		Style = CycledButton
+		MultipleModesDisplayOrder = Last
+		ShowInEditor = true
+		SortOrder = 1
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "invert_input_no"
+				ButtonToolTipKey = "PartToggles/invert_input_no"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_invert1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "invert_input_yes"
+				ButtonToolTipKey = "PartToggles/invert_input_yes"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "toggle_invert2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+]

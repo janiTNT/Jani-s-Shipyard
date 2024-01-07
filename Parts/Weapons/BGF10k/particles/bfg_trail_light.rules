@@ -1,0 +1,183 @@
+Type = Particles
+/*Developer's note: This is mostly code from Galactic Alleigance's (CLASSIC VERSION) Fusion Lance trail.
+
+All credits goes to Ultranova, the creator of Galactic Alleigance
+
+i struggled with particles, so yeah
+
+Note 2: after porting to modern this doesnt make much sense now... anyway
+*/
+Def
+{
+	EmitPerSecond = 0
+	EmitPerOneShot = 0
+	Initializers
+	[
+		{
+			Type = LocationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Location to world space"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = RotationToWorldSpace
+			LocationIn = location
+			LocationOut = location
+			Name = "Convert rotation to world space."
+			Enabled = true
+			UpdateAfterInit = false
+			RotationIn = rot
+			RotationOut = rot
+		}
+		{
+		        Type = AddFrameOfReference
+		        Name = "Add frame of reference"
+		        VelocityIn = velocity
+		        VelocityOut = velocity
+		        Enabled = true
+		        UpdateAfterInit = false
+		        VelocityInOut = velocity
+		}
+		{
+			Type = FpsCompensator
+			LocationInOut = location
+			VelocityIn
+			Mode = Uniform
+			Name = "FPS Compensator"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = SetValue
+			DataOut = color
+			ValueType = Color
+			Value
+			{
+				Rf = 0
+				Gf = 1
+				Bf = 1
+				Af = 1
+			}
+			Name = Color
+			Enabled = false
+			UpdateAfterInit = false
+		}
+	]
+	Updaters
+	[
+		{
+			Type = Lifetime
+			LifeInOut = life
+			Lifetime = 1.75
+			Name = Lifetime
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Operator
+			DataType = Vector2D
+			AIn = location
+			BIn = velocity
+			ResultOut = location
+			Operator = AddDt
+			Name = "Apply velocity"
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
+			Type = Lerp
+			LerpIn = life
+			DataOut = color
+			Invert = false
+			ValueType = Color
+			FromValue
+			{
+				Rf = 0
+				Gf = 1
+				Bf = 0
+				Af = 1
+			}
+			ToValue
+			{
+				Rf = 0
+				Gf = 1
+				Bf = 0
+				Af = 0
+			}
+			Name = "Color lerp"
+			Enabled = true
+			UpdateAfterInit = true
+		}
+	]
+	Renderer
+	{
+		Type = StandardQuadRenderer
+		LocationIn = location
+		ScaleIn
+		RotationIn = rot
+		ColorIn = color
+		UvRectIn
+		BaseSize
+		{
+			X = 150
+			Y = 150
+		}
+		MaxScale = 1
+		Name = ""
+	}
+	Material
+	{
+		Shader
+		{
+			File = "./Data/common_effects/particles/particle_light.shader"
+		}
+		_z = 10
+		_litReflectiveStrength = 12
+		_litAdditiveStrength = 0.05
+		_unlitAdditiveStrength = 0.15
+		Texture
+		{
+			File = "./Data//common_effects/particles/blob.png"
+			MipLevels = max
+			SampleMode = Linear
+		}
+		TargetBlendMode
+		{
+			SourceRgbFactor = InverseDestColor
+			DestRgbFactor = One
+			RgbOperator = Add
+			SourceAlphaFactor = Zero
+			DestAlphaFactor = One
+			AlphaOperator = Add
+		}
+	}
+	DeleteMode = Fast
+	EnableMultithreading = false
+	InitCapacity = 2560
+}
+EmitterDef
+{
+	EmitPerSecond = 100
+	EmitPerOneShot = 0
+	PreInitializers[]
+	PostInitializers[]
+	UpdatedEmittedParticles = false
+}
+Bucket = NukeFlash
+Delay = 0
+IgnoreIntensity = false
+Sharing = Global
+MinIntensity = 0
+IsFancy = false
+DontEmitWhenOffScreen = false
+DontEmitWhenOffScreenSizeInflate = 1
+PenetratingBucket
+UnsharedRenderInWorldSpace = false
+UseCustomShapeForOffScreenCheck = false
+MaxEmissionZoom = 3.40282347E+38
+ScaleEmissionWithIntensity = false
+ScaleEmissionWithBeamLength = false
+UseRealTime = false
+CaptureBackBuffer = false

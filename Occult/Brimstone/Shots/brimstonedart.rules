@@ -1,0 +1,190 @@
+ID = "janiTNT.brimstonedart_boss"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 1000
+IdealRange = 700
+Speed = 110
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 1
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 3000
+		TargetCategory = "laser"
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = 24000
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+		Penetration = 40
+		PenetrationSpeed = 30
+		
+		SourceShipLowCollisions = false
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+				{
+					Type = Impulse;
+					Impulse = 80;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		PenetratingStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 0
+					DamagePool = DamagePool
+				}
+			]
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+	
+	AnimatedSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper3
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "../../../TheseAssetsAreFromCalamityMod/BrimstoneBarrage.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [12, 12]//bit bigger but who care
+				//TargetBlendMode = Add
+			}
+			FrameCount = 4
+			FrameSize = [64, 64]
+			FramesPerRow = 4
+			FramesPerSecond = 20
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			VertexColor = [128, 0, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.8
+	}
+}

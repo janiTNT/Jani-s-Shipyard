@@ -1,0 +1,98 @@
+Components
+{	
+	/*CombinedEnrichedUraniumStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = enriched_uranium
+		ResourceStorages = [EnrichedUraniumStorage, UraniumSplitter]
+		//AddMode = PrioritizeLeastEmptyCapacity
+		//RemoveMode = PrioritizeMostEmptyCapacity
+		//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		//UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}
+	CombinedUraniumStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = uranium
+		ResourceStorages = [UraniumStorage]
+		//AddMode = PrioritizeLeastEmptyCapacity
+		//RemoveMode = PrioritizeMostEmptyCapacity
+		//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		//UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+	}*/
+	
+	EnrichedUraniumConsumer
+	{
+		Type = TypedResourceGridConsumer
+		ResourceType = enriched_uranium
+		Storage = EnrichedUraniumStorage
+		DefaultPriority = &/PRIORITIES/Factory_Supply
+		OperationalToggle = IsOperational
+		ConsumptionToggleButtonOffset = [0, -.3]
+	}
+	EnrichedUraniumStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = enriched_uranium
+		GridRect = [0, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [12/64, 4/64, 6/64, 11/64]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+	}
+	UraniumStorage
+	{
+		Type = TypedResourceGrid
+		ResourceType = uranium
+		GridRect = [1, 1, 1, 1]
+		Layer = "doodads_low"
+		SpriteInset = [6/64, 4/64, 12/64, 11/64]
+		SuppliesResources = true
+		//SuppliesResourcesToggle = SplitToggle
+		SupplyToggleButtonOffset = [0, -.8]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+	}
+	UraniumSplitter
+	{
+		Type = InlineResourceConverter
+		ResourceType = enriched_uranium
+		FromStorage = EnrichedUraniumStorage
+		FromQuantity = 1
+		ToQuantity = 4
+	}
+	ResourceConverterSplit
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsSplitToggle
+		From
+		[
+			{
+				Storage = UraniumSplitter
+				Quantity = 1
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 200
+				MinQuantityForConversion = 1
+			}
+		]
+		ToStorage = UraniumStorage
+		ToQuantity = 1
+		Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+	}
+	
+	ConvertEffectsA
+	{
+		Type = TriggeredEffects
+		Trigger = ResourceConverterSplit
+		Location = [1, 1]
+		MediaEffects = &/COMMON_EFFECTS/ResourcePickup
+	}
+}

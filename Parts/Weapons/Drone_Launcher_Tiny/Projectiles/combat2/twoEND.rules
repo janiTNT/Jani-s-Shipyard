@@ -1,0 +1,16 @@
+ID = "janiTNT.combatdroneMK_2.END"
+Range = &<twobase.rules>/Range
+IdealRange = &<twobase.rules>/IdealRange
+Speed = &<twobase.rules>/Speed
+
+Components : &<twobase.rules>/Components
+{
+	DeathByEnemyProximity : &<twobase.rules>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<twobase.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<twobase.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects = &<twobase.rules>/Components/Targetable/OnDeath/MediaEffects
+		}
+	}
+}

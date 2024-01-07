@@ -1,0 +1,440 @@
+Techs
+[
+	{
+		ID = juanTNT.custom_explosive
+		NameKey = &<Parts/Utilities/customexplosive/Activator.txt>/Part/NameKey
+		DescriptionKey = &<Parts/Utilities/customexplosive/Activator.txt>/Part/DescriptionKey
+		Icon = &<Parts/Utilities/customexplosive/Activator.txt>/Part/EditorIcon
+		EditorGroup = &<Parts/Utilities/customexplosive/Activator.txt>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Utilities/customexplosive/Activator.txt>/Part/ID
+			&<Parts/Utilities/customexplosive/Explosive.txt>/Part/ID
+			&<Parts/Utilities/customexplosive/NukeExplosive.txt>/Part/ID
+		]
+		Cost = 5000
+	}
+	{
+		ID = juanTNT.FusionReactor6x6
+		NameKey = &<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/DescriptionKey
+		Icon = &<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/ID
+			&<Parts/Power/Radiator/Radiator.txt>/Part/ID
+		]
+		Cost = 100000
+		Prerequisites = [cosmoteer.reactor_large]
+	}
+	{
+		ID = juanTNT.1x1ReactorFunnyTechTrollage
+		NameKey = &<Parts/Power/ReactorAux/reac.txt>/Part/NameKey
+		DescriptionKey = &<Parts/Power/ReactorAux/reac.txt>/Part/DescriptionKey
+		Icon = &<Parts/Power/ReactorAux/reac.txt>/Part/EditorIcon
+		EditorGroup = &<Parts/Power/ReactorAux/reac.txt>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Power/ReactorAux/reac.txt>/Part/ID
+		]
+		Cost = 8000
+	}
+	{
+		ID = juanTNT.mining_laser_emitter
+		NameKey = &<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/NameKey
+		DescriptionKey = "Parts/MiningBeamTechDesc"
+		Icon = &<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/ID
+			&<Parts/Weapons/mining_laser_emitter/prism.rules>/Part/ID
+		]
+		Cost = 8000
+		Prerequisites = [cosmoteer.mining_laser_small, cosmoteer.ion_beam_prism]
+	}
+	{
+		ID = janiTNT.nuke_missile_silo
+		NameKey = &<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/ID
+		]
+		Cost = 10000
+		Prerequisites = [cosmoteer.missile_launcher]
+	}
+	{
+		ID = juanTNT.Barracks
+		NameKey = &<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/DescriptionKey
+		Icon = &<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/ID
+		]
+		Cost = 3000
+	}
+	{
+		ID = janiTNT.drone_launcher_tiny
+		NameKey = &<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/EditorIcon
+		EditorGroup = &<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/ID
+		]
+		Cost = 8000
+		Prerequisites = [cosmoteer.missile_launcher, cosmoteer.factory_steel, cosmoteer.laser_blaster_small, janiTNT.material_reprocessing]
+	}
+	{
+		ID = janiTNT.material_reprocessing
+		NameKey = "Techs/reprosessingName"
+		DescriptionKey = "Techs/reprosessingDesc"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/reprocessing.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		EditorGroups = ["Production", "Technologies"]
+		PartsUnlocked
+		[
+			//&<Parts/Production/splitter/splitter.rules>/Part/ID
+			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part/ID
+			&<Parts/Production/Splitter/splitter_uranium.rules>/Part/ID
+		]
+		Cost = 1000
+	}
+	{
+		ID = janiTNT.advanced_material_manipulation
+		NameKey = "Techs/advancedmaterialsName"
+		DescriptionKey = "Techs/advancedmaterialsDesc"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/advanced_manipulation.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		EditorGroups = ["Production", "Technologies"]
+		PartsUnlocked
+		[
+			&<Parts/Production/Large_Fabricator/large_fabricator.rules>/Part/ID
+		]
+		Cost = 25000
+		Prerequisites = [janiTNT.material_reprocessing, cosmoteer.factory_diamond, cosmoteer.factory_processor]
+	}
+	{
+		ID = janiTNT.drone_launcher_small
+		NameKey = &<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part/ID
+		]
+		Cost = 10000
+		Prerequisites = [janiTNT.drone_launcher_tiny, cosmoteer.factory_coil, cosmoteer.disruptor, cosmoteer.factory_ammo]
+	}
+	{
+		ID = janiTNT.BFG10k
+		NameKey = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Weapons/BGF10k/BFG10k.rules>/Part/ID
+		]
+		Cost = 1000000
+		Prerequisites = [janiTNT.advanced_material_manipulation, cosmoteer.cannon_deck, cosmoteer.control_room_large]
+	}
+	{
+		ID = janiTNT.fuelroom
+		NameKey = &<Parts/Flight/Thruster Room/thruster_room.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Thruster Room/thruster_room.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Thruster Room/thruster_room.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Thruster Room/thruster_room.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part/ID
+		]
+		Cost = 2000
+	}
+	{
+		ID = janiTNT.inserters
+		NameKey = "Techs/Inserters"
+		DescriptionKey = "Techs/InsertersDesc"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/inserter1.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		EditorGroups = ["Production", "Technologies"]
+		PartsUnlocked
+		[
+			&<Parts/Production/inserter/inserter.rules>/Part/ID
+			&<Parts/Production/inserter/inserterConstruction.rules>/Part/ID
+			&<Parts/Production/inserter/inserterOres.rules>/Part/ID
+			
+			&<Parts/Storage/ammo2x2.rules>/Part/ID
+			&<Parts/Storage/build2x2.rules>/Part/ID
+			&<Parts/Storage/ore2x2.rules>/Part/ID
+			
+			&<Parts/Storage/ammo3x2.rules>/Part/ID
+			&<Parts/Storage/build3x2.rules>/Part/ID
+			&<Parts/Storage/ore3x2.rules>/Part/ID
+			
+			&<Parts/Storage/3x3/ammo3x3.rules>/Part/ID
+			&<Parts/Storage/3x3/build3x3.rules>/Part/ID
+			&<Parts/Storage/3x3/ore3x3.rules>/Part/ID
+			
+			&<Parts/Storage/4x3/ammo4x3.rules>/Part/ID
+			&<Parts/Storage/4x3/build4x3.rules>/Part/ID
+			&<Parts/Storage/4x3/ore4x3.rules>/Part/ID
+			
+			&<Parts/Storage/4x4/ammo4x4.rules>/Part/ID
+			&<Parts/Storage/4x4/build4x4.rules>/Part/ID
+			&<Parts/Storage/4x4/ore4x4.rules>/Part/ID
+		]
+		Prerequisites = [janiTNT.material_reprocessing, cosmoteer.factory_ammo]
+		Cost = 6000
+	}
+	{
+		ID = janiTNT.longinserters
+		NameKey = "Techs/LongInserters"
+		DescriptionKey = "Techs/LongInsertersDesc"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/inserter2.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		EditorGroups = ["Production", "Technologies"]
+		PartsUnlocked
+		[
+			
+			&<Parts/Production/Long inserter/Longinserter.rules>/Part/ID
+			&<Parts/Production/Long inserter/LonginserterConstruction.rules>/Part/ID
+			&<Parts/Production/Long inserter/LonginserterOres.rules>/Part/ID
+		]
+		Prerequisites = [janiTNT.inserters]
+		Cost = 6000
+	}
+	{
+		ID = janiTNT.stackinserters
+		NameKey = "Techs/StackInserters"
+		DescriptionKey = "Techs/StackInsertersDesc"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/inserter3.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		//EditorGroup = "Production"
+		EditorGroups = ["Production", "Technologies"]
+		PartsUnlocked
+		[
+			&<Parts/Production/Stack inserter/Stackinserter.rules>/Part/ID
+			&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part/ID
+			&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part/ID
+		]
+		Prerequisites = [janiTNT.longinserters, cosmoteer.factory_steel]
+		Cost = 8000
+	}
+	{
+		ID = janiTNT.Controlroom1x1
+		NameKey = &<Parts/Flight/Command Room/control_room_tiny.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Command Room/control_room_tiny.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Command Room/control_room_tiny.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Command Room/control_room_tiny.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Flight/Command Room/control_room_tiny.rules>/Part/ID
+		]
+		Cost = 3000
+	}
+	{
+		ID = janiTNT.Controlroom1x1_KROOMS
+		NameKey = &<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part/EditorGroup
+		PartsUnlocked
+		[
+			&<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part/ID
+		]
+		Prerequisites = [janiTNT.Controlroom1x1]
+		Cost = 3000
+	}
+	{
+		ID = janiTNT.pulsethrusters_small
+		NameKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/ID]
+		Cost = 500
+	}
+	{
+		ID = janiTNT.pulsethrusters_med
+		NameKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part/ID]
+		Prerequisites = [janiTNT.pulsethrusters_small]
+		Cost = 1000
+	}
+	{
+		ID = janiTNT.pulsethrusters_large
+		NameKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part/ID]
+		Prerequisites = [janiTNT.pulsethrusters_med, cosmoteer.thruster_large]
+		Cost = 2000
+	}
+	{
+		ID = janiTNT.pulsethrusters_huge
+		NameKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_huge.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Pulse Thrusters/pulse_thruster_huge.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Pulse Thrusters/pulse_thruster_huge.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Pulse Thrusters/pulse_thruster_huge.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Pulse Thrusters/pulse_thruster_huge.rules>/Part/ID]
+		Prerequisites = [janiTNT.pulsethrusters_large, cosmoteer.thruster_huge]
+		Cost = 5000
+	}
+	{
+		ID = janiTNT.thruster4x4
+		NameKey = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/ID]
+		Cost = 8000
+		Prerequisites = [cosmoteer.thruster_huge]
+	}
+	{
+		ID = janiTNT.thruster5x5
+		NameKey = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/ID]
+		Cost = 12000
+		Prerequisites = [janiTNT.thruster4x4]
+	}
+	{
+		ID = janiTNT.thruster6x6
+		NameKey = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/ID]
+		Cost = 20000
+		Prerequisites = [janiTNT.thruster5x5]
+	}
+	{
+		ID = janiTNT.burst1lasertech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Laser2/burst1_l.rules>/Part/ID
+		]
+		Cost = 500
+	}
+	{
+		ID = janiTNT.burst2lasertech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Laser3/burst2.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Laser3/burst2.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Laser3/burst2.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Laser3/burst2.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2_l.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2_l_alt.rules>/Part/ID
+		]
+		Cost = 1000
+		Prerequisites = [janiTNT.burst1lasertech, cosmoteer.laser_blaster_small]
+	}
+	{
+		ID = janiTNT.beam1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Beam1/spetum_l.rules>/Part/ID
+		]
+		Cost = 1000
+		Prerequisites = [janiTNT.burst1lasertech, cosmoteer.laser_blaster_small]
+	}
+	{
+		ID = janiTNT.ion1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/EditorGroups
+		PartsUnlocked = [&<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/ID]
+		Cost = 1000
+	}
+	{
+		ID = janiTNT.ion2tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/EditorGroups
+		PartsUnlocked = [&<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/ID]
+		Cost = 1500
+	}
+	{
+		ID = janiTNT.bomb1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part/EditorGroups
+		PartsUnlocked = [&<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part/ID]
+		Cost = 1500
+	}
+	{
+		ID = janiTNT.bomb2tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part/EditorGroups
+		PartsUnlocked = [&<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part/ID]
+		Cost = 2500
+		Prerequisites = [janiTNT.bomb1tech]
+	}
+]

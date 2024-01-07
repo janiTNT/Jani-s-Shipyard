@@ -1,0 +1,351 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/InserterConstruction"
+	IconNameKey = "Parts/InserterConstructionIcon"
+	ID = janiTNT.ConstructionInserter // Part IDs  somthing something
+	EditorGroups = ["Production"]
+	DescriptionKey = "Parts/InserterConstructionDesc"
+	Resources
+	[
+		[steel, 16]
+		[coil, 6]
+	]
+	//sus
+	Size = [1, 1]
+	MaxHealth = 1000
+	IsFlippable = true
+	IsRotateable = true
+	TypeCategories = [Inserter, uses_power, Port_IN]
+	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff]
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		//[0, 1]
+		[1, 0]
+	]
+	//IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "Icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 92]
+	}
+	Components : ^/0/Components
+	{	
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1//TROLLER
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		PortBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = PowerportBuff
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = PortBuffToggle
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				BatteryConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = battery
+					Storage = BatteryStorage
+					DefaultPriority = &/PRIORITIES/Factory_Supply
+					ResupplyThreshold = 500
+					OperationalToggle = PowerToggle
+				}
+			}
+		}
+		
+		BuildType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_material"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		steelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 0
+		}
+		steelComponents
+		{
+			Type = ToggledComponents
+			Toggle = steelToggle
+			IncludeInBlueprints = true
+			Components = &<steel.rules>/Components
+		}
+		
+		coilToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 1
+		}
+		coilComponents
+		{
+			Type = ToggledComponents
+			Toggle = coilToggle
+			IncludeInBlueprints = true
+			Components = &<coil.rules>/Components
+		}
+		
+		coil2Toggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 2
+		}
+		coil2Components
+		{
+			Type = ToggledComponents
+			Toggle = coil2Toggle
+			IncludeInBlueprints = true
+			Components = &<coil2.rules>/Components
+		}
+		
+		tristeelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 3
+		}
+		tristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = tristeelToggle
+			IncludeInBlueprints = true
+			Components = &<tristeel.rules>/Components
+		}
+		
+		diamondToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 4
+		}
+		diamondComponents
+		{
+			Type = ToggledComponents
+			Toggle = diamondToggle
+			IncludeInBlueprints = true
+			Components = &<diamond.rules>/Components
+		}
+		
+		processorToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 5
+		}
+		processorComponents
+		{
+			Type = ToggledComponents
+			Toggle = processorToggle
+			IncludeInBlueprints = true
+			Components = &<processor.rules>/Components
+		}
+		
+		enriched_uraniumToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 6
+		}
+		enriched_uraniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = enriched_uraniumToggle
+			IncludeInBlueprints = true
+			Components = &<enriched_uranium.rules>/Components
+		}
+		
+		goldiumToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 7
+		}
+		goldiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = goldiumToggle
+			IncludeInBlueprints = true
+			Components = &<goldium.rules>/Components
+		}
+		
+		ConvertProxy
+		{
+			Type = ToggleProxy
+			ComponentID = ResourceConverter
+		}
+		
+		ConvertProxy2
+		{
+			Type = TriggerProxy
+			ComponentID = ResourceConverter
+		}
+		
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ConvertProxy2
+			Location = [.5, .5]
+			MediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+		}
+		
+		ArmGraphics
+		{
+			Type = Graphics
+			//ChainedTo = Turret
+			Location = [.5, .5]
+			//Rotation = 90d
+			Layer = "fire"
+			ResetAnimationTrigger = ConvertProxy2
+			OperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"arm2.png"
+							"arm3.png"
+							"arm4.png"
+							"arm5.png"
+							"arm6.png"
+							"arm7.png"
+							"arm8.png"
+							"arm9.png"
+							"arm9.png"
+							"arm8.png"
+							"arm7.png"
+							"arm6.png"
+							"arm5.png"
+							"arm4.png"
+							"arm3.png"
+							"arm2.png"
+							"arm1.png"// Loop back to beginning and clamp there.
+						]
+						Size = [1, 3]
+						AnimationInterval = 0.0515 * 0.75
+						AnimationStartTime = MinValue
+						ClampAnimation = true
+					}
+				]
+			}
+		}
+		
+		BaseGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/fire_extinguisher/fire_extinguisher.rules>/Part/Components/Graphics/Roof
+		}
+		
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "bp.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		InserterPowerUsage = [&../PowerPerTransfer, &../PowerPerSecond]
+		PowerPerTransfer = (&<hyperium.rules>/Components/ResourceConverter/From/1/Quantity) / 1000
+		PowerPerSecond = (&<hyperium.rules>/Components/ResourceConverter/From/1/Quantity) / (&<hyperium.rules>/Components/ResourceConverter/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
+	//	EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	//	HeatUsageContinuous = (&~/Part/Components/HeatDrain/FromQuantity) / (&~/Part/Components/HeatDrain/Interval) / 1000
+	}
+}

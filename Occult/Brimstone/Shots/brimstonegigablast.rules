@@ -1,0 +1,144 @@
+ID = "janiTNT.brimstonegigablast_boss"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 2500
+IdealRange = 1000
+Speed = 300
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 1
+		LinearDamping = 1 / 8
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 15d
+		ModifiesLinearVelocity = true
+		Delay = 0
+	}
+	
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 10
+		//HasTarget = true
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 32000
+		TargetCategory = "laser"
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<brimstonedart.rules>
+					Count = 32
+					Spread = [-6d, 6d]
+					Distance = 0
+					InheritVelocity = false
+				}
+			]
+			
+			MediaEffectsScale = 1
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects = []
+		}
+
+		HitFriendly = &HitOperational
+	}
+	
+	AnimatedSprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper3
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "../../../TheseAssetsAreFromCalamityMod/SCalBrimstoneGigablast.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [24, 12]//bit bigger but who care
+				//TargetBlendMode = Add
+			}
+			FrameCount = 4
+			FrameSize = [128, 64]
+			FramesPerRow = 4
+			FramesPerSecond = 20
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [40, 40]
+			VertexColor = [128, 0, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.8
+	}
+}

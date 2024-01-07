@@ -1,0 +1,103 @@
+Resource = hyperium
+StackSize = (&<./data/resources/hyperium/hyperium.rules>/MaxStackSize)
+StorageSize = 9
+Components
+{	
+	Consumer
+	{
+		Type = ResourceConsumer
+		ResourceType = &~/Resource
+		Storage = HyperiumStorage
+		DefaultPriority = &/PRIORITIES/Storage_Supply
+		//OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [-0.05, -.4]
+		OverridePriorityPart = cosmoteer.storage_2x2
+	}
+	
+	HyperiumStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&~/StorageSize)
+		UITileRect = [.75 + 7/64, .75 + 7/64, 1.5 - 14/64, 1.5 - 14/64]
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+		SupplyToggleButtonOffset = [0.05, -.4]
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		AllowExternalPickupAndDelivery = true
+		IsIntermediateStorage = true
+		SuppliesResources = true
+	}
+	
+	FillSprites
+	{
+		Type = ResourceSprites
+		Location = [1.5, 1.5]
+		ResourceStorage = HyperiumStorage
+		Layer = "doodads_low"
+		ResourceLevels
+		[
+			{
+				File = "../C1.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C2.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C3.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C4.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C5.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C6.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C7.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C8.png"
+				Size = [2, 2]
+			}
+			{
+				File = "../C9.png"
+				Size = [2, 2]
+			}
+		]
+	}
+	
+	IconGraphics
+	{
+		Type = Graphics
+		Location = [1.5, 1.5]
+		//OperationalToggle = IsOperational
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"./data/resources/hyperium/hyperium_stack_20-1.png"
+						"./data/resources/hyperium/hyperium_stack_20-2.png"
+						"./data/resources/hyperium/hyperium_stack_20-3.png"
+						"./data/resources/hyperium/hyperium_stack_20-4.png"
+					]
+					AnimationInterval = 0.1
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,70 @@
+ID = profanedcore
+NameKey = "Resource/ProfanedCore"
+PluralNameKey = "Resource/ProfanedCorePlural"
+DescriptionKey = "Resource/ProfanedCoreDesc"
+BuyPrice = 6000
+//AsteroidDensity = 20 / (&BuyPrice)
+MaxPerNugget = 1
+MaxStackSize = 5
+FlexGridPriorityKey = "flex_grid_profaned"
+FlexGridDefaultPriority = 1
+//CarrySpeed = 0.8
+DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprite
+{
+	File = "core.png"
+	NormalsFile = "core_n.png"
+	Size = [1, 1]
+	Offset = [.25 +4/64, 0]
+	UVRotation = 1
+}
+
+StackSprites
+[
+	{
+		File = "stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "stack5.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

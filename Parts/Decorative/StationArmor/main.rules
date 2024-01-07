@@ -1,0 +1,138 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/StationArmor"
+	IconNameKey = "Parts/StationArmorIcon"
+	ID = janiTNT.stationarmor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [juanTNT.stationarmor]
+	EditorGroup = "Defenses"
+	DescriptionKey = "Parts/StationArmorDesc"
+	Resources
+	[
+		[steel, 8]
+		[cut.tristeel, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	IsRotateable = false
+	SelectionTypeID = "armor"
+	MaxHealth = 12000
+	ExplosiveDamageAbsorption = 100%
+	ExplosiveDamageResistance = 50%
+	TypeCategories = [armor]
+	Flammable = false
+	InitialPenetrationResistance = 9
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	Density = 25
+	IsWalled = true
+	IsSelfDestructible = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "main.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 2000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "main.png"
+						Size = [1, 1]
+					}
+					{
+						File = "main2.png"
+						Size = [1, 1]
+					}
+					{
+						File = "main3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "main.png"
+						Size = [1, 1]
+					}
+					{
+						File = "main2.png"
+						Size = [1, 1]
+					}
+					{
+						File = "main3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "main_roof.png"
+						NormalsFile = "main_roof_n.png"
+						Size = [1, 1]
+					}
+					{
+						File = "main_roof2.png"
+						NormalsFile = "main_roof_n.png"
+						Size = [1, 1]
+					}
+					{
+						File = "main_roof3.png"
+						NormalsFile = "main_roof_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "main_b.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

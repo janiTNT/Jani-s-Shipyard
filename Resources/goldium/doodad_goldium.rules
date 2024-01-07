@@ -1,0 +1,13 @@
+ID = baseresources.goldium
+Type = Resource
+DescriptionKey = "Resource/Goldium"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "goldium1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = goldium
