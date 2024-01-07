@@ -458,6 +458,11 @@ Part : <../base_part_occult.rules>/Part
 			]
 		}
 		
+		FireEffect2 : &FireEffect
+		{
+			Trigger = DoubleEmitter
+		}
+		
 		DestroyedEffects : &<../base_part_occult.rules>/Part/Components/DestroyedEffects
 		{
 			Location = [1.5, 1.5]
