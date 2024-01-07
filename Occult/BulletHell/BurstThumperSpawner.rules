@@ -13,7 +13,7 @@ Part : <ThumperSpawner.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 16
+			FireInterval = 32
 			FiringArc = 360d
 			RotateSpeed = 90d
 			FireThresholdAngle = 1d

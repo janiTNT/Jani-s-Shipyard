@@ -465,7 +465,7 @@ Part : <../base_part_occult.rules>/Part
 			[
 				{
 					Type = ExplosiveResourceDrain
-					ResourceType = sigil.death2
+					ResourceType = sigil.death
 					TotalDrain = -1200
 					Radius = 9
 					Slices = 1
@@ -487,7 +487,7 @@ Part : <../base_part_occult.rules>/Part
 			[
 				{
 					Type = ExplosiveResourceDrain
-					ResourceType = sigil.death2
+					ResourceType = sigil.death
 					TotalDrain = -1200
 					Radius = 9
 					Slices = 1

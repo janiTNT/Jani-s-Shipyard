@@ -18,7 +18,7 @@ Part : <../base_part_occult.rules>/Part
 	MaxHealth = 32000 * 8 * 2 * 4
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
-	UnderlyingPart = janiTNT.lootorb_cosmilite//temp
+	UnderlyingPart = janiTNT.lootorb_brimstone
 	DestroyedPartHealthFraction = 100%
 	Size = [4, 2]
 	TypeCategories = [armor, command]
@@ -319,6 +319,16 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = GridBuffProvider
 			BuffType = JaniWeaponsDisabledBossSecondary
+			GridDistance = 100
+			AllowDiagonals = true
+			BuffAmount = 1
+			OperationalToggle = WallsDisabler
+		}
+		
+		DisablingBuffProvider2//yeah i ended up just using the default because of the thruster issue
+		{
+			Type = GridBuffProvider
+			BuffType = JaniWeaponsDisabledBoss
 			GridDistance = 100
 			AllowDiagonals = true
 			BuffAmount = 1

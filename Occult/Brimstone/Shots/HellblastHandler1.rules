@@ -33,7 +33,7 @@ Components
 									Bullet = &<BrimstoneHellblast.rules>
 									Count = 1
 									Arc = [180d, 0d]
-									Spread = [-20d, 20d]
+									Spread = [-10d, 10d]
 									InheritVelocity = true
 								}
 							]
@@ -47,7 +47,7 @@ Components
 									Bullet = &<BrimstoneHellblast.rules>
 									Count = 2
 									Arc = [160d, 40d]
-									Spread = [-20d, 20d]
+									Spread = [-10d, 10d]
 									InheritVelocity = true
 								}
 							]
