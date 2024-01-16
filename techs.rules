@@ -359,6 +359,36 @@ Techs
 		Prerequisites = [janiTNT.thruster5x5]
 	}
 	{
+		ID = janiTNT.thruster4x4.pulse
+		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/ID]
+		Cost = 10000
+		Prerequisites = [janiTNT.thruster4x4, janiTNT.pulsethrusters_huge]
+	}
+	{
+		ID = janiTNT.thruster5x5.pulse
+		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/ID]
+		Cost = 15000
+		Prerequisites = [janiTNT.thruster5x5, janiTNT.thruster4x4.pulse]
+	}
+	{
+		ID = janiTNT.thruster6x6.pulse
+		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/ID]
+		Cost = 30000
+		Prerequisites = [janiTNT.thruster5x5, janiTNT.thruster5x5.pulse]
+	}
+	{
 		ID = janiTNT.burst1lasertech
 		NameKey = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/DescriptionKey
@@ -417,6 +447,31 @@ Techs
 		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/EditorGroups
 		PartsUnlocked = [&<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part/ID]
 		Cost = 1500
+		Prerequisites = [janiTNT.ion1tech]
+	}
+	{
+		ID = janiTNT.energy1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Energy1/energy1.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Energy1/energy1.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Energy1/energy1.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Energy1/energy1.rules>/Part/EditorGroups
+		PartsUnlocked = [&<Parts/Weapons/Cruiser_Weapons/Energy1/energy1.rules>/Part/ID]
+		Cost = 1500
+		Prerequisites = [janiTNT.ion2tech]
+	}
+	{
+		ID = janiTNT.missile1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1_l.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1_l_alt.rules>/Part/ID
+		]
+		Cost = 1000
 	}
 	{
 		ID = janiTNT.bomb1tech

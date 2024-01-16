@@ -1,0 +1,39 @@
+Part : <missile1.rules>/Part
+{
+	NameKey = "Parts/FTL_missile_leto"
+	IconNameKey = "Parts/FTL_missile_letoLeftALTIcon"
+	ID = janiTNT.FTL_missilelauncher1_L_alt // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ProhibitRects
+	[
+		[fighter, [1, -1, 1, 1]]// TO ENSURE COMPATIBILITY
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "weapon_on.png"
+			SampleMode = Linear
+		}
+		Size = [160/3, 80]
+	}
+	Components : ^/0/Components
+	{
+		Collider  : &<missile1.rules>/Part/Components/Collider
+		{
+			Type = CircleCollider
+			Location = [1.475, .4]
+		}
+		
+		Turret : &<missile1.rules>/Part/Components/Turret
+		{
+			Location = [1.475, .4]// Slightly higher.
+			//Location = [.4, -0.475]// Slightly higher.
+		}
+		
+		TurretHolder : &<missile1.rules>/Part/Components/TurretHolder
+		{
+			Location = [1.5, .4]
+			Rotation = 90d
+		}
+	}
+}

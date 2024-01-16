@@ -45,7 +45,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 2500
+					Damage = 2000
 					//Filter
 					//{
 					//	Friendlies = true
@@ -118,7 +118,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 2500
+					Damage = 2000
 					//Filter
 					//{
 					//	Friendlies = true

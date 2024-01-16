@@ -1,0 +1,136 @@
+ID = "janiTNT.FTLmissile1shot"
+Range = 200
+IdealRange = [60, 200]
+IdealRadius = [5, 50]
+Speed = 140
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.1
+		Density = 0.0001
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 30d
+		ModifiesLinearVelocity = true
+		Delay = 0
+	}
+	
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range) + 1
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 150
+		TargetCategory = "missile"
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5/30
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 5000
+					Radius = 4
+					ImpulsePerNDamage = 10
+					NDamage = 500
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+					}
+				}
+			]
+
+			MediaEffectsScale = 1
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_smoke_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_flash_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = 1
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_smoke_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_flash_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "rocket.png"
+				MipLevels = max
+			}
+			Size = [1, 1]
+		}
+
+		NormalsTexture
+		{
+			File = "rocket_n.png"
+			MipLevels = max
+		}
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-0.02, 0]
+		Rotation = 180d
+		MediaEffectsScale = 0.25
+		MediaEffects
+		[
+			&<./data/shots/missile_he/particles/missile_he_thruster_plume.rules>
+		]
+	}
+}

@@ -292,24 +292,24 @@ Parts
 	InserterOreDesc = "[Ore Nugget Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterAmmoLong = "Long Armed Ammo Resource Inserter"
+	InserterAmmoLong = "Long Handed Ammo Resource Inserter"
 	InserterAmmoLongIcon = "Long Inserter [AMMO]"
-	InserterAmmoLongDesc = "[Ammo Variant]\nLong Arm Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"\
+	InserterAmmoLongDesc = "[Ammo Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterConstructionLong = "Long Armed Building Material Resource Inserter"
+	InserterConstructionLong = "Long Handed Building Material Resource Inserter"
 	InserterConstructionLongIcon = "Long Inserter [BUILD]"
-	InserterConstructionLongDesc = "[Building Material Variant]\nLong Arm Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
+	InserterConstructionLongDesc = "[Building Material Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterModdedLong = "Long Armed Modded Material Resource Inserter"
+	InserterModdedLong = "Long Handed Modded Material Resource Inserter"
 	InserterModdedLongIcon = "Long Inserter [MOD]"
-	InserterModdedLongDesc = "[Jani Shipyard Modded Material Variant]\nLong Arm Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
+	InserterModdedLongDesc = "[Jani Shipyard Modded Material Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterOreLong = "Long Armed Ore Resource Inserter"
+	InserterOreLong = "Long Handed Ore Resource Inserter"
 	InserterOreLongIcon = "Long Inserter [ORES]"
-	InserterOreLongDesc = "[Ores Variant]\nLong Arm Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
+	InserterOreLongDesc = "[Ores Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	InserterAmmoStack = "Stack Ammo Resource Inserter"
@@ -661,7 +661,7 @@ Parts
 	
 	SylvanChainGun = "\"Rift Waker\" Travelling Merchant's Chaingun"
 	SylvanChainGunIcon = "Rift Waker"
-	SylvanChainGunDesc = "A modified, much much stronger variant of the chaingun. Uses less ammo, charges slightly slower, extremely resistant when closed, and deals double damageon top of firing two shots at once.\n\n<color r='85' g='43' b='122' a='255'>Sssstranger stranger... i hope you arent on the other end of the barrels...</color>"\
+	SylvanChainGunDesc = "A modified, much much stronger variant of the chaingun. Uses less ammo, charges slightly slower, extremely resistant when closed, and deals double damage on top of firing two shots at once.\n\n<color r='85' g='43' b='122' a='255'>Heh. color>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_defenselaser = "Defense Laser"
@@ -689,7 +689,7 @@ Parts
 	FTL_dirkpinDesc = "Special Beam that hits a spot in a single blast, also spreading the damage in a area if the initial block is destroyed, power costly. Requires no Crew."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	FTL_burstlaser1 = "Burst Laser Mk1"
+	FTL_burstlaser1 = "Burst Laser MkI"
 	FTL_burstlaser1Icon = "Burst Laser"
 	FTL_burstlaser1LeftIcon = "Burst Laser (L)"
 	FTL_burstlaser1Desc = "A better alternative than the Defense Laser, fires two shots in a burst that deal more damage, Not Particularly Effective, Requires no Crew."\
@@ -722,6 +722,18 @@ Parts
 	FTL_bombbreachDesc = "Advances in Bomb teleportation allows for teleportation of miniature mines that can breach defenses more easily with its raw power.\nUses additional mine parts."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
+	FTL_energy1 = "Energy Blaster MkI"
+	FTL_energy1Icon = "Energy I"
+	FTL_energy1Desc = "Energy Blasters are essentially a combination of Ion Blasters and Standard issue lasers, at the cost of rotation, fire rate, accuracy, stun, and the like.Effective against Zoltan Shields."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	FTL_missile_leto = "'Leto' Missile launcher"
+	FTL_missile_letoIcon = "Leto Missile"
+	FTL_missile_letoLeftIcon = "Leto Missile (L)"
+	FTL_missile_letoLeftALTIcon = "Leto Missile (S)"
+	FTL_missile_letoDesc = "This miniature Missile launcher uses small amounts of power and missile parts to fire a small missile. Crude explosion, but effective with its ammo consumption, very light homing."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
 	PulseThrusterSmall = "Small Repulser Thruster"
 	PulseThrusterSmallIcon = "Small Repulser"
 	PulseThrusterMed = "Medium Repulser Thruster"
@@ -735,13 +747,16 @@ Parts
 	
 	Pulse_ThrusterHuge4x4 = "Hauler Repulser Thruster 4x4"
 	Pulse_ThrusterHuge4x4Icon = "Haul. Repulser (4)"
-	Pulse_ThrusterHuge4x4Desc = "wawa"
+	Pulse_ThrusterHuge4x4Desc = "A Combination of 4x4 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	Pulse_ThrusterHuge5x5 = "Hauler Repulser Thruster 5x5"
 	Pulse_ThrusterHuge5x5Icon = "Haul. Repulser (5)"
-	Pulse_ThrusterHuge5x5Desc = "wa"
+	Pulse_ThrusterHuge5x5Desc = "A Combination of 5x5 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	Pulse_ThrusterHuge6x6 = "Hauler Repulser Thruster 6x6"
 	Pulse_ThrusterHuge6x6Icon = "Haul. Repulser (6)"
-	Pulse_ThrusterHuge6x6Desc = "w"
+	Pulse_ThrusterHuge6x6Desc = "A Combination of 6x6 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 }
 PartColors
 {
@@ -1246,6 +1261,7 @@ StatCategories
 	IonBlast = "Ion Shot"
 	FTLBomb = "Small Bomb"
 	FTLBreachBomb = "Small Mine Bomb"
+	EnergyBlast = "Energy Shot"
 }
 CombatDifficulty
 {
@@ -1276,7 +1292,7 @@ Techs
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	LongInserters = "Longer Inserters"
-	LongInsertersDesc = "Unlocks a new variation of inserters that can reach a extra block of distance, but is slower."\
+	LongInsertersDesc = "Unlocks a new variation of inserters that can reach a extra block of distance, but is slower and less efficient. The additional block of distance can be used for further use of space."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	StackInserters = "Stack Sized Inserters"
@@ -1302,7 +1318,7 @@ Tutorials
 		Storage = "Your <good>Vanilla storage</good> are <bad>Unable</bad> to be used with inserters, to mitigate this, the mod adds a <good>New Special Storage</good> that can be used with Inserters. these only store one type of resource, and has the <good>Same capacity</good> of a Vanilla storage of the same size."
 		Powering = "<good>Power Ports</good> Can be used to wirelessly power Inserters from a distance, they are very useful for making automated setups if you're relying on crew to power your machines."
 		Capacity = "Inserters only transfer the max capacity that crew can carry of a resource. They cannot transfer less or more. This <bad>Does get affected by Storage changing mods</bad>"
-		Types = "There are <good>Multiple types</good> of Inserters.\n\n<good>Inserters</good> transfer resources to another adjacent part\n\n<good>Long Inserters</good> transfer resources over a one block gap.\n\n<good>Stack Inserters</good> transfer a entire stack of resources at a time, These vary Depending on type of resource and Storage changing mods"
+		Types = "There are <good>Multiple types</good> of Inserters.\n\n<good>Inserters</good> transfer resources to another adjacent part\n\n<good>Long Handed Inserters</good> transfer resources over a one block gap.\n\n<good>Stack Inserters</good> transfer a entire stack of resources at a time, These vary Depending on type of resource and Storage changing mods"
 		Example = "Crew Hybrid Deck cannon setup example"
 		Tip = "<good>TIP:</good> Inserters have a short delay before transferring, using Stack inserters for max transfer rate can be useless on small capacity parts, such as the Cannon ammo factory, but the Stack inserters are useful for high throughput, such as Deck cannons or a line of storages."
 	}

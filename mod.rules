@@ -3,7 +3,7 @@ Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
 Version = "Modern 1.19 Beta"
 Logo = "newlogo.png"
-CompatibleGameVersions = ["0.24.0", "0.24.1", "0.24.2", "0.24.3", "0.24.4", "0.24.5", "0.24.6", "0.24.7", "0.24.8", "0.24.9", "0.24.10", "0.24.11", "0.24.12", "0.24.13", "0.24.14", "0.24.15"]
+CompatibleGameVersions = ["0.25.0", "0.25.1", "0.25.2", "0.25.3", "0.25.4", "0.25.5", "0.25.6", "0.25.7", "0.25.8", "0.25.9", "0.25.10", "0.25.11", "0.25.12", "0.25.13", "0.25.14", "0.25.15"]
 ModifiesMultiplayer = true
 Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
 " - Mod previously known as Juan's Workshop or Juans Shipyard\n"\
@@ -74,6 +74,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/Cruiser_Weapons/Focus1/dirk_l.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Ion2/ionbarrage1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Energy1/energy1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1_l_alt.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part
 			
@@ -174,6 +178,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part
 			
+			&<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part
+			&<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part
+			&<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part
+			
 			&<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part
 			&<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part
 			&<Parts/Flight/Pulse Thrusters/pulse_thruster_large.rules>/Part
@@ -181,12 +189,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part
-			&<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part
-			
-			&<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part
-			&<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part
-			&<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part
-			
+			&<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part	
 			
 			&<Parts/Logic/Wires/Wire1/Wire1.rules>/Part
 			&<Parts/Logic/Wires/Wire2/Wire2.rules>/Part

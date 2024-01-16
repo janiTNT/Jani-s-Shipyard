@@ -1,0 +1,262 @@
+ID = "janiTNT.ftl_energy_1"
+Range = 200
+IdealRange = [60, 180]
+IdealRadius = [5, 50]
+Speed = 200
+
+TotalIonDamage = 4000
+TotalIonTime = 5
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.01
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 110
+		TargetCategory = "laser"
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 2500
+					Radius = 3
+					Slices = 1
+					DamageType = default
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+					}
+				}
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = battery
+					TotalDrain = 4000 / 10
+					Radius = 6
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+					}
+
+					MediaEffectsOnDrainFactor = .0005
+					MediaEffectsOnDrain
+					[
+						&<particles/energy_ion_hit_orb.rules>
+						&<particles/energy_ion_hit_sizzle.rules>
+						&<particles/energy_ion_lightning.rules>
+						&<particles/energy_ion_drain.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./data/shots/disruptor_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+				: &1
+				{
+					Delay = .5
+				}
+				: &1
+				{
+					Delay = 1.0
+				}
+				: &1
+				{
+					Delay = 1.5
+				}
+				: &1
+				{
+					Delay = 2.0
+				}
+				: &1
+				{
+					Delay = 2.5
+				}
+				: &1
+				{
+					Delay = 3.0
+				}
+				: &1
+				{
+					Delay = 3.5
+				}
+				: &1
+				{
+					Delay = 4.0
+				}
+				: &1
+				{
+					Delay = 4.5
+				}			
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = janiTNT.SuperShieldEnergy
+					TotalDrain = 2500 / 2
+					Radius = 6
+					Slices = 1
+					Filter
+					{
+						Ships = true
+						Shields = true
+					}
+
+					MediaEffectsOnDrainFactor = .0005
+					MediaEffectsOnDrain
+					[
+						&<particles/energy_ion_hit_orb.rules>
+						&<particles/energy_ion_hit_sizzle.rules>
+						&<particles/energy_ion_lightning.rules>
+						&<particles/energy_ion_drain.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./data/shots/disruptor_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/energy_ion_hit_orb.rules>
+				&<particles/energy_ion_hit_bolts.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_emp/missile_emp_hit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .75
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 1000
+					Radius = 3
+					Slices = 1
+					DamageType = default
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/energy_ion_hit_orb.rules>
+				&<particles/energy_ion_hit_bolts.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_emp/missile_emp_hit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .75
+				}
+			]
+		}
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<particles/energy_ion_hit_orb.rules>
+				&<particles/energy_ion_hit_bolts.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_emp/missile_emp_hit.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+			]
+		}
+	}
+	
+	BallSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper1
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/shots/disruptor_bolt/particles/disruptor_bolt_hit_orb.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [1.2, 1.2]
+			VertexColor = [2, 255, 64]
+			//TargetBlendMode = Add
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [2.4, 2.4]
+			VertexColor = [2, 255, 64]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

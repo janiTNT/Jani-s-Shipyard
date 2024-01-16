@@ -118,7 +118,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CircleCollider
 			Location = [.5, -0.4]
-			Radius = .15
+			Radius = .2
 			ChainedTo = TurretSlider // Evil
 			IncludeWhenUnderConstruction = false //Evil 2
 		}
@@ -177,7 +177,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BeamEmitter
 			ChainedTo = Turret
-			Location = [0.4, 0]
+			Location = [0.35, 0]//yea trolled
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			//OperationalToggle = IsOperational // allows to fire if no power when last fire
