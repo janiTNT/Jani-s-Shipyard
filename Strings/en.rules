@@ -110,19 +110,19 @@ Parts
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	//"Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
 	
-	FactorySplitter = "[[LEGACY]]Building Material Resource Splitter"
-	FactorySplitterIcon = "[[LEGACY]]Splitter"
+	FactorySplitter = "[[LEGACY]]Building Material Resource Cutter"
+	FactorySplitterIcon = "[[LEGACY]]Cutter"
 	FactorySplitterDesc = "[[LEGACY]]Specialized Machine that cuts down building resources into smaller pieces in order to construct Ship Parts with more fractionary costs.\nFractional costs of cut materials may vary.\n\nWARNING due to a game bug,<bad>SWAPPING</bad> what resource to split or merge while it still has resources inside it will <bad>ERASE</bad> the resources.\n\nDue to another bug, you need to use resource managment in <bad>Manual tile selection</bad> OR use <bad>Supply Lines</bad>, as crew will <bad>NOT</bad> automatically supply or deliver resources to and from this part.\n\nCurrently can make tristeel doors and station armor, or split enriched uranium back into uranium. other materials are useless."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	FactorySplitterTristeel = "Tristeel Splitter"
-	FactorySplitterTristeelIcon = "Tristeel Splitter"
+	FactorySplitterTristeel = "Tristeel Cutter"
+	FactorySplitterTristeelIcon = "Tristeel Cutter"
 	FactorySplitterTristeelDesc = "Specialized machine that cuts down tristeel into small bars used in construction of various Jani-Patented parts. Process can be easily reversed.\n\nDue to a bug, you need to use resource managment in <bad>Manual tile selection</bad> OR use <bad>Supply Lines + change the Automatic supply buttons</bad>, as crew will <bad>NOT</bad> automatically supply or deliver resources to and from this part."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FactorySplitterUranium = "Uranium Un-enricher"
 	FactorySplitterUraniumIcon = "Uranium Un-enrich."
-	FactorySplitterUraniumDesc = "A variation of the Splitter, This machine splits enriched uranium back into 4 pieces of un-enriched uranium. Output is manual to prevent crashes"\
+	FactorySplitterUraniumDesc = "A variation of the Cutter, This machine splits enriched uranium back into 4 pieces of un-enriched uranium. Output is manual to prevent crashes"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	TriSteelDoor = "TriSteel Door"
@@ -312,24 +312,24 @@ Parts
 	InserterOreLongDesc = "[Ores Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterAmmoStack = "Stack Ammo Resource Inserter"
-	InserterAmmoStackIcon = "Stack Inserter [AMMO]"
-	InserterAmmoStackDesc = "[Ammo Variant]\nStack Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"\
+	InserterAmmoStack = "Bulk Ammo Resource Inserter"
+	InserterAmmoStackIcon = "Bulk Inserter [AMMO]"
+	InserterAmmoStackDesc = "[Ammo Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterConstructionStack = "Stack Building Material Resource Inserter"
-	InserterConstructionStackIcon = "Stack Inserter [BUILD]"
-	InserterConstructionStackDesc = "[Building Material Variant]\nStack Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
+	InserterConstructionStack = "Bulk Building Material Resource Inserter"
+	InserterConstructionStackIcon = "Bulk Inserter [BUILD]"
+	InserterConstructionStackDesc = "[Building Material Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterModdedStack = "Stack Modded Material Resource Inserter"
-	InserterModdedStackIcon = "Stack Inserter [MOD]"
-	InserterModdedStackDesc = "[Jani Shipyard Modded Material Variant]\nStack Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
+	InserterModdedStack = "Bulk Modded Material Resource Inserter"
+	InserterModdedStackIcon = "Bulk Inserter [MOD]"
+	InserterModdedStackDesc = "[Jani Shipyard Modded Material Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	InserterOreStack = "Stack Ore Resource Inserter"
-	InserterOreStackIcon = "Stack Inserter [ORES]"
-	InserterOreStackDesc = "[Ore Variant]\nStack Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
+	InserterOreStack = "Bulk Ore Resource Inserter"
+	InserterOreStackIcon = "Bulk Inserter [ORES]"
+	InserterOreStackDesc = "[Ore Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	AutoAStorage2x2 = "Ammo Only Inserter Compatible Storage 2x2"
@@ -805,7 +805,7 @@ Resource
 	
 	CutTristeel = "Tri-\u200bSteel bar"
 	CutTristeelPlural = "Tri-\u200bSteel bars"
-	CutTristeelDesc = "Small Bars of tristeel, worth 1/4 as valuable\n\n Tristeel is a super-strong metal alloy used to construct some advanced ship parts.\n Made from the Splitter."\
+	CutTristeelDesc = "Small Bars of tristeel, worth 1/4 as valuable\n\n Tristeel is a super-strong metal alloy used to construct some advanced ship parts.\n Made from the Cutter."\
 	"\n\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	//Modded Resources
@@ -900,12 +900,12 @@ Inputs
 		
 		fabricator_large_type_goldium = "Fabricator Type: Goldium"
 		
-		splitter_split = "Splitter: Split"
-		splitter_merge = "Splitter: Merge"
-		splitter_large_type_steel = "Splitter Type: Steel"
-		splitter_large_type_coil = "Splitter Type: Coil"
-		splitter_large_type_tristeel = "Splitter Type: Tristeel"
-		splitter_large_type_uranium = "Splitter Type: Enriched Uranium"
+		splitter_split = "Cutter: Split"
+		splitter_merge = "Cutter: Merge"
+		splitter_large_type_steel = "Cutter Type: Steel"
+		splitter_large_type_coil = "Cutter Type: Coil"
+		splitter_large_type_tristeel = "Cutter Type: Tristeel"
+		splitter_large_type_uranium = "Cutter Type: Enriched Uranium"
 		
 		Ammos = "Ammo Category"
 		Builds = "Construction Category"
@@ -1012,10 +1012,10 @@ PartToggles
 	WindowCorridor = "Windowed Corridor"
 	VentCorridor = "Vent Roof Corridor"
 	FabricatorType_Goldium = "<b>Goldium</b>\n\nSet this Fabricator to manufacture Goldium.\n\nHotkey: <btn id='PartToggles.fabricator_large_type_goldium'/>"
-	SplitterType_Steel = "<b>Steel - Steel Bars</b>\n\nSet this Splitter to Merge or Split steel.\n\nRATIO: 1:5\n\nHotkey: <btn id='PartToggles.splitter_large_type_steel'/>\n\nWILL BE ERASED IN A FUTURE UPDATE"
-	SplitterType_Coil = "<b>Coils - Cables</b>\n\nSet this Splitter to Merge or Split coils.\n\nRATIO: 1:5\n\nHotkey: <btn id='PartToggles.splitter_large_type_coil'/>\n\nWILL BE ERASED IN A FUTURE UPDATE"
-	SplitterType_Tristeel = "<b>Tri-\u200bSteel - Tri-\u200bSteel Bars</b>\n\nSet this Splitter to Merge or Split Tri-\u200bSteel.\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_tristeel'/>"
-	SplitterType_Uranium = "<b>Enriched Uranium - Uranium</b>\n\nSet this Splitter to ONLY Split Enriched Uranium back to Uranium\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_uranium'/>"
+	SplitterType_Steel = "<b>Steel - Steel Bars</b>\n\nSet this Cutter to Merge or Split steel.\n\nRATIO: 1:5\n\nHotkey: <btn id='PartToggles.splitter_large_type_steel'/>\n\nWILL BE ERASED IN A FUTURE UPDATE"
+	SplitterType_Coil = "<b>Coils - Cables</b>\n\nSet this Cutter to Merge or Split coils.\n\nRATIO: 1:5\n\nHotkey: <btn id='PartToggles.splitter_large_type_coil'/>\n\nWILL BE ERASED IN A FUTURE UPDATE"
+	SplitterType_Tristeel = "<b>Tri-\u200bSteel - Tri-\u200bSteel Bars</b>\n\nSet this Cutter to Merge or Split Tri-\u200bSteel.\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_tristeel'/>"
+	SplitterType_Uranium = "<b>Enriched Uranium - Uranium</b>\n\nSet this Cutter to ONLY Split Enriched Uranium back to Uranium\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_uranium'/>"
 	splitter_split = "<b>SPLIT</b>"
 	splitter_merge = "<b>MERGE</b>"
 	
@@ -1280,7 +1280,7 @@ CombatDifficulty
 Techs
 {
 	reprosessingName = "Basic Material Reprocessing"
-	reprosessingDesc = "Simple Technology that allows you to reprocess already processed materials, Such as to split down Tristeel or Un-Enrich uranium.\n(Unlocks Splitter)"\
+	reprosessingDesc = "Simple Technology that allows you to reprocess already processed materials, Such as to split down Tristeel or Un-Enrich uranium.\n(Unlocks Cutter)"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	advancedmaterialsName = "Advanced Material Manipulation"
@@ -1295,7 +1295,7 @@ Techs
 	LongInsertersDesc = "Unlocks a new variation of inserters that can reach a extra block of distance, but is slower and less efficient. The additional block of distance can be used for further use of space."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	StackInserters = "Stack Sized Inserters"
+	StackInserters = "Bulk Inserters"
 	StackInsertersDesc = "Unlocks a new variation of heavy inserters that can transfer a entire stack of resources, useful for extreme throughput and high storage weapons, such as the deck cannon."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 }
@@ -1308,7 +1308,8 @@ Tutorials
 	Bossfights
 	{	
 		BetaWarning1Title = "Bossfights (BETA README PLZ)"
-		BetaWarning1 = "This is the boss i was making. you are intended to destroy the front 6 balls to disable the blue shields and nerf the missile launchers. then you should destroy the orb in the middle to progress to the final part of the fight, where you are intended to destroy the core. Refer to the description of enemy parts for more help, if needed hold ctrl to read them."
+		BetaWarning1 = "Bosses have specific destruction patterns you are supposed to follow, if needed hold ctrl to read descriptions in parts for more information."
+		//BetaWarning1 = "This is the boss i was making. you are intended to destroy the front 6 balls to disable the blue shields and nerf the missile launchers. then you should destroy the orb in the middle to progress to the final part of the fight, where you are intended to destroy the core. Refer to the description of enemy parts for more help, if needed hold ctrl to read them."
 	}
 	Inserters
 	{
@@ -1318,9 +1319,9 @@ Tutorials
 		Storage = "Your <good>Vanilla storage</good> are <bad>Unable</bad> to be used with inserters, to mitigate this, the mod adds a <good>New Special Storage</good> that can be used with Inserters. these only store one type of resource, and has the <good>Same capacity</good> of a Vanilla storage of the same size."
 		Powering = "<good>Power Ports</good> Can be used to wirelessly power Inserters from a distance, they are very useful for making automated setups if you're relying on crew to power your machines."
 		Capacity = "Inserters only transfer the max capacity that crew can carry of a resource. They cannot transfer less or more. This <bad>Does get affected by Storage changing mods</bad>"
-		Types = "There are <good>Multiple types</good> of Inserters.\n\n<good>Inserters</good> transfer resources to another adjacent part\n\n<good>Long Handed Inserters</good> transfer resources over a one block gap.\n\n<good>Stack Inserters</good> transfer a entire stack of resources at a time, These vary Depending on type of resource and Storage changing mods"
+		Types = "There are <good>Multiple types</good> of Inserters.\n\n<good>Inserters</good> transfer resources to another adjacent part\n\n<good>Long Handed Inserters</good> transfer resources over a one block gap.\n\n<good>Bulk Inserters</good> transfer a entire stack of resources at a time, These vary Depending on type of resource and Storage changing mods"
 		Example = "Crew Hybrid Deck cannon setup example"
-		Tip = "<good>TIP:</good> Inserters have a short delay before transferring, using Stack inserters for max transfer rate can be useless on small capacity parts, such as the Cannon ammo factory, but the Stack inserters are useful for high throughput, such as Deck cannons or a line of storages."
+		Tip = "<good>TIP:</good> Inserters have a short delay before transferring, using Bulk inserters for max transfer rate can be useless on small capacity parts, such as the Cannon ammo factory, but the Bulk inserters are useful for high throughput, such as Deck cannons or a line of storages."
 	}
 }
 AI
