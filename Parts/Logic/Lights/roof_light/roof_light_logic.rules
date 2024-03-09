@@ -31,7 +31,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [LogicSignal, CommandToggle]
+			Toggles = [XorFinal, CommandToggle]
 			Mode = All
 		}
 
@@ -39,6 +39,35 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BuffToggle
 			BuffType = Logic
+		}
+		
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
 		}
 
 		ColorPicker

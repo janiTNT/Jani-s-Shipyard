@@ -11,7 +11,7 @@ Part : <missile1.rules>/Part
 	{
 		Texture
 		{
-			File = "weapon_on.png"
+			File = "icon_l.png"
 			SampleMode = Linear
 		}
 		Size = [80, 160/3]

@@ -118,3 +118,51 @@ OverchargerRateReducer
 	RectBorderColor = [212, 20, 20, 160]
 	RectFillColor = [212, 20, 20, 64]
 }
+
+Improve_Sensor_Range
+{
+	CombineMode = Add
+	BaseValue = 0
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_sensor_upgrade.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [1, 1]
+	}
+	IconTextFormatKey = "Buff/BuffValueFmt"
+	IconTextMultiply = 1
+	IconTextAdd = 0
+
+	RectBorderColor = [0, 255, 84, 160]
+	RectFillColor = [0, 255, 84, 64]
+}
+
+AdvS_Bare_Base
+{
+	CombineMode = Add
+	BaseValue = 0
+
+	RectBorderColor = [0, 0, 0, 0]
+	RectFillColor = [0, 0, 0, 0]
+}
+AdvS_Setting = &AdvS_Bare_Base
+AdvS_Setting_Second = &AdvS_Bare_Base
+AdvS_Setting_Third = &AdvS_Bare_Base
+AdvS_Rotate_Check = &AdvS_Bare_Base
+AdvS_Arc_Sensor_Limit = &AdvS_Bare_Base
+Logic2 = &AdvS_Bare_Base
+RampUpJani
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+RampUpJaniFinal
+{
+	CombineMode = Add
+	BaseValue = 0%
+}

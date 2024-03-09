@@ -24,7 +24,7 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 	ThrustIncreaseTime = { BaseValue=2; BuffType=Engine; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 200 * 1.25
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	AllowedDoorLocations
 	[
 		[-1, 0]

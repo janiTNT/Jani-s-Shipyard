@@ -1,0 +1,219 @@
+Part
+{
+	SettingsMultiplier = 1
+	Components
+	{
+		NumberSelectOnes
+		{
+			Type = UIToggle
+			ToggleID = "numbervalue_ones"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		ZeroLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 0
+		}
+		ZeroLength
+		{
+			Type = ToggledComponents
+			Toggle = ZeroLengthToggle
+			Components
+			{
+				BuffProviderSettingOne
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = 0
+				}
+			}
+		}
+
+		OneLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 1
+		}
+		OneLength
+		{
+			Type = ToggledComponents
+			Toggle = OneLengthToggle
+			Components
+			{
+				BuffProviderSettingOne
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 1
+				}
+			}
+		}
+
+		TwoLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 2
+		}
+		TwoLength
+		{
+			Type = ToggledComponents
+			Toggle = TwoLengthToggle
+			Components
+			{
+				BuffProviderSettingTwo
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 2
+				}
+			}
+		}
+
+		ThreeLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 3
+		}
+		ThreeLength
+		{
+			Type = ToggledComponents
+			Toggle = ThreeLengthToggle
+			Components
+			{
+				BuffProviderSettingThree
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 3
+				}
+			}
+		}
+
+		FourLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 4
+		}
+		FourLength
+		{
+			Type = ToggledComponents
+			Toggle = FourLengthToggle
+			Components
+			{
+				BuffProviderSettingFour
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 4
+				}
+			}
+		}
+		FiveLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 5
+		}
+		FiveLength
+		{
+			Type = ToggledComponents
+			Toggle = FiveLengthToggle
+			Components
+			{
+				BuffProviderSettingFive
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 5
+				}
+			}
+		}
+		SixLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 6
+		}
+		SixLength
+		{
+			Type = ToggledComponents
+			Toggle = SixLengthToggle
+			Components
+			{
+				BuffProviderSettingSix
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 6
+				}
+			}
+		}
+		SevenLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 7
+		}
+		SevenLength
+		{
+			Type = ToggledComponents
+			Toggle = SevenLengthToggle
+			Components
+			{
+				BuffProviderSettingSeven
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 7
+				}
+			}
+		}
+		EightLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 8
+		}
+		EightLength
+		{
+			Type = ToggledComponents
+			Toggle = EightLengthToggle
+			Components
+			{
+				BuffProviderSettingEight
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 8
+				}
+			}
+		}
+		NineLengthToggle
+		{
+			Type = ModeToggle
+			Mode = NumberSelectOnes
+			OnMode = 9
+		}
+		NineLength
+		{
+			Type = ToggledComponents
+			Toggle = NineLengthToggle
+			Components
+			{
+				BuffProviderSettingNine
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting
+					BuffAmount = (&../../../../SettingsMultiplier) * 9
+				}
+			}
+		}
+	}
+}

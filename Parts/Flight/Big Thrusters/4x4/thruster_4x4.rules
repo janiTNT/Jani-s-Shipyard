@@ -25,7 +25,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ThrustIncreaseTime = 4.75
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 4^2
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	BlockedTravelCells
 	[
 		[1, 1]
@@ -92,17 +92,16 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 
-		EngineBuffToggle
+		PowerDistributionBuffToggle
 		{
 			Type = BuffToggle
-			BuffType = Engine
+			BuffType = EnginePowerDistribution
 		}
 		ToggledBatteryConsumer
 		{
 			Type = ToggledComponents
-			Toggle = EngineBuffToggle
+			Toggle = PowerDistributionBuffToggle
 			Invert = true
-			IncludeInBlueprints = true
 			Components
 			{
 				BatteryConsumer

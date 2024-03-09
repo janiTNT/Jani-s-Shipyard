@@ -488,7 +488,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommonReloadTimerLong
 		{
 			Type = Timer
-			Duration = 15
+			Duration = 20
 			AutoStart = true
 			StartTrigger = CommonReloadResetTrigger
 		}

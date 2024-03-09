@@ -1,0 +1,387 @@
+Part
+{
+	SettingsMultiplier = 1 //needed for the number 0 to 99 settings
+	IgnoreOwnShip = true
+	Components : &/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+	{
+		RangeSetting
+		{
+			Type = SelfBuffProvider
+			BuffType = Improve_Sensor_Range
+			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add }
+		}
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		BuffProviderLogic
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = CanOutput
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, 1, 1, 1]
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+// ||||||||||||||||||||||||| Toggles |||||||||||||||||||||||||
+		//DetectDebrisToggle
+		//{
+		//	Type = UIToggle
+		//	ToggleID = "skipydog_detect_debris_toggle"
+		//	Default = 0
+		//}
+		DetectEnemiesToggle
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_detect_enemies_toggle"
+			Default = 1
+		}
+		DetectFriendliesToggle
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_detect_friendlies_toggle"
+			Default = 0
+		}
+		Targeter
+		{
+			Type = UITargeter
+			TargeterID = skipydog_sensor_aim
+			Weapons = [Turret]
+		}
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+// ||||||||||||||||||||||||| Triggers |||||||||||||||||||||||||
+		EnemyTrigger
+		{
+			Type = MultiToggle
+			Toggles = [EnemyDetector, DetectEnemiesToggle]
+			Mode = All
+			Invert = false
+		}
+		FriendlyTrigger
+		{
+			Type = MultiToggle
+			Toggles = [EnemyTriggerInvert, FriendlyDetector]
+			Mode = All
+			Invert = false
+		}
+		EnemyTriggerInvert
+		{
+			Type = MultiToggle
+			Toggles = [EnemyDetector]
+			Mode = All
+			Invert = true
+		}
+		EffectsTrigger
+		{
+			Type = MultiToggle
+			Toggles = [EnemyTrigger, FriendlyTrigger]
+			Mode = Any
+			Invert = true
+		}
+		Activated
+		{
+			Type = MultiToggle
+			Toggles = [EffectsTrigger]
+			Mode = Any
+			Invert = true
+		}
+		CanOutput //allows for incomming logic signals to activate this as if it were a normal wire
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, XorFinal]
+			Mode = Any
+			Invert = false
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [Activated, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [Activated, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+// ||||||||||||||||||||||||| Sensor Junk |||||||||||||||||||||||||
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [0.5, 0.5]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			FireInterval = .2
+			FiringArc = 360d
+			RotateSpeed = 20d
+			FireThresholdAngle = 1d
+			AutoFireToggle = AutoFireToggle
+			IgnoreSourceShipLOSChecks = true
+			AIFirepowerRating = 0
+			TargetingEmitter = EnemyDetector
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+			HoldTargetAfterCancel = 5
+			FirePermissionToggle = FireModeToggle
+
+			AutoTargets
+			[
+				//{
+					//TargetType = ShipParts
+					//Toggle = AutoTargetToggle
+				//}
+			]
+		}
+		EnemySensor
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			AutoFireToggle = AutoFireToggle
+			FireInterval = .2
+			AIFirepowerRating = 0
+			TargetingEmitter = EnemyDetector
+			ChainFireToggleComponent = IonBeamChainToggle
+			AllowEnemyStructureAutoTargeting = true
+			ProhibitShipRelativePointTargets = true
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+			FirePermissionToggle = FireModeToggle
+			IgnoreFriendlyShipLowLOSChecks = true
+			IgnoreFriendlyShipHighLOSChecks = true
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+		}
+
+		EnemyDetector : <sensorbeam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = EnemySensor
+			FireTrigger = EnemySensor
+			GetTargetFrom = EnemySensor
+			Duration = .2
+			SourceShipCollisions = false
+			FriendlyShipLowCollisions = false
+			FriendlyShipHighCollisions = false
+		}
+
+		FriendlySensor
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			OperationalToggle = DetectFriendliesToggle
+			AutoFireToggle = AutoFireToggle
+			FireInterval = .2
+			AIFirepowerRating = 0
+			TargetingEmitter = FriendlyDetector
+			ChainFireToggleComponent = IonBeamChainToggle
+			AllowEnemyStructureAutoTargeting = false
+			ProhibitShipRelativePointTargets = true
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+			FirePermissionToggle = FireModeToggle
+			AutoExplicitTargetPartsFilter = &Filter
+			IgnoreFriendlyShipLowLOSChecks = true
+			IgnoreFriendlyShipHighLOSChecks = true
+
+			Filter
+			{
+				Junk = true
+				Enemies = false
+				Friendlies = true
+				Self = false
+				TargetedSelf = false
+			}
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = DetectFriendliesToggle
+			}
+		}
+
+		FriendlyDetector : <sensorbeam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = FriendlySensor
+			FireTrigger = FriendlySensor
+			GetTargetFrom = FriendlySensor
+			Duration = .2
+			FriendlyShipLowCollisions = false
+			FriendlyShipHighCollisions = false
+		}
+
+		/*EffectSensor
+		{
+			Type = FixedWeapon
+			ChainedTo = Turret
+			OperationalToggle = Activated
+			AutoFireToggle = Activated
+			FireInterval = .2
+			AIFirepowerRating = 0
+			TargetingEmitter = FriendlyDetector
+			ChainFireToggleComponent = IonBeamChainToggle
+			AllowEnemyStructureAutoTargeting = false
+			ProhibitShipRelativePointTargets = true
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SaveShipRelativeTargets = true
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = Activated
+			}
+		}
+
+		EffectDetector : <sensor_effect/sensor_effect.txt>
+		{
+			Type = BeamEmitter
+			ChainedTo = EffectSensor
+			FireTrigger = EffectSensor
+			GetTargetFrom = EffectSensor
+			Duration = .2
+			SourceShipCollisions = false
+		}*/
+// ||||||||||||||||||||||||| Other |||||||||||||||||||||||||
+		
+		
+		Graphics : &<./data/ships/terran/roof_light/roof_light.rules>/Part/Components/Graphics
+		{
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "../Util/MiniTB/roof.png"
+						NormalsFile = "../Util/MiniTB/roof_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[]
+			}
+		}
+		
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = CanOutput
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, 0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, 0.5]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 1]
+						Offset = [0, 0.5]
+					}
+				]
+			}
+		}
+	}
+}

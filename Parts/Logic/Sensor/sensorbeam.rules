@@ -1,0 +1,98 @@
+ReceivableBuffs = [Improve_Sensor_Range]
+Range = { BaseValue=1; BuffType=Improve_Sensor_Range; BuffMode=Add; }
+IdealRange = [{ BaseValue=1; BuffType=Improve_Sensor_Range; BuffMode=Add; }]
+Width = .5
+HitInterval = .1
+PenetratesStructure = false
+BeamMediaEffects
+[
+	{
+		Type = Beam
+		IsFancy = true
+		BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
+			Size = [100%, 0.5]
+			VertexColor = [255, 255, 255, 255]
+
+			_extraBeginLength = 0
+			_extraEndLength = 0
+			_extraEndArc = 0d
+			_minAlpha = .25
+
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi2.png
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+				VMode = Wrap
+			}
+			_displacementStrength = 0.25
+			_displacementSpeed = .2
+			_additiveStrength = 0.4
+
+			_noiseScaleX = 0.02
+			_noiseScaleY = 2
+			_noiseScrollSpeed = -2
+			_noisePanSpeed = 0
+			_endFadeLength = 1
+
+			_color1 = [123, 230, 100, 255]
+			_color2 = [192, 230, 122, 255]
+
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = InverseSourceAlpha
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+
+			_noiseTex
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		SpeedOverIntensity = [0, 0.5]
+		Bucket = TractorBeam
+		CaptureBackBuffer = true
+		LengthSmoothSpeed = 20
+		MinIntensity = -Infinity
+	}
+
+	: 0
+	{
+		IsFancy = false
+		IsSimple = true
+		BeamSprite : ^/0/BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam_simple.shader"
+			TargetBlendMode
+			{
+				SourceRgbFactor = One
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+			_color1 = [123, 230, 100, 255]
+			_color2 = [192, 230, 122, 255]
+		}
+		CaptureBackBuffer = false
+	}
+]
+
+HitShield = &HitOperational
+HitStructural = &HitOperational
+HitOperational
+{
+}

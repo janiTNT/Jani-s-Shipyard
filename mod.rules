@@ -205,6 +205,19 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Logic/Util/MiniTB/MiniTB.rules>/Part
 			
+			&<Parts/Logic/Sensor/Sensor.rules>/Part
+			
+			&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part
+			&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part
+			&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part
+			&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part
+			&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part
+			
+			//Boss Rewards minus factories
+			
+			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
+			
+			
 			//DEV PARTS
 			
 			//&<testsalvagebomb.rules>/Part
@@ -1227,7 +1240,75 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					VertexColor = [102, 102, 255, 127]
 				}
 			}
+			// Sensor
+			{
+				TargeterID = "skipydog_sensor_aim"
+				DefaultHotkey = [PlatformCmdCtrl, P]
+				ButtonToolTipKey = "PartTargeters/SensorAim"
+				HasCancelButton = false
+				TargetTypes = [ShipLocalPoint]
+				TargetPartCategories = []
+				SnapToAngles = [0d, 22.5d, 45d, 67.5d, 90d, 112.5d, 135d, 157.5d, 180d, 202.5d, 225d, 247.5d, 270d, 292.5d, 315d, 337.5d]
+				SnapToAngleDistance = 999999
+				TentativeTargetLine = &<./Data/commands/weapon_target.rules>/TargetLine
+				SortOrder = 1
+
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "gui/target_sensor.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+
+				TargetObjectCursor
+				{
+					File = "./data/gui/game/parts/cursor_link_target.png"
+					HotSpot = [8, 8]
+					Scale = .5
+				}
+			}
 		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_extender/thruster_rocket_extender.rules>/Part/Components/IsConnectedProxy/PartCriteria/IDs"
+		ManyToAdd
+		[
+			janiTNT.logic_thruster_rocket_nozzle
+		]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/LeftBatteryConnectionProvider/Criteria/IDs"
+		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/RightBatteryConnectionProvider/Criteria/IDs"
+		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/ModuleIsConnectedLeft/PartCriteria/IDs"
+		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/ModuleIsConnectedRight/PartCriteria/IDs"
+		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/LeftExtendableBatteryStorage/PartCriteria/IDs"
+		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
+	}
+	{
+		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/RightExtendableBatteryStorage/PartCriteria/IDs"
+		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
 	}
 ]
 ShipLibraries

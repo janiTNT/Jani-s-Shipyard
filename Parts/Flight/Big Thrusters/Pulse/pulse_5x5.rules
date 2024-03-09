@@ -26,7 +26,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ThrustIncreaseTime = 5.5
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 5^2 * 1.25
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	BlockedTravelCells
 	[
 		[1, 1]

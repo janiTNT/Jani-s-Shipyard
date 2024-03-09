@@ -363,6 +363,14 @@ Part : <../../baselogicpart.rules>/Part
 			Repeats = true
 		}
 		
+		AllowBeam
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, XorFinal]
+			Invert = false
+			Mode = All
+		}
+		
 		Emitter : <./Data/shots/tractor_beam/tractor_beam.rules>
 		{
 			Type = BeamEmitter
@@ -370,7 +378,7 @@ Part : <../../baselogicpart.rules>/Part
 			Location = [15/64, 0]
 			FireTrigger = BeamTrigger
 			GetTargetFrom = Turret
-			OperationalToggle = IsOperational
+			OperationalToggle = AllowBeam
 			ResourceStorage = BatteryStorage
 			FriendlyShipLowCollisions = false
 			ResourcesUsed = 50

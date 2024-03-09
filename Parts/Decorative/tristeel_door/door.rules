@@ -5,6 +5,7 @@ Resources
 [
 	[cut.tristeel, 2]
 ]
+FractionalNonPlayerRefund = 25%
 Layer = "doors"
 StencilLayer = "walls_stencil"
 EditorGroup = "Utilities"

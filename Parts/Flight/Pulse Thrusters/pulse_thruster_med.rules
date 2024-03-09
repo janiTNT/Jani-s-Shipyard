@@ -24,7 +24,7 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[default, [0, 4, 1, 7]]
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
 	AllowedDoorLocations
 	[
 		[-1, 0]

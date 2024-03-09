@@ -13,17 +13,39 @@ Part : <../../../baselogicpart.rules>/Part
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
 	AllowedContiguity = [Bottom, Left, Right]
-	ExternalWalls = [TopLeft, TopRight, Left, Right, BottomLeft, BottomRight, Bottom]
-	InternalWalls = [Top]
+	//ExternalWalls = [TopLeft, TopRight, Left, Right, BottomLeft, BottomRight, Bottom]
+	//InternalWalls = [Top]
+	InternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [Top]
+		}
+		{
+			Key = [0, -1]
+			Value = [Right, TopRight, Top, TopLeft, Left]
+		}
+	]
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [TopLeft, TopRight, Left, Right, BottomLeft, BottomRight, Bottom]
+		}
+		{
+			Key = [0, -1]
+			Value = [Right, TopRight, Top, TopLeft, Left]
+		}
+	]
 	TypeCategories = [logic, pistons]
 	EditorIcon
 	{
 		Texture
 		{
-			File = "floor1.png"
+			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [32, 32]
+		Size = [32, 96]
 	}
 
 	Components : ^/0/Components
@@ -230,7 +252,7 @@ Part : <../../../baselogicpart.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "floor1.png"
+			File = "blueprints.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
 		}

@@ -1,0 +1,77 @@
+Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
+{
+	NameKey = "Parts/LogicThrusterSmall"
+	IconNameKey = "Parts/LogicThrusterSmallIcon"
+	ID = skipydog.logic_thruster_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = []
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicThrusterSmallDesc"
+	TypeCategories = [thruster, uses_power, logic]
+	SelectionTypeID = "logic_thrusters"
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	Components : ^/0/Components
+	{
+		Triggered
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, XorFinal]
+			Mode = All
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+
+		MainThruster : <./data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/MainThruster
+		{
+			OperationalToggle = Triggered
+			MinActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+		}
+		LateralThruster : MainThruster
+		{
+			Rotation = 0d
+			MinActivation = 0
+			MaxActivation = 0
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			AllowAutoFire = false
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+	}
+}

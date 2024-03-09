@@ -248,7 +248,7 @@ Parts
 	
 	NukeSilo = "Nuclear Missile Silo"
 	NukeSiloIcon = "Nuke Silo"
-	NukeSiloDesc = "Similar to a Missile Silo, this larger variant can deploy nuclear warheads directly on the deck of your ship!\n\nNuke boosting at a target can be a bit loud, the nuke may stun crew whenever it sucessfully fires.\n\nJani engineers deny any involvment with reverse engineering, illegal blueprints, Blatant Copyright and Patent infrigment including lack of liscences from any deck supported missile launcher systems."\
+	NukeSiloDesc = "Similar to a Missile Silo, this larger variant can deploy nuclear warheads directly on the deck of your ship! has some drawbacks such as doubled reload time.\n\nNuke boosting at a target can be a bit loud, the nuke may stun crew whenever it sucessfully fires.\n\nJani engineers deny any involvment with reverse engineering, illegal blueprints, Blatant Copyright and Patent infrigment including lack of liscences from any deck supported missile launcher systems."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"\
 	"\n<gray>Original idea, Roof sprites, and small amounts of code by: Ultranova</gray>"
 	
@@ -654,6 +654,11 @@ Parts
 	Background_DockDesc = "A Background Dock that can Toggle on or off a Circular Collider inside itself. Useful to make makeshift <good>Hinges</good> using multiple ships.\nThe Color of the structure, Dock and Lights can be changed separately."\
 	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
 	
+	LogicPiston1x1 = "Small 1x1 Logic Piston"
+	LogicPiston1x1Icon = "Logic Piston (1)"
+	LogicPiston1x1Desc = "A small device that can extend or not a small plate outwards. Cannot push blocks from it's own ship but can push other ships. Requires a logic signal or manual signal inversion."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
 	ShieldOvercharger = "Artificial Zoltan Shield Overcharger"
 	ShieldOverchargerIcon = "Zoltan S. Over."
 	ShieldOverchargerDesc = "Generates a weak, extremly penetration resistant bubble shield that recharges quickly and can stack up to 5 layers. Recharge Rate reduces the more Overchargers are nearby."\
@@ -704,12 +709,12 @@ Parts
 	
 	FTL_basicion = "Basic Ion Blaster"
 	FTL_basicionIcon = "Basic Ion"
-	FTL_basicionDesc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage. Effective against Zoltan Shields.\nA Weak ion blaster, with a reduced drain time, <bad>no stun</bad> but higher range. has a large 200 degree rotation, Requires no Crew."\
+	FTL_basicionDesc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage.\nA Weak ion blaster, with a reduced drain time, <bad>no stun</bad> but higher range. has a large 200 degree rotation, Requires no Crew."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_ionbar1 = "Ion Barrage Blaster"
 	FTL_ionbar1Icon = "Ion I"
-	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage. Effective against Zoltan Shields.\nImproved ion blaster, Shoots fast enough that can keep an area constantly draining if it always hits on the same place."\
+	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage.\nImproved ion blaster, Shoots fast enough that can keep an area constantly draining if it always hits on the same place."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_bombsmall = "Small Bomb Hyperdrive Teleporter"
@@ -724,7 +729,7 @@ Parts
 	
 	FTL_energy1 = "Energy Blaster MkI"
 	FTL_energy1Icon = "Energy I"
-	FTL_energy1Desc = "Energy Blasters are essentially a combination of Ion Blasters and Standard issue lasers, at the cost of rotation, fire rate, accuracy, stun, and the like.Effective against Zoltan Shields."\
+	FTL_energy1Desc = "Energy Blasters are essentially a combination of Ion Blasters and Standard issue lasers, at the cost of rotation, fire rate, accuracy, stun, and the like."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_missile_leto = "'Leto' Missile launcher"
@@ -757,6 +762,47 @@ Parts
 	Pulse_ThrusterHuge6x6Icon = "Haul. Repulser (6)"
 	Pulse_ThrusterHuge6x6Desc = "A Combination of 6x6 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	//---------------------------------------------
+	
+	SuperheavyBrick = "Mini-Anchor Cosmic Weights"
+	SuperheavyBrickIcon = "Cosmic Weights"
+	SuperheavyBrickDesc = "Its just a 500 ton 1x1 block that is very overpriced. uses some of the heaviest materials for the variety of uses this dead weight can do, such as show off how much weight your ship can push, or just pretend it can."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	//---------------------------------------------
+	
+	Logic_Sensor = "Enemy Roof Logic Sensor"
+	Logic_SensorIcon = "Basic Enemy Sensor"
+	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</gray>"\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicThrusterSmall = "Logic Small Thruster"
+	LogicThrusterSmallIcon = "L. Small Thruster"
+	LogicThrusterSmallDesc = "A Small Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicThrusterMed = "Logic Med Thruster"
+	LogicThrusterMedIcon = "L. Med Thruster"
+	LogicThrusterMedDesc = "A Med Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicThrusterLarge = "Logic Large Thruster"
+	LogicThrusterLargeIcon = "L. Large Thruster"
+	LogicThrusterLargeDesc = "A Large Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicThrusterHuge = "Logic Huge Thruster"
+	LogicThrusterHugeIcon = "L. Huge Thruster"
+	LogicThrusterHugeDesc = "A Huge Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicThrusterRocketNozzle = "Logic Modular Rocket Thruster (M.R.T.)"
+	LogicThrusterRocketNozzleIcon = "L. M.R.T. Nozzle"
+	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	
 }
 PartColors
 {
@@ -1001,6 +1047,10 @@ Inputs
 		nophase = "no phase"
 		yesphase = "yes phase"
 	}
+}
+PartTargeters
+{
+	SensorAim = "Aim Sensor"
 }
 PartToggles
 {
@@ -1326,7 +1376,7 @@ Tutorials
 }
 AI
 {
-	JaniBossAICosmilite = "CSML. Boss \"Normal\" AI"
+	JaniBossAICosmilite = "CSML. Boss AI"
 }
 JaniBossShips = "Bosses and Guardians"
 JaniBossShipsTip = "Boss and Hyperoid Guardian ships that come with Jani's Shipyard."

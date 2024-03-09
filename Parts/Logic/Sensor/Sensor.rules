@@ -1,0 +1,104 @@
+Part : <../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/Logic_Sensor"
+	IconNameKey = "Parts/Logic_SensorIcon"
+	ID = skipydog.sensor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = [skipydog.sensor_45,skipydog.sensor_L,skipydog.sensor_R]
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/Logic_SensorDesc"
+	Resources
+	[
+		[steel, 4]
+		[cut.tristeel, 2]
+		[coil, 1]
+	]
+	Size = [1, 1]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "sensor"
+	TypeCategories = [sensor, logic]
+	ReceivableBuffs = [Improve_Sensor_Range, AdvS_Setting, AdvS_Setting_Second, Logic]
+	SettingsMultiplier = 1 //needed for the number 0 to 99 settings
+	IgnoreOwnShip = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	<BaseSensor.rules>/Part/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [XorFinal, CommandToggle]
+			Mode = All
+		}
+
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		
+		DetectEnemiesToggle
+		{
+			Type = StaticToggle
+			ToggleOn = true
+		}
+		
+		DetectFriendliesToggle
+		{
+			Type = StaticToggle
+			ToggleOn = false
+		}
+		
+		FriendlySensor : <BaseSensor.rules>/Part/Components/FriendlySensor
+		{
+			IgnoreFriendlyShipLowLOSChecks = &../../IgnoreOwnShip
+			IgnoreFriendlyShipHighLOSChecks = &../../IgnoreOwnShip
+		}
+		EnemySensor : <BaseSensor.rules>/Part/Components/EnemySensor
+		{
+			IgnoreFriendlyShipLowLOSChecks = &../../IgnoreOwnShip
+			IgnoreFriendlyShipHighLOSChecks = &../../IgnoreOwnShip
+		}
+		//-----------------------------------------------------------------
+		BaseGraphics
+		{
+			Type = Graphics
+			Location = [-64, 420]
+		}
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Location = [0, 0]
+			Rotation = 90d
+			GetColorFrom = ColorPicker
+			OperationalToggle = EffectsTrigger
+			Roof
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "sensor.png"
+						NormalsFile = "sensor_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			Offset = [0, 0]
+		}
+	}
+}

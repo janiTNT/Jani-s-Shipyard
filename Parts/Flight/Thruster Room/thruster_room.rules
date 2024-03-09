@@ -68,8 +68,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ResourceStorages = [BatteryStorage]
 			ViaBuffs
 			{
-				OutgoingBuffProviders = [BuffProvider]
-				ComponentID = BatteryStorage
+				OutgoingBuffProviders = [PowerDistributionBuffProvider]
+				ComponentIDs = [BatteryStorage, ExtendableBatteryStorage] // ExtendableBatteryStorage is used by rocket thrusters.
 			}
 			AddMode = PrioritizeLeastResources
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
@@ -101,6 +101,27 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			BuffAmount = 20%
 			GridDistance = 1
 			OperationalToggle = IsOperational
+			AllowDiagonals = true
+		}
+		
+		DistributePowerUIToggle
+		{
+			Type = UIToggle
+			ToggleID = "distribute_power"
+			Default = 1
+		}
+		DistributePowerToggle
+		{
+			Type = MultiToggle
+			Toggles = [DistributePowerUIToggle, IsOperational]
+			Mode = All
+		}
+		PowerDistributionBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = EnginePowerDistribution
+			GridDistance = 1
+			OperationalToggle = DistributePowerToggle
 			AllowDiagonals = true
 		}
 

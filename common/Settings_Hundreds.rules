@@ -1,0 +1,219 @@
+
+Part
+{
+	Components
+	{
+		NumberSelectHunds
+		{
+			Type = UIToggle
+			ToggleID = "numbervalue_hunds"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+
+		ZeroLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 0
+		}
+		ZeroLength3
+		{
+			Type = ToggledComponents
+			Toggle = ZeroLengthToggle3
+			Components
+			{
+				BuffProviderSettingOne3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+
+		OneLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 1
+		}
+		OneLength3
+		{
+			Type = ToggledComponents
+			Toggle = OneLengthToggle3
+			Components
+			{
+				BuffProviderSettingOne3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=100; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+
+		TwoLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 2
+		}
+		TwoLength3
+		{
+			Type = ToggledComponents
+			Toggle = TwoLengthToggle3
+			Components
+			{
+				BuffProviderSettingTwo3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=200; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+
+		ThreeLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 3
+		}
+		ThreeLength3
+		{
+			Type = ToggledComponents
+			Toggle = ThreeLengthToggle3
+			Components
+			{
+				BuffProviderSettingThree3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=300; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+
+		FourLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 4
+		}
+		FourLength3
+		{
+			Type = ToggledComponents
+			Toggle = FourLengthToggle3
+			Components
+			{
+				BuffProviderSettingFour3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=400; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+		FiveLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 5
+		}
+		FiveLength3
+		{
+			Type = ToggledComponents
+			Toggle = FiveLengthToggle3
+			Components
+			{
+				BuffProviderSettingFive3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=500; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+		SixLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 6
+		}
+		SixLength3
+		{
+			Type = ToggledComponents
+			Toggle = SixLengthToggle3
+			Components
+			{
+				BuffProviderSettingSix3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=600; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+		SevenLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 7
+		}
+		SevenLength3
+		{
+			Type = ToggledComponents
+			Toggle = SevenLengthToggle3
+			Components
+			{
+				BuffProviderSettingSeven3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=700; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+		EightLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 8
+		}
+		EightLength3
+		{
+			Type = ToggledComponents
+			Toggle = EightLengthToggle3
+			Components
+			{
+				BuffProviderSettingEight3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=800; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+		NineLengthToggle3
+		{
+			Type = ModeToggle
+			Mode = NumberSelectHunds
+			OnMode = 9
+		}
+		NineLength3
+		{
+			Type = ToggledComponents
+			Toggle = NineLengthToggle3
+			Components
+			{
+				BuffProviderSettingNine3
+				{
+					Type = SelfBuffProvider
+					BuffType = AdvS_Setting_Third
+					BuffAmount = { BaseValue=900; BuffType=AdvS_Setting_Second; BuffMode=Add }
+				}
+			}
+		}
+	}
+}

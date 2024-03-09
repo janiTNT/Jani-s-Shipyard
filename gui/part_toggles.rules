@@ -1069,35 +1069,98 @@ PartToggles
 		SortOrder = 1
 		Choices
 		[
-			// Off
-			{
-				ChoiceID = "invert_input_no"
-				ButtonToolTipKey = "PartToggles/invert_input_no"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "toggle_invert1.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
+			{ ChoiceID = "invert_input_no"; ButtonToolTipKey = "PartToggles/invert_input_no"; 	ButtonSprite{Texture{File = "toggle_invert1.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "invert_input_yes"; ButtonToolTipKey = "PartToggles/invert_input_yes"; 	ButtonSprite{Texture{File = "toggle_invert2.png";MipLevels = 2;	SampleMode = Linear}}}
+		]
+	}
+	//detect_debris_toggle
+	{
+		ToggleID = "skipydog_detect_debris_toggle"
+		Style = CycledButton
+		Choices
+		[
+			{ ChoiceID = "DetectDebris_off"; ButtonToolTipKey = "PartToggles/DetectDebris_off"; 	ButtonSprite{Texture{File = "detect_scrap2.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "DetectDebris_on"; ButtonToolTipKey = "PartToggles/DetectDebris_on"; 	ButtonSprite{Texture{File = "detect_scrap1.png";MipLevels = 2;	SampleMode = Linear}}}
+		]
+	}
 
-			// On
-			{
-				ChoiceID = "invert_input_yes"
-				ButtonToolTipKey = "PartToggles/invert_input_yes"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "toggle_invert2.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
+	//detect_enemy_toggle
+	{
+		ToggleID = "skipydog_detect_enemies_toggle"
+		Style = CycledButton
+		Choices
+		[
+			{ ChoiceID = "DetectEnemies_off"; ButtonToolTipKey = "PartToggles/DetectEnemies_off"; 	ButtonSprite{Texture{File = "detect_enemies2.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "DetectEnemies_on"; ButtonToolTipKey = "PartToggles/DetectEnemies_on"; 	ButtonSprite{Texture{File = "detect_enemies1.png";MipLevels = 2;	SampleMode = Linear}}}
+		]
+	}
+
+	//detect_firendly_toggle
+	{
+		ToggleID = "skipydog_detect_friendlies_toggle"
+		Style = CycledButton
+		Choices
+		[
+			{ ChoiceID = "DetectFriendlies_off"; ButtonToolTipKey = "PartToggles/DetectFriendlies_off"; 	ButtonSprite{Texture{File = "detect_friendlies2.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "DetectFriendlies_on"; ButtonToolTipKey = "PartToggles/DetectFriendlies_on"; 	ButtonSprite{Texture{File = "detect_friendlies1.png";MipLevels = 2;	SampleMode = Linear}}}
+		]
+	}
+	
+	// Numbers 1x
+	{
+		ToggleID = "numbervalue_ones"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{ ChoiceID = "advships_num_1_0"; ButtonToolTipKey = "PartToggles/Numbers0"; 	ButtonSprite{Texture{File = "number0.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_1"; ButtonToolTipKey = "PartToggles/Numbers1"; 	ButtonSprite{Texture{File = "number1.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_2"; ButtonToolTipKey = "PartToggles/Numbers2"; 	ButtonSprite{Texture{File = "number2.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_3"; ButtonToolTipKey = "PartToggles/Numbers3"; 	ButtonSprite{Texture{File = "number3.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_4"; ButtonToolTipKey = "PartToggles/Numbers4"; 	ButtonSprite{Texture{File = "number4.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_5"; ButtonToolTipKey = "PartToggles/Numbers5"; 	ButtonSprite{Texture{File = "number5.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_6"; ButtonToolTipKey = "PartToggles/Numbers6"; 	ButtonSprite{Texture{File = "number6.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_7"; ButtonToolTipKey = "PartToggles/Numbers7"; 	ButtonSprite{Texture{File = "number7.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_8"; ButtonToolTipKey = "PartToggles/Numbers8"; 	ButtonSprite{Texture{File = "number8.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_1_9"; ButtonToolTipKey = "PartToggles/Numbers9"; 	ButtonSprite{Texture{File = "number9.png";MipLevels = 2;	SampleMode = Linear}}}
+		]
+	}
+	// Numbers 10x
+	{
+		ToggleID = "numbervalue_tens"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{ ChoiceID = "advships_num_10_0"; ButtonToolTipKey = "PartToggles/Numbers00"; 	ButtonSprite{Texture{File = "number10-0.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_1"; ButtonToolTipKey = "PartToggles/Numbers10"; 	ButtonSprite{Texture{File = "number10-1.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_2"; ButtonToolTipKey = "PartToggles/Numbers20"; 	ButtonSprite{Texture{File = "number10-2.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_3"; ButtonToolTipKey = "PartToggles/Numbers30"; 	ButtonSprite{Texture{File = "number10-3.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_4"; ButtonToolTipKey = "PartToggles/Numbers40"; 	ButtonSprite{Texture{File = "number10-4.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_5"; ButtonToolTipKey = "PartToggles/Numbers50"; 	ButtonSprite{Texture{File = "number10-5.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_6"; ButtonToolTipKey = "PartToggles/Numbers60"; 	ButtonSprite{Texture{File = "number10-6.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_7"; ButtonToolTipKey = "PartToggles/Numbers70"; 	ButtonSprite{Texture{File = "number10-7.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_8"; ButtonToolTipKey = "PartToggles/Numbers80"; 	ButtonSprite{Texture{File = "number10-8.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_10_9"; ButtonToolTipKey = "PartToggles/Numbers90"; 	ButtonSprite{Texture{File = "number10-9.png";MipLevels = 2;	SampleMode = Linear}}}
+		]
+	}
+	// Numbers 100x
+	{
+		ToggleID = "numbervalue_hunds"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{ ChoiceID = "advships_num_100_0"; ButtonToolTipKey = "PartToggles/Numbers000"; 	ButtonSprite{Texture{File = "number100-0.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_1"; ButtonToolTipKey = "PartToggles/Numbers100"; 	ButtonSprite{Texture{File = "number100-1.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_2"; ButtonToolTipKey = "PartToggles/Numbers200"; 	ButtonSprite{Texture{File = "number100-2.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_3"; ButtonToolTipKey = "PartToggles/Numbers300"; 	ButtonSprite{Texture{File = "number100-3.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_4"; ButtonToolTipKey = "PartToggles/Numbers400"; 	ButtonSprite{Texture{File = "number100-4.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_5"; ButtonToolTipKey = "PartToggles/Numbers500"; 	ButtonSprite{Texture{File = "number100-5.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_6"; ButtonToolTipKey = "PartToggles/Numbers600"; 	ButtonSprite{Texture{File = "number100-6.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_7"; ButtonToolTipKey = "PartToggles/Numbers700"; 	ButtonSprite{Texture{File = "number100-7.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_8"; ButtonToolTipKey = "PartToggles/Numbers800"; 	ButtonSprite{Texture{File = "number100-8.png";MipLevels = 2;	SampleMode = Linear}}}
+			{ ChoiceID = "advships_num_100_9"; ButtonToolTipKey = "PartToggles/Numbers900"; 	ButtonSprite{Texture{File = "number100-9.png";MipLevels = 2;	SampleMode = Linear}}}
 		]
 	}
 ]

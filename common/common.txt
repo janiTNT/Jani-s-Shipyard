@@ -2,6 +2,9 @@ flareeffect = "flare.png"
 NoProton = "indicator_protons.png"
 NoDeuterium = "indicator_deuterium.png"
 NoHydrogen = "indicator_hydrogen.png"
+SettingsOnes = &<Settings_Ones.rules>
+SettingsTens = &<Settings_Tens.rules>
+SettingsHundreds = &<Settings_Hundreds.rules>
 Radexplode
 [
 	&<RadioactiveExplode.txt>

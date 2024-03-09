@@ -24,6 +24,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CreatePartPerTileWhenGrabbed = ""
 	InitialPenetrationResistance = 0
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	UnderlyingPartPerTile = ""
 	CrewSpeedFactor = 0
 	AllowedDoorLocations = []
 	EditorIcon
