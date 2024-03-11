@@ -461,6 +461,11 @@ Parts
 	Background_Structure_Gap = "Background Structure T"
 	Background_Structure_GapIcon = "Background Structure T"
 	
+	BackgroundSteelFloor = "Background Steel Flooring"
+	BackgroundSteelFloorIcon = "Background Floor"
+	BackgroundSteelFloorDesc = "Metal Flooring to be used as another background piece. useful for Hangar decoration and whatnot. While cannot be painted normally, you can choose any color to use.\nTechnically has zero weight."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
 	PowerPort = "Part Energy Port"
 	PowerPortIcon = "Power Port"
 	PowerPortDesc = "This Part serves as a central delivery point for parts that cannot be powered by crew in Jani's shipyard. As a added bonus, this also powers inserters."\

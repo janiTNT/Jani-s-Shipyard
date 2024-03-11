@@ -141,6 +141,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Background/Structure/background_structure_invertwedge/background_structure_invertwedge.rules>/Part
 			&<Parts/Background/Structure/background_structure_tri/background_structure_tri.rules>/Part
 			
+			&<Parts/Background/SteelFloor/steelfloor.rules>/Part
+			
 			&<Parts/Background/Dock/Underlay/dock_underlay.rules>/Part
 			&<Parts/Background/Dock/Grid/dock.rules>/Part
 			
@@ -174,7 +176,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//&<Parts/Weapons/Drone_launcher_Medium/drone_launcher_med.rules>/Part
 			//&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
 			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
-			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Par
+			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Part
 			
 			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part
 			

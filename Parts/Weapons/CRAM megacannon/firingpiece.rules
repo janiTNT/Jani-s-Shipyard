@@ -282,7 +282,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 1.2
-			FiringArc = 0 //15d //Temp because rail logic. emitter doesnt chain rotation correctly.
+			FiringArc = 25 //15d //Temp because rail logic. emitter doesnt chain rotation correctly.
 			RotateSpeed = 10d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = 2400

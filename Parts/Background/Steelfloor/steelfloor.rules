@@ -1,0 +1,107 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/BackgroundSteelFloor"
+	IconNameKey = "Parts/BackgroundSteelFloorIcon"
+	ID = janiTNT.BackgroundSteelFloor
+	EditorGroup = "Structure"
+	DescriptionKey = "Parts/BackgroundSteelFloorDesc"
+	Resources
+	[
+		[steel, 8]
+		[tristeel, 1]
+	]
+	Size = [1, 1]
+	SelectionTypeID = "structure"
+	MaxHealth = 500
+	HealthType = Structural
+	TypeCategories = [background_floor]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	
+	SalvageProgressMediaEffects
+	
+	Flammable = false
+	ConstructionDuration = 0.5
+	RepairDuration = 0.5
+	UnderlyingPartPerTile = ""
+	TempConstructionPartPerTile = cosmoteer.structure
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 1
+	IsRotateable = false
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "steelfloor.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "hullpartscolor"
+			Default = Black
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			GetColorFrom = ColorPicker
+			Floor
+			{
+				Layer = "bgstructure"
+				DamageLevels
+				[
+					{
+						File = "steelfloor.png"
+						NormalsFile = "steelfloor_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [0.5, 0.5]
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+}
