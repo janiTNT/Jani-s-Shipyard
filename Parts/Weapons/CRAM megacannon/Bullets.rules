@@ -1,0 +1,682 @@
+BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest"
+	Range = { BaseValue=190; BuffType=JaniCRAM_Range; BuffMode=Multiply; MaxValue=600; MinValue=50; }
+	IdealRange
+	[
+		{ BaseValue=75; BuffType=JaniCRAM_Range; BuffMode=Multiply;}
+		{ BaseValue=190; BuffType=JaniCRAM_Range; BuffMode=Multiply; MaxValue=600; MinValue=50;}
+	]
+	IdealRadius
+	[
+		{ BaseValue=5; BuffType=JaniCRAM_Range; BuffMode=Multiply; }
+		{ BaseValue=50; BuffType=JaniCRAM_Range; BuffMode=Multiply; }
+	]
+	Speed = { BaseValue=150; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+
+	ReceivableBuffs = [JaniCRAM_BarrelMass, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain]
+}
+
+BaseComponents
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.45
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = { BaseValue=8000; BuffType=JaniCRAM_Health; BuffMode=Multiply; }
+		TargetCategory = "bullet"
+
+		OnDeath
+		{
+			MediaEffects = &~/BaseComponents/Hit/HitOperational/MediaEffects
+		}
+	}
+	
+	DamagePool
+	{
+		Type = DamagePool
+		Damage = { BaseValue=16000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = { BaseValue=18.0; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+		PenetrationSpeed = 20
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		FriendlyShipLowCollisions = false
+		PenetratesCrew = true
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=16000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+				}
+				{
+					Type = Impulse
+					Impulse = { BaseValue=360; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+				&<./data/shots/bullet_deck/particles/bullet_smoke_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_flash_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/bullet_deck/bullet_deck_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .2
+					Duration = .75
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [0.5, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=8000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+				}
+				{
+					Type = Impulse;
+					Impulse = 90
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/bullet_large/particles/bullet_hit_large.rules>
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+				&<./data/shots/bullet_deck/particles/bullet_flash_deck_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/bullet_deck/bullet_deck_hit_structure.wav"
+					Volume = .5
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=16000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					DamagePool = DamagePool
+					DoPooledDamageFirst = true
+				}
+				{
+					Type = Fire
+					FireChance = .4
+				}
+				{
+					Type = Impulse
+					Impulse = { BaseValue=360; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+				&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	Sprite
+	{
+		Type = AnimatedSprite
+		RenderBucket = BulletUpper3
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "./data/shots/bullet_large/bullet_large.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [1.1, 1.1]
+			}
+			FrameCount = 16
+			FrameSize = [256, 256]
+			FramesPerRow = 4
+			FramesPerSecond = 120
+		}
+		NormalsTexture = &Animation/AtlasSprite/Texture
+		DiffuseShader = "./Data/default.shader"
+		NormalsShader = "./Data/no_normals.shader"
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0.5
+		IsLight = true
+		Offset = [-1.5, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [18, 9]
+			VertexColor = [255, 100, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.125
+		}
+	}
+
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffectsScale = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Add; }
+		MediaEffects
+		[
+			&<./data/shots/bullet_deck/particles/bullet_trail_deck.rules>
+		]
+	}
+}
+
+Bullet0
+{
+	Range = { BaseValue=190; BuffType=JaniCRAM_Range; BuffMode=Multiply; MaxValue=600; MinValue=50; }
+	IdealRange
+	[
+		{ BaseValue=75; BuffType=JaniCRAM_Range; BuffMode=Multiply;}
+		{ BaseValue=190; BuffType=JaniCRAM_Range; BuffMode=Multiply; MaxValue=600; MinValue=50;}
+	]
+	IdealRadius
+	[
+		{ BaseValue=5; BuffType=JaniCRAM_Range; BuffMode=Multiply; }
+		{ BaseValue=50; BuffType=JaniCRAM_Range; BuffMode=Multiply; }
+	]
+	Speed = { BaseValue=150; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+
+	ReceivableBuffs = [JaniCRAM_BarrelMass, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain]
+	
+	ID = "janiTNT.CRAMbullettest0"
+	Components // Separate
+	{
+		Physics
+		{
+			Type = CirclePhysics
+			Radius = 0.45
+			Density = 0.0001
+		}
+
+		Death
+		{
+			Type = DeathByLifetime
+			// Lifetime will be auto-calculated based on range and speed.
+		}
+		
+		Targetable
+		{
+			Type = Targetable
+			Health = { BaseValue=3000; BuffType=JaniCRAM_Health; BuffMode=Multiply; }
+			TargetCategory = "bullet"
+
+			OnDeath
+			{
+				MediaEffects
+				[
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+					&<./data/shots/bullet_deck/particles/bullet_smoke_deck.rules>
+					&<./data/shots/bullet_deck/particles/bullet_flash_deck.rules>
+
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "./data/shots/bullet_deck/bullet_deck_hit.wav"
+						Volume = .75
+						SpeedVariation = .4
+					}
+
+					: /BASE_SHAKE
+					{
+						ShakeAmount = .2
+						Duration = .75
+					}
+				]
+			}
+		}
+		
+		DamagePool
+		{
+			Type = DamagePool
+			Damage = { BaseValue=8000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+		}
+
+		Hit
+		{
+			Type = PenetratingHit
+			Penetration = { BaseValue=9.0; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+			PenetrationSpeed = 20
+
+			CrewCollisions = {Enemies=true; Junk=true}
+			FriendlyShipLowCollisions = false
+			PenetratesCrew = true
+			HitCrew = &HitOperational
+
+			HitShield = &HitOperational
+			HitOperational
+			{
+				ReduceEffectsByPenetration = true
+				Offset = [-0.15, 0]
+
+				HitEffects
+				[
+					{
+						Type = Damage
+						Damage = { BaseValue=8000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					}
+					{
+						Type = Impulse
+						Impulse = { BaseValue=180; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					}
+				]
+
+				MediaEffects
+				[
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+					&<./data/shots/bullet_deck/particles/bullet_smoke_deck.rules>
+					&<./data/shots/bullet_deck/particles/bullet_flash_deck.rules>
+
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "./data/shots/bullet_deck/bullet_deck_hit.wav"
+						Volume = .75
+						SpeedVariation = .4
+					}
+
+					: /BASE_SHAKE
+					{
+						ShakeAmount = .2
+						Duration = .75
+					}
+				]
+			}
+			HitStructural
+			{
+				ReduceEffectsByPenetration = true
+				Offset = [0.5, 0]
+
+				HitEffects
+				[
+					{
+						Type = Damage
+						Damage = { BaseValue=4000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					}
+					{
+						Type = Impulse;
+						Impulse = 90
+					}
+				]
+
+				MediaEffects
+				[
+					&<./data/shots/bullet_large/particles/bullet_hit_large.rules>
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+					&<./data/shots/bullet_deck/particles/bullet_flash_deck_struct.rules>
+
+					: /BASE_SOUNDS/AudioExterior
+					{
+						Sound = "./data/shots/bullet_deck/bullet_deck_hit_structure.wav"
+						Volume = .5
+						SpeedVariation = .4
+					}
+				]
+			}
+			PenetratingOperational
+			{
+				ReduceEffectsByPenetration = true
+
+				HitEffects
+				[
+					{
+						Type = Damage
+						Damage = { BaseValue=8000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					}
+					{
+						Type = Fire
+						FireChance = .4
+					}
+					{
+						Type = Impulse
+						Impulse = { BaseValue=180; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					}
+				]
+
+				MediaEffects
+				[
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck.rules>
+					&<./data/shots/bullet_deck/particles/bullet_hit_deck_sparks.rules>
+				]
+			}
+			PenetratingStructural
+			{
+				// No effect.
+			}
+			FinishedPenetratingOperational = &PenetratingOperational
+			FinishedPenetratingStructural = &PenetratingStructural
+		}
+		
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1, 1.1]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5, 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18, 9]
+			}
+		}
+		
+		MediaEffects
+		{
+			Type = MediaEffects
+			MediaEffectsScale = 1
+			MediaEffects
+			[
+				&<./data/shots/bullet_deck/particles/bullet_trail_deck.rules>
+			]
+		}
+	}
+}
+
+Bullet1 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest1"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(1.5)), 1.1*(sqrt(1.5))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(1.5)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(1.5)), 9*(sqrt(1.5))]
+			}
+		}
+	}
+}
+
+Bullet2 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest2"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(2)), 1.1*(sqrt(2))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(2)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(2)), 9*(sqrt(2))]
+			}
+		}
+	}
+}
+
+Bullet3 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest3"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(3)), 1.1*(sqrt(3))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(3)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(3)), 9*(sqrt(3))]
+			}
+		}
+	}
+}
+
+Bullet4 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest4"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(4)), 1.1*(sqrt(4))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(4)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(4)), 9*(sqrt(4))]
+			}
+		}
+	}
+}
+
+Bullet5 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest5"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(5)), 1.1*(sqrt(5))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(5)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(5)), 9*(sqrt(5))]
+			}
+		}
+	}
+}
+
+Bullet6 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest6"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(6)), 1.1*(sqrt(6))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(6)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(6)), 9*(sqrt(6))]
+			}
+		}
+	}
+}
+
+Bullet7 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest7"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(7)), 1.1*(sqrt(7))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(7)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(7)), 9*(sqrt(7))]
+			}
+		}
+	}
+}
+
+Bullet8 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest8"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(8)), 1.1*(sqrt(8))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(8)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(8)), 9*(sqrt(8))]
+			}
+		}
+	}
+}
+
+Bullet9 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest9"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Animation : ~/BaseComponents/Sprite/Animation
+			{
+				AtlasSprite : ~/BaseComponents/Sprite/Animation/AtlasSprite
+				{
+					Size = [1.1*(sqrt(9)), 1.1*(sqrt(9))]
+				}
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(9)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(9)), 9*(sqrt(9))]
+			}
+		}
+	}
+}

@@ -1,0 +1,53 @@
+ID = "janiTNT.brimstonemonsterspawner_boss"
+Range = 10000
+IdealRange = 250
+Speed = 0
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = [1, 3]
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<BrimstoneMonster.rules>
+					Count = 1
+					InheritVelocity = true
+				}
+			]
+		}
+	}
+	
+	SpinnerSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 120d
+		Sprite
+		{
+			Texture
+			{
+				File = "../GlowRing.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [32, 32]
+			VertexColor = [180, 180, 180]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+}

@@ -1,14 +1,14 @@
-Part : <./Data/ships/terran/base_part_terran.rules>/Part
+	Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/CRAM_Firingpiece"
 	IconNameKey = "Parts/CRAM_FiringpieceIcon"
-	ID = janiTNT.CRAM_barrel_2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ID = janiTNT.CRAM_end // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	//OtherIDs = [big_cannon]
 	EditorGroup = "WeaponsProjectile"
 	DescriptionKey = "Parts/CRAM_FiringpieceDesc"
 	Resources
 	[
-		[steel, 64]
+		[steel, 32]
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_light]
 	Size = [1, 1]
@@ -19,15 +19,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CreatePartPerTileWhenGrabbed = ""
 	SelectionTypeByRotation = true
 	SelectionTypeID = "cannons"
-	AllowedContiguity = [Top, Bottom]
-	MaxHealth = 2000 *2
+	AllowedContiguity = [Bottom]
+	MaxHealth = 2000
 	InitialPenetrationResistance = 5
 	ExternalWalls = [None]
 	InternalWalls = [All]
 	PenetrationRectType = Normal
-	//ProhibitAbove = 2
+	ProhibitAbove = 2
 	CrewSpeedFactor = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMass, JaniCRAM_ReverseBarrelGauge]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_ReverseBarrelGauge]
 	GenerateRectCollider = false
 	/*AllowedDoorLocations
 	[
@@ -44,10 +44,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	{
 		Texture
 		{
-			File = "barrel.png"
+			File = "BarrelEnd.png"
 			SampleMode = Linear
 		}
-		Size = [80 * 0.75, 128 * 0.75]
+		Size = [80, 80]
 	}
 	Components : ^/0/Components
 	{
@@ -55,28 +55,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = AreaBuffProvider
 			BuffType = JaniCRAM_BarrelMass
-			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
+			BuffAmount = { BaseValue=4; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
 			BuffArea = [0, 1, 1, 1]
 			//OperationalToggle = DistanceBuffToggle
-			ChainsFromBuffType = JaniCRAM_BarrelMass
+			//ChainsFromBuffType = JaniCRAM_BarrelMass
 			Criteria
 			{
 				Rot = 0
 			}
 		}
 		
-		BarrelGaugeBuffProvider
+		EmitterProxy
 		{
-			Type = AreaBuffProvider
-			BuffType = JaniCRAM_ReverseBarrelGauge
-			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Add; }
-			BuffArea = [0, -1, 1, 1]
-			//OperationalToggle = DistanceBuffToggle
-			ChainsFromBuffType = JaniCRAM_ReverseBarrelGauge
-			Criteria
-			{
-				Rot = 0
-			}
+			Type = Graphics
+			ChainedTo = Offset //we dont expect it to go here
 		}
 		
 		PositionProxy
@@ -100,66 +92,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			ChainedTo = PositionProxy
-			Location = [0, -2]
+			Location = [0, -1]
 		}
-		
-		IsNotFinalpiece
-		{
-			Type = ComponentPresenceToggle
-			PartLocation = [0, -1]
-			ComponentID = IsNotFinalpiece
-			PartCriteria
-			{
-				Rot = 0
-			}
-		}
-		
-		ToggledOnEmitterProxy
-		{
-			Type = ToggledComponents
-			Toggle = IsNotFinalpiece
-			Components
-			{
-				EmitterProxy
-				{
-					Type = ChainableProxy
-					PartLocation = [0, -1]
-					ComponentID = EmitterProxy
-					PartCriteria
-					{
-						Rot = 0
-					}
-				}
-			}
-		}
-		
-		ToggledOffEmitterProxy
-		{
-			Type = ToggledComponents
-			Toggle = IsNotFinalpiece
-			Invert = true
-			Components
-			{
-				EmitterProxy
-				{
-					Type = Graphics
-					ChainedTo = Offset
-				}
-			}
-		}
-		
-		/*Collider
-		{
-			ChainedTo = PositionProxy
-			Type = PolygonCollider
-			Vertices
-			[
-				[0.125, -1]
-				[0.875, -1]
-				[0.875, 1]
-				[0.125, 1]
-			]
-		}*/
 		
 		HeavyBarrelConnection
 		{
@@ -240,7 +174,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			ChainedTo = PositionProxy
-			Location = [0.5, 0.5]
+			Location = [0.5, 1]//WARNING
 			ProperSize = [1.25, 1]
 			OperationalToggle = Size0
 			DoodadToggle = HeavyBarrelConnection
@@ -260,16 +194,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -293,16 +218,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -326,16 +242,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -359,16 +266,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -392,16 +290,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -425,16 +314,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -458,16 +338,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -491,16 +362,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -524,16 +386,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
@@ -557,52 +410,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					: ~/BaseTexture
-					{Size = [&../../../../ProperSize/0, 1]}
-				]
-			}
-			OperationalLighting
-			{
-				Layer = "structure"
-				DamageLevels
-				[
-					: ~/BaseTexture2
-					{Size = [&../../../../ProperSize/0, 1]}
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*6/5]}
 				]
 			}
 		}
 		
-		/*Sprite1
+		/*Sprite
 		{
 			Type = Sprite
 			ChainedTo = PositionProxy
-			Location = [0.5, -0.5]
-			//GridSpacing = [0.25, 0.25]
-			//GridSize = [1, 2]
+			Location = [0.5, 1]
 			DamageLevels
 			[
 				{
-					File = "barrel.png"
-					NormalsFile = "barrel_n.png"
-					Size = [1.25, 1]
-				}
-			]
-			RandomUVRotation = false
-			Layer = "FTLlowturrets"
-		}
-		
-		Sprite2
-		{
-			Type = Sprite
-			ChainedTo = PositionProxy
-			Location = [0.5, -1.5]
-			//GridSpacing = [0.25, 0.25]
-			//GridSize = [1, 2]
-			DamageLevels
-			[
-				{
-					File = "barrel.png"
-					NormalsFile = "barrel_n.png"
-					Size = [1.25, 1]
+					File = "BarrelEnd.png"
+					NormalsFile = "BarrelEnd_n.png"
+					Size = [1.25, 1.25]
 				}
 			]
 			RandomUVRotation = false
@@ -614,13 +437,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			ChainedTo = PositionProxy
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
-			Location = [0.5, -1]
+			Location = [0.5, 0.5]
 		}
 		
 		/*Indicators
 		{
 			Type = IndicatorSprites
-			Location = [0.5, 1]
+			Location = [0.5, 0.5]
 			Layer = "indicators"
 			Indicators
 			[
@@ -641,24 +464,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "barrel_blueprint.png"
-			Size = [1, 2]
+			Size = [1, 1]
 			//Offset = [0, -1]
 		}
 	}
 }
-BaseTexture2
-{
-	File = "barrel.png"
-	NormalsFile = "barrel_n.png"
-	Size = [1.25, 1]
-	Offset = [0, -1]
-}
 
 BaseTexture
 {
-	File = "barrel.png"
-	NormalsFile = "barrel_n.png"
-	Size = [1.25, 1]
+	File = "BarrelEnd.png"
+	NormalsFile = "BarrelEnd_n.png"
+	Size = [1.25, 1.25]
 }
 
 BaseTextureConnection
@@ -666,5 +482,4 @@ BaseTextureConnection
 	File = "Heavy_End.png"
 	NormalsFile = "Heavy_End_n.png"
 	Size = [1.25, 1.25*5/4]
-	Offset = [0, 0.5]
 }

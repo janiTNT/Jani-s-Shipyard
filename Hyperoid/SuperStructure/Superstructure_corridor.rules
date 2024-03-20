@@ -1,0 +1,240 @@
+Part : <../base_part_hyperoid.rules>/Part
+{
+	NameKey = "Parts/SuperstructurePlating"
+	DescriptionKey = "Parts/SuperstructurePlatingDesc"
+	ID = janiTNT.superstructureplating // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	SelectionTypeID = "SuperstructurePlating"
+	EditorGroup = "Defenses"
+	Resources = []
+	MaxHealth = 1000 * 16*16
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	TypeCategories = [corridor]
+	IsCrewSalvageable = false
+	Density = 1
+	EditorIcon
+	{
+		Texture = "./Data/ships/terran/corridor/icon.png"
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+	
+		SpriteGridMain
+		{
+			Type = SpriteGrid
+			RandomUVRotation = true
+			Layer = "superstructureroof"
+			Location = [0.5*0.0625, 0.5*0.0625]
+			GridSpacing = [0.0625, 0.0625]
+			GridSize = [16, 16]
+			RandomDamageLevels
+			[
+				[//Default
+					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
+				]
+				[//Extra1
+					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
+				]
+				[//Extra2
+					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
+				]
+				[//Extra3
+					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
+					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
+				]
+				
+			]
+		}
+		
+		SuperCorridorIsConnected // Needed to be referenced by proxies
+		{
+			Type = StaticToggle
+			ToggleOn = true
+		}
+		
+		
+		/*{
+			PartCriteria // for handling edges and stuff i think
+			{
+				Category = corridor
+				Rot = 2 //is perfectly aligned
+				Right = 0
+				Bottom = 5
+			}
+			ComponentID = SuperCorridorIsConnected
+		}*/
+		
+		TopProxy
+		{
+			Type = ToggleProxy
+			PartLocation = [0, -1]
+			//InvertProxyToggle = true
+			ComponentID = SuperCorridorIsConnected
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = corridor
+					}
+					ComponentID = SuperCorridorIsConnected
+				}
+			]
+		}		
+		TopRightProxy : TopProxy
+		{
+			PartLocation = [1, -1]
+		}
+		RightProxy : TopProxy
+		{
+			PartLocation = [1, 0]
+		}
+		BottomRightProxy : TopProxy
+		{
+			PartLocation = [1, 1]
+		}
+		BottomProxy : TopProxy
+		{
+			PartLocation = [0, 1]
+		}
+		BottomLeftProxy : TopProxy
+		{
+			PartLocation = [-1, 1]
+		}
+		LeftProxy : TopProxy
+		{
+			PartLocation = [-1, 0]
+		}
+		TopLeftProxy : TopProxy
+		{
+			PartLocation = [-1, -1]
+		}
+		/*TopTopRightIsFlat
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = TopProxy, invert = true}
+				{Toggle = TopRightProxy, invert = true}
+				{Toggle = RightProxy, invert = true}
+			]
+			Mode = All
+		}
+		CornerTopRight
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = TopProxy, invert = true}
+				{Toggle = TopRightProxy, invert = true}
+				{Toggle = RightProxy, invert = true}
+			]
+			Mode = All
+		}*/
+		
+		TopWallsComponents
+		{
+			Type = ToggledComponents
+			Toggle = TopProxy
+			Invert = true
+			Components
+			{
+				SpriteGridTopWall
+				{
+					Type = SpriteGrid
+					RandomUVRotation = false
+					Layer = "superstructurewalls"
+					Location = [1.5*0.0625, -0.5*0.0625]
+					GridSpacing = [0.0625, 0.0625]
+					GridSize = [14, 1]
+					TrueRotation = 2
+					RandomDamageLevels
+					[
+						[//Default
+							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+						[//Extra1
+							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+						[//Extra2
+							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+						[//Extra3
+							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+						
+					]
+				}
+			}
+		}
+		
+		RightWallsComponents : TopWallsComponents
+		{
+			Toggle = RightProxy
+			Components
+			{
+				SpriteGridRightWall : ../../TopWallsComponents/Components/SpriteGridTopWall
+				{
+					TrueRotation = 3
+					GridSize = [1, 14]
+					Location = [16.5*0.0625, 1.5*0.0625]
+				}
+			}
+		}
+		
+		BottomWallsComponents : TopWallsComponents
+		{
+			Toggle = BottomProxy
+			Components
+			{
+				SpriteGridBottomWall : ../../TopWallsComponents/Components/SpriteGridTopWall
+				{
+					TrueRotation = 0
+					GridSize = [14, 1]
+					Location = [1.5*0.0625, 16.5*0.0625]
+				}
+			}
+		}
+		
+		LeftWallsComponents : TopWallsComponents
+		{
+			Toggle = RightProxy
+			Components
+			{
+				SpriteGridLeftWall : ../../TopWallsComponents/Components/SpriteGridTopWall
+				{
+					TrueRotation = 1
+					GridSize = [1, 14]
+					Location = [-0.5*0.0625, 1.5*0.0625]
+				}
+			}
+		}
+		
+		
+		
+
+		Blueprints = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Blueprints
+		BlueprintWalls = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/BlueprintWalls
+	}
+}

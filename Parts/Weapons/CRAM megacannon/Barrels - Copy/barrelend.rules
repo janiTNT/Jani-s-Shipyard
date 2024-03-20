@@ -1,0 +1,297 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CRAM_Firingpiece"
+	IconNameKey = "Parts/CRAM_FiringpieceIcon"
+	ID = janiTNT.CRAM_end // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	//OtherIDs = [big_cannon]
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/CRAM_FiringpieceDesc"
+	Resources
+	[
+		[steel, 32]
+	]
+	TypeCategories = [weapon, uses_ammo, is_crewed]
+	Size = [1, 1]
+	//PhysicalRect = [0, 1, 3, 2]
+	//SaveRect = &PhysicalRec
+	SelectionPriority = 1
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	SelectionTypeByRotation = true
+	SelectionTypeID = "cannons"
+	AllowedContiguity = [Top, Bottom]
+	MaxHealth = 2000
+	InitialPenetrationResistance = 5
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	PenetrationRectType = Normal
+	//ProhibitAbove = 2
+	CrewSpeedFactor = 0
+	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun]
+	GenerateRectCollider = false
+	/*AllowedDoorLocations
+	[
+		[-1, 1]
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 3]
+		[3, 2]
+		[3, 1]
+	]*/
+	AllowedDoorLocations = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "BarrelEnd.png"
+			SampleMode = Linear
+		}
+		Size = [80, 80]
+	}
+	Components : ^/0/Components
+	{
+		DistanceBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = Railgun
+		}
+		
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [.5, .5] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			ChainedTo = TurretOffset
+			OperationalToggle = PowerToggle
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 1.2
+			FiringArc = 25d //15d //Temp because rail logic. emitter doesnt chain rotation correctly.
+			RotateSpeed = 10d
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 2400
+			Emitter = CramEmitter
+			FirePermissionToggle = FireModeToggle
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = Turret
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		TurretOffset //EXCUSE ME WHAT THE ACTUAL
+		{
+			Type = RailgunProjectile
+			//ChainedTo = Turret NUH UH
+			Location = [0, 0]
+			OperationalToggle = PowerToggle
+			YStartOffset = { BaseValue=1; BuffType=Railgun; BuffMode=Multiply; }
+			YEndOffset = { BaseValue=1; BuffType=Railgun; BuffMode=Multiply; }
+			SpeedStart = 0
+			SpeedEnd = 0
+			Interpolate = false
+		}
+		
+		PositionProxy
+		{
+			Type = ChainableProxy
+			ComponentID = Turret
+			PartCriteria
+			{
+				//Category = railgun_ammo
+				Rot = 0
+				//Left = 0
+				//Right = 1
+				//Top = 1
+			}
+			//MatchLocation = false
+		}
+		
+		CramEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = PositionProxy
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [-0.1, 0.5]
+			//Rotation = -90d
+			OperationalToggle = PowerToggle
+			Bullet = &<./Data/shots/bullet_large/bullet_large.rules>
+			Spread = [-2.5d, 2.5d]
+			ResourceStorage = AmmoStorage
+			ResourcesUsed = 1
+			Recoil = 80
+		}
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = CramEmitter
+			Trigger = CramEmitter
+			Location = [0, 0]
+
+			MediaEffects
+			[
+				&<./data/ships/terran/cannon_large/particles/cannon_shoot_large.rules>
+				&<./data/ships/terran/cannon_large/particles/cannon_shoot_large_flash.rules>
+				&<./data/ships/terran/cannon_large/particles/cannon_shoot_large_flare.rules>
+				&<./data/ships/terran/cannon_large/particles/cannon_smoke_large.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/cannon_large/shoot.wav"
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .075
+					Duration = .5
+				}
+			]
+		}
+		
+		AmmoStorage
+		{
+			Type = ResourceStorage
+			ResourceType = bullet
+			MaxResources = 10
+			DelayBeforeReadyToUse = .25
+			//AnticipateMoreResourcesFrom = ["AmmoStorage"]
+			ToggleOnResources = 4
+			ToggleOffResources = 3
+			UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			DropResourcesWhenDestroyed = true
+		}
+		
+		Offset
+		{
+			Type = Graphics
+			ChainedTo = PositionProxy
+			Rotation = 90d
+			Location = [0, 1]
+		}
+		
+		/*Collider
+		{
+			ChainedTo = PositionProxy
+			Type = PolygonCollider
+			Vertices
+			[
+				[0.125, 0]
+				[0.875, 0]
+				[0.875, 1]
+				[0.125, 1]
+			]
+		}*/
+		
+		Sprite
+		{
+			Type = Sprite
+			Rotation = -90d
+			ChainedTo = PositionProxy
+			Location = [1.5, 0.5]
+			DamageLevels
+			[
+				{
+					File = "BarrelEnd.png"
+					NormalsFile = "BarrelEnd_n.png"
+					Size = [1.25, 1.25]
+				}
+			]
+			RandomUVRotation = false
+			Layer = "turrets"
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			ChainedTo = PositionProxy
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [0.5, 0.5]
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Missing component
+				{
+					Toggle = DistanceBuffToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "barrel_blueprint.png"
+			Size = [1, 1]
+			//Offset = [0, -1]
+		}
+	}
+}

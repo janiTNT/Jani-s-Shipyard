@@ -146,9 +146,6 @@ AdvS_Bare_Base
 {
 	CombineMode = Add
 	BaseValue = 0
-
-	RectBorderColor = [0, 0, 0, 0]
-	RectFillColor = [0, 0, 0, 0]
 }
 AdvS_Setting = &AdvS_Bare_Base
 AdvS_Setting_Second = &AdvS_Bare_Base
@@ -165,4 +162,49 @@ RampUpJaniFinal
 {
 	CombineMode = Add
 	BaseValue = 0%
+}
+JaniCRAM_BarrelMass //Loosely the lenght of a barrel. Heavy barrels and tips may have higher buffs.
+{
+	CombineMode = Add
+	RectBorderColor = [0, 255, 84, 160]
+	RectFillColor = [0, 255, 84, 64]
+	BaseValue = 0%
+}
+
+JaniCRAM_ReverseBarrelGauge //Visual Barrel Thickness
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+JaniCRAM_Velocity //Bullet SPEED
+{
+	CombineMode = Add
+	Exponent = 0.5
+	BaseValue = 0%
+}
+JaniCRAM_Range //Bullet RANGE
+{
+	CombineMode = Add
+	Exponent = 0.3
+	BaseValue = 15%
+}
+JaniCRAM_Accuraccy //Bullet ACCURACCY
+{
+	CombineMode = Add
+	Exponent = 0.8
+}
+JaniCRAM_Health //Bullet HEALTH
+{
+	CombineMode = Add
+	BaseValue = 100%
+}
+JaniCRAM_DamageMain //Bullet Damage in general
+{
+	CombineMode = Add
+	BaseValue = 100%
+}
+JaniCRAM_TurretRotation
+{
+	CombineMode = Add
+	BaseValue = 100%
 }

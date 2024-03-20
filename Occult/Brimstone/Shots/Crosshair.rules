@@ -63,6 +63,14 @@ Components
 				}
 				{
 					Type = SpawnBullets
+					Bullet = &<WallMine.rules>
+					Count = 18
+					Distance = 1500
+					//Spread = [-15d, 15d]
+					InheritVelocity = false
+				}
+				{
+					Type = SpawnBullets
 					Bullet = &<HellblastHandler1.rules>
 					Count = 60
 					Distance = 1150

@@ -48,7 +48,7 @@ Components
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = 70
+		Lifetime = [70, 72]
 		OnDeath = &../Hit/HitFriendly
 	}
 

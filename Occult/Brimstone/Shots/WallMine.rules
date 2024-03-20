@@ -1,0 +1,173 @@
+ID = "janiTNT.brimstonebigmine"
+Range = 0
+IdealRange = 0
+Speed = 400
+Stage2 = &<Sunbombp1.rules>
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 3
+		Density = 1
+		LinearDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+	
+	DeathByEnemyProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = .5
+		Range = 500
+		DetectsShips = true
+		DetectsBullets = false
+		StartDelay = 1
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+				
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 8
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+			MediaEffectsScale = 5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 80
+		OnDeath
+		{			
+			MediaEffectsScale = 5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 10d
+		Sprite
+		{
+			Texture
+			{
+				File = "wallmine.png"
+				MipLevels = max
+			}
+			Size = [18, 18]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [60, 60]
+			VertexColor = [255*8, 205*1, 128*1]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 1
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 7200 * 20
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../DeathByEnemyProximity/OnDeath
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational = &../DeathByEnemyProximity/OnDeath
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffectsScale = 5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

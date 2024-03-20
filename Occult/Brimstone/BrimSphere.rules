@@ -127,7 +127,7 @@ Part : <../base_part_occult.rules>/Part
 		Phase1ToggleDET
 		{
 			Type = HealthToggle
-			MinHealthFraction = 0.5
+			MinHealthFraction = 0.75
 			MaxHealthFraction = 1
 		}
 
@@ -135,7 +135,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = HealthToggle
 			MinHealthFraction = 0
-			MaxHealthFraction = 0.5
+			MaxHealthFraction = 0.75
 		}
 		
 		OperationalComponents

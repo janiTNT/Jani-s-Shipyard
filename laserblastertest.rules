@@ -1,0 +1,27 @@
+Part : <./data/ships/terran/laser_blaster_small/laser_blaster_small.rules>/Part
+{
+	NameKey = "Parts/NOTLaserBlasterSmall"
+	IconNameKey = "Parts/NOTLaserBlasterSmallIcon"
+	ID = janiTNT.testlaserblastersmallcopy // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	OtherIDs = []
+	Components : ^/0/Components
+	{
+		Sprite1
+		{
+			Type = SpriteGrid
+			ChainedTo = Turret
+			Location = [2.5, -2.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [8, 4]
+			DamageLevels
+			[
+				{
+					File = "./data/ships/terran/laser_blaster_small/floor.png"
+					Size = [0.75, 0.75]
+				}
+			]
+			RandomUVRotation = false
+			Layer = "turrets"
+		}
+	}
+}

@@ -492,4 +492,21 @@ Techs
 		Cost = 2500
 		Prerequisites = [janiTNT.bomb1tech]
 	}
+	{
+		ID = janiTNT.logicvanillathrusters
+		NameKey = "Techs/LogicThrusters"
+		DescriptionKey = "Techs/LogicThrustersDesc"
+		Icon = &<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/EditorIcon
+		EditorGroups = ["Flight", "Technologies"]
+		PartsUnlocked
+		[
+		&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part/ID
+		]
+		Prerequisites = [cosmoteer.thruster_rocket]
+		Cost = 10000
+	}
 ]

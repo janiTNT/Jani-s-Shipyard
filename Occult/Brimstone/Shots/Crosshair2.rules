@@ -63,6 +63,14 @@ Components
 				}
 				{
 					Type = SpawnBullets
+					Bullet = &<WallMine.rules>
+					Count = 18
+					Distance = 1500
+					//Spread = [-15d, 15d]
+					InheritVelocity = false
+				}
+				{
+					Type = SpawnBullets
 					Bullet = &<HellblastHandler1.rules>
 					Count = 80
 					Spread = [-1d, 1d]
@@ -71,7 +79,7 @@ Components
 				}
 				{
 					Type = SpawnBullets
-					Bullet = &<BrimstoneMonster.rules>
+					Bullet = &<BrimstoneMonsterSpawner.rules>
 					Count = 4
 					Spread = [-20d, 20d]
 					Distance = 1200

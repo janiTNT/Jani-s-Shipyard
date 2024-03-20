@@ -2,7 +2,7 @@ ID = "janiTNT.brimstonegigablast_boss"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 2500
 IdealRange = 1000
-Speed = 300
+Speed = 250
 
 Components
 {
@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 15d
+		TurnVelocity = 18d
 		ModifiesLinearVelocity = true
 		Delay = 0
 	}

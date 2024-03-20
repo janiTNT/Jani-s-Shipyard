@@ -13,6 +13,11 @@ Part : <base_part_hyperoid.rules>/Part
 	AllowedContiguity = [Right, Bottom]
 	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
 	InternalWalls = [Left, TopLeft, Top]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+	]
 	FlipHRotate = [1, 0, 3, 2]
 	FlipVRotate = [3, 2, 1, 0]
 	GenerateRectCollider = false
@@ -83,7 +88,7 @@ Part : <base_part_hyperoid.rules>/Part
 		}
 
 
-		TriWall0a
+		/*TriWall0a
 		{
 			Type = BlendSprite
 			OnlyWithRotation = 0
@@ -290,7 +295,7 @@ Part : <base_part_hyperoid.rules>/Part
 					]
 				}
 			]
-		}
+		}*/
 		SalvagedEffects
 		{
 			Type = DeathEffects

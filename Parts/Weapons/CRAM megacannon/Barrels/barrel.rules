@@ -10,7 +10,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[steel, 32]
 	]
-	TypeCategories = [weapon, uses_ammo, is_crewed]
+	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_light]
 	Size = [1, 1]
 	//PhysicalRect = [0, 1, 3, 2]
 	//SaveRect = &PhysicalRec
@@ -27,7 +27,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	PenetrationRectType = Normal
 	//ProhibitAbove = 2
 	CrewSpeedFactor = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [Railgun]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMass, JaniCRAM_ReverseBarrelGauge]
 	GenerateRectCollider = false
 	/*AllowedDoorLocations
 	[
@@ -51,20 +51,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		DistanceBuffToggle
-		{
-			Type = BuffToggle
-			BuffType = Railgun
-		}
-
 		DistanceBuffProvider
 		{
 			Type = AreaBuffProvider
-			BuffType = Railgun
-			BuffAmount = { BaseValue=1; BuffType=Railgun; BuffMode=Add; }
+			BuffType = JaniCRAM_BarrelMass
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
 			BuffArea = [0, 1, 1, 1]
 			//OperationalToggle = DistanceBuffToggle
-			ChainsFromBuffType = Railgun
+			ChainsFromBuffType = JaniCRAM_BarrelMass
+			Criteria
+			{
+				Rot = 0
+			}
+		}
+		
+		BarrelGaugeBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_ReverseBarrelGauge
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Add; }
+			BuffArea = [0, -1, 1, 1]
+			//OperationalToggle = DistanceBuffToggle
+			ChainsFromBuffType = JaniCRAM_ReverseBarrelGauge
 			Criteria
 			{
 				Rot = 0
@@ -88,6 +96,51 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 		
+		IsNotFinalpiece
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, -1]
+			ComponentID = IsNotFinalpiece
+			PartCriteria
+			{
+				Rot = 0
+			}
+		}
+		
+		ToggledOnEmitterProxy
+		{
+			Type = ToggledComponents
+			Toggle = IsNotFinalpiece
+			Components
+			{
+				EmitterProxy
+				{
+					Type = ChainableProxy
+					PartLocation = [0, -1]
+					ComponentID = EmitterProxy
+					PartCriteria
+					{
+						Rot = 0
+					}
+				}
+			}
+		}
+		
+		ToggledOffEmitterProxy
+		{
+			Type = ToggledComponents
+			Toggle = IsNotFinalpiece
+			Invert = true
+			Components
+			{
+				EmitterProxy
+				{
+					Type = Graphics
+					ChainedTo = Offset
+				}
+			}
+		}
+		
 		Offset
 		{
 			Type = Graphics
@@ -95,7 +148,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0, -1]
 		}
 		
-		Collider
+		/*Collider
 		{
 			ChainedTo = PositionProxy
 			Type = PolygonCollider
@@ -106,9 +159,329 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[0.875, 1]
 				[0.125, 1]
 			]
+		}*/
+		
+		HeavyBarrelConnection
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, 1]
+			ComponentID = PositionProxy
+			PartCriteria
+			{
+				Category = barrel_heavy
+				Rot = 0
+			}
 		}
 		
-		Sprite
+		GaugeBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = JaniCRAM_ReverseBarrelGauge
+		}
+		
+		Size0BuffToggle
+		{
+			Type = BuffToggle
+			BuffType = JaniCRAM_ReverseBarrelGauge
+			MaxBuffValue = 0
+			MinBuffValue = 0
+		}
+		
+		Size0 //Failsafe if no Gauge Buff exists
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = GaugeBuffToggle, invert = true}
+				{Toggle = Size0BuffToggle}
+			]
+			Mode = Any
+		}
+		
+		Size1BuffToggle
+		{
+			Type = BuffToggle
+			BuffType = JaniCRAM_ReverseBarrelGauge
+			MinBuffValue = 1
+			MaxBuffValue = 1
+		}
+		Size2BuffToggle : Size1BuffToggle
+		{MinBuffValue = 2; MaxBuffValue = 2}
+		Size3BuffToggle : Size1BuffToggle
+		{MinBuffValue = 3; MaxBuffValue = 3}
+		Size4BuffToggle : Size1BuffToggle
+		{MinBuffValue = 4; MaxBuffValue = 4}
+		Size5BuffToggle : Size1BuffToggle
+		{MinBuffValue = 5; MaxBuffValue = 5}
+		Size6BuffToggle : Size1BuffToggle
+		{MinBuffValue = 6; MaxBuffValue = 6}
+		Size7BuffToggle : Size1BuffToggle
+		{MinBuffValue = 7; MaxBuffValue = 7}
+		Size8BuffToggle : Size1BuffToggle
+		{MinBuffValue = 8; MaxBuffValue = 8}
+		Size9BuffToggle : Size1BuffToggle
+		{MinBuffValue = 9; MaxBuffValue = 9}
+		Size10BuffToggle : Size1BuffToggle
+		{MinBuffValue = 10; MaxBuffValue = 10}
+		Size11BuffToggle : Size1BuffToggle
+		{MinBuffValue = 11; MaxBuffValue = 11}
+		Size12BuffToggle : Size1BuffToggle
+		{MinBuffValue = 12; MaxBuffValue = 12}
+		Size13BuffToggle : Size1BuffToggle
+		{MinBuffValue = 13; MaxBuffValue = 13}
+		Size14BuffToggle : Size1BuffToggle
+		{MinBuffValue = 14; MaxBuffValue = 14}
+		Size15BuffToggle : Size1BuffToggle
+		{MinBuffValue = 15; MaxBuffValue = 15}
+		Size16BuffToggle : Size1BuffToggle
+		{MinBuffValue = 16; MaxBuffValue = 16}
+		
+		BarrelGraphics0
+		{
+			Type = Graphics
+			ChainedTo = PositionProxy
+			Location = [0.5, 0.5]
+			ProperSize = [1.25, 1]
+			OperationalToggle = Size0
+			DoodadToggle = HeavyBarrelConnection
+			ShowToggledDoodadsWhenNotOperational = false
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics1 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(1.5)), 1]
+			OperationalToggle = Size1BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics2 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(2)), 1]
+			OperationalToggle = Size2BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics3 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(3)), 1]
+			OperationalToggle = Size3BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics4 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(4)), 1]
+			OperationalToggle = Size4BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics5 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(5)), 1]
+			OperationalToggle = Size5BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics6 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(6)), 1]
+			OperationalToggle = Size6BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics7 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(7)), 1]
+			OperationalToggle = Size7BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics8 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(8)), 1]
+			OperationalToggle = Size8BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics9 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(9)), 1]
+			OperationalToggle = Size9BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		/*Sprite
 		{
 			Type = Sprite
 			ChainedTo = PositionProxy
@@ -122,8 +495,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			RandomUVRotation = false
-			Layer = "turrets"
-		}
+			Layer = "FTLlowturrets"
+		}*/
 
 		DestroyedEffects
 		{
@@ -132,13 +505,48 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
 			Location = [0.5, 0.5]
 		}
+		
+		/*Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Missing component
+				{
+					Toggle = DistanceBuffToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
+		}*/
 
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "barrel.png"
-			Size = [1.25, 1]
+			File = "barrel_blueprint.png"
+			Size = [1, 1]
 			//Offset = [0, -1]
 		}
 	}
+}
+
+BaseTexture
+{
+	File = "barrel.png"
+	NormalsFile = "barrel_n.png"
+	Size = [1.25, 1]
+}
+
+BaseTextureConnection
+{
+	File = "Heavy_End.png"
+	NormalsFile = "Heavy_End_n.png"
+	Size = [1.25, 1.25*5/4]
+	Offset = [0, 0.5]
 }

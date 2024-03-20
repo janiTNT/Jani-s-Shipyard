@@ -1,7 +1,7 @@
 ﻿ID = "janiTNT.TechMod"
-Name = "[Beta] Jani's Shipyard"
+Name = "Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.19 Beta"
+Version = "Modern 1.19"
 Logo = "newlogo.png"
 CompatibleGameVersions = ["0.25.0", "0.25.1", "0.25.2", "0.25.3", "0.25.4", "0.25.5", "0.25.6", "0.25.7", "0.25.8", "0.25.9", "0.25.10", "0.25.11", "0.25.12", "0.25.13", "0.25.14", "0.25.15"]
 ModifiesMultiplayer = true
@@ -118,7 +118,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter.rules>/Part
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
-			//&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
+			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
 			
 			&<Parts/Production/inserter/inserter.rules>/Part
 			&<Parts/Production/inserter/inserterConstruction.rules>/Part
@@ -174,9 +174,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part
 			&<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part
 			//&<Parts/Weapons/Drone_launcher_Medium/drone_launcher_med.rules>/Part
-			//&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
-			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
-			//&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/heavybarrel.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/barrelend.rules>/Part
 			
 			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part
 			

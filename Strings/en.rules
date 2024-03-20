@@ -1353,6 +1353,10 @@ Techs
 	StackInserters = "Bulk Inserters"
 	StackInsertersDesc = "Unlocks a new variation of heavy inserters that can transfer a entire stack of resources, useful for extreme throughput and high storage weapons, such as the deck cannon."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	LogicThrusters = "Logic Thrusters"
+	LogicThrustersDesc = "Unlocks a variation of Normal Thrusters that can interact with logic signals. Technical Limitations make the Ramp-up time not get affected by normal sources."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 }
 Codex
 {
