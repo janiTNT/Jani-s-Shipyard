@@ -12,6 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_heavy]
 	Size = [1, 1]
+	UnderlyingPartPerTile = ""
 	//PhysicalRect = [0, 1, 3, 2]
 	//SaveRect = &PhysicalRec
 	SelectionPriority = 1
@@ -286,7 +287,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		
 		BarrelGraphics1 : &BarrelGraphics0
 		{
-			ProperSize = [1.25*(sqrt(1.5)), 1]
+			ProperSize = [1.25*(sqrt(1)), 1]
 			OperationalToggle = Size1BuffToggle
 			ToggleOnDoodad
 			{
@@ -500,6 +501,174 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 		
+		BarrelGraphics10 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(10)), 1]
+			OperationalToggle = Size10BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics11 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(11)), 1]
+			OperationalToggle = Size11BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics12 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(12)), 1]
+			OperationalToggle = Size12BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics13 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(13)), 1]
+			OperationalToggle = Size13BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics14 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(14)), 1]
+			OperationalToggle = Size14BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics15 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(15)), 1]
+			OperationalToggle = Size15BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics16 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(16)), 1]
+			OperationalToggle = Size16BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "FTLlowturrets"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*4/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
 		/*Sprite
 		{
 			Type = Sprite
@@ -567,5 +736,5 @@ BaseTextureConnection
 	File = "Heavy_Start.png"
 	NormalsFile = "Heavy_Start_n.png"
 	Size = [1.25, 1.25*4/5]
-	Offset = [0, 0.5]
+	Offset = [0, 0.6]
 }

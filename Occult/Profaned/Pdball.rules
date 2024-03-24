@@ -382,7 +382,7 @@ Part : <../base_part_occult.rules>/Part
 			OperationalToggle = IsOperational
 			//FireDelay = .2
 			Bullet = &<shots/flaksun.rules>
-			Spread = [-1.5d, 1.5d]
+			Spread = [-4d, 4d]
 			//ResourceStorage = BatteryStorage
 			//ResourcesUsed = 200
 			//MinResourcesUsed = 1

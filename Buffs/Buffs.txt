@@ -25,6 +25,20 @@ NukeExplosiveBuff
 	IconTextAdd = -1
 	ShowIconTextForZeroValue = false
 }
+ExplosiveBuffRadius
+{
+	CombineMode = Add
+	Multiplier = 100%
+	Exponent = 0.5
+	BaseValue = 100%
+}
+NukeExplosiveBuffRadius
+{
+	CombineMode = Add
+	Multiplier = 100%
+	Exponent = 0.5
+	BaseValue = 100%
+}
 DisableExplosivesBuff
 {
 	CombineMode = Add
@@ -176,16 +190,27 @@ JaniCRAM_ReverseBarrelGauge //Visual Barrel Thickness
 	CombineMode = Add
 	BaseValue = 0%
 }
+JaniCRAM_StatMultiplier // Multiplier for Stats for cannon.
+{
+	CombineMode = Add
+	Exponent = 1.5 // special thing so scaling is "cubed" and barrel is "squared" rooted respectively
+	BaseValue = 0%
+}
+JaniCRAM_VelocityPre //Bullet SPEED precalc
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
 JaniCRAM_Velocity //Bullet SPEED
 {
 	CombineMode = Add
-	Exponent = 0.5
+	Exponent = 0.8
 	BaseValue = 0%
 }
 JaniCRAM_Range //Bullet RANGE
 {
 	CombineMode = Add
-	Exponent = 0.3
+	Exponent = 0.4
 	BaseValue = 15%
 }
 JaniCRAM_Accuraccy //Bullet ACCURACCY
@@ -196,15 +221,26 @@ JaniCRAM_Accuraccy //Bullet ACCURACCY
 JaniCRAM_Health //Bullet HEALTH
 {
 	CombineMode = Add
-	BaseValue = 100%
+	BaseValue = 0%
 }
 JaniCRAM_DamageMain //Bullet Damage in general
 {
 	CombineMode = Add
-	BaseValue = 100%
+	BaseValue = 0%
+}
+JaniCRAM_AOEMain //Bullet explosive effect range
+{
+	CombineMode = Add
+	Exponent = 0.5
+	BaseValue = 0%
 }
 JaniCRAM_TurretRotation
 {
 	CombineMode = Add
 	BaseValue = 100%
+	Exponent = 0.5
+}
+JaniCRAM_BarrelMassFinal
+{
+	CombineMode = Add
 }

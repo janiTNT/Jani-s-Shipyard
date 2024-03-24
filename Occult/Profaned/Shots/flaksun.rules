@@ -1,4 +1,4 @@
-ID = "janiTNT.profanedflarkball"
+ID = "janiTNT.profanedflakball"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 250
 IdealRange = 250
@@ -17,9 +17,18 @@ Components
 	{
 		Type = DeathByLifetime
 		// Lifetime will be auto-calculated based on range and speed.
+		OnDeath = &../Hit/HitBullet
+		HasTarget = false
+	}
+	
+	DeathByPredictedTargetDistance
+	{
+		Type = DeathByPredictedTargetDistance
+		RandomOffset = [-0.08, 0.16]
+		OnDeath = &../Hit/HitBullet
 	}
 
-	Sprite1
+	/*Sprite1
 	{
 		Type = Sprite
 		RenderBucket = BulletUpper2
@@ -32,12 +41,10 @@ Components
 				File = "../../lightball.png"
 				MipLevels = max
 			}
-			Size = [1.75, 1.75]
+			Size = [0.5, 0.5]
 			TargetBlendMode = Add
 			VertexColor = [255*1.1, 205*1.1, 128*1.1]
 		}
-		/*LerpScaleFrom = [0.2, 0.2]
-		LerpTime = 0.05*/
 	}
 	
 	Sprite2 : & Sprite1
@@ -50,11 +57,11 @@ Components
 				File = "../../lightball.png"
 				MipLevels = max
 			}
-			Size = [1.6, 1.6]
+			Size = [0.4, 0.4]
 			TargetBlendMode = Add
 			VertexColor = [255*1.1, 205*1.1, 128*1.1]
 		}
-	}
+	}*/
 
 	GlowSprite
 	{
@@ -70,7 +77,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [8, 8]
+			Size = [8, 2]
 			VertexColor = [255*2, 205*2, 128*2]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
@@ -85,7 +92,7 @@ Components
 	TrailSprite
 	{
 		Type = Sprite
-		Offset = [0, 0]
+		Offset = [-1, 0]
 		ReduceScaleExponent = 0.5
 		Sprite
 		{
@@ -95,12 +102,88 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [10, 1]
+			Size = [14, 0.9]
 			VertexColor = [255*1.1, 205*1.1, 128*1.1]
 			TargetBlendMode = Add
 		}
-		/*LerpScaleFrom = [.1, .1]
-		LerpTime = .05*/
+		LerpScaleFrom = [0, 1]
+		LerpTime = .05
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		Offset = [-3, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		MediaEffectsScale = 1
+		MediaEffects
+		[
+			: &/JANI_COMMON/TrailBase/Particles
+			{
+				Def : ^/0/Def
+				{
+					Updaters : ^/0/Updaters
+					[
+						{
+							Type = Lifetime
+							LifeInOut = life
+							Lifetime = 0.2
+							Name = Lifetime
+							Enabled = true
+							UpdateAfterInit = false
+						}
+						{
+							Type = Operator
+							DataType = Vector2
+							AIn = location
+							BIn = velocity
+							ResultOut = location
+							Operator = AddDt
+							Name = "Apply velocity"
+							Enabled = true
+							UpdateAfterInit = false
+						}
+						{
+							Type = Lerp
+							LerpIn = life
+							DataOut = color
+							Invert = false
+							ValueType = Color
+							FromValue
+							{
+								Rf = 1
+								Gf = 0.5
+								Bf = 0
+								Af = 1
+							}
+							ToValue
+							{
+								Rf = 0.5
+								Gf = 1
+								Bf = 0.5
+								Af = 0
+							}
+							Name = ActualColorLerp
+							Enabled = true
+							UpdateAfterInit = true
+						}
+					]
+					Renderer : ^/0/Renderer
+					{
+						BaseSize
+						{
+							X = 8
+							Y = 0.75
+						}
+					}
+				}
+				EmitterDef : ^/0/EmitterDef
+				{
+					EmitPerSecond = 150
+				}
+			}
+		]
 	}
 
 
@@ -131,8 +214,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 650
-					Radius = 5
+					TotalDamage = 800
+					Radius = 8
 					Slices = 1
 					Filter
 					{
@@ -146,7 +229,7 @@ Components
 				{
 					Type = ExplosiveDamage
 					TotalDamage = 150
-					Radius = 5
+					Radius = 8
 					Filter
 					{
 						Ships = true
@@ -162,6 +245,8 @@ Components
 				&<./data/shots/pd_shot/particles/pd_shot_spikes.rules>
 				&<./data/shots/pd_shot/particles/pd_shot_sparks.rules>
 				&<./Data/ships/terran/point_defense/particles/point_defense_shoot_flash.rules>
+				&<./data/shots/flak_large/particles/flak_large_flash.rules>
+				&<particles/flaksunsmoke.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{
@@ -186,6 +271,8 @@ Components
 				&<./data/shots/pd_shot/particles/pd_shot_spikes.rules>
 				&<./data/shots/pd_shot/particles/pd_shot_sparks.rules>
 				&<./Data/ships/terran/point_defense/particles/point_defense_shoot_flash.rules>
+				&<./data/shots/flak_large/particles/flak_large_flash.rules>
+				&<particles/flaksunsmoke.rules>
 
 				: /BASE_SOUNDS/AudioExterior
 				{

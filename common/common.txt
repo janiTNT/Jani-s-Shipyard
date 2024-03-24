@@ -5,6 +5,8 @@ NoHydrogen = "indicator_hydrogen.png"
 SettingsOnes = &<Settings_Ones.rules>
 SettingsTens = &<Settings_Tens.rules>
 SettingsHundreds = &<Settings_Hundreds.rules>
+TrailBase = &<trail_base.rules>
+TrailBaseEXP = &<trail_base_exp.rules>
 Radexplode
 [
 	&<RadioactiveExplode.txt>

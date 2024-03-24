@@ -52,7 +52,7 @@ Part : <ProfanedbossSigil.rules>/Part
 		{
 			Type = CommandProvider
 			OperationalToggle = PowerToggle
-			CommandPoints = 180
+			CommandPoints = 400
 		}
 		
 		Sensor

@@ -18,7 +18,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[steel, 32]// 25 = 800
 		[coil2, 4] // 300 = 1200
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ExplosiveBuff, DisableExplosivesBuff, NukeExplosiveBuff, Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ExplosiveBuff, DisableExplosivesBuff, NukeExplosiveBuff, Logic, ExplosiveBuffRadius, NukeExplosiveBuffRadius]
 	EditorIcon
 	{
 		Texture
@@ -30,6 +30,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		ExplosiveRadiusSelfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = ExplosiveBuffRadius
+			BuffAmount = { BaseValue=0; BuffType=ExplosiveBuff; BuffMode=Add }
+		}
+		NukeExplosiveRadiusSelfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = NukeExplosiveBuffRadius
+			BuffAmount = { BaseValue=0; BuffType=NukeExplosiveBuff; BuffMode=Add }
+		}
 	//XXXXXXXXXXX SKIPY 
 		LogicSignal
 		{
@@ -201,7 +213,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue=230000; BuffType=NukeExplosiveBuff; BuffMode=Multiply; }
-					Radius = { BaseValue=10; BuffType=NukeExplosiveBuff; BuffMode=Multiply; Exponent=0.5;}
+					Radius = { BaseValue=10; BuffType=NukeExplosiveBuffRadius; BuffMode=Multiply;}
 					Delay = .1
 					ImpulsePerNDamage = 10
 					NDamage = 1000
@@ -215,7 +227,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue=80000; BuffType=NukeExplosiveBuff; BuffMode=Multiply; }
-					Radius = { BaseValue=9; BuffType=NukeExplosiveBuff; BuffMode=Multiply; Exponent=0.5; }
+					Radius = { BaseValue=9; BuffType=NukeExplosiveBuffRadius; BuffMode=Multiply;}
 					Delay = .2
 					ImpulsePerNDamage = 10
 					NDamage = 1000
@@ -304,7 +316,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue=28000; BuffType=ExplosiveBuff; BuffMode=Multiply; }
-					Radius = { BaseValue=2.5; BuffType=ExplosiveBuff; BuffMode=Multiply; Exponent=0.5; }
+					Radius = { BaseValue=2.5; BuffType=ExplosiveBuffRadius; BuffMode=Multiply;}
 					Delay = .05
 					ImpulsePerNDamage = 100
 					NDamage = 1000
@@ -318,7 +330,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue=10000; BuffType=ExplosiveBuff; BuffMode=Multiply; }
-					Radius = { BaseValue=2; BuffType=ExplosiveBuff; BuffMode=Multiply; Exponent=0.5; }
+					Radius = { BaseValue=2; BuffType=ExplosiveBuffRadius; BuffMode=Multiply;}
 					Delay = .1
 					ImpulsePerNDamage = 50
 					NDamage = 1000

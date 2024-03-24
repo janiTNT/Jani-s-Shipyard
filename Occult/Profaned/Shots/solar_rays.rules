@@ -159,6 +159,7 @@ HitOperational
 		{
 			Type = Damage
 			Damage = 200
+			DamageType = heat
 		}
 		/*{
 			Type = Impulse
