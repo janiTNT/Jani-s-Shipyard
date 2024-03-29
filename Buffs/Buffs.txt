@@ -258,3 +258,19 @@ JaniCRAM_BarrelMassFinal
 {
 	CombineMode = Add
 }
+JaniCRAM_CoolingSpeedNerf
+{
+	CombineMode = Add
+	BaseValue = 0%
+	Exponent = 0.5
+}
+JaniCRAM_CoolingSpeedBuff
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+JaniCRAM_ReloadSpeedFinal
+{
+	CombineMode = Add
+	BaseValue = 100%
+}

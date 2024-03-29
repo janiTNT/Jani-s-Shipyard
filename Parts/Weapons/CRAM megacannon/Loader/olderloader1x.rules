@@ -136,8 +136,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles
 			[
-				{Toggle = CRAM_FIRING_ToggleProxy, invert = true}//Only Allow If not firing
-				//{Toggle = CanFeedAmmo, invert = true}//Only Allow If cant feed ammo
+				{Toggle = CRAM_FIRING_ToggleProxy, invert = true}
+				{Toggle = AmmoStorage, invert = true}
 			]
 			Mode = All
 		}
@@ -146,18 +146,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles
 			[
-				{Toggle = CanFillAmmo, invert = true}//If cant fill any ammo
-				{Toggle = AmmoStorageCheckFull}//has reached max ammo before
+				{Toggle = CanFillAmmo, invert = true}
+				{Toggle = AmmoStorageCheckFull}
 			]
-			Mode = Any
+			Mode = All
 		}
 		CanFeedAmmo
 		{
 			Type = MultiToggle
 			Toggles
 			[
-				{Toggle = ChainLoaderMaxed}//If every Chain Loader is full, allow ammo
-				{Toggle = AmmoStorageCheckFull}//If has reached max ammo before
+				{Toggle = ChainLoaderMaxed}
+				{Toggle = AmmoStorageCheckFull}
 			]
 			Mode = All
 		}

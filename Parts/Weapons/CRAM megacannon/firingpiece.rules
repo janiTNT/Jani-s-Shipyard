@@ -22,7 +22,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations = []
 	//ProhibitAbove = 2
 	CrewSpeedFactor = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal]
 	/*AllowedDoorLocations
 	[
 		[-1, 1]
@@ -117,11 +117,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffableValue
 			Value = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Divide; MaxValue=1;}
 		}
+		
+		CoolingNerfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedNerf
+			BuffAmount = { BaseValue=0.15; BuffType=JaniCRAM_BarrelMassFinal; BuffMode=Multiply;}
+		}
+		
+		CoolingNerfValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_CoolingSpeedNerf; BuffMode=Divide; MaxValue=1;}
+		}
+		
+		ReloadSpeedBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_ReloadSpeedFinal
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Multiply; MinValue=0.05;}
+			BuffMultiplier = CoolingNerfValue
+		}
+		
+		
 		TrueBarrelMassBuffProvider
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_BarrelMassFinal
-			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }//Barrelmass will take 2x barrels as extra as minimum
 			BuffMultiplier = GaugeBuffValue
 		}
 		VelocityBuffProviderPre
@@ -225,6 +248,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorageProxy
 			ResourceType = bullet
+			ComponentID = AmmoStorage
+		}
+		CombinedCRAMAmmoStorageToggle
+		{
+			Type = ToggleProxy
 			ComponentID = AmmoStorage
 		}
 		AmmoFullnessBar
@@ -390,9 +418,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -411,9 +439,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -432,9 +460,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -453,9 +481,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -474,9 +502,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -495,9 +523,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -516,9 +544,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -537,9 +565,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -558,9 +586,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -579,9 +607,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -600,9 +628,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -621,9 +649,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -642,9 +670,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -663,9 +691,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -684,9 +712,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -705,9 +733,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				AmmoStorage : ~/BaseAmmoStorage
 				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) + 2
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) + 2) - 1
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 2 + 2
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 2 + 2) - 1
 				}
 			}
 		}
@@ -733,6 +761,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Sound = "./data/ships/terran/cannon_deck/shoot.wav"
 					SpeedVariation = .25
+					MaxConcurrent = 20
 				}
 
 				: /BASE_SHAKE
@@ -758,7 +787,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 0.1//Min Interval
+			FireInterval = { BaseValue=10; BuffType=JaniCRAM_ReloadSpeedFinal; BuffMode=Divide; }
 			FiringArc = 5d
 			RotateSpeed = { BaseValue=30d; BuffType=JaniCRAM_TurretRotation; BuffMode=Divide; }
 			FireThresholdAngle = 3d

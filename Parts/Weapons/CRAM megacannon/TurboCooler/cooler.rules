@@ -1,0 +1,117 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Cram_Loader1x"
+	IconNameKey = "Parts/Cram_Loader1xIcon"
+	ID = janiTNT.CRAM_turbocooler
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/Cram_Loader1xDesc"
+	Resources
+	[
+		[steel, 16]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	TypeCategories = [CRAM]
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		[0, 1]
+		[1, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "cooler.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "cooler.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "cooler.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		CoolerBuffA
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedBuff
+			OperationalToggle = BatteryStorage
+			BuffArea = [-1, -1, 1, 1]
+			BuffAmount = 1
+		}
+		CoolerBuffB
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedBuff
+			OperationalToggle = BatteryStorage
+			BuffArea = [1, -1, 1, 1]
+			BuffAmount = 1
+		}
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = CRAM_IsFiringTimer
+			FromStorage = BatteryStorage
+			FromQuantity = 100
+			MinFromQuantityForConversion = 1
+			Interval = 0.5
+		}
+		CRAM_IsFiringTimer
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = CRAM_IsFiringTimer
+		}
+	}
+}
