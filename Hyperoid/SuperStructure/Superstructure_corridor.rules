@@ -1,16 +1,22 @@
 Part : <../base_part_hyperoid.rules>/Part
 {
-	NameKey = "Parts/SuperstructurePlating"
-	DescriptionKey = "Parts/SuperstructurePlatingDesc"
+	NameKey = "Codex/NoText"
+	DescriptionKey = "Codex/NoText"
 	ID = janiTNT.superstructureplating // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	SelectionTypeID = "SuperstructurePlating"
 	EditorGroup = "Defenses"
 	Resources = []
-	MaxHealth = 1000 * 16*16
+	MaxHealth = 1000 * 16*16 * 40
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	TypeCategories = [corridor]
 	IsCrewSalvageable = false
-	Density = 1
+	Density = 400
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	IsWalled = false
 	EditorIcon
 	{
 		Texture = "./Data/ships/terran/corridor/icon.png"
@@ -24,33 +30,13 @@ Part : <../base_part_hyperoid.rules>/Part
 			Type = SpriteGrid
 			RandomUVRotation = true
 			Layer = "superstructureroof"
-			Location = [0.5*0.0625, 0.5*0.0625]
-			GridSpacing = [0.0625, 0.0625]
-			GridSize = [16, 16]
+			Location = [0.5*0.25, 0.5*0.25]
+			GridSpacing = [0.25, 0.25]
+			GridSize = [4, 4]
 			RandomDamageLevels
 			[
 				[//Default
-					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
-				]
-				[//Extra1
-					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
-				]
-				[//Extra2
-					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
-				]
-				[//Extra3
-					{File = "./data/ships/terran/corridor/roof.png";NormalsFile = "./data/ships/terran/corridor/roof_normals.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_33.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
-					{File = "./data/ships/terran/corridor/roof_66.png";NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png";Size = [0.0625, 0.0625]}
+					{File = "roof.png";NormalsFile = "roof_n1.png";Size = [0.25, 0.25]}
 				]
 				
 			]
@@ -154,34 +140,14 @@ Part : <../base_part_hyperoid.rules>/Part
 					Type = SpriteGrid
 					RandomUVRotation = false
 					Layer = "superstructurewalls"
-					Location = [1.5*0.0625, -0.5*0.0625]
+					Location = [0.5*0.0625, -0.5*0.0625]
 					GridSpacing = [0.0625, 0.0625]
-					GridSize = [14, 1]
+					GridSize = [16, 1]
 					TrueRotation = 2
 					RandomDamageLevels
 					[
 						[//Default
-							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-						]
-						[//Extra1
-							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-						]
-						[//Extra2
-							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-						]
-						[//Extra3
-							{File = "./data/ships/terran/walls/external04.png";NormalsFile = "./data/ships/terran/walls/external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_33.png";NormalsFile = "./data/ships/terran/walls/external_normals04_33.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
-							{File = "./data/ships/terran/walls/external04_66.png";NormalsFile = "./data/ships/terran/walls/external_normals04_66.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+							{File = "external04.png";NormalsFile = "external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
 						]
 						
 					]
@@ -196,9 +162,15 @@ Part : <../base_part_hyperoid.rules>/Part
 			{
 				SpriteGridRightWall : ../../TopWallsComponents/Components/SpriteGridTopWall
 				{
+					GridSize = [1, 16]
+					Location = [16.5*0.0625, 0.5*0.0625]
 					TrueRotation = 3
-					GridSize = [1, 14]
-					Location = [16.5*0.0625, 1.5*0.0625]
+					RandomDamageLevels
+					[
+						[//Default
+							{File = "external04.png";NormalsFile = "external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+					]
 				}
 			}
 		}
@@ -210,31 +182,48 @@ Part : <../base_part_hyperoid.rules>/Part
 			{
 				SpriteGridBottomWall : ../../TopWallsComponents/Components/SpriteGridTopWall
 				{
+					GridSize = [16, 1]
+					Location = [0.5*0.0625, 16.5*0.0625]
 					TrueRotation = 0
-					GridSize = [14, 1]
-					Location = [1.5*0.0625, 16.5*0.0625]
+					RandomDamageLevels
+					[
+						[//Default
+							{File = "external04.png";NormalsFile = "external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+					]
 				}
 			}
 		}
 		
 		LeftWallsComponents : TopWallsComponents
 		{
-			Toggle = RightProxy
+			Toggle = LeftProxy
 			Components
 			{
 				SpriteGridLeftWall : ../../TopWallsComponents/Components/SpriteGridTopWall
 				{
+					GridSize = [1, 16]
+					Location = [-0.5*0.0625, 0.5*0.0625]
 					TrueRotation = 1
-					GridSize = [1, 14]
-					Location = [-0.5*0.0625, 1.5*0.0625]
+					RandomDamageLevels
+					[
+						[//Default
+							{File = "external04.png";NormalsFile = "external_normals04.png";Size = [0.0625, 0.0625]; UVRotation = &../../../TrueRotation}
+						]
+					]
 				}
 			}
 		}
-		
-		
-		
 
 		Blueprints = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Blueprints
 		BlueprintWalls = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/BlueprintWalls
+	}
+	Stats
+	{
+		CrewSpeed = []
+		Size = []
+		Weight = []
+		HP = []
+		PenResist = []
 	}
 }

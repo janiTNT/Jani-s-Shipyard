@@ -1361,6 +1361,7 @@ Techs
 Codex
 {
 	JaniTutorials = "Tutorials (Jani's Shipyard)"
+	NoText = "     "
 }
 Tutorials
 {

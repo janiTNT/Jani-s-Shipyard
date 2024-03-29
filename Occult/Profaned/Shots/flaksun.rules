@@ -159,7 +159,7 @@ Components
 							}
 							ToValue
 							{
-								Rf = 0.5
+								Rf = 0.2
 								Gf = 1
 								Bf = 0.5
 								Af = 0

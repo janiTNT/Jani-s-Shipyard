@@ -1,0 +1,67 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Cram_Connector"
+	IconNameKey = "Parts/Cram_ConnectorIcon"
+	ID = janiTNT.CRAM_gaugeincrease
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/Cram_ConnectorDesc"
+	Resources
+	[
+		[steel, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	TypeCategories = [CRAM]
+	AllowedDoorLocations = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "gauge1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "gauge1.png"
+			Size = [1, 1]
+			UVRotation = 0
+			//Offset = [0, -0.5]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			//OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "gauge1.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		GaugeIncreaseBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_BarrelGauge
+			BuffArea = [0, -1, 1, 1]
+			//ChainsFromBuffType = JaniCRAM_BarrelGauge
+			BuffAmount = 1
+		}
+	}
+}

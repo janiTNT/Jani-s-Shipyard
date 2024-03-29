@@ -268,7 +268,7 @@ BaseComponents
 						{
 							Type = Lifetime
 							LifeInOut = life
-							Lifetime = 0.8
+							Lifetime = 0.3
 							Name = Lifetime
 							Enabled = true
 							UpdateAfterInit = false
@@ -295,7 +295,7 @@ BaseComponents
 								Rf = 1
 								Gf = 0.5
 								Bf = 0.1
-								Af = 0.7
+								Af = 0.5
 							}
 							ToValue
 							{
@@ -313,8 +313,8 @@ BaseComponents
 					{
 						BaseSize
 						{
-							X = 8
-							Y = 1
+							X = 3
+							Y = 0.8
 						}
 					}
 				}
@@ -341,7 +341,7 @@ BaseComponents
 				SampleMode = Linear
 			}
 			Size = [10, 1]
-			VertexColor = [255*1.1, 128*1.1, 25*1.1]
+			VertexColor = [255*0.6, 128*0.6, 25*0.6]
 			TargetBlendMode = Add
 		}
 		LerpScaleFrom = [0, 1]

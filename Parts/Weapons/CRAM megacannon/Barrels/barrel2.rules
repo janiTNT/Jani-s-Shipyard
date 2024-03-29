@@ -19,6 +19,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CreatePartPerTileWhenDestroyed = ""
 	CreatePartPerTileWhenGrabbed = ""
 	SelectionTypeByRotation = true
+	Flammable = false
 	SelectionTypeID = "cannons"
 	AllowedContiguity = [Top, Bottom]
 	MaxHealth = 2000 *2
@@ -248,7 +249,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowToggledDoodadsWhenNotOperational = false
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -257,7 +258,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -266,7 +267,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -281,7 +282,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size1BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -290,7 +291,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -299,7 +300,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -314,7 +315,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size2BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -323,7 +324,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -332,7 +333,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -347,7 +348,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size3BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -356,7 +357,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -365,7 +366,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -380,7 +381,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size4BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -389,7 +390,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -398,7 +399,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -413,7 +414,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size5BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -422,7 +423,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -431,7 +432,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -446,7 +447,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size6BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -455,7 +456,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -464,7 +465,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -479,7 +480,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size7BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -488,7 +489,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -497,7 +498,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -512,7 +513,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size8BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -521,7 +522,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -530,7 +531,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -545,7 +546,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size9BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -554,7 +555,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -563,7 +564,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -578,7 +579,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size10BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -587,7 +588,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -596,7 +597,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -611,7 +612,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size11BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -620,7 +621,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -629,7 +630,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -644,7 +645,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size12BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -653,7 +654,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -662,7 +663,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -677,7 +678,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size13BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -686,7 +687,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -695,7 +696,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -710,7 +711,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size14BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -719,7 +720,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -728,7 +729,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -743,7 +744,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size15BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -752,7 +753,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -761,7 +762,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -776,7 +777,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = Size16BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -785,7 +786,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -794,7 +795,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			OperationalLighting
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture2
@@ -819,7 +820,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			RandomUVRotation = false
-			Layer = "FTLlowturrets"
+			Layer = "CRAM_highbarrel_doodads"
 		}
 		
 		Sprite2
@@ -838,7 +839,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 			RandomUVRotation = false
-			Layer = "FTLlowturrets"
+			Layer = "CRAM_highbarrel_doodads"
 		}*/
 
 		DestroyedEffects

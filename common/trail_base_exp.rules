@@ -183,7 +183,7 @@ EmitterDef
 	]
 	PostInitializers[]
 }
-Bucket = NukeFlash
+Bucket = Lower2
 UseRealTime = false
 PenetratingBucket
 MinIntensity = 0

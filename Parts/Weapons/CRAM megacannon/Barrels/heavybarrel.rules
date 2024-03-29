@@ -19,6 +19,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CreatePartPerTileWhenDestroyed = ""
 	CreatePartPerTileWhenGrabbed = ""
 	SelectionTypeByRotation = true
+	Flammable = false
 	SelectionTypeID = "cannons"
 	AllowedContiguity = [Top, Bottom]
 	MaxHealth = 8000

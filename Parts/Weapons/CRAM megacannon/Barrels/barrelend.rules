@@ -1,4 +1,4 @@
-	Part : <./Data/ships/terran/base_part_terran.rules>/Part
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/CRAM_Firingpiece"
 	IconNameKey = "Parts/CRAM_FiringpieceIcon"
@@ -19,6 +19,7 @@
 	CreatePartPerTileWhenDestroyed = ""
 	CreatePartPerTileWhenGrabbed = ""
 	SelectionTypeByRotation = true
+	Flammable = false
 	SelectionTypeID = "cannons"
 	AllowedContiguity = [Bottom]
 	MaxHealth = 2000
@@ -182,7 +183,7 @@
 			ShowToggledDoodadsWhenNotOperational = false
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -191,7 +192,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -206,7 +207,7 @@
 			OperationalToggle = Size1BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -215,7 +216,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -230,7 +231,7 @@
 			OperationalToggle = Size2BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -239,7 +240,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -254,7 +255,7 @@
 			OperationalToggle = Size3BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -263,7 +264,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -278,7 +279,7 @@
 			OperationalToggle = Size4BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -287,7 +288,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -302,7 +303,7 @@
 			OperationalToggle = Size5BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -311,7 +312,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -326,7 +327,7 @@
 			OperationalToggle = Size6BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -335,7 +336,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -350,7 +351,7 @@
 			OperationalToggle = Size7BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -359,7 +360,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -374,7 +375,7 @@
 			OperationalToggle = Size8BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -383,7 +384,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -398,7 +399,7 @@
 			OperationalToggle = Size9BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -407,7 +408,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -422,7 +423,7 @@
 			OperationalToggle = Size10BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -431,7 +432,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -446,7 +447,7 @@
 			OperationalToggle = Size11BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -455,7 +456,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -470,7 +471,7 @@
 			OperationalToggle = Size12BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -479,7 +480,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -494,7 +495,7 @@
 			OperationalToggle = Size13BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -503,7 +504,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -518,7 +519,7 @@
 			OperationalToggle = Size14BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -527,7 +528,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -542,7 +543,7 @@
 			OperationalToggle = Size15BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -551,7 +552,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -566,7 +567,7 @@
 			OperationalToggle = Size16BuffToggle
 			ToggleOnDoodad
 			{
-				Layer = "FTLlowturrets"
+				Layer = "CRAM_highbarrel_doodads"
 				DamageLevels
 				[
 					: ~/BaseTextureConnection
@@ -575,7 +576,7 @@
 			}
 			OperationalDoodad
 			{
-				Layer = "structure"
+				Layer = "CRAM_highbarrel"
 				DamageLevels
 				[
 					: ~/BaseTexture
@@ -598,7 +599,7 @@
 				}
 			]
 			RandomUVRotation = false
-			Layer = "FTLlowturrets"
+			Layer = "CRAM_highbarrel_doodads"
 		}*/
 
 		DestroyedEffects

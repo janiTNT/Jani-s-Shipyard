@@ -3,7 +3,7 @@ Name = "Jani's Shipyard"
 Author = "JaniTNT"
 Version = "Modern 1.19"
 Logo = "newlogo.png"
-CompatibleGameVersions = ["0.25.0", "0.25.1", "0.25.2", "0.25.3", "0.25.4", "0.25.5", "0.25.6", "0.25.7", "0.25.8", "0.25.9", "0.25.10", "0.25.11", "0.25.12", "0.25.13", "0.25.14", "0.25.15"]
+CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
 Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
 " - Mod previously known as Juan's Workshop or Juans Shipyard\n"\
@@ -179,6 +179,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrelend.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Connector/Connector1.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Loader/loader3x.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Loader/loader1x.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Gauge Increasers/gaugeincreaser.rules>/Part
 			
 			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part
 			
@@ -791,6 +795,68 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 							MipLevels = 7
 							UVMode = Wrap
 						}
+					}
+				}
+			}
+			// CRAM high barrel
+			{
+				Key = "CRAM_highbarrel"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 1250
+					RenderStage = Highest
+					//Inflate = .0001
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/roof_uncolored_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/roof_uncolored.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+					GhostMaterial
+					{
+						Shader = "./data/ships/common/parts_ghost.shader"
+					}
+				}
+			}
+			// CRAM highbarrelDoodads
+			{
+				Key = "CRAM_highbarrel_doodads"// Ship bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 1275
+					RenderStage = Highest
+					//Inflate = .0001
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/roof_uncolored_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/roof_uncolored.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+					GhostMaterial
+					{
+						Shader = "./data/ships/common/parts_ghost.shader"
 					}
 				}
 			}

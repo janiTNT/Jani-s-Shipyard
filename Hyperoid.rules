@@ -4,6 +4,7 @@ Hyperoid : <./Data/ships/base_ship.rules>
 	NameKey = "ShipClasses/Hyperoid"
 	DefaultPartID = janiTNT.hyperock_1x1
 	ShipScale = 4.0 * 4
+	IsAsteroid = true
 	ImmuneToEnvDamage = true
 	JunkBlocksWeaponLOS = true
 	ExternalWalls = &<Hyperoid/external_walls.rules>
@@ -104,7 +105,10 @@ Hyperoid : <./Data/ships/base_ship.rules>
 		&<Hyperoid/Ores/uranium_9x_hard.rules>/Part
 		&<Hyperoid/Ores/uranium_16x_hard.rules>/Part
 		
-		//&<Hyperoid/SuperStructure/Superstructure_corridor.rules>/Part
+		&<Hyperoid/SuperStructure/Superstructure_corridor.rules>/Part
+		&<Hyperoid/SuperStructure/Superstructure_corridor2.rules>/Part
+		&<Hyperoid/SuperStructure/Superstructure_corridor3.rules>/Part
+		&<Hyperoid/SuperStructure/Superstructure_corridor3b.rules>/Part
 	]
 
 	RenderLayers
@@ -174,8 +178,8 @@ Hyperoid : <./Data/ships/base_ship.rules>
 			Key = "superstructurewalls"// Ship bucket layer.
 			Value // The actual material.
 			{
-				UniqueBucket = 100
-				RenderStage = High
+				UniqueBucket = 5
+				RenderStage = Low
 				IsRoof = false
 				DrawWithShipGhost = true
 				Inflate = .0001
@@ -203,8 +207,8 @@ Hyperoid : <./Data/ships/base_ship.rules>
 			Key = "superstructureroof"// Ship bucket layer.
 			Value // The actual material.
 			{
-				UniqueBucket = 400
-				RenderStage = High
+				UniqueBucket = 10
+				RenderStage = Low
 				IsRoof = false
 				DrawWithShipGhost = true
 				Inflate = .0001
@@ -225,8 +229,38 @@ Hyperoid : <./Data/ships/base_ship.rules>
 				{
 					Shader = "./data/ships/common/normals.shader"
 				}
+				GhostMaterial
+				{
+					Shader = "./Data/ships/common/parts_ghost.shader"
+				}
 			}
 		}
+		{
+				Key = "secondary"// Secondary Asteroid bucket layer.
+				Value // The actual material.
+				{
+					UniqueBucket = 20	// high enough so crew gon
+					RenderStage = High	// Never enough.
+					DrawWithShipGhost = false
+					HasNormals = true
+					AtlasTextureParams
+					{
+						MipLevels = 7 // Assumes 64x64 min part sprite size.
+					}
+					Material
+					{
+						Shader = "./data/ships/common/roof_uncolored_lit.shader"
+					}
+					DiffuseMaterial
+					{
+						Shader = "./data/ships/common/roof_uncolored.shader"
+					}
+					NormalsMaterial
+					{
+						Shader = "./data/ships/common/normals.shader"
+					}
+				}
+			}
 		// Asteroid additive lights.
 		{
 			Key = "asteroid_roof_lights_fancy"// Asteroid bucket layer.

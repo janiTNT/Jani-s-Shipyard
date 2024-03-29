@@ -27,14 +27,14 @@ Def
 			Type = VelocityToWorldSpace
 			VelocityIn = velocity
 			VelocityOut = velocity
-			Name = ""
+			Name = "Convert velocity to world space"
 			Enabled = true
 			UpdateAfterInit = false
 		}
 		{
 			Type = FpsCompensator
 			LocationInOut = location
-			VelocityIn = velocity
+			VelocityIn
 			Mode = Uniform
 			Strength = 1
 			Name = ""
@@ -159,6 +159,19 @@ EmitterDef
 	PreInitializers
 	[
 		{
+			Type = VelocityFromIntensity
+			VelocityOut = velocity
+			VelocityFactor
+			{
+				X = -50
+				Y = 0
+			}
+			IntensityExponent = 1
+			Name = ""
+			Enabled = true
+			UpdateAfterInit = false
+		}
+		{
 			Type = ScaleFromIntensity
 			ScaleOut = scale
 			ScaleFactor = 1
@@ -170,7 +183,7 @@ EmitterDef
 	]
 	PostInitializers[]
 }
-Bucket = NukeFlash
+Bucket = Lower2
 UseRealTime = false
 PenetratingBucket
 MinIntensity = 0

@@ -1,0 +1,205 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Cram_Loader1x"
+	IconNameKey = "Parts/Cram_Loader1xIcon"
+	ID = janiTNT.CRAM_loader_1x
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/Cram_Loader1xDesc"
+	Resources
+	[
+		[steel, 12]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	TypeCategories = [CRAM]
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		[0, 1]
+		[1, 0]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "loader1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "loader1.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = CanFillAmmo
+			DoodadToggle = ChainLoaderMaxed
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"./data/ships/terran/engine_room/lights.png"
+							"./data/ships/terran/engine_room/lights2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"./data/ships/terran/engine_room/lights.png"
+							"./data/ships/terran/engine_room/lights2.png"
+						]
+						Size = [0.4, 0.6]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "loader1.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		AmmoStorage
+		{
+			Type = ResourceStorage
+			ResourceType = bullet
+			MaxResources = 1 * (&<./data/resources/bullet/bullet.rules>/MaxStackSize)
+			DelayBeforeReadyToUse = 2
+			//AnticipateMoreResourcesFrom = ["AmmoStorage"]
+			ToggleOnResources = &MaxResources
+			ToggleOffResources = 0
+			UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			DropResourcesWhenDestroyed = true
+			AllowManualReceiveToggle = CanFillAmmo
+		}
+		AmmoConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = bullet
+			Storage = AmmoStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			AllowNonOperationalMinPriorityDelivery = false
+			OperationalToggle = CanFillAmmo
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		CanFillAmmo
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = CRAM_FIRING_ToggleProxy, invert = true}
+				{Toggle = AmmoStorage, invert = true}
+			]
+			Mode = All
+		}
+		CouldFeedAmmo
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = CanFillAmmo, invert = true}
+			]
+			Mode = All
+		}
+		CanFeedAmmo
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = ChainLoaderMaxed}
+				{Toggle = CanFillAmmo, invert = true}
+			]
+			Mode = All
+		}
+		CRAM_LOADER_AmmoStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = bullet
+			PartLocation = [0, -1]
+			ComponentID = CombinedCRAMAmmoStorage
+		}
+		LoadingConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = CanFeedAmmo
+			FromStorage = AmmoStorage
+			ToStorage = CRAM_LOADER_AmmoStorage
+			FromQuantity = 1
+			ToQuantity = 1
+			MinFromQuantityForConversion = 1
+			Interval = 0.1
+		}
+		CRAM_FIRING_ToggleProxy
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = CRAM_IsFiringTimer
+		}
+		ChainLoaderMaxed
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = ChainLoaderMaxedToggleProxy
+		}
+		ChainLoaderCountBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_ChainLoaderCount
+			BuffArea = [0, -1, 1, 1]
+			//ChainsFromBuffType = JaniCRAM_ChainLoaderCount
+			BuffAmount = 1
+		}
+		ChainLoaderReadyBuff
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = CouldFeedAmmo
+			BuffType = JaniCRAM_ChainLoaderReady
+			BuffArea = [0, -1, 1, 1]
+			//ChainsFromBuffType = JaniCRAM_ChainLoaderReady
+			BuffAmount = 1
+		}
+	}
+}
