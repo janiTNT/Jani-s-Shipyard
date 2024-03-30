@@ -12,13 +12,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[coil, 30]
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_heavy, CRAM_Firing_Piece, CRAM, CRAMconnector]
-	Size = [1, 4]
+	Size = [1, 2]
 	//PhysicalRect = [0, 1, 3, 2]
 	//SaveRect = &PhysicalRec
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	SelectionTypeID = "cannons"
-	MaxHealth = 16000
+	MaxHealth = 8000
 	AllowedDoorLocations = []
 	//ProhibitAbove = 2
 	CrewSpeedFactor = 0
@@ -55,7 +55,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_ReverseBarrelGauge
-			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=17;}
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=16;}
 		}
 		
 		BarrelGaugeBuffProvider
@@ -65,7 +65,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			//OperationalToggle = DistanceBuffToggle
 			//ChainsFromBuffType = JaniCRAM_ReverseBarrelGauge
-			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=17;}
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=16;}
 			Criteria
 			{
 				Rot = 0
@@ -88,7 +88,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = SelfBuffProvider
 					BuffType = JaniCRAM_ReverseBarrelGauge
-					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add; MaxValue=17;}
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add; MaxValue=16;}
 				}
 				
 				BarrelGaugeBuffProvider2
@@ -98,7 +98,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					BuffArea = [0, -1, 1, 1]
 					//OperationalToggle = DistanceBuffToggle
 					//ChainsFromBuffType = JaniCRAM_ReverseBarrelGauge
-					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add; MinValue=1; MaxValue=17;}
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add; MinValue=1; MaxValue=16;}
 					Criteria
 					{
 						Rot = 0
@@ -135,7 +135,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_ReloadSpeedFinal
-			BuffAmount = { BaseValue=1.5; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Multiply; MinValue=0.05;}
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Multiply; MinValue=0.05;}
 			BuffMultiplier = CoolingNerfValue
 		}
 		
@@ -269,12 +269,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Floor
 			{
 				Layer = "floors"
-				Offset = [0, 1]
+				Offset = [0, 0]
 				DamageLevels
 				[
 					{
-						File = "newfiringpiece2.png"
-						Size = [1, 4]
+						File = "newfiringpiece.png"
+						Size = [1, 2]
 					}
 				]
 			}
@@ -364,34 +364,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalRoofLighting = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofLighting
 		}
 		
-		RoofCoverGrid
-		{
-			Type = SpriteGrid
-			Location = [0.5, 2.5]
-			GridSize = [1, 2]
-			RandomDamageLevels
-			[
-				[
-					{
-						File = "./Data/ships/terran/corridor/roof.png"
-						NormalsFile = "./Data/ships/terran/corridor/roof_normals.png"
-						Size = [1, 1]
-					}
-					{
-						File = "./Data/ships/terran/corridor/roof_33.png"
-						NormalsFile = "./Data/ships/terran/corridor/roof_normals_33.png"
-						Size = [1, 1]
-					}
-					{
-						File = "./Data/ships/terran/corridor/roof_66.png"
-						NormalsFile = "./Data/ships/terran/corridor/roof_normals_66.png"
-						Size = [1, 1]
-					}
-				]
-			]
-			RandomUVRotation = true
-			Layer = "roofs"
-		}		
 		
 		
 		Size1BuffToggle
@@ -431,8 +403,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{MinBuffValue = 15; MaxBuffValue = 15}
 		Size16BuffToggle : Size1BuffToggle
 		{MinBuffValue = 16; MaxBuffValue = 16}
-		Size17BuffToggle : Size1BuffToggle
-		{MinBuffValue = 17; MaxBuffValue = 17}
 		
 		Size1Emitter
 		{
@@ -759,27 +729,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet16
 					ResourcesUsed = 640
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
-				}
-				AmmoStorage : ~/BaseAmmoStorage
-				{
-					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
-					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
-					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
-				}
-			}
-		}
-		
-		Size17Emitter
-		{
-			Type = ToggledComponents
-			Toggle = Size17BuffToggle
-			Components
-			{
-				BulletEmitter : ~/BaseBulletEmitter
-				{
-					Bullet = &<Bullets.rules>/Bullet17
-					ResourcesUsed = 700//just a bit less
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
 				AmmoStorage : ~/BaseAmmoStorage

@@ -844,3 +844,34 @@ Bullet16 : ~/BaseHeader
 		}
 	}
 }
+
+Bullet17 : ~/BaseHeader
+{
+	ID = "janiTNT.CRAMbullettest17"
+	Components : ~/BaseComponents
+	{
+		Sprite : ~/BaseComponents/Sprite
+		{
+			Sprite : ~/BaseComponents/Sprite/Sprite
+			{
+				Size = [1.1*(sqrt(17)), 1.1*(sqrt(17))]
+			}
+		}
+		GlowSprite : ~/BaseComponents/GlowSprite
+		{
+			Offset = [-1.5*(sqrt(17)), 0]
+			Sprite : ~/BaseComponents/GlowSprite/Sprite
+			{
+				Size = [18*(sqrt(17)), 16*(sqrt(17))]
+			}
+		}
+		TrailSprite : ~/BaseComponents/TrailSprite
+		{
+			Offset = [-1*(sqrt(17)), 0]
+			Sprite : ~/BaseComponents/TrailSprite/Sprite
+			{
+				Size = [10*(sqrt(17)), 1*(sqrt(17))]
+			}
+		}
+	}
+}

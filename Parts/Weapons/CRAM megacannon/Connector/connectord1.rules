@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	MaxHealth = 1000
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelGauge, JaniCRAM_ChainLoaderCount, JaniCRAM_ChainLoaderReady, JaniCRAM_ChainLoaderReady, JaniCRAM_CoolingSpeedBuff]
-	TypeCategories = [CRAM]
+	TypeCategories = [CRAM, CRAMconnector]
 	IsFlippable = true
 	AllowedDoorLocations = []
 	EditorIcon
@@ -71,6 +71,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [-1, -1, 1, 1]
 			ChainsFromBuffType = JaniCRAM_BarrelGauge
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; }
+			Criteria
+			{
+				Categories = [CRAMconnector]
+			}
 		}
 		CoolerBuff
 		{

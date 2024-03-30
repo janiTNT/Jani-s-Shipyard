@@ -237,6 +237,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{MinBuffValue = 15; MaxBuffValue = 15}
 		Size16BuffToggle : Size1BuffToggle
 		{MinBuffValue = 16; MaxBuffValue = 16}
+		Size17BuffToggle : Size1BuffToggle
+		{MinBuffValue = 17; MaxBuffValue = 17}
 		
 		BarrelGraphics0
 		{
@@ -775,6 +777,39 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			ProperSize = [1.25*(sqrt(16)), 1]
 			OperationalToggle = Size16BuffToggle
+			ToggleOnDoodad
+			{
+				Layer = "CRAM_highbarrel_doodads"
+				DamageLevels
+				[
+					: ~/BaseTextureConnection
+					{Size = [&../../../../ProperSize/0, (&../../../../ProperSize/0)*3/5]}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "CRAM_highbarrel"
+				DamageLevels
+				[
+					: ~/BaseTexture
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "CRAM_highbarrel"
+				DamageLevels
+				[
+					: ~/BaseTexture2
+					{Size = [&../../../../ProperSize/0, 1]}
+				]
+			}
+		}
+		
+		BarrelGraphics17 : &BarrelGraphics0
+		{
+			ProperSize = [1.25*(sqrt(17)), 1]
+			OperationalToggle = Size17BuffToggle
 			ToggleOnDoodad
 			{
 				Layer = "CRAM_highbarrel_doodads"

@@ -45,7 +45,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "loader3d.png"
 			Size = [1, 3]
-			UVRotation = 3
+			UVRotation = 0
 			//Offset = [0, -0.5]
 		}
 		Graphics
@@ -166,6 +166,38 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToQuantity = 1
 			MinFromQuantityForConversion = 1
 			Interval = 0.5
+		}
+		HaltConverterRight
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = CRAM_LOADER_AmmoStorageToggleRight, invert = true}//if ammo storage is not full.
+			]
+			Mode = All
+		}
+		HaltConverterLeft
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = CRAM_LOADER_AmmoStorageToggleLeft, invert = true}//if ammo storage is not full.
+			]
+			Mode = All
+		}
+		CRAM_LOADER_AmmoStorageToggleRight
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [1, 0]
+			ComponentID = CombinedCRAMAmmoStorageToggle
+		}
+		CRAM_LOADER_AmmoStorageToggleLeft
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [-1, 0]
+			ComponentID = CombinedCRAMAmmoStorageToggle
 		}
 	}
 }

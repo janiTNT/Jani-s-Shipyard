@@ -12,8 +12,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 0
 	Size = [1, 1]
 	MaxHealth = 1000
-	ReceivableBuffs : ^/0/ReceivableBuffs []
-	TypeCategories = [CRAM]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelGauge]
+	TypeCategories = [CRAM, CRAMGaugeIncrease]
 	AllowedDoorLocations = []
 	EditorIcon
 	{
@@ -55,13 +55,30 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
 		}
+		GaugeIncreaseBuffSelf
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_BarrelGauge
+			BuffArea = [0, -1, 1, 1]
+			ChainsFromBuffType = JaniCRAM_BarrelGauge
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; },
+			Criteria
+			{
+				Categories = [CRAMGaugeIncrease]
+				Rot = 0
+			}
+		}
 		GaugeIncreaseBuff
 		{
 			Type = AreaBuffProvider
 			BuffType = JaniCRAM_BarrelGauge
 			BuffArea = [0, -1, 1, 1]
-			//ChainsFromBuffType = JaniCRAM_BarrelGauge
-			BuffAmount = 1
+			ChainsFromBuffType = JaniCRAM_BarrelGauge
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; },
+			Criteria
+			{
+				Categories = [CRAMconnector]
+			}
 		}
 	}
 }
