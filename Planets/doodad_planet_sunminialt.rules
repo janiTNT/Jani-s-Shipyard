@@ -1,0 +1,42 @@
+ID = janiTNT.planet_sun_alternate
+Type = Planet
+DescriptionKey = "Doodads/PlanetMiniSun"
+CategoryKey = "Doodads/Planets"
+HideInCreativeMode = true
+Icon
+{
+	Texture
+	{
+		File = "deadsun2.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+StyleID = sun
+TextureSize = [512, 512]
+ScaleRange = [100, 200]
+RandomScaleRange = 160
+DefaultScale = 160
+RenderStage = Upper
+
+ProximityDamage : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage
+{
+	AvoidanceTags = [sun]
+	InstantKillRadius = 1
+	RaycastDamageRadius = 1.5
+	RaycastsPerDiameterPerSecond = 30
+	RaycastDamage = [10, 1]
+	RaycastDamageDistanceExponent = 0.5
+	RaycastDamageCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage/RaycastDamageCircle
+	{
+		Thickness = 2
+		QuadCount = 256 / 8
+		UVRect = [0, 1, .25, -1]
+	}
+	RaycastDamageCircleThicknessZoomExponent = .4
+	RaycastDamageMinimapCircle : RaycastDamageCircle
+	{
+		Thickness = 1
+		Color = [255, 255, 255, 255]
+	}
+}

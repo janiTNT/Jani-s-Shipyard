@@ -30,11 +30,9 @@ Hyperoid : <./Data/ships/base_ship.rules>
 			A = 190
 		}
 	}
-
-	Parts
+	
+	Init
 	[
-		//&<Hyperoid/test.rules>/Part
-		
 		&<Hyperoid/megasoft_1x1.rules>/Part
 		&<Hyperoid/megasoft_2x2.rules>/Part
 		&<Hyperoid/megasoft_3x3.rules>/Part
@@ -48,7 +46,11 @@ Hyperoid : <./Data/ships/base_ship.rules>
 		&<Hyperoid/megarock_4x4.rules>/Part
 		&<Hyperoid/megarock_1x1_wedge.rules>/Part
 		&<Hyperoid/megarock_1x2_wedge.rules>/Part
-		
+	]
+
+	Parts : &Init
+	&<Hyperoid/Mineables/2.d>/a
+	[
 		&<Hyperoid/Ores/hyperium_4x.rules>/Part
 		&<Hyperoid/Ores/hyperium_9x.rules>/Part
 		&<Hyperoid/Ores/hyperium_16x.rules>/Part
@@ -104,14 +106,9 @@ Hyperoid : <./Data/ships/base_ship.rules>
 		&<Hyperoid/Ores/uranium_4x_hard.rules>/Part
 		&<Hyperoid/Ores/uranium_9x_hard.rules>/Part
 		&<Hyperoid/Ores/uranium_16x_hard.rules>/Part
-		
-		&<Hyperoid/SuperStructure/Superstructure_corridor.rules>/Part
-		&<Hyperoid/SuperStructure/Superstructure_corridor2.rules>/Part
-		&<Hyperoid/SuperStructure/Superstructure_corridor3.rules>/Part
-		&<Hyperoid/SuperStructure/Superstructure_corridor3b.rules>/Part
 	]
 
-	RenderLayers
+	RenderLayers : &<Hyperoid/Mineables/2.d>/d
 	[
 		{
 			Key = "asteroid"// Asteroid bucket layer.
@@ -166,68 +163,6 @@ Hyperoid : <./Data/ships/base_ship.rules>
 				NormalsMaterial
 				{
 					Shader = "./Data/ships/common/normals.shader"
-				}
-				GhostMaterial
-				{
-					Shader = "./Data/ships/common/parts_ghost.shader"
-				}
-			}
-		}
-		//External Walls Clone
-		{
-			Key = "superstructurewalls"// Ship bucket layer.
-			Value // The actual material.
-			{
-				UniqueBucket = 5
-				RenderStage = Low
-				IsRoof = false
-				DrawWithShipGhost = true
-				Inflate = .0001
-				HasNormals = true
-				AtlasTextureParams
-				{
-					MipLevels = 7 // Assumes 64x64 min part sprite size.
-				}
-				Material
-				{
-					Shader = "./data/ships/common/walls_external_lit.shader"
-				}
-				DiffuseMaterial
-				{
-					Shader = "./data/ships/common/walls_external.shader"
-				}
-				NormalsMaterial
-				{
-					Shader = "./data/ships/common/walls_external_normals.shader"
-				}
-			}
-		}
-		//Roof Clone
-		{
-			Key = "superstructureroof"// Ship bucket layer.
-			Value // The actual material.
-			{
-				UniqueBucket = 10
-				RenderStage = Low
-				IsRoof = false
-				DrawWithShipGhost = true
-				Inflate = .0001
-				HasNormals = true
-				AtlasTextureParams
-				{
-					MipLevels = 7 // Assumes 64x64 min part sprite size.
-				}
-				Material
-				{
-					Shader = "./data/ships/common/roof_colored_lit.shader"
-				}
-				DiffuseMaterial
-				{
-					Shader = "./data/ships/common/roof_colored.shader"
-				}
-				NormalsMaterial
-				{
-					Shader = "./data/ships/common/normals.shader"
 				}
 				GhostMaterial
 				{

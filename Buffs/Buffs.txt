@@ -274,3 +274,7 @@ JaniCRAM_ReloadSpeedFinal
 	CombineMode = Add
 	BaseValue = 100%
 }
+JaniCRAM_IntakeConnection
+{
+
+}

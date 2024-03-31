@@ -12,7 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 0
 	Size = [1, 3]
 	MaxHealth = 3000
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_IntakeConnection]
 	TypeCategories = [CRAM]
 	IsFlippable = true
 	AllowedDoorLocations
@@ -120,14 +120,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
 			DropResourcesWhenDestroyed = true
 		}
-		AmmoConsumer
+		IntakeBuffToggle
 		{
-			Type = ResourceConsumer
-			ResourceType = bullet
-			Storage = AmmoStorage
-			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			OperationalToggle = PowerToggle
-			ConsumptionToggleButtonOffset = [0, -.4]
+			Type = BuffToggle
+			BuffType = JaniCRAM_IntakeConnection
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = IntakeBuffToggle
+			Invert = true
+			Components
+			{
+				AmmoConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorage
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					OperationalToggle = PowerToggle
+					ConsumptionToggleButtonOffset = [0, -.4]
+				}
+			}
 		}
 		CRAM_LOADER_AmmoStorage
 		{

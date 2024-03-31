@@ -1,0 +1,24 @@
+A
+[
+	{	Action = AddMany
+
+		AddTo = "<./Data/modes/career/sysgen.rules>/Spawners"
+
+		ManyToAdd
+		[
+			&<Tgen.rules>
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<builtin_ships/builtins.rules>/Ships"
+
+		ManyToAdd
+		[
+			{ File="Tsh/M-E-N-G.ship.png"; Tags=[T_anomM]}
+			{ File="Tsh/MezoSphere.ship.png"; Tags=[T_anomDyson]}
+			{ File="Tsh/Prophet.ship.png"; Tags=[T_anomM]}
+			{ File="Tsh/Foregin.ship.png"; Tags=[T_anomS]}
+		]
+	}
+]

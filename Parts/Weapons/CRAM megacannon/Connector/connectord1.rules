@@ -64,7 +64,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			PartCriteria
 			ComponentID = CombinedCRAMAmmoStorage
 		}
-		GaugeIncreaseBuff
+		/*GaugeIncreaseBuff
 		{
 			Type = AreaBuffProvider
 			BuffType = JaniCRAM_BarrelGauge
@@ -75,12 +75,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				Categories = [CRAMconnector]
 			}
-		}
+		}*/
 		CoolerBuff
 		{
 			Type = AreaBuffProvider
 			BuffType = JaniCRAM_CoolingSpeedBuff
-			BuffArea = [0, -2, 1, 1]
+			BuffArea = [-1, -1, 1, 1]
 			ChainsFromBuffType = JaniCRAM_CoolingSpeedBuff
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Add; }
 		}

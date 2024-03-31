@@ -72,10 +72,10 @@ BaseComponents
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue=18000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
-					Radius = { BaseValue=4; BuffType=JaniCRAM_AOEMain; BuffMode=Multiply; }
-					ExpandDuration = .5
+					Radius = { BaseValue=1.5; BuffType=JaniCRAM_AOEMain; BuffMode=Multiply; }
+					ExpandDuration = .2
 					ExpandStartRadius = 0.5
-					ExpandLoss = 100%
+					//ExpandLoss = 100%
 					ImpulsePerNDamage = 10
 					NDamage = 1000
 					//Slices = 1
@@ -89,10 +89,10 @@ BaseComponents
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue=9000; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
-					Radius = { BaseValue=3; BuffType=JaniCRAM_AOEMain; BuffMode=Multiply; }
-					ExpandDuration = .5
+					Radius = { BaseValue=1.5; BuffType=JaniCRAM_AOEMain; BuffMode=Multiply; }
+					ExpandDuration = .2
 					ExpandStartRadius = 0
-					ExpandLoss = 100%
+					//ExpandLoss = 100%
 					ImpulsePerNDamage = 5
 					NDamage = 1000
 					//Slices = 1

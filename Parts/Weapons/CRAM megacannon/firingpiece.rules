@@ -248,12 +248,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorageProxy
 			ResourceType = bullet
-			ComponentID = AmmoStorage
+			ComponentID = CRAM_FIRINGPIECE_AMMOSTORAGE
 		}
 		CombinedCRAMAmmoStorageToggle
 		{
 			Type = ToggleProxy
-			ComponentID = AmmoStorage
+			ComponentID = CRAM_FIRINGPIECE_AMMOSTORAGE
 		}
 		AmmoFullnessBar
 		{
@@ -446,7 +446,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 10 * 1
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -467,7 +467,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 28
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -488,7 +488,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 52
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -509,7 +509,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 80
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -530,7 +530,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 112
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -551,7 +551,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 146
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -572,7 +572,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 186
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -593,7 +593,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 226
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -614,7 +614,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 270
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -635,7 +635,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 316
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -656,7 +656,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 364
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -677,7 +677,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 416
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -698,7 +698,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 468
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -719,7 +719,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 524
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -740,7 +740,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 580
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -761,7 +761,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 640
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -782,7 +782,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourcesUsed = 700//just a bit less
 					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 				}
-				AmmoStorage : ~/BaseAmmoStorage
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
 					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
 					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
@@ -1082,8 +1082,8 @@ BaseBulletEmitter
 	OperationalToggle = IsOperational
 	Bullet = &<Bullets.rules>/Bullet1
 	//Spread = [-2.5d, 2.5d]{ BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
-	Spread = [{ BaseValue=-2.5d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; MaxValue=180d; }, { BaseValue=2.5d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; MaxValue=180d; }]
-	ResourceStorage = AmmoStorage
+	Spread = [{ BaseValue=-2.5d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; MinValue=-45d; }, { BaseValue=2.5d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; MaxValue=45d; }]
+	ResourceStorage = CRAM_FIRINGPIECE_AMMOSTORAGE
 	ResourcesUsed = 10
 	Recoil = 80
 }
@@ -1097,7 +1097,7 @@ BaseAmmoStorage
 	//AnticipateMoreResourcesFrom = ["AmmoStorage"]
 	ToggleOnResources = 4
 	ToggleOffResources = 3
-	UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
+	//UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
 	ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
 	DropResourcesWhenDestroyed = true
 	DropResourcesWhenRemoved = true

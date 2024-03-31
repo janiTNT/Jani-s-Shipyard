@@ -60,8 +60,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = AreaBuffProvider
 			BuffType = JaniCRAM_BarrelGauge
 			BuffArea = [0, -1, 1, 1]
-			ChainsFromBuffType = JaniCRAM_BarrelGauge
-			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; },
+			//ChainsFromBuffType = JaniCRAM_BarrelGauge
+			BuffAmount = 1
 			Criteria
 			{
 				Categories = [CRAMGaugeIncrease]
@@ -75,10 +75,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			ChainsFromBuffType = JaniCRAM_BarrelGauge
 			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; },
-			Criteria
-			{
-				Categories = [CRAMconnector]
-			}
+			Criterias
+			[
+				{
+					Categories = [CRAM_Firing_Piece]
+					Rot = 1
+				}
+				{
+					Categories = [CRAM_Firing_Piece]
+					Rot = 3
+				}
+			]
 		}
 	}
 }

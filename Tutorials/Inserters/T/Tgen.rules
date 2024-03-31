@@ -1,0 +1,189 @@
+Type = None
+Tags = [T_anomP]
+//SpawnChance = 0.006
+SpawnChance = 1
+SubSpawners
+[
+	{
+		Type = None
+		//RandomSubSpawnerCount = 1
+		SubSpawners
+		[
+			{
+				Type = None
+				RandomWeight = 3
+				Distance = [20750, 40000]
+				MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+				SubSpawners
+				[
+					: ~/RandomMedium
+					{
+						Count = [1 , 1]
+					}
+				]
+			}
+			{
+				Type = None
+				RandomWeight = 3
+				Distance = [20750, 29000]
+				Count = [1 , 3]
+				MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+				SubSpawners
+				[
+					: ~/RandomSmall
+					{
+						Count = [1]
+					}
+				]
+			}
+			/*{
+				RandomWeight = 1
+				Type = None
+				Distance = [10750, 19000]
+				Count = [1 , 1]
+				MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+				SubSpawners
+				[
+					: ~/Dyson
+					{
+						Count = [1]
+					}
+					{
+						Type = Doodads
+						DoodadType = janiTNT.planet_sun_alternate
+						ScaleFactor = 1
+					}
+				]
+			}*/
+		]
+	}
+]
+
+RandomMedium
+{
+	Type = Ships
+	//Distance = [20750, 40000]
+	MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+	SpawnsPerSlice = 1
+	SpawnSlicePadding = 25%
+	
+	//Type = Ships
+	Distance = [0, 0]
+	SuppressLocationAssertions = true
+	Allegiance = Junk
+	InitToMax = false
+	SpawnCrew = false
+	ShipCriteria { Tags = [T_anomM] }
+	NameGenerator = { Type=None; }
+	SubSpawners
+	[
+		{
+			Type = Ships
+			Count = [8, 16]
+			Distance = [500, 600]
+			SuppressLocationAssertions = true
+			Allegiance = Junk
+			InitToMax = false
+			SpawnCrew = false
+			ShipCriteria { Tags = [wreckage] }
+			RandomHealthRange = [10%, 75%]
+			NameGenerator = { Type=None; }
+		}
+		{
+			Type = Doodads
+			DoodadType = janiTNT.HyperoidPOI
+			ShowOnlyInFog = true
+			Undiscovered = true
+			HideIfUnexplored = false
+			ScaleFactor = 1
+			Tags = [asteroid_field_poi, poi_unknown, hyperoid_field_poi]
+			//AutoRemoveWhenTagDestroyed = hyperoid
+		}
+	]
+}
+
+RandomSmall
+{
+	Type = Ships
+	//Distance = [20750, 40000]
+	MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+	SpawnsPerSlice = 1
+	SpawnSlicePadding = 25%
+	
+	//Type = Ships
+	Distance = [0, 0]
+	SuppressLocationAssertions = true
+	Allegiance = Junk
+	InitToMax = false
+	SpawnCrew = false
+	ShipCriteria { Tags = [T_anomS] }
+	NameGenerator = { Type=None; }
+	SubSpawners
+	[
+		{
+			Type = Ships
+			Count = [4, 8]
+			Distance = [300, 400]
+			SuppressLocationAssertions = true
+			Allegiance = Junk
+			InitToMax = false
+			SpawnCrew = false
+			ShipCriteria { Tags = [wreckage] }
+			RandomHealthRange = [10%, 75%]
+			NameGenerator = { Type=None; }
+		}
+		{
+			Type = Doodads
+			DoodadType = janiTNT.HyperoidPOI
+			ShowOnlyInFog = true
+			Undiscovered = true
+			HideIfUnexplored = false
+			ScaleFactor = 1
+			Tags = [asteroid_field_poi, poi_unknown, hyperoid_field_poi]
+			//AutoRemoveWhenTagDestroyed = hyperoid
+		}
+	]
+}
+
+Dyson
+{
+	Type = Ships
+	//Distance = [20750, 40000]
+	MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+	SpawnsPerSlice = 1
+	SpawnSlicePadding = 25%
+	
+	//Type = Ships
+	Distance = [0, 0]
+	SuppressLocationAssertions = true
+	Allegiance = Junk
+	InitToMax = false
+	SpawnCrew = false
+	ShipCriteria { Tags = [T_anomDyson] }
+	NameGenerator = { Type=None; }
+	SubSpawners
+	[
+		{
+			Type = Ships
+			Count = [8, 16]
+			Distance = [400, 500]
+			SuppressLocationAssertions = true
+			Allegiance = Junk
+			InitToMax = false
+			SpawnCrew = false
+			ShipCriteria { Tags = [wreckage] }
+			RandomHealthRange = [10%, 75%]
+			NameGenerator = { Type=None; }
+		}
+		{
+			Type = Doodads
+			DoodadType = janiTNT.HyperoidPOI
+			ShowOnlyInFog = true
+			Undiscovered = true
+			HideIfUnexplored = false
+			ScaleFactor = 1
+			Tags = [asteroid_field_poi, poi_unknown, hyperoid_field_poi]
+			//AutoRemoveWhenTagDestroyed = hyperoid
+		}
+	]
+}

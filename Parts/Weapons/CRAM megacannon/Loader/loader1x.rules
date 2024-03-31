@@ -12,7 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 0
 	Size = [1, 1]
 	MaxHealth = 1000
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_IntakeConnection]
 	TypeCategories = [CRAM]
 	AllowedDoorLocations
 	[
@@ -99,7 +99,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
 		}
-		AmmoStorage
+		AmmoStorage__CRAM_CHAINLOADER
 		{
 			Type = ResourceStorage
 			ResourceType = bullet
@@ -116,20 +116,48 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		AmmoStorageCheckFull
 		{
 			Type = MultiResourceStorage
-			ResourceType = battery
-			ResourceStorages = [AmmoStorage]
-			ToggleOnResources = &../AmmoStorage/MaxResources
+			ResourceType = bullet
+			ResourceStorages = [AmmoStorage__CRAM_CHAINLOADER]
+			ToggleOnResources = &../AmmoStorage__CRAM_CHAINLOADER/MaxResources
 			ToggleOffResources = 0
 		}
-		AmmoConsumer
+		ComponentsIntakeReceive
 		{
-			Type = ResourceConsumer
-			ResourceType = bullet
-			Storage = AmmoStorage
-			DefaultPriority = &/PRIORITIES/Weapon_Supply
-			AllowNonOperationalMinPriorityDelivery = false
-			OperationalToggle = CanFillAmmo
-			ConsumptionToggleButtonOffset = [0, -.4]
+			Type = ToggledComponents
+			Toggle = CanFillAmmo
+			Components
+			{	
+				AmmoStorage
+				{
+					Type = MultiResourceStorage
+					ResourceType = bullet
+					ResourceStorages = [AmmoStorage__CRAM_CHAINLOADER]
+				}
+			}
+		}
+		IntakeBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = JaniCRAM_IntakeConnection
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = IntakeBuffToggle
+			Invert = true
+			Components
+			{
+				AmmoConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = bullet
+					Storage = AmmoStorage__CRAM_CHAINLOADER
+					DefaultPriority = &/PRIORITIES/Weapon_Supply
+					AllowNonOperationalMinPriorityDelivery = false
+					OperationalToggle = CanFillAmmo
+					ConsumptionToggleButtonOffset = [0, -.4]
+				}
+			}
 		}
 		CanFillAmmo
 		{
@@ -172,7 +200,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceConverter
 			OperationalToggle = CanFeedAmmo
-			FromStorage = AmmoStorage
+			FromStorage = AmmoStorage__CRAM_CHAINLOADER
 			ToStorage = CRAM_LOADER_AmmoStorage
 			FromQuantity = 1
 			ToQuantity = 1
