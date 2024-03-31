@@ -140,7 +140,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffToggle
 			BuffType = JaniCRAM_IntakeConnection
 		}
-		ToggledBatteryConsumer
+		ToggledAmmoConsumer
 		{
 			Type = ToggledComponents
 			Toggle = IntakeBuffToggle

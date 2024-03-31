@@ -284,7 +284,7 @@ Def
 		DiffuseShader
 		NormalsShader
 		{
-			File = "D:/SteamLibrary/steamapps/common/Cosmoteer/data/common_effects/particles/particle_normals_smoke.shader"
+			File = "./data/common_effects/particles/particle_normals_smoke.shader"
 		}
 		LocationIn = location
 		ScaleIn = scale
@@ -308,16 +308,16 @@ Def
 	{
 		Shader
 		{
-			File = "D:/SteamLibrary/steamapps/common/Cosmoteer/Data/common_effects/particles/particle_lit.shader"
+			File = "./Data/common_effects/particles/particle_lit.shader"
 		}
 		_normalsTexture
 		{
-			File = "D:/SteamLibrary/steamapps/common/Cosmoteer/data/common_effects/particles/smoke_normals.png"
+			File = "./data/common_effects/particles/smoke_normals.png"
 			MipLevels = max
 		}
 		Texture
 		{
-			File = "D:/SteamLibrary/steamapps/common/Cosmoteer/Data/common_effects/particles/smoke.png"
+			File = "./Data/common_effects/particles/smoke.png"
 			MipLevels = 8
 			SampleMode = Linear
 		}

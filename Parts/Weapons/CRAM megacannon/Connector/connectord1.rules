@@ -12,7 +12,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 0
 	Size = [1, 1]
 	MaxHealth = 1000
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelGauge, JaniCRAM_ChainLoaderCount, JaniCRAM_ChainLoaderReady, JaniCRAM_ChainLoaderReady, JaniCRAM_CoolingSpeedBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_ChainLoaderCount, JaniCRAM_ChainLoaderReady, JaniCRAM_ChainLoaderReady, JaniCRAM_PackerCount, JaniCRAM_PackerReady, JaniCRAM_CoolingSpeedBuff]
 	TypeCategories = [CRAM, CRAMconnector]
 	IsFlippable = true
 	AllowedDoorLocations = []
@@ -100,6 +100,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainsFromBuffType = JaniCRAM_ChainLoaderReady
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ChainLoaderReady; BuffMode=Add; }
 		}
+		PackerCountBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_PackerCount
+			BuffArea = [-1, -1, 1, 1]
+			ChainsFromBuffType = JaniCRAM_PackerCount
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_PackerCount; BuffMode=Add; }
+		}
+		PackerReadyBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_PackerReady
+			BuffArea = [-1, -1, 1, 1]
+			ChainsFromBuffType = JaniCRAM_PackerReady
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_PackerReady; BuffMode=Add; }
+		}
 		CombinedCRAMAmmoStorageToggle
 		{
 			Type = ToggleProxy
@@ -113,6 +129,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsOnWhenNotConnected = true
 			PartLocation = [-1, -1]
 			ComponentID = ChainLoaderMaxedToggleProxy
+		}
+		PackersMaxedToggleProxy
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [-1, -1]
+			ComponentID = PackersMaxedToggleProxy
+		}
+		CRAMFiredTriggerProxy
+		{
+			Type = TriggerProxy
+			PartLocation = [-1, -1]
+			ComponentID = CRAMFiredTriggerProxy
 		}
 		CRAM_IsFiringTimer
 		{

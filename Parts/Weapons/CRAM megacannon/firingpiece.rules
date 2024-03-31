@@ -22,7 +22,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations = []
 	//ProhibitAbove = 2
 	CrewSpeedFactor = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_Pen, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal, JaniCRAM_PackerCount, JaniCRAM_PackerReady]
 	/*AllowedDoorLocations
 	[
 		[-1, 1]
@@ -174,25 +174,59 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffType = JaniCRAM_Accuraccy
 			BuffAmount = { BaseValue=0.2; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply; }
 			BuffMultiplier = InvGaugeBuffValue
+		}//{ BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Divide; }
+		PenetrationBuffProviderGauge
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Pen
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
+			//BuffMultiplier = InvGaugeBuffValue
 		}
-		HealthBuffProvider
+		HealthBuffProviderGauge
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_Health
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
 			//BuffMultiplier = InvGaugeBuffValue
 		}
-		DamageRadiusBuffProvider
+		DamageRadiusBuffProviderGauge
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_AOEMain
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
 		}
-		DamageBuffProvider
+		DamageBuffProviderGauge
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_DamageMain
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
+		}
+		
+		PenetrationBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Pen
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+			//BuffMultiplier = InvGaugeBuffValue
+		}		
+		HealthBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Health
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+			//BuffMultiplier = InvGaugeBuffValue
+		}
+		DamageRadiusBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_AOEMain
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+		}
+		DamageBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_DamageMain
+			BuffAmount ={ BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
 		}
 		
 		TurretRotationBuffProvider
@@ -223,6 +257,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
 			CommandPoints = 4
+		}
+		
+		CanFire
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = FireModeToggle, invert = false}
+				{Toggle = PackerToggles, invert = false}
+			]
+			Mode = All
 		}
 
 		FireModeToggle
@@ -796,7 +841,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			ChainedTo = EmitterSelfProxyChainable
 			//Rotation = 90d
-			Trigger = TurretEmitterProxyTrigger
+			Trigger = CRAMFiredTriggerProxy
 			Location = [1, 0]
 			
 			MediaEffectsFactor = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; }
@@ -844,7 +889,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireThresholdAngle = 3d
 			AIFirepowerRating = { BaseValue=8000; BuffType=JaniCRAM_StatMultiplier; BuffMode=Multiply; }
 			Emitter = TurretEmitterProxy
-			FirePermissionToggle = FireModeToggle
+			FirePermissionToggle = CanFire
 			IgnoreFriendlyShipLowLOSChecks = true
 
 			AutoTargets
@@ -877,8 +922,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Timer
 			//Duration = { BaseValue=2; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; MinValue=2}
 			Duration = 2
-			StartTrigger = TurretEmitterProxyTrigger
-			ResetTrigger = TurretEmitterProxyTrigger
+			StartTrigger = CRAMFiredTriggerProxy
+			ResetTrigger = CRAMFiredTriggerProxy
 			StartExpired = true
 			InvertToggle = true
 		}
@@ -912,6 +957,54 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				ChainLoaderCountDivision
 				ChainLoaderReadyMultiply
+			]
+			Mode = Multiply
+		}
+		
+		PackerToggles
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = PackersMaxedToggleProxy}
+				{Toggle = HasPackers, invert = true}
+			]
+			Mode = Any
+		}
+		
+		HasPackers
+		{
+			Type = BuffToggle
+			BuffType = JaniCRAM_PackerCount
+			MinBuffValue = 1
+		}
+		
+		PackersMaxedToggleProxy
+		{
+			Type = ThresholdToggle
+			ValueFrom = PackerMultiValue
+			MinAmount = 100%
+		}
+		
+		PackerCountDivision
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Divide; }
+		}
+		
+		PackerReadyMultiply
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_PackerReady; BuffMode=Multiply; }
+		}
+		
+		PackerMultiValue
+		{
+			Type = MultiValue
+			Values
+			[
+				PackerCountDivision
+				PackerReadyMultiply
 			]
 			Mode = Multiply
 		}
@@ -958,7 +1051,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ComponentID = BulletEmitter
 		}
 		
-		TurretEmitterProxyTrigger
+		
+		CRAMFiredTriggerProxy
 		{
 			Type = TriggerProxy
 			ComponentID = BulletEmitter

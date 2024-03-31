@@ -1,7 +1,7 @@
 ﻿ID = "janiTNT.TechMod"
 Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.19"
+Version = "Modern 1.19b"
 Logo = "newlogo.png"
 CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
@@ -37,6 +37,7 @@ CanBuild
 */
 
 Actions : &<inserter_compatibility_list.rules>/Actions
+&<Parrylist.rules>/Parrylist
 [
 	{	Action = AddMany
 
@@ -185,6 +186,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/CRAM megacannon/Loader/loader3x.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Loader/loader3d.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Loader/loader1x.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/packer/packer1.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Intake/intake.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Gauge Increasers/gaugeincreaser.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/TurboCooler/cooler.rules>/Part

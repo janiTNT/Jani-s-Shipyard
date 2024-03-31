@@ -203,7 +203,7 @@ Components
             Enemies = true
             Junk = true
             //Friendlies = false
-            OnlyBulletCategories = [missile, mine, bullet, laser]
+            OnlyBulletCategories = [missile, mine, bullet, laser, parry_targetable]
         }
 		HitBullet = &HitOperational
 		HitOperational
@@ -222,8 +222,23 @@ Components
 						Ships = false
 						Shields = false
 						Bullets = true
-						OnlyBulletCategories = [missile, laser, bullet, mine]
+						//OnlyBulletCategories = [missile, laser, bullet, mine]
+						OnlyBulletCategories = [laser, bullet, mine]
 						Crew = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 2000000
+					Radius = 16
+					Slices = 1
+					Filter
+					{
+						Ships = false
+						Shields = false
+						Bullets = true
+						OnlyBulletCategories = [parry_targetable]
+						Crew = false
 					}
 				}
 				{

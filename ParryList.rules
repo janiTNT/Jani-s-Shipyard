@@ -1,0 +1,212 @@
+Parrylist
+[
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/big_boi_gun/big_boi_gun_shot.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			ParryTargetable
+			{
+				Type = Targetable
+				Health = 2000000
+				TargetCategory = "parry_targetable"
+
+				OnDeath
+				{
+					HitEffects
+					[
+						{
+							Type = SpawnBullets
+							Bullet : &<./data/../../../workshop/content/799600/2911126638/bitofevextra_mod/big_boi_gun/big_boi_gun_shot.rules>
+							{
+								ID = "BrutaTralb.bigboigunshot.parry"
+								Speed = 200
+								Components : ^/0/Components
+								{
+									
+								}
+							}
+							Count = 1
+							Arc = [180d, 0d]
+							Spread = [-10d, 10d]
+							InheritVelocity = true
+						}
+					]
+					MediaEffects
+					[	
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "common/punch_projectile.wav"
+							Volume = 10
+							SpeedVariation = .2
+						}
+					]
+				}
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_gun/bullet.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{			
+			ParryTargetable
+			{
+				Type = Targetable
+				Health = 2000000
+				TargetCategory = "parry_targetable"
+
+				OnDeath
+				{
+					HitEffects
+					[
+						{
+							Type = SpawnBullets
+							Bullet : &<./data/../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_gun/bullet.rules>
+							{
+								ID = "BrutaTralb.bh_main.parry"
+								Speed = 200
+								ForgetTarget = true
+								Components : ^/0/Components
+								{
+									Death : ^/0/Death
+									{
+										Lifetime = 5
+									}
+									
+									Homing
+									{
+										Type = TargetHoming
+										TurnVelocity = 45d
+										Delay = 0
+										//AvoidanceRaycastDistance = 250
+										VelocityCompensation = 80%
+									}
+
+									Retarget
+									{
+										Type = SameShipRetarget
+									}
+									
+									Acceleration
+									{
+										Type = Acceleration
+										Acceleration = 100
+									}
+									
+									Sprite : ^/0/Sprite
+									{
+										Rotation = 512d
+										Animation : ^/0/Animation
+										{
+											AtlasSprite : ^/0/AtlasSprite
+											{
+												Size = [4, 4]
+												VertexColor = [355, 355, 355]
+											}
+											FramesPerSecond = 5
+										}
+										
+									}
+								}
+							}
+							Count = 1
+							Arc = [180d, 0d]
+							Spread = [-10d, 10d]
+							InheritVelocity = true
+						}
+					]
+					MediaEffects
+					[	
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "common/punch_projectile.wav"
+							Volume = 10
+							SpeedVariation = .2
+						}
+					]
+				}
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/shocklance/lance.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{			
+			ParryTargetable
+			{
+				Type = Targetable
+				Health = 2000000
+				TargetCategory = "parry_targetable"
+
+				OnDeath
+				{
+					HitEffects
+					[
+						{
+							Type = SpawnBullets
+							Bullet : &<./data/../../../workshop/content/799600/2911126638/bitofevextra_mod/shocklance/lance.rules>
+							{
+								ID = "BrutaTralb.shocklance.parry"
+								Speed = 400
+								ForgetTarget = true
+								Components : ^/0/Components
+								{					
+									Homing : ^/0/Homing
+									{
+										TurnVelocity = 0d
+									}
+									
+									Acceleration : ^/0/Acceleration
+									{
+										Acceleration = 0
+									}
+									
+									Sprite : ^/0/Sprite
+									{
+										Rotation = 512d
+										Animation : ^/0/Animation
+										{
+											AtlasSprite : ^/0/AtlasSprite
+											{
+												Size = [4, 4]
+												VertexColor = [355, 355, 355]
+											}
+											FramesPerSecond = 5
+										}
+										
+									}
+									
+									Hit : ^/0/Hit
+									{
+										SourceShipCollisionDelay = 0
+										SourceShipLowCollisions = true
+										NonFriendlyShipLowCollisions = false
+										NonFriendlyShipHighCollisions = false
+									}
+								}
+							}
+							Count = 1
+							Arc = [180d, 0d]
+							Spread = [-10d, 10d]
+							InheritVelocity = true
+						}
+					]
+					MediaEffects
+					[	
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "common/punch_projectile.wav"
+							Volume = 10
+							SpeedVariation = .2
+						}
+					]
+				}
+			}
+		}
+	}
+]

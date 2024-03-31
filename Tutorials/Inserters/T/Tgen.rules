@@ -1,7 +1,7 @@
 Type = None
 Tags = [T_anomP]
-//SpawnChance = 0.006
-SpawnChance = 1
+SpawnChance = 0.01
+//SpawnChance = 1
 SubSpawners
 [
 	{

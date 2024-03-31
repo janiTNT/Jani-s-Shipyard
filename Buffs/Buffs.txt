@@ -194,6 +194,16 @@ JaniCRAM_ChainLoaderReady // Checks quantity of Chain Loaders that are Ready
 	CombineMode = Add
 	BaseValue = 0%
 }
+JaniCRAM_PackerCount // Checks quantity of Packers
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+JaniCRAM_PackerReady // Checks quantity of Packers that are Ready
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
 JaniCRAM_BarrelGauge //Actual Gauge.
 {
 	CombineMode = Add
@@ -231,6 +241,11 @@ JaniCRAM_Accuraccy //Bullet ACCURACCY
 {
 	CombineMode = Add
 	Exponent = 0.8
+}
+JaniCRAM_Pen //Bullet Penetration
+{
+	CombineMode = Add
+	BaseValue = 0%
 }
 JaniCRAM_Health //Bullet HEALTH
 {

@@ -1,0 +1,213 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Cram_Packer1x"
+	IconNameKey = "Parts/Cram_Packer1x"
+	ID = janiTNT.CRAM_packer_1x
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/Cram_Packer1xDesc"
+	Resources
+	[
+		[steel, 20]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_ChainLoaderCount, JaniCRAM_ChainLoaderReady, JaniCRAM_CoolingSpeedBuff]
+	TypeCategories = [CRAM]
+	AllowedDoorLocations
+	[]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "packer1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "packer1.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = AmmoStorage__CRAM_PACKER
+			DoodadToggle = PackerMaxed
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"./data/ships/terran/engine_room/lights.png"
+							"./data/ships/terran/engine_room/lights2.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"./data/ships/terran/engine_room/lights.png"
+							"./data/ships/terran/engine_room/lights2.png"
+						]
+						Size = [0.4, 0.6]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "packer1.png"
+						Size = [1, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		AmmoStorage__CRAM_PACKER
+		{
+			Type = ResourceStorage
+			ResourceType = bullet
+			MaxResources = 20
+			ToggleOnResources = &MaxResources
+			ToggleOffResources = (&MaxResources) - 1
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			DropResourcesWhenDestroyed = true
+		}
+		CombinedCRAMAmmoStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = bullet
+			ResourceStorages = [AmmoStorage__CRAM_PACKER, CombinedCRAMAmmoStorageProxy]
+			AddMode = InOrder
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+		}
+		CombinedCRAMAmmoStorageProxy
+		{
+			Type = ResourceStorageProxy
+			ResourceType = bullet
+			PartLocation = [0, -1]
+			ComponentID = CombinedCRAMAmmoStorage
+		}
+		PackerMaxed
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = PackersMaxedToggleProxy
+		}
+		PackerCountBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_PackerCount
+			BuffArea = [0, -1, 1, 1]
+			//ChainsFromBuffType = JaniCRAM_PackerCount
+			BuffAmount = 1
+		}
+		PackerReadyBuff
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = AmmoStorage__CRAM_PACKER
+			BuffType = JaniCRAM_PackerReady
+			BuffArea = [0, -1, 1, 1]
+			//ChainsFromBuffType = JaniCRAM_PackerReady
+			BuffAmount = 1
+		}
+		PackerCRAMFiredTriggerProxy
+		{
+			Type = TriggerProxy
+			PartLocation = [0, -1]
+			ComponentID = CRAMFiredTriggerProxy
+		}
+		PackerEatsYourAmmo
+		{
+			Type = ResourceChange
+			Trigger = PackerCRAMFiredTriggerProxy
+			ResourceStorage = AmmoStorage__CRAM_PACKER
+			Amount = -20
+		}		
+		
+		CoolerBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedBuff
+			BuffArea = [0, -1, 1, 1]
+			ChainsFromBuffType = JaniCRAM_CoolingSpeedBuff
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Add; }
+		}
+		ChainLoaderCountBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_ChainLoaderCount
+			BuffArea = [0, -1, 1, 1]
+			ChainsFromBuffType = JaniCRAM_ChainLoaderCount
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ChainLoaderCount; BuffMode=Add; }
+		}
+		ChainLoaderReadyBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_ChainLoaderReady
+			BuffArea = [0, -1, 1, 1]
+			ChainsFromBuffType = JaniCRAM_ChainLoaderReady
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ChainLoaderReady; BuffMode=Add; }
+		}
+		CombinedCRAMAmmoStorageToggle
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = CombinedCRAMAmmoStorageToggle
+		}
+		ChainLoaderMaxedToggleProxy
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = ChainLoaderMaxedToggleProxy
+		}
+		CRAMFiredTriggerProxy
+		{
+			Type = TriggerProxy
+			PartLocation = [0, -1]
+			ComponentID = CRAMFiredTriggerProxy
+		}
+		CRAM_IsFiringTimer
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = true
+			PartLocation = [0, -1]
+			ComponentID = CRAM_IsFiringTimer
+		}
+	}
+}
