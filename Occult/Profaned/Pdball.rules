@@ -339,7 +339,7 @@ Part : <../base_part_occult.rules>/Part
 			[
 				{
 					TargetType = Bullets
-					BulletTargetCategories = [missile, laser, mine, bullet, parry_targetable]
+					BulletTargetCategories = [missile, laser, mine, bullet]
 					Toggle = AutoTargetToggle
 				}
 				{

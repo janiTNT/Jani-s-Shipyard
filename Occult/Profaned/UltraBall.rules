@@ -765,6 +765,49 @@ Part : <../base_part_occult.rules>/Part
 			Repeats = true
 		}
 		
+		ParryModule
+		{
+			Type = TurretWeapon
+			Location = [12, 4]
+			//Rotation = -90d
+			OperationalToggle = IsOperational
+			//AutoFireToggle = AutoFireToggle
+			FireInterval = 1.5
+			FiringArc = 360d
+			RotateSpeed = infinity
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 0
+			Emitter = ParryModuleEmitter
+			FirePermissionToggle = IsOperational
+			CanBeGivenExplicitTarget = false
+	
+			AlwaysShowCoverage = false
+			AllowDirectControl = false
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+
+			AutoTargets
+			[
+				{
+					TargetType = Bullets
+					BulletTargetCategories = [parry_targetable]
+				}
+			]
+		}
+
+		ParryModuleEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = ParryModule
+			FireTrigger = ParryModule
+			GetTargetFrom = ParryModule
+			Location = [0, 0]
+			OperationalToggle = IsOperational
+			Bullet = &<../Parry.rules>
+			Spread = [0d, 0d]
+			FireDelay = .5
+		}
+		
 		/*BoltEffectComponents
 		{
 			Type = ToggledComponents

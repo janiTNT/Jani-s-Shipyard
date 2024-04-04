@@ -1,0 +1,149 @@
+ID = "janiTNT.ParryingShot"
+Range = 750
+Speed = 600
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 12
+		Density = 0.0001
+	}
+	
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 720d
+		Delay = 0
+		ModifiesLinearVelocity = true		
+	}
+	
+	Sprite1
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//RotOffset = 90d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "parry.png"
+				MipLevels = max
+			}
+			//UVRotation = 1
+			Size = [15, 20]
+			//TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0.1, 0.1]
+		LerpTime = 0.2
+	}
+	
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [30, 30]
+			VertexColor = [255*2, 220*2, 113*2]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = .2
+	}
+	
+	Hit
+	{
+		Type = SimpleHit
+		
+		SourceShipLowCollisions = false
+
+		HitCrew = &HitOperational
+		HitShield = &HitOperational
+		
+		FriendlyShipLowCollisions = false
+		FriendlyShipHighCollisions = false
+		NonFriendlyShipLowCollisions = false
+		NonFriendlyShipHighCollisions = false
+		
+		BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            Friendlies = true
+            Neutrals = true
+            OnlyBulletCategories = [parry_targetable]
+        }
+		HitBullet = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 2000000
+					Radius = 22
+					Slices = 1
+					Filter
+					{
+						Ships = false
+						Shields = false
+						Bullets = true
+						OnlyBulletCategories = [parry_targetable]
+						Crew = false
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .4
+					Duration = .15
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/flak_large/particles/flak_large_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+}
