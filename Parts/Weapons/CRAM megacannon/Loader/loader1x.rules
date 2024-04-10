@@ -16,15 +16,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	TypeCategories = [CRAM]
 	AllowedDoorLocations
 	[
-		[-1, 0]
+		//[-1, 0]
 		[0, 1]
-		[1, 0]
+		//[1, 0]
 	]
 	EditorIcon
 	{
 		Texture
 		{
-			File = "loader1.png"
+			File = "ChainLoader/icon.png"
 			SampleMode = Linear
 		}
 		Size = [32, 32]
@@ -42,7 +42,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "loader1.png"
+			File = "ChainLoader/icon.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
 		}
@@ -52,19 +52,38 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [.5, .5]
 			OperationalToggle = CanFillAmmo
 			DoodadToggle = ChainLoaderMaxed
-			OperationalLighting
+			//InvertOperationalToggle = true
+			ShowToggledDoodadsWhenNotOperational = false
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "ChainLoader/walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
 			{
 				Layer = "lights_add"
 				DamageLevels
 				[
 					{
-						AnimationFiles
-						[
-							"./data/ships/terran/engine_room/lights.png"
-							"./data/ships/terran/engine_room/lights2.png"
-						]
+						File = "ChainLoader/lights_empty.png"
 						Size = [1, 1]
-						AnimationInterval = 0.1
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "ChainLoader/lights_full.png"
+						Size = [1, 1]
 					}
 				]
 			}
@@ -74,13 +93,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						AnimationFiles
-						[
-							"./data/ships/terran/engine_room/lights.png"
-							"./data/ships/terran/engine_room/lights2.png"
-						]
-						Size = [0.4, 0.6]
-						AnimationInterval = 0.1
+						File = "ChainLoader/lights_rumble.png"//READY TO
+						Size = [1, 1]
 					}
 				]
 			}
@@ -91,13 +105,292 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "loader1.png"
+						File = "ChainLoader/floor.png"
 						Size = [1, 1]
 						UVRotation = 0
 					}
 				]
 			}
 			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		LoaderDoorGraphics1
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			DoodadToggle = CanFillAmmo
+			ShowToggledDoodadsWhenNotOperational = true
+			ToggleOffDoodad
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"ChainLoader/door1.png"
+							"ChainLoader/door2.png"
+							"ChainLoader/door3.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.042
+						ClampAnimation = true
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"ChainLoader/door3.png"
+							"ChainLoader/door2.png"
+							"ChainLoader/door1.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.042
+						ClampAnimation = true
+					}
+				]
+			}
+		}
+		LoadedAmmoSprites1
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = AmmoStorage__CRAM_CHAINLOADER
+			Layer = "doodads_low"
+			HasZeroResourceSprite = true
+			RangeLow = 0
+			RangeHigh = 20
+			ResourceLevels
+			[
+				{
+					File = "ChainLoader/bullets0.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets0.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets1.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets1.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets2.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets2.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets3.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets3.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets4.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets4.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets5.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets5.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets6.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets6.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets7.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets7.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets8.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets8.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets9.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets9.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+				{
+					File = "ChainLoader/bullets10.png"
+					Size = [1, 1]
+					MirrorU = false
+				}
+			]
+		}
+		LoadedAmmoSprites2
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = AmmoStorage__CRAM_CHAINLOADER
+			Layer = "doodads_low"
+			HasZeroResourceSprite = true
+			RangeLow = 0
+			RangeHigh = 20
+			ResourceLevels
+			[
+				{
+					File = "ChainLoader/bullets0.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets1.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets1.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets2.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets2.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets3.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets3.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets4.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets4.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets5.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets5.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets6.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets6.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets7.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets7.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets8.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets8.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets9.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets9.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets10.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+				{
+					File = "ChainLoader/bullets10.png"
+					Size = [1, 1]
+					MirrorU = true
+				}
+			]
 		}
 		AmmoStorage__CRAM_CHAINLOADER
 		{

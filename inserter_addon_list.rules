@@ -1,0 +1,19 @@
+Actions
+[
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2918609970/terran/storage_missile_he/storage_missile_he.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ HEMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+]

@@ -50,7 +50,7 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 4500
+		Health = 2500
 		TargetCategory = "missile"
 
 		// No AOE damage when shot down.

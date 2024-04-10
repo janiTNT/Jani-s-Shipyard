@@ -231,6 +231,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//Boss Rewards minus factories
 			
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
+			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
+			&<Parts/BossRewards/Profaned/armor/cosmilitearmor.rules>/Part
 			
 			
 			//DEV PARTS

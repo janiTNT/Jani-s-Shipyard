@@ -188,11 +188,11 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 			    {
 			        Storage = TristeelStorage
-			        Quantity = 4
+			        Quantity = 2
 			    }
 				 {
 			        Storage = HyperiumStorage
-			        Quantity = 8
+			        Quantity = 4
 			    }
 			    {
 			        Storage = BatteryStorage
@@ -202,7 +202,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			]
 			ToStorage = CosmiliteStorage
 			ToQuantity = 1
-			Interval = { BaseValue=4; BuffType=Factory; BuffMode=Divide; }
+			Interval = { BaseValue=2; BuffType=Factory; BuffMode=Divide; }
 		}
 
 		ConvertEffects

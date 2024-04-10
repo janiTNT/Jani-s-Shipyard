@@ -1125,7 +1125,7 @@ PartToggles
 	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
 	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>4000</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 30</good>\n"\
-	"<white>Durability:</white><good> 4500</good>\n"\
+	"<white>Durability:</white><good> 2500</good>\n"\
 	"<white>Drone ROF:</white><good> 4</good><gray>/sec</gray>"
 	
 	DroneMedCannon = "<b>Standard Cannon Drone</b>\n\n"\
@@ -1142,7 +1142,7 @@ PartToggles
 	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
 	"<white>Drone Damage:</white> <good>2500</good><gray>/shot (</gray><good>8333</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 25</good>\n"\
-	"<white>Durability:</white><good> 4500</good>\n"\
+	"<white>Durability:</white><good> 3000</good>\n"\
 	"<white>Drone ROF:</white><good> 3.33</good><gray>/sec</gray>"
 	
 	DroneEletroCannon = "<b>Disruptor Eletro-Cannon Drone</b>\n\n"\
@@ -1160,7 +1160,7 @@ PartToggles
 	"<white>Drone Damage:</white> <good>600</good><gray>/shot (</gray><good>1710</good><gray>/sec)</gray>\n"\
 	"<white>Damage vs Shields:</white> <good>4050</good><gray>/shot (</gray><good>11k</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 30</good>\n"\
-	"<white>Durability:</white><good> 4000</good>\n"\
+	"<white>Durability:</white><good> 2000</good>\n"\
 	"<white>Drone ROF:</white><good> 2.85</good><gray>/sec</gray>"
 	
 	Laserdrone = "Laser Drone (4 drn 4 powr)"
@@ -1187,7 +1187,7 @@ PartToggles
 	"<white>Drone Range:</white> <good>90</good> <gray>metres</gray>\n"\
 	"<white>Drone Damage:</white> <good>550</good><gray>/shot (</gray><good>825</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 10</good>\n"\
-	"<white>Durability:</white><good> 1400</good>\n"\
+	"<white>Durability:</white><good> 800</good>\n"\
 	"<white>Drone ROF:</white><good> 1.5</good><gray>/sec</gray>"
 	
 	//DroneCombat2 = "Combat Drone Mk2\n\n<b>Requirements:</b>\n4 Steel\n1.6 Power\nBuild Time: 8s\n\n<b>Stats:</b>\n\nshots:25\nDrone ROF: 2 per second.\nDamage: 1200 Max"
@@ -1205,7 +1205,7 @@ PartToggles
 	"<white>Drone Range:</white> <good>100</good> <gray>metres</gray>\n"\
 	"<white>Drone Damage:</white> <good>672</good><gray>/shot (</gray><good>1344</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 25</good>\n"\
-	"<white>Durability:</white><good> 2200</good>\n"\
+	"<white>Durability:</white><good> 1000</good>\n"\
 	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
 	
 	//StellDrone = "Stell Micro Tank\n\n<b>Requirements:</b>\n4 Steel\n6 Bullets\n2 Power\nBuild Time: 10s\n\n<b>Stats:</b>\n\nshots:32\nDrone ROF: 1.5 per second.\nDamage: Max 2500\n\nExtremely slow, 'driving' on the backgroud"
