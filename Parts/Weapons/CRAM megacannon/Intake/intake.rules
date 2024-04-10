@@ -1,10 +1,10 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/Cram_Loader1x"
-	IconNameKey = "Parts/Cram_Loader1xIcon"
+	NameKey = "Parts/Cram_Intake"
+	IconNameKey = "Parts/Cram_IntakeIcon"
 	ID = janiTNT.CRAM_Intake1
 	EditorGroup = "WeaponsProjectile"
-	DescriptionKey = "Parts/Cram_Loader1xDesc"
+	DescriptionKey = "Parts/Cram_IntakeDesc"
 	Resources
 	[
 		[steel, 18]
@@ -136,7 +136,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			OperationalToggle = PowerToggle
 		}
-		LoadingConverterA
+		LoadingConverter
 		{
 			Type = ResourceConverter
 			OperationalToggle = PowerToggle
@@ -145,18 +145,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FromQuantity = 1
 			ToQuantity = 1
 			MinFromQuantityForConversion = 1
-			Interval = 0.05
-		}
-		LoadingConverterB//yes its a copy, for better throughput
-		{
-			Type = ResourceConverter
-			OperationalToggle = PowerToggle
-			FromStorage = AmmoStorage
-			ToStorage = ViaBuffsAmmoStorage
-			FromQuantity = 1
-			ToQuantity = 1
-			MinFromQuantityForConversion = 1
-			Interval = 0.05
+			Interval = 0.25
 		}
 		AmmoStorage
 		{

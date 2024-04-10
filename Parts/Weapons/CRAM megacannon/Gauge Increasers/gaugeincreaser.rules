@@ -1,10 +1,10 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/Cram_Connector"
-	IconNameKey = "Parts/Cram_ConnectorIcon"
+	NameKey = "Parts/Cram_GaugeIncreaser"
+	IconNameKey = "Parts/Cram_GaugeIncreaserIcon"
 	ID = janiTNT.CRAM_gaugeincrease
 	EditorGroup = "WeaponsProjectile"
-	DescriptionKey = "Parts/Cram_ConnectorDesc"
+	DescriptionKey = "Parts/Cram_GaugeIncreaserDesc"
 	Resources
 	[
 		[steel, 4]

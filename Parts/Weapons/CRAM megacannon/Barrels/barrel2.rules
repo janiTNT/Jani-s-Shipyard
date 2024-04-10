@@ -1,11 +1,11 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/CRAM_Firingpiece"
-	IconNameKey = "Parts/CRAM_FiringpieceIcon"
+	NameKey = "Parts/CRAM_Barrel2"
+	IconNameKey = "Parts/CRAM_Barrel2Icon"
 	ID = janiTNT.CRAM_barrel_2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	//OtherIDs = [big_cannon]
 	EditorGroup = "WeaponsProjectile"
-	DescriptionKey = "Parts/CRAM_FiringpieceDesc"
+	DescriptionKey = "Parts/CRAM_Barrel2Desc"
 	Resources
 	[
 		[steel, 64]

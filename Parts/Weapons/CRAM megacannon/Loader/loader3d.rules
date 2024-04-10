@@ -1,10 +1,10 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/Cram_Loader3x"
-	IconNameKey = "Parts/Cram_Loader3xIcon"
+	NameKey = "Parts/Cram_Loader3xD"
+	IconNameKey = "Parts/Cram_Loader3xDIcon"
 	ID = janiTNT.CRAM_loader_3x_double
 	EditorGroup = "WeaponsProjectile"
-	DescriptionKey = "Parts/Cram_Loader3xDesc"
+	DescriptionKey = "Parts/Cram_Loader3xDDesc"
 	Resources
 	[
 		[steel, 16]
