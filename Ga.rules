@@ -1,0 +1,21 @@
+{
+	Action = AddMany
+	AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
+	IgnoreIfNotExisting = false
+	ManyToAdd = &<gui/part_toggles_othermods.rules>/PartTogglesGA
+}
+{
+	Action = AddMany
+	AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+	IgnoreIfNotExisting = false
+	ManyToAdd = &<Parts/ModIntegration.rules>/PartsGA
+}
+{	Action = Overrides
+
+	OverrideIn = "<./Data/1123/planets.rules>/Styles"
+	
+	Overrides
+	{
+		sun_dead = &<as/planet_deadsun.rules>
+	}
+}

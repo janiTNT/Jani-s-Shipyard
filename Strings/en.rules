@@ -499,59 +499,73 @@ Parts
 	
 	CRAM_Firingpiece = "Customizable Reaper Ammo Mega Cannon - Firing piece"
 	CRAM_FiringpieceIcon = "CRAM Firing Piece"
-	CRAM_FiringpieceDesc = "Main part of a CRAM cannon. requires both to be fully loaded and the cooldown to be finished. Higher firepower can be obtained from using gauge increasers or packers."
+	CRAM_FiringpieceDesc = "Main part of a CRAM cannon. requires both to be fully loaded and the cooldown to be finished. Higher firepower can be obtained from using gauge increasers or packers."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CRAM_Barrel = "Custom Cannon Barrel"
 	CRAM_BarrelIcon = "Barrel"
-	CRAM_BarrelDesc = "Improves range and speed and accuracy of a CRAM cannon."
+	CRAM_BarrelDesc = "Improves range and speed and accuracy of a CRAM cannon."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CRAM_Barrel2 = "Custom Cannon Barrel Double Lenght"
 	CRAM_Barrel2Icon = "Barrel 2x"
-	CRAM_Barrel2Desc = "Extends a barrel by 2 blocks in a single block. double effect. (same per lenght)"
+	CRAM_Barrel2Desc = "Extends a barrel by 2 blocks in a single block. double effect. (same per lenght)"\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CRAM_barrelend = "Custom Cannon Barrel End"
 	CRAM_barrelendIcon = "Barrel End"
-	CRAM_barrelendDesc = "Decorative. looks better at the end and similar to a cosmoteer cannon."
+	CRAM_barrelendDesc = "Decorative. looks better at the end and similar to a cosmoteer cannon."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CRAM_HeavyBarrel = "Custom Cannon Heavy Barrel"
 	CRAM_HeavyBarrelIcon = "Heavy Barrel"
-	CRAM_HeavyBarrelDesc = "Double effect per barrel. higher hp."
+	CRAM_HeavyBarrelDesc = "Double effect per barrel. higher hp."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Connector = "Custom Cannon Connector"
 	Cram_ConnectorIcon = "Connector"
-	Cram_ConnectorDesc = "Connects to a block 2 blocks fowards. should eventually connect to a firing piece."
+	Cram_ConnectorDesc = "Connects to a block 2 blocks fowards. should eventually connect to a firing piece."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_ConnectorD = "Custom Cannon Connector Diagonal"
 	Cram_ConnectorDIcon = "Connector D."
-	Cram_ConnectorDDesc = "Connects to a block on the edge of the diagonal. should eventually connect to a firing piece."
+	Cram_ConnectorDDesc = "Connects to a block on the edge of the diagonal. should eventually connect to a firing piece."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_GaugeIncreaser = "CRAM Gauge Increase"
 	Cram_GaugeIncreaserIcon = "Gauge Increase"
-	Cram_GaugeIncreaserDesc = "Connects to the sides of a firing piece, or up to one gauge increaser in a straight line. increases the size of the barrel, affecting stats even ammo usage."
+	Cram_GaugeIncreaserDesc = "Connects to the sides of a firing piece, or up to one gauge increaser in a straight line. increases the size of the barrel, affecting stats even ammo usage."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Intake = "Custom Cannon Ammo Intake"
 	Cram_IntakeIcon = "Intake"
-	Cram_IntakeDesc = "Feeds Loaders remotely from a range. good for tight setups with no crew space."
+	Cram_IntakeDesc = "Feeds Loaders remotely from a range. good for tight setups with no crew space."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Loader1x = "Custom Cannon Chain loader"
 	Cram_Loader1xIcon = "Chain Loader"
-	Cram_Loader1xDesc = "Stores 20 bullets, functions like a chaingun magazine. high speed throughput. (10 bullets/s)"
+	Cram_Loader1xDesc = "Stores 20 bullets, functions like a chaingun magazine. high speed throughput. (10 bullets/s)"\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Loader3x = "Custom Cannon Loader"
 	Cram_Loader3xIcon = "Loader"
-	Cram_Loader3xDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. (2 bullets/s)"
+	Cram_Loader3xDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. (2 bullets/s)"\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Loader3xD = "Custom Cannon Dual Loader"
 	Cram_Loader3xDIcon = "Dual Loader"
-	Cram_Loader3xDDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. Feeds the same speed on both sides, best used when both are in use."
+	Cram_Loader3xDDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. Feeds the same speed on both sides, best used when both are in use."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Packer1x = "CRAM Payload Packer"
 	Cram_Packer1xIcon = "Packer"
-	Cram_Packer1xDesc = "Stores 20 bullets, Increases stats by a flat addition, focusing on penetration and health and only raising damage half as much"
+	Cram_Packer1xDesc = "Stores 20 bullets, Increases stats by a flat addition, focusing on penetration and health and only raising damage half as much"\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Cooler1x = "Custom Cannon TurboCooler"
 	Cram_Cooler1xIcon = "TurboCooler"
-	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon, but does not raise loading speed. requires power to function(currently does not need)"
+	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon, but does not raise loading speed. requires power to function(currently does not need)"\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	
 	
@@ -1046,6 +1060,9 @@ Inputs
 		resource_profanedcore = "Choose Divine Cores"
 		resource_cursedpage = "Choose Pages of Annihilation"
 		
+		resource_mod_GA_0 = "Choose Rocket Parts"
+		resource_mod_GA_1 = "Choose Ammo Boxes"
+		
 		DroneSmallLaser = "Select Drone: Small Laser"
 		DroneMedCannon = "Select Drone: Med Cannon"
 		DroneEletroCannon = "Select Drone: EletroCannon"
@@ -1165,6 +1182,9 @@ PartToggles
 	resource_astralbar = "Astral Bars"
 	resource_profanedcore = "Divine Cores"
 	resource_cursedpage = "Pages of Annihilation"
+	
+	resource_mod_GA_0 = "Rocket Parts"
+	resource_mod_GA_1 = "Ammo Boxes"
 	
 	//DroneSmallLaser = "Laser"
 	DroneSmallLaser = "<b>Laser Cannon Drone</b>\n\n"\

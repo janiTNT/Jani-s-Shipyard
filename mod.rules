@@ -37,7 +37,8 @@ CanBuild
 */
 
 Actions : &<inserter_compatibility_list.rules>/Actions
-&<Parrylist.rules>/Parrylist
+&<inserter_addon_list.rules>/Actions,
+&<Parrylist.rules>/Parrylist,
 [
 	{	Action = AddMany
 
@@ -233,6 +234,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/cosmilitearmor.rules>/Part
+			&<Parts/BossRewards/Profaned/armor/cosmilitearmor2.rules>/Part
 			
 			
 			//DEV PARTS
@@ -1399,6 +1401,19 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			janiTNT.hyperoid
 		]
 	}
+	
+	/*{
+		Action = AddMany
+		AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
+		IgnoreIfNotExisting = false
+		ManyToAdd = &<gui/part_toggles_othermods.rules>/PartTogglesGA
+	}
+	{
+		Action = AddMany
+		AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+		IgnoreIfNotExisting = false
+		ManyToAdd = &<Parts/ModIntegration.rules>/PartsGA
+	}*///REMEMBER TO CHANGE
 ]
 ShipLibraries
 [

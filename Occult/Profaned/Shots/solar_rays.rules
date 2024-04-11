@@ -39,10 +39,17 @@ BeamMediaEffects
 				VMode = Wrap
 			}
 			_displacementStrength = 1
-			_displacementSpeed = .09
+			_displacementSpeed = .2
+			
+			_additiveStrength = 1
+			_noiseScaleX = 0.02
+			_noiseScaleY = 2.5
+			_noiseScrollSpeed = -1.2
+			_noisePanSpeed = 0.8
+			_endFadeLength = 6
 
-			_color1 = [2, 3, 1, 255]
-			_color2 = [191, 168, 92, 255]
+			_color1 = [191/20, 168/20, 92/20, 255]
+			_color2 = [255/18, 229/18, 162/18, 255]
 			TargetBlendMode
 			{
 				SourceRgbFactor = SourceAlpha
@@ -69,7 +76,7 @@ BeamMediaEffects
 		LengthSmoothSpeed = 6
 		MinIntensity = -Infinity
 	}
-
+	
 	: 1
 	{
 		IsFancy = false
@@ -86,13 +93,13 @@ BeamMediaEffects
 				DestAlphaFactor = One
 				AlphaOperator = Add
 			}
-			_color1 = [2, 3, 1, 255]
-			_color2 = [191, 168, 92, 255]
+			_color1 = [191/20, 168/20, 92/20, 255]
+			_color2 = [255/18, 229/18, 162/18, 255]
 		}
 		CaptureBackBuffer = false
 	}
-	
-	/*{
+	/*
+	{
 		Type = Beam
 		BeamSprite
 		{
@@ -104,13 +111,13 @@ BeamMediaEffects
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
 			Size = [100%, 50]
-			_extraBeginLength = (&Size/1) * 2
+			_extraBeginLength = 5
 			_extraEndLength = (&Size/1) * 2
 			VertexColor = [191, 168, 92]
-			_z = 1
-			_litReflectiveStrength = 0.8
+			_z = 2
+			_litReflectiveStrength = 0.1
 			_litAdditiveStrength = 0
-			_unlitAdditiveStrength = 0
+			_unlitAdditiveStrength = 0.003
 			_nrmlStrengthLimit = 1.0
 			TargetBlendMode
 			{

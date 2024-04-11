@@ -1,19 +1,29 @@
 Actions
 [
-	{
-		Action = Overrides
-		OverrideIn = "<../../../workshop/content/799600/2918609970/terran/storage_missile_he/storage_missile_he.rules>/Part/Components"
-		IgnoreIfNotExisting = true
-		Overrides
-		{
-			TrueHEMissileStorage
+	/*{
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2879478059/mod.rules>/Actions"//GA addon.
+		IgnoreIfNotExisting = false
+		ManyToAdd
+		[
 			{
-				Type = MultiResourceStorage
-				ResourceType = missile_part_he
-				ResourceStorages = [ HEMissileStorage__Aephiex ]
-				AddMode = PrioritizeLeastEmptyCapacity
-				RemoveMode = PrioritizeMostEmptyCapacity
+				Action = AddMany
+				AddTo = "<gui/game/parts/part_toggles.rules>/PartToggles"
+				IgnoreIfNotExisting = false
+				ManyToAdd = &<gui/part_toggles_othermods.rules>/PartTogglesGA
 			}
-		}
-	}
+			{
+				Action = AddMany
+				AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+				IgnoreIfNotExisting = false
+				ManyToAdd = &<Parts/ModIntegration.rules>/PartsGA
+			}
+		]
+	}*/
+	/*{
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2879478059/parts/parts.rules>/Parts"//GA addon.
+		IgnoreIfNotExisting = false
+		ManyToAdd = &<Parts/ModIntegration.rules>/PartsGA
+	}*/
 ]

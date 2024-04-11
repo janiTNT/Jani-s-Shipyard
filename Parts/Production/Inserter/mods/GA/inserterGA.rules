@@ -1,0 +1,107 @@
+Part : <../../inserter.rules>/Part
+{
+	NameKey = "Parts/InserterGA"
+	IconNameKey = "Parts/InserterGAIcon"
+	ID = janiTNT.ModdedInserter_GA // Part IDs  somthing something
+	OtherIDs = []
+	DescriptionKey = "Parts/InserterGADesc"
+	Resources
+	[
+		[steel, 20]
+		[coil, 4]
+		[cut.tristeel, 10]
+	]
+	Components : &<../../inserter_base.rules>/Components
+	{	
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		PortBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = PowerportBuff
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = PortBuffToggle
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				BatteryConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = battery
+					Storage = BatteryStorage
+					DefaultPriority = &/PRIORITIES/Factory_Supply
+					ResupplyThreshold = 500
+					OperationalToggle = PowerToggle
+				}
+			}
+		}
+		
+		ModType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_GA"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		rocketToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 0
+		}
+		rocketComponents
+		{
+			Type = ToggledComponents
+			Toggle = rocketToggle
+			IncludeInBlueprints = true
+			Components = &<rocket.rules>/Components
+		}
+		
+		ammo_boxToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 1
+		}
+		bullet_boxComponents
+		{
+			Type = ToggledComponents
+			Toggle = ammo_boxToggle
+			IncludeInBlueprints = true
+			Components = &<bullet_box.rules>/Components
+		}
+	}
+}

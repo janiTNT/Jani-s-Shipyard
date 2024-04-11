@@ -26,7 +26,7 @@ Components
 					RandomOptions
 					[
 						{
-							RandomWeight = 4
+							RandomWeight = 40
 							HitEffects
 							[
 								{
@@ -38,12 +38,24 @@ Components
 							]
 						}
 						{
-							RandomWeight = 1
+							RandomWeight = 10
 							HitEffects
 							[
 								{
 									Type = SpawnBullets
 									Bullet = &<providencehealing.rules>
+									Count = 1
+									InheritVelocity = true
+								}
+							]
+						}
+						{
+							RandomWeight = 8
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<profaned_flames.rules>
 									Count = 1
 									InheritVelocity = true
 								}

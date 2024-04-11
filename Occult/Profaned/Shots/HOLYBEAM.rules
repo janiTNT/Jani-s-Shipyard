@@ -98,13 +98,13 @@ BeamMediaEffects
 		BeamSprite
 		{
 			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
-			Size = [100%, 12]
+			Size = [100%, 6.5*5]
 			VertexColor = [255, 255, 255, 255]
 
 			_extraBeginLength = 2
 			_extraEndLength = 5
 			_extraEndArc = 3d
-			_minAlpha = .5
+			_minAlpha = .25
 
 			Texture
 			{
@@ -115,10 +115,17 @@ BeamMediaEffects
 				VMode = Wrap
 			}
 			_displacementStrength = 1
-			_displacementSpeed = .09
+			_displacementSpeed = .2
+			
+			_additiveStrength = 1
+			_noiseScaleX = 0.02
+			_noiseScaleY = 2.5
+			_noiseScrollSpeed = -1.2
+			_noisePanSpeed = 0.8
+			_endFadeLength = 6
 
-			_color1 = [2*1.25, 3*1.25, 1*1.25, 255]
-			_color2 = [191*1.25, 168*1.25, 92*1.25, 255]
+			_color1 = [191/20, 168/20, 92/20, 255]
+			_color2 = [255/18, 229/18, 162/18, 255]
 			TargetBlendMode
 			{
 				SourceRgbFactor = SourceAlpha
@@ -137,8 +144,8 @@ BeamMediaEffects
 				UVMode = Wrap
 			}
 		}
-		FadeInTime = 1
-		FadeOutTime = 0.25
+		FadeInTime = .25
+		FadeOutTime = .25
 		//SpeedOverIntensity = [1, 1]
 		Bucket = TractorBeam
 		CaptureBackBuffer = true
@@ -162,8 +169,8 @@ BeamMediaEffects
 				DestAlphaFactor = One
 				AlphaOperator = Add
 			}
-			_color1 = [2, 3, 1, 255]
-			_color2 = [191, 168, 92, 255]
+			_color1 = [191/20, 168/20, 92/20, 255]
+			_color2 = [255/18, 229/18, 162/18, 255]
 		}
 		CaptureBackBuffer = false
 	}

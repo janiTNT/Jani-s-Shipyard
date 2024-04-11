@@ -3,6 +3,7 @@ Range = 800
 IdealRange = [75, 190]
 IdealRadius = [5, 50]
 Speed = 250
+ForgetTarget = true
 
 Components
 {
@@ -21,6 +22,22 @@ Components
 	{
 		Type = DeathByLifetime
 		Lifetime = [4, 4.8]
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 50d
+		Delay = .5
+		ModifiesLinearVelocity = true
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 1
+		Range = 80
+		TargetTypesByPriority = [ShipParts]
 	}
 
 	Hit
@@ -167,37 +184,91 @@ Components
 		FinishedPenetratingStructural = &PenetratingStructural
 	}
 
+	Sprite1
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 500d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [6, 6]
+			TargetBlendMode = Add
+			VertexColor = [255*1.5, 205*1.5, 128*1.5]
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 3
+	}
+	
+	Sprite2 : & Sprite1
+	{
+		Spin = -274d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [5.75, 5.75]
+			TargetBlendMode = Add
+			VertexColor = [255*1.5, 205*1.5, 128*1.5]
+		}
+	}
+	
+	Sprite3 : & Sprite1
+	{
+		Spin = -612d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightballs.png"
+				MipLevels = max
+			}
+			Size = [8.5, 8.5]
+			TargetBlendMode = Add
+			VertexColor = [255*1.5, 205*1.5, 128*1.5]
+		}
+	}
+
 	GlowSprite
 	{
 		Type = Sprite
 		RenderBucket = BulletUpper4
 		Z = 1
 		IsLight = true
-		Offset = [-1.5, 0]
 		Sprite
 		{
 			Texture
 			{
-				File = "./Data/common_effects/particles/blob.png"
+				File = "./data/ships/common/light_blob.png"
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [22, 22]
-			VertexColor = [255, 200, 100]
+			Size = [18, 18]
+			VertexColor = [255*4, 205*4, 128*4]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
-			_litReflectiveStrength = 24
+			_litReflectiveStrength = 1
 			_litAdditiveStrength = 0.05
-			_unlitAdditiveStrength = 0.125
+			_unlitAdditiveStrength = 0.015
 		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = .5
 	}
 
-	MediaEffects
+	/*MediaEffects
 	{
 		Type = MediaEffects
 		MediaEffects
 		[
 			&<profaned_flames_trail.rules>
 		]
-	}
+	}*/
 }

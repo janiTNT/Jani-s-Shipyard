@@ -14,12 +14,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	IsRotateable = false
 	SelectionTypeID = "armor"
-	MaxHealth = 4000 * 8
+	MaxHealth = 4000 * 4
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = 50%, heat = 90%}//solar resistant
+	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }, heat = 90%, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; };}//solar resistant, higher explosive resistance
 	TypeCategories = [armor]
 	Flammable = false
-	InitialPenetrationResistance = 7
+	InitialPenetrationResistance = { BaseValue=14; MinValue = 14, MaxValue = 28; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CreatePartPerTileWhenGrabbed = ""
 	CrewSpeedFactor = 0
@@ -29,7 +29,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations = []
 	GeneratorRequiresDoor = false
 	IgnoreRotationForMirroredSelection = true
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [Jani_BossProfanedHealthBonus]
 	EditorIcon
 	{
 		Texture
@@ -41,6 +41,54 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		DamageTrigger
+		{
+			Type = DamageTrigger
+		}
+		
+		RechargeResistanceTimer
+		{
+			Trigger = DamageTrigger
+			Type = DelayTrigger
+			Delay = 0.5
+		}
+		
+		IsntBeingShot
+		{
+			Type = TriggeredToggle
+			OffTrigger = RechargeResistanceTimer
+			OnTrigger = DamageTrigger
+			StartsOn = false
+		}
+		
+		DamageResistanceTween
+		{
+			Type = ValueTween
+			IsOnToggle = IsntBeingShot
+			OnTweenDuration = 1.5
+			OffTweenDuration = 5
+			/*OffValue = 0
+			OnValue = 1*/
+			StartingValue = 0
+		}
+		
+		HealthBuffFinalProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Jani_BossProfanedHealthBonus
+			BuffAmount = -85%
+			BuffMultiplier = DamageResistanceTween
+		}
+		
+		DamageResistanceProgressBar
+		{
+			Type = ProgressBar
+			//OperationalToggle = IsntBeingShot
+			ShowProgressFor = DamageResistanceTween
+			Invert = true
+		}
+		
+		
 		Graphics
 		{
 			Type = Graphics
@@ -78,22 +126,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			HitEffects
 			[
 				{
-					Type = ExplosiveDamage//the good
-					TotalDamage = 3000
-					Radius = 10
-					Slices = 1
-					Filter
-					{
-						Ships = false
-						Shields = false
-						Bullets = true
-						OnlyBulletCategories = [missile, laser, bullet, mine]
-						Crew = false
-						Enemies = true
-						Junk = true
-					}
-				}
-				{
 					Type = AreaFires//the bad
 					FireChancePerTile = .2
 					Radius = 5
@@ -119,6 +151,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		AOEResist = (&~/Part/DamageResistances/explosive) * 100
+		AOEResist = (&~/Part/DamageResistances/explosive/BaseValue) * 100
 	}
 }
