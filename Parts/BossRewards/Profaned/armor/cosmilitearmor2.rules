@@ -16,14 +16,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000 * 16
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; };}//solar resistant
-	TypeCategories = [armor]
 	Flammable = false
 	InitialPenetrationResistance = { BaseValue=15; MinValue = 15, MaxValue = 30; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }
 	TypeCategories = [armor]
 	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
 	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
 	IsRotateable = true
-	Flammable = false
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CreatePartPerTileWhenGrabbed = ""
 	CrewSpeedFactor = 0
