@@ -48,7 +48,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 5000
+					TotalDamage = 7500
 					Radius = 4
 					ImpulsePerNDamage = 10
 					NDamage = 500
@@ -131,6 +131,71 @@ Components
 		MediaEffects
 		[
 			&<./data/shots/missile_he/particles/missile_he_thruster_plume.rules>
+			&<./data/shots/missile_he/particles/missile_he_thruster_fire.rules>
+			: &/JANI_COMMON/TrailBase/Particles
+			{
+				Def : ^/0/Def
+				{
+					Updaters : ^/0/Updaters
+					[
+						{
+							Type = Lifetime
+							LifeInOut = life
+							Lifetime = 0.1
+							Name = Lifetime
+							Enabled = true
+							UpdateAfterInit = false
+						}
+						{
+							Type = Operator
+							DataType = Vector2
+							AIn = location
+							BIn = velocity
+							ResultOut = location
+							Operator = AddDt
+							Name = "Apply velocity"
+							Enabled = true
+							UpdateAfterInit = false
+						}
+						{
+							Type = Lerp
+							LerpIn = life
+							DataOut = color
+							Invert = false
+							ValueType = Color
+							FromValue
+							{
+								Rf = 1
+								Gf = 0.5
+								Bf = 0.1
+								Af = 0.5
+							}
+							ToValue
+							{
+								Rf = 0.8
+								Gf = 0
+								Bf = 0.5
+								Af = 0
+							}
+							Name = ActualColorLerp
+							Enabled = true
+							UpdateAfterInit = true
+						}
+					]
+					Renderer : ^/0/Renderer
+					{
+						BaseSize
+						{
+							X = 6
+							Y = 1
+						}
+					}
+				}
+				EmitterDef : ^/0/EmitterDef
+				{
+					EmitPerSecond = 60
+				}
+			}
 		]
 	}
 }

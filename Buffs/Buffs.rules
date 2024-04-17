@@ -208,6 +208,8 @@ JaniCRAM_BarrelGauge //Actual Gauge.
 {
 	CombineMode = Add
 	BaseValue = 0%
+	RectBorderColor = [84, 128, 255, 160]
+	RectFillColor = [0, 0, 255, 64]
 }
 JaniCRAM_ReverseBarrelGauge //Visual Barrel Thickness
 {
@@ -219,6 +221,9 @@ JaniCRAM_StatMultiplier // Multiplier for Stats for cannon.
 	CombineMode = Add
 	Exponent = 1.5 // special thing so scaling is "cubed" and barrel is "squared" rooted respectively
 	BaseValue = 0%
+	
+	IconTextFormatKey = "BuildBox/CustomCannon_AmmoFmt"
+	IconTextMultiply = 2000
 }
 JaniCRAM_VelocityPre //Bullet SPEED precalc
 {
@@ -230,12 +235,18 @@ JaniCRAM_Velocity //Bullet SPEED
 	CombineMode = Add
 	Exponent = 0.8
 	BaseValue = 0%
+	
+	IconTextFormatKey = "BuildBox/CustomCannon_SpeedFmt"
+	IconTextMultiply = 100
 }
 JaniCRAM_Range //Bullet RANGE
 {
 	CombineMode = Add
 	Exponent = 0.6
 	BaseValue = 15%
+	
+	IconTextFormatKey = "BuildBox/CustomCannon_RangeFmt"
+	IconTextMultiply = 100
 }
 JaniCRAM_Accuraccy //Bullet ACCURACCY
 {
@@ -256,6 +267,8 @@ JaniCRAM_DamageMain //Bullet Damage in general
 {
 	CombineMode = Add
 	BaseValue = 0%
+	IconTextFormatKey = "BuildBox/CustomCannon_DamageFmt"
+	IconTextMultiply = 100
 }
 JaniCRAM_AOEMain //Bullet explosive effect range
 {
@@ -283,6 +296,8 @@ JaniCRAM_CoolingSpeedBuff
 {
 	CombineMode = Add
 	BaseValue = 0%
+	RectBorderColor = [84, 255, 0, 160]
+	RectFillColor = [255, 0, 0, 64]
 }
 JaniCRAM_ReloadSpeedFinal
 {
@@ -291,7 +306,8 @@ JaniCRAM_ReloadSpeedFinal
 }
 JaniCRAM_IntakeConnection
 {
-
+	RectBorderColor = [84, 255, 0, 100]
+	RectFillColor = [0, 255, 0, 32]
 }
 
 Jani_BossArmorHealthBonus //Armor Stage 2

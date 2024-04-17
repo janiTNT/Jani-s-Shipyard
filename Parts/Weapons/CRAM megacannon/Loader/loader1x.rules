@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	MaxHealth = 1000
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_IntakeConnection]
-	TypeCategories = [CRAM]
+	TypeCategories = [CRAM, uses_ammo]
 	AllowedDoorLocations
 	[
 		//[-1, 0]
@@ -391,6 +391,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					MirrorU = true
 				}
 			]
+		}
+		VisualCoolerBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedBuff
+			BlueprintsOnly = true // Only for display purposes.
+			//OperationalToggle = BatteryStorage
+			BuffArea = [0, -1, 1, 1]
+			BuffAmount = 0
+			ShowBuffRange = true
 		}
 		AmmoStorage__CRAM_CHAINLOADER
 		{

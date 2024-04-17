@@ -16,6 +16,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 500
 	ExplosiveDamageAbsorption = 100%
 	ExplosiveDamageResistance = 50%
+	
+	SalvageProgressMediaEffects
+	
 	TypeCategories = [armor]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Flammable = false
@@ -124,6 +127,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			File = "blueprints8.png"
 			Size = [1, 1]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
 		}
 
 		/*ConstructionStructureSprite

@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	MaxHealth = 1000
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_ChainLoaderCount, JaniCRAM_ChainLoaderReady, JaniCRAM_CoolingSpeedBuff]
-	TypeCategories = [CRAM]
+	TypeCategories = [CRAM, CRAM_PACKER]
 	AllowedDoorLocations
 	[]
 	EditorIcon
@@ -119,6 +119,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = bullet
 			PartLocation = [0, -1]
 			ComponentID = CombinedCRAMAmmoStorage
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		PackerMaxed
 		{
@@ -126,6 +130,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsOnWhenNotConnected = true
 			PartLocation = [0, -1]
 			ComponentID = PackersMaxedToggleProxy
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		PackerCountBuff
 		{
@@ -134,6 +142,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			//ChainsFromBuffType = JaniCRAM_PackerCount
 			BuffAmount = 1
+			Criteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		PackerReadyBuff
 		{
@@ -143,12 +155,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			//ChainsFromBuffType = JaniCRAM_PackerReady
 			BuffAmount = 1
+			Criteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		PackerCRAMFiredTriggerProxy
 		{
 			Type = TriggerProxy
 			PartLocation = [0, -1]
 			ComponentID = CRAMFiredTriggerProxy
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		PackerEatsYourAmmo
 		{
@@ -165,6 +185,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			ChainsFromBuffType = JaniCRAM_CoolingSpeedBuff
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Add; }
+			ShowBuffRange = true
+			Criteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		ChainLoaderCountBuff
 		{
@@ -173,6 +198,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			ChainsFromBuffType = JaniCRAM_ChainLoaderCount
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ChainLoaderCount; BuffMode=Add; }
+			Criteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		ChainLoaderReadyBuff
 		{
@@ -181,6 +210,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -1, 1, 1]
 			ChainsFromBuffType = JaniCRAM_ChainLoaderReady
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ChainLoaderReady; BuffMode=Add; }
+			Criteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		CombinedCRAMAmmoStorageToggle
 		{
@@ -188,6 +221,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsOnWhenNotConnected = true
 			PartLocation = [0, -1]
 			ComponentID = CombinedCRAMAmmoStorageToggle
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		ChainLoaderMaxedToggleProxy
 		{
@@ -195,12 +232,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsOnWhenNotConnected = true
 			PartLocation = [0, -1]
 			ComponentID = ChainLoaderMaxedToggleProxy
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		CRAMFiredTriggerProxy
 		{
 			Type = TriggerProxy
 			PartLocation = [0, -1]
 			ComponentID = CRAMFiredTriggerProxy
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 		CRAM_IsFiringTimer
 		{
@@ -208,6 +253,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsOnWhenNotConnected = true
 			PartLocation = [0, -1]
 			ComponentID = CRAM_IsFiringTimer
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
 		}
 	}
 }

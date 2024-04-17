@@ -14,9 +14,9 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	IsRotateable = false
 	SelectionTypeID = "armor"
-	MaxHealth = 4000 * 4
+	MaxHealth = 4000 * 3
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }, heat = 90%, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; };}//solar resistant, higher explosive resistance
+	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }, heat = 95%, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; };}//solar resistant, higher explosive resistance
 	TypeCategories = [armor]
 	Flammable = false
 	InitialPenetrationResistance = { BaseValue=14; MinValue = 14, MaxValue = 28; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }
@@ -76,7 +76,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = Jani_BossProfanedHealthBonus
-			BuffAmount = -85%
+			BuffAmount = -90%
 			BuffMultiplier = DamageResistanceTween
 		}
 		

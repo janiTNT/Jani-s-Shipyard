@@ -229,13 +229,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffAmount ={ BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
 		}
 		
-		TurretRotationBuffProvider
+		/*TurretRotationBuffProvider
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_TurretRotation
 			BuffAmount = { BaseValue=0.15; BuffType=JaniCRAM_BarrelMassFinal; BuffMode=Multiply; }
 			//BuffMultiplier = GaugeBuffValue
-		}
+		}*/
 
 		IsOperational
 		{
@@ -842,7 +842,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = EmitterSelfProxyChainable
 			//Rotation = 90d
 			Trigger = CRAMFiredTriggerProxy
-			Location = [1, 0]
+			Location = [2, 0]
 			
 			MediaEffectsFactor = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; }
 
@@ -871,49 +871,54 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Offset
 		{
 			Type = Graphics
-			ChainedTo = TurretSelfProxyChainable
+			ChainedTo = WeaponSelfProxyChainable
 			Location = [1.5, -0.5]
 			Rotation = 90d
 		}
 
-		Turret
+		Weapon
 		{
-			Type = TurretWeapon
+			Type = FixedWeapon
 			Location = [.5, .5] // Relative to upper-left corner of unrotated part.
 			Rotation = -90d // Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval = { BaseValue=10; BuffType=JaniCRAM_ReloadSpeedFinal; BuffMode=Divide; }
-			FiringArc = 5d
-			RotateSpeed = { BaseValue=30d; BuffType=JaniCRAM_TurretRotation; BuffMode=Divide; }
+			//FiringArc = 5d
+			//RotateSpeed = { BaseValue=30d; BuffType=JaniCRAM_TurretRotation; BuffMode=Divide; }
 			FireThresholdAngle = 3d
 			AIFirepowerRating = { BaseValue=8000; BuffType=JaniCRAM_StatMultiplier; BuffMode=Multiply; }
-			Emitter = TurretEmitterProxy
+			Emitter = WeaponEmitterProxy
 			FirePermissionToggle = CanFire
 			IgnoreFriendlyShipLowLOSChecks = true
 
-			AutoTargets
-			[
-				{
-					TargetType = ShipParts
-					Toggle = AutoTargetToggle
-				}
-			]
-
-			BlueprintArcSprite
+			AutoTarget
 			{
-				Texture = &/INDICATORS/WeaponArc
-				Size = [0, 1.5]
-				Color = [255, 0, 0, 63]
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
 			}
-			BlueprintArcRadius = 10
-			BlueprintArcSpriteSegments = 64
 
-			CoverageSectorArc
+			CoverageLine
 			{
-				Texture = &/INDICATORS/VerticalGradient
-				VertexColor = [255, 255, 255, 51]
-				QuadCount = 64
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
 			}
 		}
 		
@@ -1014,7 +1019,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BulletEmitter
 			ChainedTo = EmitterSelfProxy
 			FireTrigger // nuh uh
-			GetTargetFrom = Turret
+			GetTargetFrom = Weapon
 			Location = [0.5, 0]
 			Rotation = -90d
 			OperationalToggle = IsOperational
@@ -1026,20 +1031,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//Recoil = 80
 		}*/
 		
-		TurretSelfProxyChainable
+		WeaponSelfProxyChainable
 		{
 			Type = ChainableProxy
-			ComponentID = Turret
+			ComponentID = Weapon
 		}
 
 		ReloadProgressBar
 		{
 			Type = ProgressBar
 			OperationalToggle = IsOperational
-			ShowProgressFor = Turret
+			ShowProgressFor = Weapon
 		}
 		
-		TurretEmitterProxy
+		WeaponEmitterProxy
 		{
 			Type = EmitterProxy
 			ComponentID = BulletEmitter
@@ -1145,7 +1150,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of ammo.
 				/*{
 					Toggle = AmmoPrereq
-					Delay = &~/Part/Components/Turret/FireInterval
+					Delay = &~/Part/Components/Weapon/FireInterval
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoAmmo
@@ -1169,8 +1174,8 @@ BaseBulletEmitter
 {
 	Type = BulletEmitter
 	ChainedTo = EmitterSelfProxy
-	FireTrigger = Turret
-	GetTargetFrom = Turret
+	FireTrigger = Weapon
+	GetTargetFrom = Weapon
 	Location = [0.5, 0]
 	Rotation = -90d
 	OperationalToggle = IsOperational

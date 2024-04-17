@@ -214,7 +214,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			OperationalToggle = BeamEmitter
 			Location = [0, 0]
-			Angle = 1.5d
+			Angle = 1d
 			Interval = 5 / 4
 			ResetWhenOperational = true
 		}

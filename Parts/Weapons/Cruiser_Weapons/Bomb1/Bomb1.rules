@@ -169,7 +169,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 8
 			FiringArc = 360d
-			RotateSpeed = 45d //true
+			RotateSpeed = infinity
 			FireThresholdAngle = 45d
 			AIFirepowerRating = 1000
 			Emitter = BeamEmitter

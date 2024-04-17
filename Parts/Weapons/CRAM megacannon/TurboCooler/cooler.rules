@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	MaxHealth = 1000
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	TypeCategories = [CRAM]
+	TypeCategories = [CRAM, uses_power]
 	AllowedDoorLocations
 	[
 		[-1, 0]
@@ -72,6 +72,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//OperationalToggle = BatteryStorage
 			BuffArea = [-1, -1, 1, 1]
 			BuffAmount = 1
+			ShowBuffRange = true
 		}
 		CoolerBuffB
 		{
@@ -80,6 +81,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//OperationalToggle = BatteryStorage
 			BuffArea = [1, -1, 1, 1]
 			BuffAmount = 1
+			ShowBuffRange = true
 		}
 		BatteryStorage
 		{

@@ -117,7 +117,7 @@ HitOperational
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 4000
+			TotalDamage = 3500
 			Radius = 4
             Slices = 1
 			DamageType = default

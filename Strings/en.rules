@@ -759,7 +759,7 @@ Parts
 	FTL_pikebeamIcon = "'Pike' Beam"
 	FTL_pikebeamLeftIcon = "'Pike' Beam (L)"
 	FTL_pikebeamLEftALTIcon = "'Pike' Beam (S)"
-	FTL_pikebeamDesc = "A long ranged, long fire time beam with moderate damage, however comes with the downside of having a inprecise aim, as its beam swings from side to side."\
+	FTL_pikebeamDesc = "A long ranged, long fire time beam with moderate damage, however comes with the downside of being a bit innacurate, as its beam swings from side to side by small amounts."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_dirkpin = "'Dirk' Pinpoint Beam"
@@ -841,7 +841,7 @@ Parts
 	
 	SuperheavyBrick = "Mini-Anchor Cosmic Weights"
 	SuperheavyBrickIcon = "Cosmic Weights"
-	SuperheavyBrickDesc = "Its just a 500 ton 1x1 block that is very overpriced. uses some of the heaviest materials for the variety of uses this dead weight can do, such as show off how much weight your ship can push, or just pretend it can."\
+	SuperheavyBrickDesc = "Its just a 2000 ton 1x1 block that is very overpriced. uses some of the heaviest materials for the variety of uses this dead weight can do, such as show off how much weight your ship can push, or just pretend it can."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	//---------------------------------------------
@@ -876,6 +876,14 @@ Parts
 	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
 	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
 	
+	CosmiliteArmor = "Heavy Cosmilite Armor"
+	CosmiliteArmorIcon = "Cosmilite Armor"
+	CosmiliteArmorDesc = "Heavy armor with a lot of hitpoints. Increases damage resistance against damage based on how many blocks of cosmilite armor is nearby. can affect a select number of other boss armor."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	ProfanedArmor = "High Resistance Profaned Armor"
+	ProfanedArmorIcon = "Profaned Armor"
+	ProfanedArmorDesc = "Armor that"
 	
 }
 PartColors
@@ -1468,6 +1476,17 @@ JaniBossShipsTip = "Boss and Hyperoid Guardian ships that come with Jani's Shipy
 Buff
 {
 	Connected = "Connected"
+}
+BuildBox// Modular Missiles guided towards the right track. thanks
+{
+	CustomCannon_DamageFmt = "<red><image name='jani_customcannon_damage' colored='true' /><good>+{0:0}%</good>"\
+	"\n\n\n\n"
+	CustomCannon_RangeFmt = "<blue><image name='jani_customcannon_range' colored='true' /><good>+{0:0}%</good>"\
+	"\n\n\n"
+	CustomCannon_SpeedFmt = "<yellow><image name='jani_customcannon_speed' colored='true' /><good>+{0:0}%</good>"\
+	"\n\n"
+	CustomCannon_AmmoFmt = "<red><image name='jani_customcannon_ammo' colored='true' /><good>+{0:0}%</good>"\
+	"\n"
 }
 //Misc
 //{

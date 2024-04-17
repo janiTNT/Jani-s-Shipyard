@@ -41,13 +41,13 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 17.5 * 0.25
+		Acceleration = 20 * 0.25
 	}
 
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = 20
+		Lifetime = 22
 		OnDeath = &../Hit/HitFriendly
 	}
 

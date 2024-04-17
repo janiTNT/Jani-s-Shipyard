@@ -2,24 +2,27 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/CosmiliteArmor"
 	IconNameKey = "Parts/CosmiliteArmorIcon"
-	ID = janiTNT.cosmilite_armor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ID = janiTNT.cosmilite_armor_wedge // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "BossParts"
 	DescriptionKey = "Parts/CosmiliteArmorDesc"
 	Resources
 	[
-		[comilitebar, 8]
-		[steel, 4]
+		[comilitebar, 4]
+		[steel, 2]
 	]
 	AIValueFactor = 0
 	Size = [1, 1]
-	IsRotateable = false
 	SelectionTypeID = "armor"
-	MaxHealth = 4000 * 8
+	AllowedContiguity = [Right, Bottom]
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = cosmoteer.structure_wedge
+	MaxHealth = 4000 * 6 / 2
+	ConstructionDuration = 8 / 40
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; };}//solar resistant
 	TypeCategories = [armor]
 	Flammable = false
-	InitialPenetrationResistance = { BaseValue=15; MinValue = 15, MaxValue = 30; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }
+	InitialPenetrationResistance = { BaseValue=18; MinValue = 18, MaxValue = 36; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CreatePartPerTileWhenGrabbed = ""
 	CrewSpeedFactor = 0
@@ -27,27 +30,48 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	IsWalled = true
 	IsSelfDestructible = false
 	AllowedDoorLocations = []
+	IsRotateable = true
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+	]
 	GeneratorRequiresDoor = false
-	IgnoreRotationForMirroredSelection = true
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
 	ReceivableBuffs : ^/0/ReceivableBuffs [Jani_BossArmorHealthBonus]
 	EditorIcon
 	{
 		Texture
 		{
-			File = "armor.png"
+			File = "armorw1.png"
 			SampleMode = Linear
 		}
 		Size = [32, 32]
 	}
 	Components : ^/0/Components
 	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 1]
+				[0, 1]
+			]
+		}
+		
 		CosmiliteArmorBuffProvider
 		{
 			Type = CircleBuffProvider
 			BuffType = Jani_BossArmorHealthBonus
-			BuffAmount = 1.5%
-			BuffRadius = 4
-			Falloff = 1
+			BuffAmount = 1.05% / 2
+			BuffRadius = 5
+			//Falloff = 1
 		}
 		
 		Graphics
@@ -60,25 +84,25 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "armor.png"
+						File = "armorw_f1.png"
 						Size = [1, 1]
-						VertexColor = [118*1.4,74*1.4, 255*1.4]
 					}
 				]
 			}
 			Walls
 			{
-				Layer = "walls"
+				Layer = "external_walls"
 				DamageLevels
 				[
 					{
-						File = "armor.png"
+						File = "armorw1.png"
+						NormalsFile = "./data/ships/terran/armor_wedge/external_wall_normals.png"
 						Size = [1, 1]
-						VertexColor = [118*1.4,74*1.4, 255*1.4]
+						UVRotation = 0
 					}
 				]
 			}
-			Roof = &<./data/ships/terran/armor/armor.rules>/Part/Components/Graphics/Roof
+			Roof = &<./data/ships/terran/armor_wedge/armor_wedge.rules>/Part/Components/Graphics/Roof
 		}
 
 		DestroyedEffects
@@ -91,7 +115,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "./data/ships/terran/armor/blueprints.png"
+			File = "./data/ships/terran/armor_wedge/blueprints.png"
 			Size = [1, 1]
 		}
 	}

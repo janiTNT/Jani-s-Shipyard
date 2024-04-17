@@ -1,7 +1,7 @@
 ﻿ID = "janiTNT.TechMod"
 Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.19b"
+Version = "Modern 1.20"
 Logo = "newlogo.png"
 CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
@@ -37,7 +37,6 @@ CanBuild
 */
 
 Actions : &<inserter_compatibility_list.rules>/Actions
-&<inserter_addon_list.rules>/Actions,
 &<Parrylist.rules>/Parrylist,
 [
 	{	Action = AddMany
@@ -233,8 +232,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
-			&<Parts/BossRewards/Profaned/armor/cosmilitearmor.rules>/Part
-			&<Parts/BossRewards/Profaned/armor/cosmilitearmor2.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor2.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmorwedge.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmortri.rules>/Part
+			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
 			
 			
 			//DEV PARTS
@@ -477,7 +479,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 
 		OverrideIn = "<gui/text_sprites.rules>"
 
-		Overrides
+		Overrides : &<gui/CRAM indicators/text_sprites.rules>
 		{
 			janiwh
 			{
@@ -552,7 +554,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	{
 		Action = Overrides
 		OverrideIn = "<./Data/buffs/buffs.rules>"
-		Overrides = &<Buffs/Buffs.txt>
+		Overrides = &<Buffs/Buffs.rules>
 	}
 	//Aephiex Stuff
 	{

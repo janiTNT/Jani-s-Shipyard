@@ -1,0 +1,93 @@
+jani_customcannon_damage
+{
+	Texture
+	{
+		File = "damage.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+
+jani_customcannon_range
+{
+	Texture
+	{
+		File = "range.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+jani_customcannon_accuracy
+{
+	Texture
+	{
+		File = "accuracy.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+jani_customcannon_speed
+{
+	Texture
+	{
+		File = "speed.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+jani_customcannon_health
+{
+	Texture
+	{
+		File = "health.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+jani_customcannon_penetration
+{
+	Texture
+	{
+		File = "penetration.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+jani_customcannon_ammo
+{
+	Texture
+	{
+		File = "ammo.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+
+jani_customcannon_ammopacker
+{
+	Texture
+	{
+		File = "packerammo.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
+
+jani_customcannon_reload
+{
+	Texture
+	{
+		File = "reload.png"
+		MipLevels = 2
+		SampleMode = Linear
+		ProportionalSize = true
+	}
+}
