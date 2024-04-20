@@ -75,6 +75,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Categories = [CRAMconnector]
 			}
 		}*/
+		VisualCoolerBuff
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedBuff
+			BlueprintsOnly = true // Only for display purposes.
+			//OperationalToggle = BatteryStorage
+			BuffArea = [0, -2, 1, 1]
+			BuffAmount = 0
+			ShowBuffRange = true
+		}
 		CoolerBuff
 		{
 			Type = AreaBuffProvider
@@ -82,7 +92,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffArea = [0, -2, 1, 1]
 			ChainsFromBuffType = JaniCRAM_CoolingSpeedBuff
 			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Add; }
-			ShowBuffRange = true
 		}
 		ChainLoaderCountBuff
 		{

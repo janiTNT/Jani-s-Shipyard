@@ -1,0 +1,163 @@
+ID = "janiTNT.stellarborn_drone_boltmini"
+Range = 220
+IdealRange = [100, 170]
+IdealRadius = [5, 50]
+Speed = 100
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 7000
+		TargetCategory = "laser"
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 10000
+					Radius = 6
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 800;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Offset = [-2, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "bolt_rainbow.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4*1, 1*1]
+			TargetBlendMode = Add
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [5*0.95, 5*0.95]
+			VertexColor = [128, 128, 128]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

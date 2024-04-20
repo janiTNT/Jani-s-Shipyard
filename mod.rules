@@ -498,6 +498,18 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					MipLevels = 2
 					SampleMode = Linear
 				}
+				Size = [1, 1]
+			}
+			dahell
+			{
+				Texture
+				{
+					File = "About/dahell.png"
+					MipLevels = 2
+					SampleMode = Linear
+				}
+				Size = [1, 1]
+				ProportionalSize = true
 			}
 		}
 	}
@@ -1114,6 +1126,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Brimstone/NukeSigil.rules>/Part
 			&<Occult/Brimstone/BrimSphere.rules>/Part
 			&<Occult/Brimstone/lootorb.rules>/Part
+			
+			&<Occult/Astral/fringe_ball.rules>/Part
+			&<Occult/Astral/fringe_ball_laser.rules>/Part
+			&<Occult/Astral/fringe_ball_cannon.rules>/Part
+			&<Occult/Astral/fringe_ball_beam.rules>/Part
+			&<Occult/Astral/fringe_ball_missile.rules>/Part
+			&<Occult/Astral/fringe_ball_drone.rules>/Part
+			&<Occult/Astral/fringe_ball_barrage.rules>/Part
 		]
 	}
 	{	Action = AddMany

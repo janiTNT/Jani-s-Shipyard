@@ -102,16 +102,16 @@ Components
 			{
 				Texture
 				{
-					File = "../../../TheseAssetsAreFromCalamityMod/SCalBrimstoneFireblast.png"
+					File = "SCalFireblast.png"
 					MipLevels = max
 					SampleMode = Linear
 				}
 				Size = [12, 12]//bit bigger but who care
 				//TargetBlendMode = Add
 			}
-			FrameCount = 4
-			FrameSize = [64, 64]
-			FramesPerRow = 4
+			FrameCount = 5
+			FrameSize = [256, 256]
+			FramesPerRow = 5
 			FramesPerSecond = 20
 		}
 		LerpScaleFrom = [0, 0]

@@ -1,0 +1,225 @@
+ID = "janiTNT.AstralBulletSmall_fringe"
+Range = 600
+IdealRange = [100, 470]
+IdealRadius = [5, 50]
+Speed = 200
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 16000
+		TargetCategory = "bullet"
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 30
+		PenetrationSpeed = 80
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		PenetratesCrew = true
+		
+		FactorEffectsWith = Targetable
+		HitCrew = &HitOperational
+		SourcePartCollisionDelay = 1.5/30
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 80000
+					Radius = 8
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 800;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 13000
+				}
+				{
+					Type = Impulse
+					Impulse = 180
+				}
+			]
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	SpriteA
+	{
+		Type = Sprite
+		Offset = [-1, .2]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Shots/LightBolt.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [5*0.95, 3*0.95]
+			TargetBlendMode = Add
+			VertexColor = [255, 113, 113]
+		}
+	}
+	
+	SpriteB
+	{
+		Type = Sprite
+		Offset = [-1, -.2]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Shots/LightBolt.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [5*0.95, 3*0.95]
+			TargetBlendMode = Add
+			VertexColor = [66, 166, 191]
+		}
+	}
+	
+	Sprite2
+	{
+		Type = Sprite
+		Offset = [-1, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Shots/bolttrail.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [25*0.95, 1*0.95]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [.1, .1]
+		LerpTime = .5
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [14*0.95, 14*0.95]
+			VertexColor = [255, 255, 128]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

@@ -109,6 +109,30 @@ Components
 			VertexColor = [255*4, 205*0.2, 128*0.2]
 		}
 	}
+	
+	LaserSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Offset = [30/4, 0]
+		//Spin = 360d
+		Z = .25
+		LerpScaleFrom = [0.5, 0]
+		LerpTime = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "laser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [30/2, 4]
+			VertexColor = [256*0.75, 0, 0]
+			TargetBlendMode = Add
+		}
+	}
 
 	GlowSprite
 	{

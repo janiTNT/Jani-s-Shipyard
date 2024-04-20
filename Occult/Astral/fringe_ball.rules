@@ -1,0 +1,295 @@
+Part : <../base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaroidBallWeaponCosmiliteBoss"
+	DescriptionKey = "Parts/MegaroidBallWeaponCosmiliteBossDesc"
+	ID = janiTNT.lightball_8x8_fringe_boss_base // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		[hyperium, 128]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeakpointDetector]
+	Density = 3
+	AIValueFactor = 32
+	MaxHealth = 32000 * 32
+	EditorReplacementPartID = ""
+	Size = [8, 8]
+	SelectionPriority = 1
+	SelectionTypeID = "weapons"
+	IsRotateable = true
+	TypeCategories = [armor, weapon]
+	InitialPenetrationResistance = 200
+	ContinuingPenetrationResistance = 200
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 50%}
+	GenerateRectCollider = false
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	EditorIcon
+	{
+		Texture = "../light_icon.png"
+		Size = [85, 85]
+	}
+	Components : ^/0/Components
+	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+		
+		IsNotOperational
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational]
+			Invert = true
+			Mode = All
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 8
+		}
+		
+		Collider
+		{
+			Type = CircleCollider
+			Location = [4, 4]
+			Radius = 2
+			Density = 5
+		}
+		
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+		
+		OperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsOperational
+			IncludeInBlueprints = false
+			Components
+			{
+				Graphics
+				{
+					Type = Graphics
+					Location = [4, 4]
+					Floor
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [10, 10]
+								RotSpeed = 180d
+								SampleMode = Linear
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [10, 10]
+								RotSpeed = -100d
+								SampleMode = Linear
+							}
+						]
+					}
+					OperationalDoodad
+					{
+						Layer = "asteroid_lights_add"
+						//RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightballs.png"
+								Size = [12.5, 12]
+								RotSpeed = 100d
+								SampleMode = Linear
+								VertexColor = [255, 100, 100]
+								Offset [0.1, 0.1]
+							}
+						]
+					}
+					OperationalLighting
+					{
+						Layer = "asteroid_lights_add"
+						//RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../lightballs.png"
+								Size = [12, 12.5]
+								RotSpeed = 120d
+								SampleMode = Linear
+								VertexColor = [66, 166, 191]
+								UVRotation = 2
+								Offset [-0.1, -0.1]
+							}
+						]
+					}
+					Roof
+					{
+						Layer = "asteroid_roof_lights_fancy"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "./Data/ships/common/light_blob.png"
+								Size = [18, 18]
+								Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+								VertexColor = [255*2.25, 255*2.25, 255*2.25]
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		UnOperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = IsNotOperational
+			//InvertOperationalToggle = false
+			IncludeInBlueprints = false
+			Components
+			{
+				Graphics2
+				{
+					Type = Graphics
+					Location = [4, 4]
+					Floor
+					{
+						Layer = "asteroid"
+						RandomUVRotation = true
+						DamageLevels
+						[
+							{
+								File = "../deadball.png"
+								NormalsFile = "../deadball_n.png"
+								Size = [9, 9]
+								RotSpeed = 0d
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		/*Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			Floor
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "lightball.png"
+						Size = [2.15, 2.15]
+						RotSpeed = 180d
+						SampleMode = Linear
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "lightball.png"
+						Size = [2.15, 2.15]
+						RotSpeed = -100d
+						SampleMode = Linear
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "lightballs.png"
+						Size = [2.8, 2.8]
+						RotSpeed = -120d
+						SampleMode = Linear
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [10, 10]
+						Z = 1.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*2.25, 255*2.25, 255*2.25]
+					}
+				]
+			}
+		}*/
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<../Particles/quarter_huge_part_exploding.rules>
+				&<../Particles/salvage_complete_shrapnel_occult.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+			Location = [4, 4]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/asteroid/rock/rock_1x1_blueprints.png"
+			Size = [8, 8]
+		}
+	}
+}

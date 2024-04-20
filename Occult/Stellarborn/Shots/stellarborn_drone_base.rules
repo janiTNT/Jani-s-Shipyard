@@ -1,0 +1,347 @@
+ID = "janiTNT.stellarbornboss_drone_base"
+Range = 1200
+IdealRange = 425
+Speed = 20
+
+RecoilSmall = -5
+RecoilBig = -100
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 0.4
+		LinearDamping = 2
+		AngularDamping = 2
+		FrameOfReferenceDuration = 5
+		CollidesWithBullets = true
+	}
+	
+	TargetSearch
+	{
+	    Type = TargetSearch
+	    Interval = 0.1
+	    Range = 30
+	    TargetTypesByPriority = [ShipParts] //This piece of code i have found in ABH's escort drone, and is solely used to target new ships once the target is done for
+	}
+	
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 45
+		HasTarget = true
+		OnDeath = &../Hit/HitFriendly
+	}
+	Death
+	{
+		Type = DeathByLifetime
+		HasTarget = false
+		// Lifetime will be auto-calculated based on range and speed.
+		OnDeath = &../Hit/HitFriendly
+	}
+	
+	Repulsion
+	{
+		Type = Acceleration
+		Acceleration = [-125 * 2, 0]
+		AccelerationOverTime = [0, 0.85]
+		Direction = Target
+	}
+	
+	Targetable
+	{
+		Type = Targetable
+		Health = 10000
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath
+		{
+			MediaEffects
+			[
+				&<./Data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 30d
+		Delay = 0
+		TargetLeadPrediction = false
+		AvoidanceRaycastDistance = 100		
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 150
+	}
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+	
+	Sprite1
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 500d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [4, 4]
+			TargetBlendMode = Add
+			VertexColor = [249*1.5, 156*1.5, 57*1.5]
+		}
+		//LerpScaleFrom = [0.2, 0.2]
+		//LerpTime = 1
+	}
+	
+	Sprite2 : & Sprite1
+	{
+		Spin = -274d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../lightball.png"
+				MipLevels = max
+			}
+			Size = [4, 4]
+			TargetBlendMode = Add
+			VertexColor = [249*1.5, 156*1.5, 57*1.5]
+		}
+	}
+	
+	SpriteRing
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 200d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../drone_ring.png"
+				MipLevels = max
+			}
+			Size = [8, 8]
+			//TargetBlendMode = Add
+			//VertexColor = [249*1.5, 156*1.5, 57*1.5]
+		}
+		//LerpScaleFrom = [0.2, 0.2]
+		//LerpTime = 1
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [10, 10]
+			VertexColor = [249*3, 156*3, 57*3]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0.2, 0.2]
+		LerpTime = 1
+	}
+	
+	DeathByEnemyProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = .1
+		Range = 110
+		DetectsShips = true
+		DetectsBullets = false
+		StartDelay = .25
+		FactorEffectsWith = Targetable
+		
+		OnDeath
+		{
+			HitEffects
+			[				
+				{
+					Type = SpawnBullets
+					Bullet = &<../bolt_rainbow.rules>
+					Count = 4
+					Spread = [0d, 0d]
+					Arc = [-25d, 25d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = false
+				}
+			]
+			HitEffects2
+			[				
+				{
+					Type = SpawnBullets
+					Bullet = &<../bolt_big.rules>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [-0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = false
+				}
+			]
+			HitEffects3
+			[				
+				{
+					Type = SpawnBullets
+					Bullet = &<../streak1.rules>
+					Count = 6
+					Spread = [0d, 0d]
+					//Arc = [-0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = false
+				}
+			]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/ships/terran/laser_blaster_large/shoot.wav"
+					Volume = 0.65
+					Speed = 1
+					SpeedVariation = .25
+				}
+			]
+			MediaEffects2
+			[
+				&<./Data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+			]
+		}
+	}
+	Hit
+	{
+		Type = SimpleHit
+
+		HitShield = &HitOperational
+		SourceShipCollisionDelay = 1.5/30
+		FriendlyShipLowCollisions = false
+		
+		BulletCollisions
+        {
+            Enemies = true
+            Junk = true
+            Friendlies = true
+            OnlyBulletCategories = [missile, mine]
+        }
+		HitBullet
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		
+		HitOperational
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 350
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitStructural
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 500
+				}
+				{
+					Type = Impulse;
+					Impulse = 1.5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+}

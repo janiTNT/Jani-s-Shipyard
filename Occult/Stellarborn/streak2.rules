@@ -1,0 +1,30 @@
+ID = "janiTNT.stellarborn_drone_streakmini_phase2"
+Range = 300
+IdealRange = [100, 170]
+IdealRadius = [5, 50]
+Speed = 0
+
+Components : &<streak1.rules>/Components
+{
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 15
+	}
+	
+	Death
+	{
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range)
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 260d
+		Delay = 0
+		TargetLeadPrediction = false
+		AvoidanceRaycastDistance = 100		
+		ModifiesLinearVelocity = true
+	}
+}

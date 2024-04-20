@@ -1,0 +1,267 @@
+Part : <fringe_ball.rules>/Part
+{
+	NameKey = "Parts/MegaroidBallWeaponFringeBossLaser"
+	DescriptionKey = "Parts/MegaroidBallWeaponCosmiliteBossDesc"
+	ID = janiTNT.lightball_8x8_fringe_boss_laser // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	Components : ^/0/Components
+	{
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [4, 4]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 8
+			FiringArc = 360d
+			RotateSpeed = infinity
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 4800 * 2
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
+			AutoTargetCrewSafetyDist = 8
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = Turret
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [3, 0]
+			OperationalToggle = PowerToggle
+			FireDelay = 0
+			Bullet = &<shots/AstralLaserSmall.rules>
+			Spread = [0d, 0d]
+			
+			Burst = 8
+			BurstDelay = 0.25
+		}
+		
+		BulletEmitterA
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [3, 1]
+			OperationalToggle = PowerToggle
+			FireDelay = .25 / 3
+			Bullet = &<shots/AstralLaserSmall.rules>
+			Spread = [0d, 0d]
+			
+			Burst = 8
+			BurstDelay = 0.25
+		}
+		
+		BulletEmitterB
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [3, -1]
+			OperationalToggle = PowerToggle
+			FireDelay = .25 / 3
+			Bullet = &<shots/AstralLaserSmall.rules>
+			Spread = [0d, 0d]
+			
+			Burst = 8
+			BurstDelay = 0.25
+		}
+		
+		BulletEmitterC
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [3, 2]
+			OperationalToggle = PowerToggle
+			FireDelay = .25 / 3 * 2
+			Bullet = &<shots/AstralLaserSmall.rules>
+			Spread = [0d, 0d]
+			
+			Burst = 8
+			BurstDelay = 0.25
+		}
+		
+		BulletEmitterD
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [3, -2]
+			OperationalToggle = PowerToggle
+			FireDelay = .25 / 3 * 2
+			Bullet = &<shots/AstralLaserSmall.rules>
+			Spread = [0d, 0d]
+			
+			Burst = 8
+			BurstDelay = 0.25
+		}
+		
+		BulletEmitterBig
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [3, 0]
+			OperationalToggle = PowerToggle
+			FireDelay = 3
+			Bullet = &<shots/AstralLaserLarge.rules>
+			Spread = [0d, 0d]
+		}
+		
+		
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitter
+			Location = [0, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				//&<../bigflashfourth.rules>
+				//&<particles/laser_blaster_small_shoot.rules>
+				//&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = .8
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		FireEffectB
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitterB
+			Location = [0, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				//&<../bigflashfourth.rules>
+				//&<particles/laser_blaster_small_shoot.rules>
+				//&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = .8
+					Speed = 4
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		FireEffectC
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitterC
+			Location = [0, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				//&<../bigflashfourth.rules>
+				//&<particles/laser_blaster_small_shoot.rules>
+				//&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = .8
+					Speed = 6
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		FireEffectBig
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitterBig
+			Location = [0, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<../particles/bigflashfourth.rules>
+				//&<particles/laser_blaster_small_shoot.rules>
+				//&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = 2
+					Speed = 6
+					SpeedVariation = .25
+				}
+			]
+		}
+	}
+}

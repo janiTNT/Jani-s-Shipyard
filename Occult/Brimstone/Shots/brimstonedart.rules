@@ -146,15 +146,15 @@ Components
 			{
 				Texture
 				{
-					File = "../../../TheseAssetsAreFromCalamityMod/BrimstoneBarrage.png"
+					File = "Brimstone_Dart.png"
 					MipLevels = max
 					SampleMode = Linear
 				}
-				Size = [12, 12]//bit bigger but who care
+				Size = [8, 6]//bit bigger but who care
 				//TargetBlendMode = Add
 			}
 			FrameCount = 4
-			FrameSize = [64, 64]
+			FrameSize = [192, 128]
 			FramesPerRow = 4
 			FramesPerSecond = 20
 		}

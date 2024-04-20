@@ -670,10 +670,10 @@ Parts
 	MegaSigilBrimstoneBossDesc =  "t"
 	
 	BossNukeweapon = "Nuke Spawning"
-	BossNukeweaponDesc = "Spawn Nuke"
+	BossNukeweaponDesc = "Spawn Nuke<image name='dahell'/>  so yeah"
 	
 	MegaroidBallweaponThumper = "Thumper Ball Launcher"
-	MegaroidBallweaponThumperDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target."\
+	MegaroidBallweaponThumperDesc = "<image name='dahell'/>Fires projectiles that acts as a physical roadblock when it stops nearby the target."\
 	"\n<gray>Mod: Jani's Shipyard - Part Credit From: skipydog</gray>"
 	MegaroidBallweaponThumperBurst = "Burst Thumper Launcher"
 	MegaroidBallweaponThumperBurstDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target. Weak variant that fires in 4 shot bursts."\
@@ -681,7 +681,7 @@ Parts
 	
 	CosmiliteFactory = "Cosmilite Bar Forge"
 	CosmiliteFactoryIcon = "Cosmilite"
-	CosmiliteFactoryDesc = "Forges and smashes bars of Cosmilite under extreme conditions. Consumes 4 Tristeel and 8 Hyperium per use. Requires Cosmilite to build, locking the obtaining of this resource only after you defeat and collect the loot of the \"Godslayer Guardian\" Boss in a Threat level 10+ system"\
+	CosmiliteFactoryDesc = "<image name='dahell'/>Forges and smashes bars of Cosmilite under extreme conditions. Consumes 4 Tristeel and 8 Hyperium per use. Requires Cosmilite to build, locking the obtaining of this resource only after you defeat and collect the loot of the \"Godslayer Guardian\" Boss in a Threat level 10+ system"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	LogicWire = "Logic Wire"
@@ -884,6 +884,11 @@ Parts
 	ProfanedArmor = "High Resistance Profaned Armor"
 	ProfanedArmorIcon = "Profaned Armor"
 	ProfanedArmorDesc = "Armor that"
+	
+	JaniArmorBit = "Armor Plate"
+	JaniArmorBitIcon = "Armor Plate"
+	JaniArmorBitDesc = "Small pieces of armor to decorate or defend small amounts of your ship."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 }
 PartColors

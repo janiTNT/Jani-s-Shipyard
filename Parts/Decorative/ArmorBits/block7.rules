@@ -1,10 +1,10 @@
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/ArmorWedge"
-	IconNameKey = "Parts/ArmorWedgeIcon"
+	NameKey = "Parts/JaniArmorBit"
+	IconNameKey = "Parts/JaniArmorBitIcon"
 	ID = janiTNT.armor_plate_flat7 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "Defenses"
-	DescriptionKey = "Parts/ArmorWedgeDesc"
+	DescriptionKey = "Parts/JaniArmorBitDesc"
 	Resources
 	[
 		[steel, 2]

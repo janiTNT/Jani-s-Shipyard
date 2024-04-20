@@ -1,0 +1,28 @@
+ID = "janiTNT.stellarbornboss_drone.14"
+Range = &<stellarborn_drone_base.rules>/Range
+IdealRange = &<stellarborn_drone_base.rules>/IdealRange
+Speed = 0
+
+Components : &<stellarborn_drone_base.rules>/Components
+{
+	Repulsion
+	{
+		Type = Acceleration
+		Acceleration = 0
+	}
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 12
+	}
+	DeathByEnemyProximity : &<stellarborn_drone_base.rules>/Components/DeathByEnemyProximity
+	{
+		StartDelay = 1
+		Range = 300
+		OnDeath : &<stellarborn_drone_base.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<stellarborn_drone_base.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects3
+			MediaEffects = &<stellarborn_drone_base.rules>/Components/DeathByEnemyProximity/OnDeath/MediaEffects2
+		}
+	}
+}

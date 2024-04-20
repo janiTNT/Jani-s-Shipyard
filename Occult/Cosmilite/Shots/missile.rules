@@ -17,7 +17,7 @@ Components
 	{
 		Type = TargetHoming
 		TurnVelocity = 190d
-		Delay = .3
+		Delay = 1
 		//AvoidanceRaycastDistance = 250
 		VelocityCompensation = 80%
 	}

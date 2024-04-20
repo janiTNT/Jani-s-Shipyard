@@ -1,0 +1,204 @@
+ID = "janiTNT.stellarborn_drone_streakmini"
+Range = 500
+IdealRange = [100, 170]
+IdealRadius = [5, 50]
+Speed = 150
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		Lifetime = .25
+		OnDeath
+		{
+			HitEffects
+			[				
+				{
+					Type = SpawnBullets
+					Bullet = &<streak2.rules>
+					Count = 1
+					Spread = [0d, 0d]
+					Arc = [-0d, 0d]
+					Distance = 0
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+			]
+		}
+	}
+	
+	TargetSearch
+	{
+	    Type = TargetSearch
+	    Interval = 0.1
+	    Range = 500
+	    TargetTypesByPriority = [ShipParts] //This piece of code i have found in ABH's escort drone, and is solely used to target new ships once the target is done for
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = [-600, 0]//G
+		AccelerationOverTime = [0, .25]
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 1000
+		TargetCategory = "missile"
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 10000
+					Radius = 4
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 800;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_he/particles/missile_he_hit.rules>
+				&<./data/shots/missile_he/particles/missile_he_flash.rules>
+				&<./data/shots/missile_he/particles/missile_he_smoke.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_he/missile_he_hit.wav"
+					Volume = .75
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		//Offset = [-2, 0]
+		Spin = 360d * 5
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "protostreak.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [1*1.5, 1*1.5]
+			TargetBlendMode = Add
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [2*1.4, 2*1.4]
+			VertexColor = [128, 64, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffects
+		[
+			&<./data/shots/bullet_large/particles/bullet_trail_large.rules>
+		]
+	}
+}

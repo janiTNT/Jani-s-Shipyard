@@ -1,7 +1,7 @@
 ID = "janiTNT.hell_sunmonster_small_phase2"
 Range = 500
 IdealRange = 250
-Speed = 40
+Speed = 30
 
 Components
 {

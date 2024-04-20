@@ -1,0 +1,131 @@
+Part : <fringe_ball.rules>/Part
+{
+	NameKey = "Parts/MegaroidBallWeaponFringeBossCannon"
+	DescriptionKey = "Parts/MegaroidBallWeaponCosmiliteBossDesc"
+	ID = janiTNT.lightball_8x8_fringe_boss_beam // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	Components : ^/0/Components
+	{
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [4, 4]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 20
+			FiringArc = 360d
+			RotateSpeed = infinity
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 4800 * 2
+			Emitter = BeamEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = 8
+			AutoTargetCrewSafetyDist = 8
+			
+			AllowRotationToggle = RotationToggle
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = Turret
+		}
+		
+		RotationToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = FiredTrigger
+			OffTrigger = WarningTrigger
+			OperationalToggle = IsOperational
+			StartsOn = true
+		}
+		
+		WarningTrigger
+		{
+			Type = DelayTrigger
+			Trigger = Turret
+			Delay = 2
+		}
+		
+		FiringTrigger
+		{
+			Type = DelayTrigger
+			Trigger = Turret
+			Delay = 5
+		}
+		
+		FiredTrigger
+		{
+			Type = DelayTrigger
+			Trigger = Turret
+			Delay = 5 + 8 + 4
+		}
+		
+		BeamEmitterWarning : <shots/Warningbeam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [2.5, 0]
+			OperationalToggle = IsOperational
+			Duration = 4.25
+		}
+		
+		BeamEmitter : <shots/AstralBeam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = Turret
+			FireTrigger = FiringTrigger
+			GetTargetFrom = Turret
+			Location = [2.5, 0]
+			OperationalToggle = IsOperational
+			Duration = 8
+		}
+	}
+}

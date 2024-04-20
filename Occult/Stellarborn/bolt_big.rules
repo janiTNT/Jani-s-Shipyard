@@ -1,0 +1,207 @@
+ID = "janiTNT.stellarborn_drone_bigbolt"
+Range = 300
+IdealRange = [90, 200]
+IdealRadius = [5, 50]
+Speed = 130
+
+Components
+{	
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 10000
+		TargetCategory = "laser"
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 8d
+		Delay = 0.5
+		ModifiesLinearVelocity = true
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 80000
+					Radius = 8
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 1400;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/common_effects/particles/explosions/big_part_explode.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_flash.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_sparks.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_smoke.rules>
+				&<../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/common_effects/particles/explosions/big_part_explode.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_flash.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_sparks.rules>
+				&<./data/common_effects/particles/explosions/big_part_explode_smoke.rules>
+				&<../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Offset = [-1, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "Bolt.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [8, 2]
+			TargetBlendMode = Add
+		}
+	}
+	
+	RadiationSpriteBig
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 360d
+		Z = .25
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/shots/missile_nuke/radiation.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [20, 20]
+			VertexColor = [64, 64, 64]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = .4
+		}
+		LerpScaleFrom = [.1, .1]
+		LerpTime = .2
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [20, 20]
+			VertexColor = [255, 255, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

@@ -4,6 +4,7 @@ Width = 2
 HitInterval = .05
 HitEffectsScaleOverRange = [1, 0.75]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+FriendlyShipLowCollisions = false
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
@@ -51,7 +52,7 @@ BeamMediaEffects
 		FadeInTime = .25
 		FadeOutTime = .25
 		RandomTimeOffset = [0, 1]
-		Bucket = IonBeam
+		Bucket = Upper1
 	}
 
 	// Beam lighting.
