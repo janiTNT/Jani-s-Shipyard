@@ -1,7 +1,7 @@
 ID = "janiTNT.DevourerSpawnerPortal"
 Range = 1000
 IdealRange = 600
-Speed = 80
+Speed = -500
 Stage2 = &<DoGp1.rules>
 
 Components
@@ -18,7 +18,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 20d
+		TurnVelocity = 2d
 		Delay = .25
 	}
 
@@ -32,7 +32,7 @@ Components
 	{
 		Type = DeathByLifetime
 		Lifetime = 0.75 * 8
-		FactorEffectsWith = Targetable
+		//FactorEffectsWith = Targetable
 
 		OnDeath
 		{
@@ -175,7 +175,7 @@ Components
 	}
 
 
-	Targetable
+	/*Targetable
 	{
 		Type = Targetable
 		Health = 32000
@@ -183,7 +183,7 @@ Components
 
 		// No AOE damage when shot down.
 		OnDeath = &../Hit/HitFriendly
-	}
+	}*/
 
 	Hit
 	{

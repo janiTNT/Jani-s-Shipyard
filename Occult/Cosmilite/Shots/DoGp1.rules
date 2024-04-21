@@ -10,7 +10,7 @@ Components
 	Physics
 	{
 		Type = BoxPhysics
-		Size = [40 *2, 1 *2] //TODO
+		Size = [40 *2, 2 *2] //TODO
 		Density = 8
 		//RandomExtraSpeed = [0, 2]
 	}
@@ -18,7 +18,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 110d / 4
+		TurnVelocity = 90d / 4
 		Delay = 1
 		//AvoidanceRaycastDistance = 250
 		//VelocityCompensation = 70%
@@ -28,7 +28,7 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = [0, -1]
+		Acceleration = [0, -8]
 		AccelerationOverTime = [0, 5]
 	}
 	
@@ -134,7 +134,7 @@ Components
 		StartTime = 7.5 * 11 / (&~/Speed)
 	}
 
-	Targetable
+	/*Targetable
 	{
 		Type = Targetable
 		Health = 32000 //* 5
@@ -142,7 +142,7 @@ Components
 
 		// No AOE damage when shot down.
 		OnDeath = &../Hit/HitFriendly
-	}
+	}*/
 	
 	DamagePool
 	{
@@ -153,7 +153,7 @@ Components
 	Hit
 	{
 		Type = PenetratingHit
-		FactorEffectsWith = Targetable
+		//FactorEffectsWith = Targetable
 		Penetration = 800
 		ShieldPenetrationFactor = 0.25
 		PenetrationSpeed = 400
@@ -293,5 +293,15 @@ Components
 				}
 			]
 		}
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffectsScale = 1
+		MediaEffects
+		[
+			&<./data/shots/bullet_railgun/particles/bullet_trail_railgun_ring_distortion.rules>
+		]
 	}
 }

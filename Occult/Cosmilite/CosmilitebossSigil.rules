@@ -277,7 +277,7 @@ Part : <../base_part_occult.rules>/Part
 			OperationalToggle = CanUseDOG_P1
 			//FireDelay = 0.75
 			Bullet = &<shots/DoGp1_portal.rules>
-			Spread = [-360d, 360d]
+			Spread = [-20d, 20d]
 		}
 		FinalWormEmitter
 		{
@@ -289,7 +289,16 @@ Part : <../base_part_occult.rules>/Part
 			OperationalToggle = CanUseDOG_P2
 			//FireDelay = 0.75
 			Bullet = &<shots/DoGp2_portal.rules>
+			Spread = [-20d, 20d]
+		}
+		BurstGuardianEmitterP2 : &GuardianYeeterModuleSuperExOmegaFireSuperDuperCoolComponentNameINeedMoreSleepEmitter
+		{
+			FireTrigger = Phase2SpawnerTimer
+			OperationalToggle = CanUseDOG_P2
 			Spread = [-360d, 360d]
+			Burst = 5
+			BurstDelay = .75
+			FireDelay = 2
 		}
 		
 		

@@ -1,7 +1,7 @@
 ID = "janiTNT.DevourerSpawnerPortalPhase2"
 Range = 4000
 IdealRange = 2000
-Speed = 100
+Speed = -700
 Stage2 = &<DoGp2.rules>
 
 Components
@@ -18,7 +18,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 20d
+		TurnVelocity = 3d
 		Delay = .25
 	}
 
@@ -32,7 +32,7 @@ Components
 	{
 		Type = DeathByLifetime
 		Lifetime = 8
-		FactorEffectsWith = Targetable
+		//FactorEffectsWith = Targetable
 
 		OnDeath
 		{
@@ -56,7 +56,7 @@ Components
 					Count = 1
 					InheritVelocity = true
 					ScaleHealth = true
-					Distance = -48
+					Distance = -86
 				}
 				{
 					Type = SpawnBullets
@@ -184,7 +184,7 @@ Components
 			_unlitAdditiveStrength = 1
 		}
 		LerpScaleFrom = [0.5, 0.2]
-		LerpTime = 1
+		LerpTime = 1.5
 	}
 
 	LightsSprite
@@ -215,7 +215,7 @@ Components
 	}
 
 
-	Targetable
+	/*Targetable
 	{
 		Type = Targetable
 		Health = 32000 * 2
@@ -223,7 +223,7 @@ Components
 
 		// No AOE damage when shot down.
 		OnDeath = &../Hit/HitFriendly
-	}
+	}*/
 	Hit
 	{
 		Type = SimpleHit
