@@ -1,8 +1,8 @@
 ﻿ID = "janiTNT.TechMod"
 Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.20"
-Logo = "newlogo.png"
+Version = "Modern 1.20(beta v1)"
+Logo = "evil jani.png"
 CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
 Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
@@ -1095,6 +1095,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/sigilsmall.rules>/Part
 			&<Occult/armoroid.rules>/Part
 			&<Occult/armoroid_2.rules>/Part
+			&<Occult/armoroid_foundation.rules>/Part
 			&<Occult/armoroid_w.rules>/Part
 			&<Occult/armoroid_w2.rules>/Part
 			&<Occult/lightball_core.rules>/Part
@@ -1134,6 +1135,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Astral/fringe_ball_missile.rules>/Part
 			&<Occult/Astral/fringe_ball_drone.rules>/Part
 			&<Occult/Astral/fringe_ball_barrage.rules>/Part
+			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
+			&<Occult/Astral/fringe_ball_mine.rules>/Part
 		]
 	}
 	{	Action = AddMany

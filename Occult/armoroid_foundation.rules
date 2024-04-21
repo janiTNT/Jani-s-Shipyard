@@ -1,29 +1,31 @@
 Part : <base_part_occult_2.rules>/Part
 {
-	NameKey = "Parts/MegaroidArmor2_1x1"
-	DescriptionKey = "Parts/MegaroidArmor2Desc"
-	ID = janiTNT.megarockarmor2_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	SelectionTypeID = "armor"
+	NameKey = "Parts/MegaroidArmor_foundation_1x1"
+	DescriptionKey = "Parts/MegaroidArmor3Desc"
+	ID = janiTNT.megarockarmor_foundation_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	//SelectionTypeID = "armor"
 	EditorGroup = "BossParts"
-	Resources = []
-	/*Resources
+	//Resources = []
+	Resources
 	[
-		[steel, 8 * 16]
-	]*/
+		[tristeel, 8]
+	]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	Density = 3
-	MaxHealth = 32000
+	Density = 2
+	MaxHealth = 32000 * 16
+	SelectionTypeID = "armor3"
 	TypeCategories = [armor]
-	InitialPenetrationResistance = 2 * 7
-	ContinuingPenetrationResistance = 2 * 7
+	InitialPenetrationResistance = 4 * 12
+	ContinuingPenetrationResistance = 4 * 12
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = 25%}
+	DamageResistances = {explosive = 50%}
 	IgnoreRotationForMirroredSelection = true
 	EditorIcon
 	{
 		Texture = "armoroid_icon.png"
 		Size = [32, 32]
+		VertexColor = [130, 100, 100]
 	}
 	Components : ^/0/Components
 	{
@@ -120,7 +122,7 @@ Part : <base_part_occult_2.rules>/Part
 			Type = BlueprintSprite
 			File = "./data/ships/asteroid/rock/rock_1x1_blueprints.png"
 			Size = [1, 1]
-			VertexColor = [190, 190, 190]
+			VertexColor = [130, 100, 100]
 		}
 	}
 }

@@ -123,7 +123,7 @@ HitOperational
 		}
 		{
 			Type = Impulse
-			Impulse = -800
+			Impulse = -400
 		}
 	]
 

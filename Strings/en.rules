@@ -653,6 +653,9 @@ Parts
 	MegaroidArmor4Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Explodes into damaging flame projectiles on destruction."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
+	MegaroidArmor_foundation_1x1 = "Armored Rock Foundation"
+	MegaroidArmor_foundation_1x1Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only. Will only chain react when one of its similar parts had begun reacting."
+	
 	
 	MegaroidBallWeaponProfanedBoss = "Miniaturized Weaponized Sun"
 	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong foward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nNot Supposed to be destroyed, atleast by normal means. Technically one shottable though."\

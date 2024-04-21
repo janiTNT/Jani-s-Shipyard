@@ -15,7 +15,7 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "cosmoteer.megarock_1x1"
-	MaxHealth = 32000 * 8 * 2 * 4
+	MaxHealth = 32000 * 64
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_cosmilite
@@ -240,7 +240,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Timer
 			OperationalToggle = CanUseDOG_P1
-			Duration = 12
+			Duration = 18
 			AutoStart = true
 			Repeats = true
 		}
@@ -249,7 +249,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Timer
 			OperationalToggle = BeenHitToggle
-			Duration = 16 //trolls
+			Duration = 22 //trolls
 			AutoStart = true
 			Repeats = true
 		}

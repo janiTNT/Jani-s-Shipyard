@@ -539,7 +539,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = CommandProvider
 			OperationalToggle = PowerToggle
-			CommandPoints = 180
+			CommandPoints = 250
 		}
 		
 		Sensor

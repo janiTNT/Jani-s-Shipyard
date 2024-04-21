@@ -471,8 +471,8 @@ Part : <../base_part_occult.rules>/Part
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = sigil.death
-					TotalDrain = -1200
-					Radius = 9
+					TotalDrain = -2000
+					Radius = 12
 					Slices = 1
 					Filter
 					{
@@ -493,8 +493,8 @@ Part : <../base_part_occult.rules>/Part
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = sigil.death
-					TotalDrain = -1200
-					Radius = 9
+					TotalDrain = -2000
+					Radius = 12
 					Slices = 1
 					Filter
 					{

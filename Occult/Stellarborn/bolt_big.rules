@@ -43,6 +43,7 @@ Components
 	{
 		Type = PenetratingHit
 		FactorEffectsWith = Targetable
+		FriendlyShipLowCollisions = false
 
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
@@ -141,6 +142,7 @@ Components
 		Offset = [-1, 0]
 		ReduceScaleWith = Hit
 		ReduceScaleExponent = 0.5
+		RenderBucket = BulletUpper1
 		Sprite
 		{
 			Texture
@@ -184,7 +186,7 @@ Components
 	GlowSprite
 	{
 		Type = Sprite
-		RenderBucket = BulletUpper2
+		RenderBucket = BulletUpper3
 		Z = 0.5
 		IsLight = true
 		Sprite

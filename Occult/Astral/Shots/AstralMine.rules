@@ -1,0 +1,183 @@
+ID = "janiTNT.astralbigmine"
+Range = 800
+IdealRange = 0
+Speed = 160
+Stage2 = &<AstralMine_Frag.rules>
+RandomRotation = true
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 3
+		Density = 1
+		LinearDamping = .75
+		FrameOfReferenceDuration = 1
+		RandomExtraSpeed = 10
+	}
+	
+	TargetSearch
+	{
+	    Type = TargetSearch
+	    Interval = 0.5
+	    Range = 500
+	    TargetTypesByPriority = [ShipParts] //This piece of code i have found in ABH's escort drone, and is solely used to target new ships once the target is done for
+	}
+	
+	DeathByEnemyProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = .5
+		Range = 200
+		DetectsShips = true
+		DetectsBullets = false
+		StartDelay = 2
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+				
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 16
+					InheritVelocity = false
+					ScaleHealth = false
+				}
+			]
+			MediaEffectsScale = 5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 10
+		OnDeath
+		{			
+			MediaEffectsScale = 5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 10d
+		Sprite
+		{
+			Texture
+			{
+				File = "astralmine.png"
+				MipLevels = max
+			}
+			Size = [8, 8]
+			//TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.5
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 1
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [40, 40]
+			VertexColor = [255*8, 205*1, 255*1]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 1
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.015
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 1
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 7200 * 8
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational = &../DeathByEnemyProximity/OnDeath
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffectsScale = 5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

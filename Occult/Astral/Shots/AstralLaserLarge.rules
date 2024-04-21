@@ -44,7 +44,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 160000
+					TotalDamage = 180000
 					Radius = 8
 					Filter
 					{
@@ -116,6 +116,27 @@ Components
 		FinishedPenetratingStructural
 		{
 			// No effect.
+		}
+	}
+	
+	Sprite
+	{
+		Type = Sprite
+		Offset = [-1, 0]
+		ReduceScaleWith = Hit
+		RenderBucket = BulletLower3
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "AstralLaser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [10*0.95, 9*0.95]
+			//TargetBlendMode = Add
+			//VertexColor = [255, 113, 113]
 		}
 	}
 

@@ -61,6 +61,7 @@ Components
 	{
 		Type = PenetratingHit
 		FactorEffectsWith = Targetable
+		FriendlyShipLowCollisions = false
 
 		CrewCollisions = {Enemies=true; Junk=true}
 		HitCrew = &HitOperational
@@ -154,6 +155,7 @@ Components
 		Type = Sprite
 		//Offset = [-2, 0]
 		Spin = 360d * 5
+		RenderBucket = BulletUpper1
 		ReduceScaleWith = Hit
 		ReduceScaleExponent = 0.5
 		Sprite

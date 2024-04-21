@@ -13,17 +13,18 @@ Part : <../base_part_occult.rules>/Part
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeakpointDetector, JaniWeaponsDisabledBoss, JaniExistingSigilDetectionBoss]
 	Density = 3
 	AIValueFactor = 0
-	MaxHealth = 99999999
+	MaxHealth = 256000000
 	EditorReplacementPartID = ""
 	Size = [24, 8]
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
 	TypeCategories = [armor, weapon]
+	DamageResistances = {explosive = 100%, heat = 100%, default = 99.999%;}//solar resistant, higher explosive resistance
 	InitialPenetrationResistance = 250
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
-	ExplosiveDamageResistance = 50% // Nuke resistance + +
+	ExplosiveDamageResistance = 100% // Nuke resistance + +
 	GenerateRectCollider = false
 	IsExternal = true
 	ExternalWalls = [None]
@@ -620,7 +621,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = ToggleTrigger
 			Toggle = FlamethrowerMode
-			TriggerWhenOff = true
+			TriggerWhenOff = false //true
 			TriggerWhenOn = false
 		}
 		HolyBeamEmitterLeft : <shots/HOLYBEAM.rules>

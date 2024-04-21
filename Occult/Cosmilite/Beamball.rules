@@ -597,7 +597,7 @@ Part : <../base_part_occult.rules>/Part
 			AutoFireToggle = AutoFireToggle
 			FireInterval = .2
 			FiringArc = 360d
-			RotateSpeed = 30d
+			RotateSpeed = 10d
 			FireThresholdAngle = 180d
 			AIFirepowerRating = 6000 * 5
 			//CanSalvage = true
@@ -894,7 +894,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Timer
 			OperationalToggle = Phase2BeamEmitterLeft
-			Duration = 4
+			Duration = 3
 			AutoStart = true
 			Repeats = true
 		}

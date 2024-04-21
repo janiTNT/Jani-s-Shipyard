@@ -44,8 +44,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 15000
-					Radius = 6
+					TotalDamage = 16000
+					Radius = 4
 					Filter
 					{
 						Friendlies = true
@@ -118,6 +118,27 @@ Components
 			// No effect.
 		}
 	}
+	
+	Sprite
+	{
+		Type = Sprite
+		Offset = [-1, 0]
+		ReduceScaleWith = Hit
+		RenderBucket = BulletLower3
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "AstralLaser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4*0.95, 2*0.95]
+			//TargetBlendMode = Add
+			//VertexColor = [255, 113, 113]
+		}
+	}
 
 	SpriteA
 	{
@@ -135,7 +156,7 @@ Components
 			}
 			Size = [4*0.95, 2*0.95]
 			TargetBlendMode = Add
-			VertexColor = [255, 113, 113]
+			VertexColor = [255/2, 113/2, 113/2]
 		}
 	}
 	
@@ -155,7 +176,7 @@ Components
 			}
 			Size = [4*0.95, 2*0.95]
 			TargetBlendMode = Add
-			VertexColor = [66, 166, 191]
+			VertexColor = [66/2, 166/2, 191/2]
 		}
 	}
 	

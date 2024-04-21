@@ -20,6 +20,7 @@ Part : <../base_part_occult_2.rules>/Part
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = 25%}
+	IgnoreRotationForMirroredSelection = true
 	EditorIcon
 	{
 		Texture = "../armoroid_icon.png"

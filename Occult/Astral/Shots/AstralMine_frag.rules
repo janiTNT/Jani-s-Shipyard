@@ -1,8 +1,8 @@
-ID = "janiTNT.stellarborn_drone_boltmini"
-Range = 220
+ID = "janiTNT.astral_bigmine_fragment"
+Range = 300
 IdealRange = [100, 170]
 IdealRadius = [5, 50]
-Speed = 100
+Speed = 110
 
 Components
 {
@@ -15,14 +15,24 @@ Components
 
 	Death
 	{
-		Type = DeathByLifetime
-		// Lifetime will be auto-calculated based on range and speed.
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range)
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 180d
+		Delay = 0
+		TargetLeadPrediction = false
+		AvoidanceRaycastDistance = 100		
+		ModifiesLinearVelocity = true
 	}
 
 	Targetable
 	{
 		Type = Targetable
-		Health = 7000
+		Health = 4000
 		TargetCategory = "laser"
 	}
 
@@ -44,8 +54,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 10000
-					Radius = 6
+					TotalDamage = 50000
+					Radius = 8
 					Filter
 					{
 						Friendlies = true
@@ -122,20 +132,21 @@ Components
 	Sprite
 	{
 		Type = Sprite
-		Offset = [-2, 0]
+		//Offset = [-2, 0]
+		//Spin = 360d * 5
+		RenderBucket = BulletUpper1
 		ReduceScaleWith = Hit
 		ReduceScaleExponent = 0.5
-		RenderBucket = BulletUpper1
 		Sprite
 		{
 			Texture
 			{
-				File = "bolt_rainbow.png"
+				File = "astralmine_frag.png"
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [4*1, 1*1]
-			TargetBlendMode = Add
+			Size = [3, 3]
+			//TargetBlendMode = Add
 		}
 	}
 
@@ -153,13 +164,23 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [5*0.95, 5*0.95]
-			VertexColor = [128, 128, 128]
+			Size = [2*1.4, 2*1.4]
+			VertexColor = [128, 64, 128]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
 			_litReflectiveStrength = 24
 			_litAdditiveStrength = 0.05
 			_unlitAdditiveStrength = 0.25
 		}
+	}
+	
+	MediaEffects
+	{
+		Type = MediaEffects
+		MediaEffectsScale = .2
+		MediaEffects
+		[
+			&<./data/shots/bullet_railgun/particles/bullet_trail_railgun.rules>
+		]
 	}
 }
