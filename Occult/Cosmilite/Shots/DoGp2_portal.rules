@@ -18,7 +18,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 45d
+		TurnVelocity = 20d
 		Delay = .25
 	}
 

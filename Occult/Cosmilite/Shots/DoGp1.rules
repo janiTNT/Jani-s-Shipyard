@@ -2,7 +2,7 @@ ID = "janiTNT.devourerofgodsphase1calamity_boss"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 2000
 IdealRange = 2000
-Speed = 180
+Speed = 400
 //ForgetTarget = true
 
 Components
@@ -156,7 +156,7 @@ Components
 		FactorEffectsWith = Targetable
 		Penetration = 800
 		ShieldPenetrationFactor = 0.25
-		PenetrationSpeed = 140
+		PenetrationSpeed = 400
 		
 		SourceShipLowCollisions = false
 
