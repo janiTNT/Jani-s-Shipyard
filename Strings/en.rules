@@ -975,6 +975,10 @@ Resource
 	CursedPagePlural = "Pages of Annihilation"
 	CursedPageDesc = "Scraps of brimstone books with incomphrehensible runes carved into them. Merely looking at it makes your eyes burn. it definetly is'nt friendly to your ship parts.\nObtained by defeating <good>\"[IMPERIUM BOSS NAME]\"</good> or cursed with the Annihilation Brimstone Altar \"Factory\", which requives both Pages of Annihilation and <good>Divine Cores.</good>"\
 	"\n<gray>Who let Calamitas make a ship?\nMod: Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</gray>"
+	
+	Zetasphere = "Zetasphere"
+	ZetaspherePlural = "Zetaspheres"
+	ZetasphereDesc = "Brimming with potential energy. Incredibly Dense matter. May be dropped from Hyperoid Guardians under rare circustances.  "
 }
 Missions
 {

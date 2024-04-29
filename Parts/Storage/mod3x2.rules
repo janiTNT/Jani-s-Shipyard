@@ -38,40 +38,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			AlwaysAllowInBuildMode = true
 			RequiresCommand = false
 		}
-
-		goldiumToggle
-		{
-			Type = ModeToggle
-			Mode = ModType
-			OnMode = 0
-		}
-		goldiumComponents
-		{
-			Type = ToggledComponents
-			Toggle = goldiumToggle
-			IncludeInBlueprints = true
-			Components = &<Types3x2/goldium.rules>/Components
-		}
-		
-		cuttristeelToggle
-		{
-			Type = ModeToggle
-			Mode = ModType
-			OnMode = 1
-		}
-		cuttristeelComponents
-		{
-			Type = ToggledComponents
-			Toggle = cuttristeelToggle
-			IncludeInBlueprints = true
-			Components = &<Types3x2/cuttristeel.rules>/Components
-		}
 		
 		cosmiliteToggle
 		{
 			Type = ModeToggle
 			Mode = ModType
-			OnMode = 2
+			OnMode = 0
 		}
 		cosmiliteComponents
 		{
@@ -85,7 +57,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ModeToggle
 			Mode = ModType
-			OnMode = 3
+			OnMode = 1
 		}
 		astralComponents
 		{
@@ -99,7 +71,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ModeToggle
 			Mode = ModType
-			OnMode = 4
+			OnMode = 2
 		}
 		profanedcoreComponents
 		{
@@ -113,7 +85,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ModeToggle
 			Mode = ModType
-			OnMode = 5
+			OnMode = 3
 		}
 		cursedpagesComponents
 		{

@@ -73,6 +73,11 @@ Part : <../base_part_occult.rules>/Part
 		{
 			ResourceType = enriched_uranium
 			MaxResources = 240
+		}
+		ZetasphereLoot : CosmiliteLoot
+		{
+			ResourceType = janitnt.zetasphere
+			MaxResources = 12
 		}// spawn full with more resources
 		
 		HealEffects

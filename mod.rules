@@ -1,7 +1,7 @@
 ﻿ID = "janiTNT.TechMod"
 Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.20(beta v1)"
+Version = "Modern 1.20(beta v3)"
 Logo = "evil jani.png"
 CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
@@ -19,6 +19,9 @@ Description = "Adds a lot of content i have made (porting most of content missin
 "\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource."\
 "\n\nPatricia Taxxon : \"All of my (non-contract) tunes are free to use for any of your projects, commercial or otherwise, with credit.\""
 StringsFolder = "Strings"
+
+//Stop reading my code!!!!! it sucks!!!! i mean it doe'snt but is poorly commented and messy
+//Also yeah you can copy parts of the code and base it off to modify yourself for your own mod, as you do. use it to learn, not steal.
 
 /*
 CanBuild
@@ -136,6 +139,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part
 			&<Parts/Production/Stack inserter/StackinserterModded.rules>/Part
 			&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part
+			
+			&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
 			
 			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
 			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
@@ -299,15 +304,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Tutorials/Bosses/bossesbeta.rules>
 		]
 	}
-	/*{	Action = AddMany
-
-		AddTo = "<./Data/music/music.rules>/RootTrack/IntroTracks"
-
-		ManyToAdd
-		[
-			&<cluster_jetstream.rules>
-		]
-	}*/
 	{	Action = Overrides
 
 		OverrideIn = "<./Data/gui/game/designer/editor_groups.rules>"
@@ -387,6 +383,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Astral Bar/astral_doodad.rules>
 			&<resources/Profaned Core/profaned_doodad.rules>
 			&<resources/Cursed Pages/cursed_doodad.rules>
+			&<resources/Zetasphere/doodad_zetasphere.rules>
 			
 			&<planets/doodad_planet_deadsun.rules>
 			&<planets/doodad_planet_deadsun_mini.rules>
@@ -534,11 +531,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			}
 		]
 	}
-	//{
-	//	Action = AddMany
-	//	AddTo = "<modes/career/techs.rules>/Techs/19/Prerequisites"// Adds fuel room as a required thing to research engine rooms, assuming no techs were deleted in the code.
-	//	ManyToAdd = [janiTNT.fuelroom]
-	//}
 	{	Action = AddMany
 
 		AddTo = "<modes/career/techs.rules>/Techs"
@@ -577,15 +569,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		{
 		}
 	}
-	//Aephiex Stuff
-	/*{
-		Action = Overrides
-		OverrideIn = "<./Data/resources/battery/battery.rules>"
-		Overrides
-		{
-			MaxPerNugget = 4000	
-		}
-	}*/
 	{
 		Action = Replace
 		Replace = "<resources/battery/battery.rules>/MaxPerNugget"
@@ -620,6 +603,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Astral Bar/astralbar.rules>
 			&<resources/Profaned Core/profaned_core.rules>
 			&<resources/Cursed Pages/cursedpages.rules>
+			&<resources/Zetasphere/zetasphere.rules>
 		]
 	}
 	/*{
@@ -1128,7 +1112,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Brimstone/BrimSphere.rules>/Part
 			&<Occult/Brimstone/lootorb.rules>/Part
 			
-			&<Occult/Astral/fringe_ball.rules>/Part
+			//&<Occult/Astral/fringe_ball.rules>/Part NUH UH
 			&<Occult/Astral/fringe_ball_laser.rules>/Part
 			&<Occult/Astral/fringe_ball_cannon.rules>/Part
 			&<Occult/Astral/fringe_ball_beam.rules>/Part

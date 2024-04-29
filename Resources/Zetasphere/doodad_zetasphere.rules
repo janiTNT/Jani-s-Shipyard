@@ -1,0 +1,13 @@
+ID = janiTNT.zetasphere
+Type = Resource
+DescriptionKey = "Resource/Zetasphere"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "zetasphere.png"
+		MipLevels = 2
+	}
+}
+ResourceType = janiTNT.zetasphere

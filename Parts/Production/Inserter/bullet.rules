@@ -3,20 +3,52 @@ ResourceStorage = AmmoStorage
 CarrySize = (&<./data/resources/bullet/bullet.rules>/MaxPerNugget)
 LightColor = [255, 145, 27]
 //CarrySize = 1
-Components
-{	
-	ConvertPermission
+Components : &<hyperium.rules>/Components
+{
+	InsertPermission : &<hyperium.rules>/Components/InsertPermission
 	{
-		Type = MultiToggle
-		Toggles = [IsOperational, FromProxy, ChaingunPatch_CanFillAmmo]
-		Mode = All
+		Toggles : &<hyperium.rules>/Components/InsertPermission/Toggles
+		[
+			{Toggle = ChaingunPatch_CanFillAmmo}
+		]
+	}
+	
+	HandStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/Resource
+		MaxResources = (&~/CarrySize)
+		InitToMaxResources = 0
+		ToggleOnResources = (&~/CarrySize)
+		ToggleOffResources = 0
 	}
 	
 	ChaingunPatch_CanFillAmmo //only fill ammo if the conveyor is not running in either direction
 	{
 		Type = MultiToggle
-		Toggles = [ChaingunPatch_IsRequestingAmmoA, ChaingunPatch_IsRequestingAmmoB]
+		Toggles = [ChaingunPatch_IsRequestingAmmoA, ChaingunPatch_IsRequestingAmmoB, {Toggle = IsShellFullyClosed, Invert = true}]
 		Mode = None
+	}
+	
+	IsShellFullyClosed
+	{
+		Type = MultiToggle
+		Toggles = [{Toggle = IsShellFullyClosedPresence, Invert = true}, IsShellFullyClosedProxy]
+		Mode = Any
+	}
+	
+	IsShellFullyClosedPresence//because IsOnWhenNotConnected is not working
+	{
+		Type = ComponentPresenceToggle
+		PartLocation = [0, -1]
+		ComponentID = IsShellFullyClosed
+	}
+	
+	IsShellFullyClosedProxy
+	{
+		Type = ToggleProxy
+		PartLocation = [0, -1] //looking up. :3
+		ComponentID = IsShellFullyClosed
 	}
 
 	//Magazines pass down ammo to the left or the right, if the part to the left or right is requesting ammo
@@ -65,19 +97,29 @@ Components
 			}
 		]
 	}
-
+	
 	FromProxy
 	{
 		Type = ResourceStorageProxy
 		ResourceType = &~/Resource
 		PartLocation = [0, 1]
-		//PartCriteria
-		//{
-		//	Category = thermal
-		//}
-		ComponentID = &~/ResourceStorage
-		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = (&~/CarrySize) - 1
+		ProxyableComponents// btw part ID's are inside PartCategories
+		[
+			{
+				PartCriteria
+				{
+					ExcludeCategories = [cosmoteer.chaingun]// NOT 
+				}
+				ComponentID = &~/ResourceStorage
+			}
+			{
+				PartCriteria
+				{
+					Categories = [cosmoteer.chaingun]// YOS 
+				}
+				ComponentID = CombinedAmmoStorage //what component we are looking for.  Chain gun itself always has these components
+			}
+		]
 	}
 	
 	ToProxy
@@ -85,41 +127,33 @@ Components
 		Type = ResourceStorageProxy
 		ResourceType = &~/Resource
 		PartLocation = [0, -1]
-		//PartCriteria
-		//{
-		//	Category = thermal
-		//}
-		ComponentID = &~/ResourceStorage
+		ProxyableComponents
+		[
+			{
+				PartCriteria
+				{
+					ExcludeCategories = [cosmoteer.chaingun]// NOT 
+				}
+				ComponentID = &~/ResourceStorage
+			}
+			{
+				PartCriteria
+				{
+					Categories = [cosmoteer.chaingun]// YOS 
+				}
+				ComponentID = CombinedAmmoStorage //what component we are looking for.  Chain gun itself always has these components
+			}
+		]
 	}
 	
-	ResourceConverter
+	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
 	{
-		Type = ResourceConverter
-		OperationalToggle = ConvertPermission
-		From
-		[
-			{
-				Storage = FromProxy
-				Quantity = (&~/CarrySize)
-				MinQuantityForConversion = (&~/CarrySize)
-			}
-			{
-				Storage = BatteryStorage
-				Quantity = (&<hyperium.rules>/Components/ResourceConverter/From/1/Quantity)
-				MinQuantityForConversion = 1
-			}
-		]
-		To
-		[
-			{
-				Storage = ToProxy
-				Quantity = (&~/CarrySize)
-				MinQuantityForConversion = (&~/CarrySize)
-			}
-		]
-		//ToStorage = ToProxy
-		//ToQuantity = 1
-		Interval = (&<hyperium.rules>/Components/ResourceConverter/Interval)
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To
+	{
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
 	}
 	
 	Graphics

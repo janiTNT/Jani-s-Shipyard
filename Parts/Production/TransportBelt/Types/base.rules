@@ -1,0 +1,178 @@
+Resource = hyperium
+ResourceStorage = HyperiumStorage
+CarrySize = (&<./data/resources/hyperium/hyperium.rules>/MaxPerNugget)
+Components
+{
+	/*FowardIsNotMovingToggle
+	{
+		Type = ToggleProxy
+		IsOnWhenNotConnected = true
+		PartLocation = [0, -1]
+		PartCriteria
+		{
+			Category = ResourceBelt
+		}
+		ComponentID = MovingToggle
+	}*/
+	
+	ConvertPermission
+	{
+		Type = MultiToggle
+		Toggles = [IsOperational, HyperiumStorage, FowardIsNotMovingToggle, {Toggle = MovingToggle, Invert = false}]
+		Mode = All
+	}
+	
+	ToProxy
+	{
+		Type = ResourceStorageProxy
+		ResourceType = &~/Resource
+		PartLocation = [0, -1]
+		PartCriteria
+		{
+			Category = ResourceBelt
+		}
+		ComponentID = &~/ResourceStorage
+	}
+	
+	ResourceConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = ConvertPermission
+		From
+		[
+			{
+				Storage = HyperiumStorage
+				Quantity = (&~/CarrySize)
+				MinQuantityForConversion = (&~/CarrySize)
+			}
+		]
+		To
+		[
+			{
+				Storage = ToProxy
+				Quantity = (&~/CarrySize)
+				MinQuantityForConversion = (&~/CarrySize)
+			}
+		]
+		Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		//InitialDelay = 0
+		//DelayTrigger = ResourceConverter
+		//DelayAfterTrigger = 0
+	}
+	
+	ResourceSprite
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = HasResources
+		ResetAnimationTrigger = ResetSprite
+		OperationalLighting
+		{
+			Layer = "doodads_high"
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"../empty_sprite.png"
+						"./data/resources/hyperium/hyperium2-1.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = .75 - (1 / (&/Simulation/PhysicsUpdatesPerSecond))
+					AnimationStartTime = WhenSpawned
+					ClampAnimation = true
+				}
+			]
+		}
+		OperationalDoodad
+		{
+			Layer = "doors"
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"../empty_sprite.png"
+						"../tray.png"
+					]
+					Size = [1, 1]
+					AnimationInterval = .75 - (1 / (&/Simulation/PhysicsUpdatesPerSecond))
+					AnimationStartTime = WhenSpawned
+					ClampAnimation = true
+				}
+			]
+		}
+	}
+	
+	ResetSprite
+	{
+		Type = ToggleTrigger
+		Toggle = HasResources
+		TriggerWhenOff = false
+		TriggerWhenOn = true
+	}
+	
+	MovingDelay
+	{
+		Type = DelayTrigger
+		Trigger = ResourceConverter
+		Delay = .75
+	}
+	
+	MovingToggle
+	{
+		Type = TriggeredToggle
+		OnTrigger = ResourceConverter
+		OffTrigger = MovingDelay
+		OperationalToggle = IsOperational
+	}
+	
+	
+	MovingTween
+	{
+		Type = ValueTween
+		OffValue = 0
+		OnValue = 1
+		OnTweenDuration = .75
+		OffTweenDuration = 0
+		IsOnToggle = MovingToggle
+	}
+	
+	MovingSlider
+	{
+		Type = TransformLerp
+		ValueFrom = MovingTween
+		StartLocation = [0, 0]
+		EndLocation = [0, -1]
+	}
+	
+	Graphics2
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = MovingToggle
+		ChainedTo = MovingSlider 
+		OperationalLighting
+		{
+			Layer = "doodads_high"
+			DamageLevels
+			[
+				{
+					File = "./data/resources/hyperium/hyperium2-1.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		OperationalDoodad
+		{
+			Layer = "doors"
+			DamageLevels
+			[
+				{
+					File = "../tray.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

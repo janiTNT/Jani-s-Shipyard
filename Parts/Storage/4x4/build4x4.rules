@@ -148,6 +148,19 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			IncludeInBlueprints = true
 			Components = &<Types4x4/goldium.rules>/Components
 		}
+		cuttristeelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 8
+		}
+		cuttristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = cuttristeelToggle
+			IncludeInBlueprints = true
+			Components = &<Types4x4/cuttristeel.rules>/Components
+		}
 
 		Graphics
 		{

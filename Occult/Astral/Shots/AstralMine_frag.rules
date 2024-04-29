@@ -27,6 +27,7 @@ Components
 		TargetLeadPrediction = false
 		AvoidanceRaycastDistance = 100		
 		ModifiesLinearVelocity = true
+		VelocityCompensation = 95%
 	}
 
 	Targetable

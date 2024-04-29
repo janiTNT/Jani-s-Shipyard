@@ -95,7 +95,7 @@ Components
 	{
 		Type = Sprite
 		RenderBucket = BulletUpper2
-		Spin = 10d
+		Spin = 20d
 		Sprite
 		{
 			Texture

@@ -1,0 +1,89 @@
+Resource = steel
+ResourceStorage = SteelStorage
+CarrySize = (&<./data/resources/steel/steel.rules>/MaxPerNugget)
+LightColor = [192, 192, 192]
+//CarrySize = 1
+Components
+{
+	ConvertPermission
+	{
+		Type = MultiToggle
+		Toggles = [IsOperational, FromProxy]
+		Mode = All
+	}
+	
+	FromProxy
+	{
+		Type = ResourceStorageProxy
+		ResourceType = &~/Resource
+		PartLocation = [0, 1]
+		//PartCriteria
+		//{
+		//	Category = thermal
+		//}
+		ComponentID = &~/ResourceStorage
+		ToggleOnResources = (&~/CarrySize)
+		ToggleOffResources = (&~/CarrySize) - 1
+	}
+	
+	ToProxy
+	{
+		Type = ResourceStorageProxy
+		ResourceType = &~/Resource
+		PartLocation = [0, -1]
+		//PartCriteria
+		//{
+		//	Category = thermal
+		//}
+		ComponentID = &~/ResourceStorage
+	}
+	
+	ResourceConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = ConvertPermission
+		From
+		[
+			{
+				Storage = FromProxy
+				Quantity = (&~/CarrySize)
+				MinQuantityForConversion = (&~/CarrySize)
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = (&<hyperium.rules>/Components/ResourceConverter/From/1/Quantity)
+				MinQuantityForConversion = 1
+			}
+		]
+		To
+		[
+			{
+				Storage = ToProxy
+				Quantity = (&~/CarrySize)
+				MinQuantityForConversion = (&~/CarrySize)
+			}
+		]
+		//ToStorage = ToProxy
+		//ToQuantity = 1
+		Interval = (&<hyperium.rules>/Components/ResourceConverter/Interval)
+	}
+	
+	Graphics
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = IsOperational
+		OperationalLighting
+		{
+			Layer = "lights_add"
+			DamageLevels
+			[
+				{
+					File = "lights.png"
+					Size = [1, 1]
+					VertexColor = &~/LightColor
+				}
+			]
+		}
+	}
+}

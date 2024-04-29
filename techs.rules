@@ -431,6 +431,35 @@ Techs
 		Prerequisites = [janiTNT.burst1lasertech, cosmoteer.laser_blaster_small]
 	}
 	{
+		ID = janiTNT.focus1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/focus1/dirk.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/focus1/dirk.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/focus1/dirk.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/focus1/dirk.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/focus1/dirk.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/focus1/dirk_l.rules>/Part/ID
+		]
+		Cost = 2000
+		Prerequisites = [janiTNT.beam1tech]
+	}
+	{
+		ID = janiTNT.beam1_longtech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike_l.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike_l_alt.rules>/Part/ID
+		]
+		Cost = 5000
+		Prerequisites = [janiTNT.beam1tech, janiTNT.burst2lasertech]
+	}
+	{
 		ID = janiTNT.ion1tech
 		NameKey = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/DescriptionKey

@@ -1,0 +1,177 @@
+Resource = bullet
+ResourceStorage = AmmoStorage
+CarrySize = (&<./data/resources/bullet/bullet.rules>/MaxPerNugget)
+LightColor = [255, 145, 27]
+//CarrySize = 1
+Components
+{	
+	MovingTween
+	{
+		Type = ValueTween
+		OffValue = 0
+		OnValue = 1
+		OnTweenDuration = .75 / 2
+		OffTweenDuration = .75 / 2
+		IsOnToggle = HandStorage
+	}
+	
+	HandRest
+	{
+		Type = ThresholdToggle
+		ValueFrom = MovingTween
+		MinAmount = 0
+		MaxAmount = 0
+	}
+	
+	HandExtend
+	{
+		Type = ThresholdToggle
+		ValueFrom = MovingTween
+		MinAmount = 1
+		MaxAmount = 1
+	}
+	
+	CollectPermission
+	{
+		Type = MultiToggle
+		Toggles = [IsOperational, FromProxy, HandRest]
+		Mode = All
+	}
+	
+	HandStorageToggle
+	{
+		Type = ToggleProxy
+		ComponentID = HandStorage
+	}
+	
+	ConsumePowerTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = HandRest
+		TriggerWhenOff = false
+		TriggerWhenOn = true
+	}
+	
+	PowerDrainOnTransfer
+	{
+		Type = ResourceChange
+		Trigger = ConsumePowerTrigger
+		ResourceStorage = BatteryStorage
+		Amount = -150
+	}
+	
+	HandStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/Resource
+		MaxResources = (&~/CarrySize)
+		InitToMaxResources = 0
+		ToggleOnResources = (&~/CarrySize)
+		ToggleOffResources = 0
+	}
+	
+	InsertPermission
+	{
+		Type = MultiToggle
+		Toggles = [IsOperational, ToProxyValue, HandStorage, HandExtend]
+		Mode = All
+	}
+	
+	ToProxyValue
+	{
+		Type = ThresholdToggle
+		ValueFrom = ToProxy
+		MinAmount = 1
+		MaxAmount = 1
+		Invert = true
+	}
+	
+	FromProxy
+	{
+		Type = ResourceStorageProxy
+		ResourceType = &~/Resource
+		PartLocation = [0, 1]
+		//PartCriteria
+		//{
+		//	Category = thermal
+		//}
+		ComponentID = &~/ResourceStorage
+	}
+	
+	ToProxy
+	{
+		Type = ResourceStorageProxy
+		ResourceType = &~/Resource
+		PartLocation = [0, -1]
+		//PartCriteria
+		//{
+		//	Category = thermal
+		//}
+		ComponentID = &~/ResourceStorage
+	}
+	
+	From_Into_Hand
+	{
+		Type = ResourceConverter
+		OperationalToggle = CollectPermission
+		From
+		[
+			{
+				Storage = FromProxy
+				Quantity = 1
+				MinQuantityForConversion = 1
+			}
+		]
+		To
+		[
+			{
+				Storage = HandStorage
+				Quantity = 1
+				MinQuantityForConversion = 1
+			}
+		]
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Hand_Into_To
+	{
+		Type = ResourceConverter
+		OperationalToggle = InsertPermission
+		From
+		[
+			{
+				Storage = HandStorage
+				Quantity = 1
+				MinQuantityForConversion = 1
+			}
+		]
+		To
+		[
+			{
+				Storage = ToProxy
+				Quantity = 1
+				MinQuantityForConversion = 1
+			}
+		]
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Graphics
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = IsOperational
+		OperationalLighting
+		{
+			Layer = "lights_add"
+			DamageLevels
+			[
+				{
+					File = "lights.png"
+					Size = [1, 1]
+					VertexColor = &~/LightColor
+				}
+			]
+		}
+	}
+}

@@ -363,29 +363,6 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 					}
 				}
 			}
-		]
-	}
-	// Resource Type MODDED
-	{
-		ToggleID = "resource_conveyor_mode_modded"
-		Style = Popout
-		ShowInEditor = true
-		Choices
-		[
-			// goldium
-			{
-				ChoiceID = "resource_goldium_new"
-				ButtonToolTipKey = "PartToggles/resource_goldium"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "../Resources/goldium/icon.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
 			// tristeel bars
 			{
 				ChoiceID = "resource_cuttristeel"
@@ -400,6 +377,15 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 					}
 				}
 			}
+		]
+	}
+	// Resource Type MODDED
+	{
+		ToggleID = "resource_conveyor_mode_modded"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
 			// cosmilite bars
 			{
 				ChoiceID = "resource_cosmilite"
