@@ -17,7 +17,7 @@ Part : <base_part_occult.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	Size = [2, 2]
-	TypeCategories = [armor, weapon]
+	TypeCategories = [armor, visualbeamtarget]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -141,7 +141,7 @@ Part : <base_part_occult.rules>/Part
 					{
 						Texture
 						{
-							File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+							File = "new_shield_energy.png"
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -155,7 +155,7 @@ Part : <base_part_occult.rules>/Part
 						}
 						_maskTex
 						{
-							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							File = "new_shield_mask.png"
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -164,9 +164,9 @@ Part : <base_part_occult.rules>/Part
 						_waveCurveInterval = .5
 						_waveCurveMagnitude = .4
 						_waveCurveUOffsetPerSecond = .2
-						_fullPowerColor1 = [54, 0, 91, 127]
-						_lowPowerColor1 = [54, 0, 91, 127]
-						_fullPowerColor2 = [0, 127, 255, 127]
+						_fullPowerColor1 = [80, 0, 91, 127]
+						_lowPowerColor1 = [80, 0, 91, 127]
+						_fullPowerColor2 = [25, 127, 255, 127]
 						_lowPowerColor2 = [255, 0, 0, 127]
 						_lowPowerThicknessExponent = .3
 						_xScale = 1
@@ -282,12 +282,111 @@ Part : <base_part_occult.rules>/Part
 			]
 		}
 		
+		TargeterVisual
+		{
+			Type = UITargeter
+			TargeterID = logic_tractor_beam
+			Weapon = TurretVisual
+		}
+
+		TurretVisual
+		{
+			Type = TurretWeapon
+			Location = [1, 1] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = PowerToggle
+			//AutoFireToggle = AutoFireToggle
+			FireInterval = 0.5
+			FiringArc = 360d
+			RotateSpeed = infinity
+			FireThresholdAngle = 1d
+			IgnoreFriendlyShipLowLOSChecks = true
+			ShowTargetButtons = false
+			HoldTargetAfterCancel = 0.5
+			AIFirepowerRating = 0
+			Emitter = EmitterVisual
+			DefaultDirectControlBinding = 2
+			FirePermissionToggle = PowerToggle
+			SaveShipRelativeTargets = true
+			
+			SuppressWholeShipTargetOverlaysForPartsFilter = &BigFilter
+			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			SuppressShipWideExplicitTargetsWhenTargetingPartsFilter = &BigFilter
+			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			SuppressDirectControlWhenTargetingPartsFilter = &BigFilter
+			SuppressDirectControlWhenTargetingShipRelativePoints = true
+			SuppressFirepowerEstimationWhenTargetingPartsFilter = &BigFilter
+			SuppressFirepowerEstimationWhenTargetingShipRelativePoints = true
+			SaveSelfTargetPartCategories = [visualbeamtarget]
+			BigFilter
+			{
+				Enemies = false
+				Junk = false
+			}
+
+			AutoTargets
+			[]
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+
+			OverrideTargetNineSlice : <./Data/gui/game/sim_gui.rules>/SelectedPartNineSlice
+			{
+				VertexColor = [255, 255, 255, 255]
+				TopLeftSprite     : ^/0/TopLeftSprite     { VertexColor=&../VertexColor; }
+				TopSprite         : ^/0/TopSprite         { VertexColor=&../VertexColor; }
+				TopRightSprite    : ^/0/TopRightSprite    { VertexColor=&../VertexColor; }
+				LeftSprite        : ^/0/LeftSprite        { VertexColor=&../VertexColor; }
+				CenterSprite      : ^/0/CenterSprite      { VertexColor=&../VertexColor; }
+				RightSprite       : ^/0/RightSprite       { VertexColor=&../VertexColor; }
+				BottomLeftSprite  : ^/0/BottomLeftSprite  { VertexColor=&../VertexColor; }
+				BottomSprite      : ^/0/BottomSprite      { VertexColor=&../VertexColor; }
+				BottomRightSprite : ^/0/BottomRightSprite { VertexColor=&../VertexColor; }
+			}
+
+			OverrideTargetCircle : <./Data/commands/weapon_target.rules>/TargetCircle
+			{
+				VertexColor = [255, 255, 255, 255]
+			}
+
+			OverrideTargetLine : <./Data/commands/weapon_target.rules>/TargetLine
+			{
+				LineSprite : ^/0/LineSprite
+				{
+					VertexColor = [255, 255, 255, 191]
+				}
+
+				BeginCapSprite : ^/0/BeginCapSprite
+				{
+					VertexColor = [255, 255, 255, 191]
+				}
+
+				EndCapSprite : ^/0/EndCapSprite
+				{
+					VertexColor = [255, 255, 255, 191]
+				}
+			}
+		}
+		
+		EmitterVisual : <Shots/VisualBeam.rules>
+		{
+			Type = BeamEmitter
+			ChainedTo = TurretVisual
+			Location = [0, 0]
+			FireTrigger = TurretVisual
+			GetTargetFrom = TurretVisual
+			OperationalToggle = PowerToggle
+		}
 		
 		Collider
 		{
 			Type = CircleCollider
 			Location = [1, 1]
-			Radius = .5
+			Radius = 0.85
 			Density = 5
 		}
 
@@ -330,7 +429,7 @@ Part : <base_part_occult.rules>/Part
 			MediaEffects
 			[
 				&<particles/quarter_huge_part_exploding.rules>
-				&<particles/salvage_complete_shrapnel_occult.rules>
+				//&<particles/salvage_complete_shrapnel_occult.rules>
 				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
 				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
 				

@@ -116,6 +116,7 @@ JaniExistingSigilDetectionBoss = &JaniOrbDetectionCosmiliteBoss
 JaniWeaponsDisabledBoss = &JaniOrbDetectionCosmiliteBoss
 JaniWeaponsDisabledBossSecondary = &JaniOrbDetectionCosmiliteBoss
 JaniOrbDetectionBrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
+JaniPhase2BrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
 
 OverchargerRateReducer
 {

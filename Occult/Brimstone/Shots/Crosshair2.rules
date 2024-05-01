@@ -80,8 +80,8 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<BrimstoneMonsterSpawner.rules>
-					Count = 4
-					Spread = [-20d, 20d]
+					Count = 1
+					Spread = [-360d, 360d]
 					Distance = 1200
 					InheritVelocity = false
 				}

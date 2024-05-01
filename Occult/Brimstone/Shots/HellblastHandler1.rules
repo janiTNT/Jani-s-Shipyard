@@ -15,7 +15,7 @@ Components
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = [15, 20]
+		Lifetime = [15, 22]
 		OnDeath
 		{
 			HitEffects

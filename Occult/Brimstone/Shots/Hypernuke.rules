@@ -207,11 +207,33 @@ Components
 		LerpTime = 5
 	}
 	
-	WarnSprite
+	WarnSpriteA
 	{
 		Type = Sprite
 		RenderBucket = BulletUpper3
-		StartTime = 18
+		StartTime = 0
+		Spin = -100d
+		Sprite
+		{
+			Texture
+			{
+				File = "HypernukeRing.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [160 * 1.175, 160 * 1.175]
+			VertexColor = [128, 0, 0]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 20
+	}
+	
+	WarnSpriteB
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 16
 		Spin = -100d
 		Sprite
 		{

@@ -2,7 +2,7 @@ ID = "janiTNT.brimstonedart_boss"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 1000
 IdealRange = 700
-Speed = 110
+Speed = 100
 
 Components
 {

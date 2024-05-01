@@ -63,7 +63,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 1100
+					Damage = 1500
 					Filter
 					{
 						Friendlies = true

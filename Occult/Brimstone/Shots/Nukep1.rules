@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 35d
+		TurnVelocity = 25d
 		Delay = .3
 		//AvoidanceRaycastDistance = 250
 		//VelocityCompensation = 80%
@@ -97,6 +97,27 @@ Components
 			_litReflectiveStrength = 10
 			_litAdditiveStrength = 0.25
 			_unlitAdditiveStrength = .4
+		}
+	}
+	
+	LightsSprite2
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		StartTime = 0.2
+		Spin = -120d
+		//Z = .25
+		//IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../bigevilring.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [5, 5]
+			VertexColor = [128, 128, 128]
 		}
 	}
 	

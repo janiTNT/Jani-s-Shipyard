@@ -1,7 +1,7 @@
 ID = "janiTNT.imperium_boss_nuke_phase2"
 Range = &<Nukep1.rules>/Range
 IdealRange = &<Nukep1.rules>/IdealRange
-Speed = 0
+Speed = -20
 
 Components
 {
@@ -20,7 +20,7 @@ Components
 	BoostAcceleration
 	{
 		Type = Acceleration
-		Acceleration = [0, 500]
+		Acceleration = [0, 400]
 		AccelerationOverTime = [0, 0.6]
 	}
 	
@@ -62,6 +62,12 @@ Components
 	Sprite = &<Nukep1.rules>/Components/Sprite
 
 	LightsSprite = &<Nukep1.rules>/Components/LightsSprite
+	
+	LightsSprite2 : &<Nukep1.rules>/Components/LightsSprite2
+	{
+		StartTime = 0
+		Spin = -1080d
+	}
 	
 	MediaEffects
 	{

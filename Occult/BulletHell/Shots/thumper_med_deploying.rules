@@ -68,6 +68,8 @@ Components
 	{
 		Type = SimpleHit
 		FactorEffectsWith = Targetable
+		FriendlyShipLowCollisions = false
+		FriendlyShipHighCollisions = false
 
 		CrewCollisions = {Enemies=false; Junk=false}
 		HitCrew = &HitOperational

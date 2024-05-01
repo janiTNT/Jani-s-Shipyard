@@ -1,0 +1,100 @@
+Range = 1000
+IdealRange = 1000
+Duration = 0.5
+HitInterval = 5
+FriendlyShipLowCollisions = false
+FriendlyShipHighCollisions = false
+NonFriendlyShipLowCollisions = false
+NonFriendlyShipHighCollisions = false
+ClipRangeToTarget = true
+
+BeamMediaEffects
+[
+	{
+		Type = Beam
+		IsFancy = true
+		BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
+			Size = [100%, 3]
+			VertexColor = [255, 255, 255, 255]
+
+			_extraBeginLength = 2
+			_extraEndLength = 2
+			_extraEndArc = 0d
+			_minAlpha = .25
+
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi2.png
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+				VMode = Wrap
+			}
+			_displacementStrength = 0.1
+			_displacementSpeed = .3
+			_additiveStrength = 0.1
+
+			_noiseScaleX = 0.02
+			_noiseScaleY = 2
+			_noiseScrollSpeed = -2
+			_noisePanSpeed = 0
+			_endFadeLength = 1
+
+			_color1 = [255, 255, 255, 255]
+			_color2 = [220, 220, 255, 64]
+
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = InverseSourceAlpha
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+
+			_noiseTex
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		SpeedOverIntensity = [0, 0.5]
+		Bucket = TractorBeam
+		CaptureBackBuffer = true
+		LengthSmoothSpeed = 20
+		MinIntensity = -Infinity
+	}
+
+	: 0
+	{
+		IsFancy = false
+		IsSimple = true
+		BeamSprite : ^/0/BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam_simple.shader"
+			TargetBlendMode
+			{
+				SourceRgbFactor = One
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+			_color1 = [255, 255, 255, 128]
+			_color2 = [0, 0, 255, 64]
+		}
+		CaptureBackBuffer = false
+	}
+]
+
+HitNothing
+{
+}

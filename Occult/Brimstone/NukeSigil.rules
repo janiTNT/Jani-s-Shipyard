@@ -6,7 +6,7 @@ Part : <../base_part_occult.rules>/Part
 	EditorGroup = "BossParts"
 	Resources = []
 	IsRotateable = true
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBossSecondary]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBossSecondary, JaniPhase2BrimstoneBoss]
 	Density = 3
 	MaxHealth = 320000
 	AIValueFactor = 1
@@ -46,6 +46,14 @@ Part : <../base_part_occult.rules>/Part
 			MaxBuffValue = 999999999
 		}
 		
+		Phase2ToggleDET
+		{
+			Type = BuffToggle
+			BuffType = JaniPhase2BrimstoneBoss
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		
 		PowerToggle
 		{
 			Type = UIToggle
@@ -58,6 +66,13 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, CommandToggle, FunctionEnabled]
+			Mode = All
+		}
+		
+		IsOperationalPhase2
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle, FunctionEnabled, {Toggle = Phase2ToggleDET, Invert = false}]
 			Mode = All
 		}
 		
@@ -93,6 +108,21 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			Location = [1, 1]
+			OperationalToggle = IsOperational
+			NonOperationalDoodad
+			{
+				Layer = "secondary"
+				//RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../lock.png"
+						Size = [2, 2]
+						VertexColor = [255, 128, 128, 233]
+						//RotSpeed = 180d
+					}
+				]
+			}
 			Floor
 			{
 				Layer = "asteroid_lights_add"
@@ -212,6 +242,18 @@ Part : <../base_part_occult.rules>/Part
 			//ResourcesUsed = 200
 			//MinResourcesUsed = 1
 		}
+		
+		BulletEmitterPhase2 : &BulletEmitter
+		{
+			OperationalToggle = IsOperationalPhase2
+			FireDelay = .2
+			Spread = [-3d, 3d]
+			TargetLeadPrediction = false
+			Burst = 2
+			BurstDelay = .2
+		}
+		
+		
 
 		/*ChargeEffect
 		{

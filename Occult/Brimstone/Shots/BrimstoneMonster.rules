@@ -42,13 +42,13 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 80 * 0.25
+		Acceleration = 30 * 0.25
 	}
 
 	DeathByLifetime
 	{
 		Type = DeathByLifetime
-		Lifetime = [70, 72]
+		Lifetime = [70*4, 72*4]
 		OnDeath = &../Hit/HitFriendly
 	}
 
@@ -163,7 +163,7 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<Sunbombp2.rules>
-					Count = 3
+					Count = 6
 					Spread = [-8d, 8d]
 					Distance = 0
 					InheritVelocity = false

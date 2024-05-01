@@ -60,6 +60,16 @@ Part : <../base_part_occult.rules>/Part
 			MaxBuffValue = 999999999
 		}
 		
+		DetectorBuffProvider
+		{
+			Type = GridBuffProvider
+			OperationalToggle = Phase2Toggle
+			BuffType = JaniPhase2BrimstoneBoss
+			GridDistance = 2000
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
+		
 		FireModeToggle
 		{
 			Type = UIToggle
@@ -400,9 +410,22 @@ Part : <../base_part_occult.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "HaloRing.png"
+						File = "bigevilring.png"
 						Size = [12, 12]
 						RotSpeed = 90d
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "secondary"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "StarDawn.png"
+						Size = [18, 18]
+						RotSpeed = -60d
 					}
 				]
 			}

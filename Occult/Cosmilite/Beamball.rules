@@ -18,7 +18,7 @@ Part : <../base_part_occult.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
-	TypeCategories = [armor, weapon]
+	TypeCategories = [armor, weapon, visualbeamtarget]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -146,7 +146,7 @@ Part : <../base_part_occult.rules>/Part
 					{
 						Texture
 						{
-							File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+							File = "../new_shield_energy.png"
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -160,7 +160,7 @@ Part : <../base_part_occult.rules>/Part
 						}
 						_maskTex
 						{
-							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							File = "../new_shield_mask.png"
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -169,14 +169,14 @@ Part : <../base_part_occult.rules>/Part
 						_waveCurveInterval = .5
 						_waveCurveMagnitude = .4
 						_waveCurveUOffsetPerSecond = .2
-						_fullPowerColor1 = [54, 0, 91, 127]
-						_lowPowerColor1 = [54, 0, 91, 127]
-						_fullPowerColor2 = [0, 127, 255, 127]
-						_lowPowerColor2 = [255, 0, 0, 127]
+						_fullPowerColor1 = [54, 0, 91, 255]
+						_lowPowerColor1 = [54, 0, 91, 255]
+						_fullPowerColor2 = [0, 127, 255, 255]
+						_lowPowerColor2 = [255, 0, 0, 255]
 						_lowPowerThicknessExponent = .3
 						_xScale = 1
 						TargetBlendMode = Add
-						Size = [0, 0.5]
+						Size = [0, 1]
 					}
 					ArcSpriteSegments = 64
 					Bucket = Lower1

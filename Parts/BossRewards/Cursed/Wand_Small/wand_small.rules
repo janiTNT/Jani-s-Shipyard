@@ -14,7 +14,10 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000
 	TypeCategories = [weapon, uses_mana]
 	ReceivableBuffs : ^/0/ReceivableBuffs [CursedMana_Provided, CursedMana_Consumed]
-	AllowedDoorLocations = []
+	AllowedDoorLocations
+	[
+		[0, 1]
+	]
 	EditorIcon
 	{
 		Texture
@@ -29,7 +32,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, SpellcastToggle]
+			Toggles = [PowerToggle, SpellcastToggle, PartCrew]
 			Mode = All
 		}
 
@@ -107,6 +110,28 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				CursedManaConsumedSubtract
 			]
 			Mode = Add
+		}
+		
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [0.5, 0.5]
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/Weapon_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [SpellcastToggle]
+			CrewDestinations
+			[
+				[0.5, 0.5]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
 		}
 		
 		Turret
@@ -257,6 +282,17 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
 			OperationalDoodad
 			{
 				Layer = "doodads_low"
@@ -351,6 +387,16 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+				
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}

@@ -137,7 +137,7 @@ Part : <./data/ships/base_part.rules>/Part
 			MediaEffects
 			[
 				&<particles/quarter_huge_part_exploding.rules>
-				&<particles/salvage_complete_shrapnel_occult.rules>
+				//&<particles/salvage_complete_shrapnel_occult.rules>
 				
 				: /BASE_SOUNDS/AudioExterior
 				{

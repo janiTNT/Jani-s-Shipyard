@@ -107,7 +107,7 @@ Part : <base_part_occult.rules>/Part
 			{
 				Texture
 				{
-					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					File = "new_shield_energy.png"
 					SampleMode = Linear
 					MipLevels = 1
 				}
@@ -120,7 +120,7 @@ Part : <base_part_occult.rules>/Part
 			{
 				Texture
 				{
-					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					File = "new_shield_energy.png"
 					SampleMode = Linear
 					MipLevels = 1
 				}
@@ -142,7 +142,7 @@ Part : <base_part_occult.rules>/Part
 					{
 						Texture
 						{
-							File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+							File = "new_shield_energy.png"
 							SampleMode = Linear
 							MipLevels = 1
 						}
@@ -156,7 +156,7 @@ Part : <base_part_occult.rules>/Part
 						}
 						_maskTex
 						{
-							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							File = "new_shield_mask.png"
 							SampleMode = Linear
 							MipLevels = 1
 						}
