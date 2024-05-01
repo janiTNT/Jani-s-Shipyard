@@ -243,6 +243,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmortri.rules>/Part
 			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
 			
+			&<Parts/BossRewards/Cursed/spell_room_small/spell_room_small.rules>/Part
+			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part
+			
 			
 			//DEV PARTS
 			
@@ -659,6 +662,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{
 				ID = DrainTime
 				FormatKey = "Stats/DrainTimeFmt"
+			}
+			{
+				ID = CursedManaAvailible
+				FormatKey = "Stats/CursedManaAvailibleFmt"
+			}
+			{
+				ID = CursedManaProvided
+				FormatKey = "Stats/CursedManaProvidedFmt"
 			}
 		]
 	}
@@ -1112,6 +1123,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Brimstone/BrimSphere.rules>/Part
 			&<Occult/Brimstone/lootorb.rules>/Part
 			
+			&<Occult/Astral/AstralbossSigil.rules>/Part
 			//&<Occult/Astral/fringe_ball.rules>/Part NUH UH
 			&<Occult/Astral/fringe_ball_laser.rules>/Part
 			&<Occult/Astral/fringe_ball_cannon.rules>/Part
@@ -1121,6 +1133,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Astral/fringe_ball_barrage.rules>/Part
 			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
 			&<Occult/Astral/fringe_ball_mine.rules>/Part
+			&<Occult/Astral/lootorb.rules>/Part
 		]
 	}
 	{	Action = AddMany
@@ -1408,6 +1421,31 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			janiTNT.hyperoid
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<gui/game/designer/stat_bars.rules>/StatBars"
+		IgnoreIfNotExisting = true
+		ManyToAdd
+		[
+			{
+				NameKey = "BuildBox/CursedMana"
+				NumberFormat = "0"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/stat_cursedmana.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				RecommendedStat = CursedManaProvided	
+				ProvidedStat = CursedManaAvailible
+				BlocksPerValue = 10
+				IdealExtraSpaceFactor = 1 
+			}
 		]
 	}
 	

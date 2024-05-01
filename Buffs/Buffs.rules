@@ -339,3 +339,16 @@ Jani_BossProfanedHealthBonus //Armor Stage 2
 	MinValue = 0%
 	MaxValue = 90%//max
 }
+
+
+
+CursedMana_Provided // Checks Provided Mana
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+CursedMana_Consumed // Checks Mana consumed
+{
+	CombineMode = Add
+	BaseValue = 0%
+}

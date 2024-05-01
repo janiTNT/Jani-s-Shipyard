@@ -1,0 +1,199 @@
+ID = "janiTNT.cursedbolt_small"
+Range = 250
+IdealRange = [60, 250]
+IdealRadius = [5, 50]
+Speed = 110/4
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.2
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByDistanceTraveled
+		Distance = (&~/Range)
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = [0, 400]
+		AccelerationOverTime = [0, 0.75]
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 110d
+		Delay = 0.2
+		TargetLeadPrediction = false
+		//AvoidanceRaycastDistance = 100		
+		ModifiesLinearVelocity = true
+		VelocityCompensation = 90%
+		//AvoidsJunk = false
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 600
+		TargetCategory = "laser"
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		FactorEffectsWith = Targetable
+		CrewCollisions = {Enemies=true; Junk=true}
+		FriendlyShipLowCollisions = false
+		HitCrew = &HitOperational
+
+		HitShield = &HitOperational
+		HitFriendly = &HitOperational
+		HitOperational
+		{
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 1100
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 10;
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/laser_bolt_large/particles/laser_bolt_large_hit.rules>
+				&<./data/shots/laser_bolt_large/particles/laser_bolt_large_flash.rules>
+				&<./data/shots/laser_bolt_large/particles/laser_bolt_large_sparks.rules>
+				&<./data/shots/laser_bolt_large/particles/laser_bolt_large_spikes.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .06
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 1000
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+				{
+					Type = Impulse;
+					Impulse = 5;
+					Filter
+					{
+						Friendlies = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<./data/shots/laser_bolt_small/particles/laser_bolt_small_hit_struct.rules>
+				&<./data/shots/laser_bolt_large/particles/laser_bolt_large_sparks_struct.rules>
+				&<./data/shots/laser_bolt_small/particles/laser_bolt_small_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			// No effect.
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational
+		{
+			// No effect.
+		}
+		FinishedPenetratingStructural
+		{
+			// No effect.
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		Offset = [-1, 0]
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		RenderBucket = BulletUpper3
+		Sprite
+		{
+			Texture
+			{
+				File = "spellbolt.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [2, 1]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [9, 9]
+			VertexColor = [255, 35, 100]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}

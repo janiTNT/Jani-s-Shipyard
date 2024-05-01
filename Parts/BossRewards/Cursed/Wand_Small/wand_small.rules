@@ -1,0 +1,372 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CursedwandSmall"
+	IconNameKey = "Parts/CursedwandSmallIcon"
+	ID = janiTNT.cursed_wand_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	DescriptionKey = "Parts/CursedwandSmallDesc"
+	Resources
+	[
+		[steel, 8]
+		[cursedpage, 3]
+	]
+	Size = [1, 1]
+	MaxHealth = 4000
+	TypeCategories = [weapon, uses_mana]
+	ReceivableBuffs : ^/0/ReceivableBuffs [CursedMana_Provided, CursedMana_Consumed]
+	AllowedDoorLocations = []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [48, 48]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, SpellcastToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		CursedManaConsumerBuffProvider
+		{
+			Type = GridBuffProvider
+			OperationalToggle = PowerToggle
+			BuffType = CursedMana_Consumed
+			GridDistance = 50000//should be enough
+			AllowDiagonals = true
+			BuffAmount = 5
+			BuffsSelf = true
+		}
+		
+		SpellcastToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = CursedManaValue
+			MinAmount = 0%
+		}
+		
+		CursedManaProvidedAdd
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=CursedMana_Provided; BuffMode=Add; }
+		}
+		
+		CursedManaConsumedSubtract
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=CursedMana_Consumed; BuffMode=Subtract; }
+		}
+		
+		CursedManaValue
+		{
+			Type = MultiValue
+			Values
+			[
+				CursedManaProvidedAdd
+				CursedManaConsumedSubtract
+			]
+			Mode = Add
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [.5, .5]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 1.2
+			FiringArc = 360d
+			RotateSpeed = 50d
+			FireThresholdAngle = 80d
+			AIFirepowerRating = 400
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
+			AutoTargetCrewSafetyDist = 8
+			IgnoreFriendlyShipLowLOSChecks = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Turret
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [1, 0]
+			OperationalToggle = IsOperational
+			FireDelay = 0.2
+			Bullet = &<spellbolt.rules>
+		}
+		
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitter
+			Location = [1, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<./data/ships/terran/laser_blaster_small/particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "shoot.wav"
+					Volume = .6
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		TurretCollider
+		{
+			Type = CircleCollider
+			Location = &../Turret/Location
+			Radius = .15
+			Density = .75
+			IsHigh = true
+		}
+		
+		TurretGraphics
+		{
+			Type = Graphics
+			ChainedTo = Turret
+			Location = [0, 0]
+			Rotation = 90d
+			OperationalToggle = Turret
+			Walls
+			{
+				Layer = "roof_turrets"
+				DamageLevels
+				[
+					{
+						File = "wand.png"
+						NormalsFile = "wand_n.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"summon_circle1.png"
+							"summon_circle2.png"
+							"summon_circle3.png"
+							"summon_circle4.png"
+						]
+						Size = [1, 1]
+						Offset = [0, -0.5]
+						AnimationInterval = 0.1
+					}
+				]
+			}
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "ring.png"
+						Size = [1, 1]
+						RotSpeed = 90d
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_n.png"
+						Size = [1,1]
+					}
+				]
+			}
+		}
+		
+		/*OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}*/
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, .5]
+		}
+
+		/*OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "operating.wav"
+					Volume = .15
+					MaxConcurrentVolume = .3
+					Speed = .75
+					MaxConcurrent = 1
+				}
+			]
+		}*/
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = SpellcastToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		CursedManaAvailible = -(&~/Part/Components/CursedManaConsumerBuffProvider/BuffAmount)
+	}
+}

@@ -682,6 +682,13 @@ Parts
 	MegaroidBallweaponThumperBurstDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target. Weak variant that fires in 4 shot bursts."\
 	"\n<gray>Mod: Jani's Shipyard - Part Credit From: skipydog</gray>"
 	
+	MegaSigilAstralBoss = "Supreme Control Sigil (Astral Boss)"
+	MegaSigilAstralBossDesc = "<image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\n"
+	
+	MegaroidAstralLoot = "Boss Loot \"Bag\" (Astral)"
+	MegaroidAstralLootDesc = "Salvage this part to recover some rare resources and some stacks of Astral Bars. Build a Factory with them and Cosmilite bars to get a steady supply of Astral Bars."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
 	CosmiliteFactory = "Cosmilite Bar Forge"
 	CosmiliteFactoryIcon = "Cosmilite"
 	CosmiliteFactoryDesc = "<image name='dahell'/>Forges and smashes bars of Cosmilite under extreme conditions. Consumes 4 Tristeel and 8 Hyperium per use. Requires Cosmilite to build, locking the obtaining of this resource only after you defeat and collect the loot of the \"Godslayer Guardian\" Boss in a Threat level 10+ system"\
@@ -892,7 +899,15 @@ Parts
 	JaniArmorBitIcon = "Armor Plate"
 	JaniArmorBitDesc = "Small pieces of armor to decorate or defend small amounts of your ship."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
+
+	SpellRoomSmall = "Spellz Room Generator THingy"
+	SpellRoomSmallIcon = "Spellz Room"
+	SpellRoomSmallDesc = "I'm over here casting my spells I got tomes with my spells right now I'm just casting my shit I'm wizardly as Sol man I'm a freak man like <image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\nCreates 30 points of cursed mana."
 	
+	CursedwandSmall = "Ornate Cursed Wand"
+	CursedwandSmallIcon = "Cursed Wand"
+	CursedwandSmallDesc = "Deck mounted wand that Fires Weak homing projetiles. Always deals friendly fire, and is a danger to your deck weaporny and itself if hit.\nUses 5 points of cursed mana."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
 }
 PartColors
 {
@@ -1405,6 +1420,8 @@ Stats
 	
 	JaniBurstShotsFmt = "<white>Shots per Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
 	DrainTimeFmt = "<white>Power Drain Duration:</white> <good>{0:0}</good><gray>sec</gray>"
+	CursedManaAvailibleFmt = "<white>Total Cursed Mana Alteration:</white> <good>{0:0}</good>"
+	CursedManaProvidedFmt = "<white>Cursed Mana Created:</white> <good>{0:0}</good>"
 }
 StatCategories
 {

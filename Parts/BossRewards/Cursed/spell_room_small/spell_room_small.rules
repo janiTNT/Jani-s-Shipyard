@@ -1,0 +1,251 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/SpellRoomSmall"
+	IconNameKey = "Parts/SpellRoomSmallIcon"
+	ID = janiTNT.spell_room_small // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	DescriptionKey = "Parts/SpellRoomSmallDesc"
+	Resources
+	[
+		[steel, 32]
+		[coil2, 16]
+		[cursedpage, 14]
+	]
+	AIValueFactor = 5
+	Size = [2, 2]
+	SelectionPriority = 0
+	SelectionTypeID = "mana_room"
+	MaxHealth = 4000
+	ContiguityOriginPriority = 1
+	TypeCategories = [command, uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[2, 1]
+		[0, 2]
+		[1, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "placeholder.png"
+			SampleMode = Linear
+		}
+		Size = [48, 48]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, CommandToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 8
+		}
+		
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 6000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/ControlRoom_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+			AllowNonContiguousCrewSearch = true
+		}
+		
+		CursedManaBuffProvider
+		{
+			Type = GridBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = CursedMana_Provided
+			GridDistance = 50000//should be enough
+			AllowDiagonals = true
+			BuffAmount = 30
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = BatteryStorage
+			FromQuantity = 250
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+
+		CrewLocation
+		{
+			Type = CrewLocation
+			Location = [1, 0.97]
+		}
+		PartCrew
+		{
+			Type = PartCrew
+			Crew = 1
+			DefaultPriority = &/PRIORITIES/ControlRoom_Crew
+			PrerequisitesBeforeCrewing = [PowerToggle]
+			HighPriorityPrerequisites = [BatteryStorage]
+			CrewDestinations
+			[
+				[1, 0.97]
+			]
+			CrewLocations
+			[
+				CrewLocation
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "placeholder.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Roof = &<./data/ships/terran/control_room_small/control_room_small.rules>/Part/Components/Graphics/Roof
+			OperationalRoofDoodad = &<./data/ships/terran/control_room_small/control_room_small.rules>/Part/Components/Graphics/Roof
+			OperationalRoofLighting = &<./data/ships/terran/control_room_small/control_room_small.rules>/Part/Components/Graphics/Roof
+		}
+
+		Graphics2 = &<./data/ships/terran/control_room_small/control_room_small.rules>/Part/Components/Graphics2
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [1, 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			ResourceLevels  = &<./data/ships/terran/control_room_small/control_room_small.rules>/Part/Components/BatterySprites/ResourceLevels
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 1]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+		
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "193818__geoneo0__four_voices_whispering_6_wecho(EDITED_LOOPED).wav"
+					Volume = .5
+					MaxConcurrentVolume = .7
+					Speed = .75
+					MaxConcurrent = 1
+				}
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+
+				// No crew.
+				{
+					Toggle = PartCrew
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoCrew
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "placeholder.png"
+			Size = [2, 2]
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		PowerUsageContinuousMinutes = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000 * 60
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&PowerUsageContinuousMinutes) / 60
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+		CursedManaAvailible = (&~/Part/Components/CursedManaBuffProvider/BuffAmount)
+		CursedManaProvided = (&~/Part/Components/CursedManaBuffProvider/BuffAmount)
+	}
+}
