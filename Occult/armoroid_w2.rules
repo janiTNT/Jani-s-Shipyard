@@ -15,7 +15,7 @@ Part : <base_part_occult.rules>/Part
 	FlipHRotate = [0, 3, 2, 1]
 	FlipVRotate = [2, 1, 0, 3]
 	GenerateRectCollider = false
-	TypeCategories = [armor]
+	TypeCategories = [armor, boss_resistant]
 	InitialPenetrationResistance = 2 * 7
 	ContinuingPenetrationResistance = 2 * 7
 	ExplosiveDamageAbsorption = 100%

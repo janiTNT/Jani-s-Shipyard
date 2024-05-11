@@ -1,7 +1,7 @@
 Part : <fringe_ball.rules>/Part
 {
 	NameKey = "Parts/MegaroidBallWeaponFringeBossFireBlast"
-	DescriptionKey = "Parts/MegaroidBallWeaponCosmiliteBossDesc"
+	DescriptionKey = "Parts/MegaroidBallWeaponFringeBossFireBlastDesc"
 	ID = janiTNT.lightball_8x8_fringe_boss_fireblast // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	Components : ^/0/Components
 	{

@@ -10,7 +10,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 28800]//720.000 dollar
-		[coil2, 1440]// 432.000
+		[coil, 4320]// 432.000
 		//[comilitebar, 566]// 848.000
 		[tristeel, 566]// temp
 	]
@@ -21,7 +21,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeID = "reactors"
 	MaxHealth = 250 * 120 * 120 // weak but not
 	AutoDoorMaxPathLength = 5
-	TypeCategories = [weapon, is_crewed, uses_BFG, superweapon, BFG, uses_enriched_uranium, uses_power]
+	TypeCategories = [weapon, is_crewed, uses_BFG, superweapon, BFG, uses_enriched_uranium, uses_power, BFG_class_weapon]
 	CrewCongestedSpeedFactor = 1
 	CrewSpeedFactor = 1.5 // mfw insanely long travel times are painful
 	ReceivableBuffs : ^/0/ReceivableBuffs []
@@ -261,7 +261,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 10
+			FireInterval = 30
 			FiringArc = 360d
 			RotateSpeed = 5d
 			FireThresholdAngle = 0.005d
@@ -323,8 +323,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					ResourceStorage = LoadedUranium
-					ResourcesUsed = 50
-					MinResourcesUsed = 50
+					ResourcesUsed = 80
+					MinResourcesUsed = 80
 				}
 			]
 			Recoil = 400000
@@ -413,6 +413,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = battery
 			MaxResources = 200000 * 2
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			DeliveryLocation = [60,60]
 		}
 		BatteryConsumer
 		{
@@ -772,7 +773,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
-			Walls
+			/*Walls
 			{
 				Layer = "walls"
 				DamageLevels
@@ -782,7 +783,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						Size = [120, 120]
 					}
 				]
-			}
+			}*/
 			Roof
 			{
 				Layer = "roofs"
@@ -814,6 +815,55 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+		}
+		
+		WallGrid : /JANI_COMMON/Walls/FactoryWalls
+		{
+			Type = BlendSpriteGrid
+			AllowUndefinedBlendSprites = true
+			BlendsWithCategories = []
+			AlwaysBlendWithSelf = true
+			RectType = Physical
+			Location = [0.5, 0.5]
+			Layer = "walls"
+		}
+		
+		CoilBlockLine1
+		{
+			Type = SpriteGrid
+			Location = [58.5, 0.6]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [1, 20]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = &/JANI_COMMON/CoilBigtrim
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "walls"
+		}
+		
+		CoilBlockLine2
+		{
+			Type = SpriteGrid
+			Location = [61.5, 0.6]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [1, 20]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = &/JANI_COMMON/CoilBigtrim
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "walls"
 		}
 		
 		DestroyedEffects

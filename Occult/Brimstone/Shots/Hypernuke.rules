@@ -2,7 +2,7 @@ ID = "janiTNT.imperium_boss_meganuke"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 8000
 IdealRange = 1200
-Speed = 80
+Speed = 100
 
 Components
 {
@@ -41,8 +41,8 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = [50, 15]
-		AccelerationOverTime = [0, 1.8]
+		Acceleration = [120, 10]
+		AccelerationOverTime = [0, 8]
 	}
 
 	DeathByLifetime
@@ -64,7 +64,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 2000000
+					TotalDamage = 8000000
 					Radius = 80
 					ImpulsePerNDamage = 10
 					NDamage = 1000
@@ -77,7 +77,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 600000
+					TotalDamage = 2400000
 					Radius = 80
 					ImpulsePerNDamage = 5
 					NDamage = 1000

@@ -61,8 +61,8 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<DoGfireball.rules>
-					Count = 5
-					Arc = [-8d, 16d]
+					Count = 7
+					Arc = [-16d, 32d]
 					//Spread = [-15d, 15d]
 					InheritVelocity = true
 					ScaleHealth = false
@@ -71,8 +71,8 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<DoGfireball.rules>
-					Count = 5
-					Arc = [-8d, 16d]
+					Count = 7
+					Arc = [-16d, 32d]
 					//Spread = [-15d, 15d]
 					InheritVelocity = true
 					ScaleHealth = false
@@ -81,8 +81,8 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<DoGfireball.rules>
-					Count = 5
-					Arc = [-8d, 16d]
+					Count = 7
+					Arc = [-16d, 32d]
 					//Spread = [-15d, 15d]
 					InheritVelocity = true
 					ScaleHealth = false
@@ -91,12 +91,32 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<DoGfireball.rules>
-					Count = 13
-					Arc = [-24d, 48d]
+					Count = 7
+					Arc = [-16d, 32d]
 					//Spread = [-15d, 15d]
 					InheritVelocity = true
 					ScaleHealth = false
 					Distance = -20
+				}
+				{
+					Type = SpawnBullets
+					Bullet = &<DoGfireball.rules>
+					Count = 7
+					Arc = [-16d, 32d]
+					//Spread = [-15d, 15d]
+					InheritVelocity = true
+					ScaleHealth = false
+					Distance = -30
+				}
+				{
+					Type = SpawnBullets
+					Bullet = &<DoGfireball.rules>
+					Count = 11
+					Arc = [-24d, 48d]
+					//Spread = [-15d, 15d]
+					InheritVelocity = true
+					ScaleHealth = false
+					Distance = -40
 				}
 			]
 		}
@@ -175,7 +195,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [1000, 32]
+			Size = [1400, 32]
 			VertexColor = [255 , 25, 25]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"

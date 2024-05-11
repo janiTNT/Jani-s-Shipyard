@@ -12,18 +12,21 @@ Part : <base_part_occult.rules>/Part
 	]*/
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Density = 3
-	MaxHealth = 32000
+	MaxHealth = 64000
 	TypeCategories = [nothing]
 	InitialPenetrationResistance = 2 * 7
 	ContinuingPenetrationResistance = 2 * 7
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 0%
-	ExplosiveDamageResistance = 0%
+	DamageResistances = {explosive = 100%, default = 100%}
 	GenerateRectCollider = false
 	IsExternal = true
 	ExternalWalls = [None]
 	InternalWalls = [All]
 	IsWalled = false
+	
+	SalvageProgressMediaEffects 
+	
 	EditorIcon
 	{
 		Texture = "nothing_icon.png"
@@ -116,6 +119,7 @@ Part : <base_part_occult.rules>/Part
 					{
 						Friendlies = true
 						IgnoreInvulnerability = false
+						DamageType = removal
 					}
 				}
 			]
@@ -132,6 +136,16 @@ Part : <base_part_occult.rules>/Part
 				}
 			]
 			Location = [.5, .5]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			//Location = [0.5, 0.5]
+			WhenSalvaged = true
+			MediaEffects
+			[
+			]
 		}
 
 		Blueprints

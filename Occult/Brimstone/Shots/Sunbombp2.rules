@@ -52,8 +52,6 @@ Components
 		OnDeath = &../Hit/HitFriendly
 	}
 	
-	Targetable = &<SunBombp1.rules>/Components/Targetable
-	
 	Hit = &<SunBombp1.rules>/Components/Hit
 	
 	GlowSprite = &<SunBombp1.rules>/Components/GlowSprite

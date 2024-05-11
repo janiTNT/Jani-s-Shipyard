@@ -1,0 +1,561 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ChemicalPlant"
+	IconNameKey = "Parts/ChemicalPlantIcon"
+	ID = janiTNT.ChemicalPlantBase // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/ChemicalPlantDesc"
+	Resources
+	[
+		[steel, 160]
+		[coil2, 120]
+	]
+	Size = [3, 3]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 16000
+	TypeCategories
+	[
+	uses_power
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	ForceManhattanPathInPart = true
+	HasNonContiguousPathing = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[1, 3]
+		[3, 1]
+	]
+	BlockedTravelCells
+	[
+		[1, 1]
+		[1, 0]
+		
+		[0, 0]
+		[2, 0]
+		[2, 2]
+		[0, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+		
+		IronStorage
+		{
+			Type = ResourceStorage
+			ResourceType = iron
+			MaxResources = 20
+			//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		IronConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = iron
+			Storage = IronStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			From
+			[
+			    {
+			        Storage = IronStorage
+			        Quantity = 1
+			    }
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 200
+			        MinQuantityForConversion = 1
+			    }
+			]
+			To
+			[
+				{
+			        Storage = MoltenIronFluidStorage
+			        Quantity = 1000
+			        MinQuantityForConversion = 1000
+			    }
+			]
+			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+		}
+		
+		MoltenIronFluidStorage
+		{
+			Type = ResourceStorage
+			ResourceType = molten.iron
+			MaxResources = 8000
+			SuppliesResources = false
+			StartingResources = 0
+			InitToMaxResources = 0
+			InitToMaxResourcesPVP = 0
+			DropResourcesWhenDestroyed = false
+			DropResourcesWhenRemoved = false
+		}
+		
+		BottomProxy1 : &<../pipe/pipebase.rules>/BottomProxyIron
+		{
+			PartLocation = [0, 3]
+			ResourceType = molten.iron
+		}
+		
+		BottomProxy2 : &<../pipe/pipebase.rules>/BottomProxyIron
+		{
+			PartLocation = [2, 3]
+			ResourceType = molten.iron
+		}
+		
+		CombinedFluidStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = molten.iron
+			ResourceStorages = [BottomProxy1, BottomProxy2]
+			AddMode = PrioritizeLeastResources
+			RemoveMode = PrioritizeMostResources
+			DropResourcesWhenDestroyed = false
+			DropResourcesWhenRemoved = false
+		}
+		
+		FluidSpreader
+		{
+			Type = ResourceConverter
+			From
+			[
+				{
+					Storage = MoltenIronFluidStorage
+					Quantity = 500
+					MinQuantityForConversion = 500
+				}
+			]
+			To
+			[
+				{
+					Storage = CombinedFluidStorage
+					Quantity = 500
+					MinQuantityForConversion = 500
+				}
+			]
+			Interval = .25
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1.5, 1.5]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					//Sound = "../factory_ammo/bullet_create.wav"
+					//Volume = .75
+					Sound = "./data/common_effects/sounds/metal_deliver.wav"
+					Volume = 0.8
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+		
+		/*FloorSprite
+		{
+			Type = Sprite
+			OnlyWithFlip = false
+			Location = [2, 2]
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor1.png"
+					Size = [4, 4]
+				}
+			]
+		}*/
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle3.png"
+							"doodads_idle2.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "walls"
+				Offset = [0, -0.5]
+				DamageLevels
+				[
+					{
+						File = "topmachine.png"
+						Size = [3, 2]
+					}
+				]
+			}
+			/*OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [4, 1]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [4, 1]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [4, 1]
+					}
+				]
+			}*/
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-85/64, -57/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 80*1.4]
+					}
+				]
+			}
+		}
+		
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [2, 2]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/RoofDoorSprite/OpenDamageLevels
+			ClosedDamageLevels = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/RoofDoorSprite/ClosedDamageLevels
+		}
+
+		Graphics2
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			//ResetAnimationTrigger = ResourceConverter
+			ShowToggledDoodadsWhenNotOperational = false
+			ToggleOnDoodad
+			{
+				Layer = "doodads_low" //Wall layer so the cosmilte is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				Offset = [0, -(0.5)+(2/64)]
+				DamageLevels
+				[
+					{
+						File = "fluid.png"
+						Size = [2, 2]
+						RotSpeed = 420d
+						VertexColor = [255, 80, 80]
+					}
+				]
+			}
+			/*ToggleOffDoodad
+			{
+				Layer = "walls" //Wall layer so the cosmilte is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				Offset = [0, 0.5]
+				DamageLevels
+				[
+					{
+						File =	"smashpass1.png"
+						Size = [1, 2]
+					}
+				]
+			}*/
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [62/64, -57/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.4, 0, 80*1.4]
+					}
+				]
+			}
+		}
+
+		/*BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [3, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			RangeLow = 0
+			RangeHigh = 3000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 2]
+				}
+			]
+		}
+		
+		BatterySprites2
+		{
+			Type = ResourceSprites
+			Location = [1, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			RangeLow = 3000
+			RangeHigh = 6000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					MirrorU = true
+					Size = [1, 2]
+				}
+				{
+					File = "batteries2.png"
+					MirrorU = true
+					Size = [1, 2]
+				}
+				{
+					File = "batteries3.png"
+					MirrorU = true
+					Size = [1, 2]
+				}
+			]
+		}
+*/
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [3, 3]
+		}
+	}
+
+	Stats
+	{
+		/*PowerPerSteel = 750 / 1 / 1000
+		PowerPerSecond = 750 / 3 / 1000
+		SteelPowerUsage = [&../PowerPerSteel, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4*/
+	}
+}

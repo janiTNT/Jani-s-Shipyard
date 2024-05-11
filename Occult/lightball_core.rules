@@ -17,7 +17,7 @@ Part : <base_part_occult.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	Size = [2, 2]
-	TypeCategories = [armor, weapon]
+	TypeCategories = [armor, weapon, boss_resistant]
 	InitialPenetrationResistance = 1
 	ContinuingPenetrationResistance = 1
 	ExplosiveDamageAbsorption = 100%

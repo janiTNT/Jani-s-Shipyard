@@ -1,7 +1,7 @@
 ﻿ID = "janiTNT.TechMod"
 Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.20(beta v4)"
+Version = "Modern 1.20(beta v6)"
 Logo = "evil jani.png"
 CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
@@ -142,6 +142,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
 			
+			&<Parts/Production/Pipe/pipe1.rules>/Part
+			&<Parts/Production/Pipe/pipe2.rules>/Part
+			&<Parts/Production/Pipe/pipe3.rules>/Part
+			&<Parts/Production/Pipe/pipe4.rules>/Part
+			&<Parts/Production/Pipe/pipe5.rules>/Part
+			
+			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part
+			
 			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
 			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
 			&<Parts/Background/Structure/background_structure_block/background_structure_block.rules>/Part
@@ -201,6 +209,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part
 			&<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part
 			&<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part
+			&<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part
+			&<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part
 			
 			&<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part
 			&<Parts/Flight/Pulse Thrusters/pulse_thruster_med.rules>/Part
@@ -210,6 +220,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part	
+			&<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part	
+			&<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part	
 			
 			&<Parts/Logic/Wires/Wire1/Wire1.rules>/Part
 			&<Parts/Logic/Wires/Wire2/Wire2.rules>/Part
@@ -246,6 +258,16 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/BossRewards/Cursed/spell_room_small/spell_room_small.rules>/Part
 			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part
 			
+			// Multiblock parts
+			
+			
+			&<Parts/Common/Steelbig/Steelbig.rules>/Part
+			&<Parts/Common/Coilbig/Coilbig.rules>/Part
+			&<Parts/Common/WallMass/wallmass.rules>/Part
+			&<Parts/Common/MachineFrame/MachineFrame.rules>/Part
+			&<Parts/Common/Bulkhead/Bulkhead.rules>/Part
+			&<Parts/Common/Corridors/FactoryCorridor.rules>/Part
+			&<Parts/Common/Corridors/FactoryCorridorDark.rules>/Part
 			
 			//DEV PARTS
 			
@@ -591,6 +613,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			&<resources/Heat/Heat.rules>
+			&<resources/Enragement/Enragement.rules>
 			&<resources/Plasma/Plasma.rules>
 			&<resources/Mining Energy/mining_energy.rules>
 			&<resources/SigilDeath/sigildeath.rules>
@@ -607,6 +630,18 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Profaned Core/profaned_core.rules>
 			&<resources/Cursed Pages/cursedpages.rules>
 			&<resources/Zetasphere/zetasphere.rules>
+			
+			&<resources/fluids/molten.iron.rules>
+			&<resources/fluids/molten.steel.rules>
+			&<resources/fluids/molten.copper.rules>
+			&<resources/fluids/molten.coil.rules>
+			&<resources/fluids/molten.tritanium.rules>
+			&<resources/fluids/molten.tristeel.rules>
+			&<resources/fluids/molten.carbon.rules>
+			&<resources/fluids/molten.gold.rules>
+			&<resources/fluids/molten.goldium.rules>
+			&<resources/fluids/molten.hyperium.rules>
+			&<resources/fluids/molten.sulfur.rules>
 		]
 	}
 	/*{
@@ -629,7 +664,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		Action = Add
 		AddTo = "<cosmoteer.rules>"
 		Name = "JANI_COMMON"
-		ToAdd = &<common/common.txt>
+		ToAdd = &<common/common.rules>
 	}
 	// Add custom roof decals.
 	{
@@ -1146,6 +1181,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{ File="Ships/Occult Riptide.ship.png"; Tags=[HyperoidGuardian] Tier=6;  Difficulty=3; }
 			//{ File="Occult/Twiceliver Guardian .ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }//remove todo quick NOW
 			{ File="Ships/MicroReaper.ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }
+			{ File="Ships/The Witch's Craft.ship.png"; Tags=[janibossship] Tier=20;  Difficulty=3; }
 			{ File="Ships/Godslayer Guardian.ship.png"; Tags=[janibossship] Tier=16;  Difficulty=3; }
 			{ File="Ships/Sol Profanatus.ship.png"; Tags=[janibossship] Tier=20;  Difficulty=3; }
 		]
@@ -1212,8 +1248,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					}
 					{
 						Type = RandomAttackAngle
-						AttackAngleChangeInterval = [10, 20]
-						AttackAngleChangeDelta = [-50d, 50d]
+						AttackAngleChangeInterval = [40, 60]
+						AttackAngleChangeDelta = [-110d, 110d]
 						CoordinateFlanking = true
 					}
 				]

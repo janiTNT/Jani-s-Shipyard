@@ -37,34 +37,110 @@ Components
 		DropResourcesWhenRemoved = true
 		AllowExternalPickupAndDelivery = true
 	}
-
-	ResourceConverter
+	
+	LoadedGoldium
+	{
+		Type = ResourceStorage
+		OperationalToggle = IsOperational
+		ResourceType = goldium
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		MaxResources = (&../ResourceConverter/To/0/Quantity) + 1		//Need to be +1 so the Converter doesnt door stuck
+		InitToMaxResources = 0
+		ToggleOnResources = &../ResourceConverter/To/0/Quantity
+		ToggleOffResources = 0
+	}
+	
+	GoldiumUnLoader
 	{
 		Type = ResourceConverter
-		OperationalToggle = IsOperational
-		From
-		[
-			{
-				Storage = GoldStorage
-				Quantity = 1
-			}
-			{
-				Storage = BatteryStorage
-				Quantity = 100
-				MinQuantityForConversion = 1
-			}
-		]
+		OperationalToggle = LoadedGoldium
+		FromStorage = LoadedGoldium
+		FromQuantity = 1
 		ToStorage = GoldiumStorage
 		ToQuantity = 1
 		Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
 	}
 	
-	GoldiumGraphics
+	GoldPrereq
+	{
+		Type = MultiToggle
+		Toggles = [GoldStorage, LoadedGold]
+		Mode = Any
+	}
+
+	LoadedGold
+	{
+		Type = ResourceStorage
+		OperationalToggle = IsOperational
+		ResourceType = gold
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		MaxResources = (&../ResourceConverter/From/0/Quantity) + 1		//Need to be +1 so the GoldLoader dont need to momentarily stop after loading the LoadedGold
+		InitToMaxResources = 0
+		ToggleOnResources = &../ResourceConverter/From/0/Quantity
+		ToggleOffResources = (&ToggleOnResources) - 1
+	}
+
+	AnimationToggle
+	{
+		Type = MultiToggle
+		Toggles = [GoldLoader, ResourceConverter]
+		Mode = Any
+	}
+	
+	AnimationTrigger
+	{
+		Type = MultiTrigger
+		Triggers = [GoldLoader, ResourceConverter]
+	}
+
+	GoldLoader
+	{
+		Type = ResourceConverter
+		OperationalToggle = IsOperational
+		FromStorage = GoldStorage
+		FromQuantity = 1
+		ToStorage = LoadedGold
+		ToQuantity = 1
+		Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+	}
+
+	ResourceConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = LoadedGold
+		From
+		[
+			{
+				Storage = LoadedGold
+				Quantity = 6
+			}
+			{
+				Storage = BatteryStorage
+				Quantity = 750
+				MinQuantityForConversion = 1
+			}
+		]
+		To
+		[
+			{
+				Storage = LoadedGoldium
+				Quantity = 5
+				MinQuantityForConversion = 5
+			}
+		]
+		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+		CheckResourceLimits = true
+	}
+	
+	GoldGraphics
 	{
 		Type = Graphics
-		Location = [2, 2]
+		Location = [.5, 2]
 		OperationalToggle = IsOperational
-		DoodadToggle = ResourceConverter
+		DoodadToggle = GoldLoader
+		ResetAnimationTrigger = GoldLoader
 		ToggleOnDoodad
 		{
 			Layer = "walls" //walls layer so the Gold and Goldium are draw over the belts
@@ -73,17 +149,52 @@ Components
 				{
 					AnimationFiles
 					[
+						"gold1.png"
+						"gold2.png"
+						"gold3.png"
+						"gold4.png"
+						"goldium6.png"//empty
+						"goldium6.png"//empty
+						"goldium6.png"//empty
+						"goldium6.png"//empty
+					]
+					Size = [1, 1]
+					AnimationInterval = 0.125
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+				}
+			]
+		}
+	}
+	
+	GoldiumGraphics
+	{
+		Type = Graphics
+		Location = [3, 2]
+		OperationalToggle = LoadedGoldium
+		DoodadToggle = GoldiumUnLoader
+		ResetAnimationTrigger = GoldiumUnLoader
+		ToggleOnDoodad
+		{
+			Layer = "walls" //walls layer so the Gold and Goldium are draw over the belts
+			DamageLevels
+			[
+				{
+					AnimationFiles
+					[
+						"goldium6.png"//empty
+						"goldium6.png"//empty
+						"goldium6.png"//empty
 						"goldium1.png"
 						"goldium2.png"
 						"goldium3.png"
 						"goldium4.png"
 						"goldium5.png"
-						"goldium6.png"
-						"goldium7.png"
-						"goldium8.png"
 					]
-					Size = [4, 1]
+					Size = [1, 1]
 					AnimationInterval = 0.125
+					AnimationStartTime = WhenSpawned
+					ClampAnimation = true
 				}
 			]
 		}

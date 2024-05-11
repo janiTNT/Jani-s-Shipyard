@@ -9,16 +9,16 @@ Part : <../base_part_occult.rules>/Part
 	[
 		[hyperium, 128]
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeakpointDetector]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeakpointDetector, JaniCosmilitebossShouldHaveNoOrbs]
 	Density = 3
 	AIValueFactor = 32
-	MaxHealth = 32000 * 32
+	MaxHealth = 32000 * 42
 	EditorReplacementPartID = ""
 	Size = [2, 4]
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
-	TypeCategories = [armor, weapon, visualbeamtarget]
+	TypeCategories = [armor, weapon, visualbeamtarget, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -287,11 +287,42 @@ Part : <../base_part_occult.rules>/Part
 			]
 		}
 		
+		SelfTerminateSignal
+		{
+			Type = BuffToggle
+			BuffType = JaniCosmilitebossShouldHaveNoOrbs
+		}
+		SelfTerminateRepeatingTrigger
+		{
+			Type = Timer
+			Duration = .05
+			OperationalToggle = SelfTerminateSignal
+			AutoStart = true
+			Repeats = true
+		}
+		SelfTerminateDetonateEffects
+		{
+			Type = TriggeredEffects
+			Trigger = SelfTerminateRepeatingTrigger
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
+					}
+				}
+			]
+		}
+		
 		BuffProvider
 		{
 			Type = GridBuffProvider
 			BuffType = JaniOrbDetectionCosmiliteBoss
-			GridDistance = 40
+			GridDistance = 4000
 			AllowDiagonals = true
 			BuffAmount = 1
 		}

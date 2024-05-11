@@ -10,7 +10,7 @@ Components
 	{
 		Type = CirclePhysics
 		//Radius = 34 //Perfect...
-		Radius = 28
+		Radius = 28*4
 		Density = 3
 		LinearDamping = 1 * 0.25
 		AngularDamping = 1
@@ -20,7 +20,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 45d
+		TurnVelocity = 45d/2
 		Delay = 0
 		//AvoidanceRaycastDistance = 250
 		VelocityCompensation = 80%
@@ -42,7 +42,7 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 30 * 0.25
+		Acceleration = 20 * 0.25
 	}
 
 	DeathByLifetime
@@ -66,7 +66,7 @@ Components
 				MipLevels = max
 			}
 			//UVRotation = 1
-			Size = [72, 72]
+			Size = [72*4, 72*4]
 			TargetBlendMode = Add
 		}
 		LerpScaleFrom = [0.1, 0.1]
@@ -87,7 +87,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [150, 150]
+			Size = [150*4, 150*4]
 			VertexColor = [255*2, 205*2, 128*2]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
@@ -115,10 +115,22 @@ Components
 		Damage = 80000 * 16 //quarter of DoG, yes its gonna break because big collider
 	}*/
 	
+	DeathProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = 0.25
+		Range = 28 * 4 * 1.25
+		StartDelay = 1
+		OnDeath = &../Hit/HitOperational
+	}
+	
 	Hit
 	{
 		Type = SimpleHit
 		SourceShipLowCollisions = false
+		FriendlyShipHighCollisions = false
+		NonFriendlyShipLowCollisions = false
+		NonFriendlyShipHighCollisions = false
 
 		HitShield = &HitOperational
 		HitOperational
@@ -127,8 +139,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1800000
-					Radius = 50
+					TotalDamage = 1800000*4
+					Radius = 80 * 2
 					ImpulsePerNDamage = 10
 					NDamage = 1000
 					Slices = 1
@@ -140,8 +152,8 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 600000
-					Radius = 40
+					TotalDamage = 600000*4
+					Radius = 70 * 2
 					ImpulsePerNDamage = 5
 					NDamage = 1000
 					Delay = .5
@@ -155,7 +167,7 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<brimstonedart.rules>
-					Count = 32
+					Count = 128
 					Spread = [-6d, 6d]
 					Distance = 0
 					InheritVelocity = false
@@ -163,7 +175,7 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<Sunbombp2.rules>
-					Count = 6
+					Count = 12
 					Spread = [-8d, 8d]
 					Distance = 0
 					InheritVelocity = false

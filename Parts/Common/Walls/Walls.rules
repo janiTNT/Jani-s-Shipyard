@@ -1,0 +1,6 @@
+FactoryWalls = &<FactoryWalls.rules>
+FactoryWallsBlueprints = &<FactoryBlueprints.rules>
+StorageWalls = &<StorageWalls.rules>
+StorageWallsBlueprints = &<StorageBlueprints.rules>
+RustyWalls = &<RustyWalls.rules>
+RustyWallsBlueprints = &<RustyBlueprints.rules>

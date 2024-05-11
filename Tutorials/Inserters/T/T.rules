@@ -15,10 +15,20 @@ A
 
 		ManyToAdd
 		[
-			{ File="Tsh/M-E-N-G.ship.png"; Tags=[T_anomM]}
-			{ File="Tsh/MezoSphere.ship.png"; Tags=[T_anomDyson]}
-			{ File="Tsh/Prophet.ship.png"; Tags=[T_anomM]}
 			{ File="Tsh/Foregin.ship.png"; Tags=[T_anomS]}
+			{ File="Tsh/Fader.ship.png"; Tags=[T_anomS]}
+			{ File="Tsh/Immoral.ship.png"; Tags=[T_anomS]}
+			{ File="Tsh/Stellar.ship.png"; Tags=[T_anomS]}
+			
+			{ File="Tsh/M-E-N-G.ship.png"; Tags=[T_anomM]}
+			{ File="Tsh/S-E-R-P.ship.png"; Tags=[T_anomM]}
+			{ File="Tsh/Prophet.ship.png"; Tags=[T_anomM]}
+			{ File="Tsh/Hyperium Composite.ship.png"; Tags=[T_anomM]}
+			{ File="Tsh/Studded.ship.png"; Tags=[T_anomM]}
+			
+			{ File="Tsh/Karma.ship.png"; Tags=[T_anomL]}
+			{ File="Tsh/Abandon All Hope.ship.png"; Tags=[T_anomL]}
+			{ File="Tsh/Perfectly Still.ship.png"; Tags=[T_anomL]}
 		]
 	}
 ]

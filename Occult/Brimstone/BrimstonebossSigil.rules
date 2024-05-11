@@ -15,13 +15,13 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "cosmoteer.megarock_1x1"
-	MaxHealth = 32000 * 8 * 2 * 4
+	MaxHealth = 32000 * 75
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_brimstone
 	DestroyedPartHealthFraction = 100%
-	Size = [4, 2]
-	TypeCategories = [armor, command]
+	Size = [8, 8]
+	TypeCategories = [armor, command, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -104,8 +104,8 @@ Part : <../base_part_occult.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [2, 1]// Relative to upper-left corner of unrotated part.
-			Rotation = -90d// Relative to unrotated part.
+			Location = [4, 4]// Relative to upper-left corner of unrotated part.
+			Rotation = -45d// Relative to unrotated part.
 			OperationalToggle = NormalAttacksToggle
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 20
@@ -402,7 +402,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			OperationalToggle = WallsDisabler
-			Location = [2, 1]
+			Location = [4, 4]
 			OperationalDoodad
 			{
 				Layer = "secondary"
@@ -434,7 +434,7 @@ Part : <../base_part_occult.rules>/Part
 		ProximityWeapon
 		{
 			Type = TurretWeapon
-			Location = [2, 1]
+			Location = [4, 4]
 			Rotation = 0d
 			FireInterval = 0
 			FiringArc = 0d
@@ -502,8 +502,8 @@ Part : <../base_part_occult.rules>/Part
 		ParryModule
 		{
 			Type = TurretWeapon
-			Location = [2, 1]
-			Rotation = -90d
+			Location = [4, 4]
+			Rotation = -45d
 			OperationalToggle = PowerToggle
 			//AutoFireToggle = AutoFireToggle
 			FireInterval = 1.5
@@ -598,7 +598,8 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			//OperationalToggle = IsOperational
-			Location = [2, 1]
+			Location = [4, 4]
+			Rotation = 45d
 			OperationalDoodad
 			{
 				Layer = "asteroid_lights_add"
@@ -607,7 +608,7 @@ Part : <../base_part_occult.rules>/Part
 				[
 					{
 						File = "bosssigil.png"
-						Size = [4, 2]
+						Size = [8, 4]
 					}
 				]
 			}
@@ -682,13 +683,13 @@ Part : <../base_part_occult.rules>/Part
 					}
 				}
 			]
-			Location = [2, 1]
+			Location = [4, 4]
 		}
 		
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [4, 4]
 			WhenSalvaged = true
 			
 			HitEffects
@@ -823,7 +824,8 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "../sigilbp.png"
-			Size = [4, 2]
+			Size = [4, 4]
+			Rotation = 45d
 		}
 	}
 }

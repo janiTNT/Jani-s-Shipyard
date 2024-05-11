@@ -2,7 +2,7 @@ ID = "janiTNT.brimstonegigablast_boss"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 2500
 IdealRange = 1000
-Speed = 180
+Speed = 160
 
 Components
 {
@@ -53,7 +53,7 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<brimstonedart.rules>
-					Count = 32
+					Count = 40
 					Spread = [-6d, 6d]
 					Distance = 0
 					InheritVelocity = false

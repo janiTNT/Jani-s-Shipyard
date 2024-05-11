@@ -1149,4 +1149,167 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{ ChoiceID = "advships_num_100_9"; ButtonToolTipKey = "PartToggles/Numbers900"; 	ButtonSprite{Texture{File = "number100-9.png";MipLevels = 2;	SampleMode = Linear}}}
 		]
 	}
+	// Fluid Type
+	{
+		ToggleID = "fluid_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Iron
+			{
+				ChoiceID = "fluid_0"
+				ButtonToolTipKey = "PartToggles/fluid_0"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.iron.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Steel
+			{
+				ChoiceID = "fluid_1"
+				ButtonToolTipKey = "PartToggles/fluid_1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.steel.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Copper
+			{
+				ChoiceID = "fluid_2"
+				ButtonToolTipKey = "PartToggles/fluid_2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.copper.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Coil
+			{
+				ChoiceID = "fluid_3"
+				ButtonToolTipKey = "PartToggles/fluid_3"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.coil.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Tritanium
+			{
+				ChoiceID = "fluid_4"
+				ButtonToolTipKey = "PartToggles/fluid_4"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.tritanium.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Tristeel
+			{
+				ChoiceID = "fluid_5"
+				ButtonToolTipKey = "PartToggles/fluid_5"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.tristeel.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Carbon
+			{
+				ChoiceID = "fluid_6"
+				ButtonToolTipKey = "PartToggles/fluid_6"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.carbon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Gold
+			{
+				ChoiceID = "fluid_7"
+				ButtonToolTipKey = "PartToggles/fluid_7"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.gold.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Goldium
+			{
+				ChoiceID = "fluid_8"
+				ButtonToolTipKey = "PartToggles/fluid_8"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.goldium.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Hyperium
+			{
+				ChoiceID = "fluid_9"
+				ButtonToolTipKey = "PartToggles/fluid_9"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.hyperium.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Sulfur
+			{
+				ChoiceID = "fluid_10"
+				ButtonToolTipKey = "PartToggles/fluid_10"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/fluids/molten.sulfur.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

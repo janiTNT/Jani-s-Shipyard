@@ -45,7 +45,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		AmmoProxy
 		{
 			Type = ResourceStorageProxy
-			ResourceType = heat
+			ResourceType = janiTNTheat
 			PartLocation = [0, -1]
 			PartCriteria
 			{
@@ -71,7 +71,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CombinedThermalStorage
 		{
 			Type = MultiResourceStorage
-			ResourceType = heat
+			ResourceType = janiTNT.heat
 			ResourceStorages = [ThermalStorage, AmmoProxy, AmmoProxy2, AmmoProxy3, AmmoProxy4]
 			AddMode = PrioritizeLeastResources
 			RemoveMode = PrioritizeMostResources
@@ -91,7 +91,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ThermalStorage
 		{
 			Type = ResourceStorage
-			ResourceType = heat
+			ResourceType = janiTNT.heat
 			MaxResources = 8000
 			SuppliesResources = false
 			StartingResources = 0

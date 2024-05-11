@@ -1,0 +1,14 @@
+FloorGreyFactoryDarkADamageLevels
+[
+	{
+		File = "FloorGreyFactoryDarkA1.png"
+		Size = [1, 1]
+	}
+]
+FloorGreyFactoryADamageLevels
+[
+	{
+		File = "FloorGreyFactoryA1.png"
+		Size = [1, 1]
+	}
+]

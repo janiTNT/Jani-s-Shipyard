@@ -47,7 +47,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, ResourceStorageProxy, BatteryStorage]
+			Toggles = [PowerToggle, ResourceStorageProxy, BatteryStorage, GoldPrereqProxy]
 			Mode = All
 		}
 
@@ -108,19 +108,25 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		ResourceConverterProxy
 		{
 			Type = ToggleProxy
-			ComponentID = ResourceConverter
+			ComponentID = AnimationToggle
 		}
 		
 		ResourceConverterProxy2
 		{
 			Type = TriggerProxy
-			ComponentID = ResourceConverter
+			ComponentID = AnimationTrigger
 		}
 		
 		ResourceStorageProxy
 		{
 			Type = ToggleProxy
 			ComponentID = GoldStorage
+		}
+		
+		GoldPrereqProxy
+		{
+			Type = ToggleProxy
+			ComponentID = GoldPrereq
 		}
 
 		ConvertEffects
@@ -400,8 +406,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		PowerPerSteel = 100 / 1 / 1000
-		PowerPerSecond = 100 / 1 / 1000
+		PowerPerSteel = 125 / 1 / 1000
+		PowerPerSecond = 125 / 1 / 1000
 		SteelPowerUsage = [&../PowerPerSteel, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100

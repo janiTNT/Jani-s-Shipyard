@@ -1,0 +1,92 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/MachineFrame"
+	IconNameKey = "Parts/MachineFrameIcon"
+	ID = janiTNT.multiblock.machineframe
+	EditorGroups = ["Defenses"]
+	DescriptionKey = "Parts/MachineFrameDesc"
+	Resources
+	[
+		[steel, 8]
+		[cut.tristeel, 2]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	IsRotateable = false
+	SelectionTypeID = "armor"
+	MaxHealth = 1000
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 75%}
+	TypeCategories = [armor, MachineFrame]//trust
+	Flammable = false
+	ConstructionDuration = 2
+	Density = 1
+	RepairDuration = 2
+	InitialPenetrationResistance = 4
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CrewSpeedFactor = 0
+	IsWalled = true
+	IsSelfDestructible = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "Icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 1000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+		
+		SpritesBlend : <MachineFrameSprites.rules>
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [MachineFrame]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		BlueprintSprites : <BlueprintSprites.rules>
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [MachineFrame]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		AOEResist = (&~/Part/DamageResistances/explosive) * 100
+	}
+}

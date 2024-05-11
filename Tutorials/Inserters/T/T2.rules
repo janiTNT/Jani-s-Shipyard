@@ -4,6 +4,8 @@ Part : <T1.rules>/Part
 	DescriptionKey = "Codex/NoText"
 	ID = T.janiTNT.2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	IsRotateable = true
+	
+	IsBuildable = false
 	EditorIcon
 	{
 		Texture = "./Data/ships/terran/corridor/icon.png"

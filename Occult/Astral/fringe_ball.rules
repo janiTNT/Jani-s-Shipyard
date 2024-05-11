@@ -17,7 +17,7 @@ Part : <../base_part_occult.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
-	TypeCategories = [armor, weapon]
+	TypeCategories = [armor, weapon, boss_resistant]
 	InitialPenetrationResistance = 200
 	ContinuingPenetrationResistance = 200
 	ExplosiveDamageAbsorption = 100%

@@ -14,8 +14,8 @@ HudIcon
 	}
 	Size = [32, 32]
 }
-UndiscoveredHudIcon = &<./data/doodads/poi/doodad_poi_unknown.rules>/HudIcon
-/*{
+UndiscoveredHudIcon// = &<./data/doodads/poi/doodad_poi_unknown.rules>/HudIcon
+{
 	Texture
 	{
 		File = "poi.png"
@@ -23,7 +23,7 @@ UndiscoveredHudIcon = &<./data/doodads/poi/doodad_poi_unknown.rules>/HudIcon
 		SampleMode = Linear
 	}
 	Size = [32, 32]
-}*/
+}
 RingCircle = &<./data/doodads/poi/doodad_poi_ring.rules>/RingCircle
 CameraRelativeThickness = true
 DynamicUPerCircumference = 4

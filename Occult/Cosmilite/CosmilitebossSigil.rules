@@ -9,19 +9,19 @@ Part : <../base_part_occult.rules>/Part
 		//[steel, 8 * 32]
 		[hyperium, 128]
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniOrbDetectionCosmiliteBoss]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniOrbDetectionCosmiliteBoss, JaniBossEnraged]
 	Density = 3
 	SelectionPriority = 1
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "cosmoteer.megarock_1x1"
-	MaxHealth = 32000 * 64
+	MaxHealth = 32000 * 100
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_cosmilite
 	DestroyedPartHealthFraction = 100%
-	Size = [4, 2]
-	TypeCategories = [armor, command]
+	Size = [8, 4]
+	TypeCategories = [armor, command, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -38,16 +38,25 @@ Part : <../base_part_occult.rules>/Part
 		CanShootPart2Weapons
 		{
 			Type = MultiToggle
-			Toggles = [Part2Toggle]
-			Mode = All
-			Invert = true
+			Toggles = [{Toggle = Part2ToggleDET, Invert = true} , {Toggle = BeenHitToggle, Invert = false}]
+			Mode = Any
 		}
-		Part2Toggle
+		Part2ToggleDET
 		{
 			Type = BuffToggle
 			BuffType = JaniOrbDetectionCosmiliteBoss
 			MinBuffValue = 1
 			MaxBuffValue = 999999999
+		}
+		
+		BuffProviderNoOrbs
+		{
+			Type = GridBuffProvider
+			OperationalToggle = CanShootPart2Weapons
+			BuffType = JaniCosmilitebossShouldHaveNoOrbs
+			GridDistance = 4000
+			AllowDiagonals = true
+			BuffAmount = 1
 		}
 		
 		CanUseDOG_P2
@@ -98,7 +107,7 @@ Part : <../base_part_occult.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [2, 1]// Relative to upper-left corner of unrotated part.
+			Location = [4, 2]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = CanShootPart2Weapons
 			AutoFireToggle = AutoFireToggle
@@ -354,10 +363,10 @@ Part : <../base_part_occult.rules>/Part
 			Repeats = true
 		}
 		
-				ShieldingOn
+		ShieldingOn
 		{
 			Type = MultiToggle
-			Toggles = [CanShootPart2Weapons, ShieldStorage]
+			Toggles = [CanUseDOG_P2, ShieldStorage]
 			Mode = All
 		}
 		
@@ -365,8 +374,8 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = fake
-			MaxResources = 18000 * 4
-			ToggleOnResources = 17001 * 4
+			MaxResources = 18000 * 6
+			ToggleOnResources = 17001 * 6
 			StartingResources = &MaxResources
 			InitToMaxResources = &MaxResources
 			DrainOnFtlJump = true
@@ -377,7 +386,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = ResourceConverter
 			ToStorage = ShieldStorage
-			ToQuantity = 4000
+			ToQuantity = 5000
 			Interval = 1
 		}
 
@@ -402,7 +411,7 @@ Part : <../base_part_occult.rules>/Part
 			DrainResourcesFrom = ShieldStorage
 			ResourceDrainPerDamage = .5
 			Rotation = -90d
-			Location = [2, 1]
+			Location = [4, 2]
 
 			BlueprintArcSprite
 			{
@@ -587,7 +596,7 @@ Part : <../base_part_occult.rules>/Part
 		ParryModule
 		{
 			Type = TurretWeapon
-			Location = [2, 1]
+			Location = [4, 2]
 			Rotation = -90d
 			OperationalToggle = PowerToggle
 			//AutoFireToggle = AutoFireToggle
@@ -624,14 +633,104 @@ Part : <../base_part_occult.rules>/Part
 			OperationalToggle = PowerToggle
 			Bullet = &<../Parry.rules>
 			Spread = [0d, 0d]
-			FireDelay = .5
+			FireDelay = 0
 		}
+		
+		/*BigBeamEnrageModule
+		{
+			Type = TurretWeapon
+			Location = [4, 2]
+			Rotation = -90d
+			OperationalToggle = EnragedToggle
+			//AutoFireToggle = AutoFireToggle
+			FireInterval = 1
+			FiringArc = 360d
+			RotateSpeed = infinity
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 0
+			TargetChecksPerSearch = 20
+			TargetSearchesPerSecond = 0.5
+			Emitter = BigBeamEnrageEmitter
+			FirePermissionToggle = PowerToggle
+			CanBeGivenExplicitTarget = false
+			AllowShipWideExplicitTargets = false
+			TargetingRange = 3000
+	
+			AlwaysShowCoverage = false
+			AllowDirectControl = false
+			IgnoreFriendlyShipLowLOSChecks = true
+			IgnoreFriendlyShipHighLOSChecks = true
+			IgnoreJunkLOSChecks = true
+			AllowFireWithBlockedLOS = true
+			AllowFireInFogOfWar = true
+			
+			//ProhibitTargetPartsFilter
+			//{
+			//	ExcludePartCategories = [BFG_class_weapon]
+			//}
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+		}
+
+		BigBeamEnrageEmitter : &<../EnrageBeam.rules>
+		{
+			ChainedTo = BigBeamEnrageModule
+			FireTrigger = BigBeamEnrageModule
+			GetTargetFrom = BigBeamEnrageModule
+			Type = BeamEmitter
+			OperationalToggle = EnragedToggle
+			ResourceStorage = EnrageStorage
+			ResourcesUsed = 1
+		}
+		
+		EnragedToggle
+		{
+			Type = MultiToggle
+			Toggles = [EnrageStorage, EnrageBuffToggle]
+			Mode = Any
+		}
+		
+		EnrageResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = EnragedToggle
+			ToStorage = EnrageStorage
+			ToQuantity = 1
+			Interval = .2
+			CheckResourceLimits = true
+		}
+		
+		EnrageStorage
+		{
+			Type = ResourceStorage
+			ResourceType = janitnt.enragement
+			MaxResources = 100
+			ToggleOnResources = 1
+			StartingResources = 0
+			InitToMaxResources = 0
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		EnrageBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = JaniBossEnraged
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}*/
 
 		Graphics
 		{
 			Type = Graphics
 			//OperationalToggle = IsOperational
-			Location = [2, 1]
+			Location = [4, 2]
 			OperationalDoodad
 			{
 				Layer = "asteroid_lights_add"
@@ -640,7 +739,7 @@ Part : <../base_part_occult.rules>/Part
 				[
 					{
 						File = "bosssigil.png"
-						Size = [4, 2]
+						Size = [8, 4]
 					}
 				]
 			}
@@ -715,13 +814,13 @@ Part : <../base_part_occult.rules>/Part
 					}
 				}
 			]
-			Location = [2, 1]
+			Location = [4, 2]
 		}
 		
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [4, 2]
 			WhenSalvaged = true
 			
 			HitEffects
@@ -849,14 +948,14 @@ Part : <../base_part_occult.rules>/Part
 					Duration = 8
 				}
 			]
-			Location = [2, 1]
+			Location = [4, 2]
 		}
 
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "../sigilbp.png"
-			Size = [4, 2]
+			Size = [8, 4]
 		}
 	}
 }

@@ -1,6 +1,6 @@
 Parrylist
 [
-	{
+	{//BOES
 		Action = Overrides
 		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/big_boi_gun/big_boi_gun_shot.rules>/Components"
 		IgnoreIfNotExisting = true
@@ -340,4 +340,360 @@ Parrylist
 			}
 		}
 	}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Radius = 3
+			Delay = .00
+			
+			Type = AreaDamage
+			Damage = 800 / 25
+			DamageType = Salvage
+			Falloff = 0			
+			AllowFriendlyDamage = true
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = true
+				Self=false
+				Crew = false
+			}
+		}
+	]}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit2.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit2.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit2.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit2.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit2.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Radius = 3
+			Delay = .00
+			
+			Type = AreaDamage
+			Damage = 800 / 25
+			DamageType = Salvage
+			Falloff = 0			
+			AllowFriendlyDamage = true
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = true
+				Self=false
+				Crew = false
+			}
+		}
+	]}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit3.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit3.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit3.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit3.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit3.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Radius = 3
+			Delay = .00
+			
+			Type = AreaDamage
+			Damage = 800 / 25
+			DamageType = Salvage
+			Falloff = 0			
+			AllowFriendlyDamage = true
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = true
+				Self=false
+				Crew = false
+			}
+		}
+	]}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit1.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit1.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit1.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit1.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit1.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Radius = 3
+			Delay = .00
+			
+			Type = AreaDamage
+			Damage = 1200 / 24
+			//DamageType = Salvage
+			Falloff = 0			
+			AllowFriendlyDamage = true
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = true
+				Self=false
+				Crew = false
+			}
+		}
+	]}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit2.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit2.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit2.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit2.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit2.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Radius = 3
+			Delay = .00
+			
+			Type = AreaDamage
+			Damage = 1200 / 24
+			//DamageType = Salvage
+			Falloff = 0			
+			AllowFriendlyDamage = true
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = true
+				Self=false
+				Crew = false
+			}
+		}
+	]}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit3.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit3.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit3.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit3.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Shred_Hit3.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Radius = 3
+			Delay = .00
+			
+			Type = AreaDamage
+			Damage = 1200 / 24
+			//DamageType = Salvage
+			Falloff = 0			
+			AllowFriendlyDamage = true
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = true
+				Self=false
+				Crew = false
+			}
+		}
+	]}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitOperational/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitOperational/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitOperational/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitShield/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Type = AreaDamage
+			
+			Radius = 1
+			Falloff = 0
+			Delay = .01				
+			Damage = { BaseValue=4; BuffType=RamielGun_Damage; BuffMode=Multiply; }//MinValue=5550;
+			Filter
+			{
+				Friendlies = true
+				//TargetedFriendlies = false
+				OnlyPartCategories  = [boss_resistant]
+			}
+		}
+	]}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/ramiel_gun/ramiel_beam.rules>/HitOperational/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Type = AreaDamage
+			
+			Radius = { BaseValue=0.25; BuffType=RamielGun_Width; BuffMode=Multiply; }//MinValue=4
+			Falloff = 0
+			Delay = .01				
+			Damage = { BaseValue=4; BuffType=RamielGun_Damage; BuffMode=Multiply; }//MinValue=1000
+			Filter
+			{
+				Friendlies = false
+				TargetedFriendlies = false
+				OnlyPartCategories  = [boss_resistant]
+			}
+		}
+	]}
+	{//Sunflower Corp
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0"
+		Name = "Filter"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = {}
+	}
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0/Filter"
+		Name = "ExcludePartCategories"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"
+		ManyToAdd = [boss_shield]
+	}
+	//Heindall Lasers Small
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_small/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	//Heindall Lasers Med
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_medium/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	//Heindall Lasers L
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_large/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+	//Heindall Lasers XL
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/blue/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/green/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/orange/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/purple/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/red/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
+{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0"; Name = "Filter"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = {};}
+	{Action = Add; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2902503029/laser_beam_deck_xlarge/yellow/laser_beam/laser_beam_single_xl.rules>/HitShield/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_shield]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
 ]

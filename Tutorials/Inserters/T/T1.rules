@@ -17,6 +17,9 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 	FlipHRotate = [1, 0, 3, 2]
 	FlipVRotate = [3, 2, 1, 0]
 	IsWalled = false
+	
+	IsBuildable = false
+	
 	EditorIcon
 	{
 		Texture = "./Data/ships/terran/corridor/icon.png"

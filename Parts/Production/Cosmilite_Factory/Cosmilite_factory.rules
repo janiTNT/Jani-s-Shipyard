@@ -196,7 +196,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			    }
 			    {
 			        Storage = BatteryStorage
-			        Quantity = 1
+			        Quantity = 1000
 			        MinQuantityForConversion = 1
 			    }
 			]

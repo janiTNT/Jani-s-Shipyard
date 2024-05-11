@@ -159,17 +159,7 @@ Components
 		LerpScaleFrom = [0.2, 0.2]
 		LerpTime = 1
 	}
-
-	Targetable
-	{
-		Type = Targetable
-		Health = 7200 * 16
-		TargetCategory = "missile"
-
-		// No AOE damage when shot down.
-		OnDeath = &../Hit/HitFriendly
-	}
-
+	
 	Hit
 	{
 		Type = SimpleHit
@@ -182,8 +172,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1800000
-					Radius = 12
+					TotalDamage = 2400000
+					Radius = 20
 					/*Filter
 					{
 						Friendlies = true

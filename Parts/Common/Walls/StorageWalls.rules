@@ -1,0 +1,177 @@
+Layer = "walls"
+AmbiguousSprites
+[
+	// No walls.
+	{
+		SituationCode = "11111111"
+		DamageLevels = []
+	}
+
+	// All four walls.
+	{
+		SituationCode = "*0*0*0*0"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls00.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Three walls.
+	{
+		SituationCode = "*1*0*0*0"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls01.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two walls joined at corner.
+	{
+		SituationCode = "*111*0*0"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls02.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two walls joined at corner, with corner opposite.
+	{
+		SituationCode = "*101*0*0"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls03.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall.
+	{
+		SituationCode = "*0*11111"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls04.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall with corner on right.
+	{
+		SituationCode = "*0*10111"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls05.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall with corner on left.
+	{
+		SituationCode = "*0*11101"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls06.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One wall, two corners.
+	{
+		SituationCode = "*0*10101"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls07.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// One corner.
+	{
+		SituationCode = "01111111"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls08.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two corners adjacent.
+	{
+		SituationCode = "01011111"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls09.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Three corners.
+	{
+		SituationCode = "01010111"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls10.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two corners diagonal.
+	{
+		SituationCode = "01110111"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls11.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Four corners.
+	{
+		SituationCode = "01010101"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls12.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	// Two walls parallel.
+	{
+		SituationCode = "*0*1*0*1"
+		DamageLevels
+		[
+			{
+				File = "StorageWalls13.png"
+				Size = [1, 1]
+			}
+		]
+	}
+]

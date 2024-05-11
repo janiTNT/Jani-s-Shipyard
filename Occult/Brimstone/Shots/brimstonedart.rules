@@ -29,7 +29,7 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = 24000
+		Damage = 30000
 	}
 
 	Hit

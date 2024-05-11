@@ -154,5 +154,26 @@ Part : <./data/ships/base_part.rules>/Part
 			]
 			Location = [.5, .5]
 		}
+		
+		/*RageStorage
+		{
+			Type = ResourceStorage
+			ResourceType = janitnt.enragement
+			MaxResources = 100
+			ToggleOnResources = 1
+			InitToMaxResources = 0
+			DrainOnFtlJump = true
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		
+		RageProvider
+		{
+			Type = GridBuffProvider
+			BuffType = JaniBossEnraged
+			GridDistance = 150
+			AllowDiagonals = true
+			BuffAmount = 1
+			OperationalToggle = RageStorage
+		}*/
 	}
 }

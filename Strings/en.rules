@@ -483,18 +483,23 @@ Parts
 	
 	ThrusterHuge4x4 = "Hauler Thruster 4x4"
 	ThrusterHuge4x4Icon = "Hauler Thruster (4)"
-	ThrusterHuge4x4Desc = "A Slightly Larger variant of the Huge Thruster that can propel the ship with a lot more thrust than the huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms do not increase the thrust of these thrusters."\
+	ThrusterHuge4x4Desc = "A Slightly Larger variant of the Huge Thruster that can propel the ship with a lot more thrust than the huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	
 	ThrusterHuge5x5 = "Hauler Thruster 5x5"
 	ThrusterHuge5x5Icon = "Hauler Thruster (5)"
-	ThrusterHuge5x5Desc = "A Even Larger variant of the Huge Thruster that can propel the ship more than twice as much as a huge thruster but has even worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms do not increase the thrust of these thrusters."\
+	ThrusterHuge5x5Desc = "A Even Larger variant of the Huge Thruster that can propel the ship more than twice as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	ThrusterHuge6x6 = "Hauler Thruster 6x6"
 	ThrusterHuge6x6Icon = "Hauler Thruster (6)"
-	ThrusterHuge6x6Desc = "A Larger variant of the Huge Thruster that can propel the ship about as 4x as much as a huge thruster but has even worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms do not increase the thrust of these thrusters."\
+	ThrusterHuge6x6Desc = "A Larger variant of the Huge Thruster that can propel the ship about as 4x as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	ThrusterHuge7x6 = "Hauler Thruster 7x6"
+	ThrusterHuge7x6Icon = "Hauler Thruster (7)"
+	ThrusterHuge7x6Desc = "A Enormous variant of the Huge Thruster that can propel the ship about as 5x as much as a huge thruster but has worse ramp-up time. Has alternative size and door placement. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CRAM_Firingpiece = "Customizable Reaper Ammo Mega Cannon - Firing piece"
@@ -585,7 +590,7 @@ Parts
 	MegaroidBallweapon = "Luminous Sphere"
 	MegaroidBallweaponDesc = "Powerful mystical spheres that fire at intruders that fly too close to the Hyperoids."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
-	MegaroidBallWeaponLarge = "Luminous Sphere EX"
+	MegaroidBallWeaponLarge = "Luminous Sphere Zeta"
 	MegaroidBallWeaponLargeDesc = "A larger sphere with a stronger shot, Helping keeping lookers away."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
@@ -601,12 +606,12 @@ Parts
 	MegaroidThrustCRDesc = "Centuries-old Aged piece of propulsion machinery. How it manages to fly will be a mystery for you, and you dont have much hope reverse engineering that.\n<gray>contains a hidden crewmember for game logic purposes</gray>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	MegaroidMonoThrustCR = "Ancient Propulsor (MonoThruster)"
+	MegaroidMonoThrustCR = "Ancient Thruster"
 	MegaroidMonoThrustCRDesc = "A version of the Propulsor with higher speed but acts more like a generic thruster. Can only fly in one direction.\n<gray>contains no hidden crew</gray>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	MegaroidWeakpoint = "Boss Critical Weakpoint"
-	MegaroidWeakpointDesc = "You must destroy these to disable Boss parts being overcharged. Usually disables shields or reduces fire rate of some weapons."\
+	MegaroidWeakpoint = "Boss Weakpoint"
+	MegaroidWeakpointDesc = "You must destroy these to disable Cosmilite Boss parts being overcharged. Usually disables shields or reduces fire rate of some weapons."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	MegaroidEmpty = "Empty Occult Block"
@@ -620,14 +625,14 @@ Parts
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	MegaSigilCosmiliteBoss = "Supreme Control Sigil (Cosmic Boss)"
-	MegaSigilCosmiliteBossDesc = "This Sigil is used to control this massive Boss ship. Destroying this sigil spawns a Loot orb that you can salvage in peace. Usually.\nCan summon Deathbolts, Cosmic guardians and The Devourer of gods, a huge Cosmic worm with extreme penetration and damage. If Damaged, Instead summons The Devourer of Gods in their Phase 2 Form, which is much more agressive and deadly.\nMay contain Cosmilite. Build a factory with them and Astral Bars to get a steady supply of Cosmilite.\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"\
+	MegaSigilCosmiliteBossDesc = "Heart of the boss ship. turns into a \"loot bag\" once destroyed.\nThe usual deathbolts and guadian attacks, combined with a extremly high penetration \"Devourer of gods\". Upon being scratched with any damage, may summon an even stronger \"DoG\" and deploys a shield.\n\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	BossMissileweapon = "Missile Summoning Sigil"
 	BossMissileweaponDesc = "Summons large homing missiles to swifly destroy ships attempting to defeat these massive ships.\nSpawns a additional missile on hit."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	MegaroidBallWeaponCosmiliteBoss = "Luminous Sphere CSML+"
+	MegaroidBallWeaponCosmiliteBoss = "Luminous Sphere (Cosmic)"
 	MegaroidBallWeaponCosmiliteBossDesc = "Fires two similar Damaging and Tractor beams with opposite polarities at foes in a helix, After some time firing, fires a white superlaser.\n\nAt 60% health, Its beams focus down, Superlaser fire rate is increased, Can now fire a \"Deathbolts\" attack, that has very high penetration and damage.\nAt 30% health, Can summon portals that spawn Cosmic Guardians, Cosmic worms that can burrow into your ship and circle back.\nAfter destroyed, the rest of the front half of the ship crumbles to pieces."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
@@ -661,7 +666,7 @@ Parts
 	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong foward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nNot Supposed to be destroyed, atleast by normal means. Technically one shottable though."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"	
 	
-	MegaroidBallWeaponBarrage = "Luminous Sphere BRGG"
+	MegaroidBallWeaponBarrage = "Luminous Sphere (Barrage)"
 	MegaroidBallWeaponBarrageDesc = "Fires seven slow moving devastating bolts in a barrage. its advised to avoid them Altogether."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
@@ -672,11 +677,11 @@ Parts
 	MegaSigilBrimstoneBoss = "Supreme Control Sigil (Brimstone Boss)"
 	MegaSigilBrimstoneBossDesc =  "t"
 	
-	BossNukeweapon = "Nuke Spawning"
-	BossNukeweaponDesc = "Spawn Nuke<image name='dahell'/>  so yeah"
+	BossNukeweapon = "Nuke Summoning Sigil"
+	BossNukeweaponDesc = "A Variant of the missile sigil that fires super nukes (Shocking <image name='dahell'/> i know). fires a triple burst if only the boss sigil is alive."
 	
 	MegaroidBallweaponThumper = "Thumper Ball Launcher"
-	MegaroidBallweaponThumperDesc = "<image name='dahell'/>Fires projectiles that acts as a physical roadblock when it stops nearby the target."\
+	MegaroidBallweaponThumperDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target."\
 	"\n<gray>Mod: Jani's Shipyard - Part Credit From: skipydog</gray>"
 	MegaroidBallweaponThumperBurst = "Burst Thumper Launcher"
 	MegaroidBallweaponThumperBurstDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target. Weak variant that fires in 4 shot bursts."\
@@ -687,6 +692,38 @@ Parts
 	
 	MegaroidAstralLoot = "Boss Loot \"Bag\" (Astral)"
 	MegaroidAstralLootDesc = "Salvage this part to recover some rare resources and some stacks of Astral Bars. Build a Factory with them and Cosmilite bars to get a steady supply of Astral Bars."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossBeam = "Luminous Sphere (Hyperbeam)"
+	MegaroidBallWeaponFringeBossBeamDesc = "Aims for some time, stops rotating and gives  concentrated beam at that rotation."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossBarrage = "Luminous Sphere (Giga Barrage)"
+	MegaroidBallWeaponFringeBossBarrageDesc = "Fires a cone of high damage extremly slow projectiles, along with some low damage fast laser bolts."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossCannon = "Luminous Sphere (TripleCannon)"
+	MegaroidBallWeaponFringeBossCannonDesc = "High penetration High damage triple shot cannon projectiles"\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossDrone = "Luminous Sphere (Stellaborn Burst)"
+	MegaroidBallWeaponFringeBossDroneDesc = "Spawns Several Stellarborn \"drones\" to attack enemies with multiple ways.\n Can phase through the boss."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossLaser = "Luminous Sphere (Laser Barrage)"
+	MegaroidBallWeaponFringeBossLaserDesc = "Fires several laser bolts followed by a bigger bolt."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossFireBlast = "Luminous Sphere (Fireblast)"
+	MegaroidBallWeaponFringeBossFireBlastDesc = "Fires a homing slow projectile that eventually explodes into a circle of lasers in all directions. high damage if hit close.\n Can phase through the boss."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossMine = "Luminous Sphere (MineThrower)"
+	MegaroidBallWeaponFringeBossMineDesc = "Launches some mines in the general direction. mines have homing projectiles and therefore are deadly."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MegaroidBallWeaponFringeBossMissile = "Luminous Sphere (Missile Strike)"
+	MegaroidBallWeaponFringeBossMissileDesc = "Fires a barrage of several missiles. missiles spawn missiles on hit.\n Can phase through the boss."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CosmiliteFactory = "Cosmilite Bar Forge"
@@ -907,6 +944,41 @@ Parts
 	CursedwandSmall = "Ornate Cursed Wand"
 	CursedwandSmallIcon = "Cursed Wand"
 	CursedwandSmallDesc = "Deck mounted wand that Fires Weak homing projetiles. Always deals friendly fire, and is a danger to your deck weaporny and itself if hit.\nUses 5 points of cursed mana."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	CoilBig = "Large Copper Wire Coil"
+	CoilBigIcon = "Large Coil"
+	CoilBigDesc = "Big coil. Usable as it's own part, with little use apart from EMP resistance. used in other parts if you look close."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	WallMass = "Ship Hull Mass"
+	WallMassIcon = "Hull Mass"
+	WallMassDesc = "Essentially an unwalkable corridor filler mass for your ship. more health than sheetmetal and has half the EMP resistance of armor, and very little penetration resistance."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	SteelBig = "Big Solid Steel Block"
+	SteelBigIcon = "Steel Block"
+	SteelBigDesc = "Heavy big steel cube. Higher Explosive resistance but otherwise useless."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	MachineFrame = "Machine Frame"
+	MachineFrameIcon = "Machine Frame"
+	MachineFrameDesc = "Decorative Machine frame. has explosive resistance."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	BulkHeadJani = "Bulkhead"
+	BulkHeadJaniIcon = "Bulkhead"
+	BulkHeadJaniDesc = "Fireproof blast bulkhead thing. Decorative but has explosive resistance."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	CorridorFactory = "Factory Corridor"
+	CorridorFactoryIcon = "Factory Cor."
+	CorridorFactoryDesc = "Corridor variant that has Factory-styled floors and walls."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	CorridorFactoryDark = "Dark Factory Corridor"
+	CorridorFactoryDarkIcon = "Factory Cor."
+	CorridorFactoryDarkDesc = "Factory Corridor variant with a darker floor."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 }
 PartColors

@@ -16,10 +16,10 @@ Part : <../base_part_occult.rules>/Part
 	EditorReplacementPartID = ""
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
-	Size = [4, 2] // must be same
+	Size = [10, 10] // must be same
 	AllowedContiguity = []
 	ContiguityOriginPriority = 2
-	TypeCategories = [armor, weapon, asteroid] // buff mining
+	TypeCategories = [armor, weapon, asteroid, boss_resistant] // buff mining
 	InitialPenetrationResistance = 1
 	ContinuingPenetrationResistance = 1
 	ExplosiveDamageAbsorption = 100%
@@ -104,7 +104,7 @@ Part : <../base_part_occult.rules>/Part
 		Collider
 		{
 			Type = CircleCollider
-			Location = [2, 1]
+			Location = [5, 5]
 			Radius = .56
 			Density = 20
 		}
@@ -112,7 +112,7 @@ Part : <../base_part_occult.rules>/Part
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [5, 5]
 			WhenSalvaged = true
 			MediaEffectsScale = 0.5
 			MediaEffects
@@ -142,7 +142,7 @@ Part : <../base_part_occult.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [2, 1]
+			Location = [5, 5]
 			Floor
 			{
 				Layer = "asteroid_lights_add"
@@ -202,7 +202,7 @@ Part : <../base_part_occult.rules>/Part
 					Duration = 1
 				}
 			]
-			Location = [2, 1]
+			Location = [5, 5]
 		}
 		
 		CustomShipIcon

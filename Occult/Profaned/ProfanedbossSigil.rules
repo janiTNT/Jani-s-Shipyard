@@ -15,13 +15,13 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "cosmoteer.megarock_1x1"
-	MaxHealth = 32000 * 8 * 4
+	MaxHealth = 32000 * 45
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	//UnderlyingPart = janiTNT.lootorb_cosmilite
 	DestroyedPartHealthFraction = 100%
 	Size = [4, 2]
-	TypeCategories = [armor, command]
+	TypeCategories = [armor, command, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%

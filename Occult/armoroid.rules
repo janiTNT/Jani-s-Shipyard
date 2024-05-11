@@ -13,7 +13,7 @@ Part : <base_part_occult.rules>/Part
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Density = 3
 	MaxHealth = 32000
-	TypeCategories = [armor]
+	TypeCategories = [armor, boss_resistant, boss_resistant]
 	InitialPenetrationResistance = 2 * 7
 	ContinuingPenetrationResistance = 2 * 7
 	AIValueFactor = 0

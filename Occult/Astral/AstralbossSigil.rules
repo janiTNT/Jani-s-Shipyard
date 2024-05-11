@@ -15,13 +15,13 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "cosmoteer.megarock_1x1"
-	MaxHealth = 32000 * 64
+	MaxHealth = 32000 * 100
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_astral
 	DestroyedPartHealthFraction = 100%
-	Size = [4, 2]
-	TypeCategories = [armor, command]
+	Size = [10, 10]
+	TypeCategories = [armor, command, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -85,7 +85,7 @@ Part : <../base_part_occult.rules>/Part
 		ParryModule
 		{
 			Type = TurretWeapon
-			Location = [2, 1]
+			Location = [5, 5]
 			Rotation = -90d
 			OperationalToggle = PowerToggle
 			//AutoFireToggle = AutoFireToggle
@@ -129,16 +129,31 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			//OperationalToggle = IsOperational
-			Location = [2, 1]
+			Location = [5, 5]
 			OperationalDoodad
 			{
 				Layer = "asteroid_lights_add"
 				RandomUVRotation = false
+				Offset = [0, -2.5]
 				DamageLevels
 				[
 					{
 						File = "bosssigil.png"
-						Size = [4, 2]
+						Size = [10, 5]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "asteroid_lights_add"
+				RandomUVRotation = false
+				Offset = [0, 2.5]
+				DamageLevels
+				[
+					{
+						File = "bosssigil.png"
+						Size = [10, 5]
+						UVRotation = 2
 					}
 				]
 			}
@@ -213,13 +228,13 @@ Part : <../base_part_occult.rules>/Part
 					}
 				}
 			]
-			Location = [2, 1]
+			Location = [5, 5]
 		}
 		
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [5, 5]
 			WhenSalvaged = true
 			
 			HitEffects
@@ -347,14 +362,14 @@ Part : <../base_part_occult.rules>/Part
 					Duration = 8
 				}
 			]
-			Location = [2, 1]
+			Location = [5, 5]
 		}
 
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "../sigilbp.png"
-			Size = [4, 2]
+			Size = [10, 10]
 		}
 	}
 }

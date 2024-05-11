@@ -135,7 +135,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [400, 16]
+			Size = [800, 20]
 			VertexColor = [215 , 215, 255]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"

@@ -14,7 +14,7 @@ Part : <../base_part_occult_2.rules>/Part
 	Density = 2
 	MaxHealth = 32000 * 2 * 2
 	SelectionTypeID = "armor4"
-	TypeCategories = [armor]
+	TypeCategories = [armor, boss_resistant]
 	InitialPenetrationResistance = 4 * 7
 	ContinuingPenetrationResistance = 4 * 7
 	AIValueFactor = 0

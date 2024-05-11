@@ -1,0 +1,85 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/WallMass"
+	IconNameKey = "Parts/WallMassIcon"
+	ID = janiTNT.multiblock.wallmass
+	EditorGroups = ["Defenses"]
+	DescriptionKey = "Parts/WallMassDesc"
+	Resources
+	[
+		[steel, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	IsRotateable = false
+	SelectionTypeID = "armor"
+	MaxHealth = 1000
+	TypeCategories = [armor]//trust
+	Flammable = false
+	CrewSpeedFactor = 0
+	IsWalled = true
+	InitialPenetrationResistance = 2
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	IsSelfDestructible = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "floor1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 500
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Walls 
+			{
+				Layer = "walls"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

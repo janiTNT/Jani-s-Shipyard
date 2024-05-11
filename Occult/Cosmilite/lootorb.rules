@@ -16,7 +16,7 @@ Part : <../base_part_occult.rules>/Part
 	EditorReplacementPartID = ""
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
-	Size = [4, 2] // must be same
+	Size = [8, 4] // must be same
 	AllowedContiguity = []
 	ContiguityOriginPriority = 2
 	TypeCategories = [armor, weapon, asteroid] // buff mining
@@ -104,7 +104,7 @@ Part : <../base_part_occult.rules>/Part
 		Collider
 		{
 			Type = CircleCollider
-			Location = [2, 1]
+			Location = [4, 2]
 			Radius = .56
 			Density = 20
 		}
@@ -112,7 +112,7 @@ Part : <../base_part_occult.rules>/Part
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [4, 2]
 			WhenSalvaged = true
 			MediaEffectsScale = 0.5
 			MediaEffects
@@ -142,7 +142,7 @@ Part : <../base_part_occult.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [2, 1]
+			Location = [4, 2]
 			Floor
 			{
 				Layer = "asteroid_lights_add"

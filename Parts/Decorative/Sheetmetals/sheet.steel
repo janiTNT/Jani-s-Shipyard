@@ -21,7 +21,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewSpeedFactor = 0
 	InitialPenetrationResistance = 0.25
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
-	Density = 0.25
+	Density = 0.5
 	IsWalled = true
 	IsSelfDestructible = false
 	AllowedDoorLocations = []

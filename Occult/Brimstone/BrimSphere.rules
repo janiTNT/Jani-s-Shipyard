@@ -10,13 +10,13 @@ Part : <../base_part_occult.rules>/Part
 	]
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBossSecondary]
 	Density = 3
-	MaxHealth = 320000 * 4
+	MaxHealth = 320000 * 8
 	EditorReplacementPartID = ""
 	Size = [3, 3]
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
-	TypeCategories = [armor, weapon]
+	TypeCategories = [armor, weapon, boss_resistant]
 	InitialPenetrationResistance = 1
 	ContinuingPenetrationResistance = 1
 	ExplosiveDamageAbsorption = 100%

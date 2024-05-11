@@ -1,0 +1,4 @@
+// This is a "fake" type of resource. boo.
+ID = molten.coil
+NameKey = "Resource/IonEnergy"
+ReturnToStorage = false

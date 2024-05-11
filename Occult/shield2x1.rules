@@ -16,7 +16,7 @@ Part : <base_part_occult.rules>/Part
 	EditorReplacementPartID = "cosmoteer.megarock_1x1"
 	MaxHealth = 32000 * 2
 	Size = [2, 1]
-	TypeCategories = [armor, shield]
+	TypeCategories = [armor, shield, boss_shield, boss_resistant]
 	InitialPenetrationResistance = 2 * 7
 	ContinuingPenetrationResistance = 2 * 7
 	ExplosiveDamageAbsorption = 100%

@@ -137,7 +137,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 20000
+					TotalDamage = 18000
 					Radius = 8
 					Filter
 					{

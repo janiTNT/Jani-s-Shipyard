@@ -1,0 +1,284 @@
+Range = 4000
+IdealRange = 3500
+Duration = 1
+HitInterval = 1/30
+FriendlyShipLowCollisions = false
+FriendlyShipHighCollisions = false
+NonFriendlyShipLowCollisions = true
+NonFriendlyShipHighCollisions = true
+ClipRangeToTarget = true
+
+BeamMediaEffects
+[
+	{
+		Type = Beam
+		IsFancy = true
+		BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
+			Size = [100%, 8]
+			VertexColor = [255, 255, 255, 255]
+
+			_extraBeginLength = 2
+			_extraEndLength = 2
+			_extraEndArc = 0d
+			_minAlpha = .25
+
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi2.png
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+				VMode = Wrap
+			}
+			_displacementStrength = 0.1
+			_displacementSpeed = .3
+			_additiveStrength = 0.1
+
+			_noiseScaleX = 0.02
+			_noiseScaleY = 2
+			_noiseScrollSpeed = -2
+			_noisePanSpeed = 0
+			_endFadeLength = 1
+
+			_color1 = [255, 64, 64, 255]
+			_color2 = [220, 55, 64, 64]
+
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = InverseSourceAlpha
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+
+			_noiseTex
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		SpeedOverIntensity = [0, 0.5]
+		Bucket = TractorBeam
+		CaptureBackBuffer = true
+		//LengthSmoothSpeed = 20
+		MinIntensity = -Infinity
+	}
+
+	: 0
+	{
+		IsFancy = false
+		IsSimple = true
+		BeamSprite : ^/0/BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam_simple.shader"
+			TargetBlendMode
+			{
+				SourceRgbFactor = One
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+			_color1 = [255, 64, 64, 255]
+			_color2 = [220, 55, 64, 64]
+		}
+		CaptureBackBuffer = false
+	}
+	
+	{
+		Type = Beam
+		IsFancy = true
+		BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
+			Size = [100%, 1]
+			VertexColor = [255, 255, 255, 255]
+
+			_extraBeginLength = 2
+			_extraEndLength = 2
+			_extraEndArc = 0d
+			_minAlpha = .25
+
+			Texture
+			{
+				File = ./Data/common_effects/particles/noise_voronoi2.png
+				SampleMode = Linear
+				MipLevels = max
+				UMode = Wrap
+				VMode = Wrap
+			}
+			_displacementStrength = 0.1
+			_displacementSpeed = .3
+			_additiveStrength = 0.1
+
+			_noiseScaleX = 0.02
+			_noiseScaleY = 2
+			_noiseScrollSpeed = -2
+			_noisePanSpeed = 0
+			_endFadeLength = 1
+
+			_color1 = [64, 64, 255, 255]
+			_color2 = [64, 64, 255, 64]
+
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = InverseSourceAlpha
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+
+			_noiseTex
+			{
+				File = ./Data/common_effects/particles/noise_gradient.png
+				SampleMode = Linear
+				MipLevels = max
+				UVMode = Wrap
+			}
+		}
+		FadeInTime = .25
+		FadeOutTime = .25
+		SpeedOverIntensity = [0, 0.5]
+		Bucket = TractorBeamGlints
+		CaptureBackBuffer = true
+		//LengthSmoothSpeed = 20
+		MinIntensity = -Infinity
+	}
+
+	: 2
+	{
+		IsFancy = false
+		IsSimple = true
+		BeamSprite : ^/0/BeamSprite
+		{
+			Shader = "./data/shots/tractor_beam/tractor_beam_simple.shader"
+			TargetBlendMode
+			{
+				SourceRgbFactor = One
+				DestRgbFactor = One
+				RgbOperator = Add
+				SourceAlphaFactor = One
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+			_color1 = [64, 64, 255, 255]
+			_color2 = [64, 64, 255, 64]
+		}
+		CaptureBackBuffer = false
+	}
+]
+
+HitShield
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 2147483647//int 32
+		}
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 600000
+			Radius = 4
+		}
+		{
+			Type = Impulse
+			Impulse = 10000
+		}
+	]
+	
+	MediaEffects
+	[
+		&<Cosmilite/Shots/particles/white_beam_hit.rules>/Particles
+
+		&<Cosmilite/Shots/particles/sparks_white.rules>/Particles
+
+		&<Cosmilite/Shots/particles/spikes_white.rules>/Particles
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = 1
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+
+		: /BASE_SHAKE
+		{
+			ShakeAmount = .05
+			Duration = .5
+		}
+	]
+}
+HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 9000000
+		}
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 600000
+			Radius = 4
+		}
+		{
+			Type = Impulse
+			Impulse = 10000
+		}
+	]
+
+	MediaEffects
+	[
+		&<Cosmilite/Shots/particles/white_beam_hit.rules>/Particles
+
+		&<Cosmilite/Shots/particles/sparks_white.rules>/Particles
+
+		&<Cosmilite/Shots/particles/spikes_white.rules>/Particles
+
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "./data/shots/ion_beam/ion_beam_hit.wav"
+			Volume = 1
+			MaxConcurrent = 1
+			MaxConcurrentVolume = 1
+			RampUpTime = .25
+			RampDownTime = .25
+		}
+
+		: /BASE_SHAKE
+		{
+			ShakeAmount = .05
+			Duration = .5
+		}
+	]
+}
+
+HitStructural
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = 200000
+		}
+		{
+			Type = Impulse
+			Impulse = 50
+		}
+	]
+}

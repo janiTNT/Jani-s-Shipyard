@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 25d
+		TurnVelocity = 20d
 		Delay = .3
 		//AvoidanceRaycastDistance = 250
 		//VelocityCompensation = 80%
@@ -167,8 +167,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 200000* 2
-					Radius = 10 * 2^0.5
+					TotalDamage = 200000* 4
+					Radius = 10 * 4^0.5
 					ExpandDuration = .8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
@@ -183,8 +183,8 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000 * 2
-					Radius = 8 * 2^0.5 
+					TotalDamage = 60000 * 4
+					Radius = 8 * 4^0.5 
 					ExpandDuration = .8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%

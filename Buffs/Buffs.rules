@@ -112,11 +112,19 @@ JaniOrbDetectionCosmiliteBoss
 	ShowIconTextForZeroValue = false
 }
 JaniWeakpointDetector = &JaniOrbDetectionCosmiliteBoss
+JaniCosmilitebossShouldHaveNoOrbs = &JaniOrbDetectionCosmiliteBoss
 JaniExistingSigilDetectionBoss = &JaniOrbDetectionCosmiliteBoss
 JaniWeaponsDisabledBoss = &JaniOrbDetectionCosmiliteBoss
 JaniWeaponsDisabledBossSecondary = &JaniOrbDetectionCosmiliteBoss
 JaniOrbDetectionBrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
 JaniPhase2BrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
+
+JaniBossEnraged
+{
+	CombineMode = Add
+	Exponent = 1
+	BaseValue = 100%
+}
 
 OverchargerRateReducer
 {
@@ -352,4 +360,32 @@ CursedMana_Consumed // Checks Mana consumed
 {
 	CombineMode = Add
 	BaseValue = 0%
+}
+
+Hauler_Thrust
+{
+	CombineMode = Add
+	Exponent = 0.8
+	BaseValue = 0%
+	Icon
+	{
+		Texture
+		{
+			File = "./data/buffs/buff_engine.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [2, 2]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+	IconPriority = 2 // Override engine room buff icon.
+	ShowIconTextForZeroValue = true
+}
+Hauler_Engine
+{
+	CombineMode = Add
+	Exponent = 1
+	BaseValue = 100%
 }

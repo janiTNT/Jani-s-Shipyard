@@ -1,0 +1,646 @@
+Part : <pipebase.rules>/Part
+{
+	NameKey = "Parts/CorridorFactoryDark"
+	IconNameKey = "Parts/CorridorFactoryDarkIcon"
+	ID = janiTNT.liquidpipe.under
+	DescriptionKey = "Parts/CorridorFactoryDarkDesc"
+	TypeCategories : ^/0/TypeCategories [pipe_under]
+	CrewSpeedFactor = 0
+	CrewCongestedSpeedFactor = 0
+	EditorIcon
+	{
+		Texture
+		{
+			File = "pipe5.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{	
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = false
+				DamageLevels = &/JANI_COMMON/Floors/FloorGreyFactoryDarkADamageLevels
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				RandomUVRotation = false
+				DamageLevels
+				[
+					{
+						File = "pipe5.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		
+		IronComponents : ^/0/IronComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.iron
+					ResourceStorages = [BottomProxy, MoltenIronFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyIron
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyIron
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyIron
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyIron
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyIron
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyIron
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyIron
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyIron
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyIron
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		SteelComponents : ^/0/SteelComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.steel
+					ResourceStorages = [BottomProxy, MoltenSteelFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxySteel
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxySteel
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxySteel
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxySteel
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxySteel
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxySteel
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxySteel
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxySteel
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxySteel
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		CopperComponents : ^/0/CopperComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.copper
+					ResourceStorages = [BottomProxy, MoltenCopperFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyCopper
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyCopper
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyCopper
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyCopper
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyCopper
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyCopper
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyCopper
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyCopper
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyCopper
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		CoilComponents : ^/0/CoilComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.coil
+					ResourceStorages = [BottomProxy, MoltenCoilFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyCoil
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyCoil
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyCoil
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyCoil
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyCoil
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyCoil
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyCoil
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyCoil
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyCoil
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		TritaniumComponents : ^/0/TritaniumComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.tritanium
+					ResourceStorages = [BottomProxy, MoltenTritaniumFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyTritanium
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyTritanium
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyTritanium
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyTritanium
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyTritanium
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyTritanium
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyTritanium
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyTritanium
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyTritanium
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		TristeelComponents : ^/0/TristeelComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.tristeel
+					ResourceStorages = [BottomProxy, MoltenTristeelFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyTristeel
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyTristeel
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyTristeel
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyTristeel
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyTristeel
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyTristeel
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyTristeel
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyTristeel
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyTristeel
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		CarbonComponents : ^/0/CarbonComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.carbon
+					ResourceStorages = [BottomProxy, MoltenCarbonFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyCarbon
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyCarbon
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyCarbon
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyCarbon
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyCarbon
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyCarbon
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyCarbon
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyCarbon
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyCarbon
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		GoldComponents : ^/0/GoldComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.gold
+					ResourceStorages = [BottomProxy, MoltenGoldFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyGold
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyGold
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyGold
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyGold
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyGold
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyGold
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyGold
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyGold
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyGold
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		GoldiumComponents : ^/0/GoldiumComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.goldium
+					ResourceStorages = [BottomProxy, MoltenGoldiumFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyGoldium
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyGoldium
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyGoldium
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyGoldium
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyGoldium
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyGoldium
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyGoldium
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyGoldium
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyGoldium
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		HyperiumComponents : ^/0/HyperiumComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.hyperium
+					ResourceStorages = [BottomProxy, MoltenHyperiumFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxyHyperium
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxyHyperium
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxyHyperium
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxyHyperium
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxyHyperium
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxyHyperium
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxyHyperium
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxyHyperium
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxyHyperium
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		SulfurComponents : ^/0/SulfurComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.sulfur
+					ResourceStorages = [BottomProxy, MoltenSulfurFluidStorage, UndergroundProxy1, UndergroundProxy2, UndergroundProxy3, UndergroundProxy4];}
+				BottomProxy = &<pipebase.rules>/BottomProxySulfur
+				UndergroundProxy1 : &<pipebase.rules>/UndergroundTopProxySulfur
+				{
+					//ProxyToggle = Proxy1Toggle
+					PartLocation = [0, -1]
+				}
+				UndergroundProxy1d : &<pipebase.rules>/UndergroundFlipProxySulfur
+				{
+					PartLocation = [0, -1]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy2 : &<pipebase.rules>/UndergroundTopProxySulfur
+				{
+					ProxyToggle = Proxy2Toggle
+					PartLocation = [0, -2]
+				}
+				Proxy2Toggle = &<pipebase.rules>/Proxy2Toggle
+				UndergroundProxy2d : &<pipebase.rules>/UndergroundFlipProxySulfur
+				{
+					PartLocation = [0, -2]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy3 : &<pipebase.rules>/UndergroundTopProxySulfur
+				{
+					ProxyToggle = Proxy3Toggle
+					PartLocation = [0, -3]
+				}
+				Proxy3Toggle = &<pipebase.rules>/Proxy3Toggle
+				UndergroundProxy3d : &<pipebase.rules>/UndergroundFlipProxySulfur
+				{
+					PartLocation = [0, -3]
+					Type = ComponentPresenceToggle
+				}
+				UndergroundProxy4 : &<pipebase.rules>/UndergroundTopProxySulfur
+				{
+					ProxyToggle = Proxy4Toggle
+					PartLocation = [0, -4]
+				}
+				Proxy4Toggle = &<pipebase.rules>/Proxy4Toggle
+				UndergroundProxy4d : &<pipebase.rules>/UndergroundFlipProxySulfur
+				{
+					PartLocation = [0, -4]
+					Type = ComponentPresenceToggle
+				}
+			}
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "pipe5.png"
+			Size = [1, 1]
+		}
+	}
+}

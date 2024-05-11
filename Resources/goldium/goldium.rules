@@ -3,7 +3,6 @@ NameKey = "Resource/Goldium"
 PluralNameKey = "Resource/GoldiumPlural"
 DescriptionKey = "Resource/GoldiumDesc"
 BuyPrice = 750
-SellPrice = 600
 //AsteroidDensity = 40 / (&BuyPrice)
 MaxPerNugget = 5
 MaxStackSize = 20

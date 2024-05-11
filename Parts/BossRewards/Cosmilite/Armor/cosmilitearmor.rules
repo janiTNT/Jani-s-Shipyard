@@ -18,7 +18,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ConstructionDuration = 8 / 40
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; };}//solar resistant
-	TypeCategories = [armor]
+	TypeCategories = [darg]
 	Flammable = false
 	InitialPenetrationResistance = { BaseValue=18; MinValue = 18, MaxValue = 36; BuffType=Jani_BossArmorHealthBonus; BuffMode=Lerp; }
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
@@ -50,6 +50,31 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			BuffRadius = 5
 			//Falloff = 1
 		}
+		
+		/*CosmiliteArmorBuffProvider
+		{
+			Type = FloodFillBuffProvider
+			BuffType = Jani_BossArmorHealthBonus
+			BuffRegion
+			{
+				Type = Grid
+				GridDistance = 1
+			}
+			BuffAmount = 1.05%
+			
+			ShowBuffRange = true
+			
+			ChainsFromBuffType = Jani_BossArmorHealthBonus
+			
+			Criterias
+			[
+				{
+					Categories = [darg]
+					ExcludeCategories = [armor]
+				}
+			]
+			//Falloff = 1
+		}*/
 		
 		Graphics
 		{

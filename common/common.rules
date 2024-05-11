@@ -42,3 +42,30 @@ RadexplodeBig
 		Duration = 2
 	}
 ]
+CoilBig = "../Parts/Common/CoilBig/CoilBig.png"
+CoilBigTrim = "../Parts/Common/CoilBig/CoilBig_trim.png"
+
+SteelBig = "../Parts/Common/SteelBig/SteelBig.png"
+SteelBigTrim = "../Parts/Common/SteelBig/SteelBig_trim.png"
+
+
+Bulkhead = "../Parts/Common/Bulkhead/Walls.png"
+
+Floors = &<../Parts/Common/Floors/Floors.rules>
+Walls = &<../Parts/Common/Walls/Walls.rules>
+
+WallMassDamageLevels
+[
+	{
+		File = "../Parts/Common/WallMass/floor1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "../Parts/Common/WallMass/floor2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "../Parts/Common/WallMass/floor3.png"
+		Size = [1, 1]
+	}
+]

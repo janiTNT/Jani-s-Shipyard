@@ -29,7 +29,7 @@ Components
 	Hit
 	{
 		Type = PenetratingHit
-		Penetration = 30
+		Penetration = 20
 		PenetrationSpeed = 80
 
 		CrewCollisions = {Enemies=true; Junk=true}
@@ -48,7 +48,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 80000
+					TotalDamage = 40000
 					Radius = 8
 					Filter
 					{
@@ -111,7 +111,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 13000
+					Damage = 9000
 				}
 				{
 					Type = Impulse

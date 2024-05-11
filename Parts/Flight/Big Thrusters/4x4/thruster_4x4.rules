@@ -22,10 +22,10 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000 * 4^2
 	ProhibitBelow = 13
 	ThrusterForce = 1200 * 4^2
-	ThrustIncreaseTime = 4.75
+	ThrustIncreaseTime = { BaseValue=4.25; BuffType=Hauler_Thrust; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 4^2
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution,Hauler_Engine, Hauler_Thrust]
 	BlockedTravelCells
 	[
 		[1, 1]
@@ -114,6 +114,34 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					OperationalToggle = PowerToggle
 				}
 			}
+		}
+		
+		ThrustSelfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Hauler_Thrust
+			BuffAmount = { BaseValue=100%; BuffType=Hauler_Engine; BuffMode=Multiply; }
+		}
+		
+		ThrustEngineBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Hauler_Engine
+			BuffAmount = 56.25%
+			BuffMultiplier = EngineBuffValue
+			OperationalToggle = HasEngineBuff
+		}
+		
+		EngineBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=-100%; BuffType=Engine; BuffMode=Add; }
+		}
+		
+		HasEngineBuff
+		{
+			Type = BuffToggle
+			BuffType = Engine
 		}
 		
 		CornersGraphics
@@ -670,22 +698,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = 0
-			MaxActivation = 1
+			MaxActivation = { BaseValue=1; BuffType=Hauler_Thrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
 			ActivationRecoveryTime = &../../ThrustRecoveryTime
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
-		}
-		LateralThruster : MainThruster
-		{
-			Rotation = 0d
-			MinActivation = -0.05
-			MaxActivation = 0.05
-			MinUncommandedActivation = &MinActivation
-			MaxUncommandedActivation = &MaxActivation
-			AllowAutoFire = false
 		}
 		
 		NozzleCollider
@@ -707,6 +726,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = MainThruster
 			Location = [62.666/64, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
+			IntensityTweenDuration = 0.1
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<plume_4x4.rules>
@@ -738,6 +759,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Trigger = BurstTrigger
 			FactorMediaEffectsIntensityWith = MainThruster
 			AnchorMediaEffects = true
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<sparks_4x4.rules>
@@ -824,12 +846,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		ThrusterForce = &~/Part/ThrusterForce
-		ThrusterRampUp = &~/Part/ThrustIncreaseTime
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime/Basevalue
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 
 		RecPower = (&ThrusterPowerUsage) / 2
 		RecCrew = (&RecPower) * 4
-		EngineRoomBuffEffectiveness = 0 * 100
+		EngineRoomBuffEffectiveness = (&~/Part/Components/ThrustEngineBuffProvider/BuffAmount) * 100
 	}
 }

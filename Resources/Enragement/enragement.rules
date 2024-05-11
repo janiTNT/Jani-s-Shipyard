@@ -1,0 +1,4 @@
+// This is a "fake" type of resource used to track boss angy
+ID = janitnt.enragement
+NameKey = "Resource/IonEnergy"
+ReturnToStorage = false

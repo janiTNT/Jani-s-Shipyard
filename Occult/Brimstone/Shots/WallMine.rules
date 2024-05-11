@@ -2,7 +2,9 @@ ID = "janiTNT.brimstonebigmine"
 Range = 0
 IdealRange = 0
 Speed = 400
-Stage2 = &<Sunbombp1.rules>
+Stage2a = &<Sunbombp1.rules>
+Stage2b = &<Nukep1.rules>
+Stage2c = &<Hypernuke.rules>
 
 Components
 {
@@ -31,8 +33,24 @@ Components
 				{
 				
 					Type = SpawnBullets
-					Bullet = &~/Stage2
+					Bullet = &~/Stage2a
 					Count = 8
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+				{
+				
+					Type = SpawnBullets
+					Bullet = &~/Stage2b
+					Count = 100
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+				{
+				
+					Type = SpawnBullets
+					Bullet = &~/Stage2c
+					Count = 4
 					InheritVelocity = true
 					ScaleHealth = true
 				}
@@ -93,7 +111,7 @@ Components
 				File = "wallmine.png"
 				MipLevels = max
 			}
-			Size = [18, 18]
+			Size = [18*2, 18*2]
 			TargetBlendMode = Add
 		}
 		LerpScaleFrom = [0, 0]
@@ -114,7 +132,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [60, 60]
+			Size = [60*2, 60*2]
 			VertexColor = [255*8, 205*1, 128*1]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"

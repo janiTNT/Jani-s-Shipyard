@@ -1,0 +1,810 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ThrusterHuge8x7"
+	IconNameKey = "Parts/ThrusterHuge8x7Icon"
+	ID = janiTNT.thruster_huge_8x7 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/ThrusterHuge8x7Desc"
+	Resources
+	[
+		[steel, 400]
+		[coil2, 100]
+		[goldium, 40]
+	]
+	TypeCategories = [thruster, uses_power]
+	Size = [8, 10]
+	PhysicalRect = [0, 0, 8, 7]
+	SaveRect = &PhysicalRect
+	BoundingRectType = Physical
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "thrusters"
+	MaxHealth = 1000 * 8*7
+	ProhibitBelow = 50
+	ThrusterForce = 1500 * 8^2
+	ThrustIncreaseTime = { BaseValue=8; BuffType=Hauler_Thrust; BuffMode=Divide; }
+	ThrustRecoveryTime = 2
+	FuelUsage = 100 * 8^2
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, Hauler_Engine, Hauler_Thrust]
+	BlockedTravelCells
+	[
+		//[1, 1]
+		[2, 1]
+		[3, 1]
+		[4, 1]
+		[5, 1]
+		
+		[2, 2]
+		[3, 2]
+		[4, 2]
+		[5, 2]
+		
+		[1, 3]
+		[2, 3]
+		[3, 3]
+		[4, 3]
+		[5, 3]
+		[6, 3]
+		
+		[1, 4]
+		[2, 4]
+		[3, 4]
+		[4, 4]
+		[5, 4]
+		[6, 4]
+		
+		[1, 5]
+		[2, 5]
+		[3, 5]
+		[4, 5]
+		[5, 5]
+		[6, 5]
+		
+		[2, 6]
+		[3, 6]
+		[4, 6]
+		[5, 6]
+	]
+	ForceManhattanPathInPart = true
+	AllowedDoorLocations
+	[
+		[-1, 3]
+		[-1, 2]
+		[-1, 1]
+		[-1, 0]
+		
+		[0, -1]
+		[1, -1]
+		[2, -1]
+		//[2, -1]
+		//[3, -1]
+		//[4, -1]
+		[5, -1]
+		[6, -1]
+		[7, -1]
+		
+		[8, 0]
+		[8, 1]
+		[8, 2]
+		[8, 3]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "./data/ships/terran/thruster_huge/icon.png"
+			SampleMode = Linear
+		}
+		Size = [64*1.65, 106.66*1.6]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 35
+		}
+
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 8000 * 7
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		PowerDistributionBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = EnginePowerDistribution
+		}
+		ToggledBatteryConsumer
+		{
+			Type = ToggledComponents
+			Toggle = PowerDistributionBuffToggle
+			Invert = true
+			Components
+			{
+				BatteryConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = battery
+					Storage = BatteryStorage
+					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					ResupplyThreshold = 1000
+					OperationalToggle = PowerToggle
+				}
+			}
+		}
+		
+		ThrustSelfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Hauler_Thrust
+			BuffAmount = { BaseValue=100%; BuffType=Hauler_Engine; BuffMode=Multiply; }
+		}
+		
+		ThrustEngineBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Hauler_Engine
+			BuffAmount = 14.0625%
+			BuffMultiplier = EngineBuffValue
+			OperationalToggle = HasEngineBuff
+		}
+		
+		EngineBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=-100%; BuffType=Engine; BuffMode=Add; }
+		}
+		
+		HasEngineBuff
+		{
+			Type = BuffToggle
+			BuffType = Engine
+		}
+		
+		CornersGraphics
+		{
+			Type = Graphics
+			Location = [4, 3.5]
+			Floor // Top Left
+			{
+				Layer = "walls"
+				Offset = [-3.5, -3]
+				DamageLevels
+				[
+					{
+						File = "../walls1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "walls"
+				Offset = [3.5, -3]
+				DamageLevels
+				[
+					{
+						File = "../walls3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "walls"
+				Offset = [-3.5, 3]
+				DamageLevels
+				[
+					{
+						File = "../walls6.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [3.5, 3]
+				DamageLevels
+				[
+					{
+						File = "../walls8.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "fire"
+				Offset = [-3.5, 3]
+				DamageLevels
+				[
+					{
+						File = "../mask1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "fire"
+				Offset = [3.5, 3]
+				DamageLevels
+				[
+					{
+						File = "../mask2.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		
+		TopWall
+		{
+			Type = SpriteGrid
+			Location = [1.5, 0.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [6, 1]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../walls2.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "walls"
+		}
+		
+		LeftWall
+		{
+			Type = SpriteGrid
+			Location = [0.5, 1.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [1, 5]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../walls4.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "walls"
+		}
+		
+		RightWall
+		{
+			Type = SpriteGrid
+			Location = [7.5, 1.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [1, 5]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../walls5.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "walls"
+		}
+		
+		BottomWall
+		{
+			Type = SpriteGrid
+			Location = [1.5, 6.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [6, 1]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../walls7.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "walls"
+		}
+		
+		FloorsGraphics1
+		{
+			Type = Graphics
+			Location = [0, 0]//use absolute coordinates in offset
+			Floor // Top Left
+			{
+				Layer = "floors"
+				Offset = [0.5, 2.5]
+				DamageLevels
+				[
+					{
+						File = "../floors/floor1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "floors"
+				Offset = [0.5, 1.5]
+				DamageLevels
+				[
+					{
+						File = "../floors/floor15.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "floors"
+				Offset = [7.5, 2.5]
+				DamageLevels
+				[
+					{
+						File = "../floors/floor1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "floors"
+				Offset = [7.5, 1.5]
+				DamageLevels
+				[
+					{
+						File = "../floors/floor15.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "floors"
+				Offset = [.5, .5]
+				DamageLevels
+				[
+					{
+						File = "../floors/floor2.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "floors"
+				Offset = [7.5, .5]
+				DamageLevels
+				[
+					{
+						File = "../floors/floor4.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		
+		FloorGridTop
+		{
+			Type = SpriteGrid
+			Location = [1.5, 0.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [6, 1]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../floors/floor10.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = false
+			Layer = "floors"
+		}
+		
+		FloorGridMid
+		{
+			Type = SpriteGrid
+			Location = [1.5, 1.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [6, 3]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../floors/floor11.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "floors"
+		}
+		
+		FloorGridMax
+		{
+			Type = SpriteGrid
+			Location = [.5, 3.5]
+			//GridSpacing = [0.25, 0.25]
+			GridSize = [8, 4]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "../floors/floor11.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "floors"
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [4, 3]
+			OperationalToggle = IsOperational
+			AnimationSpeedFactor = MainThruster
+			AnimationSpeedFactorRenormalize = [0.75, 2.0]
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles = &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/OperationalDoodad/DamageLevels/0/AnimationFiles
+						Size = [8, 8]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles = &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/OperationalDoodad/DamageLevels/1/AnimationFiles
+						Size = [8, 8]
+						AnimationInterval = 0.075
+					}
+					{
+						AnimationFiles = &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/Components/Graphics/OperationalDoodad/DamageLevels/2/AnimationFiles
+						Size = [8, 8]
+						AnimationInterval = 0.075
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/thruster_huge/doodads_off.png"
+						Size = [8, 8]
+					}
+					{
+						File = "./data/ships/terran/thruster_huge/doodads_off_33.png"
+						Size = [8, 8]
+					}
+					{
+						File = "./data/ships/terran/thruster_huge/doodads_off_66.png"
+						Size = [8, 8]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, 0.5]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"../lightstop1.png"
+							"../lightstop2.png"
+						]
+						Size = [8, 7.2]
+						AnimationInterval = 0.1
+						VertexColor = [255*1.0,255*1.25, 255*1.25]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "lights_add"
+				Offset = [0, (4 * 8/3) - (4+(4/64))]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"../lightsMRT1.png"
+							"../lightsMRT2.png"
+						]
+						Size = [8, 2 * 8/3]
+						AnimationInterval = 0.1
+						VertexColor = [255*1.0,255*1.25, 255*1.25]
+					}
+				]
+			}
+		}
+		
+		RoofGridFlat
+		{
+			Type = BlendSpriteGrid
+			AllowUndefinedBlendSprites = true
+			BlendsWithCategories = []
+			AlwaysBlendWithSelf = true
+			RectType = Physical
+			Location = [0.5, 0.5]
+			//GridSize = [20, 26]
+			Layer = "roofs"
+			//CellOffset = [0, 3]
+			AmbiguousSprites = &<../RoofGrid/roof_grid_blank.rules>/AmbiguousSprites
+		}
+
+		NozzleGraphics
+		{
+			Type = Graphics
+			Location = [4, (4 * 8/3) - (1+(4/64))]
+			Floor
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/thruster_rocket_nozzle/nozzle.png"
+						NormalsFile = "./data/ships/terran/thruster_rocket_nozzle/nozzle_normals.png"
+						Size = [3 * 8/3, 2 * 8/3]
+					}
+					{
+						File = "./data/ships/terran/thruster_rocket_nozzle/nozzle_33.png"
+						NormalsFile = "./data/ships/terran/thruster_rocket_nozzle/nozzle_normals.png"
+						Size = [3 * 8/3, 2 * 8/3]
+					}
+					{
+						File = "./data/ships/terran/thruster_rocket_nozzle/nozzle_66.png"
+						NormalsFile = "./data/ships/terran/thruster_rocket_nozzle/nozzle_normals.png"
+						Size = [3 * 8/3, 2 * 8/3]
+					}
+				]
+			}
+		}
+
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [4, (0.5 * 8/3) - 1]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "./data/ships/terran/thruster_huge/batteries1.png"
+					Size = [1 * 8/3, 1 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries2.png"
+					Size = [1 * 8/3, 1 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries3.png"
+					Size = [2 * 8/3, 1 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries4.png"
+					Size = [2 * 8/3, 1 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries5.png"
+					Size = [2 * 8/3, 1 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries6.png"
+					Size = [2 * 8/3, 1 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries7.png"
+					Offset = [0 * 8/38/3, 0.5 * 8/3]
+					Size = [3 * 8/3, 2 * 8/3]
+				}
+				{
+					File = "./data/ships/terran/thruster_huge/batteries8.png"
+					Offset = [0 * 8/3, 0.5 * 8/3]
+					Size = [3 * 8/3, 2 * 8/3]
+				}
+			]
+		}
+
+		MainThruster
+		{
+			Type = Thruster
+			Location = [4, (3 * 8/3)+(44/64)]// Relative to upper-left corner of unrotated part.
+			Rotation = 90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			Force = &../../ThrusterForce
+			MinActivation = 0
+			MaxActivation = { BaseValue=1; BuffType=Hauler_Thrust; BuffMode=Multiply; }
+			MinUncommandedActivation = &MinActivation
+			MaxUncommandedActivation = &MaxActivation
+			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationRecoveryTime = &../../ThrustRecoveryTime
+			FuelStorage = BatteryStorage
+			FuelUsagePerSecond = &../../FuelUsage
+		}
+
+		NozzleCollider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[2/3 * 8/3, 3 * 8/3]
+				[8/3 * 8/3, 3 * 8/3]
+				[8/3 * 8/3, 4 * 8/3]
+				[1/3 * 8/3, 4 * 8/3]
+			]
+			Density = 1
+		}
+
+		ThrustEffects
+		{
+			Type = ContinuousEffects
+			ChainedTo = MainThruster
+			Location = [47/64 * 8/3, 0]
+			FactorMediaEffectsIntensityWith = MainThruster
+			IntensityTweenDuration = 0.1
+			MinMediaEffectsIntensity = 1%
+			MediaEffects
+			[
+				&<plume_8x7.rules>
+				&<plume_light_8x7.rules>
+				&<fire_8x7.rules>
+				&<sparks_8x7.rules>
+				&<smoke_8x7.rules>
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Volume = .5
+					Speed = .75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		BurstTrigger
+		{
+			Type = ThresholdTrigger
+			AmountFrom = MainThruster
+			MinAmount = .5
+		}
+
+		BurstEffects
+		{
+			Type = TriggeredEffects
+			ChainedTo = MainThruster
+			Trigger = BurstTrigger
+			FactorMediaEffectsIntensityWith = MainThruster
+			AnchorMediaEffects = true
+			MinMediaEffectsIntensity = 1%
+			MediaEffects
+			[
+				&<sparks_8x7.rules>
+
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					Volume = .75
+					Speed = .75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [4, 3.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [4, 3.5]
+		}
+
+		ThrusterHum
+		{
+			Type = ContinuousEffects
+			Location = [4, 3.5]
+			OperationalToggle = IsOperational
+			MediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterHum
+				{
+					Volume = .3
+					Speed = .75
+					MaxConcurrentVolume = 1
+				}
+			]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [4, 3.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/terran/thruster_huge/blueprints.png"
+			Size = [8, 5.5 * 2]
+			Offset = [0, .5]//i'm going insane tbh
+		}
+	}
+
+	Stats
+	{
+		ThrusterForce = &~/Part/ThrusterForce
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime/Basevalue
+		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = (&ThrusterPowerUsage) / 2
+		RecCrew = (&RecPower) * 4
+		EngineRoomBuffEffectiveness = (&~/Part/Components/ThrustEngineBuffProvider/BuffAmount) * 100
+	}
+}

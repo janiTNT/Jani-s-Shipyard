@@ -1,7 +1,8 @@
 Type = None
 Tags = [T_anomP]
-SpawnChance = 0.01
+//SpawnChance = 0.01
 //SpawnChance = 1
+SpawnChance = 0
 SubSpawners
 [
 	{
@@ -12,13 +13,26 @@ SubSpawners
 			{
 				Type = None
 				RandomWeight = 3
+				Distance = [30750, 50000]
+				MinDistanceFromTags = [[station, 4000], [bounty, 3000], [asteroid_field, 1200], [ftl_gate, 1200]]
+				SubSpawners
+				[
+					: ~/RandomLarge
+					{
+						Count = [4 , 4]
+					}
+				]
+			}
+			{
+				Type = None
+				RandomWeight = 3
 				Distance = [20750, 40000]
 				MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 				SubSpawners
 				[
 					: ~/RandomMedium
 					{
-						Count = [1 , 1]
+						Count = [4 , 4]
 					}
 				]
 			}
@@ -145,11 +159,11 @@ RandomSmall
 	]
 }
 
-Dyson
+RandomLarge
 {
 	Type = Ships
 	//Distance = [20750, 40000]
-	MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+	MinDistanceFromTags = [[station, 3000], [bounty, 3000], [asteroid_field, 1200], [ftl_gate, 2500]]
 	SpawnsPerSlice = 1
 	SpawnSlicePadding = 25%
 	
@@ -159,20 +173,20 @@ Dyson
 	Allegiance = Junk
 	InitToMax = false
 	SpawnCrew = false
-	ShipCriteria { Tags = [T_anomDyson] }
+	ShipCriteria { Tags = [T_anomL] }
 	NameGenerator = { Type=None; }
 	SubSpawners
 	[
 		{
 			Type = Ships
-			Count = [8, 16]
-			Distance = [400, 500]
+			Count = [16, 32]
+			Distance = [1000, 1600]
 			SuppressLocationAssertions = true
 			Allegiance = Junk
 			InitToMax = false
 			SpawnCrew = false
 			ShipCriteria { Tags = [wreckage] }
-			RandomHealthRange = [10%, 75%]
+			RandomHealthRange = [2%, 75%]
 			NameGenerator = { Type=None; }
 		}
 		{

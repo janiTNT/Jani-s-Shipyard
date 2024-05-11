@@ -1,0 +1,193 @@
+Part : <pipebase.rules>/Part
+{
+	NameKey = "Parts/CorridorFactoryDark"
+	IconNameKey = "Parts/CorridorFactoryDarkIcon"
+	ID = janiTNT.liquidpipe.T
+	DescriptionKey = "Parts/CorridorFactoryDarkDesc"
+	TypeCategories : ^/0/TypeCategories [pipe_tri]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "pipe3.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{	
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = false
+				DamageLevels = &/JANI_COMMON/Floors/FloorGreyFactoryDarkADamageLevels
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				RandomUVRotation = false
+				DamageLevels
+				[
+					{
+						File = "pipe3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		
+		IronComponents : ^/0/IronComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.iron
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenIronFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyIron
+				BottomProxy = &<pipebase.rules>/BottomProxyIron
+				LeftProxy = &<pipebase.rules>/LeftProxyIron
+			}
+		}
+		SteelComponents : ^/0/SteelComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.steel
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenSteelFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxySteel
+				BottomProxy = &<pipebase.rules>/BottomProxySteel
+				LeftProxy = &<pipebase.rules>/LeftProxySteel
+			}
+		}
+		
+		CopperComponents : ^/0/CopperComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.copper
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenCopperFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyCopper
+				BottomProxy = &<pipebase.rules>/BottomProxyCopper
+				LeftProxy = &<pipebase.rules>/LeftProxyCopper
+			}
+		}
+		
+		CoilComponents : ^/0/CoilComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.coil
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenCoilFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyCoil
+				BottomProxy = &<pipebase.rules>/BottomProxyCoil
+				LeftProxy = &<pipebase.rules>/LeftProxyCoil
+			}
+		}
+		
+		TritaniumComponents : ^/0/TritaniumComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.tritanium
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenTritaniumFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyTritanium
+				BottomProxy = &<pipebase.rules>/BottomProxyTritanium
+				LeftProxy = &<pipebase.rules>/LeftProxyTritanium
+			}
+		}
+		
+		TristeelComponents : ^/0/TristeelComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.tristeel
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenTristeelFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyTristeel
+				BottomProxy = &<pipebase.rules>/BottomProxyTristeel
+				LeftProxy = &<pipebase.rules>/LeftProxyTristeel
+			}
+		}
+		
+		CarbonComponents : ^/0/CarbonComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.carbon
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenCarbonFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyCarbon
+				BottomProxy = &<pipebase.rules>/BottomProxyCarbon
+				LeftProxy = &<pipebase.rules>/LeftProxyCarbon
+			}
+		}
+		
+		GoldComponents : ^/0/GoldComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.gold
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenGoldFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyGold
+				BottomProxy = &<pipebase.rules>/BottomProxyGold
+				LeftProxy = &<pipebase.rules>/LeftProxyGold
+			}
+		}
+		
+		GoldiumComponents : ^/0/GoldiumComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.goldium
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenGoldiumFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyGoldium
+				BottomProxy = &<pipebase.rules>/BottomProxyGoldium
+				LeftProxy = &<pipebase.rules>/LeftProxyGoldium
+			}
+		}
+		
+		HyperiumComponents : ^/0/HyperiumComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.hyperium
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenHyperiumFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxyHyperium
+				BottomProxy = &<pipebase.rules>/BottomProxyHyperium
+				LeftProxy = &<pipebase.rules>/LeftProxyHyperium
+			}
+		}
+		
+		SulfurComponents : ^/0/SulfurComponents
+		{
+			Components : ^/0/Components
+			{
+				CombinedFluidStorage : &<pipebase.rules>/CombinedFluidStorageBase
+				{	ResourceType = molten.sulfur
+					ResourceStorages = [RightProxy, LeftProxy, BottomProxy, MoltenSulfurFluidStorage];}
+				RightProxy = &<pipebase.rules>/RightProxySulfur
+				BottomProxy = &<pipebase.rules>/BottomProxySulfur
+				LeftProxy = &<pipebase.rules>/LeftProxySulfur
+			}
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "pipe3.png"
+			Size = [1, 1]
+		}
+	}
+}

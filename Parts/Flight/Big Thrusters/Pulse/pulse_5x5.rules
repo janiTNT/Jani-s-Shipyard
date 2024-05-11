@@ -23,10 +23,10 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[default, [0, 10, 5, 18]]
 	]
 	ThrusterForce = 1200 * 5^2 * 0.75
-	ThrustIncreaseTime = 5.5
+	ThrustIncreaseTime = { BaseValue=4.5; BuffType=Hauler_Thrust; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 5^2 * 1.25
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution,Hauler_Engine, Hauler_Thrust]
 	BlockedTravelCells
 	[
 		[1, 1]
@@ -108,7 +108,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = 0
-			MaxActivation = 1
+			MaxActivation = { BaseValue=1; BuffType=Hauler_Thrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
@@ -116,16 +116,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
-		LateralThruster : MainThruster
-		{
-			Rotation = 0d
-			MinActivation = -0.05
-			MaxActivation = 0.05
-			MinUncommandedActivation = &MinActivation
-			MaxUncommandedActivation = &MaxActivation
-			AllowAutoFire = false
-		}
-
 		NozzleCollider
 		{
 			Type = StaticToggle
@@ -188,7 +178,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		ThrusterForce = &~/Part/ThrusterForce
-		ThrusterRampUp = &~/Part/ThrustIncreaseTime
+		ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 

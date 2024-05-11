@@ -2,7 +2,7 @@ ID = "janiTNT.brimstonefireblast_boss"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 2500
 IdealRange = 1000
-Speed = 130
+Speed = 120
 
 Components
 {
@@ -55,7 +55,7 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<brimstonedart.rules>
-					Count = 14
+					Count = 16
 					Spread = [-8d, 8d]
 					Distance = 0
 					InheritVelocity = false

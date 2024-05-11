@@ -1,7 +1,7 @@
-ID = "juanTNT.BFG_10k_shot"
+ID = "janiTNT.BFG_10k_shot"
 Range = 30000 // 30 km
 IdealRange = 20000
-Speed = 3000 // "lightspeed"
+Speed = 1500 // "lightspeed"
 
 Components
 {
@@ -188,5 +188,274 @@ Components
 			&<particles/bfg_trail_zaps.rules>
 			&<particles/bfg_trail_zaps2.rules>
 		]
+	}
+	
+	ParryTargetable
+	{
+		Type = Targetable
+		Health = 200000
+		TargetCategory = "parry_targetable"
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet
+					{
+						ID = "janiTNT.BFG_10k_shot.parry"
+						Speed = 3000
+						ForgetTarget = true
+						Range = 30000 // 30 km
+						IdealRange = 20000
+						Components
+						{
+							Physics
+							{
+								Type = CirclePhysics
+								Radius = 10
+								Density = 0.01
+							}
+
+							Death
+							{
+								Type = DeathByLifetime
+								// Lifetime will be auto-calculated based on range and speed.
+							}
+							Sprite
+							{
+								Type = Sprite
+								RenderBucket = Upper4
+								Sprite
+								{
+									Texture
+									{
+										File = "shot.png"
+										SampleMode = Linear
+										MipLevels = max
+									}
+									Size = [120, 60]
+									TargetBlendMode = Add
+								}
+								Offset = [-30, 0]
+							}
+							GlowSprite
+							{
+								Type = Sprite
+								RenderBucket = BulletUpper2
+								Z = 10
+								IsLight = true
+								Sprite
+								{
+									Texture
+									{
+										File = "./Data/common_effects/particles/blob.png"
+										MipLevels = max
+										SampleMode = Linear
+									}
+									Size = [500, 400]
+									VertexColor = [0, 255, 0]
+									TargetBlendMode = Add
+									Shader = "./Data/common_effects/fancy_light.shader"
+									_litReflectiveStrength = 24
+									_litAdditiveStrength = 0.05
+									_unlitAdditiveStrength = 0.3
+								}
+							}
+							
+							Hit
+							{
+								Type = SimpleHit
+								SourceShipCollisionDelay = 0
+								SourceShipLowCollisions = true
+								NonFriendlyShipLowCollisions = false
+								NonFriendlyShipHighCollisions = false
+
+								HitShield = &HitOperational
+								HitOperational
+								{
+									HitEffects
+									[
+										{
+											Type = AreaCrewStun
+											Duration = 4
+											Falloff = 2
+											Radius = 300
+											Filter { Friendlies=true; IgnoreInvulnerability=true; }
+											Cumulative = true
+											HitShipOnly = false
+										}
+										{
+											Type = ExplosiveDamage
+											TotalDamage = 900000
+											Radius = 80
+											Filter
+											{
+												ExcludePartCategories = [asteroid]
+												Filter { Friendlies=true}
+											}
+										}
+										{
+											Type = AreaDamage
+											Damage = 100000 //90000000
+											Radius = 210 //150
+											Falloff = 100%
+											Delay = .1
+											Filter
+											{
+												ExcludePartCategories = [asteroid]
+												Filter { Friendlies=true}
+											}
+										}
+										{
+											Type = AreaDamage
+											Damage = 6400000
+											Radius = 200
+											Falloff = 100%
+											Delay = .2
+											Filter
+											{
+												OnlyPartCategories = [asteroid]
+												Shields = false
+												Filter { Friendlies=true}
+											}
+										}
+										{
+											Type = AreaDamage
+											Damage = 16000 //90000
+											Radius = 210
+											Delay = .5
+											Falloff = 100%
+											Filter
+											{
+												OperationalHealth = false
+												StructuralHealth = true
+												Filter { Friendlies=true}
+											}
+										}
+										{
+											Type = Impulse
+											Impulse = 40000
+											Filter { Friendlies=true}
+										}
+									]
+									MediaEffects
+									[
+										&<particles/bfg_flash_round.txt>
+										&<particles/bfg_flash_round_light.rules>
+										&<particles/shockwave.txt>
+									]
+								}
+								HitStructural
+								{
+									ReduceEffectsByPenetration = true
+
+									HitEffects
+									[
+										{
+											Type = AreaDamage
+											Damage = 8000 //90000
+											Radius = 70
+											Falloff = 100%
+											Filter
+											{
+												OperationalHealth = false
+												StructuralHealth = true
+												Filter { Friendlies=true}
+											}
+										}
+										{
+											Type = Impulse
+											Impulse = 8
+										}
+									]
+								}
+								PenetratingOperational
+								{
+									// No effect.
+								}
+								PenetratingStructural
+								{
+									// No effect.
+								}
+								FinishedPenetratingOperational = PenetratingOperational
+								FinishedPenetratingStructural = PenetratingStructural
+							}
+							
+							MediaEffects
+							{
+								Type = MediaEffects
+								FactorEffectsWith = Hit
+								FactorEffectsExponent = 0.5
+								MediaEffects
+								[
+									&<particles/bfg_trail.txt>
+									&<particles/bfg_trail_bright.txt>
+									//&<particles/bfg_trail_blob.rules>
+									&<particles/bfg_trail_light.rules>
+									//&<particles/smallshockwaves.txt>
+									
+									&<particles/trail_ring_distortion.rules>
+									&<particles/trail_ring.rules>
+									
+									&<particles/bfg_trail_zaps.rules>
+									&<particles/bfg_trail_zaps2.rules>
+								]
+							}
+						}
+					}
+					Count = 1
+					Arc = [180d, 0d]
+					Spread = [-0.1d, .1d]
+					InheritVelocity = true
+				}
+			]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior // sound is here to avoid clips
+				{
+					DynamicVolume
+					{
+						MinDistance = 0
+						MaxDistance = 25
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 70
+						ZoomFalloff = 2
+					}
+					
+					DynamicFilter
+					{
+						MinDistance = 0
+						MaxDistance = 4
+						DistanceFalloff = 1
+
+						MinZoom = 1
+						MaxZoom = 18
+						ZoomFalloff = 2
+
+						Filter
+						{
+							FilterType = LowPassAmplify
+							FromFrequency = 7350
+							ToFrequency = 2300
+							FrequencyFactorExponent = 0.5
+						}
+					}
+					
+					Sound = "../../../common/punch_projectile.wav"
+					Volume = 1
+					SpeedVariation = .2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .4
+					Duration = .15
+				}
+			]
+		}
 	}
 }

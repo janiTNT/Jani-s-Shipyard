@@ -124,7 +124,7 @@ HitOperational
 		}
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 800
+			TotalDamage = 600
 			Radius = 4
 		}
 		{

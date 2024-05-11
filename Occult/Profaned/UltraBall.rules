@@ -19,8 +19,8 @@ Part : <../base_part_occult.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
-	TypeCategories = [armor, weapon]
-	DamageResistances = {explosive = 100%, heat = 100%, default = 99.999%;}//solar resistant, higher explosive resistance
+	TypeCategories = [armor, weapon, boss_resistant]
+	DamageResistances = {explosive = 100%, heat = 100%, default = 99.999%, salvage = 99.999%;}//solar resistant, higher explosive resistance
 	InitialPenetrationResistance = 250
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
