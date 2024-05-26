@@ -4,6 +4,7 @@ Width = .15 // smaller so it fits
 HitInterval = .1
 HitEffectsScaleOverRange = [1, 1]
 MediaEffectsScaleOverRange = [0.12, 0.12]
+ReceivableBuffs = [ElectronBuff]
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
@@ -118,7 +119,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 200
+			Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
 		}
 		{
 			Type = Impulse
@@ -167,7 +168,7 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = 200
+			Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
 		}
 		{
 			Type = Impulse

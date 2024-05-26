@@ -1,4 +1,5 @@
 Type = None
+SpawnChance = 8/10
 Conditions
 {
 	MinNodeTier = 4
@@ -10,6 +11,9 @@ SubSpawners
 		Count = [1, 1]
 		//Count = [10, 15]
 		Distance = [20750, 27000]
+		SpawnChance = 4/5
+		MinDistanceFromNebulas = [[ion_storm, 2000]]
+		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
 		Tags = [rare_asteroid, asteroid, megaroid, hyperoid, gigaroid]
 		MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 		//MinDistanceFromTags = [[station, 1000], [asteroid, 1000], [bounty, 1000], [ftl_gate, 1000]]
@@ -27,7 +31,10 @@ SubSpawners
 		Count = [0, 1]
 		//Count = 5
 		Distance = [4000, 16000]
+		SpawnChance = 4/5
+		MinDistanceFromNebulas = [[ion_storm, 2000]]
 		Tags = [rare_asteroid, asteroid, megaroid, hyperoid, gigaroid]
+		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
 		MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 		//MinDistanceFromTags = [[station, 1000], [asteroid, 1000], [bounty, 1000], [ftl_gate, 1000]]
 		DoodadTypes
@@ -289,7 +296,7 @@ HyperoidSubSpawnersHandler
 					[asteroid, 20]
 					[HyperoidGuardian, 100]
 				]
-				DoodadTypes = &<./data/modes/career/sysgen_asteroids.rules>/CommonAsteroidTypes
+				DoodadTypes = &<./data/modes/career/sectors/sysgen_asteroids.rules>/CommonAsteroidTypes
 			}
 			// Valuable asteroid.
 			{
@@ -305,7 +312,7 @@ HyperoidSubSpawnersHandler
 					[asteroid, 20]
 					[HyperoidGuardian, 100]
 				]
-				DoodadTypes = &<./data/modes/career/sysgen_asteroids.rules>/RareAsteroidTypes
+				DoodadTypes = &<./data/modes/career/sectors/sysgen_asteroids.rules>/RareAsteroidTypes
 			}
 			{ // Graveyard ships
 				Type = Ships
@@ -366,7 +373,8 @@ HyperoidSubSpawnersHandler
 				SubObjectives
 				[
 					{
-						Type = DestroyShips
+						Type = DefeatShips
+						AllowSurrender = false
 						TargetsTag = { Tag=HyperoidGuardian; LimitToBatch=true; }
 						TargetAreaTag = hyperoid_field_poi
 						AutoDiscoverTargetArea = true

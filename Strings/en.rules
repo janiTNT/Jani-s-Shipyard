@@ -50,7 +50,7 @@ Parts
 	
 	Radiator = "Radiator"
 	RadiatorIcon = "Radiator"
-	RadiatorDesc = "Passively Cools down. Spreads heat with connected radiators and heat accepting parts.\n The redder it is, the warmer it is.\n\n<image name='sjaniwh'/>"\
+	RadiatorDesc = "Passively Cools down. holds heat with connected radiators and heat accepting parts.\n The redder it is, the warmer it is.<image name='dahell'/>"\
 	"\n\n<gray>Mod: Jani's Shipyard</gray>"
 
 	FusionReactorLarge = "Large Hyperium Fusion Reactor Core"
@@ -60,19 +60,19 @@ Parts
 	
 	ReactorAux = "Auxiliary Reactor Core"
 	ReactorAuxIcon = "Aux. Rea."
-	ReactorAuxDesc = "A Cheap Auxiliary Power Supply Reactor. Provides half capacity batteries, Letting crew walk at near-corridor speeds on the reactor."\
+	ReactorAuxDesc = "A Cheap Auxiliary Power Supply Reactor. Provides half capacity batteries, Letting crew walk at near-corridor speeds on the reactor.\nCeases to produce power if inside a electron cloud."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
-	MiningBeam = "M1 Mining Beam Projector"
+	MiningBeam = "M1 Mining Beam Emitter"
 	MiningBeamIcon = "M1 Mining Beam"
-	MiningBeamDesc = "The Main component of a M1 Mining Beam Projector system. Fires the beam in which the Prisms can combine and aim at new directions, but can still be used as a Mining beam or Weapon. <bad>The targeting systems was ripped out to provide extra power so they must be fired manually if salvaging or mining.</bad>"\
+	MiningBeamDesc = "Fires a deck-based mining beam, can be combined with other mining beams with the M1 Mining Prism.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"\
 	"\n\n<gray>Mod: Jani's Shipyard</gray>"
-	MiningBeamTechDesc = "Many miners may agree that, although the mining laser turret is helpful, they needed an alternative. After studying ion prisms, the M1 Mining Beam Projector was designed, a roof-mounted ion-based mining system, capable of combining beams to create massive asteroid-ripping mining beams. <bad>The targeting systems was ripped out to provide extra power so they must be fired manually if salvaging or mining.</bad>"\
+	MiningBeamTechDesc = "Deck-Based Prism solution using mining beams, having high combining efficiency.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	MiningPrism = "M1 Mining Beam Prism"
 	MiningPrismIcon = "M1 Mining Prism"
-	MiningPrismDesc = "Many miners may agree that, although the mining laser turret is helpful, they needed an alternative. After studying ion prisms, the M1 Mining Beam Prism was designed, a roof-mounted ion-based prism, capable of combining beams to create massive asteroid-ripping mining beams. Can only use the beams from the M1 Mining beam. <bad>The targeting systems was ripped out to provide extra power so they must be fired manually if salvaging or mining.</bad>"\
+	MiningPrismDesc = "Deck-Mounted Mining beam prism, similar to a Ion Beam Prism. Can only use the beams from the M1 Mining beam.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"\
 	"\n\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Corridor_High = "High Corridor"
@@ -502,6 +502,11 @@ Parts
 	ThrusterHuge7x6Desc = "A Enormous variant of the Huge Thruster that can propel the ship about as 5x as much as a huge thruster but has worse ramp-up time. Has alternative size and door placement. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
+	ThrusterHuge8x7 = "Hauler Thruster 8x7"
+	ThrusterHuge8x7Icon = "Hauler Thruster (8)"
+	ThrusterHuge8x7Desc = "Highest tier of Hauler thruster. Has even higher peformance per tile. Has alternative size and door placement. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
 	CRAM_Firingpiece = "Customizable Reaper Ammo Mega Cannon - Firing piece"
 	CRAM_FiringpieceIcon = "CRAM Firing Piece"
 	CRAM_FiringpieceDesc = "Main part of a CRAM cannon. requires both to be fully loaded and the cooldown to be finished. Higher firepower can be obtained from using gauge increasers or packers."\
@@ -564,13 +569,13 @@ Parts
 	
 	Cram_Packer1x = "CRAM Payload Packer"
 	Cram_Packer1xIcon = "Packer"
-	Cram_Packer1xDesc = "Stores 20 bullets, Increases stats by a flat addition, focusing on penetration and health and only raising damage half as much"\
+	Cram_Packer1xDesc = "Stores 20 bullets, Increases stats by a flat addition, Increasing Health and penetration heavily, and damage slightly."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	Cram_Cooler1x = "Custom Cannon TurboCooler"
 	Cram_Cooler1xIcon = "TurboCooler"
-	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon, but does not raise loading speed. requires power to function(currently does not need)"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon. requires power to function, Avoid staying on the room too long to avoid third degree burns."\
+	"\n<gray><s10>Now You're 20% cooler</s10>\nMod: Jani's Shipyard</gray>"
 	
 	
 	
@@ -882,6 +887,14 @@ Parts
 	Pulse_ThrusterHuge6x6 = "Hauler Repulser Thruster 6x6"
 	Pulse_ThrusterHuge6x6Icon = "Haul. Repulser (6)"
 	Pulse_ThrusterHuge6x6Desc = "A Combination of 6x6 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	Pulse_ThrusterHuge7x6 = "Hauler Repulser Thruster 7x6"
+	Pulse_ThrusterHuge7x6Icon = "Haul. Repulser (7)"
+	Pulse_ThrusterHuge7x6Desc = "A Combination of 7x6 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	Pulse_ThrusterHuge8x7 = "Hauler Repulser Thruster 8x7"
+	Pulse_ThrusterHuge8x7Icon = "Haul. Repulser (8)"
+	Pulse_ThrusterHuge8x7Desc = "A Combination of 8x7 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	//---------------------------------------------
@@ -1594,3 +1607,8 @@ BuildBox// Modular Missiles guided towards the right track. thanks
 //{
 //	LoadingUncachedAssets = "Loading mod assets for the first time.\nThis may take a while."
 //}
+Nebulas
+{
+	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have slightly increased speed and increased sensor range, and disables hyperdrives."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+}

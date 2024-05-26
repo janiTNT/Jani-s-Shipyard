@@ -26,6 +26,11 @@ Components : &<hyperium.rules>/Components
 		ComponentID = &~/ResourceStorage
 	}
 	
+	ToProxyExists : &<hyperium.rules>/Components/ToProxyExists
+	{
+		ComponentID = &~/ResourceStorage
+	}
+	
 	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
 	{
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))

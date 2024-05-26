@@ -57,7 +57,7 @@ Components
 		Type = ResourceChange
 		Trigger = ConsumePowerTrigger
 		ResourceStorage = BatteryStorage
-		Amount = -150
+		Amount = -200
 	}
 	
 	HandStorage
@@ -73,7 +73,7 @@ Components
 	InsertPermission
 	{
 		Type = MultiToggle
-		Toggles = [IsOperational, ToProxyValue, HandStorage, HandExtend]
+		Toggles = [IsOperational, ToProxyValue, HandStorage, HandExtend, ToProxyExists]
 		Mode = All
 	}
 	
@@ -84,6 +84,13 @@ Components
 		MinAmount = 1
 		MaxAmount = 1
 		Invert = true
+	}
+	
+	ToProxyExists
+	{
+		Type = ComponentPresenceToggle
+		PartLocation = [0, -1]
+		ComponentID = &~/ResourceStorage
 	}
 	
 	FromProxy

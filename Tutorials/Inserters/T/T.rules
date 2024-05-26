@@ -2,7 +2,7 @@ A
 [
 	{	Action = AddMany
 
-		AddTo = "<./Data/modes/career/sysgen.rules>/Spawners"
+		AddTo = "<./Data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/SystemGenerator/Spawners"
 
 		ManyToAdd
 		[

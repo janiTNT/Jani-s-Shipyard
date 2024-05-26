@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	{
 		Texture
 		{
-			File = "packer1.png"
+			File = "icon.png"
 			SampleMode = Linear
 		}
 		Size = [32, 32]
@@ -38,7 +38,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "packer1.png"
+			File = "icon.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
 		}
@@ -48,52 +48,328 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [.5, .5]
 			OperationalToggle = AmmoStorage__CRAM_PACKER
 			DoodadToggle = PackerMaxed
-			OperationalLighting
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"./data/ships/terran/engine_room/lights.png"
-							"./data/ships/terran/engine_room/lights2.png"
-						]
-						Size = [1, 1]
-						AnimationInterval = 0.1
-					}
-				]
-			}
 			ToggleOnDoodad
 			{
 				Layer = "lights_add"
 				DamageLevels
 				[
 					{
-						AnimationFiles
-						[
-							"./data/ships/terran/engine_room/lights.png"
-							"./data/ships/terran/engine_room/lights2.png"
-						]
-						Size = [0.4, 0.6]
-						AnimationInterval = 0.1
+						File = "lights.png"
+						Size = [1, 1]
 					}
 				]
 			}
-			Floor
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"gates1.png"
+							"gates2.png"
+							"gates3.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.042
+						ClampAnimation = true
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"gates3.png"
+							"gates2.png"
+							"gates1.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.042
+						ClampAnimation = true
+					}
+				]
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
 			{
 				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			Walls
+			{
+				Layer = "doodads_low"
 				Offset = [0, 0]
 				DamageLevels
 				[
 					{
-						File = "packer1.png"
+						File = "doodad.png"
 						Size = [1, 1]
-						UVRotation = 0
 					}
 				]
 			}
 			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		LoadedAmmoSprites1
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = AmmoStorage__CRAM_PACKER
+			Layer = "walls"
+			HasZeroResourceSprite = true
+			RangeLow = 0
+			RangeHigh = 5
+			ResourceLevels
+			[
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells4.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		LoadedAmmoSprites2 : &LoadedAmmoSprites1
+		{
+			Rotation = 90d
+			RangeLow = 0
+			RangeHigh = 10
+			ResourceLevels
+			[
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells4.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		LoadedAmmoSprites3 : &LoadedAmmoSprites1
+		{
+			Rotation = 180d
+			RangeLow = 0
+			RangeHigh = 15
+			ResourceLevels
+			[
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells4.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells5.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		LoadedAmmoSprites4 : &LoadedAmmoSprites1
+		{
+			Rotation = 270d
+			RangeLow = 0
+			RangeHigh = 20
+			ResourceLevels
+			[
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells0.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells4.png"
+					Size = [1, 1]
+				}
+				{
+					File = "shells5.png"
+					Size = [1, 1]
+				}
+			]
 		}
 		AmmoStorage__CRAM_PACKER
 		{

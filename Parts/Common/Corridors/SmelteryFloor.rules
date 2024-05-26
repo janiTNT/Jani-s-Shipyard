@@ -1,0 +1,77 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CorridorFactoryDark"
+	IconNameKey = "Parts/CorridorFactoryDarkIcon"
+	ID = janiTNT.multiblock.corridor.smeltery.dark
+	EditorGroups = ["Defenses"]
+	DescriptionKey = "Parts/CorridorFactoryDarkDesc"
+	Resources
+	[
+		[steel, 4]
+		[coil, 4]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	TypeCategories = [corridor]
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 1
+	CrewCongestedSpeedFactor = .5
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsRotateable = false
+	IsWalled = false
+	IsSelfDestructible = false
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "FactoryDarkIcon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{	
+		SpritesBlend : /JANI_COMMON/Walls/CoilWalls
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = false
+				DamageLevels = &/JANI_COMMON/Floors/FloorGreyFactoryDarkADamageLevels
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		BlueprintSprites : /JANI_COMMON/Walls/CoilWallsBlueprints
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/terran/corridor/blueprints.png"
+			Size = [1, 1]
+		}
+	}
+}

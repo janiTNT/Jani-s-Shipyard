@@ -146,6 +146,27 @@ Components : &<hyperium.rules>/Components
 		]
 	}
 	
+	ToProxyExists : &<hyperium.rules>/Components/ToProxyExists
+	{
+		ProxyableComponents
+		[
+			{
+				PartCriteria
+				{
+					ExcludeCategories = [cosmoteer.chaingun]// NOT 
+				}
+				ComponentID = &~/ResourceStorage
+			}
+			{
+				PartCriteria
+				{
+					Categories = [cosmoteer.chaingun]// YOS 
+				}
+				ComponentID = CombinedAmmoStorage //what component we are looking for.  Chain gun itself always has these components
+			}
+		]
+	}
+	
 	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
 	{
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))

@@ -16,7 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Flammable = false
 	CrewSpeedFactor = 0
 	IsRotateable = true
-	TypeCategories = [thermal]
+	TypeCategories = [thermal, radiator]
 	IsWalled = true
 	ReceivableBuffs = [Heat_Proxy]
 	AllowedDoorLocations = []
@@ -42,10 +42,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		//code too perfect, cant learn how to improve/ change the way i want
 		
-		AmmoProxy
+		/*AmmoProxy
 		{
 			Type = ResourceStorageProxy
-			ResourceType = janiTNTheat
+			ResourceType = janiTNT.heat
 			PartLocation = [0, -1]
 			PartCriteria
 			{
@@ -86,8 +86,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToStorage = CombinedThermalStorage
 			FromQuantity = 250
 			ToQuantity = 250
-			Interval = .5
-		}
+			Interval = 1
+		}*/
 		ThermalStorage
 		{
 			Type = ResourceStorage

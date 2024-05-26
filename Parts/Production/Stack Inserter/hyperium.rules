@@ -4,12 +4,100 @@ CarrySize = (&<./data/resources/hyperium/hyperium.rules>/MaxStackSize)
 LightColor = [75, 245, 255]
 //CarrySize = 1
 Components
-{
-	ConvertPermission
+{	
+	MovingTween
+	{
+		Type = ValueTween
+		OffValue = 0
+		OnValue = 1
+		OnTweenDuration = 2 / 2
+		OffTweenDuration = 2 / 2
+		IsOnToggle = ToAvailible
+	}
+	
+	ToAvailible
 	{
 		Type = MultiToggle
-		Toggles = [IsOperational, FromProxy]
+		Toggles = [ToProxyValue, HandStorage, ToProxyExists]
 		Mode = All
+	}
+	
+	HandRest
+	{
+		Type = ThresholdToggle
+		ValueFrom = MovingTween
+		MinAmount = 0
+		MaxAmount = 0
+	}
+	
+	HandExtend
+	{
+		Type = ThresholdToggle
+		ValueFrom = MovingTween
+		MinAmount = 1
+		MaxAmount = 1
+	}
+	
+	CollectPermission
+	{
+		Type = MultiToggle
+		Toggles = [IsOperational, FromProxy, HandRest]
+		Mode = All
+	}
+	
+	HandStorageToggle
+	{
+		Type = ToggleProxy
+		ComponentID = HandStorage
+	}
+	
+	ConsumePowerTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = HandRest
+		TriggerWhenOff = false
+		TriggerWhenOn = true
+	}
+	
+	PowerDrainOnTransfer
+	{
+		Type = ResourceChange
+		Trigger = ConsumePowerTrigger
+		ResourceStorage = BatteryStorage
+		Amount = -1000
+	}
+	
+	HandStorage
+	{
+		Type = ResourceStorage
+		ResourceType = &~/Resource
+		MaxResources = (&~/CarrySize)
+		InitToMaxResources = 0
+		ToggleOnResources = (&~/CarrySize)
+		ToggleOffResources = 0
+	}
+	
+	InsertPermission
+	{
+		Type = MultiToggle
+		Toggles = [IsOperational, ToProxyValue, HandStorage, HandExtend, ToProxyExists]
+		Mode = All
+	}
+	
+	ToProxyValue
+	{
+		Type = ThresholdToggle
+		ValueFrom = ToProxy
+		MinAmount = 1
+		MaxAmount = 1
+		Invert = true
+	}
+	
+	ToProxyExists
+	{
+		Type = ComponentPresenceToggle
+		PartLocation = [0, -1]
+		ComponentID = &~/ResourceStorage
 	}
 	
 	FromProxy
@@ -36,20 +124,38 @@ Components
 		ComponentID = &~/ResourceStorage
 	}
 	
-	ResourceConverter
+	From_Into_Hand
 	{
 		Type = ResourceConverter
-		OperationalToggle = ConvertPermission
+		OperationalToggle = CollectPermission
 		From
 		[
 			{
 				Storage = FromProxy
-				Quantity = (&~/CarrySize)
-				MinQuantityForConversion = (&~/CarrySize)
+				Quantity = 1
+				MinQuantityForConversion = 1
 			}
+		]
+		To
+		[
 			{
-				Storage = BatteryStorage
-				Quantity = 1000
+				Storage = HandStorage
+				Quantity = 1
+				MinQuantityForConversion = 1
+			}
+		]
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Hand_Into_To
+	{
+		Type = ResourceConverter
+		OperationalToggle = InsertPermission
+		From
+		[
+			{
+				Storage = HandStorage
+				Quantity = 1
 				MinQuantityForConversion = 1
 			}
 		]
@@ -57,13 +163,11 @@ Components
 		[
 			{
 				Storage = ToProxy
-				Quantity = (&~/CarrySize)
-				MinQuantityForConversion = (&~/CarrySize)
+				Quantity = 1
+				MinQuantityForConversion = 1
 			}
 		]
-		//ToStorage = ToProxy
-		//ToQuantity = 1
-		Interval = 2
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
 	}
 	
 	Graphics

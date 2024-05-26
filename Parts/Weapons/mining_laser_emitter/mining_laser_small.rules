@@ -16,7 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 6000
 	TypeCategories = [weapon, uses_power, is_crewed, mining, miningbeam]
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	AllowedDoorLocations
 	[
 		[-1, 1]
@@ -421,10 +421,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/MiningBeam"
 			Stats
 			{
-				DamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/1/Damage)
+				DamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/1/Damage/BaseValue)
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
 				DamageContinuous = (&DamagePerShot) / (&HitInterval)
-				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/2/Damage)
+				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/2/Damage/BaseValue)
 				DamageContinuousAsteroids = (&DamagePerShotAsteroids) / (&HitInterval)
 				Range = &~/Part/Components/BeamEmitter/Range
 				ShotSpeed = Infinity

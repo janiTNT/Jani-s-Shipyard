@@ -240,6 +240,24 @@ Part : <base_part_occult.rules>/Part
 			]
 		}
 		
+		HyperiumStorage
+		{
+			Type = ResourceStorage
+			ResourceType = hyperium
+			MaxResources = 80
+			DropResourcesWhenDestroyed = true
+		}
+		
+		FTL_DRIVE
+		{
+			Type = FtlDrive
+			OperationalToggle = CommandToggle
+			FuelStorage = HyperiumStorage
+			SpinDownDuration = 5
+			JumpEfficiency = 100%
+			JumpEfficiencyDistanceRange = [200, 1020]
+		}
+		
 		DestroyedEffects : &<base_part_occult.rules>/Part/Components/DestroyedEffects
 		{
 			Location = [.5, .5]

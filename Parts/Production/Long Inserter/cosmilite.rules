@@ -3,69 +3,42 @@ ResourceStorage = CosmiliteStorage
 CarrySize = (&<../../../Resources/Cosmic Bar/cosmic_bar.rules>/MaxPerNugget)
 LightColor = [185*2, 64*2, 255*2]
 //CarrySize = 1
-Components
-{
-	ConvertPermission
+Components : &<hyperium.rules>/Components
+{	HandStorage
 	{
-		Type = MultiToggle
-		Toggles = [IsOperational, FromProxy]
-		Mode = All
-	}
-	
-	FromProxy
-	{
-		Type = ResourceStorageProxy
+		Type = ResourceStorage
 		ResourceType = &~/Resource
-		PartLocation = [0, 2]
-		//PartCriteria
-		//{
-		//	Category = thermal
-		//}
-		ComponentID = &~/ResourceStorage
+		MaxResources = (&~/CarrySize)
+		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = (&~/CarrySize) - 1
+		ToggleOffResources = 0
 	}
 	
-	ToProxy
+	FromProxy : &<hyperium.rules>/Components/FromProxy
 	{
-		Type = ResourceStorageProxy
 		ResourceType = &~/Resource
-		PartLocation = [0, -2]
-		//PartCriteria
-		//{
-		//	Category = thermal
-		//}
 		ComponentID = &~/ResourceStorage
 	}
 	
-	ResourceConverter
+	ToProxy : &<hyperium.rules>/Components/ToProxy
 	{
-		Type = ResourceConverter
-		OperationalToggle = ConvertPermission
-		From
-		[
-			{
-				Storage = FromProxy
-				Quantity = (&~/CarrySize)
-				MinQuantityForConversion = (&~/CarrySize)
-			}
-			{
-				Storage = BatteryStorage
-				Quantity = (&<hyperium.rules>/Components/ResourceConverter/From/1/Quantity)
-				MinQuantityForConversion = 1
-			}
-		]
-		To
-		[
-			{
-				Storage = ToProxy
-				Quantity = (&~/CarrySize)
-				MinQuantityForConversion = (&~/CarrySize)
-			}
-		]
-		//ToStorage = ToProxy
-		//ToQuantity = 1
-		Interval = (&<hyperium.rules>/Components/ResourceConverter/Interval)
+		ResourceType = &~/Resource
+		ComponentID = &~/ResourceStorage
+	}
+	
+	ToProxyExists : &<hyperium.rules>/Components/ToProxyExists
+	{
+		ComponentID = &~/ResourceStorage
+	}
+	
+	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
+	{
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To
+	{
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
 	}
 	
 	Graphics

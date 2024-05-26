@@ -1,0 +1,15 @@
+ID = janiTNT.janiTNT.DarkEnergy//real
+Type = Nebula
+NebulaID = janiTNT.DarkEnergy
+DescriptionKey = "Nebulas/JaniDarkEnergy"
+CategoryKey = "Doodads/Nebulas"
+Icon
+{
+	VertexColor = [25, 25, 25]
+	Texture
+	{
+		File = "./data/doodads/nebulas/nebula_cloudy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}

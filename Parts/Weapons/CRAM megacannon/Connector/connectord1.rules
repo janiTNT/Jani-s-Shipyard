@@ -20,7 +20,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	{
 		Texture
 		{
-			File = "connectord1.png"
+			File = "icon2.png"
 			SampleMode = Linear
 		}
 		Size = [32, 32]
@@ -31,7 +31,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "connectord1.png"
+			File = "icon2.png"
 			Size = [1, 1]
 			UVRotation = 0
 			//Offset = [0, -0.5]
@@ -41,18 +41,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Graphics
 			Location = [.5, .5]
 			//OperationalToggle = IsOperational
-			Floor
+			OperationalDoodad
 			{
-				Layer = "floors"
+				Layer = "doodads_low"
 				Offset = [0, 0]
 				DamageLevels
 				[
 					{
-						File = "connectord1.png"
+						File = "doodad2.png"
 						Size = [1, 1]
 						UVRotation = 0
 					}
 				]
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
 			}
 			Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
 		}

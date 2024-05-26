@@ -4,3 +4,5 @@ StorageWalls = &<StorageWalls.rules>
 StorageWallsBlueprints = &<StorageBlueprints.rules>
 RustyWalls = &<RustyWalls.rules>
 RustyWallsBlueprints = &<RustyBlueprints.rules>
+CoilWalls = &<CoilWalls.rules>
+CoilWallsBlueprints = &<CoilWallsBlueprints.rules>

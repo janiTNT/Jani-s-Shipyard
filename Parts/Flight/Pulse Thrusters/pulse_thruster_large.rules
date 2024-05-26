@@ -153,15 +153,6 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
-		LateralThruster : MainThruster
-		{
-			Rotation = 0d
-			MinActivation = -0.05
-			MaxActivation = 0.05
-			MinUncommandedActivation = &MinActivation
-			MaxUncommandedActivation = &MaxActivation
-			AllowAutoFire = false
-		}
 
 		NozzleCollider
 		{

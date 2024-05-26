@@ -9,6 +9,7 @@ Hyperoid : <./Data/ships/base_ship.rules>
 	JunkBlocksWeaponLOS = true
 	ExternalWalls = &<Hyperoid/external_walls.rules>
 	OverrideConstructionMode = InstantCredits
+	IgnoreNebulas = true // Hyperroids are too big to nebulas
 
 	Blueprints : &<./Data/ships/base_ship.rules>/Blueprints
 	{

@@ -924,9 +924,31 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		
 		CRAM_IsFiringTimer //Is on if we have fired a shot
 		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = FiringTimer}
+				{Toggle = HasNoReloadTime}
+			]
+			Mode = Any
+		}
+		
+		
+		FiringTimer //Is on if we have fired a shot
+		{
 			Type = Timer
 			//Duration = { BaseValue=2; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; MinValue=2}
 			Duration = 2
+			StartTrigger = CRAMFiredTriggerProxy
+			ResetTrigger = CRAMFiredTriggerProxy
+			StartExpired = true
+			InvertToggle = true
+		}
+		
+		HasNoReloadTime//Is on if full reload time, usually
+		{
+			Type = Timer
+			Duration = { BaseValue=10; BuffType=JaniCRAM_ReloadSpeedFinal; BuffMode=Divide; }
 			StartTrigger = CRAMFiredTriggerProxy
 			ResetTrigger = CRAMFiredTriggerProxy
 			StartExpired = true

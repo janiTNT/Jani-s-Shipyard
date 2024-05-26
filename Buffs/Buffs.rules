@@ -57,12 +57,12 @@ Heat_Proxy
 	CombineMode = Max
 	BaseValue = 100%
 
-	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
-	IconTextMultiply = 100
-	IconTextAdd = -100
+	//IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	//IconTextMultiply = 100
+	//IconTextAdd = -100
 
-	RectBorderColor = [255, 255, 84, 160]
-	RectFillColor = [255, 255, 84, 64]
+	//RectBorderColor = [255, 255, 84, 160]
+	//RectFillColor = [255, 255, 84, 64]
 }
 PowerportBuff
 {

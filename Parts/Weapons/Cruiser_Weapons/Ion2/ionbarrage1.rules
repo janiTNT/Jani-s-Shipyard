@@ -17,7 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 2000
 	TypeCategories = [uses_power, weapon]
 	IsFlippable = true
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
 	ProhibitedBy : ^/0/ProhibitedBy [fighter]
 	ProhibitRects
@@ -688,7 +688,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				PowerDrainPerShot = (&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / 1000
 				PowerDrainPerSecond = (&PowerDrainPerShot) * (&ROF)
 				PowerDrain = [&../PowerDrainPerShot, &../PowerDrainPerSecond]
-				PowerDrainArea = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius)
+				PowerDrainArea = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Radius/BaseValue)
 				DrainTime = (&~/Part/Components/BulletEmitter/Bullet/TotalIonTime)
 				
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)

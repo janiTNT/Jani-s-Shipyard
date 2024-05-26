@@ -1,0 +1,213 @@
+Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
+{
+	IsOperational
+	{
+		Type = MultiToggle
+		Toggles = [PowerToggle, BatteryStorage]
+		Mode = All
+	}
+
+	PowerToggle
+	{
+		Type = UIToggle
+		ToggleID = "on_off"
+		Default = 1
+		RequiresCommand = false
+	}
+
+	BatteryStorage
+	{
+		Type = ResourceStorage
+		ResourceType = battery
+		MaxResources = 6000
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+	}
+	PortBuffToggle
+	{
+		Type = BuffToggle
+		BuffType = PowerportBuff
+	}
+	ToggledBatteryConsumer
+	{
+		Type = ToggledComponents
+		Toggle = PortBuffToggle
+		Invert = true
+		IncludeInBlueprints = true
+		Components
+		{
+			BatteryConsumer
+			{
+				Type = ResourceConsumer
+				ResourceType = battery
+				Storage = BatteryStorage
+				DefaultPriority = &/PRIORITIES/Factory_Supply
+				ResupplyThreshold = 500
+				OperationalToggle = PowerToggle
+			}
+		}
+	}
+	
+	HandStorageProxy
+	{
+		Type = ToggleProxy
+		ComponentID = HandStorageToggle
+	}
+	
+	ToAvailibleProxy
+	{
+		Type = ToggleProxy
+		ComponentID = ToAvailible
+	}
+	
+	ConvertProxy
+	{
+		Type = ToggleProxy
+		ComponentID = ResourceConverter
+	}
+	
+	ConvertProxy2
+	{
+		Type = TriggerProxy
+		ComponentID = ResourceConverter
+	}
+	
+	ConvertEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ConvertProxy2
+		Location = [.5, .5]
+		MediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+	}
+	
+	ArmGraphics
+	{
+		Type = OpenCloseSprite
+		Location = [.5, .5]
+		OperationalToggle = ToAvailibleProxy
+		Layer = "fire"
+		OpenDamageLevels
+		[
+			{
+				AnimationFiles
+				[
+					"arm2.png"
+					"arm2.png"
+					"arm3.png"
+					"arm4.png"
+					"arm5.png"
+					"arm6.png"
+					"arm7.png"
+					"arm8.png"
+					"arm9.png"/*
+					"arm9.png"
+					"arm8.png"
+					"arm7.png"
+					"arm6.png"
+					"arm5.png"
+					"arm4.png"
+					"arm3.png"
+					"arm2.png"
+					"arm1.png"*/
+					// Loop back to beginning and clamp there.
+				]
+				Size = [1, 3]
+				AnimationInterval = 0.0515 * 2
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		]
+		ClosedDamageLevels
+		[
+			{
+				AnimationFiles
+				[
+					"arm9.png"
+					"arm8.png"
+					"arm7.png"
+					"arm6.png"
+					"arm5.png"
+					"arm4.png"
+					"arm3.png"
+					"arm2.png"
+					"arm1.png"
+					// Loop back to beginning and clamp there.
+				]
+				Size = [1, 3]
+				AnimationInterval = 0.0515 * 2
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		]
+	}
+	
+	BaseGraphics
+	{
+		Type = Graphics
+		Location = [0.5, 0.5]
+		Floor // This is needed so that armor shows up in ship ghosts.
+		{
+			Layer = "floors"
+			DamageLevels
+			[
+				{
+					File = "floor.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		Walls // This is needed so that armor shows up in ship ghosts.
+		{
+			Layer = "walls"
+			DamageLevels
+			[
+				{
+					File = "walls.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		Roof = &<./Data/ships/terran/fire_extinguisher/fire_extinguisher.rules>/Part/Components/Graphics/Roof
+	}
+	
+	BatterySprites
+	{
+		Type = ResourceSprites
+		Location = [.5, .5]
+		ResourceStorage = BatteryStorage
+		Layer = "doodads_low"
+		RangeHigh = 4000
+		ResourceLevels
+		[
+			{
+				File = "batteries1.png"
+				Size = [1, 1]
+			}
+			{
+				File = "batteries2.png"
+				Size = [1, 1]
+			}
+			{
+				File = "batteries3.png"
+				Size = [1, 1]
+			}
+			{
+				File = "batteries4.png"
+				Size = [1, 1]
+			}
+		]
+	}
+
+	DestroyedEffects
+	{
+		Type = DeathEffects
+		MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+		Location = [.5, .5]
+	}
+
+	Blueprints
+	{
+		Type = BlueprintSprite
+		File = "bp.png"
+		Size = [1, 1]
+	}
+}

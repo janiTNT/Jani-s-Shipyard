@@ -1,8 +1,14 @@
 Type = None
 Tags = [T_anomP]
+//Count = [4]
 //SpawnChance = 0.01
-//SpawnChance = 1
-SpawnChance = 0
+SpawnChance = 1
+//SpawnChance = 0
+Conditions
+{
+	RequireSpawnFlags = [no_sun, supernova_nebulas]
+	//IsInitNode=false
+}
 SubSpawners
 [
 	{
@@ -13,35 +19,41 @@ SubSpawners
 			{
 				Type = None
 				RandomWeight = 3
-				Distance = [30750, 50000]
-				MinDistanceFromTags = [[station, 4000], [bounty, 3000], [asteroid_field, 1200], [ftl_gate, 1200]]
+				Distance = [20750, 25000]
+				MinDistanceFromNebulas = [[ion_storm, 2000]]
+				Tags = [T_anomP2]
+				MinDistanceFromTags = [[station, 4000],[T_anomP2, 12000], [bounty, 3000], [asteroid_field, 1200], [ftl_gate, 1200]]
 				SubSpawners
 				[
 					: ~/RandomLarge
 					{
-						Count = [4 , 4]
+						Count = [1 , 1]
 					}
 				]
 			}
 			{
 				Type = None
 				RandomWeight = 3
-				Distance = [20750, 40000]
-				MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+				Distance = [20750, 25000]
+				MinDistanceFromNebulas = [[ion_storm, 2000]]
+				Tags = [T_anomP2]
+				MinDistanceFromTags = [[station, 2000],[T_anomP2, 12000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 				SubSpawners
 				[
 					: ~/RandomMedium
 					{
-						Count = [4 , 4]
+						Count = [1 , 1]
 					}
 				]
 			}
 			{
 				Type = None
 				RandomWeight = 3
-				Distance = [20750, 29000]
+				Distance = [20750, 25000]
+				MinDistanceFromNebulas = [[ion_storm, 2000]]
 				Count = [1 , 3]
-				MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
+				Tags = [T_anomP2]
+				MinDistanceFromTags = [[station, 2000],[T_anomP2, 12000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 				SubSpawners
 				[
 					: ~/RandomSmall
@@ -106,6 +118,8 @@ RandomMedium
 		{
 			Type = Doodads
 			DoodadType = janiTNT.HyperoidPOI
+			Count = [2, 2]
+			Distance = [100, 100]
 			ShowOnlyInFog = true
 			Undiscovered = true
 			HideIfUnexplored = false
@@ -149,6 +163,8 @@ RandomSmall
 		{
 			Type = Doodads
 			DoodadType = janiTNT.HyperoidPOI
+			Count = [2, 2]
+			Distance = [100, 100]
 			ShowOnlyInFog = true
 			Undiscovered = true
 			HideIfUnexplored = false
@@ -177,6 +193,17 @@ RandomLarge
 	NameGenerator = { Type=None; }
 	SubSpawners
 	[
+		{//it must be occluded by cloudy nebula
+			Type = Nebula
+			NebulaType = cloudy
+			NebulaRadius = 2000
+		}
+		{//Smooth Nebula around it
+			Type = Nebula
+			NebulaType = cloudy
+			NebulaRadius = 60000
+			NebulaSplatTriCount = [10, 15]
+		}
 		{
 			Type = Ships
 			Count = [16, 32]
@@ -192,6 +219,8 @@ RandomLarge
 		{
 			Type = Doodads
 			DoodadType = janiTNT.HyperoidPOI
+			Count = [2, 2]
+			Distance = [100, 100]
 			ShowOnlyInFog = true
 			Undiscovered = true
 			HideIfUnexplored = false

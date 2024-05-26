@@ -269,6 +269,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Common/Corridors/FactoryCorridor.rules>/Part
 			&<Parts/Common/Corridors/FactoryCorridorDark.rules>/Part
 			
+			&<Parts/Common/Corridors/SmelteryFloor.rules>/Part			
+			&<Parts/Production/Smeltery/Smeltery_Wall1.rules>/Part
+			&<Parts/Production/Smeltery/Smeltery_Wall2.rules>/Part
+			&<Parts/Production/Smeltery/Brain/Smeltery_Controller.rules>/Part
+			
 			//DEV PARTS
 			
 			//&<testsalvagebomb.rules>/Part
@@ -311,7 +316,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	}
 	{	Action = AddMany
 
-		AddTo = "<./Data/modes/career/sysgen.rules>/Spawners"
+		AddTo = "<./Data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/SystemGenerator/Spawners"
 
 		ManyToAdd
 		[
@@ -387,6 +392,15 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	}
 	{	Action = AddMany
 
+		AddTo = "<./Data/Nebulas/nebulas.rules>/NebulaTypes"
+		
+		ManyToAdd
+		[
+			&<Nebulas/DarkEnergy.rules>
+		]
+	}
+	{	Action = AddMany
+
 		AddTo = "<doodads/doodads.rules>/Doodads"
 
 		ManyToAdd
@@ -413,6 +427,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<planets/doodad_planet_deadsun.rules>
 			&<planets/doodad_planet_deadsun_mini.rules>
 			&<planets/doodad_planet_sunminialt.rules>
+			
+			&<Nebulas/DarkEnergy_Doodad.rules>
 			
 			/*{
 				ID = janiTNT.lightsource
@@ -573,7 +589,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	}
 	{
 		Action = AddMany
-		AddTo = "<modes/career/career.rules>/TradeRoutes/StationResourceTradeDeltas"
+		AddTo = "<modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/StationResourceTradeDeltas"
 		ManyToAdd
 		[
 			{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
@@ -1181,9 +1197,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{ File="Ships/Occult Riptide.ship.png"; Tags=[HyperoidGuardian] Tier=6;  Difficulty=3; }
 			//{ File="Occult/Twiceliver Guardian .ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }//remove todo quick NOW
 			{ File="Ships/MicroReaper.ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }
-			{ File="Ships/The Witch's Craft.ship.png"; Tags=[janibossship] Tier=20;  Difficulty=3; }
-			{ File="Ships/Godslayer Guardian.ship.png"; Tags=[janibossship] Tier=16;  Difficulty=3; }
-			{ File="Ships/Sol Profanatus.ship.png"; Tags=[janibossship] Tier=20;  Difficulty=3; }
+			{ File="Ships/The Witch's Craft.ship.png"; Tags=[janibossship, janibossBrimstone] Tier=20;  Difficulty=3; }
+			{ File="Ships/Godslayer Guardian.ship.png"; Tags=[janibossship, janibossCosmilite] Tier=16;  Difficulty=3; }
+			{ File="Ships/Sol Profanatus.ship.png"; Tags=[janibossship, janibossProfaned] Tier=20;  Difficulty=3; }
 		]
 	}
 	{

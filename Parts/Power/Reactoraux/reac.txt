@@ -22,7 +22,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000
 	AutoDoorMaxPathLength = 3
 	TypeCategories = [provides_power, reactor]
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff]
 	CreatePartPerTileWhenDestroyed = ""
 	Density = 1
 	IgnoreRotationForMirroredSelection = true
@@ -37,6 +37,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [ElectronDebuffToggle]
+			Mode = All
+		}
+		
 		BatteryStorage
 		{
 			Type = ResourceStorage
@@ -56,11 +63,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToStorage = BatteryStorage
 			ToQuantity = 500
 			Interval = 1.85
+			OperationalToggle = IsOperational
+		}
+		ElectronDebuffToggle
+		{
+			Type = BuffToggle
+			BuffType = ElectronDebuff
+			Invert = true
 		}
 		Graphics
 		{
 			Type = Graphics
 			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"
@@ -83,6 +98,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
+			NonOperationalDoodad = &OperationalDoodad
 			OperationalLighting
 			{
 				Layer = "lights_add"
@@ -129,6 +145,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ContinuousEffects
 			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior
@@ -250,6 +267,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1.5, 1.5]
+					}
+				}
+				// Out of power, in nebula
+				{
+					Toggle = IsOperational
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower

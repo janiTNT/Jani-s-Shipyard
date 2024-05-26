@@ -56,34 +56,4 @@ Part : <basiclaser.rules>/Part
 			}
 		}*/
 	}
-
-	Stats
-	{
-		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-
-		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
-		RecCrew = (&RecPower) * 4
-	}
-
-	StatsByCategory
-	[
-		{
-			NameKey = "StatCategories/LaserBoltSmall"
-			Stats
-			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
-				DamagePerSecond = (&DamagePerShot) * (&ROF)
-				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				Range = &~/Part/Components/BulletEmitter/Bullet/Range
-				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
-				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&ROF)
-				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
-			}
-		}
-	]
 }

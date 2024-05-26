@@ -19,7 +19,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewSpeedFactor = 1
 	SelectionTypeID = "reactors"
 	CrewCongestedSpeedFactor = .5
-	ReceivableBuffs : ^/0/ReceivableBuffs []
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff]
 	MaxHealth = 8000
 	TypeCategories = [uses_power, thermal, provides_power, bounty_objective, power_transmitter]
 	ForceManhattanPathInPart = true
@@ -74,10 +74,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		
 		BuffProvider
 		{
-			Type = GridBuffProvider
+			Type = FloodFillBuffProvider
 			BuffType = Heat_Proxy
 			BuffAmount = 100%
-			GridDistance = 1
+			BuffsSelf = true
+			BuffRegion 
+            {
+                Type = Grid
+                GridDistance = 1
+            }
+			Criteria
+			{
+				PartCategories = [thermal]
+			}
 		}
 		
 		CombinedThermalStorage
@@ -256,7 +265,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResourcesPickUp = 6000
 			InitPickUp = 4001
 			PickUpRate = 1000 / 2.0
-			ExpectedResourceGenerationRate = 12000 / (&../BatteryProducer/Interval)
+			ExpectedResourceGenerationRate = { BaseValue = 12000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ExpectedResourceGenerationToggle = IsProducing
 			SuppliesResourcesToggle = IsProducing
 			IsIntermediateStorage = true
@@ -316,7 +325,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					Storage = PlasmaStorage
-					Quantity = 25
+					Quantity = 40
 				}
 			]
 			MinFromQuantityForConversion = 1000
@@ -336,7 +345,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = PlasmaStorage
-					Quantity = 10
+					Quantity = 20
 					MinQuantityForConversion = 1
 				}
 			]
@@ -344,7 +353,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = BatteryStorage
-					Quantity = 12000
+					Quantity =  { BaseValue=12000; BuffType=ElectronDebuff; BuffMode=Multiply; }
 				}
 				{
 					Storage = ThermalStorage
@@ -369,7 +378,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = PlasmaStorage
-					Quantity = 2
+					Quantity = 10
 					MinQuantityForConversion = 1
 				}
 			]
