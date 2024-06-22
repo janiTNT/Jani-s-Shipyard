@@ -22,7 +22,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000
 	AutoDoorMaxPathLength = 3
 	TypeCategories = [provides_power, reactor]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff]
 	CreatePartPerTileWhenDestroyed = ""
 	Density = 1
 	IgnoreRotationForMirroredSelection = true
@@ -40,7 +39,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [ElectronDebuffToggle]
+			Toggles = []
 			Mode = All
 		}
 		
@@ -64,12 +63,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToQuantity = 500
 			Interval = 1.85
 			OperationalToggle = IsOperational
-		}
-		ElectronDebuffToggle
-		{
-			Type = BuffToggle
-			BuffType = ElectronDebuff
-			Invert = true
 		}
 		Graphics
 		{

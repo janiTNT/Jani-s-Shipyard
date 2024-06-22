@@ -17,7 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000
 	TypeCategories = [uses_power, weapon]
 	IsFlippable = true
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ForceManhattanPathInPart = true
 	ProhibitedBy : ^/0/ProhibitedBy [fighter]
 	ProhibitRects
@@ -569,8 +569,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/IonBeam"
 			Stats
 			{
-				Damage = [(&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue) * (&~/Part/Components/BeamEmitter/Duration) * (1 / (&~/Part/Components/BeamEmitter/HitInterval)) , ((&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue) * (&~/Part/Components/BeamEmitter/Duration) * (1 / (&~/Part/Components/BeamEmitter/HitInterval))) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
-				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue
+				Damage = [(&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * (&~/Part/Components/BeamEmitter/Duration) * (1 / (&~/Part/Components/BeamEmitter/HitInterval)) , ((&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage) * (&~/Part/Components/BeamEmitter/Duration) * (1 / (&~/Part/Components/BeamEmitter/HitInterval))) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
+				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage
 				DamagePerShotNear = (&BaseDamage) * (&~/Part/Components/BeamEmitter/HitEffectsScaleOverRange/0)
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval

@@ -17,7 +17,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000
 	TypeCategories = [uses_power, weapon]
 	IsFlippable = true
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
 	ProhibitedBy : ^/0/ProhibitedBy [fighter]
 	ProhibitRects
@@ -571,8 +570,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/IonBeam"
 			Stats
 			{
-				Damage = [(&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/TotalDamage/Basevalue) , (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/TotalDamage/Basevalue) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
-				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/TotalDamage/Basevalue
+				Damage = [(&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/TotalDamage) , (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/TotalDamage) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
+				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/TotalDamage
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				Range = &~/Part/Components/BeamEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)

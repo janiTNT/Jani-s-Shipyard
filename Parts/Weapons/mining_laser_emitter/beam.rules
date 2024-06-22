@@ -8,7 +8,6 @@ SourceShipLowCollisions = false
 HitEffectsScaleOverRange = [1, 0.95]
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
-ReceivableBuffs = [ElectronBuff]
 
 BeamMediaEffects
 [
@@ -141,7 +140,7 @@ HitOperational
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=1200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 1200/20 * 2.2
 					DamageType = Salvage
 					SpawnUnderlying = false
 					Filter
@@ -153,7 +152,7 @@ HitOperational
 				}
 				{
 					Type = Damage
-					Damage = { BaseValue=64000/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = 64000/20 * 2.2
 					DamageType = Salvage
 					SpawnUnderlying = false
 					Filter
@@ -167,7 +166,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=1200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = 1200/20 * 2.2
 			DamageType = Salvage
 			SpawnUnderlying = false
 			Filter
@@ -179,7 +178,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=64000/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = 64000/20 * 2.2
 			DamageType = Salvage
 			SpawnUnderlying = false
 			Filter

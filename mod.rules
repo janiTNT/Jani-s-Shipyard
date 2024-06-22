@@ -390,7 +390,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			sun_dead = &<planets/planet_deadsun.rules>
 		}
 	}
-	{	Action = AddMany
+	/*{	Action = AddMany
 
 		AddTo = "<./Data/Nebulas/nebulas.rules>/NebulaTypes"
 		
@@ -398,7 +398,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			&<Nebulas/DarkEnergy.rules>
 		]
-	}
+	}*/
 	{	Action = AddMany
 
 		AddTo = "<doodads/doodads.rules>/Doodads"

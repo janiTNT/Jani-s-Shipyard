@@ -19,7 +19,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewSpeedFactor = 1
 	SelectionTypeID = "reactors"
 	CrewCongestedSpeedFactor = .5
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff]
 	MaxHealth = 8000
 	TypeCategories = [uses_power, thermal, provides_power, bounty_objective, power_transmitter]
 	ForceManhattanPathInPart = true
@@ -265,7 +264,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResourcesPickUp = 6000
 			InitPickUp = 4001
 			PickUpRate = 1000 / 2.0
-			ExpectedResourceGenerationRate = { BaseValue = 12000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
+			ExpectedResourceGenerationRate = 12000 / (&../../BatteryProducer/Interval)
 			ExpectedResourceGenerationToggle = IsProducing
 			SuppliesResourcesToggle = IsProducing
 			IsIntermediateStorage = true
@@ -353,7 +352,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = BatteryStorage
-					Quantity =  { BaseValue=12000; BuffType=ElectronDebuff; BuffMode=Multiply; }
+					Quantity =  12000
 				}
 				{
 					Storage = ThermalStorage

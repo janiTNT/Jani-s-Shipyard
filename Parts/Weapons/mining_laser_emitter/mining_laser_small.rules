@@ -16,7 +16,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 6000
 	TypeCategories = [weapon, uses_power, is_crewed, mining, miningbeam]
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	AllowedDoorLocations
 	[
 		[-1, 1]

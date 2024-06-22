@@ -19,7 +19,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 8000
 	TypeCategories = [weapon, ion, mining_prism, ion_beam_prism, armor, mining]
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	Flammable = false
 	InitialPenetrationResistance = 100
 	ContinuingPenetrationResistance = &InitialPenetrationResistance

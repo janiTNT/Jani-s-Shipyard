@@ -3,7 +3,6 @@ IdealRange = 150
 Width = .15 // smaller so it fits
 HitEffectsScaleOverRange = [1, 1]
 MediaEffectsScaleOverRange = [0.125, 0.125]
-ReceivableBuffs = [ElectronBuff]
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
@@ -118,8 +117,8 @@ HitOperational
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = { BaseValue=3500; BuffType=ElectronBuff; BuffMode=Multiply; }
-			Radius = { BaseValue=4; BuffType=ElectronBuff; BuffMode=Multiply; }
+			TotalDamage = 3500
+			Radius = 4
             Slices = 1
 			DamageType = default
 			Filter
@@ -183,7 +182,7 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=2000; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = 2000
 			Filter
 			{
 				OperationalHealth = false
