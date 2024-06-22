@@ -226,6 +226,145 @@ Part : <../../baselogicpart.rules>/Part
 			OperationalToggle = IsOperational
 			DoodadToggle = Emitter
 			ShowToggledDoodadsWhenNotOperational = false
+			ToggleOnDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"turret_on1.png"
+							"turret_on2.png"
+							"turret_on3.png"
+							"turret_on4.png"
+							"turret_on5.png"
+							"turret_on6.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_normals_on.png"
+							"turret_normals_on.png"
+							"turret_normals_on.png"
+							"turret_normals_on.png"
+							"turret_normals_on.png"
+							"turret_normals_on.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.0725
+						Offset = [0, -6/64]
+					}
+					{
+						AnimationFiles
+						[
+							"turret_on1_33.png"
+							"turret_on2_33.png"
+							"turret_on3_33.png"
+							"turret_on4_33.png"
+							"turret_on5_33.png"
+							"turret_on6_33.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_normals_on_33.png"
+							"turret_normals_on_33.png"
+							"turret_normals_on_33.png"
+							"turret_normals_on_33.png"
+							"turret_normals_on_33.png"
+							"turret_normals_on_33.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.0725
+						Offset = [0, -6/64]
+					}
+					{
+						AnimationFiles
+						[
+							"turret_on1_66.png"
+							"turret_on2_66.png"
+							"turret_on3_66.png"
+							"turret_on4_66.png"
+							"turret_on5_66.png"
+							"turret_on6_66.png"
+						]
+						NormalsAnimationFiles
+						[
+							"turret_normals_on_66.png"
+							"turret_normals_on_66.png"
+							"turret_normals_on_66.png"
+							"turret_normals_on_66.png"
+							"turret_normals_on_66.png"
+							"turret_normals_on_66.png"
+						]
+						Size = [1, 1]
+						AnimationInterval = 0.0725
+						Offset = [0, -6/64]
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "turret_on.png"
+						NormalsFile = "turret_normals_on.png"
+						Size = [1, 1]
+						Offset = [0, -6/64]
+					}
+					{
+						File = "turret_on_33.png"
+						NormalsFile = "turret_normals_on_33.png"
+						Size = [1, 1]
+						Offset = [0, -6/64]
+					}
+					{
+						File = "turret_on_66.png"
+						NormalsFile = "turret_normals_on_66.png"
+						Size = [1, 1]
+						Offset = [0, -6/64]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "turret_off.png"
+						NormalsFile = "turret_normals_off.png"
+						Size = [1, 1]
+						Offset = [0, -6/64]
+					}
+					{
+						File = "turret_off_33.png"
+						NormalsFile = "turret_normals_off_33.png"
+						Size = [1, 1]
+						Offset = [0, -6/64]
+					}
+					{
+						File = "turret_off_66.png"
+						NormalsFile = "turret_normals_off_66.png"
+						Size = [1, 1]
+						Offset = [0, -6/64]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				DamageLevels
+				[
+					{
+						File = "turret_fancy_light.png"
+						Size = [1, 1]
+						Z = 1 // Controls the "height" of the light for the purposes of normal mapping.
+						VertexColor = [255*2.5,255*2.5,255*2.5]
+					}
+				]
+			}
 		}
 		
 		TractorModeToggle
