@@ -97,7 +97,7 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "./data/shots/collector_beam/collector_beam.wav"
+		Sound = "./data/shots/manipulator_beam/manipulator_beam.wav"
 		Volume = 100%
 		Speed = 100%
 		RampUpTime = .25
