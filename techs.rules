@@ -67,7 +67,7 @@ Techs
 		Cost = 10000
 		Prerequisites = [cosmoteer.missile_launcher]
 	}
-	{
+	/*{
 		ID = juanTNT.Barracks
 		NameKey = &<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/DescriptionKey
@@ -78,7 +78,7 @@ Techs
 			&<Parts/Crew/4x3 Crew/4x3crew.rules>/Part/ID
 		]
 		Cost = 3000
-	}
+	}*/
 	{
 		ID = janiTNT.drone_launcher_tiny
 		NameKey = &<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/NameKey

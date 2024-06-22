@@ -31,7 +31,7 @@ Parts
 	
 	CrewQuartersLongBig = "Crew's Barracks"
 	CrewQuartersLongBigIcon = "Barracks"
-	CrewQuartersLongBigDesc = "Massive crew room, provides 22 crew and has a lot of exit space, Has no visible roof."\
+	CrewQuartersLongBigDesc = "Massive crew room, provides 22 crew and has a lot of exit space.\nLEGACY PART"\
 	"\n\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	CrewQuartersLonger = "Alongated Crew's Quarters"
