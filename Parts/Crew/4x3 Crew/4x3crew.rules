@@ -100,55 +100,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
-			/*Roof
-			{
-				Layer = "roofs"
-				DamageLevels
-				[
-					{
-						File = "roof1.png"
-						NormalsFile = "roof_n1.png"
-						Size = [2, 3]
-					}
-					{
-						File = "roof2.png"
-						NormalsFile = "roof_n2.png"
-						Size = [2, 3]
-					}
-					{
-						File = "roof3.png"
-						NormalsFile = "roof_n3.png"
-						Size = [2, 3]
-					}
-				]
-			}*/
-		}
-		Roof
-		{
-			Type = SpriteGrid
-			Location = [.5, .5]
-			RandomDamageLevels
-			[
-				[
-					{
-						File = "./Data/ships/terran/corridor/roof.png"
-						NormalsFile = "./Data/ships/terran/corridor/roof_normals.png"
-						Size = [1, 1]
-					}
-					{
-						File = "./Data/ships/terran/corridor/roof_33.png"
-						NormalsFile = "./Data/ships/terran/corridor/roof_normals_33.png"
-						Size = [1, 1]
-					}
-					{
-						File = "./Data/ships/terran/corridor/roof_66.png"
-						NormalsFile = "./Data/ships/terran/corridor/roof_normals_66.png"
-						Size = [1, 1]
-					}
-				]
-			]
-			RandomUVRotation = true
-			Layer = "roofs"
+			Roof = &<./Data/ships/terran/crew_quarters_large/crew_quarters_large.rules>/Part/Components/Graphics/Roof
 		}
 
 		ColoredGraphics

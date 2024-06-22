@@ -1611,4 +1611,5 @@ Nebulas
 {
 	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have slightly increased speed and increased sensor range, and disables hyperdrives."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
+	DarkEnergyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>energy</gray></s12>"
 }

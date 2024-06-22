@@ -103,7 +103,12 @@ Components
 				{
 					Delay = 4.5
 				}*/
-				
+				: &0
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = janiTNT.IonReactorStun
+					TotalDrain = { BaseValue=-2000; BuffType=ElectronBuff; BuffMode=Multiply; }
+				}
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = janiTNT.SuperShieldEnergy

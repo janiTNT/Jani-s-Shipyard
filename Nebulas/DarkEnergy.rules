@@ -13,6 +13,19 @@ AngularDampingFactor = 100%
 ProhibitFtlJumpIn = true
 ProhibitFtlJumpOut = true
 
+
+
+HudTextKey = "Nebulas/DarkEnergyHudFmt"
+HudIcon
+{
+	Texture
+	{
+		File = "dark_energy.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+}
+
 MaterialLow
 {
 	Color = [255, 255, 255, 40]

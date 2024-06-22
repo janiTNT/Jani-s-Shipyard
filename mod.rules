@@ -1,5 +1,5 @@
 ﻿ID = "janiTNT.TechMod"
-Name = "[Beta] Jani's Shipyard"
+Name = "<cyan>[Beta]</cyan> Jani's Shipyard"
 Author = "JaniTNT"
 Version = "Modern 1.20(beta v6)"
 Logo = "evil jani.png"
@@ -1248,6 +1248,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 						Type = AggroEnemies
 						TargetSwitchThresholdFactor = 2
 						TargetDistanceFactorExponent = 0.5
+						AlreadyTargetedByAllyFactor = 0.7
 						TargetFirepowerCacheTime = 10
 						AcquireAggroWithinRadar = true
 						ReleaseAggroWithinRadar = true
