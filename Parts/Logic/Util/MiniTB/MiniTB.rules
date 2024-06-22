@@ -528,7 +528,7 @@ Part : <../../baselogicpart.rules>/Part
 			ResourceScaleFactor = AbsBeamRegulator
 			ValueScaleFactor = BeamRegulatorProxy
 			
-			BeamMediaEffects = &<./Data/shots/collector_beam/collector_beam.rules>/BeamMediaEffects
+			BeamMediaEffects = &<./Data/shots/manipulator_beam/manipulator_beam.rules>/BeamMediaEffects
 			//TractorImpulse = 1000 * 0.25
 			Range = 125
 			StretchRange = 250
