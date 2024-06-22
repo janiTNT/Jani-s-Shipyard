@@ -71,11 +71,11 @@ SpawnerBase
 	}
 	SubSpawners
 	[
-		{
+		/*{
 			Type = Nebula
 			NebulaType = janiTNT.DarkEnergy
 			NebulaRadius = 4000
-		}
+		}*/
 		// POI
 		{
 			Type = Doodads

@@ -264,7 +264,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResourcesPickUp = 6000
 			InitPickUp = 4001
 			PickUpRate = 1000 / 2.0
-			ExpectedResourceGenerationRate = 12000 / (&../../BatteryProducer/Interval)
+			ExpectedResourceGenerationRate = 12000 / (&../BatteryProducer/Interval)
 			ExpectedResourceGenerationToggle = IsProducing
 			SuppliesResourcesToggle = IsProducing
 			IsIntermediateStorage = true

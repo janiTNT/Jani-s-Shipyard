@@ -193,7 +193,7 @@ RandomLarge
 	NameGenerator = { Type=None; }
 	SubSpawners
 	[
-		{//it must be occluded by cloudy nebula
+		/*{//it must be occluded by cloudy nebula
 			Type = Nebula
 			NebulaType = cloudy
 			NebulaRadius = 2000
@@ -203,7 +203,7 @@ RandomLarge
 			NebulaType = cloudy
 			NebulaRadius = 60000
 			NebulaSplatTriCount = [10, 15]
-		}
+		}*/
 		{
 			Type = Ships
 			Count = [16, 32]

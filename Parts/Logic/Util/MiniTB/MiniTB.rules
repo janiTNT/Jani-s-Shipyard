@@ -218,7 +218,7 @@ Part : <../../baselogicpart.rules>/Part
 				VertexColor = [102, 102, 255, 255]
 			}
 		}
-		TurretGraphics : &<./data/ships/terran/resource_collector/resource_collector.rules>/Part/Components/TurretGraphics1
+		TurretGraphics
 		{
 			Type = Graphics
 			ChainedTo = Turret

@@ -420,10 +420,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/MiningBeam"
 			Stats
 			{
-				DamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/1/Damage/BaseValue)
+				DamagePerShot = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/1/Damage)
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
 				DamageContinuous = (&DamagePerShot) / (&HitInterval)
-				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/2/Damage/BaseValue)
+				DamagePerShotAsteroids = (&~/Part/Components/BeamEmitter/HitOperational/HitEffects/2/Damage)
 				DamageContinuousAsteroids = (&DamagePerShotAsteroids) / (&HitInterval)
 				Range = &~/Part/Components/BeamEmitter/Range
 				ShotSpeed = Infinity

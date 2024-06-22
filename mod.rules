@@ -428,7 +428,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<planets/doodad_planet_deadsun_mini.rules>
 			&<planets/doodad_planet_sunminialt.rules>
 			
-			&<Nebulas/DarkEnergy_Doodad.rules>
+			//&<Nebulas/DarkEnergy_Doodad.rules>
 			
 			/*{
 				ID = janiTNT.lightsource
