@@ -25,7 +25,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	{
 		Texture
 		{
-			File = "loader3.png"
+			File = "icon.png"
 			SampleMode = Linear
 		}
 		Size = [64/3, 64]
@@ -33,6 +33,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, CommandToggle]
+			Mode = All
+		}
+		CommandToggle
+		{
+			Type = CommandToggle
+		}
 		PowerToggle
 		{
 			Type = UIToggle
@@ -40,32 +50,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Default = 1
 			RequiresCommand = false
 		}
-		Blueprints
-		{
-			Type = BlueprintSprite
-			File = "loader3.png"
-			Size = [1, 3]
-			UVRotation = 0
-			//Offset = [0, -0.5]
-		}
 		Graphics
 		{
 			Type = Graphics
 			Location = [.5, 1.5]
-			//OperationalToggle = IsOperational
-			/*Floor
-			{
-				Layer = "floors"
-				Offset = [0, 0]
-				DamageLevels
-				[
-					{
-						File = "connector1.png"
-						Size = [1, 1]
-						UVRotation = 0
-					}
-				]
-			}*/
+			OperationalToggle = IsOperational
 			Floor
 			{
 				Layer = "floors"
@@ -73,13 +62,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "loader3.png"
+						File = "floor1.png"
 						Size = [1, 3]
 						UVRotation = 0
 					}
 				]
 			}
-			//Roof = &<./data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 3]
+					}
+				]
+			}
 		}
 		RoofCoverGrid
 		{
@@ -106,6 +116,96 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 			RandomUVRotation = true
 			Layer = "roofs"
+		}
+		AmmoLerpSlider
+		{
+			Type = TransformLerp
+			ValueFrom = AmmoStorage
+			StartLocation = [0.5, 0.785]
+			EndLocation = [0.5, 1.4]
+		}
+		AmmoSlider
+		{
+			Type = TransformMatch
+			Location = [0.5, 0.785]
+			//OperationalToggle = IsOperational
+			//ChainedTo = TurretSlider
+			//Rotation = -90d // Relative to unrotated part.
+			MatchTransformOf = AmmoLerpSlider
+			MatchLocationSpeed = 1
+			//ResetTransformWhen = IsShellNotFullyOpen
+			//ResetRotationSpeed = 120d
+			//ClampRotationToArc = [-(&../../Turret/FiringArc)/2 - 90d, (&../../Turret/FiringArc)]
+			//ToggleOnRotationThreshold = 2d
+		}
+		AmmoSprites
+		{
+			Type = ResourceSprites
+			Location = [0, 0]
+			ChainedTo = AmmoSlider
+			ResourceStorage = AmmoStorage
+			Layer = "doodads_low"
+			HasZeroResourceSprite = true
+			ResourceLevels
+			[
+				{
+					File = "ammo1.png"
+					Size = [1, 1]
+					Offset = [0, 0.25]
+				}
+				{
+					File = "ammo2.png"
+					Size = [1, 1]
+					Offset = [0, 0.25]
+				}
+				{
+					File = "ammo3.png"
+					Size = [1, 2]
+					Offset = [0, 0]
+				}
+			]
+		}
+		LoadingGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			ResetAnimationTrigger = LoadingConverter
+			OperationalToggle = AmmoStorage
+			//AnimationSpeedFactor = RateOfFireTween
+
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"arm_on1.png"
+							"arm_on2.png"
+							"arm_on3.png"
+							"arm_on4.png"
+							"arm_on5.png"
+							"arm_off.png"// Off
+						]
+						Size = [1, 1]
+						AnimationInterval = (0.5) / 5//Minus Last
+						AnimationStartTime = MinValue
+						ClampAnimation = true
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "arm_empty.png"
+						Size = [1, 1]
+					}
+				]
+			}
 		}
 		VisualCoolerBuff
 		{
@@ -164,13 +264,33 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		LoadingConverter
 		{
 			Type = ResourceConverter
-			//OperationalToggle = HaltConverter
+			OperationalToggle = IsOperationalConverter
 			FromStorage = AmmoStorage
 			ToStorage = CRAM_LOADER_AmmoStorage
 			FromQuantity = 1
 			ToQuantity = 1
 			MinFromQuantityForConversion = 1
-			Interval = 0.5
+			//Interval = 0.5
+			Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond))
+		}
+		IsOperationalConverter
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, CooledDownToggle, HaltConverter]
+			Mode = All
+		}
+		CooledDownToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = CooldownDelay
+			OffTrigger = LoadingConverter
+			StartsOn = true
+		}
+		CooldownDelay
+		{
+			Type = DelayTrigger
+			Trigger = LoadingConverter
+			Delay = .5
 		}
 		HaltConverter
 		{
@@ -187,6 +307,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			IsOnWhenNotConnected = true
 			PartLocation = [1, 0]
 			ComponentID = CombinedCRAMAmmoStorageToggle
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 3]
+			UVRotation = 0
+			//Offset = [0, -0.5]
 		}
 	}
 }

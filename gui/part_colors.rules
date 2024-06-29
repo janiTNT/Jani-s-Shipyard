@@ -56,4 +56,24 @@ PartColors
 		ValueRange = [0.5, 1]
 		SaturationRange = [0, 0.9]
 	}
+	// Pure Color
+	{
+		ColorID = "true_color_fullrange"
+		ButtonToolTipKey = "PartColors/FullColor"
+		ColoredSprite
+		{
+			Texture
+			{
+				File = "hullcolor.png"
+				MipLevels = 2
+				UvRotation = 1
+				SampleMode = Linear
+			}
+		}
+		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
+		SortOrder = 99
+		ShowInEditor = true
+		ValueRange = [0, 1]
+		SaturationRange = [0, 1]
+	}
 ]

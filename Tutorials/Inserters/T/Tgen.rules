@@ -2,8 +2,8 @@ Type = None
 Tags = [T_anomP]
 //Count = [4]
 //SpawnChance = 0.01
-SpawnChance = 1
-//SpawnChance = 0
+//SpawnChance = 1
+SpawnChance = 0
 Conditions
 {
 	RequireSpawnFlags = [no_sun, supernova_nebulas]

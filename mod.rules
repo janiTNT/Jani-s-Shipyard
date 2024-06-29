@@ -232,6 +232,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part
 			
 			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part
+			&<Parts/Logic/Lights/Light Panels/panel.rules>/Part
 			
 			&<Parts/Logic/Util/Pistons/1x1/piston1x1.rules>/Part
 			

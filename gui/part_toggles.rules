@@ -1312,4 +1312,69 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			}
 		]
 	}
+	// LED panel type
+	{
+		ToggleID = "logic_led_type"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Small Square
+			{
+				ChoiceID = "led_small_square"
+				ButtonToolTipKey = "PartToggles/led_small_square"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shape1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Big Square
+			{
+				ChoiceID = "led_big_square"
+				ButtonToolTipKey = "PartToggles/led_big_square"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shape2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Round
+			{
+				ChoiceID = "led_round"
+				ButtonToolTipKey = "PartToggles/led_round"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shape3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Wedge
+			{
+				ChoiceID = "led_wedge"
+				ButtonToolTipKey = "PartToggles/led_wedge"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "shape4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
 ]

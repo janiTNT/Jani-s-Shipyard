@@ -39,15 +39,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [.5, .5]
-			//OperationalToggle = IsOperational
+			OperationalToggle = HasFront
 			Floor
 			{
 				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
 				Offset = [0, 0]
 				DamageLevels
 				[
 					{
-						File = "gauge1.png"
+						File = "gauge_1.png"
+						Size = [1, 2]
+						UVRotation = 0
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "gauge_2.png"
 						Size = [1, 1]
 						UVRotation = 0
 					}
@@ -86,6 +105,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Rot = 3
 				}
 			]
+		}
+		HasFront
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, -1]
+			ComponentID = GaugeIncreaseBuffSelf
+			PartCriteria
+			{
+				Rot = 0
+			}
 		}
 	}
 }
