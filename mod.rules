@@ -1,8 +1,10 @@
 ﻿ID = "janiTNT.TechMod"
+//Name = "Jani's Shipyard"
 Name = "[Beta] Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.20(beta v7)"
-Logo = "evil jani.png"
+Version = "Modern 1.20)"
+//Logo = "evil jani.png"
+Logo = "newlogo.png"
 CompatibleGameVersions = ["0.26.0", "0.26.1", "0.26.2", "0.26.3", "0.26.4", "0.26.5", "0.26.6", "0.26.7", "0.26.8", "0.26.9", "0.26.10", "0.26.11", "0.26.12", "0.26.13", "0.26.14", "0.26.15"]
 ModifiesMultiplayer = true
 Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
@@ -123,32 +125,34 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter.rules>/Part
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
-			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
+			
+			//&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
 			
 			&<Parts/Production/inserter/inserter.rules>/Part
 			&<Parts/Production/inserter/inserterConstruction.rules>/Part
-			&<Parts/Production/inserter/inserterModded.rules>/Part
+			//&<Parts/Production/inserter/inserterModded.rules>/Part
 			&<Parts/Production/inserter/inserterOres.rules>/Part
 			
 			&<Parts/Production/Long inserter/Longinserter.rules>/Part
 			&<Parts/Production/Long inserter/LonginserterConstruction.rules>/Part
-			&<Parts/Production/Long inserter/LonginserterModded.rules>/Part
+			//&<Parts/Production/Long inserter/LonginserterModded.rules>/Part
 			&<Parts/Production/Long inserter/LonginserterOres.rules>/Part
 			
 			&<Parts/Production/Stack inserter/Stackinserter.rules>/Part
 			&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part
-			&<Parts/Production/Stack inserter/StackinserterModded.rules>/Part
+			//&<Parts/Production/Stack inserter/StackinserterModded.rules>/Part
 			&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part
 			
-			&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
+			//&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
+			//TODO
 			
-			&<Parts/Production/Pipe/pipe1.rules>/Part
+			/*&<Parts/Production/Pipe/pipe1.rules>/Part
 			&<Parts/Production/Pipe/pipe2.rules>/Part
 			&<Parts/Production/Pipe/pipe3.rules>/Part
 			&<Parts/Production/Pipe/pipe4.rules>/Part
 			&<Parts/Production/Pipe/pipe5.rules>/Part
 			
-			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part
+			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part*/
 			
 			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
 			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
@@ -163,33 +167,33 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Storage/ammo2x2.rules>/Part
 			&<Parts/Storage/build2x2.rules>/Part
-			&<Parts/Storage/mod2x2.rules>/Part
+			//&<Parts/Storage/mod2x2.rules>/Part
 			&<Parts/Storage/ore2x2.rules>/Part
 			
 			&<Parts/Storage/ammo3x2.rules>/Part
 			&<Parts/Storage/build3x2.rules>/Part
-			&<Parts/Storage/mod3x2.rules>/Part
+			//&<Parts/Storage/mod3x2.rules>/Part
 			&<Parts/Storage/ore3x2.rules>/Part
 			
 			&<Parts/Storage/3x3/ammo3x3.rules>/Part
 			&<Parts/Storage/3x3/build3x3.rules>/Part
-			&<Parts/Storage/3x3/mod3x3.rules>/Part
+			//&<Parts/Storage/3x3/mod3x3.rules>/Part
 			&<Parts/Storage/3x3/ore3x3.rules>/Part
 			
 			&<Parts/Storage/4x3/ammo4x3.rules>/Part
 			&<Parts/Storage/4x3/build4x3.rules>/Part
-			&<Parts/Storage/4x3/mod4x3.rules>/Part
+			//&<Parts/Storage/4x3/mod4x3.rules>/Part
 			&<Parts/Storage/4x3/ore4x3.rules>/Part
 			
 			&<Parts/Storage/4x4/ammo4x4.rules>/Part
 			&<Parts/Storage/4x4/build4x4.rules>/Part
-			&<Parts/Storage/4x4/mod4x4.rules>/Part
+			//&<Parts/Storage/4x4/mod4x4.rules>/Part
 			&<Parts/Storage/4x4/ore4x4.rules>/Part
 			
 			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part
 			&<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part
 			//&<Parts/Weapons/Drone_launcher_Medium/drone_launcher_med.rules>/Part
-			&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
+			/*&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/heavybarrel.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Part
@@ -202,7 +206,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/CRAM megacannon/packer/packer1.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Intake/intake.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Gauge Increasers/gaugeincreaser.rules>/Part
-			&<Parts/Weapons/CRAM megacannon/TurboCooler/cooler.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/TurboCooler/cooler.rules>/Part*/
 			
 			&<Parts/Flight/Thruster Room/thruster_room.rules>/Part
 			
@@ -232,7 +236,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part
 			
 			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part
-			&<Parts/Logic/Lights/Light Panels/panel.rules>/Part
+			//&<Parts/Logic/Lights/Light Panels/panel.rules>/Part TODO
 			
 			&<Parts/Logic/Util/Pistons/1x1/piston1x1.rules>/Part
 			
@@ -248,7 +252,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			//Boss Rewards minus factories
 			
-			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
+			/*&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor2.rules>/Part
@@ -257,7 +261,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
 			
 			&<Parts/BossRewards/Cursed/spell_room_small/spell_room_small.rules>/Part
-			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part
+			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part*/
 			
 			// Multiblock parts
 			
@@ -270,10 +274,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Common/Corridors/FactoryCorridor.rules>/Part
 			&<Parts/Common/Corridors/FactoryCorridorDark.rules>/Part
 			
-			&<Parts/Common/Corridors/SmelteryFloor.rules>/Part			
-			&<Parts/Production/Smeltery/Smeltery_Wall1.rules>/Part
-			&<Parts/Production/Smeltery/Smeltery_Wall2.rules>/Part
-			&<Parts/Production/Smeltery/Brain/Smeltery_Controller.rules>/Part
+			//&<Parts/Common/Corridors/SmelteryFloor.rules>/Part			
+			//&<Parts/Production/Smeltery/Smeltery_Wall1.rules>/Part
+			//&<Parts/Production/Smeltery/Smeltery_Wall2.rules>/Part
+			//&<Parts/Production/Smeltery/Brain/Smeltery_Controller.rules>/Part
 			
 			//DEV PARTS
 			
@@ -321,7 +325,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 
 		ManyToAdd
 		[
-			&<Occult/bosssysgen.rules>
+			//&<Occult/bosssysgen.rules>
 			&<Hyperoid/Hyperoid_sysgen.rules>
 		]
 	}
@@ -419,11 +423,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/goldium/doodad_goldium.rules>
 			&<resources/tristeel_bars/doodad_tristeel.rules>
 			
-			&<resources/Cosmic Bar/cosmic_doodad.rules>
+			/*&<resources/Cosmic Bar/cosmic_doodad.rules>
 			&<resources/Astral Bar/astral_doodad.rules>
 			&<resources/Profaned Core/profaned_doodad.rules>
 			&<resources/Cursed Pages/cursed_doodad.rules>
-			&<resources/Zetasphere/doodad_zetasphere.rules>
+			&<resources/Zetasphere/doodad_zetasphere.rules>*/
 			
 			&<planets/doodad_planet_deadsun.rules>
 			&<planets/doodad_planet_deadsun_mini.rules>
@@ -642,7 +646,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/goldium/goldium.rules>
 			&<resources/tristeel_bars/tristeel_bars.rules>
 			
-			&<resources/Cosmic Bar/cosmic_bar.rules>
+			/*&<resources/Cosmic Bar/cosmic_bar.rules>
 			&<resources/Astral Bar/astralbar.rules>
 			&<resources/Profaned Core/profaned_core.rules>
 			&<resources/Cursed Pages/cursedpages.rules>
@@ -658,7 +662,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/fluids/molten.gold.rules>
 			&<resources/fluids/molten.goldium.rules>
 			&<resources/fluids/molten.hyperium.rules>
-			&<resources/fluids/molten.sulfur.rules>
+			&<resources/fluids/molten.sulfur.rules>*/
 		]
 	}
 	/*{
@@ -1155,7 +1159,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/BulletHell/ThumperSpawner.rules>/Part
 			&<Occult/BulletHell/BurstThumperSpawner.rules>/Part
 			
-			&<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
+			/*&<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
 			&<Occult/Cosmilite/armoroid_cosmilite_wide.rules>/Part
 			&<Occult/Cosmilite/missilesigil.rules>/Part
 			&<Occult/Cosmilite/Beamball.rules>/Part
@@ -1171,6 +1175,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Profaned/lootorb.rules>/Part
 			
 			&<Occult/Brimstone/BrimstonebossSigil.rules>/Part
+			&<Occult/Brimstone/legacyBrimstonebossSigil.rules>/Part
 			&<Occult/Brimstone/NukeSigil.rules>/Part
 			&<Occult/Brimstone/cursed_armor.rules>/Part
 			&<Occult/Brimstone/BrimSphere.rules>/Part
@@ -1186,7 +1191,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Astral/fringe_ball_barrage.rules>/Part
 			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
 			&<Occult/Astral/fringe_ball_mine.rules>/Part
-			&<Occult/Astral/lootorb.rules>/Part
+			&<Occult/Astral/lootorb.rules>/Part*/
 		]
 	}
 	{	Action = AddMany

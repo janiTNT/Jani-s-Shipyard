@@ -6,7 +6,7 @@ Part : <base_part_occult.rules>/Part
 	EditorGroup = "BossParts"
 	Resources
 	[
-		[janitnt.zetasphere, 1]
+		//[janitnt.zetasphere, 1]
 		//[processor, 2]
 	]
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBoss]

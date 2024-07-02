@@ -13,7 +13,7 @@ SubSpawners
 		Distance = [20750, 27000]
 		SpawnChance = 4/5
 		MinDistanceFromNebulas = [[ion_storm, 2000]]
-		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
+		//Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
 		Tags = [rare_asteroid, asteroid, megaroid, hyperoid, gigaroid]
 		MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 		//MinDistanceFromTags = [[station, 1000], [asteroid, 1000], [bounty, 1000], [ftl_gate, 1000]]
@@ -34,7 +34,7 @@ SubSpawners
 		SpawnChance = 4/5
 		MinDistanceFromNebulas = [[ion_storm, 2000]]
 		Tags = [rare_asteroid, asteroid, megaroid, hyperoid, gigaroid]
-		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
+		//Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
 		MinDistanceFromTags = [[station, 2000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 1200]]
 		//MinDistanceFromTags = [[station, 1000], [asteroid, 1000], [bounty, 1000], [ftl_gate, 1000]]
 		DoodadTypes

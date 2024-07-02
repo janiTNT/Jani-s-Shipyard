@@ -1,8 +1,8 @@
 Part : <../base_part_occult.rules>/Part
 {
-	NameKey = "Parts/MegaSigilBrimstoneBoss"
-	DescriptionKey = "Parts/MegaSigilBrimstoneBossDesc"
-	ID = janiTNT.megasigil4x2_brimstoneboss // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	NameKey = "Parts/MegaSigilBrimstoneBossLegacy"
+	DescriptionKey = "Parts/MegaSigilBrimstoneBossLegacyDesc"
+	ID = janiTNT.megasigil4x2_brimstoneboss_legacy // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "BossParts"
 	Resources
 	[
@@ -20,7 +20,7 @@ Part : <../base_part_occult.rules>/Part
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_brimstone
 	DestroyedPartHealthFraction = 100%
-	Size = [8, 8]
+	Size = [4, 2]
 	TypeCategories = [armor, command, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
@@ -104,8 +104,8 @@ Part : <../base_part_occult.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [4, 4]// Relative to upper-left corner of unrotated part.
-			Rotation = -45d// Relative to unrotated part.
+			Location = [2, 1]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = NormalAttacksToggle
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 20
@@ -402,7 +402,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			OperationalToggle = WallsDisabler
-			Location = [4, 4]
+			Location = [2, 1]
 			OperationalDoodad
 			{
 				Layer = "secondary"
@@ -434,7 +434,7 @@ Part : <../base_part_occult.rules>/Part
 		ProximityWeapon
 		{
 			Type = TurretWeapon
-			Location = [4, 4]
+			Location = [2, 1]
 			Rotation = 0d
 			FireInterval = 0
 			FiringArc = 0d
@@ -502,8 +502,8 @@ Part : <../base_part_occult.rules>/Part
 		ParryModule
 		{
 			Type = TurretWeapon
-			Location = [4, 4]
-			Rotation = -45d
+			Location = [2, 1]
+			Rotation = -90d
 			OperationalToggle = PowerToggle
 			//AutoFireToggle = AutoFireToggle
 			FireInterval = 1.5
@@ -580,7 +580,7 @@ Part : <../base_part_occult.rules>/Part
 		BoomMultiToggle
 		{
 			Type = MultiToggle
-			Toggles = []//Does not self destruct
+			Toggles = [BoomStorage, BoomStorage2]
 			Mode = Any
 			Invert = false
 		}
@@ -598,8 +598,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			//OperationalToggle = IsOperational
-			Location = [4, 4]
-			Rotation = 45d
+			Location = [2, 1]
 			OperationalDoodad
 			{
 				Layer = "asteroid_lights_add"
@@ -608,7 +607,7 @@ Part : <../base_part_occult.rules>/Part
 				[
 					{
 						File = "bosssigil.png"
-						Size = [8, 4]
+						Size = [4, 2]
 					}
 				]
 			}
@@ -683,13 +682,13 @@ Part : <../base_part_occult.rules>/Part
 					}
 				}
 			]
-			Location = [4, 4]
+			Location = [2, 1]
 		}
 		
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [4, 4]
+			Location = [2, 1]
 			WhenSalvaged = true
 			
 			HitEffects
@@ -824,8 +823,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "../sigilbp.png"
-			Size = [4, 4]
-			Rotation = 45d
+			Size = [4, 2]
 		}
 	}
 }

@@ -68,7 +68,7 @@ Part : <../base_part_occult.rules>/Part
 		BoomMultiToggle
 		{
 			Type = MultiToggle
-			Toggles = [BoomStorage, BoomStorage2]
+			Toggles = []//Does not self destruct
 			Mode = Any
 			Invert = false
 		}

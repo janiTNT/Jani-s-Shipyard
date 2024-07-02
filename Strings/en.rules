@@ -449,7 +449,7 @@ Parts
 	Background_Structure_SmallIcon = "Background Structure"
 	Background_Structure = "Background Structure"
 	Background_StructureIcon = "Background Structure"
-	Background_StructureDesc = "A structure piece that has no collision, used to go below other ships. While cannot be painted normally, you can choose any color to use.\nTechnically has zero weight.\nWe're aware of the bugs regarding the color picker."\
+	Background_StructureDesc = "A structure piece that has no collision, used to go below other ships. While cannot be painted normally, you can choose any color to use.\nTechnically has zero weight."\
 	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
 	
 	Background_Structure_Block = "Background Structure Block"
