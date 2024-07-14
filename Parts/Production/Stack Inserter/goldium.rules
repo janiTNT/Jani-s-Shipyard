@@ -4,14 +4,11 @@ CarrySize = (&<../../../Resources/goldium/goldium.rules>/MaxStackSize)
 LightColor = [255*1.3, 192*1.3, 0]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
-{	HandStorage
+{	HandStorage : &<hyperium.rules>/Components/HandStorage
 	{
-		Type = ResourceStorage
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
-		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = 0
 	}
 	
 	FromProxy : &<hyperium.rules>/Components/FromProxy

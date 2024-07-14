@@ -75,6 +75,8 @@ Components
 		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
 		ToggleOffResources = 0
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
 	}
 	
 	InsertPermission

@@ -1,4 +1,4 @@
-Range = 220
+Range = 250
 IdealRange = 150
 Width = .15 // smaller so it fits
 HitInterval = .1

@@ -53,6 +53,9 @@ Part : <../../baselogicpart.rules>/Part
 			Type = ResourceStorage
 			ResourceType = fake
 			MaxResources = 1
+			StartingResources = 0
+			InitToMaxResources = 0
+			InitToMaxResourcesPVP = 0
 		}
 		SignalRemover
 		{

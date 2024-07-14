@@ -189,7 +189,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 							"arm_d_off.png"// Off
 						]
 						Size = [1, 1]
-						AnimationInterval = (&~/Part/Components/LoadingConverterRight/Interval) / 5//Minus Last
+						AnimationInterval = (0.5) / 5//Minus Last
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}
@@ -232,7 +232,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						]
 						Size = [1, 1]
 						MirrorU = true
-						AnimationInterval = (&~/Part/Components/LoadingConverterLeft/Interval) / 5//Minus Last
+						AnimationInterval = (0.5) / 5//Minus Last
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}

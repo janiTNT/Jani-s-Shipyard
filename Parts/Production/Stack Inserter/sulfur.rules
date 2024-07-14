@@ -4,14 +4,11 @@ CarrySize = (&<./data/resources/sulfur/sulfur.rules>/MaxStackSize)
 LightColor = [128, 128, 16]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
-{	HandStorage
+{	HandStorage : &<hyperium.rules>/Components/HandStorage
 	{
-		Type = ResourceStorage
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
-		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = 0
 	}
 	
 	FromProxy : &<hyperium.rules>/Components/FromProxy

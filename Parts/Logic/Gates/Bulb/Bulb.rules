@@ -1,0 +1,165 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicGateBulb"
+	IconNameKey = "Parts/LogicGateBulbIcon"
+	ID = janiTNT.Logic_Gate_Bulb
+	OtherIDs = [Skipydog.Logic_Switch]
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicGateBulbDesc"
+	Resources
+	[
+		[steel, 4]
+		[cut.tristeel, 2]
+		[coil, 1]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	TypeCategories = [logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [ToggledOn]
+			Invert = false
+			Mode = All
+		}
+		BuffProviderLogicBuffer
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 10
+			BuffArea = [0, -1, 1, 1]
+		}
+		LogicTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = LogicSignal
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		ManualTrigger
+		{
+			Type = UITrigger
+			TriggerID = "janilogicflip"
+		}
+		MultiTrigger
+		{
+			Type = MultiTrigger
+			Triggers = [LogicTrigger, ManualTrigger]
+		}
+		ModeCycle
+		{
+			Type = ModeCycle
+			IncrementTrigger = MultiTrigger
+		}
+		ToggledOn
+		{
+			Type = ModeToggle
+			Mode = ModeCycle
+			OnModes = [1]
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "doodads_on.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "overlay2.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "overlay1.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+	}
+}

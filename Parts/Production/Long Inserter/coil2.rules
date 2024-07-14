@@ -4,14 +4,11 @@ CarrySize = (&<./data/resources/coil2/coil2.rules>/MaxPerNugget)
 LightColor = [255*1.5, 130*1.5, 0*1.5]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
-{	HandStorage
+{	HandStorage : &<hyperium.rules>/Components/HandStorage
 	{
-		Type = ResourceStorage
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
-		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = 0
 	}
 	
 	FromProxy : &<hyperium.rules>/Components/FromProxy

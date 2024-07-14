@@ -1,4 +1,4 @@
-Range = 280
+Range = 300
 IdealRange = 220
 Width = .15 // smaller so it fits
 HitInterval = .1
@@ -118,7 +118,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 200
+			Damage = 150
 		}
 		{
 			Type = Impulse
@@ -167,7 +167,7 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = 200
+			Damage = 175
 		}
 		{
 			Type = Impulse

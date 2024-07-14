@@ -4,14 +4,11 @@ CarrySize = (&<../../../Resources/Cosmic Bar/cosmic_bar.rules>/MaxStackSize)
 LightColor = [185*2, 64*2, 255*2]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
-{	HandStorage
+{	HandStorage : &<hyperium.rules>/Components/HandStorage
 	{
-		Type = ResourceStorage
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
-		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = 0
 	}
 	
 	FromProxy : &<hyperium.rules>/Components/FromProxy

@@ -765,6 +765,26 @@ Parts
 	LogicRoofLightDesc = "A Roof Light that is logic controlled."\
 	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
 	
+	LogicRoofPanelSquare = "Roof Panel - Square"
+	LogicRoofPanelSquareIcon = "Roof Panel S."
+	LogicRoofPanelSquareDesc = "Small Square light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicRoofPanelSquareLarge = "Roof Panel - Large Square"
+	LogicRoofPanelSquareLargeIcon = "Roof Panel S. XL"
+	LogicRoofPanelSquareLargeDesc = "Big Square light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicRoofPanelRound = "Roof Panel - Circle"
+	LogicRoofPanelRoundIcon = "Roof Panel C."
+	LogicRoofPanelRoundDesc = "Little Circulat light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
+	LogicRoofPanelWedge = "Roof Panel - Wedge"
+	LogicRoofPanelWedgeIcon = "Roof Panel W."
+	LogicRoofPanelWedgeDesc = "Triangular Wedge light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
+	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	
 	LogicTBm = "Logic Tractor Beam (Small)"
 	LogicTBmIcon = "Logic TB"
 	LogicTBmDesc = "A Modified version of a turret of the resource collector to act as a miniature tractor beam that is logic controlled. can have a target or just a fixed direction.\n<bad>Has no doors and cannot be manually powered, requires a Power Port instead.</bad>"\
@@ -999,6 +1019,7 @@ PartColors
 	StrutColor = "Background Structure Color"
 	LogicColor = "Logic Part Color"
 	HullColor = "Hull Part Color"
+	FullColor = "Full Color Range"
 }
 
 ShipClasses

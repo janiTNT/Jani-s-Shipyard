@@ -158,7 +158,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 10
+			FireInterval = 8
 			FiringArc = 360d
 			RotateSpeed = infinity //true
 			FireThresholdAngle = 45d

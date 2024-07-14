@@ -13,14 +13,11 @@ Components : &<hyperium.rules>/Components
 		]
 	}
 	
-	HandStorage
+	HandStorage : &<hyperium.rules>/Components/HandStorage
 	{
-		Type = ResourceStorage
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
-		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = 0
 	}
 	
 	ChaingunPatch_CanFillAmmo //only fill ammo if the conveyor is not running in either direction

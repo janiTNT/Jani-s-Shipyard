@@ -4,14 +4,11 @@ CarrySize = (&<../../../Resources/tristeel_bars/tristeel_bars.rules>/MaxStackSiz
 LightColor = [128* 0.75, 250* 0.75, 255* 0.75]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
-{	HandStorage
+{	HandStorage : &<hyperium.rules>/Components/HandStorage
 	{
-		Type = ResourceStorage
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
-		InitToMaxResources = 0
 		ToggleOnResources = (&~/CarrySize)
-		ToggleOffResources = 0
 	}
 	
 	FromProxy : &<hyperium.rules>/Components/FromProxy

@@ -150,6 +150,35 @@ HitOperational
 						ExcludePartCategories = [mining_prism, asteroid]
 					}
 				}
+				{ //Damage to junk
+					Type = Damage
+					Damage = 9600/20 * 2.2
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid, armor, mining_prism]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
+				}
+				{ //Damage to junk armor
+					Type = Damage
+					Damage = 19200/20 * 2.2
+					DamageType = salvage
+					SpawnUnderlying = false
+					Filter
+					{
+						ExcludePartCategories = [asteroid, mining_prism]
+						OnlyPartCategories = [armor]
+						junk = true
+						Enemies = false
+						Friendlies = false
+						Neutrals = false
+					}
+				}
 				{
 					Type = Damage
 					Damage = 64000/20 * 2.2
@@ -174,6 +203,35 @@ HitOperational
 				Friendlies = false
 				TargetedFriendlies = false
 				ExcludePartCategories = [asteroid]
+			}
+		}
+		{ //Damage to junk
+			Type = Damage
+			Damage = 9600/20 * 2.2
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				ExcludePartCategories = [asteroid, armor]
+				junk = true
+				Enemies = false
+				Friendlies = false
+				Neutrals = false
+			}
+		}
+		{ //Damage to junk armor
+			Type = Damage
+			Damage = 19200/20 * 2.2
+			DamageType = salvage
+			SpawnUnderlying = false
+			Filter
+			{
+				ExcludePartCategories = [asteroid]
+				OnlyPartCategories = [armor]
+				junk = true
+				Enemies = false
+				Friendlies = false
+				Neutrals = false
 			}
 		}
 		{

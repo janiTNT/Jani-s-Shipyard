@@ -64,9 +64,8 @@ PartColors
 		{
 			Texture
 			{
-				File = "hullcolor.png"
+				File = "./data/gui/game/parts/pick_color.png"
 				MipLevels = 2
-				UvRotation = 1
 				SampleMode = Linear
 			}
 		}

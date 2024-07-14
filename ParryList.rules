@@ -599,6 +599,8 @@ Parrylist
 	{
 		Action = AddMany
 		AddTo = "<../../../workshop/content/799600/2995534359/shots/lightning_bolt/lightning_bolt.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
 		ManyToAdd = [boss_shield]
 	}
 	//Heindall Lasers Small

@@ -1,0 +1,18 @@
+PartTriggers
+[
+	// BitFlip
+	{
+		TriggerID = "janilogicflip"
+		DefaultHotkey = [PlatformCmdCtrl, Shift, B]
+		ButtonToolTipKey = "PartTriggers/LogicFlip"
+		ButtonSprite
+		{
+			Texture
+			{
+				File = "trigger_flip.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+	}
+]

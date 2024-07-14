@@ -27,7 +27,7 @@ Components
 				{
 					Type = SpawnBullets
 					Bullet = &<Mine_bomb_shrapnel.rules>
-					Count = 7
+					Count = 8
 					Distance = .2
 					Spread = [-15d, 15d]
 					InheritVelocity = true
