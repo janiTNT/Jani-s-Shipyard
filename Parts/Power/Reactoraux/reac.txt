@@ -22,6 +22,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000
 	AutoDoorMaxPathLength = 3
 	TypeCategories = [provides_power, reactor]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula]
 	CreatePartPerTileWhenDestroyed = ""
 	Density = 1
 	IgnoreRotationForMirroredSelection = true
@@ -39,8 +40,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = []
-			Mode = All
+			Toggles = [ElectronDebuffToggle]
+			Mode = None
 		}
 		
 		BatteryStorage
@@ -63,6 +64,32 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToQuantity = 500
 			Interval = 1.85
 			OperationalToggle = IsOperational
+		}
+		ElectronDebuffToggle
+		{
+			Type = BuffToggle
+			BuffType = ElectronDebuff
+		}
+
+		ElectronNebulaEffects
+		{
+			Type = ContinuousEffects
+			OperationalToggle = ElectronDebuffToggle
+			Location = [.5, .5]
+			MediaEffectsIntensityFactor = { BaseValue=.2; BuffType=ElectronNebula; BuffMode=Multiply; }
+			MediaEffects
+			[
+				&<./Data/nebulas/electron/particles/electron_reactor_sizzle.rules>
+				&<./Data/nebulas/electron/particles/electron_reactor_light.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/nebulas/electron/reactor_drain.wav"
+					Volume = 50%
+					MaxConcurrentVolume = &Volume
+					MaxConcurrent = 1
+				}
+			]
 		}
 		Graphics
 		{

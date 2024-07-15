@@ -19,6 +19,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewSpeedFactor = 1
 	SelectionTypeID = "reactors"
 	CrewCongestedSpeedFactor = .5
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula]
 	MaxHealth = 8000
 	TypeCategories = [uses_power, thermal, provides_power, bounty_objective, power_transmitter]
 	ForceManhattanPathInPart = true
@@ -264,7 +265,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxResourcesPickUp = 6000
 			InitPickUp = 4001
 			PickUpRate = 1000 / 2.0
-			ExpectedResourceGenerationRate = 12000 / (&../BatteryProducer/Interval)
+			ExpectedResourceGenerationRate = { BaseValue = 12000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ExpectedResourceGenerationToggle = IsProducing
 			SuppliesResourcesToggle = IsProducing
 			IsIntermediateStorage = true
@@ -352,7 +353,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = BatteryStorage
-					Quantity =  12000
+					Quantity =  { BaseValue=12000; BuffType=ElectronDebuff; BuffMode=Multiply; }
 				}
 				{
 					Storage = ThermalStorage
@@ -839,6 +840,31 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						ExteriorVolume = .5
 					}
+				}
+			]
+		}
+		ElectronDebuffToggle
+		{
+			Type = BuffToggle
+			BuffType = ElectronDebuff
+		}
+		ElectronNebulaEffects
+		{
+			Type = ContinuousEffects
+			OperationalToggle = ElectronDebuffToggle
+			Location = [3, 3]
+			MediaEffectsIntensityFactor = { BaseValue=2; BuffType=ElectronNebula; BuffMode=Multiply; }
+			MediaEffects
+			[
+				&<./Data/nebulas/electron/particles/electron_reactor_sizzle.rules>
+				&<./Data/nebulas/electron/particles/electron_reactor_light.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/nebulas/electron/reactor_drain.wav"
+					Volume = 50%
+					MaxConcurrentVolume = &Volume
+					MaxConcurrent = 1
 				}
 			]
 		}

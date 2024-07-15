@@ -19,16 +19,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IsFlippable = true
 	ForceManhattanPathInPart = true
 	ProhibitedBy : ^/0/ProhibitedBy [fighter]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ProhibitRects
 	[
-		[fighter, [0, -3, 2, 2]]// TO ENSURE COMPATIBILITY
+		[fighter, [0, -3, 2, 3]]// TO ENSURE COMPATIBILITY
 	]
 	AllowedDoorLocations
 	[
 		[-1, 1]
 		[-1, 2]
-		[1, 1]
-		[1, 2]
+		[2, 1]
+		[2, 2]
 		[0, 3]
 		[1, 3]
 	]
@@ -66,7 +67,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 12000
+			MaxResources = 16000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -118,7 +119,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Collider
 		{
 			Type = CircleCollider
-			Location = [1, -0.45]
+			Location = [1, -0.75]
 			Radius = .4
 			ChainedTo = TurretSlider // Evil
 			IncludeWhenUnderConstruction = false //Evil 2
@@ -127,7 +128,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [1, -0.5] // Slightly higher.
+			Location = [1, -0.6] // Slightly higher.
 			Rotation = -90d// Relative to unrotated part.
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
@@ -185,7 +186,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 1
 			Bullet = &<burst3lasershot.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 600
+			ResourcesUsed = 1500
 			MinResourcesUsed = 1
 			
 			Burst = 5
@@ -233,7 +234,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			ChainedTo = Turret
-			Location = [0, 0]
+			Location = [-0.1, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational
 			DoodadToggle = ChargeToggle
@@ -299,7 +300,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Sprite
 			ChainedTo = Turret
-			Location = [1.5, 0]
+			Location = [1.4, 0]
 			Rotation = 90d
 			Layer = "FTLlowturrets"
 			ResetAnimationTrigger = BulletEmitter
@@ -320,7 +321,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					"weapon_fire_n1.png"
 				]
 				Size = [1, 1]
-				AnimationInterval = 0.1
+				AnimationInterval = 0.05
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
@@ -411,41 +412,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "../base/3x2_walls.png"
 						Size = [2, 3]
-					}
-				]
-			}
-			OperationalRoofDoodad
-			{
-				Layer = "doodads_low"
-				Offset = [0, .5]
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"../base/bottom_doodads_on1.png"
-							"../base/bottom_doodads_on2.png"
-							"../base/bottom_doodads_on3.png"
-							"../base/bottom_doodads_on4.png"
-							"../base/bottom_doodads_on5.png"
-							"../base/bottom_doodads_on6.png"
-							"../base/bottom_doodads_on7.png"
-							"../base/bottom_doodads_on8.png"
-						]
-						Size = [1, 1]
-						AnimationInterval = 0.1
-					}
-				]
-			}
-			NonOperationalRoofDoodad
-			{
-				Layer = "doodads_low"
-				Offset = [0, .5]
-				DamageLevels
-				[
-					{
-						File = "../base/bottom_doodads_off.png"
-						Size = [1, 1]
 					}
 				]
 			}
@@ -744,12 +710,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CrewLocation1
 		{
 			Type = CrewLocation
-			Location = [.5, 1.75]
+			Location = [.5, 1.45]
 		}
 		CrewLocation2
 		{
 			Type = CrewLocation
-			Location = [1.5, 1.75]
+			Location = [1.5, 1.45]
 		}
 		PartCrew
 		{
@@ -849,7 +815,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/LaserBoltSmall"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/Basevalue
 				DamagePerSecond = (&DamagePerShot) * (&ROF) * (&JaniBurstShots)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)

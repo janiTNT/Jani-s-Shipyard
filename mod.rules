@@ -74,6 +74,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2_l.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Laser3/burst2_l_alt.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Laser4/burst3.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Laser4/burst3_l.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Beam1/spetum.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Beam1/spetum_l.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part
@@ -407,7 +408,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			sun_dead = &<planets/planet_deadsun.rules>
 		}
 	}
-	/*{	Action = AddMany
+	{	Action = AddMany
 
 		AddTo = "<./Data/Nebulas/nebulas.rules>/NebulaTypes"
 		
@@ -415,7 +416,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			&<Nebulas/DarkEnergy.rules>
 		]
-	}*/
+	}
 	{	Action = AddMany
 
 		AddTo = "<doodads/doodads.rules>/Doodads"
@@ -445,7 +446,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<planets/doodad_planet_deadsun_mini.rules>
 			&<planets/doodad_planet_sunminialt.rules>
 			
-			//&<Nebulas/DarkEnergy_Doodad.rules>
+			&<Nebulas/DarkEnergy_Doodad.rules>
 			
 			/*{
 				ID = janiTNT.lightsource

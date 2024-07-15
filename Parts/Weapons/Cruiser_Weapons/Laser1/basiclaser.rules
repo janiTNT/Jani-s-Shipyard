@@ -17,6 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000
 	TypeCategories = [uses_power, weapon]
 	IsFlippable = true
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
 	ProhibitedBy : ^/0/ProhibitedBy [fighter]
 	ProhibitRects
@@ -583,7 +584,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/LaserBoltSmall"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage
+				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)

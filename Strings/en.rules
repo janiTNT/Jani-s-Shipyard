@@ -60,7 +60,7 @@ Parts
 	
 	ReactorAux = "Auxiliary Reactor Core"
 	ReactorAuxIcon = "Aux. Rea."
-	ReactorAuxDesc = "A Cheap Auxiliary Power Supply Reactor. Provides half capacity batteries, Letting crew walk at near-corridor speeds on the reactor."\
+	ReactorAuxDesc = "A Cheap Auxiliary Power Supply Reactor. Provides half capacity batteries, Letting crew walk at near-corridor speeds on the reactor.\nCeases to produce power if inside a electron cloud."\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	MiningBeam = "M1 Mining Beam Emitter"

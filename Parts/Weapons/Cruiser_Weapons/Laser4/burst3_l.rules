@@ -1,0 +1,38 @@
+Part : <burst3.rules>/Part
+{
+	NameKey = "Parts/FTL_burstlaser3"
+	IconNameKey = "Parts/FTL_burstlaser3LeftIcon"
+	ID = janiTNT.FTL_burst_lasermk3_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ProhibitRects
+	[
+		[fighter, [-2, -2, 4, 2]]// TO ENSURE COMPATIBILITY
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [80, 160/3]
+	}
+	Components : ^/0/Components
+	{
+		Collider  : &<burst3.rules>/Part/Components/Collider
+		{
+			Type = CircleCollider
+			Location = [0.85, -0.5]
+		}
+		
+		Turret : &<burst3.rules>/Part/Components/Turret
+		{
+			Location = [1, -0.5]// Slightly higher.
+			Rotation = -180d
+		}
+		
+		TurretHolder : &<burst3.rules>/Part/Components/TurretHolder
+		{
+			Location = [1, -.5]
+		}
+	}
+}

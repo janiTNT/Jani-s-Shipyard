@@ -3,6 +3,7 @@ Range = 250
 IdealRange = [60, 200]
 IdealRadius = [5, 50]
 Speed = 280
+ReceivableBuffs = [ElectronBuff]
 
 Components
 {
@@ -42,12 +43,20 @@ Components
 			HitEffects
 			[
 				{
-					Type = Damage
-					Damage = 3000
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=3000; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Radius = { BaseValue=3; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Slices = 1
+					DamageType = default
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+					}
 				}
 				{
 					Type = Impulse;
-					Impulse = 2;
+					Impulse = 20;
 				}
 			]
 			
@@ -77,12 +86,20 @@ Components
 			HitEffects
 			[
 				{
-					Type = Damage
-					Damage = 1500
+					Type = ExplosiveDamage
+					TotalDamage = { BaseValue=1500; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Radius = { BaseValue=3; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Slices = 1
+					DamageType = default
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+					}
 				}
 				{
 					Type = Impulse;
-					Impulse = 1;
+					Impulse = 10;
 				}
 			]
 			
