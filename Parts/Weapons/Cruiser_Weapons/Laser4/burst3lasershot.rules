@@ -38,7 +38,7 @@ Components
 		HitShield = &HitOperational
 		HitOperational
 		{
-			Offset = [-0.15, 0]
+			Offset = [-0, 0]
 
 			HitEffects
 			[
