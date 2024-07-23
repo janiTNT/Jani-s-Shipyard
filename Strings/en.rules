@@ -847,10 +847,17 @@ Parts
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_burstlaser2 = "Burst Laser Mk II"
-	FTL_burstlaser2Icon = "Burst Mk II"
+	FTL_burstlaser2Icon = "Burst Mk2"
 	FTL_burstlaser2LeftIcon = "Burst Mk2 (L)"
 	FTL_burstlaser2LeftALTIcon = "Burst Mk2 (S)"
 	FTL_burstlaser2Desc = "A Powerful Burst Laser, Fires 3 powerful lasers in quick sucession but takes a moment to charge, The Damage per second stays roughly the same as the standard Laser, and can be behind armor like most Cruiser Weapons."\
+	"\n<gray>Mod: Jani's Shipyard</gray>"
+	
+	FTL_burstlaser3 = "Burst Laser Mk III"
+	FTL_burstlaser3Icon = "Burst Mk3"
+	FTL_burstlaser3LeftIcon = "Burst Mk3 (L)"
+	FTL_burstlaser3LeftALTIcon = "Burst Mk3 (S)"
+	FTL_burstlaser3Desc = "A Powerful Burst Laser, Fires 5 consecutive shots rapidly. High effectiveness in destroying empty or low health armor"\
 	"\n<gray>Mod: Jani's Shipyard</gray>"
 	
 	FTL_basicion = "Basic Ion Blaster"

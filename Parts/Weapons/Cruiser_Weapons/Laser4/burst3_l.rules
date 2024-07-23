@@ -11,10 +11,10 @@ Part : <burst3.rules>/Part
 	{
 		Texture
 		{
-			File = "icon.png"
+			File = "icon_l.png"
 			SampleMode = Linear
 		}
-		Size = [80, 160/3]
+		Size = [100, 75]
 	}
 	Components : ^/0/Components
 	{
