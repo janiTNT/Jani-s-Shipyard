@@ -47,7 +47,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = cosmiliteToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types2x2/cosmilite.rules>/Components
 		}
 		
@@ -61,7 +61,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = astralToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types2x2/astral.rules>/Components
 		}
 		
@@ -75,7 +75,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = profanedcoreToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types2x2/profanedcore.rules>/Components
 		}
 		
@@ -89,7 +89,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = cursedpagesToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types2x2/cursedpages.rules>/Components
 		}
 		

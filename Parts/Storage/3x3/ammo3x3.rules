@@ -47,7 +47,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = hyperiumToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/hyperium.rules>/Components
 		}
 		
@@ -61,7 +61,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = bulletToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/bullet.rules>/Components
 		}
 		
@@ -75,7 +75,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = missile_part_heToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/missile_part_he.rules>/Components
 		}
 		
@@ -89,7 +89,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = missile_part_empToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/missile_part_emp.rules>/Components
 		}
 		
@@ -103,7 +103,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = missile_part_nukeToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/missile_part_nuke.rules>/Components
 		}
 		
@@ -117,7 +117,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = mine_partToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/mine_part.rules>/Components
 		}
 

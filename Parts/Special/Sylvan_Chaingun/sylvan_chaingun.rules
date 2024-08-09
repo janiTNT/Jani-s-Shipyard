@@ -515,7 +515,7 @@ Part : <./data/ships/terran/chaingun/chaingun.rules>/Part
 			Type = BlueprintSprite
 			File = "./data/ships/terran/chaingun/blueprints.png"
 			Size = [3, 6]
-			Offset = [0, -0.5]
+			Offset = [0, 0]
 			VertexColor = [400, 350, 255]//hopefully golden
 		}
 	}

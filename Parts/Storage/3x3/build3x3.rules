@@ -47,7 +47,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = steelToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/steel.rules>/Components
 		}
 		
@@ -61,7 +61,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = coilToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/coil.rules>/Components
 		}
 		
@@ -75,7 +75,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = coil2Toggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/coil2.rules>/Components
 		}
 		
@@ -89,7 +89,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = tristeelToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/tristeel.rules>/Components
 		}
 		
@@ -103,7 +103,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = diamondToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/diamond.rules>/Components
 		}
 		
@@ -117,7 +117,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = processorToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/processor.rules>/Components
 		}
 		
@@ -131,7 +131,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = enriched_uraniumToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/enriched_uranium.rules>/Components
 		}
 		
@@ -145,7 +145,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = goldiumToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/goldium.rules>/Components
 		}
 		
@@ -159,7 +159,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = cuttristeelToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x3/cuttristeel.rules>/Components
 		}
 

@@ -3,27 +3,27 @@ Parts
 	CustomExplosivesActivator = "Custom Explosives Igniter"
 	CustomExplosivesActivatorIcon = "Custom Igniter"
 	CustomExplosivesActivatorDesc = "Explosive Device that gets buffed based off the amount of Custom Explosives Buff parts placed on the same ship nearby. Only one Igniter will explode if theres more than one in buffable range, Explosions can be improved with Different tier upgrades\nAlso triggered by a logic signal."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CustomExplosives = "Custom Explosive Charge"
 	CustomExplosivesIcon = "Custom Charge"
 	CustomExplosivesDesc = "High-explosive Detonation devices attached toghether to explode in a violent explosion using the Igniter\n\n"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CustomExplosivesNuclear = "Custom Explosives Nuclear Payload"
 	CustomExplosivesNuclearIcon = "Nuke Payload"
 	CustomExplosivesNuclearDesc = "Improves the Igniter's explosive power with nuclear ordance. Requires atleast 8 Custom Explosives and a Igniter to function."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CrewQuartersLong = "Long Crew's Bunk"
 	CrewQuartersLongIcon = "Bunk 3x"
 	CrewQuartersLongDesc = "Provides beds that suit up to 4 crew."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CrewQuartersLong2 = "Extended Crew's Quarters"
 	CrewQuartersLong2Icon = "Quarters 3x"
 	CrewQuartersLong2Desc = "Comfortably Provides 10 Crew."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CrewQuartersBig = "Crew's namehere"
 	CrewQuartersBigIcon = "namehere"
@@ -32,12 +32,12 @@ Parts
 	CrewQuartersLongBig = "Crew's Barracks"
 	CrewQuartersLongBigIcon = "Barracks"
 	CrewQuartersLongBigDesc = "Massive crew room, provides 22 crew and has a lot of exit space.\nLEGACY PART"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CrewQuartersLonger = "Alongated Crew's Quarters"
 	CrewQuartersLongerIcon = "Bunk 4x"
 	CrewQuartersLongerDesc = "Gives housing for 6 crew."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CrewQuartersLonger2 = "Greater Crew's Quarters L"
 	CrewQuartersLonger2Icon = "Great Quarters 4x"
@@ -46,34 +46,34 @@ Parts
 	CrewQuartersOnebyOne = "Single Crew Bunk"
 	CrewQuartersOnebyOneIcon = "Crew Bunk 1x"
 	CrewQuartersOnebyOneDesc = "Miniature room that houses one single bed."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Radiator = "Radiator"
 	RadiatorIcon = "Radiator"
 	RadiatorDesc = "Passively Cools down. holds heat with connected radiators and heat accepting parts.\n The redder it is, the warmer it is.<image name='dahell'/>"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 
 	FusionReactorLarge = "Large Hyperium Fusion Reactor Core"
 	FusionReactorLargeIcon = "Fusion Rea."
 	FusionReactorLargeDesc = "Massive Fusion reactor. Constantly uses Hyperium. Uses a lot of power to convert it to hyperium plasma, Only then it will start Producing power.\n Provides 6x Large Batteries. (Based on Space Leviathans Mod)\n\nRequires Radiators to cool it down. due to lack of emergency safety mechanisms, neglecting the heat will make it <bad>explode</bad> if superheated.\n\n Informative Progress Bars: Red: Heat\n Purple: Plasma"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ReactorAux = "Auxiliary Reactor Core"
 	ReactorAuxIcon = "Aux. Rea."
 	ReactorAuxDesc = "A Cheap Auxiliary Power Supply Reactor. Provides half capacity batteries, Letting crew walk at near-corridor speeds on the reactor.\nCeases to produce power if inside a electron cloud."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MiningBeam = "M1 Mining Beam Emitter"
 	MiningBeamIcon = "M1 Mining Beam"
 	MiningBeamDesc = "Fires a deck-based mining beam, can be combined with other mining beams with the M1 Mining Prism.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	MiningBeamTechDesc = "Deck-Based Prism solution using mining beams, having high combining efficiency.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MiningPrism = "M1 Mining Beam Prism"
 	MiningPrismIcon = "M1 Mining Prism"
 	MiningPrismDesc = "Deck-Mounted Mining beam prism, similar to a Ion Beam Prism. Can only use the beams from the M1 Mining beam.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Corridor_High = "High Corridor"
 	Corridor_HighIcon = "Cor. High"
@@ -82,7 +82,7 @@ Parts
 	StationArmor = "Station Hyperdense Armor"
 	StationArmorIcon = "[Station] Armor"
 	StationArmorDesc = "infusing normal armor with tritanium greatly enhanced its toughness... for the cost of being <bad>Extremely heavy</bad> to the point of essentially being worth it only in protecting stations or highly sensitive parts such as reactors."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	StationArmor2x1 = "Station Hyperdense Armor 2x1"
 	StationArmor2x1Icon = "[Station] 2x1"
@@ -107,43 +107,43 @@ Parts
 	LargeFabricator = "Goldium Plate Synthesizer"
 	LargeFabricatorIcon = "Goldium"
 	LargeFabricatorDesc = "Eletrochemically synthesizes goldium plates, which are used for a variety of advanced parts. Consumes gold. Gains +25% production speed for each adjacent factory of any type."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	//"Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
 	
 	FactorySplitter = "[[LEGACY]]Building Material Resource Cutter"
 	FactorySplitterIcon = "[[LEGACY]]Cutter"
 	FactorySplitterDesc = "[[LEGACY]]Specialized Machine that cuts down building resources into smaller pieces in order to construct Ship Parts with more fractionary costs.\nFractional costs of cut materials may vary.\n\nWARNING due to a game bug,<bad>SWAPPING</bad> what resource to split or merge while it still has resources inside it will <bad>ERASE</bad> the resources.\n\nDue to another bug, you need to use resource managment in <bad>Manual tile selection</bad> OR use <bad>Supply Lines</bad>, as crew will <bad>NOT</bad> automatically supply or deliver resources to and from this part.\n\nCurrently can make tristeel doors and station armor, or split enriched uranium back into uranium. other materials are useless."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FactorySplitterTristeel = "Tristeel Cutter"
 	FactorySplitterTristeelIcon = "Tristeel Cutter"
 	FactorySplitterTristeelDesc = "Specialized machine that cuts down tristeel into small bars used in construction of various Jani-Patented parts. Process can be easily reversed.\n\nDue to a bug, you need to use resource managment in <bad>Manual tile selection</bad> OR use <bad>Supply Lines + change the Automatic supply buttons</bad>, as crew will <bad>NOT</bad> automatically supply or deliver resources to and from this part."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FactorySplitterUranium = "Uranium Un-enricher"
 	FactorySplitterUraniumIcon = "Uranium Un-enrich."
 	FactorySplitterUraniumDesc = "A variation of the Cutter, This machine splits enriched uranium back into 4 pieces of un-enriched uranium. Output is manual to prevent crashes"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	TriSteelDoor = "TriSteel Door"
 	TriSteelDoorIcon = "Tr. Door"
 	TriSteelDoorDesc = "Fancy Door,using only tristeel bars, because why not???"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	BFGSuperWeaponFull = "BFG 10000 Superweapon"
 	BFGSuperWeaponFullIcon = "BFG 10K"
 	BFGSuperWeaponFullDesc = "Fuses together a extreme amount of Enriched uranium into a huge, energetic blast that will obliterate targets.\nThe Weapon is Placed on top of the ship and has 360 degrees of rotation.\n\n Cannot be placed in 120 blocks of another BFG 10k, but shots from the BFG can travel above all Roof weapons.\n\nNow requires Cosmilite, Therefore requiring you to defeat the respective boss.\n\n<bad>KNOWN ISSUE:</bad> the recoil animation has been disabled as railgun projectile code is no longer chaining to turrets and rotating correctly."\
-	"\n<gray>Mod: Jani's Shipyard</gray>\n Original 3D Model by GameHorizons."
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>\n Original 3D Model by GameHorizons."
 	
 	DecouplerBoomer = "Decoupler"
 	DecouplerBoomerIcon = "Decoupler"
 	DecouplerBoomerIconB = "Decoupler (Broken)"
 	DecouplerBoomerDesc = "Separates itself from the part on the front, allowing a easier splitting of a ship.\n\nctrl-click the part to select and trigger it.\nAlso triggered by a logic signal."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	DecouplerBoomerDescC = "Separates itself from the part on the front, allowing a easier splitting of a ship.\n\nWalkable Corridor Version.\n\nctrl-click the part to select and trigger it\nAlso triggered by a logic signal."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	DecouplerBoomerDescD = "A spent Decoupler, not useful for anything."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	NormalSlope1C = "Roof normal map Slope (Corridor)"
 	NormalSlope1CIcon = "Roof Slope C."
@@ -164,17 +164,17 @@ Parts
 	DroneLauncherTiny = "Tiny Drone Launcher"
 	DroneLauncherTinyIcon = "T. Drones"
 	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates into Tiny Class Drones.\nOnce built, you can not get your resources back.\n<gray><b>The First iteration.</b> Research this technology further.</gray>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	DroneLauncherSmall = "Small Drone Launcher"
 	DroneLauncherSmallIcon = "S. Drones"
 	DroneLauncherSmallDesc = "Improving on the first design, this launcher also uses cheaper techiniques like milling and spooling to Build Larger parts of drones faster\nOnce built, you can not get your resources back.\n<gray><b>The Second iteration.</b> You're getting somewhere with this.</gray>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	DroneLauncherLarge = "Medium Drone Launcher"
 	DroneLauncherLargeIcon = "M. Drones"
 	DroneLauncherLargeDesc = "This bigger design of the small launcher uses a larger arm placement to rapidly weld large sections of these larger drones, and to use multiple materials to create them. Some drones may require different materials.\nSome drones may need coils or other construction materials.\n<gray><b>The Third iteration.</b> Bigger is better. for your peformance. trust me./gray>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Hyperoid4x4 = "Hyper-Rock (4x4)"
 	Hyperoid3x3 = "Hyper-Rock (3x3)"
@@ -249,208 +249,208 @@ Parts
 	NukeSilo = "Nuclear Missile Silo"
 	NukeSiloIcon = "Nuke Silo"
 	NukeSiloDesc = "Similar to a Missile Silo, this larger variant can deploy nuclear warheads directly on the deck of your ship! has some drawbacks such as doubled reload time.\n\nNuke boosting at a target can be a bit loud, the nuke may stun crew whenever it sucessfully fires.\n\nJani engineers deny any involvment with reverse engineering, illegal blueprints, Blatant Copyright and Patent infrigment including lack of liscences from any deck supported missile launcher systems."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"\
-	"\n<gray>Original idea, Roof sprites, and small amounts of code by: Ultranova</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"\
+	"\n<gray>Original idea, Roof sprites, and small amounts of code by: Ultranova</color></s14>"
 	
 	SheetmetalSteel = "Steel Sheetmetal"
 	SheetmetalSteelIcon = "St. Sheetmetal"
 	SheetmetalSteelDesc = "Lighter than a structure block, and works like a hull block, inexpensive and weak. Not that useful"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	SheetmetalCopper = "Copper Sheetmetal"
 	SheetmetalCopperIcon = "Cu. Sheetmetal"
 	SheetmetalCopperDesc = "Lighter than a structure block, Very efficient as a EMP damage sponge, but is expensive and weak."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	SheetmetalTristeel = "Tristeel Sheetmetal"
 	SheetmetalTristeelIcon = "Tr. Sheetmetal"
 	SheetmetalTristeelDesc = "Lighter than a structure block, has a very high penetration resistance, expensive and weak. Not that useful"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Thruster_Room_Small = "Thruster Fueling Room"
 	Thruster_Room_SmallIcon = "Fuel Room"
 	Thruster_Room_SmallDesc = "Prototype Engine Room. Increases the power of adjacent thrusters by 20%. Also acts as a central delivery point for adjacent thrusters to which crew can deliver batteries without having to travel to each one individually.\nCan Buff thrusters on diagonals."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterAmmo = "Ammo Resource Inserter"
 	InserterAmmoIcon = "Inserter [AMMO]"
 	InserterAmmoDesc = "[Ammo Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>\n<bad>Doesn't transfer to other mod's missile launchers.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 
 	InserterConstruction = "Building Material Resource Inserter"
 	InserterConstructionIcon = "Inserter [BUILD]"
 	InserterConstructionDesc = "[Building Material Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterModded = "Modded Material Resource Inserter"
 	InserterModdedIcon = "Inserter [MOD]"
 	InserterModdedDesc = "[Jani Shipyard Modded Material Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterOre = "Raw Ore Resource Inserter"
 	InserterOreIcon = "Inserter [ORES]"
 	InserterOreDesc = "[Ore Nugget Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterAmmoLong = "Long Handed Ammo Resource Inserter"
 	InserterAmmoLongIcon = "Long Inserter [AMMO]"
 	InserterAmmoLongDesc = "[Ammo Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterConstructionLong = "Long Handed Building Material Resource Inserter"
 	InserterConstructionLongIcon = "Long Inserter [BUILD]"
 	InserterConstructionLongDesc = "[Building Material Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterModdedLong = "Long Handed Modded Material Resource Inserter"
 	InserterModdedLongIcon = "Long Inserter [MOD]"
 	InserterModdedLongDesc = "[Jani Shipyard Modded Material Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterOreLong = "Long Handed Ore Resource Inserter"
 	InserterOreLongIcon = "Long Inserter [ORES]"
 	InserterOreLongDesc = "[Ores Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterAmmoStack = "Bulk Ammo Resource Inserter"
 	InserterAmmoStackIcon = "Bulk Inserter [AMMO]"
 	InserterAmmoStackDesc = "[Ammo Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterConstructionStack = "Bulk Building Material Resource Inserter"
 	InserterConstructionStackIcon = "Bulk Inserter [BUILD]"
 	InserterConstructionStackDesc = "[Building Material Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterModdedStack = "Bulk Modded Material Resource Inserter"
 	InserterModdedStackIcon = "Bulk Inserter [MOD]"
 	InserterModdedStackDesc = "[Jani Shipyard Modded Material Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	InserterOreStack = "Bulk Ore Resource Inserter"
 	InserterOreStackIcon = "Bulk Inserter [ORES]"
 	InserterOreStackDesc = "[Ore Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoAStorage2x2 = "Ammo Only Inserter Compatible Storage 2x2"
 	AutoAStorage2x2Icon = "Ammo (4)"
 	AutoAStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoBStorage2x2 = "Building Material Only Inserter Compatible Storage 2x2"
 	AutoBStorage2x2Icon = "Build (4)"
 	AutoBStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of Construction Material. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoMStorage2x2 = "Modded Materials Only Inserter Compatible Storage 2x2"
 	AutoMStorage2x2Icon = "Modded (4)"
 	AutoMStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoOStorage2x2 = "Ore Only Inserter Compatible Storage 2x2"
 	AutoOStorage2x2Icon = "Ores (4)"
 	AutoOStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of Raw Ore. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoAStorage3x2 = "Ammo Only Inserter Compatible Storage 3x2"
 	AutoAStorage3x2Icon = "Ammo (6)"
 	AutoAStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoBStorage3x2 = "Building Material Only Inserter Compatible Storage 3x2"
 	AutoBStorage3x2Icon = "Build (6)"
 	AutoBStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of Construction Material. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	
 	AutoMStorage3x2 = "Modded Materials Only Inserter Compatible Storage 2x2"
 	AutoMStorage3x2Icon = "Modded (6)"
 	AutoMStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	
 	AutoOStorage3x2 = "Ore Only Inserter Compatible Storage 3x2"
 	AutoOStorage3x2Icon = "Ores (6)"
 	AutoOStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of Raw Ore. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoAStorage3x3 = "Ammo Only Inserter Compatible Storage 3x3"
 	AutoAStorage3x3Icon = "Ammo (9)"
 	AutoAStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoBStorage3x3 = "Building Material Only Inserter Compatible Storage 3x3"
 	AutoBStorage3x3Icon = "Build (9)"
 	AutoBStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of Construction Material. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoMStorage3x3 = "Modded Materials Only Inserter Compatible Storage 3x3"
 	AutoMStorage3x3Icon = "Modded (9)"
 	AutoMStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoOStorage3x3 = "Ore Only Inserter Compatible Storage 3x3"
 	AutoOStorage3x3Icon = "Ores (9)"
 	AutoOStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of Raw Ore. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoAStorage4x3 = "Ammo Only Inserter Compatible Storage 4x3"
 	AutoAStorage4x3Icon = "Ammo (12)"
 	AutoAStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoBStorage4x3 = "Building Material Only Inserter Compatible Storage 4x3"
 	AutoBStorage4x3Icon = "Build (12)"
 	AutoBStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of Construction Material. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoMStorage4x3 = "Modded Materials Only Inserter Compatible Storage 4x3"
 	AutoMStorage4x3Icon = "Modded (12)"
 	AutoMStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoOStorage4x3 = "Ore Only Inserter Compatible Storage 4x3"
 	AutoOStorage4x3Icon = "Ores (12)"
 	AutoOStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of Raw Ore. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	
 	AutoAStorage4x4 = "Ammo Only Inserter Compatible Storage 4x4"
 	AutoAStorage4x4Icon = "Ammo (16)"
 	AutoAStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoBStorage4x4 = "Building Material Only Inserter Compatible Storage 4x4"
 	AutoBStorage4x4Icon = "Build (16)"
 	AutoBStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of Construction Material. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	AutoMStorage4x4 = "Modded Materials Only Inserter Compatible Storage 4x4"
 	AutoMStorage4x4Icon = "Modded (16)"
 	AutoMStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	AutoOStorage4x4 = "Ore Only Inserter Compatible Storage 4x4"
 	AutoOStorage4x4Icon = "Ores (16)"
 	AutoOStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of Raw Ore. Compatible With Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Background_Structure_Small = "Small Background Structure"
 	Background_Structure_SmallIcon = "Background Structure"
 	Background_Structure = "Background Structure"
 	Background_StructureIcon = "Background Structure"
 	Background_StructureDesc = "A structure piece that has no collision, used to go below other ships. While cannot be painted normally, you can choose any color to use.\nTechnically has zero weight."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	Background_Structure_Block = "Background Structure Block"
 	Background_Structure_BlockIcon = "Backgr. Structure Block"
@@ -464,118 +464,118 @@ Parts
 	BackgroundSteelFloor = "Background Steel Flooring"
 	BackgroundSteelFloorIcon = "Background Floor"
 	BackgroundSteelFloorDesc = "Metal Flooring to be used as another background piece. useful for Hangar decoration and whatnot. While cannot be painted normally, you can choose any color to use.\nTechnically has zero weight."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	PowerPort = "Part Energy Port"
 	PowerPortIcon = "Power Port"
 	PowerPortDesc = "This Part serves as a central delivery point for parts that cannot be powered by crew in Jani's shipyard. As a added bonus, this also powers inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ControlRoom1x1JANI = "Miniature Command Bunk"
 	ControlRoom1x1JANIIcon = "Command Bunk"
 	ControlRoom1x1JANIDesc = "This miniature Cockpit Allows the ship to fly and coordinate its weapons by providing <good>+12<image name='command_points' colored='true'/></good> Command Points. "\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ControlRoom1x1KROOM = "Miniature Wired Kroom Cockpit"
 	ControlRoom1x1KROOMIcon = "Kroom Cockpit"
 	ControlRoom1x1KROOMDesc = "This miniature Cockpit provides <good>+10<image name='command_points' colored='true'/></good> Command Points. while operated, automatically transfers and even outs power between adjacent parts, Has a hidden integrated Crew bed and Airlock at the cost of less command points. "\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Krooms Forge by Kroom. (Main Sprite artist for Cosmoteer)</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Krooms Forge by Kroom.</color></s14>"
 	
 	ThrusterHuge4x4 = "Hauler Thruster 4x4"
 	ThrusterHuge4x4Icon = "Hauler Thruster (4)"
 	ThrusterHuge4x4Desc = "A Slightly Larger variant of the Huge Thruster that can propel the ship with a lot more thrust than the huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	ThrusterHuge5x5 = "Hauler Thruster 5x5"
 	ThrusterHuge5x5Icon = "Hauler Thruster (5)"
 	ThrusterHuge5x5Desc = "A Even Larger variant of the Huge Thruster that can propel the ship more than twice as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ThrusterHuge6x6 = "Hauler Thruster 6x6"
 	ThrusterHuge6x6Icon = "Hauler Thruster (6)"
 	ThrusterHuge6x6Desc = "A Larger variant of the Huge Thruster that can propel the ship about as 4x as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ThrusterHuge7x6 = "Hauler Thruster 7x6"
 	ThrusterHuge7x6Icon = "Hauler Thruster (7)"
 	ThrusterHuge7x6Desc = "A Enormous variant of the Huge Thruster that can propel the ship about as 5x as much as a huge thruster but has worse ramp-up time. Has alternative size and door placement. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ThrusterHuge8x7 = "Hauler Thruster 8x7"
 	ThrusterHuge8x7Icon = "Hauler Thruster (8)"
 	ThrusterHuge8x7Desc = "Highest tier of Hauler thruster. Has even higher peformance per tile. Has alternative size and door placement. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CRAM_Firingpiece = "Customizable Reaper Ammo Mega Cannon - Firing piece"
 	CRAM_FiringpieceIcon = "CRAM Firing Piece"
 	CRAM_FiringpieceDesc = "Main part of a CRAM cannon. requires both to be fully loaded and the cooldown to be finished. Higher firepower can be obtained from using gauge increasers or packers."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CRAM_Barrel = "Custom Cannon Barrel"
 	CRAM_BarrelIcon = "Barrel"
 	CRAM_BarrelDesc = "Improves range and speed and accuracy of a CRAM cannon."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CRAM_Barrel2 = "Custom Cannon Barrel Double Lenght"
 	CRAM_Barrel2Icon = "Barrel 2x"
 	CRAM_Barrel2Desc = "Extends a barrel by 2 blocks in a single block. double effect. (same per lenght)"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CRAM_barrelend = "Custom Cannon Barrel End"
 	CRAM_barrelendIcon = "Barrel End"
 	CRAM_barrelendDesc = "Decorative. looks better at the end and similar to a cosmoteer cannon."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CRAM_HeavyBarrel = "Custom Cannon Heavy Barrel"
 	CRAM_HeavyBarrelIcon = "Heavy Barrel"
 	CRAM_HeavyBarrelDesc = "Double effect per barrel. higher hp."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Connector = "Custom Cannon Connector"
 	Cram_ConnectorIcon = "Connector"
 	Cram_ConnectorDesc = "Connects to a block 2 blocks fowards. should eventually connect to a firing piece."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_ConnectorD = "Custom Cannon Connector Diagonal"
 	Cram_ConnectorDIcon = "Connector D."
 	Cram_ConnectorDDesc = "Connects to a block on the edge of the diagonal. should eventually connect to a firing piece."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_GaugeIncreaser = "CRAM Gauge Increase"
 	Cram_GaugeIncreaserIcon = "Gauge Increase"
 	Cram_GaugeIncreaserDesc = "Connects to the sides of a firing piece, or up to one gauge increaser in a straight line. increases the size of the barrel, affecting stats even ammo usage."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Intake = "Custom Cannon Ammo Intake"
 	Cram_IntakeIcon = "Intake"
 	Cram_IntakeDesc = "Feeds Loaders remotely from a range. good for tight setups with no crew space."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Loader1x = "Custom Cannon Chain loader"
 	Cram_Loader1xIcon = "Chain Loader"
 	Cram_Loader1xDesc = "Stores 20 bullets, functions like a chaingun magazine. high speed throughput. (10 bullets/s)"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Loader3x = "Custom Cannon Loader"
 	Cram_Loader3xIcon = "Loader"
 	Cram_Loader3xDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. (2 bullets/s)"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Loader3xD = "Custom Cannon Dual Loader"
 	Cram_Loader3xDIcon = "Dual Loader"
 	Cram_Loader3xDDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. Feeds the same speed on both sides, best used when both are in use."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Packer1x = "CRAM Payload Packer"
 	Cram_Packer1xIcon = "Packer"
 	Cram_Packer1xDesc = "Stores 20 bullets, Increases stats by a flat addition, Increasing Health and penetration heavily, and damage slightly."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Cooler1x = "Custom Cannon TurboCooler"
 	Cram_Cooler1xIcon = "TurboCooler"
 	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon. requires power to function, Avoid staying on the room too long to avoid third degree burns."\
-	"\n<gray><s10>Now You're 20% cooler</s10>\nMod: Jani's Shipyard</gray>"
+	"\n<gray><s10>Now You're 20% cooler</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	
@@ -588,80 +588,80 @@ Parts
 	MegaroidArmorWedge = "Ancient Armor Wedge"
 	MegaroidArmorWedge1x2 = "Ancient Armor Wedge 1x2"
 	MegaroidArmorDesc = "Centuries-old huge bricks of armor that have minor regenerative capabilities. The metal still has degraded over time and cannot be salvaged"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	MegaroidArmor2Desc = "Centuries-old huge bricks of armor that have minor regenerative capabilities. The metal still has degraded over time and cannot be salvaged. A small difference in internal structure appears to cause the part to only chain react when one of its similar parts had begun reacting."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallweapon = "Luminous Sphere"
 	MegaroidBallweaponDesc = "Powerful mystical spheres that fire at intruders that fly too close to the Hyperoids."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	MegaroidBallWeaponLarge = "Luminous Sphere Zeta"
 	MegaroidBallWeaponLargeDesc = "A larger sphere with a stronger shot, Helping keeping lookers away."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegashieldSmall = "Ancient Shield Projector"
 	MegashieldSmallDesc = "Self Regenerating shield built to protect the Guardians. A Small sigil shines on it."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaSigilSmall = "Small Control Sigil"
 	MegaSigilSmallDesc = "The Sigil engraved empowers this automated ship, possibly built to defend these Hyperoids until other ships came to mine them. Nowadays these beings protect for a civilization that will never come...\nDestroying this causes a chain reaction on the whole ship.\nNot reccomended to engage in combat early."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidThrustCR = "Ancient Propulsor"
-	MegaroidThrustCRDesc = "Centuries-old Aged piece of propulsion machinery. How it manages to fly will be a mystery for you, and you dont have much hope reverse engineering that.\n<gray>contains a hidden crewmember for game logic purposes</gray>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	MegaroidThrustCRDesc = "Centuries-old Aged piece of propulsion machinery. How it manages to fly will be a mystery for you, and you dont have much hope reverse engineering that.\n<gray>contains a hidden crewmember for game logic purposes</color></s14>"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidMonoThrustCR = "Ancient Thruster"
-	MegaroidMonoThrustCRDesc = "A version of the Propulsor with higher speed but acts more like a generic thruster. Can only fly in one direction.\n<gray>contains no hidden crew</gray>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	MegaroidMonoThrustCRDesc = "A version of the Propulsor with higher speed but acts more like a generic thruster. Can only fly in one direction.\n<gray>contains no hidden crew</color></s14>"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidWeakpoint = "Boss Weakpoint"
 	MegaroidWeakpointDesc = "You must destroy these to disable Cosmilite Boss parts being overcharged. Usually disables shields or reduces fire rate of some weapons."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidEmpty = "Empty Occult Block"
 	MegaroidEmptyDesc = "No Collision and used for floating parts. Technical."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	MegaroidArmor3_1x1 = "Cosmilite Armor Plating"
 	MegaroidArmor3_4x1 = "Cosmilite Armor Plating (Wide)"
 	MegaroidArmor3Desc = "Centuries-old huge bricks of extremely tough armor that have minor regenerative capabilities. Some of the metal can be salvaged.. A small difference in internal structure appears to cause the part to only chain react when one of its similar parts had begun reacting."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaSigilCosmiliteBoss = "Supreme Control Sigil (Cosmic Boss)"
 	MegaSigilCosmiliteBossDesc = "Heart of the boss ship. turns into a \"loot bag\" once destroyed.\nThe usual deathbolts and guadian attacks, combined with a extremly high penetration \"Devourer of gods\". Upon being scratched with any damage, may summon an even stronger \"DoG\" and deploys a shield.\n\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	BossMissileweapon = "Missile Summoning Sigil"
 	BossMissileweaponDesc = "Summons large homing missiles to swifly destroy ships attempting to defeat these massive ships.\nSpawns a additional missile on hit."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponCosmiliteBoss = "Luminous Sphere (Cosmic)"
 	MegaroidBallWeaponCosmiliteBossDesc = "Fires two similar Damaging and Tractor beams with opposite polarities at foes in a helix, After some time firing, fires a white superlaser.\n\nAt 60% health, Its beams focus down, Superlaser fire rate is increased, Can now fire a \"Deathbolts\" attack, that has very high penetration and damage.\nAt 30% health, Can summon portals that spawn Cosmic Guardians, Cosmic worms that can burrow into your ship and circle back.\nAfter destroyed, the rest of the front half of the ship crumbles to pieces."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidCosmiliteLoot = "Boss Loot \"Bag\" (Cosmic)"
 	MegaroidCosmiliteLootDesc = "Salvage this part to recover some rare resources and some stacks of Cosmilite. Build a factory with them and Profaned Star Cores to get a steady supply of Cosmilite."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	MegaSigilProfanedBoss = "Supreme Control Sigil (Profaned Boss)"
 	MegaSigilProfanedBossDesc = "This Sigil is used to control this massive Boss ship. Destroying this sigil Causes the boss to initiate more attacks until there is only one sigil left. and that sigil will contain the actual loot.\nOnce a Sigil is down, the boss doubles the spawn rate of Mini Suns, and can now summon faster suns when on Flamethrower Phase.\nOnce only one sigil is left, Can now summon 6 even faster suns when on Beams attack.\nFor more info, read the description of the Sun.\nMay contain Divine Geodes. Build a altar with them and Pages of Annihilation to get a steady supply of Divine Geodes."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	
 	MegaSigilProfanedBoss2 = "Supreme Control Sigil (Profaned Boss, With Loot)"
 	MegaSigilProfanedBoss2Desc = "Last Sigil of the boss. Will now Drop a Loot orb on destruction.\nIf you need A Recap:\n\nOnce a Sigil is down, the boss doubles the spawn rate of Mini Suns, and can now summon faster suns when on Flamethrower Phase.\nOnce only one sigil is left, Can now summon 6 even faster suns when on Beams attack.\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidProfanedLoot = "Boss Loot \"Bag\" (Profaned)"
 	MegaroidProfanedLootDesc = "Salvage this part to recover some rare resources and some stacks of Divine Geodes. Build a altar with them and Pages of Annihilation to get a steady supply of Divine Geodes."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidArmor4_1x1 = "Profaned Armored Rock"
 	MegaroidArmor4Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Explodes into damaging flame projectiles on destruction."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidArmor_foundation_1x1 = "Armored Rock Foundation"
 	MegaroidArmor_foundation_1x1Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only. Will only chain react when one of its similar parts had begun reacting."
@@ -669,15 +669,15 @@ Parts
 	
 	MegaroidBallWeaponProfanedBoss = "Miniaturized Weaponized Sun"
 	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong foward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nNot Supposed to be destroyed, atleast by normal means. Technically one shottable though."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"	
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"	
 	
 	MegaroidBallWeaponBarrage = "Luminous Sphere (Barrage)"
 	MegaroidBallWeaponBarrageDesc = "Fires seven slow moving devastating bolts in a barrage. its advised to avoid them Altogether."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallProfanedFlak = "Profaned Solar Flak"
 	MegaroidBallProfanedFlakDesc = "Fires Solar balls to defend the boss from projectiles."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaSigilBrimstoneBoss = "Supreme Control Sigil (Brimstone Boss)"
 	MegaSigilBrimstoneBossDesc =  "t"
@@ -687,69 +687,69 @@ Parts
 	
 	MegaroidBallweaponThumper = "Thumper Ball Launcher"
 	MegaroidBallweaponThumperDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target."\
-	"\n<gray>Mod: Jani's Shipyard - Part Credit From: skipydog</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Part Credit From: skipydog</color></s14>"
 	MegaroidBallweaponThumperBurst = "Burst Thumper Launcher"
 	MegaroidBallweaponThumperBurstDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target. Weak variant that fires in 4 shot bursts."\
-	"\n<gray>Mod: Jani's Shipyard - Part Credit From: skipydog</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Part Credit From: skipydog</color></s14>"
 	
 	MegaSigilAstralBoss = "Supreme Control Sigil (Astral Boss)"
 	MegaSigilAstralBossDesc = "<image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\n"
 	
 	MegaroidAstralLoot = "Boss Loot \"Bag\" (Astral)"
 	MegaroidAstralLootDesc = "Salvage this part to recover some rare resources and some stacks of Astral Bars. Build a Factory with them and Cosmilite bars to get a steady supply of Astral Bars."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossBeam = "Luminous Sphere (Hyperbeam)"
 	MegaroidBallWeaponFringeBossBeamDesc = "Aims for some time, stops rotating and gives  concentrated beam at that rotation."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossBarrage = "Luminous Sphere (Giga Barrage)"
 	MegaroidBallWeaponFringeBossBarrageDesc = "Fires a cone of high damage extremly slow projectiles, along with some low damage fast laser bolts."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossCannon = "Luminous Sphere (TripleCannon)"
 	MegaroidBallWeaponFringeBossCannonDesc = "High penetration High damage triple shot cannon projectiles"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossDrone = "Luminous Sphere (Stellaborn Burst)"
 	MegaroidBallWeaponFringeBossDroneDesc = "Spawns Several Stellarborn \"drones\" to attack enemies with multiple ways.\n Can phase through the boss."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossLaser = "Luminous Sphere (Laser Barrage)"
 	MegaroidBallWeaponFringeBossLaserDesc = "Fires several laser bolts followed by a bigger bolt."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossFireBlast = "Luminous Sphere (Fireblast)"
 	MegaroidBallWeaponFringeBossFireBlastDesc = "Fires a homing slow projectile that eventually explodes into a circle of lasers in all directions. high damage if hit close.\n Can phase through the boss."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossMine = "Luminous Sphere (MineThrower)"
 	MegaroidBallWeaponFringeBossMineDesc = "Launches some mines in the general direction. mines have homing projectiles and therefore are deadly."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidBallWeaponFringeBossMissile = "Luminous Sphere (Missile Strike)"
 	MegaroidBallWeaponFringeBossMissileDesc = "Fires a barrage of several missiles. missiles spawn missiles on hit.\n Can phase through the boss."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CosmiliteFactory = "Cosmilite Bar Forge"
 	CosmiliteFactoryIcon = "Cosmilite"
 	CosmiliteFactoryDesc = "<image name='dahell'/>Forges and smashes bars of Cosmilite under extreme conditions. Consumes 4 Tristeel and 8 Hyperium per use. Requires Cosmilite to build, locking the obtaining of this resource only after you defeat and collect the loot of the \"Godslayer Guardian\" Boss in a Threat level 10+ system"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	LogicWire = "Logic Wire"
 	LogicWireIcon = "Wire"
 	LogicWireDesc = "Transmits a receiving logic signal to another part in front."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicWireDiag = "Diagonal Logic Wire"
 	LogicWireDiagIcon = "Diag. Wire"
 	LogicWireDiagDesc = "Transmits a receiving logic signal to another part in the diagonal."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicGateNot = "Logic NOT Gate"
 	LogicGateNotIcon = "NOT Gate"
 	LogicGateNotDesc = "Transmits a logic signal if not receiving any, Stops transmitting if receiving any signal.\nSmall delay."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
@@ -758,139 +758,144 @@ Parts
 	LogicWireSplitter3 = "Logic Wire Splitter 3 Way"
 	LogicWireSplitter3Icon = "Logic Splitter [T]"
 	LogicWireSplitterDesc = "Transmits a receiving logic signal to more than one direction."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofLight = "Logic Controlled Roof Light"
 	LogicRoofLightIcon = "Logic Light"
 	LogicRoofLightDesc = "A Roof Light that is logic controlled."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofPanelSquare = "Roof Panel - Square"
 	LogicRoofPanelSquareIcon = "Roof Panel S."
 	LogicRoofPanelSquareDesc = "Small Square light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofPanelSquareLarge = "Roof Panel - Large Square"
 	LogicRoofPanelSquareLargeIcon = "Roof Panel S. XL"
 	LogicRoofPanelSquareLargeDesc = "Big Square light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofPanelRound = "Roof Panel - Circle"
 	LogicRoofPanelRoundIcon = "Roof Panel C."
 	LogicRoofPanelRoundDesc = "Little Circulat light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofPanelWedge = "Roof Panel - Wedge"
 	LogicRoofPanelWedgeIcon = "Roof Panel W."
 	LogicRoofPanelWedgeDesc = "Triangular Wedge light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicTBm = "Logic Tractor Beam (Small)"
 	LogicTBmIcon = "Logic TB"
 	LogicTBmDesc = "A Modified version of a turret of the resource collector to act as a miniature tractor beam that is logic controlled. can have a target or just a fixed direction.\n<bad>Has no doors and cannot be manually powered, requires a Power Port instead.</bad>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Background_Dock_Underlay = "\"skipydog\" Background Structure Dock (Extendable)"
 	Background_Dock_UnderlayIcon = "Skipy Dock. E."
 	Background_Dock_UnderlayDesc = "A Background Dock that can Toggle on or off a Circular Collider a few blocks away. Useful to make makeshift <good>Hinges</good> using multiple ships.\n Distance of Collider is customizable, as well as the Color of the structure, Dock and Lights separately."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	Background_Dock = "\"skipydog\" Background Structure Dock (Grid)"
 	Background_DockIcon = "Skipy Dock. G."
 	Background_DockDesc = "A Background Dock that can Toggle on or off a Circular Collider inside itself. Useful to make makeshift <good>Hinges</good> using multiple ships.\nThe Color of the structure, Dock and Lights can be changed separately."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicPiston1x1 = "Small 1x1 Logic Piston"
 	LogicPiston1x1Icon = "Logic Piston (1)"
 	LogicPiston1x1Desc = "A small device that can extend or not a small plate outwards. Cannot push blocks from it's own ship but can push other ships. Requires a logic signal or manual signal inversion."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
+	
+	LogicGateBulb = "Logic Toggling Bulb"
+	LogicGateBulbIcon = "Logic Bulb"
+	LogicGateBulbDesc = "Flips its signal based on a input or manual trigger. useful for counters and manual buttons."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ShieldOvercharger = "Artificial Zoltan Shield Overcharger"
 	ShieldOverchargerIcon = "Zoltan S. Over."
 	ShieldOverchargerDesc = "Generates a weak, extremly penetration resistant bubble shield that recharges quickly and can stack up to 5 layers. Recharge Rate reduces the more Overchargers are nearby."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	SylvanChainGun = "\"Rift Waker\" Travelling Merchant's Chaingun"
 	SylvanChainGunIcon = "Rift Waker"
-	SylvanChainGunDesc = "A modified, much much stronger variant of the chaingun. Uses less ammo, charges slightly slower, extremely resistant when closed, and deals double damage on top of firing two shots at once.\n\n<color r='85' g='43' b='122' a='255'>Heh. color>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	SylvanChainGunDesc = "A modified, much much stronger variant of the chaingun. Uses less ammo, charges slightly slower, extremely resistant when closed, and deals double damage on top of firing two shots at once.\n\n<color r='85' g='43' b='122' a='255'>Heh.</color>"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_defenselaser = "Defense Laser"
 	FTL_defenselaserIcon = "Defense Laser"
 	FTL_defenselaserLeftIcon = "Defense Laser (L)"
 	FTL_defenselaserDesc = "One of the cheapest lasers on the market, a wannabe burst laser that does not have any additional shots. Not like you can ask too much bang for the buck for this weak laser. Requires no Crew."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_spetumbeam = "'Spetum' Mini beam"
 	FTL_spetumbeamIcon = "'Spetum' Beam"
 	FTL_spetumbeamLeftIcon = "'Spetum' Beam (L)"
 	FTL_spetumbeamDesc = "A Miniature burst beam that deals some respectable damage for its size, but is a little inneficient with energy. Requires no Crew."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_pikebeam = "'Pike' Long Beam"
 	FTL_pikebeamIcon = "'Pike' Beam"
 	FTL_pikebeamLeftIcon = "'Pike' Beam (L)"
 	FTL_pikebeamLEftALTIcon = "'Pike' Beam (S)"
 	FTL_pikebeamDesc = "A long ranged, long fire time beam with moderate damage, however comes with the downside of being a bit innacurate, as its beam swings from side to side by small amounts."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_dirkpin = "'Dirk' Pinpoint Beam"
 	FTL_dirkpinIcon = "'Dirk' Pinpoint"
 	FTL_dirkpinLeftIcon = "'Dirk' Pinpoint (L)"
 	FTL_dirkpinDesc = "Special Beam that hits a spot in a single blast, also spreading the damage in a area if the initial block is destroyed, power costly. Requires no Crew."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_burstlaser1 = "Burst Laser MkI"
 	FTL_burstlaser1Icon = "Burst Laser"
 	FTL_burstlaser1LeftIcon = "Burst Laser (L)"
 	FTL_burstlaser1Desc = "A better alternative than the Defense Laser, fires two shots in a burst that deal more damage, Not Particularly Effective, Requires no Crew."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_burstlaser2 = "Burst Laser Mk II"
 	FTL_burstlaser2Icon = "Burst Mk2"
 	FTL_burstlaser2LeftIcon = "Burst Mk2 (L)"
 	FTL_burstlaser2LeftALTIcon = "Burst Mk2 (S)"
 	FTL_burstlaser2Desc = "A Powerful Burst Laser, Fires 3 powerful lasers in quick sucession but takes a moment to charge, The Damage per second stays roughly the same as the standard Laser, and can be behind armor like most Cruiser Weapons."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_burstlaser3 = "Burst Laser Mk III"
 	FTL_burstlaser3Icon = "Burst Mk3"
 	FTL_burstlaser3LeftIcon = "Burst Mk3 (L)"
 	FTL_burstlaser3LeftALTIcon = "Burst Mk3 (S)"
 	FTL_burstlaser3Desc = "A Powerful Burst Laser, Fires 5 consecutive shots rapidly. High effectiveness in destroying empty or low health armor"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_basicion = "Basic Ion Blaster"
 	FTL_basicionIcon = "Basic Ion"
 	FTL_basicionDesc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage.\nA Weak ion blaster, with a reduced drain time, <bad>no stun</bad> but higher range. has a large 200 degree rotation, Requires no Crew."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_ionbar1 = "Ion Barrage Blaster"
 	FTL_ionbar1Icon = "Ion I"
 	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage.\nImproved ion blaster, Shoots fast enough that can keep an area constantly draining if it always hits on the same place."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_bombsmall = "Small Bomb Hyperdrive Teleporter"
 	FTL_bombsmallIcon = "Bomb Teleport"
 	FTL_bombsmallDesc = "This weapon uses Prototype Blink Drive technology that allows teleportation of bombs directly at the enemy, at no cost of hyperium. Not efficient compared to other payload methods, but cannot be targetted.\nUses additional missiles. Requires no Crew."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_bombbreach = "Small Breach Mine Hyperdrive Teleporter"
 	FTL_bombbreachIcon = "Breach Mine"
 	FTL_bombbreachDesc = "Advances in Bomb teleportation allows for teleportation of miniature mines that can breach defenses more easily with its raw power.\nUses additional mine parts."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_energy1 = "Energy Blaster MkI"
 	FTL_energy1Icon = "Energy I"
 	FTL_energy1Desc = "Energy Blasters are essentially a combination of Ion Blasters and Standard issue lasers, at the cost of rotation, fire rate, accuracy, stun, and the like."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	FTL_missile_leto = "'Leto' Missile launcher"
 	FTL_missile_letoIcon = "Leto Missile"
 	FTL_missile_letoLeftIcon = "Leto Missile (L)"
 	FTL_missile_letoLeftALTIcon = "Leto Missile (S)"
 	FTL_missile_letoDesc = "This miniature Missile launcher uses small amounts of power and missile parts to fire a small missile. Crude explosion, but effective with its ammo consumption, very light homing."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	PulseThrusterSmall = "Small Repulser Thruster"
 	PulseThrusterSmallIcon = "Small Repulser"
@@ -901,72 +906,72 @@ Parts
 	PulseThrusterHuge = "Huge Repulser Thruster"
 	PulseThrusterHugeIcon = "Huge Repulser"
 	PulseThrustersDesc = "Inneficient variants of thrusters that repulses space itself to provide thrust at a less efficient manner. However, this special design allows for additional space to be used, which is extremly useful for protecting them or just adding another layer of thrusters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Pulse_ThrusterHuge4x4 = "Hauler Repulser Thruster 4x4"
 	Pulse_ThrusterHuge4x4Icon = "Haul. Repulser (4)"
 	Pulse_ThrusterHuge4x4Desc = "A Combination of 4x4 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	Pulse_ThrusterHuge5x5 = "Hauler Repulser Thruster 5x5"
 	Pulse_ThrusterHuge5x5Icon = "Haul. Repulser (5)"
 	Pulse_ThrusterHuge5x5Desc = "A Combination of 5x5 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	Pulse_ThrusterHuge6x6 = "Hauler Repulser Thruster 6x6"
 	Pulse_ThrusterHuge6x6Icon = "Haul. Repulser (6)"
 	Pulse_ThrusterHuge6x6Desc = "A Combination of 6x6 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	Pulse_ThrusterHuge7x6 = "Hauler Repulser Thruster 7x6"
 	Pulse_ThrusterHuge7x6Icon = "Haul. Repulser (7)"
 	Pulse_ThrusterHuge7x6Desc = "A Combination of 7x6 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	Pulse_ThrusterHuge8x7 = "Hauler Repulser Thruster 8x7"
 	Pulse_ThrusterHuge8x7Icon = "Haul. Repulser (8)"
 	Pulse_ThrusterHuge8x7Desc = "A Combination of 8x7 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	//---------------------------------------------
 	
 	SuperheavyBrick = "Mini-Anchor Cosmic Weights"
 	SuperheavyBrickIcon = "Cosmic Weights"
 	SuperheavyBrickDesc = "Its just a 2000 ton 1x1 block that is very overpriced. uses some of the heaviest materials for the variety of uses this dead weight can do, such as show off how much weight your ship can push, or just pretend it can."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	//---------------------------------------------
 	
 	Logic_Sensor = "Enemy Roof Logic Sensor"
 	Logic_SensorIcon = "Basic Enemy Sensor"
-	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</gray>"\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</color></s14>"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterSmall = "Logic Small Thruster"
 	LogicThrusterSmallIcon = "L. Small Thruster"
 	LogicThrusterSmallDesc = "A Small Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterMed = "Logic Med Thruster"
 	LogicThrusterMedIcon = "L. Med Thruster"
 	LogicThrusterMedDesc = "A Med Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterLarge = "Logic Large Thruster"
 	LogicThrusterLargeIcon = "L. Large Thruster"
 	LogicThrusterLargeDesc = "A Large Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterHuge = "Logic Huge Thruster"
 	LogicThrusterHugeIcon = "L. Huge Thruster"
 	LogicThrusterHugeDesc = "A Huge Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterRocketNozzle = "Logic Modular Rocket Thruster (M.R.T.)"
 	LogicThrusterRocketNozzleIcon = "L. M.R.T. Nozzle"
 	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
-	"\n<gray>Mod: Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	CosmiliteArmor = "Heavy Cosmilite Armor"
 	CosmiliteArmorIcon = "Cosmilite Armor"
 	CosmiliteArmorDesc = "Heavy armor with a lot of hitpoints. Increases damage resistance against damage based on how many blocks of cosmilite armor is nearby. can affect a select number of other boss armor."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	ProfanedArmor = "High Resistance Profaned Armor"
 	ProfanedArmorIcon = "Profaned Armor"
@@ -975,7 +980,7 @@ Parts
 	JaniArmorBit = "Armor Plate"
 	JaniArmorBitIcon = "Armor Plate"
 	JaniArmorBitDesc = "Small pieces of armor to decorate or defend small amounts of your ship."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 
 	SpellRoomSmall = "Spellz Room Generator THingy"
 	SpellRoomSmallIcon = "Spellz Room"
@@ -984,42 +989,42 @@ Parts
 	CursedwandSmall = "Ornate Cursed Wand"
 	CursedwandSmallIcon = "Cursed Wand"
 	CursedwandSmallDesc = "Deck mounted wand that Fires Weak homing projetiles. Always deals friendly fire, and is a danger to your deck weaporny and itself if hit.\nUses 5 points of cursed mana."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CoilBig = "Large Copper Wire Coil"
 	CoilBigIcon = "Large Coil"
 	CoilBigDesc = "Big coil. Usable as it's own part, with little use apart from EMP resistance. used in other parts if you look close."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	WallMass = "Ship Hull Mass"
 	WallMassIcon = "Hull Mass"
 	WallMassDesc = "Essentially an unwalkable corridor filler mass for your ship. more health than sheetmetal and has half the EMP resistance of armor, and very little penetration resistance."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	SteelBig = "Big Solid Steel Block"
 	SteelBigIcon = "Steel Block"
 	SteelBigDesc = "Heavy big steel cube. Higher Explosive resistance but otherwise useless."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MachineFrame = "Machine Frame"
 	MachineFrameIcon = "Machine Frame"
 	MachineFrameDesc = "Decorative Machine frame. has explosive resistance."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	BulkHeadJani = "Bulkhead"
 	BulkHeadJaniIcon = "Bulkhead"
 	BulkHeadJaniDesc = "Fireproof blast bulkhead thing. Decorative but has explosive resistance."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CorridorFactory = "Factory Corridor"
 	CorridorFactoryIcon = "Factory Cor."
 	CorridorFactoryDesc = "Corridor variant that has Factory-styled floors and walls."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CorridorFactoryDark = "Dark Factory Corridor"
 	CorridorFactoryDarkIcon = "Factory Cor."
 	CorridorFactoryDarkDesc = "Factory Corridor variant with a darker floor."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 }
 PartColors
 {
@@ -1060,49 +1065,49 @@ Resource
 	CutSteel = "Steel Bar"
 	CutSteelPlural = "Steel Bars"
 	CutSteelDesc = "Steel that has been split into parts 1/5 as dense.\n\n A cheap alloy metal used for construction\nWILL BE REMOVED ON A NEXT UPDATE. MAY BREAK SAVE FILES."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CutCoil = "Cable"
 	CutCoilPlural = "Cables"
 	CutCoilDesc = "Coils that has been cut down into parts 1/5 as long.\n\n A cheap cable to build simple parts\nWILL BE REMOVED ON A NEXT UPDATE. MAY BREAK SAVE FILES."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CutTristeel = "Tri-\u200bSteel bar"
 	CutTristeelPlural = "Tri-\u200bSteel bars"
 	CutTristeelDesc = "Small Bars of tristeel, worth 1/4 as valuable\n\n Tristeel is a super-strong metal alloy used to construct some advanced ship parts.\n Made from the Cutter."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	//Modded Resources
 	
 	Goldium = "Goldium"
 	GoldiumPlural = &Goldium
 	GoldiumDesc = "A valuable, highly conductive metal alloy used to construct some expensive parts or armor. Built from the Goldium Synthetizer."\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	CutGoldium = "Goldium Bar"
 	CutGoldiumPlural = "Goldium Bars"
 	CutGoldiumDesc = "Cut down version of Goldium.\n\nA valuable, highly conductive metal alloy used to construct parts or armor"\
-	"\n\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cosmilite = "Cosmilite Bar"
 	CosmilitePlural = "Cosmilite Bars"
 	CosmiliteDesc = "A incredibly dense metal with great physical properties.\n Obtained by defeating The boss <good>\"Godslayer Guardian\"</good> or refining by using its own factory, which is only availible after obtaining Cosmilite Bars And <good>Astral Bars.</good>"\
-	"\n<gray>What Devourer?\nMod: Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</gray>"
+	"\n<gray><s10>What Devourer?</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</color></s14>"
 	
 	ProfanedCore = "Divine Core"
 	ProfanedCorePlural = "Divine Cores"
 	ProfanedCoreDesc = "A strange rock that seems to easily manipulate energy, but not really in a... controlled way.\nObtained by defeating <good>\"Sol Profanatus\"</good> or created with the Divine Core Altar \"Factory\", which requives both Divine Cores and <good>Pages of Annihilation</good>"\
-	"\n<gray>Barely Holy Enough.\nMod: Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</gray>"
+	"\n<gray><s10>Barely Holy Enough.</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</color></s14>"
 	
 	AstralBar = "Astral Bar"
 	AstralBarPlural = "Astral Bars"
 	AstralBarDesc = "A valuable, glamorous metal alloy from the stars... ignoring that you can just make it and you can fly to these stars.\nObtained by defeating The boss <good>\"Name of ASTRAL BOSS\"</good> or fabricated by using its own factory, which is only availible after obtaining Astral Bars And <good>Cosmilite Bars</good>"\
-	"\n<gray>Starfox 69: The Astral Starworm\nMod: Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</gray>"
+	"\n<gray><s10>I guess its a boss</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</color></s14>"
 	
 	CursedPage = "Page of Annihilation"
 	CursedPagePlural = "Pages of Annihilation"
 	CursedPageDesc = "Scraps of brimstone books with incomphrehensible runes carved into them. Merely looking at it makes your eyes burn. it definetly is'nt friendly to your ship parts.\nObtained by defeating <good>\"[IMPERIUM BOSS NAME]\"</good> or cursed with the Annihilation Brimstone Altar \"Factory\", which requives both Pages of Annihilation and <good>Divine Cores.</good>"\
-	"\n<gray>Who let Calamitas make a ship?\nMod: Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</gray>"
+	"\n<gray><s10>Who let Calamitas make a ship?</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard\nBased on Calamity Mod for Tmodloader.</color></s14>"
 	
 	Zetasphere = "Zetasphere"
 	ZetaspherePlural = "Zetaspheres"
@@ -1112,10 +1117,10 @@ Missions
 {
 	ClearHyperoid = "Clear Hyperoid Field"
 	ClearHyperoidDesc = "Many mining agencies are struggling to tackle on strange enemies guarding a giant \"Hyperoid\" asteroid, Which is likely full of resources. The {faction_name} alongside the mining companies have posted a bounty of {money} to be paid to any Cosmoteer that can clear the local area from these threats."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	DefeatBossJani = "Defeat \"{target_ship}\" Boss"
 	DefeatBossJaniDesc = "There is Massive <b>{target_ship}</b> class \"Boss\" ship in the {mission_location} system terrorizing local ships. The {faction_name} have posted a bounty of {money} to be paid to any Cosmoteer that can eliminate it. Rumours state that the material the ship is built from is highly valuable and technologically advanced, and it may be highly useful to you to progress further."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 }
 Objectives
 {
@@ -1349,7 +1354,7 @@ PartToggles
 	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>4000</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 30</good>\n"\
 	"<white>Durability:</white><good> 2500</good>\n"\
-	"<white>Drone ROF:</white><good> 4</good><gray>/sec</gray>"
+	"<white>Drone ROF:</white><good> 4</good><gray>/sec</color></s14>"
 	
 	DroneMedCannon = "<b>Standard Cannon Drone</b>\n\n"\
 	"A Standard cannon with a slightly smaller caliber, but stacks way much firepower due to ignoring safety limits.\n\n"\
@@ -1366,7 +1371,7 @@ PartToggles
 	"<white>Drone Damage:</white> <good>2500</good><gray>/shot (</gray><good>8333</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 25</good>\n"\
 	"<white>Durability:</white><good> 3000</good>\n"\
-	"<white>Drone ROF:</white><good> 3.33</good><gray>/sec</gray>"
+	"<white>Drone ROF:</white><good> 3.33</good><gray>/sec</color></s14>"
 	
 	DroneEletroCannon = "<b>Disruptor Eletro-Cannon Drone</b>\n\n"\
 	"Strapping together a Laser cannon and a disruptor seems to work, it's extremely unstable, but These Drones won't last that long anyway.\n\n"\
@@ -1561,27 +1566,27 @@ Techs
 {
 	reprosessingName = "Basic Material Reprocessing"
 	reprosessingDesc = "Simple Technology that allows you to reprocess already processed materials, Such as to split down Tristeel or Un-Enrich uranium.\n(Unlocks Cutter)"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	advancedmaterialsName = "Advanced Material Manipulation"
 	advancedmaterialsDesc = "Advanced Technology that allows you to process advanced materials with ease, Such to convert hard gold into Goldium\n(Unlocks Large Fabricator)<gray>(More materials will be availble later)</gray>"\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Inserters = "Resource Inserters"
 	InsertersDesc = "Mechanical Arms that allow for automated supplying or Weapons, Factories, And Special storages. Researching this also unlocks Special Storages compatible with Inserters."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	LongInserters = "Longer Inserters"
 	LongInsertersDesc = "Unlocks a new variation of inserters that can reach a extra block of distance, but is slower and less efficient. The additional block of distance can be used for further use of space."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	StackInserters = "Bulk Inserters"
 	StackInsertersDesc = "Unlocks a new variation of heavy inserters that can transfer a entire stack of resources, useful for extreme throughput and high storage weapons, such as the deck cannon."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	LogicThrusters = "Logic Thrusters"
 	LogicThrustersDesc = "Unlocks a variation of Normal Thrusters that can interact with logic signals. Technical Limitations make the Ramp-up time not get affected by normal sources."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 }
 Codex
 {
@@ -1638,6 +1643,6 @@ BuildBox// Modular Missiles guided towards the right track. thanks
 Nebulas
 {
 	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have slightly increased speed and increased sensor range, and disables hyperdrives."\
-	"\n<gray>Mod: Jani's Shipyard</gray>"
-	DarkEnergyHudFmt = "<s14>{0:0.}%</s14>\n<s12><gray>energy</gray></s12>"
+	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
+	DarkEnergyHudFmt = "<s14>{0:0.}%</s12>\n<s12><gray>energy</gray></s12>"
 }

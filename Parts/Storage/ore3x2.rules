@@ -50,7 +50,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = sulfurToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/sulfur.rules>/Components
 		}
 		
@@ -64,7 +64,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = ironToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/iron.rules>/Components
 		}
 		
@@ -78,7 +78,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = copperToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/copper.rules>/Components
 		}
 		
@@ -92,7 +92,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = tritaniumToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/tritanium.rules>/Components
 		}
 		
@@ -106,7 +106,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = carbonToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/carbon.rules>/Components
 		}
 		
@@ -120,7 +120,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = goldToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/gold.rules>/Components
 		}
 		
@@ -134,7 +134,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = uraniumToggle
-			IncludeInBlueprints = true
+			IncludeInBlueprints = false
 			Components = &<Types3x2/uranium.rules>/Components
 		}
 
