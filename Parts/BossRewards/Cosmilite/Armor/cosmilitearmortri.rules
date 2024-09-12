@@ -100,7 +100,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
-			Roof = &<./data/ships/terran/armor_tri/armor_tri.rules>/Part/Components/Graphics/Roof
+			Roof = &<../../../Decorative/StationArmor/t.rules>/Part/Components/Graphics/Roof
 		}
 
 		DestroyedEffects

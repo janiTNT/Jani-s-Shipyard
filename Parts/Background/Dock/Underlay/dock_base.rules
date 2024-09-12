@@ -752,7 +752,7 @@ NeckSpriteGridBase
 		]
 	]
 	RandomUVRotation = false
-	Layer = "bgstructure"
+	Layer = "structure"
 }
 
 EmitterColliderBase
@@ -769,7 +769,7 @@ OperationalGraphicsBase
 	GetColorFrom = ColorPicker2
 	OperationalRoofDoodad
 	{
-		Layer = "floors"
+		Layer = "doodads_high"
 		Offset = [0, 0]
 		DamageLevels
 		[
@@ -801,7 +801,7 @@ DockGraphicsBase
 	GetColorFrom = ColorPicker3
 	Floor
 	{
-		Layer = "structure"
+		Layer = "weapons"
 		DamageLevels
 		[
 			{

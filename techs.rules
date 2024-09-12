@@ -38,7 +38,7 @@ Techs
 		[
 			&<Parts/Power/ReactorAux/reac.txt>/Part/ID
 		]
-		Cost = 8000
+		Cost = 3000
 	}
 	{
 		ID = juanTNT.mining_laser_emitter
@@ -359,6 +359,26 @@ Techs
 		Prerequisites = [janiTNT.thruster5x5]
 	}
 	{
+		ID = janiTNT.thruster7x6
+		NameKey = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/ID]
+		Cost = 35000
+		Prerequisites = [janiTNT.thruster6x6]
+	}
+	{
+		ID = janiTNT.thruster8x7
+		NameKey = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/ID]
+		Cost = 50000
+		Prerequisites = [janiTNT.thruster7x6]
+	}
+	{
 		ID = janiTNT.thruster4x4.pulse
 		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/DescriptionKey
@@ -389,6 +409,26 @@ Techs
 		Prerequisites = [janiTNT.thruster5x5, janiTNT.thruster5x5.pulse]
 	}
 	{
+		ID = janiTNT.thruster7x6.pulse
+		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/ID]
+		Cost = 45000
+		Prerequisites = [janiTNT.thruster6x6, janiTNT.thruster6x6.pulse]
+	}
+	{
+		ID = janiTNT.thruster8x7.pulse
+		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/DescriptionKey
+		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/EditorIcon
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/EditorGroup
+		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/ID]
+		Cost = 60000
+		Prerequisites = [janiTNT.thruster7x6, janiTNT.thruster7x6.pulse]
+	}
+	{
 		ID = janiTNT.burst1lasertech
 		NameKey = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/DescriptionKey
@@ -415,6 +455,21 @@ Techs
 		]
 		Cost = 1000
 		Prerequisites = [janiTNT.burst1lasertech, cosmoteer.laser_blaster_small]
+	}
+	{
+		ID = janiTNT.burst3lasertech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Laser4/burst3.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Laser4/burst3.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Laser4/burst3.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Laser4/burst3.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Laser4/burst3.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Laser4/burst3_l.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Laser4/burst3_l_alt.rules>/Part/ID
+		]
+		Cost = 4000
+		Prerequisites = [janiTNT.burst2lasertech, cosmoteer.laser_blaster_large]
 	}
 	{
 		ID = janiTNT.beam1tech
@@ -536,6 +591,6 @@ Techs
 		&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part/ID
 		]
 		Prerequisites = [cosmoteer.thruster_rocket]
-		Cost = 10000
+		Cost = 1000
 	}
 ]

@@ -7,7 +7,12 @@ Components
 {
 	Physics = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/Physics
 
-	BoostAcceleration = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/BoostAcceleration
+	BoostAcceleration
+	{
+		Type = Acceleration
+		Acceleration = [400, 200]
+		AccelerationOverTime = [0, 0.25]
+	}
 
 	DeathByDistanceTraveled = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/DeathByDistanceTraveled
 	DeathByDistanceTraveledTargeted = &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/DeathByDistanceTraveledTargeted
@@ -19,14 +24,48 @@ Components
 		RenderBucket = Upper2
 	}
 
-	RadiationSpriteSmall : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/RadiationSpriteSmall
+	RadiationSpriteSmall
 	{
 		RenderBucket = Upper3
+		Type = Sprite
+		Spin = 360d
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/shots/missile_nuke/radiation_small.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [1, 1]
+			VertexColor = [255, 0, 0]
+			TargetBlendMode = Add
+		}
 	}
 
-	RadiationSpriteBig : &<./data/shots/missile_nuke/missile_nuke_stage1.rules>/Components/RadiationSpriteBig
+	RadiationSpriteBig
 	{
-		RenderBucket = Upper1
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Spin = 360d
+		Z = .25
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/shots/missile_nuke/radiation.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [9, 9]
+			VertexColor = [255, 0, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = .4
+		}
 	}
 
 	MediaEffects : &<./data/shots/missile_nuke/missile_nuke_stage2.rules>/Components/MediaEffects

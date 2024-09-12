@@ -1,0 +1,288 @@
+Part : <../base_part_occult.rules>/Part
+{
+	NameKey = "Parts/MegaSigilAstralBoss"
+	DescriptionKey = "Parts/MegaSigilAstralBossDesc"
+	ID = janiTNT.eye_weapon_astral_boss // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	Resources
+	[
+		[hyperium, 20]
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniOrbDetectionAstralBoss]
+	Density = 3
+	SelectionPriority = 1
+	SelectionTypeID = "weapons"
+	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
+	MaxHealth = 32000 * 32
+	Size = [4, 4]
+	TypeCategories = [armor, weapon, boss_resistant]
+	InitialPenetrationResistance = 2 * 7
+	ContinuingPenetrationResistance = 2 * 7
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = 25%}
+	EditorIcon
+	{
+		Texture = "mysticeye.png"
+		Size = [100, 50]
+	}
+	Components : ^/0/Components
+	{
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}
+		
+		Turret
+		{
+			Type = TurretWeapon
+			Location = [2, 2]// Relative to upper-left corner of unrotated part.
+			Rotation = -90d// Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = 15
+			FiringArc = 360d
+			RotateSpeed = infinity
+			AIFirepowerRating = 4800 * 2
+			Emitter = BulletEmitter
+			FirePermissionToggle = FireModeToggle
+			HoldTargetAfterCancel = 2
+			AutoTargetCrewSafetyDist = 8
+			ValidArc = 360d;
+			FireThresholdAngle = 180d;
+			AllowFireWithBlockedLOS = true
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
+			]
+
+			BlueprintArcSprite
+			{
+				Texture = &/INDICATORS/WeaponArc
+				Size = [0, 1.5]
+				Color = [255, 0, 0, 63]
+			}
+			BlueprintArcRadius = 10
+			BlueprintArcSpriteSegments = 64
+
+			CoverageSectorArc
+			{
+				Texture = &/INDICATORS/VerticalGradient
+				VertexColor = [255, 255, 255, 51]
+				QuadCount = 64
+			}
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = PowerToggle
+			ShowProgressFor = Turret
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
+			Location = [0, 0]
+			OperationalToggle = PowerToggle
+			FireDelay = 0
+			Bullet = &<shots/astral_stabber.rules>
+			Spread = [-45d, 45d]
+			Burst = 3
+			BurstDelay = 0.05
+		}
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = BulletEmitter
+			Location = [0, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<../particles/bigflashfourth.rules>
+				//&<particles/laser_blaster_small_shoot.rules>
+				//&<particles/laser_blaster_small_shoot_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/cannon_deck/shoot.wav"
+					Volume = .8
+					SpeedVariation = .25
+				}
+			]
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [Phase2ToggleDET, PowerToggle]
+			Mode = All
+		}
+		
+		Phase2ToggleDET
+		{
+			Type = MultiToggle
+			Toggles = [NotPhase2ToggleDET]
+			Mode = All
+			Invert = true
+		}
+		
+		NotPhase2ToggleDET
+		{
+			Type = BuffToggle
+			BuffType = JaniOrbDetectionAstralBoss
+			MinBuffValue = 1
+			MaxBuffValue = 999999999
+		}
+		
+		Sprite : &<../armoroid.rules>/Part/Components/Sprite
+		{
+			Type = SpriteGrid
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		ParryModule//Also has a parry module
+		{
+			Type = TurretWeapon
+			Location = [2, 2]
+			Rotation = -90d
+			OperationalToggle = PowerToggle
+			//AutoFireToggle = AutoFireToggle
+			FireInterval = 1.5
+			FiringArc = 360d
+			RotateSpeed = infinity
+			FireThresholdAngle = 1d
+			AIFirepowerRating = 0
+			Emitter = ParryModuleEmitter
+			FirePermissionToggle = PowerToggle
+			CanBeGivenExplicitTarget = false
+	
+			AlwaysShowCoverage = false
+			AllowDirectControl = false
+			IgnoreSourceShipLowLOSChecks = true
+			IgnoreJunkLOSChecks = true
+
+			AutoTargets
+			[
+				{
+					TargetType = Bullets
+					BulletTargetCategories = [parry_targetable]
+				}
+			]
+		}
+
+		ParryModuleEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = ParryModule
+			FireTrigger = ParryModule
+			GetTargetFrom = ParryModule
+			Location = [0, 0]
+			OperationalToggle = PowerToggle
+			Bullet = &<../Parry.rules>
+			Spread = [0d, 0d]
+			FireDelay = .5
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			OperationalToggle = IsOperational
+			Location = [0, 0]
+			Rotation = 90d
+			ChainedTo = Turret
+			OperationalDoodad
+			{
+				Layer = "secondary"
+				RandomUVRotation = false
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "mysticeye.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "secondary"
+				RandomUVRotation = false
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "eye_b2.png"
+						Size = [9, 9]
+						UVRotation = 0
+						RotSpeed = -70d
+					}
+				]
+			}
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<../Particles/quarter_huge_part_exploding.rules>
+				&<../Particles/salvage_complete_shrapnel_occult.rules>
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					Volume = 1
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = 1
+				}
+			]
+			Location = [2, 2]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "../sigilbp.png"
+			Size = [4, 4]
+		}
+	}
+}

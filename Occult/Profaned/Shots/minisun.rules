@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 90d
+		TurnVelocity = 8d
 		Delay = 3
 		//AvoidanceRaycastDistance = 250
 		VelocityCompensation = 80%
@@ -41,7 +41,8 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 20 * 0.25
+		Acceleration = [5 * 0.25, 50 * 0.25]
+		AccelerationOverTime = [0, 6]
 	}
 
 	DeathByLifetime
@@ -136,8 +137,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 6000000
-					Radius = 40
+					TotalDamage = 3000000
+					Radius = 30
 					/*Filter
 					{
 						Friendlies = true

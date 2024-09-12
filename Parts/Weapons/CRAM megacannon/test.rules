@@ -1,0 +1,1294 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CRAM_Firingpiece"
+	IconNameKey = "Parts/CRAM_FiringpieceIcon"
+	ID = janiTNT.CRAM_firingpiece // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	//OtherIDs = [big_cannon]
+	EditorGroup = "WeaponsProjectile"
+	DescriptionKey = "Parts/CRAM_FiringpieceDesc"
+	Resources
+	[
+		[steel, 80]
+		[coil, 30]
+	]
+	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_heavy, CRAM_Firing_Piece, CRAM, CRAMconnector]
+	Size = [1, 4]
+	//PhysicalRect = [0, 1, 3, 2]
+	//SaveRect = &PhysicalRec
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "cannons"
+	MaxHealth = 16000
+	AllowedDoorLocations = []
+	//ProhibitAbove = 2
+	CrewSpeedFactor = 0
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_Pen, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal, JaniCRAM_PackerCount, JaniCRAM_PackerReady]
+	/*AllowedDoorLocations
+	[
+		[-1, 1]
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 3]
+		[3, 2]
+		[3, 1]
+	]*/
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		GaugeSelfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_StatMultiplier
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Add }
+		}
+		
+		BarrelGaugeSelfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_ReverseBarrelGauge
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=17;}
+		}
+		
+		BarrelGaugeBuffProvider
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniCRAM_ReverseBarrelGauge
+			BuffArea = [0, -1, 1, 1]
+			//OperationalToggle = DistanceBuffToggle
+			//ChainsFromBuffType = JaniCRAM_ReverseBarrelGauge
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=17;}
+			Criteria
+			{
+				Rot = 0
+			}
+		}
+		
+		DebugToggle
+		{
+			Type = DebugToggle
+		}
+		
+		GaugeDebugComponents
+		{
+			Type = ToggledComponents
+			Toggle = DebugToggle
+			Components : &/JANI_COMMON/SettingsOnes/Part/Components
+			&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+			{	
+				BarrelGaugeSelfBuffProvider2
+				{
+					Type = SelfBuffProvider
+					BuffType = JaniCRAM_ReverseBarrelGauge
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add; MaxValue=17;}
+				}
+				
+				BarrelGaugeBuffProvider2
+				{
+					Type = AreaBuffProvider
+					BuffType = JaniCRAM_ReverseBarrelGauge
+					BuffArea = [0, -1, 1, 1]
+					//OperationalToggle = DistanceBuffToggle
+					//ChainsFromBuffType = JaniCRAM_ReverseBarrelGauge
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add; MinValue=1; MaxValue=17;}
+					Criteria
+					{
+						Rot = 0
+					}
+				}
+			}
+		}
+		
+		GaugeBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Add; MinValue=1;}
+		}
+		InvGaugeBuffValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Divide; MaxValue=1;}
+		}
+		
+		CoolingNerfBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedNerf
+			BuffAmount = { BaseValue=0.15; BuffType=JaniCRAM_BarrelMassFinal; BuffMode=Multiply;}
+		}
+		
+		CoolingNerfValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_CoolingSpeedNerf; BuffMode=Divide; MaxValue=1;}
+		}
+		
+		ReloadSpeedBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_ReloadSpeedFinal
+			BuffAmount = { BaseValue=1.5; BuffType=JaniCRAM_CoolingSpeedBuff; BuffMode=Multiply; MinValue=0.05;}
+			BuffMultiplier = CoolingNerfValue
+		}
+		
+		
+		TrueBarrelMassBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_BarrelMassFinal
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }//Barrelmass will take 2x barrels as extra as minimum
+			BuffMultiplier = GaugeBuffValue
+		}
+		VelocityBuffProviderPre
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_VelocityPre
+			BuffAmount = { BaseValue=0.1; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply;}
+			BuffMultiplier = InvGaugeBuffValue
+		}
+		VelocityBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Velocity
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_VelocityPre; BuffMode=Multiply; MaxValue=1;}
+			//BuffMultiplier = GaugeBuffValue
+		}
+		RangeBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Range
+			BuffAmount = { BaseValue=0.45; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply; }
+			BuffMultiplier = InvGaugeBuffValue
+		}
+		AccuraccyBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Accuraccy
+			BuffAmount = { BaseValue=0.2; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply; }
+			BuffMultiplier = InvGaugeBuffValue
+		}//{ BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Divide; }
+		PenetrationBuffProviderGauge
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Pen
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
+			//BuffMultiplier = InvGaugeBuffValue
+		}
+		HealthBuffProviderGauge
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Health
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
+			//BuffMultiplier = InvGaugeBuffValue
+		}
+		DamageRadiusBuffProviderGauge
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_AOEMain
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
+		}
+		DamageBuffProviderGauge
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_DamageMain
+			BuffAmount = { BaseValue=0; BuffType=JaniCRAM_StatMultiplier; BuffMode=Add; MinValue=0}
+		}
+		
+		PenetrationBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Pen
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+			//BuffMultiplier = InvGaugeBuffValue
+		}		
+		HealthBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Health
+			BuffAmount = { BaseValue=2; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+			//BuffMultiplier = InvGaugeBuffValue
+		}
+		DamageRadiusBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_AOEMain
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+		}
+		DamageBuffProviderPacker
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_DamageMain
+			BuffAmount ={ BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Multiply; }
+		}
+		
+		/*TurretRotationBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_TurretRotation
+			BuffAmount = { BaseValue=0.15; BuffType=JaniCRAM_BarrelMassFinal; BuffMode=Multiply; }
+			//BuffMultiplier = GaugeBuffValue
+		}*/
+
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+		
+		CanFire
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = FireModeToggle, invert = false}
+				{Toggle = PackerToggles, invert = false}
+			]
+			Mode = All
+		}
+
+		FireModeToggle
+		{
+			Type = UIToggle
+			ToggleID = "fire_mode"
+			Default = 1
+			ToggledOnChoices = [0, 1, 2]
+		}
+		AutoTargetToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnModes = [1, 2]
+		}
+		AutoFireToggle
+		{
+			Type = ModeToggle
+			Mode = FireModeToggle
+			OnMode = 2
+		}		
+		CombinedCRAMAmmoStorage
+		{
+			Type = ResourceStorageProxy
+			ResourceType = bullet
+			ComponentID = CRAM_FIRINGPIECE_AMMOSTORAGE
+		}
+		CombinedCRAMAmmoStorageToggle
+		{
+			Type = ToggleProxy
+			ComponentID = CRAM_FIRINGPIECE_AMMOSTORAGE
+		}
+		AmmoFullnessBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = CombinedCRAMAmmoStorage
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, 1]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				Offset = [0, 1]
+				DamageLevels
+				[
+					{
+						File = "newfiringpiece2.png"
+						Size = [1, 4]
+					}
+				]
+			}
+			/*OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 4]
+					}
+				]
+			}*/
+			/*Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "Door_Core1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/corridor/roof.png"
+						NormalsFile = "./data/ships/terran/corridor/roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/corridor/roof_33.png"
+						NormalsFile = "./data/ships/terran/corridor/roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/corridor/roof_66.png"
+						NormalsFile = "./data/ships/terran/corridor/roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 0.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [3, 3]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [0, -0.03125]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6.5, 6.5]
+						Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*1.5, 0, 0]
+					}
+				]
+			}*/
+			Roof = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/Roof
+			OperationalRoofDoodad = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofDoodad
+			OperationalRoofLighting = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofLighting
+		}
+		
+		RoofCoverGrid
+		{
+			Type = SpriteGrid
+			Location = [0.5, 2.5]
+			GridSize = [1, 2]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "./Data/ships/terran/corridor/roof.png"
+						NormalsFile = "./Data/ships/terran/corridor/roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/corridor/roof_33.png"
+						NormalsFile = "./Data/ships/terran/corridor/roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/corridor/roof_66.png"
+						NormalsFile = "./Data/ships/terran/corridor/roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "roofs"
+		}		
+		
+		StaticToggle
+		{
+			Type = StaticToggle
+			ToggleOn = false
+		}
+		
+		StaticComponents
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = False
+			Toggle = StaticToggle
+			Components
+			{	
+				Size1BuffToggle
+				{
+					Type = BuffToggle
+					BuffType = JaniCRAM_ReverseBarrelGauge
+					MinBuffValue = 0
+					MaxBuffValue = 1
+				}
+				Size2BuffToggle : Size1BuffToggle
+				{MinBuffValue = 2; MaxBuffValue = 2}
+				Size3BuffToggle : Size1BuffToggle
+				{MinBuffValue = 3; MaxBuffValue = 3}
+				Size4BuffToggle : Size1BuffToggle
+				{MinBuffValue = 4; MaxBuffValue = 4}
+				Size5BuffToggle : Size1BuffToggle
+				{MinBuffValue = 5; MaxBuffValue = 5}
+				Size6BuffToggle : Size1BuffToggle
+				{MinBuffValue = 6; MaxBuffValue = 6}
+				Size7BuffToggle : Size1BuffToggle
+				{MinBuffValue = 7; MaxBuffValue = 7}
+				Size8BuffToggle : Size1BuffToggle
+				{MinBuffValue = 8; MaxBuffValue = 8}
+				Size9BuffToggle : Size1BuffToggle
+				{MinBuffValue = 9; MaxBuffValue = 9}
+				Size10BuffToggle : Size1BuffToggle
+				{MinBuffValue = 10; MaxBuffValue = 10}
+				Size11BuffToggle : Size1BuffToggle
+				{MinBuffValue = 11; MaxBuffValue = 11}
+				Size12BuffToggle : Size1BuffToggle
+				{MinBuffValue = 12; MaxBuffValue = 12}
+				Size13BuffToggle : Size1BuffToggle
+				{MinBuffValue = 13; MaxBuffValue = 13}
+				Size14BuffToggle : Size1BuffToggle
+				{MinBuffValue = 14; MaxBuffValue = 14}
+				Size15BuffToggle : Size1BuffToggle
+				{MinBuffValue = 15; MaxBuffValue = 15}
+				Size16BuffToggle : Size1BuffToggle
+				{MinBuffValue = 16; MaxBuffValue = 16}
+				Size17BuffToggle : Size1BuffToggle
+				{MinBuffValue = 17; MaxBuffValue = 17}
+			}
+		}
+		
+		Size1BuffToggleProxy
+		{
+			Type = ToggleProxy
+			ComponentID = Size1BuffToggle
+		}
+		Size2BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size2BuffToggle}
+		Size3BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size3BuffToggle}
+		Size4BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size4BuffToggle}
+		Size5BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size5BuffToggle}
+		Size6BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size6BuffToggle}
+		Size7BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size7BuffToggle}
+		Size8BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size8BuffToggle}
+		Size9BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size9BuffToggle}
+		Size10BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size10BuffToggle}
+		Size11BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size11BuffToggle}
+		Size12BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size12BuffToggle}
+		Size13BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size13BuffToggle}
+		Size14BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size14BuffToggle}
+		Size15BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size15BuffToggle}
+		Size16BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size16BuffToggle}
+		Size17BuffToggleProxy : Size1BuffToggleProxy
+		{ComponentID = Size17BuffToggle}
+		
+		Size1Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size1BuffToggleProxy
+			Components
+			{	
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet1
+					ResourcesUsed = 10 * 1
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size2Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size2BuffToggleProxy
+			Components
+			{	
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet2
+					ResourcesUsed = 28
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size3Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size3BuffToggleProxy
+			Components
+			{	
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet3
+					ResourcesUsed = 52
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size4Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size4BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet4
+					ResourcesUsed = 80
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size5Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size5BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet5
+					ResourcesUsed = 112
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size6Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size6BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet6
+					ResourcesUsed = 146
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size7Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size7BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet7
+					ResourcesUsed = 186
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size8Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size8BuffToggleProxy
+			Components
+			{	
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet8
+					ResourcesUsed = 226
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size9Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size9BuffToggleProxy
+			Components
+			{	
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet9
+					ResourcesUsed = 270
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size10Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size10BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet10
+					ResourcesUsed = 316
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size11Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size11BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet11
+					ResourcesUsed = 364
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size12Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size12BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet12
+					ResourcesUsed = 416
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size13Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size13BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet13
+					ResourcesUsed = 468
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size14Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size14BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet14
+					ResourcesUsed = 524
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size15Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size15BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet15
+					ResourcesUsed = 580
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size16Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size16BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet16
+					ResourcesUsed = 640
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		Size17Emitter
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size17BuffToggleProxy
+			Components
+			{
+				BulletEmitter : ~/BaseBulletEmitter
+				{
+					Bullet = &<Bullets.rules>/Bullet17
+					ResourcesUsed = 700//just a bit less
+					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+				}
+				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
+				{
+					MaxResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOnResources = (&../BulletEmitter/ResourcesUsed) * 1 + 0
+					ToggleOffResources = ((&../BulletEmitter/ResourcesUsed) * 1 + 0) - 1
+				}
+			}
+		}
+		
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = EmitterSelfProxyChainable
+			//Rotation = 90d
+			Trigger = CRAMFiredTriggerProxy
+			Location = [2, 0]
+			
+			MediaEffectsFactor = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; }
+
+			MediaEffects
+			[
+				&<./data/ships/terran/cannon_deck/particles/cannon_shoot_deck.rules>
+				&<./data/ships/terran/cannon_deck/particles/cannon_shoot_deck_flash.rules>
+				&<./data/ships/terran/cannon_deck/particles/cannon_shoot_deck_flare.rules>
+				&<./data/ships/terran/cannon_deck/particles/cannon_smoke_deck.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/cannon_deck/shoot.wav"
+					SpeedVariation = .25
+					MaxConcurrent = 20
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .1
+					Duration = 1
+				}
+			]
+		}
+		
+		Offset
+		{
+			Type = Graphics
+			ChainedTo = WeaponSelfProxyChainable
+			Location = [1.5, -0.5]
+			Rotation = 90d
+		}
+
+		Weapon
+		{
+			Type = FixedWeapon
+			Location = [.5, .5] // Relative to upper-left corner of unrotated part.
+			Rotation = -90d // Relative to unrotated part.
+			OperationalToggle = IsOperational
+			AutoFireToggle = AutoFireToggle
+			FireInterval = { BaseValue=10; BuffType=JaniCRAM_ReloadSpeedFinal; BuffMode=Divide; }
+			//FiringArc = 5d
+			//RotateSpeed = { BaseValue=30d; BuffType=JaniCRAM_TurretRotation; BuffMode=Divide; }
+			FireThresholdAngle = 3d
+			AIFirepowerRating = { BaseValue=8000; BuffType=JaniCRAM_StatMultiplier; BuffMode=Multiply; }
+			Emitter = WeaponEmitterProxy
+			FirePermissionToggle = CanFire
+			IgnoreFriendlyShipLowLOSChecks = true
+
+			AutoTarget
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+			}
+
+			CoverageLine
+			{
+				LineSprite
+				{
+					Texture = &/INDICATORS/RadialGradient
+					VertexColor = [255, 255, 255, 191]
+					UVRect = [.5, 0, 0, 1]
+				}
+				LineThickness = 2
+
+				BeginCapSprite : LineSprite
+				{
+					UVRect = [0, 0, .5, 1]
+				}
+				BeginCapSize = [1, 2]
+
+				EndCapSprite : LineSprite
+				{
+					UVRect = [.5, 0, .5, 1]
+				}
+				EndCapSize = [1, 2]
+			}
+		}
+		
+		CRAM_IsFiringTimer //Is on if we have fired a shot
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = FiringTimer}
+				{Toggle = HasNoReloadTime}
+			]
+			Mode = Any
+		}
+		
+		
+		FiringTimer //Is on if we have fired a shot
+		{
+			Type = Timer
+			//Duration = { BaseValue=2; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; MinValue=2}
+			Duration = 2
+			StartTrigger = CRAMFiredTriggerProxy
+			ResetTrigger = CRAMFiredTriggerProxy
+			StartExpired = true
+			InvertToggle = true
+		}
+		
+		HasNoReloadTime//Is on if full reload time, usually
+		{
+			Type = Timer
+			Duration = { BaseValue=10; BuffType=JaniCRAM_ReloadSpeedFinal; BuffMode=Divide; }
+			StartTrigger = CRAMFiredTriggerProxy
+			ResetTrigger = CRAMFiredTriggerProxy
+			StartExpired = true
+			InvertToggle = true
+		}
+		
+		//JaniCRAM_ChainLoaderCount
+		//JaniCRAM_ChainLoaderReady
+		
+		ChainLoaderMaxedToggleProxy
+		{
+			Type = ThresholdToggle
+			ValueFrom = ChainLoaderMultiValue
+			MinAmount = 100%
+		}
+		
+		ChainLoaderCountDivision
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_ChainLoaderCount; BuffMode=Divide; }
+		}
+		
+		ChainLoaderReadyMultiply
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_ChainLoaderReady; BuffMode=Multiply; }
+		}
+		
+		ChainLoaderMultiValue
+		{
+			Type = MultiValue
+			Values
+			[
+				ChainLoaderCountDivision
+				ChainLoaderReadyMultiply
+			]
+			Mode = Multiply
+		}
+		
+		PackerToggles
+		{
+			Type = MultiToggle
+			Toggles
+			[
+				{Toggle = PackersMaxedToggleProxy}
+				{Toggle = HasPackers, invert = true}
+			]
+			Mode = Any
+		}
+		
+		HasPackers
+		{
+			Type = BuffToggle
+			BuffType = JaniCRAM_PackerCount
+			MinBuffValue = 1
+		}
+		
+		PackersMaxedToggleProxy
+		{
+			Type = ThresholdToggle
+			ValueFrom = PackerMultiValue
+			MinAmount = 100%
+		}
+		
+		PackerCountDivision
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_PackerCount; BuffMode=Divide; }
+		}
+		
+		PackerReadyMultiply
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_PackerReady; BuffMode=Multiply; }
+		}
+		
+		PackerMultiValue
+		{
+			Type = MultiValue
+			Values
+			[
+				PackerCountDivision
+				PackerReadyMultiply
+			]
+			Mode = Multiply
+		}
+		
+		/*TargettingEmitter 
+		{
+			Type = BulletEmitter
+			ChainedTo = EmitterSelfProxy
+			FireTrigger // nuh uh
+			GetTargetFrom = Weapon
+			Location = [0.5, 0]
+			Rotation = -90d
+			OperationalToggle = IsOperational
+			Bullet = &<Bullets.rules>/Bullet1
+			//Spread = [-2.5d, 2.5d]{ BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
+			//Spread = [{ BaseValue=-10d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; }, { BaseValue=10d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; }]
+			//ResourceStorage = AmmoStorage
+			//ResourcesUsed = 10
+			//Recoil = 80
+		}*/
+		
+		WeaponSelfProxyChainable
+		{
+			Type = ChainableProxy
+			ComponentID = Weapon
+		}
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = Weapon
+		}
+		
+		WeaponEmitterProxy
+		{
+			Type = EmitterProxy
+			ComponentID = BulletEmitter
+		}
+		
+		EmitterSelfProxyChainable
+		{
+			Type = ChainableProxy
+			ComponentID = BulletEmitter
+		}
+		
+		
+		CRAMFiredTriggerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = BulletEmitter
+		}
+		
+		EmitterSelfProxy
+		{
+			Type = ChainableProxy
+			ComponentID = EmitterProxy
+		}
+		
+		IsNotFinalpiece
+		{
+			Type = ComponentPresenceToggle
+			PartLocation = [0, -1]
+			ComponentID = IsNotFinalpiece
+			PartCriteria
+			{
+				Rot = 0
+			}
+		}
+		
+		ToggledOnEmitterProxy
+		{
+			Type = ToggledComponents
+			Toggle = IsNotFinalpiece
+			Components
+			{
+				EmitterProxy
+				{
+					Type = ChainableProxy
+					PartLocation = [0, -1]
+					ComponentID = EmitterProxy
+					PartCriteria
+					{
+						Rot = 0
+					}
+				}
+			}
+		}
+		
+		ToggledOffEmitterProxy
+		{
+			Type = ToggledComponents
+			Toggle = IsNotFinalpiece
+			Invert = true
+			Components
+			{
+				EmitterProxy
+				{
+					Type = Graphics
+					ChainedTo = Offset
+				}
+			}
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [.5, .5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+			Location = [.5, .5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of ammo.
+				/*{
+					Toggle = AmmoPrereq
+					Delay = &~/Part/Components/Weapon/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoAmmo
+						Size = [1, 1]
+					}
+				}*/
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [1, 1]
+			//Offset = [0, -1]
+		}
+	}
+}
+
+BaseBulletEmitter 
+{
+	Type = BulletEmitter
+	ChainedTo = EmitterSelfProxy
+	FireTrigger = Weapon
+	GetTargetFrom = Weapon
+	Location = [0.5, 0]
+	Rotation = -90d
+	OperationalToggle = IsOperational
+	Bullet = &<Bullets.rules>/Bullet1
+	//Spread = [-2.5d, 2.5d]{ BaseValue=2; BuffType=JaniCRAM_BarrelMass; BuffMode=Add; }
+	Spread = [{ BaseValue=-2.5d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; MinValue=-45d; }, { BaseValue=2.5d; BuffType=JaniCRAM_Accuraccy; BuffMode=Divide; MaxValue=45d; }]
+	ResourceStorage = CRAM_FIRINGPIECE_AMMOSTORAGE
+	ResourcesUsed = 10
+	Recoil = 80
+}
+
+BaseAmmoStorage
+{
+	Type = ResourceStorage
+	ResourceType = bullet
+	MaxResources = 100
+	//DelayBeforeReadyToUse = .25
+	//AnticipateMoreResourcesFrom = ["AmmoStorage"]
+	ToggleOnResources = 4
+	ToggleOffResources = 3
+	//UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
+	ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+	DropResourcesWhenDestroyed = true
+	DropResourcesWhenRemoved = true
+}

@@ -1,7 +1,7 @@
 Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 {
 	NameKey = "Codex/NoText"
-	DescriptionKey = "Codex/NoText"
+	//DescriptionKey = "Codex/NoText"
 	ID = T.janiTNT.1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	SelectionTypeID = "T"
 	EditorGroup = "Defenses"
@@ -44,13 +44,13 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 				
 			]
 		}
-		
+/* 		
 		TDEMAND // Needed to be referenced by proxies
 		{
 			Type = StaticToggle
 			ToggleOn = true
 		}
-		
+		 */
 		
 		/*{
 			PartCriteria // for handling edges and stuff i think
@@ -63,7 +63,7 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 			ComponentID = TDEMAND
 		}*/
 		
-		TopProxy
+		/* TopProxy
 		{
 			Type = ToggleProxy
 			PartLocation = [0, -1]
@@ -107,7 +107,7 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 		TopLeftProxy : TopProxy
 		{
 			PartLocation = [-1, -1]
-		}
+		} */
 		/*TopTopRightIsFlat
 		{
 			Type = MultiToggle
@@ -131,7 +131,7 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 			Mode = All
 		}*/
 		
-		TopWallsComponents
+		/* TopWallsComponents
 		{
 			Type = ToggledComponents
 			Toggle = TopProxy
@@ -216,9 +216,9 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 					]
 				}
 			}
-		}
+		} */
 		
-		EngineHum
+		PattyHum
 		{
 			Type = ContinuousEffects
 			Location = [.5, .5]
@@ -279,4 +279,5 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 		HP = []
 		PenResist = []
 	}
+	StatsNotesKey = "Codex/NoTextX"
 }

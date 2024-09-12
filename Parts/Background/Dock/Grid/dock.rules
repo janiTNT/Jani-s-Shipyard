@@ -109,7 +109,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				]
 			]
 			RandomUVRotation = true
-			Layer = "bgstructure"
+			Layer = "structure"
 		}
 		
 		DockGraphics
@@ -119,7 +119,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			GetColorFrom = ColorPicker3
 			Floor
 			{
-				Layer = "structure"
+				Layer = "weapons"
 				DamageLevels
 				[
 					{
@@ -164,7 +164,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					GetColorFrom = ColorPicker2
 					OperationalRoofDoodad
 					{
-						Layer = "floors"
+						Layer = "doodads_high"
 						Offset = [0, 0]
 						DamageLevels
 						[
@@ -196,6 +196,22 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 			Location = [1.5, 1.5]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
 		}
 
 		Blueprints

@@ -26,7 +26,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 20000
+					TotalDamage = 25000
 					Radius = 5
 					ImpulsePerNDamage = 10
 					NDamage = 500

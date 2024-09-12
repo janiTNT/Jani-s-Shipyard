@@ -1,0 +1,143 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ProfanedArmor"
+	IconNameKey = "Parts/ProfanedArmorIcon"
+	ID = janiTNT.profaned_armor_2x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "BossParts"
+	DescriptionKey = "Parts/ProfanedArmorDesc"
+	Resources
+	[
+		[profanedcore, 4]
+		[steel, 8]
+	]
+	AIValueFactor = 0
+	EditorReplacementPartID = janiTNT.profaned_armor
+	Size = [2, 1]
+	SelectionTypeID = "armor"
+	MaxHealth = 4000 * 6
+	ConstructionDuration = 8 / 18
+	ExplosiveDamageAbsorption = 100%
+	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }, heat = 95%, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; };}//solar resistant, higher explosive resistance
+	Flammable = false
+	InitialPenetrationResistance = { BaseValue=14; MinValue = 14, MaxValue = 28; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }
+	TypeCategories = [armor]
+	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
+	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
+	IsRotateable = true
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	Density = 15
+	IsWalled = true
+	IsSelfDestructible = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	ReceivableBuffs : ^/0/ReceivableBuffs [Jani_BossProfanedHealthBonus]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "armor2.png"
+			SampleMode = Linear
+		}
+		Size = [64, 32]
+	}
+	Components : ^/0/Components
+	{
+		DamageTrigger
+		{
+			Type = DamageTrigger
+		}
+		
+		RechargeResistanceTimer
+		{
+			Trigger = DamageTrigger
+			Type = DelayTrigger
+			Delay = 0.5
+		}
+		
+		IsntBeingShot
+		{
+			Type = TriggeredToggle
+			OffTrigger = RechargeResistanceTimer
+			OnTrigger = DamageTrigger
+			StartsOn = false
+		}
+		
+		DamageResistanceTween
+		{
+			Type = ValueTween
+			IsOnToggle = IsntBeingShot
+			OnTweenDuration = 1.5
+			OffTweenDuration = 5
+			/*OffValue = 0
+			OnValue = 1*/
+			StartingValue = 0
+		}
+		
+		HealthBuffFinalProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = Jani_BossProfanedHealthBonus
+			BuffAmount = -90%
+			BuffMultiplier = DamageResistanceTween
+		}
+		
+		DamageResistanceProgressBar
+		{
+			Type = ProgressBar
+			//OperationalToggle = IsntBeingShot
+			ShowProgressFor = DamageResistanceTween
+			Invert = true
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "armor2.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "armor2.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Roof = &<../../../Decorative/StationArmor/long.rules>/Part/Components/Graphics/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [1, .5]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/terran/armor_2x1/blueprints.png"
+			Size = [2, 1]
+		}
+	}
+
+	Stats
+	{
+		AOEResist = (&~/Part/DamageResistances/explosive/BaseValue) * 100
+	}
+}

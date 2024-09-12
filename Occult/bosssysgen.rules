@@ -119,19 +119,19 @@ SpawnerBase
 				{
 					Type = Money
 					MoneyPerHighTier = &<./data/modes/career/tier_tables.rules>/StandardMoneyPerTier
-					MoneyPerTierMultiplier = 12
+					MoneyPerTierMultiplier = 4
 					RoundToMultiple = 1000
 				}
 				{
 					Type = Fame
 					FamePerHighTier = &<./data/modes/career/tier_tables.rules>/StandardFamePerTier
-					FamePerTierMultiplier = 4
+					FamePerTierMultiplier = 3
 					MaxFamePerHighTier = &<./data/modes/career/tier_tables.rules>/StandardMaxFamePerTier
 				}
 				{
 					Type = Reputation
 					ReputationPerHighTier = &<./data/modes/career/tier_tables.rules>/StandardReputationPerTier
-					ReputationPerTierMultiplier = 4
+					ReputationPerTierMultiplier = 3
 				}
 			]
 		}

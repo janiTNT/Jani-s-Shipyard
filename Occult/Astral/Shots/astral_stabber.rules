@@ -1,0 +1,239 @@
+ID = "janiTNT.astralhomingstabbers_0"
+Range = 1500
+IdealRange = 1000
+Speed = 400
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 1
+		Density = 1
+		LinearDamping = 3
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+	
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 1024d
+		Delay = 3
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 2
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+	
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 3.2
+		//HasTarget = true
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<stabbers/astral_stabber_1.rules>
+					Count = 1
+					Spread = [-0d, 0d]
+					Distance = 0
+					InheritVelocity = false
+				}
+			]
+			
+			MediaEffects
+			[
+				&<../../particles/bigflash.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					Volume = .8
+					SpeedVariation = .25
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 16000*2
+		TargetCategory = "laser"
+		OnDeath
+		{			
+			MediaEffectsScale = 0.5
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+	
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 200000* 4
+					Radius = 10 * 4^0.5
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 10
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = true
+						StructuralHealth = false
+						Friendlies = true
+					}
+				}
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 60000 * 4
+					Radius = 8 * 4^0.5 
+					ExpandDuration = .8
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					ImpulsePerNDamage = 5
+					NDamage = 1000
+					Filter
+					{
+						OperationalHealth = false
+						StructuralHealth = true
+						Friendlies = true
+					}
+				}
+			]
+			
+			MediaEffectsScale = 2
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+	
+	Sprite
+	{
+		Type = Sprite
+		Offset = [-1, 0]
+		ReduceScaleWith = Hit
+		RenderBucket = BulletLower3
+		ReduceScaleExponent = 0.5
+		Sprite
+		{
+			Texture
+			{
+				File = "AstralLaser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [10*0.95, 9*0.95]
+			//TargetBlendMode = Add
+			VertexColor = [200, 200, 255]
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0.5
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [45, 45]
+			VertexColor = [0, 0, 128]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.8
+	}
+}

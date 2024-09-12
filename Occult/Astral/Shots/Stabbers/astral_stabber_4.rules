@@ -1,0 +1,16 @@
+ID = "janiTNT.astralhomingstabbers_4"
+Range = &<astral_stabber_1.rules>/Range
+IdealRange = &<astral_stabber_1.rules>/IdealRange
+Speed = &<astral_stabber_1.rules>/Speed
+
+Components : &<../astral_stabber.rules>/Components
+{
+	DeathByLifetime : ^/0/DeathByLifetime
+	{
+		OnDeath : ^/0/OnDeath
+		{
+			HitEffects
+			[]
+		}
+	}
+}

@@ -211,7 +211,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Duration = 0
 			FireDelay = .5
 			Burst = 1
-			Spread = [-1.75d, 1.75d]
+			Spread = [-0.75d, 0.75d]
 			ResourceUsage
 			[
 				{

@@ -14,7 +14,7 @@ Part : <../base_part_occult.rules>/Part
 	SelectionPriority = 1
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
-	EditorReplacementPartID = "cosmoteer.megarock_1x1"
+	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
 	MaxHealth = 32000 * 100
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1

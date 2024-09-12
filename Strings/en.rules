@@ -132,8 +132,9 @@ Parts
 	
 	BFGSuperWeaponFull = "BFG 10000 Superweapon"
 	BFGSuperWeaponFullIcon = "BFG 10K"
-	BFGSuperWeaponFullDesc = "Fuses together a extreme amount of Enriched uranium into a huge, energetic blast that will obliterate targets.\nThe Weapon is Placed on top of the ship and has 360 degrees of rotation.\n\n Cannot be placed in 120 blocks of another BFG 10k, but shots from the BFG can travel above all Roof weapons.\n\nNow requires Cosmilite, Therefore requiring you to defeat the respective boss.\n\n<bad>KNOWN ISSUE:</bad> the recoil animation has been disabled as railgun projectile code is no longer chaining to turrets and rotating correctly."\
+	BFGSuperWeaponFullDesc = "Fuses together a extreme amount of Enriched uranium into a huge, energetic blast that will obliterate targets.\nThe Weapon is Placed on top of the ship and has 360 degrees of rotation.\n\n Cannot be placed in 120 blocks of another BFG 10k, but shots from the BFG can travel above all Roof weapons.\n\n<bad>KNOWN ISSUE:</bad> the recoil animation has been disabled as railgun projectile code is no longer chaining to turrets and rotating correctly."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>\n Original 3D Model by GameHorizons."
+	//\n\nNow requires Cosmilite, Therefore requiring you to defeat the respective boss.
 	
 	DecouplerBoomer = "Decoupler"
 	DecouplerBoomerIcon = "Decoupler"
@@ -250,7 +251,7 @@ Parts
 	NukeSiloIcon = "Nuke Silo"
 	NukeSiloDesc = "Similar to a Missile Silo, this larger variant can deploy nuclear warheads directly on the deck of your ship! has some drawbacks such as doubled reload time.\n\nNuke boosting at a target can be a bit loud, the nuke may stun crew whenever it sucessfully fires.\n\nJani engineers deny any involvment with reverse engineering, illegal blueprints, Blatant Copyright and Patent infrigment including lack of liscences from any deck supported missile launcher systems."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"\
-	"\n<gray>Original idea, Roof sprites, and small amounts of code by: Ultranova</color></s14>"
+	"\n<gray>Original idea, Roof sprites, and small amounts of code by: Ultranova</gray>"
 	
 	SheetmetalSteel = "Steel Sheetmetal"
 	SheetmetalSteelIcon = "St. Sheetmetal"
@@ -608,11 +609,11 @@ Parts
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidThrustCR = "Ancient Propulsor"
-	MegaroidThrustCRDesc = "Centuries-old Aged piece of propulsion machinery. How it manages to fly will be a mystery for you, and you dont have much hope reverse engineering that.\n<gray>contains a hidden crewmember for game logic purposes</color></s14>"\
+	MegaroidThrustCRDesc = "Centuries-old Aged piece of propulsion machinery. How it manages to fly will be a mystery for you, and you dont have much hope reverse engineering that.\n<gray>contains a hidden crewmember for game logic purposes</gray>"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidMonoThrustCR = "Ancient Thruster"
-	MegaroidMonoThrustCRDesc = "A version of the Propulsor with higher speed but acts more like a generic thruster. Can only fly in one direction.\n<gray>contains no hidden crew</color></s14>"\
+	MegaroidMonoThrustCRDesc = "A version of the Propulsor with higher speed but acts more like a generic thruster. Can only fly in one direction.\n<gray>contains no hidden crew</gray>"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	MegaroidWeakpoint = "Boss Weakpoint"
@@ -940,7 +941,7 @@ Parts
 	
 	Logic_Sensor = "Enemy Roof Logic Sensor"
 	Logic_SensorIcon = "Basic Enemy Sensor"
-	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</color></s14>"\
+	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</gray>"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard - Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterSmall = "Logic Small Thruster"
@@ -1551,13 +1552,13 @@ StatCategories
 CombatDifficulty
 {
 	ModdedDifficulty1 = "Light Modded Captain"
-	ModdedDifficulty1Tip = "● Take normal damage from enemies.\n● Deal 90% damage to enemies.\nUseful To balance your playthrough with modded weapons."
+	ModdedDifficulty1Tip = "● Take normal damage from enemies.\n● Deal 90% damage to enemies.\nUseful to balance your playthrough with modded weapons."
 	
 	ModdedDifficulty2 = "Normal Modded Captain"
-	ModdedDifficulty2Tip = "● Take normal damage from enemies.\n● Deal 75% damage to enemies.\nUseful To balance your playthrough with modded weapons."
+	ModdedDifficulty2Tip = "● Take normal damage from enemies.\n● Deal 75% damage to enemies.\nUseful to balance your playthrough with modded weapons."
 	
 	ModdedDifficulty3 = "Tough Modded Captain"
-	ModdedDifficulty3Tip = "● Take 110% damage from enemies.\n● Deal 60% damage to enemies.\nUseful To balance your playthrough with modded weapons."
+	ModdedDifficulty3Tip = "● Take 110% damage from enemies.\n● Deal 60% damage to enemies.\nUseful to balance your playthrough with modded weapons."
 	
 	TrollPhy = "Troll Combat"
 	TrollPhyTip = "● Take 69% damage from enemies.\n● Deal 69% damage to enemies.\nFire Chance, Etc is also 69%.\nCould be interesting or something i dunno."
@@ -1592,7 +1593,8 @@ Codex
 {
 	JaniTutorials = "Tutorials (Jani's Shipyard)"
 	NoText = "     "
-}
+	NoTextX = "<s999>H\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n</s999>"
+}//https://media.discordapp.net/attachments/1059119880974123070/1281789484408504383/image.png?ex=66dcfefb&is=66dbad7b&hm=76cba8f755144c635b85abf28b7cb68a286e9739717b9d2e896270b0a798fc0c&=&format=webp&quality=lossless
 Tutorials
 {
 	Bossfights
@@ -1642,7 +1644,7 @@ BuildBox// Modular Missiles guided towards the right track. thanks
 //}
 Nebulas
 {
-	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have slightly increased speed and increased sensor range, and disables hyperdrives."\
+	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have increased speed and increased sensor range."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
-	DarkEnergyHudFmt = "<s14>{0:0.}%</s12>\n<s12><gray>energy</gray></s12>"
+	DarkEnergyHudFmt = "<s12>{0:0.}%</s12>\n<s12><gray>energy</gray></s12>"
 }

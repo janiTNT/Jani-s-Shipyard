@@ -119,6 +119,8 @@ JaniWeaponsDisabledBossSecondary = &JaniOrbDetectionCosmiliteBoss
 JaniOrbDetectionBrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
 JaniPhase2BrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
 
+JaniOrbDetectionAstralBoss = &JaniOrbDetectionCosmiliteBoss
+
 JaniBossEnraged
 {
 	CombineMode = Add

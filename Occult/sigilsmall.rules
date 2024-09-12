@@ -15,7 +15,7 @@ Part : <base_part_occult.rules>/Part
 	AIValueFactor = 8
 	SelectionTypeID = "sigils"
 	ContiguityOriginPriority = 1
-	EditorReplacementPartID = "cosmoteer.megarock_1x1"
+	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
 	MaxHealth = 32000 * 2
 	Size = [2, 1]
 	TypeCategories = [armor, command]

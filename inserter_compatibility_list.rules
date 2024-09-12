@@ -229,4 +229,74 @@ Actions : <Tutorials/Inserters/T/T.rules>/A //THIS CODE IS FROM AEPHIEX, I HAVE 
 			}
 		}
 	}*/
+	
+	// ####################################################################################################
+	// # SWACD
+	// ####################################################################################################
+	// Compact misisle launcher
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3119349707/ships/terran/weapons/missile_launchers/missile_launcher_small/mini_cluster/missile_launcher_mini_cluster.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ CombinedMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3119349707/ships/terran/weapons/missile_launchers/missile_launcher_small/intruder/missile_launcher_intruder.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_nuke
+				ResourceStorages = [ CombinedMissileStorage_EMP ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3119349707/ships/terran/weapons/missile_launchers/missile_launcher_small/hex/missile_launcher_hex.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_nuke
+				ResourceStorages = [ CombinedMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3119349707/ships/terran/weapons/missile_launchers/missile_launcher_small/concussion/missile_launcher_concussion.rules>/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ CombinedMissileStorage ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
 ]

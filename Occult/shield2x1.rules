@@ -13,7 +13,7 @@ Part : <base_part_occult.rules>/Part
 	Density = 3
 	SelectionPriority = 1
 	SelectionTypeID = "defenses"
-	EditorReplacementPartID = "cosmoteer.megarock_1x1"
+	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
 	MaxHealth = 32000 * 2
 	Size = [2, 1]
 	TypeCategories = [armor, shield, boss_shield, boss_resistant]

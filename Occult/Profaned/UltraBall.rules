@@ -523,11 +523,11 @@ Part : <../base_part_occult.rules>/Part
 			OnModes = [1, 2] // skip zero xd
 		}
 		
-		HolyRaysMode
+		NoHolyRaysMode
 		{
 			Type = ModeToggle
 			Mode = AttacksCycle
-			OnModes = [0]
+			OnModes = [0, 1, 2]
 		}
 		
 		FlamethrowerMode
@@ -591,6 +591,67 @@ Part : <../base_part_occult.rules>/Part
 			ThresholdDistance = 1000
 			InvertToggle = true
 		}
+		
+		EmitterEffect
+		{
+			Type = ContinuousEffects
+			//Rotation = -90d
+			//Location = [(1000/16) + 12, (1000/16) + 4]
+			ChainedTo = Turret
+			Location = [250, 0]
+			OperationalToggle = EnemyPresenceToggle
+			InvertOperationalToggle = true
+			ParentToShip = true
+			MediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = 250
+					Arc = 360d
+					FadeInTime = .25
+					FadeOutTime = .25
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						UVRect = [0, 1, 1, -1]
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_mask.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = -1
+						_waveAlpha = 1
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [255, 0, 91, 127]
+						_lowPowerColor1 = [54, 0, 91, 127]
+						_fullPowerColor2 = [255, 0, 20, 127]
+						_lowPowerColor2 = [255, 0, 0, 127]
+						_lowPowerThicknessExponent = .6
+						TargetBlendMode = Add
+						_xScale = 0.5
+						Size = [0, 1.0]
+					}
+					ArcSpriteSegments = 128
+					Bucket = Upper1
+				}
+			]
+		}
 
 		EnemyPresenceToggle
 		{
@@ -598,58 +659,73 @@ Part : <../base_part_occult.rules>/Part
 			Toggles = [DistanceToggleNear, DistanceToggleFar]
 			Mode = All
 		}
-		
-		HolyRayLeftOscillator
-		{
-			Type = Oscillator
-			Rotation = -180d
-			//ChainedTo = Turret
-			OperationalToggle = HolyBeamEmitterLeft
-			Location = [12, 4]
-			Angle = -360d
-			Interval = 40.0 * 6 * 2
-			//ResetWhenOperational = false
-			ResetWhenOperational = true
-		}
-		HolyRayRightOscillator : HolyRayLeftOscillator
-		{
-			OperationalToggle = HolyBeamEmitterRight
-			Location = [12, 4]
-			Angle = -(&../HolyRayLeftOscillator/Angle)
-		}
 		InitiateHolyRay
 		{
 			Type = ToggleTrigger
 			Toggle = FlamethrowerMode
 			TriggerWhenOff = false //true
-			TriggerWhenOn = false
+			TriggerWhenOn = true
 		}
-		HolyBeamEmitterLeft : <shots/HOLYBEAM.rules>
+		RotationToggle
 		{
-			ChainedTo = HolyRayLeftOscillator
+			Type = TriggeredToggle
+			OnTrigger = HolybeamTrigger
+			OffTrigger = InitiateHolyRay
+			OperationalToggle = FlamethrowerMode
+			StartsOn = false
+		}
+		StaticToggle
+		{
+			Type = StaticToggle
+			ToggleOn = true
+		}
+		HolyRayTurretMatch
+		{
+			Type = TransformMatch
+			Location = [12, 4]
+			OperationalToggle = StaticToggle
+			InvertOperationalToggle = false
+			Rotation = 0d // Relative to unrotated part.
+			MatchTransformOf = Turret
+			MatchRotationSpeed = 2d
+			ResetTransformWhen = NoHolyRaysMode
+			ResetRotationSpeed = 120d
+			ToggleOnRotationThreshold = 2d
+		}
+		HolyBeamEmitter : <shots/HOLYBEAM.rules>
+		{
+			ChainedTo = HolyRayTurretMatch
 			FireTrigger = HolybeamTrigger
 			Type = BeamEmitter
 			GetTargetFrom = Turret
-			//Location = [1.75 + 20, 0]
+			Location = [0, 0]
 			//OperationalToggle = SunbeamMode
-			Duration = 14 * 2
+			Duration = 14 * 2.4
 			EffectsScaleFactor = HolybeamScale
 			SourceShipLowCollisions = false
 		}
-		HolyBeamEmitterRight : HolyBeamEmitterLeft
+		WarningBeamEmitter : <../Astral/shots/Warningbeam.rules>
 		{
-			ChainedTo = HolyRayRightOscillator
+			ChainedTo = HolyRayTurretMatch
+			FireTrigger = InitiateHolyRay
+			Type = BeamEmitter
+			GetTargetFrom = Turret
+			Location = [0, 0]
+			//OperationalToggle = SunbeamMode
+			Duration = 8
+			EffectsScaleFactor = HolybeamScale
+			SourceShipLowCollisions = false
 		}
 		HolybeamTrigger
 		{
 			Type = DelayTrigger
 			Trigger = InitiateHolyRay
-			Delay = 6
-		}	
+			Delay = 8.5
+		}
 		HolybeamScale
 		{
 			Type = StaticValue
-			Value = 10
+			Value = 40
 		}
 			
 		ProviBallsEmitterFanArcController

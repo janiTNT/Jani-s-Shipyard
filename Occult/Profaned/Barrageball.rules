@@ -289,7 +289,7 @@ Part : <../base_part_occult.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 8
+			FireInterval = 16
 			FiringArc = 360d
 			RotateSpeed = 60d
 			FireThresholdAngle = 1d
@@ -330,8 +330,8 @@ Part : <../base_part_occult.rules>/Part
 			ChainedTo = Turret
 			OperationalToggle = IsOperational
 			Location = [0, 0]
-			Angle = -25d
-			Interval = 4.7
+			Angle = -40d
+			Interval = 4.7 * 2
 			ResetWhenOperational = false
 		}
 
@@ -352,7 +352,7 @@ Part : <../base_part_occult.rules>/Part
 			OperationalToggle = IsOperational
 			//FireDelay = 6
 			Burst = 7
-			BurstDelay = 0.5
+			BurstDelay = 0.5 *2
 			Bullet = &<bigbarrageshotbolt.rules>
 			Spread = [-0.1d, 0.1d]
 			//ResourceStorage = BatteryStorage

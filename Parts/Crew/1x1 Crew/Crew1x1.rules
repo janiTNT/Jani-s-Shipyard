@@ -58,6 +58,71 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
+		
+		RoofToggle
+		{
+			Type = UIToggle
+			ToggleID = "thruster_roof_detail"
+			Default = 1
+			AlwaysAllowInBuildMode = false
+		}
+
+		LowDetail
+		{
+			Type = ModeToggle
+			Mode = RoofToggle
+			OnMode = 0
+		}
+		
+		LowComponents
+		{
+			Type = ToggledComponents
+			Toggle = LowDetail
+			IncludeInBlueprints = true
+			Components
+			{
+				LowRoofGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+				}
+			}
+		}
+		
+		HighDetail
+		{
+			Type = ModeToggle
+			Mode = RoofToggle
+			OnMode = 1
+		}
+		
+		HighComponents
+		{
+			Type = ToggledComponents
+			Toggle = HighDetail
+			IncludeInBlueprints = true
+			Components
+			{
+				HighRoof
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					Roof
+					{
+						Layer = "roofs"
+						DamageLevels
+						[
+							{
+								File = "roof.png"
+								NormalsFile = "roof_normals.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
 				
 		Graphics
 		{
@@ -81,18 +146,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "walls.png"
-						Size = [1, 1]
-					}
-				]
-			}
-			Roof
-			{
-				Layer = "roofs"
-				DamageLevels
-				[
-					{
-						File = "roof.png"
-						NormalsFile = "roof_normals.png"
 						Size = [1, 1]
 					}
 				]

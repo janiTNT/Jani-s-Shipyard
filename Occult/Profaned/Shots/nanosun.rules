@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 45d
+		TurnVelocity = 8d
 		Delay = 0
 		//AvoidanceRaycastDistance = 250
 		VelocityCompensation = 80%
@@ -41,7 +41,8 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 70 * 0.25
+		Acceleration = [20 * 0.25, 120 * 0.25]
+		AccelerationOverTime = [0, 4]
 	}
 
 	DeathByLifetime

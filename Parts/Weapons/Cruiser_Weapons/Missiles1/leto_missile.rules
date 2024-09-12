@@ -16,7 +16,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 30d
+		TurnVelocity = 40d
 		ModifiesLinearVelocity = true
 		Delay = 0
 	}
@@ -48,7 +48,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 9000
+					TotalDamage = 5000
 					Radius = 4
 					ImpulsePerNDamage = 10
 					NDamage = 500

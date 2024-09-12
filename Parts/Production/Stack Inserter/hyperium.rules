@@ -41,7 +41,7 @@ Components
 	CollectPermission
 	{
 		Type = MultiToggle
-		Toggles = [IsOperational, FromProxy, HandRest]
+		Toggles = [IsOperational, FromProxy, HandRest, {Toggle = HandStorage, invert = true}]
 		Mode = All
 	}
 	

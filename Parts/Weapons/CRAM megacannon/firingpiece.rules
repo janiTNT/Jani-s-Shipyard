@@ -81,6 +81,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ToggledComponents
 			Toggle = DebugToggle
+			IncludeInBlueprints = false
 			Components : &/JANI_COMMON/SettingsOnes/Part/Components
 			&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
 			{	
@@ -482,6 +483,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size1Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size1BuffToggle
 			Components
 			{	
@@ -503,6 +505,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size2Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size2BuffToggle
 			Components
 			{	
@@ -524,6 +527,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size3Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size3BuffToggle
 			Components
 			{	
@@ -545,6 +549,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size4Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size4BuffToggle
 			Components
 			{
@@ -566,6 +571,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size5Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size5BuffToggle
 			Components
 			{
@@ -587,6 +593,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size6Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size6BuffToggle
 			Components
 			{
@@ -608,6 +615,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size7Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size7BuffToggle
 			Components
 			{
@@ -629,6 +637,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size8Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size8BuffToggle
 			Components
 			{	
@@ -650,6 +659,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size9Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size9BuffToggle
 			Components
 			{	
@@ -671,6 +681,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size10Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size10BuffToggle
 			Components
 			{
@@ -692,6 +703,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size11Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size11BuffToggle
 			Components
 			{
@@ -713,6 +725,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size12Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size12BuffToggle
 			Components
 			{
@@ -734,6 +747,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size13Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size13BuffToggle
 			Components
 			{
@@ -755,6 +769,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size14Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size14BuffToggle
 			Components
 			{
@@ -776,6 +791,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size15Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size15BuffToggle
 			Components
 			{
@@ -797,6 +813,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size16Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size16BuffToggle
 			Components
 			{
@@ -818,6 +835,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size17Emitter
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = Size17BuffToggle
 			Components
 			{
@@ -1105,6 +1123,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ToggledOnEmitterProxy
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = IsNotFinalpiece
 			Components
 			{
@@ -1124,6 +1143,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ToggledOffEmitterProxy
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = false
 			Toggle = IsNotFinalpiece
 			Invert = true
 			Components
@@ -1212,7 +1232,7 @@ BaseBulletEmitter
 BaseAmmoStorage
 {
 	Type = ResourceStorage
-	ResourceType = bullet
+	ResourceType = fake
 	MaxResources = 100
 	//DelayBeforeReadyToUse = .25
 	//AnticipateMoreResourcesFrom = ["AmmoStorage"]

@@ -18,7 +18,7 @@ Part : <base_part_occult.rules>/Part
 	ContinuingPenetrationResistance = 2 * 7
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 0%
-	DamageResistances = {explosive = 100%, default = 100%}
+	DamageResistances = {explosive = 100%, default = 99%}
 	GenerateRectCollider = false
 	IsExternal = true
 	ExternalWalls = [None]
@@ -114,12 +114,12 @@ Part : <base_part_occult.rules>/Part
 			[
 				{
 					Type = Damage
-					Damage = 999999
+					Damage = 99999999
 					Filter
 					{
 						Friendlies = true
 						IgnoreInvulnerability = false
-						DamageType = removal
+						DamageType = default
 					}
 				}
 			]

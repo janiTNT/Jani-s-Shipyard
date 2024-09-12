@@ -1,0 +1,25 @@
+ID = "janiTNT.astralhomingstabbers_1"
+Range = 1500
+IdealRange = 1000
+Speed = 750
+
+Components : &<../astral_stabber.rules>/Components
+{
+	DeathByLifetime : ^/0/DeathByLifetime
+	{
+		OnDeath : ^/0/OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<astral_stabber_2.rules>
+					Count = 1
+					Spread = [-2d, 2d]
+					Distance = 0
+					InheritVelocity = false
+				}
+			]
+		}
+	}
+}

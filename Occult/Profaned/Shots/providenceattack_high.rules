@@ -1,8 +1,8 @@
-ID = "janiTNT.providencebullethell_healing"
+ID = "janiTNT.providencebullethell_highdamage"
 //OtherIDs = ["missile", "cosmoteer.missile"]
 Range = 10000
 IdealRange = 250
-Speed = 100
+Speed = 95
 
 Components
 {
@@ -35,7 +35,7 @@ Components
 			}
 			Size = [3, 3]
 			TargetBlendMode = Add
-			VertexColor = [255*0.8, 205*1.5, 128*0.8]
+			VertexColor = [255*4, 64*1.5, 64*0.8]
 		}
 		LerpScaleFrom = [0.2, 0.2]
 		LerpTime = 3
@@ -53,7 +53,7 @@ Components
 			}
 			Size = [2.75, 2.75]
 			TargetBlendMode = Add
-			VertexColor = [255*0.8, 205*1.5, 128*0.8]
+			VertexColor = [255*4, 64*1.5, 64*0.8]
 		}
 	}
 
@@ -72,7 +72,7 @@ Components
 				SampleMode = Linear
 			}
 			Size = [12, 12]
-			VertexColor = [255*2, 205*4, 128*2]
+			VertexColor = [255*4, 64*2, 64*2]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"
 			_litReflectiveStrength = 1
@@ -93,12 +93,6 @@ Components
 		OnDeath = &../Hit/HitFriendly
 	}*/
 	
-	DamagePool
-	{
-		Type = DamagePool
-		Damage = -16000
-	}
-
 	Hit
 	{
 		Type = PenetratingHit
@@ -120,9 +114,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = -128000
-					Radius = 20
-					Slices = 1
+					TotalDamage = 100000
+					Radius = 6
 					Filter
 					{
 						Friendlies = true

@@ -29,7 +29,7 @@ Components
 	DeployDeath
 	{
 		Type = DeathByLifetime
-		Lifetime = 1.5
+		Lifetime = 1.75
 		FactorEffectsWith = Targetable
 
 		OnDeath
@@ -45,7 +45,7 @@ Components
 				}
 				{
 					Type = AreaCrewStun
-					Duration = 0.4
+					Duration = 0.5
 					Falloff = 1
 					Radius = 9
 					Filter { Friendlies=true; IgnoreInvulnerability=true; }

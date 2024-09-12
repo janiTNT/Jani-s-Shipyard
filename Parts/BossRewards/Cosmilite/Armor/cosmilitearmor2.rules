@@ -11,6 +11,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[steel, 8]
 	]
 	AIValueFactor = 0
+	EditorReplacementPartID = janiTNT.cosmilite_armor
 	Size = [2, 1]
 	SelectionTypeID = "armor"
 	MaxHealth = 4000 * 12
@@ -79,7 +80,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
-			Roof = &<./data/ships/terran/armor_2x1/armor_2x1.rules>/Part/Components/Graphics/Roof
+			Roof = &<../../../Decorative/StationArmor/long.rules>/Part/Components/Graphics/Roof
 		}
 
 		DestroyedEffects

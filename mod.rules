@@ -1,4 +1,9 @@
-﻿ID = "janiTNT.TechMod"
+﻿DeveloperMode
+{
+	CareerEnemyParts = true
+}
+
+ID = "janiTNT.TechMod"
 //Name = "Jani's Shipyard"
 Name = "[Beta]Jani's Shipyard"
 Author = "JaniTNT"
@@ -196,7 +201,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part
 			&<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part
-			//&<Parts/Weapons/Drone_launcher_Medium/drone_launcher_med.rules>/Part
+			&<Parts/Weapons/Drone_launcher_Medium/drone_launcher_med.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/firingpiece.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/heavybarrel.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
@@ -263,9 +268,12 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
+			&<Parts/BossRewards/Profaned/armor/profanedarmor2.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor2.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmorwedge.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x2_wedge.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x3_wedge.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmortri.rules>/Part
 			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
 			
@@ -602,8 +610,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		AddTo = "<modes/career/career.rules>/BaseTradeShip/ResourcesCarried"
 		ManyToAdd
 		[
-			{ ResourceType=goldium;         RandomWeight=2.5;  RandomQuantity=[50%, 100%]; }
-			{ ResourceType=cut.tristeel;         RandomWeight=2.5;  RandomQuantity=[100%, 100%]; }
+			//{ ResourceType=goldium;         RandomWeight=1.5;  RandomQuantity=[25%, 75%]; }
+			{ ResourceType=cut.tristeel;         RandomWeight=2;  RandomQuantity=[100%, 100%]; }
 		]
 	}
 	{
@@ -611,7 +619,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		AddTo = "<modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/StationResourceTradeDeltas"
 		ManyToAdd
 		[
-			{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
+			//{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
 			{ ResourceType=cut.tristeel;          DesiredDelta=[-60, 60]; }
 		]
 	}
@@ -791,7 +799,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					}
 				}
 			}
-			// Background Structure.
+/* 			// Background Structure.
 			{
 				Key = "bgstructure"// Ship bucket layer.
 				Value // The actual material.
@@ -820,7 +828,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 						Shader = "./data/ships/common/parts_ghost.shader"
 					}
 				}
-			}
+			} */
 			// Drone Construction
 			{
 				Key = "drone_construction"// Ship bucket layer.
@@ -1172,6 +1180,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Astral/fringe_ball_barrage.rules>/Part
 			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
 			&<Occult/Astral/fringe_ball_mine.rules>/Part
+			&<Occult/Astral/AstralEye.rules>/Part
 			&<Occult/Astral/lootorb.rules>/Part
 		]
 	}

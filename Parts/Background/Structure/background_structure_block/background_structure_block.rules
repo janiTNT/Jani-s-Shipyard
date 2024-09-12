@@ -62,7 +62,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			GetColorFrom = ColorPicker
 			Floor
 			{
-				Layer = "bgstructure"
+				Layer = "structure"
 				DamageLevels
 				[
 					{

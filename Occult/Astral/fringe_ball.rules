@@ -284,6 +284,15 @@ Part : <../base_part_occult.rules>/Part
 			]
 			Location = [4, 4]
 		}
+		
+		DetectorBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = JaniOrbDetectionAstralBoss
+			GridDistance = 80
+			AllowDiagonals = true
+			BuffAmount = 1
+		}
 
 		Blueprints
 		{

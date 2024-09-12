@@ -1,9 +1,9 @@
-Range = 1500
+Range = 3000
 //StretchRange = 1200
-IdealRange = 1500
+IdealRange = 3000
 Duration = 1
 HitInterval = .05
-Width = 2
+Width = 10
 HitEffectsScaleOverRange = [1, 1]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
 PenetratesStructure = false
@@ -30,12 +30,12 @@ BeamMediaEffects
 			}
 			Shader = "../../Cosmilite/Shots/whitebeam.shader"
 			//Shader = "./data/planets/planet.shader"
-			_extraBeginLength = 0
-			_extraEndLength = 0.25
+			_extraBeginLength = 0.25
+			_extraEndLength = 8
 			_sizePulseFactor = 1.2
 			_sizePulseInterval = .03
 			_sizePulseUOffsetFactor = -.03
-			_endCapSize = 4
+			_endCapSize = 0.5
 			Size = [100%, 3.5]
 			VertexColor = [255*1, 205*1, 128*1, 217]
 			TargetBlendMode
@@ -67,8 +67,8 @@ BeamMediaEffects
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
 			Size = [100%, 7]
-			_extraBeginLength = (&Size/1) / 2
-			_extraEndLength = (&Size/1) / 2
+			_extraBeginLength = 20
+			_extraEndLength = 10
 			VertexColor = [255*1.5, 205*1.5, 128*1.5, 255]
 			_z = 0.4
 			_litReflectiveStrength = 12
@@ -98,7 +98,7 @@ BeamMediaEffects
 		BeamSprite
 		{
 			Shader = "./data/shots/tractor_beam/tractor_beam.shader"
-			Size = [100%, 6.5*5]
+			Size = [100%, 6.5*8]
 			VertexColor = [255, 255, 255, 255]
 
 			_extraBeginLength = 2
@@ -114,8 +114,8 @@ BeamMediaEffects
 				UMode = Wrap
 				VMode = Wrap
 			}
-			_displacementStrength = 1
-			_displacementSpeed = .2
+			_displacementStrength = 1.5
+			_displacementSpeed = .4
 			
 			_additiveStrength = 1
 			_noiseScaleX = 0.02
@@ -245,8 +245,9 @@ HitOperational
 		}
 		{
 			Type = ExplosiveDamage
-			TotalDamage = 120000
+			TotalDamage = 200000
 			Radius = 7
+			DamageType = default
 		}
 		/*{
 			Type = Impulse

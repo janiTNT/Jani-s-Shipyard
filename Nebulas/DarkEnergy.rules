@@ -8,10 +8,10 @@ SharpCurveEdges = 8
 DullCurveEdges = 4
 SightRangeFactor = 250%
 RadarRangeFactor = 150%
-LinearDampingFactor = 60%
+LinearDampingFactor = 40%
 AngularDampingFactor = 100%
-ProhibitFtlJumpIn = true
-ProhibitFtlJumpOut = true
+ProhibitFtlJumpIn = false
+ProhibitFtlJumpOut = false
 
 
 
@@ -67,6 +67,11 @@ MaterialLow
 	_macroTexScale = 0.00006
 	_lodMaxBlend = 0.1
 	_parallaxIntensity = -1
+	
+	_midWaveSpeed = 80
+	_midScrollSpeed = 7
+	_microWaveSpeed = 40
+	_microScrollSpeed = 4
 }
 SimpleMaterialLow : MaterialLow 
 {
@@ -112,6 +117,11 @@ DiffuseMaterialLow
 	_macroTexScale = 0.00006
 	_lodMaxBlend = 0.1
 	_parallaxIntensity = -1
+	
+	_midWaveSpeed = 80
+	_midScrollSpeed = 7
+	_microWaveSpeed = 40
+	_microScrollSpeed = 4
 }
 /*NormalsMaterialLow
 {
@@ -194,6 +204,11 @@ MaterialHigh
 	_macroTexScale = 0.00006
 	_lodMaxBlend = 0.1
 	_parallaxIntensity = 2.5
+	
+	_midWaveSpeed = 80
+	_midScrollSpeed = 7
+	_microWaveSpeed = 40
+	_microScrollSpeed = 4
 }
 SimpleMaterialHigh : MaterialHigh
 {
