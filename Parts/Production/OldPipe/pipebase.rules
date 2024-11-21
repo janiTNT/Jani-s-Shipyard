@@ -1,0 +1,1743 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	EditorGroups = ["Production"]
+	Resources
+	[
+		[steel, 10]
+	]
+	AIValueFactor = 0
+	Size = [1, 1]
+	MaxHealth = 1000
+	TypeCategories = [corridor]
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0.2
+	CrewCongestedSpeedFactor = .1
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IsRotateable = true
+	IsWalled = false
+	IsSelfDestructible = false
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "pipe1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{	
+		SpritesBlend : /JANI_COMMON/Walls/FactoryWalls
+		{
+			Type = BlendSprite
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+		
+		/*Graphics2
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = MoltenSteelFluidStorage
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lighttest.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}*/
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		BlueprintSprites : /JANI_COMMON/Walls/FactoryWallsBlueprints
+		{
+			Location = [.5, .5]
+			BlendsWithCategories = [corridor]
+		}
+		
+		FluidType
+		{
+			Type = UIToggle
+			ToggleID = "fluid_type"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		
+		IronToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 0
+		}
+		IronComponents
+		{
+			Type = ToggledComponents
+			Toggle = IronToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenIronFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.iron
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		SteelToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 1
+		}
+		SteelComponents
+		{
+			Type = ToggledComponents
+			Toggle = SteelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenSteelFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.steel
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		CopperToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 2
+		}
+		CopperComponents
+		{
+			Type = ToggledComponents
+			Toggle = CopperToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenCopperFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.copper
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		CoilToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 3
+		}
+		CoilComponents
+		{
+			Type = ToggledComponents
+			Toggle = CoilToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenCoilFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.coil
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		TritaniumToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 4
+		}
+		TritaniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = TritaniumToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenTritaniumFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.tritanium
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		TristeelToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 5
+		}
+		TristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = TristeelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenTristeelFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.tristeel
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		CarbonToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 6
+		}
+		CarbonComponents
+		{
+			Type = ToggledComponents
+			Toggle = CarbonToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenCarbonFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.carbon
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		GoldToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 7
+		}
+		GoldComponents
+		{
+			Type = ToggledComponents
+			Toggle = GoldToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenGoldFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.gold
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		GoldiumToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 8
+		}
+		GoldiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = GoldiumToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenGoldiumFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.goldium
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		HyperiumToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 9
+		}
+		HyperiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = HyperiumToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenHyperiumFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.hyperium
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+		
+		SulfurToggle
+		{
+			Type = ModeToggle
+			Mode = FluidType
+			OnMode = 10
+		}
+		SulfurComponents
+		{
+			Type = ToggledComponents
+			Toggle = SulfurToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				MoltenSulfurFluidStorage : ~/FluidStorageBase
+				{
+					Type = ResourceStorage
+					ResourceType = molten.sulfur
+				}
+				FluidSpreader : ~/FluidSpreaderBase
+				{}
+			}
+		}
+	}
+}
+
+CombinedFluidStorageBase
+{
+	Type = MultiResourceStorage
+	ResourceType = molten.iron
+	ResourceStorages = [TopProxy, BottomProxy, MoltenSteelFluidStorage]
+	AddMode = PrioritizeLeastResources
+	RemoveMode = PrioritizeMostResources
+	DropResourcesWhenDestroyed = false
+	DropResourcesWhenRemoved = false
+}
+
+FluidStorageBase
+{
+	Type = ResourceStorage
+	ResourceType = molten.iron
+	MaxResources = 1000
+	SuppliesResources = false
+	StartingResources = 0
+	InitToMaxResources = 0
+	InitToMaxResourcesPVP = 0
+	DropResourcesWhenDestroyed = false
+	DropResourcesWhenRemoved = false
+}
+
+FluidSpreaderBase
+{
+	Type = ResourceConverter
+	Interval = .5
+	From
+	[
+		
+		{
+			Storage = CombinedFluidStorage
+			Quantity = 500
+			MinQuantityForConversion = 500
+		}
+	]
+	To
+	[
+		{
+			Storage = CombinedFluidStorage
+			Quantity = 500
+			MinQuantityForConversion = 500
+		}
+	]
+	OperationalToggle = CombinedFluidStorage
+}
+
+TopProxyBase
+{
+	Type = ResourceStorageProxy
+	ResourceType = Jarvis
+	PartLocation = [0, -1]
+	ProxyableComponents
+	[
+		{
+			PartCriteria
+			{
+				Category = pipe_straight //making sure they have the special category
+				Rot = 0 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_straight
+				Rot = 2 //180
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve //making sure they have the special category
+				Rot = 0 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve
+				Rot = 1 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri //making sure they have the special category
+				Rot = 0 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 1 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 3 //270
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_quad //master of everything
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 0 //dummy ahh
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+	]
+}
+
+RightProxyBase
+{
+	Type = ResourceStorageProxy
+	ResourceType = Jarvis
+	PartLocation = [1, 0]
+	ProxyableComponents
+	[
+		{
+			PartCriteria
+			{
+				Category = pipe_straight //making sure they have the special category
+				Rot = 1 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_straight
+				Rot = 3 //180
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve //making sure they have the special category
+				Rot = 1 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve
+				Rot = 2 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri //making sure they have the special category
+				Rot = 1 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 2 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 0 //270
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_quad //master of everything
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 1 //dummy ahh
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+	]
+}
+
+BottomProxyBase
+{
+	Type = ResourceStorageProxy
+	ResourceType = Jarvis
+	PartLocation = [0, 1]
+	ProxyableComponents
+	[
+		{
+			PartCriteria
+			{
+				Category = pipe_straight //making sure they have the special category
+				Rot = 2 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_straight //making sure they have the special category
+				Rot = 0 //180
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve //making sure they have the special category
+				Rot = 2 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve
+				Rot = 3 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri //making sure they have the special category
+				Rot = 2 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 3 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 1 //270
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_quad //master of everything
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 2 //dummy ahh
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+	]
+}
+
+LeftProxyBase
+{
+	Type = ResourceStorageProxy
+	ResourceType = Jarvis
+	PartLocation = [0, 1]
+	ProxyableComponents
+	[
+		{
+			PartCriteria
+			{
+				Category = pipe_straight //making sure they have the special category
+				Rot = 3 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_straight //making sure they have the special category
+				Rot = 1 //180
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve //making sure they have the special category
+				Rot = 3 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_curve
+				Rot = 0 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri //making sure they have the special category
+				Rot = 3 //lined
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 0 //90
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_tri
+				Rot = 2 //270
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_quad //master of everything
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 3 //dummy ahh
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+	]
+}
+
+UndergroundTopProxyBase
+{
+	Type = ResourceStorageProxy
+	ResourceType = Jarvis
+	PartLocation = [0, -1]
+	ProxyableComponents
+	[
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 2 //flipped
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+	]
+}
+
+UndergroundFlipProxyBase
+{
+	Type = ResourceStorageProxy
+	ResourceType = Jarvis
+	PartLocation = [0, -1]
+	ProxyableComponents
+	[
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 2 //flipped
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+		{
+			PartCriteria
+			{
+				Category = pipe_under //making sure they have the special category
+				Rot = 0 //Unflip
+			}
+			ComponentID = MoltenSteelFluidStorage
+		}
+	]
+}
+
+TopProxyIron : ~/TopProxyBase
+{
+	ResourceType = molten.iron
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenIronFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenIronFluidStorage}
+	]
+}
+RightProxyIron : ~/RightProxyBase
+{
+	ResourceType = molten.iron
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenIronFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenIronFluidStorage}
+	]
+}
+BottomProxyIron : ~/BottomProxyBase
+{
+	ResourceType = molten.iron
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenIronFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenIronFluidStorage}
+	]
+}
+LeftProxyIron : ~/LeftProxyBase
+{
+	ResourceType = molten.iron
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenIronFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenIronFluidStorage}
+	]
+}
+UndergroundTopProxyIron : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.iron
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenIronFluidStorage}
+	]
+}
+UndergroundFlipProxyIron : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.iron
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenIronFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenIronFluidStorage}
+	]
+}
+
+
+
+
+
+TopProxySteel : ~/TopProxyBase
+{
+	ResourceType = molten.steel
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenSteelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenSteelFluidStorage}
+	]
+}
+RightProxySteel : ~/RightProxyBase
+{
+	ResourceType = molten.steel
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenSteelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenSteelFluidStorage}
+	]
+}
+BottomProxySteel : ~/BottomProxyBase
+{
+	ResourceType = molten.steel
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenSteelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenSteelFluidStorage}
+	]
+}
+LeftProxySteel : ~/LeftProxyBase
+{
+	ResourceType = molten.steel
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenSteelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenSteelFluidStorage}
+	]
+}
+
+UndergroundTopProxySteel : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.steel
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenSteelFluidStorage}
+	]
+}
+UndergroundFlipProxySteel : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.steel
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenSteelFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenSteelFluidStorage}
+	]
+}
+
+
+
+TopProxyCopper : ~/TopProxyBase
+{
+	ResourceType = molten.copper
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenCopperFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenCopperFluidStorage}
+	]
+}
+RightProxyCopper : ~/RightProxyBase
+{
+	ResourceType = molten.copper
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenCopperFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenCopperFluidStorage}
+	]
+}
+BottomProxyCopper : ~/BottomProxyBase
+{
+	ResourceType = molten.copper
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenCopperFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenCopperFluidStorage}
+	]
+}
+LeftProxyCopper : ~/LeftProxyBase
+{
+	ResourceType = molten.copper
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenCopperFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenCopperFluidStorage}
+	]
+}
+
+UndergroundTopProxyCopper : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.copper
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenCopperFluidStorage}
+	]
+}
+
+UndergroundFlipProxyCopper : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.copper
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenCopperFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenCopperFluidStorage}
+	]
+}
+
+
+
+
+TopProxyCoil : ~/TopProxyBase
+{
+	ResourceType = molten.coil
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenCoilFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenCoilFluidStorage}
+	]
+}
+RightProxyCoil : ~/RightProxyBase
+{
+	ResourceType = molten.coil
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenCoilFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenCoilFluidStorage}
+	]
+}
+BottomProxyCoil : ~/BottomProxyBase
+{
+	ResourceType = molten.coil
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenCoilFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenCoilFluidStorage}
+	]
+}
+LeftProxyCoil : ~/LeftProxyBase
+{
+	ResourceType = molten.coil
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenCoilFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenCoilFluidStorage}
+	]
+}
+
+UndergroundTopProxyCoil : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.coil
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenCoilFluidStorage}
+	]
+}
+
+UndergroundFlipProxyCoil : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.coil
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenCoilFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenCoilFluidStorage}
+	]
+}
+
+
+
+
+
+TopProxyTritanium : ~/TopProxyBase
+{
+	ResourceType = molten.tritanium
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenTritaniumFluidStorage}
+	]
+}
+RightProxyTritanium : ~/RightProxyBase
+{
+	ResourceType = molten.tritanium
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenTritaniumFluidStorage}
+	]
+}
+BottomProxyTritanium : ~/BottomProxyBase
+{
+	ResourceType = molten.tritanium
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenTritaniumFluidStorage}
+	]
+}
+LeftProxyTritanium : ~/LeftProxyBase
+{
+	ResourceType = molten.tritanium
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenTritaniumFluidStorage}
+	]
+}
+
+UndergroundTopProxyTritanium : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.tritanium
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenTritaniumFluidStorage}
+	]
+}
+
+
+UndergroundFlipProxyTritanium : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.tritanium
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenTritaniumFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenTritaniumFluidStorage}
+	]
+}
+
+
+
+
+TopProxyTristeel : ~/TopProxyBase
+{
+	ResourceType = molten.tristeel
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenTristeelFluidStorage}
+	]
+}
+RightProxyTristeel : ~/RightProxyBase
+{
+	ResourceType = molten.tristeel
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenTristeelFluidStorage}
+	]
+}
+BottomProxyTristeel : ~/BottomProxyBase
+{
+	ResourceType = molten.tristeel
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenTristeelFluidStorage}
+	]
+}
+LeftProxyTristeel : ~/LeftProxyBase
+{
+	ResourceType = molten.tristeel
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenTristeelFluidStorage}
+	]
+}
+
+UndergroundTopProxyTristeel : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.tristeel
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenTristeelFluidStorage}
+	]
+}
+
+UndergroundFlipProxyTristeel : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.tristeel
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenTristeelFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenTristeelFluidStorage}
+	]
+}
+
+
+
+TopProxyCarbon : ~/TopProxyBase
+{
+	ResourceType = molten.carbon
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenCarbonFluidStorage}
+	]
+}
+RightProxyCarbon : ~/RightProxyBase
+{
+	ResourceType = molten.carbon
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenCarbonFluidStorage}
+	]
+}
+BottomProxyCarbon : ~/BottomProxyBase
+{
+	ResourceType = molten.carbon
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenCarbonFluidStorage}
+	]
+}
+LeftProxyCarbon : ~/LeftProxyBase
+{
+	ResourceType = molten.carbon
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenCarbonFluidStorage}
+	]
+}
+
+UndergroundTopProxyCarbon : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.carbon
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenCarbonFluidStorage}
+	]
+}
+
+UndergroundFlipProxyCarbon : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.carbon
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenCarbonFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenCarbonFluidStorage}
+	]
+}
+
+
+
+
+
+TopProxyGold : ~/TopProxyBase
+{
+	ResourceType = molten.gold
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldFluidStorage}
+	]
+}
+RightProxyGold : ~/RightProxyBase
+{
+	ResourceType = molten.gold
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldFluidStorage}
+	]
+}
+BottomProxyGold : ~/BottomProxyBase
+{
+	ResourceType = molten.gold
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldFluidStorage}
+	]
+}
+LeftProxyGold : ~/LeftProxyBase
+{
+	ResourceType = molten.gold
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldFluidStorage}
+	]
+}
+
+UndergroundTopProxyGold : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.gold
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldFluidStorage}
+	]
+}
+
+UndergroundFlipProxyGold : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.gold
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldFluidStorage}
+	]
+}
+
+
+
+
+
+TopProxyGoldium : ~/TopProxyBase
+{
+	ResourceType = molten.goldium
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldiumFluidStorage}
+	]
+}
+RightProxyGoldium : ~/RightProxyBase
+{
+	ResourceType = molten.goldium
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldiumFluidStorage}
+	]
+}
+BottomProxyGoldium : ~/BottomProxyBase
+{
+	ResourceType = molten.goldium
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldiumFluidStorage}
+	]
+}
+LeftProxyGoldium : ~/LeftProxyBase
+{
+	ResourceType = molten.goldium
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenGoldiumFluidStorage}
+	]
+}
+
+UndergroundTopProxyGoldium : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.goldium
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldiumFluidStorage}
+	]
+}
+
+UndergroundFlipProxyGoldium : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.goldium
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenGoldiumFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenGoldiumFluidStorage}
+	]
+}
+
+
+
+
+
+TopProxyHyperium : ~/TopProxyBase
+{
+	ResourceType = molten.hyperium
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenHyperiumFluidStorage}
+	]
+}
+RightProxyHyperium : ~/RightProxyBase
+{
+	ResourceType = molten.hyperium
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenHyperiumFluidStorage}
+	]
+}
+BottomProxyHyperium : ~/BottomProxyBase
+{
+	ResourceType = molten.hyperium
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenHyperiumFluidStorage}
+	]
+}
+LeftProxyHyperium : ~/LeftProxyBase
+{
+	ResourceType = molten.hyperium
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenHyperiumFluidStorage}
+	]
+}
+
+UndergroundTopProxyHyperium : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.hyperium
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenHyperiumFluidStorage}
+	]
+}
+
+UndergroundFlipProxyHyperium : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.hyperium
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenHyperiumFluidStorage}
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/1; {ComponentID = MoltenHyperiumFluidStorage}
+	]
+}
+
+
+
+
+
+
+
+
+
+TopProxySulfur : ~/TopProxyBase
+{
+	ResourceType = molten.sulfur
+	ProxyableComponents 
+	[
+		: ~/TopProxyBase/ProxyableComponents/0; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/1; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/2; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/3; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/4; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/5; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/6; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/7; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/TopProxyBase/ProxyableComponents/8; {ComponentID = MoltenSulfurFluidStorage}
+	]
+}
+RightProxySulfur : ~/RightProxyBase
+{
+	ResourceType = molten.sulfur
+	ProxyableComponents 
+	[
+		: ~/RightProxyBase/ProxyableComponents/0; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/1; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/2; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/3; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/4; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/5; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/6; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/7; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/RightProxyBase/ProxyableComponents/8; {ComponentID = MoltenSulfurFluidStorage}
+	]
+}
+BottomProxySulfur : ~/BottomProxyBase
+{
+	ResourceType = molten.sulfur
+	ProxyableComponents 
+	[
+		: ~/BottomProxyBase/ProxyableComponents/0; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/1; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/2; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/3; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/4; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/5; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/6; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/7; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/BottomProxyBase/ProxyableComponents/8; {ComponentID = MoltenSulfurFluidStorage}
+	]
+}
+LeftProxySulfur : ~/LeftProxyBase
+{
+	ResourceType = molten.sulfur
+	ProxyableComponents 
+	[
+		: ~/LeftProxyBase/ProxyableComponents/0; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/1; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/2; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/3; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/4; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/5; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/6; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/7; {ComponentID = MoltenSulfurFluidStorage}
+		: ~/LeftProxyBase/ProxyableComponents/8; {ComponentID = MoltenSulfurFluidStorage}
+	]
+}
+
+UndergroundTopProxySulfur : ~/UndergroundTopProxyBase 
+{
+	ResourceType = molten.sulfur
+	ProxyableComponents
+	[
+		: ~/UndergroundTopProxyBase/ProxyableComponents/0; {ComponentID = MoltenSulfurFluidStorage}
+	]
+}
+
+UndergroundFlipProxySulfur : ~/UndergroundFlipProxyBase 
+{
+	ResourceType = molten.sulfur
+	ProxyableComponents
+	[
+		: ~/UndergroundFlipProxyBase/ProxyableComponents/0; {ComponentID = MoltenSulfurFluidStorage}
+	]
+}
+
+Proxy2Toggle
+{
+	Type = MultiToggle
+	Toggles
+	[
+		{Toggle = UndergroundProxy2d}
+		{Toggle = UndergroundProxy1d, invert = true}
+	]
+	Mode = All
+}
+
+Proxy3Toggle
+{
+	Type = MultiToggle
+	Toggles
+	[
+		{Toggle = UndergroundProxy3d}
+		{Toggle = UndergroundProxy2d, invert = true}
+		{Toggle = UndergroundProxy1d, invert = true}
+	]
+	Mode = All
+}
+
+Proxy4Toggle
+{
+	Type = MultiToggle
+	Toggles
+	[
+		{Toggle = UndergroundProxy4d}
+		{Toggle = UndergroundProxy3d, invert = true}
+		{Toggle = UndergroundProxy2d, invert = true}
+		{Toggle = UndergroundProxy1d, invert = true}
+	]
+	Mode = All
+}

@@ -22,7 +22,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations = []
 	//ProhibitAbove = 2
 	CrewSpeedFactor = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_Pen, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal, JaniCRAM_PackerCount, JaniCRAM_PackerReady]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_Pen, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal, JaniCRAM_PackerCount, JaniCRAM_PackerReady, JaniCRAM_Momentum]
 	/*AllowedDoorLocations
 	[
 		[-1, 1]
@@ -161,6 +161,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffType = JaniCRAM_Velocity
 			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_VelocityPre; BuffMode=Multiply; MaxValue=1;}
 			//BuffMultiplier = GaugeBuffValue
+		}
+		StatMultiplierValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_StatMultiplier; BuffMode=Multiply;}
+		}
+		MomentumBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Momentum
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; }
+			BuffMultiplier = StatMultiplierValue
 		}
 		RangeBuffProvider
 		{
@@ -491,7 +503,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet1
 					ResourcesUsed = 10 * 1
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -513,7 +525,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet2
 					ResourcesUsed = 28
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -535,7 +547,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet3
 					ResourcesUsed = 52
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -557,7 +569,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet4
 					ResourcesUsed = 80
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -579,7 +591,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet5
 					ResourcesUsed = 112
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -601,7 +613,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet6
 					ResourcesUsed = 146
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -623,7 +635,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet7
 					ResourcesUsed = 186
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -645,7 +657,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet8
 					ResourcesUsed = 226
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -667,7 +679,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet9
 					ResourcesUsed = 270
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -689,7 +701,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet10
 					ResourcesUsed = 316
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -711,7 +723,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet11
 					ResourcesUsed = 364
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -733,7 +745,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet12
 					ResourcesUsed = 416
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -755,7 +767,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet13
 					ResourcesUsed = 468
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -777,7 +789,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet14
 					ResourcesUsed = 524
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -799,7 +811,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet15
 					ResourcesUsed = 580
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -821,7 +833,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet16
 					ResourcesUsed = 640
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -843,7 +855,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Bullet = &<Bullets.rules>/Bullet17
 					ResourcesUsed = 700//just a bit less
-					Recoil = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
+					Recoil = { BaseValue=240; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; MinValue=10}
 				}
 				CRAM_FIRINGPIECE_AMMOSTORAGE : ~/BaseAmmoStorage
 				{
@@ -980,7 +992,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ThresholdToggle
 			ValueFrom = ChainLoaderMultiValue
-			MinAmount = 100%
+			MinAmount = 99.9995%//Float Prevention
 		}
 		
 		ChainLoaderCountDivision
@@ -1028,7 +1040,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ThresholdToggle
 			ValueFrom = PackerMultiValue
-			MinAmount = 100%
+			MinAmount = 99.9995%//Float Prevention
 		}
 		
 		PackerCountDivision

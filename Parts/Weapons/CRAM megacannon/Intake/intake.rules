@@ -93,19 +93,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RandomUVRotation = true
 			Layer = "roofs"
 		}
-		CombinedIntakeAmmoStorage
-		{
-			Type = MultiResourceStorage
-			ResourceType = bullet
-			ResourceStorages = [AmmoStorage]
-			ViaBuffs
-			{
-				OutgoingBuffProviders = [IntakeAmmoDistribution]
-				ComponentIDs = [AmmoStorage]
-			}
-			AddMode = PrioritizeLeastResources
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
-		}
 		ViaBuffsAmmoStorage
 		{
 			Type = MultiResourceStorage
@@ -118,6 +105,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			AddMode = PrioritizeLeastResources
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
 		}
 		IntakeAmmoDistribution
 		{
@@ -132,11 +120,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceConsumer
 			ResourceType = bullet
-			Storage = CombinedIntakeAmmoStorage
+			Storage = ViaBuffsAmmoStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			OperationalToggle = PowerToggle
 		}
-		LoadingConverter
+/*		LoadingConverter
 		{
 			Type = ResourceConverter
 			OperationalToggle = PowerToggle
@@ -147,7 +135,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MinFromQuantityForConversion = 1
 			Interval = 0.25
 		}
-		AmmoStorage
+ 		AmmoStorage
 		{
 			Type = ResourceStorage
 			ResourceType = bullet
@@ -159,6 +147,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			UITileRect = [1 + 7/64, .4 + 7/64, 1 - 14/64, 1 - 14/64]
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
 			DropResourcesWhenDestroyed = true
-		}
+		} */
 	}
 }

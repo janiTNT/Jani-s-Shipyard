@@ -14,7 +14,7 @@ BaseHeader
 	]
 	Speed = { BaseValue=120; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 
-	ReceivableBuffs = [JaniCRAM_BarrelMass, JaniCRAM_ReverseBarrelGauge,JaniCRAM_Pen, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier]
+	ReceivableBuffs = [JaniCRAM_BarrelMass, JaniCRAM_ReverseBarrelGauge,JaniCRAM_Pen, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_Momentum]
 }
 
 BaseComponents
@@ -111,7 +111,7 @@ BaseComponents
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue=180; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					Impulse = { BaseValue=180; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; }
 				}
 			]
 
@@ -187,7 +187,7 @@ BaseComponents
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue=180; BuffType=JaniCRAM_DamageMain; BuffMode=Multiply; }
+					Impulse = { BaseValue=180; BuffType=JaniCRAM_Momentum; BuffMode=Multiply; }
 				}
 			]
 			

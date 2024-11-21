@@ -1355,7 +1355,7 @@ PartToggles
 	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>4000</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 30</good>\n"\
 	"<white>Durability:</white><good> 2500</good>\n"\
-	"<white>Drone ROF:</white><good> 4</good><gray>/sec</color></s14>"
+	"<white>Drone ROF:</white><good> 4</good><gray>/sec</gray>"
 	
 	DroneMedCannon = "<b>Standard Cannon Drone</b>\n\n"\
 	"A Standard cannon with a slightly smaller caliber, but stacks way much firepower due to ignoring safety limits.\n\n"\
@@ -1372,7 +1372,7 @@ PartToggles
 	"<white>Drone Damage:</white> <good>2500</good><gray>/shot (</gray><good>8333</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 25</good>\n"\
 	"<white>Durability:</white><good> 3000</good>\n"\
-	"<white>Drone ROF:</white><good> 3.33</good><gray>/sec</color></s14>"
+	"<white>Drone ROF:</white><good> 3.33</good><gray>/sec</gray>"
 	
 	DroneEletroCannon = "<b>Disruptor Eletro-Cannon Drone</b>\n\n"\
 	"Strapping together a Laser cannon and a disruptor seems to work, it's extremely unstable, but These Drones won't last that long anyway.\n\n"\

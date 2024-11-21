@@ -250,6 +250,11 @@ JaniCRAM_Velocity //Bullet SPEED
 	IconTextFormatKey = "BuildBox/CustomCannon_SpeedFmt"
 	IconTextMultiply = 100
 }
+JaniCRAM_Momentum
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
 JaniCRAM_Range //Bullet RANGE
 {
 	CombineMode = Add
