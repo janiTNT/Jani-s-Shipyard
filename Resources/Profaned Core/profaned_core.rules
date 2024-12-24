@@ -8,6 +8,7 @@ MaxPerNugget = 1
 MaxStackSize = 5
 FlexGridPriorityKey = "flex_grid_profaned"
 FlexGridDefaultPriority = 1
+Rarity = Unique
 //CarrySpeed = 0.8
 DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
 

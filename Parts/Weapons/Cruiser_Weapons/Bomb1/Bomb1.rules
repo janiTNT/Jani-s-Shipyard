@@ -168,7 +168,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
 			FireInterval = 6
-			FiringArc = 360d
+			FiringArc = 320d
 			RotateSpeed = infinity
 			FireThresholdAngle = 45d
 			AIFirepowerRating = 1000

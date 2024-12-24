@@ -22,8 +22,9 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	uses_tristeel
 	uses_hyperium
 	uses_power, fabricator
+	pipe_quad
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory, JaniPipe_Connection]
 	ForceManhattanPathInPart = true
 	AllowedDoorLocations
 	[
@@ -78,6 +79,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		FluidProxyIron
+		{
+			Type = ResourceStorage
+			ResourceType = molten.iron
+			MaxResources = 2000
+		}
+		
 		IsOperational
 		{
 			Type = MultiToggle

@@ -9,6 +9,7 @@ MaxStackSize = 25
 FlexGridPriorityKey = "flex_grid_cursedpages"
 FlexGridDefaultPriority = 1
 ResourcesPerStackSprite = 5
+Rarity = Unique
 //CarrySpeed = 0.8
 DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
 

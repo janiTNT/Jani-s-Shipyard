@@ -570,7 +570,7 @@ Parts
 	
 	Cram_Packer1x = "CRAM Payload Packer"
 	Cram_Packer1xIcon = "Packer"
-	Cram_Packer1xDesc = "Stores 20 bullets, Increases stats by a flat addition, Increasing Health and penetration heavily, and damage slightly."\
+	Cram_Packer1xDesc = "A alternative connector that houses 20 bullets that are consumed per shot,Increasing Health and penetration heavily, and damage slightly. Will direct effects fowards like a normal connector if full, The cannon will only fire once all packers are full. Cannot chain other Packers."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Jani's Shipyard</color></s14>"
 	
 	Cram_Cooler1x = "Custom Cannon TurboCooler"

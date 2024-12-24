@@ -3,9 +3,9 @@ Count = [1]
 Conditions
 {
 	//MinNodeTier = 12
-	RequireSpawnFlags = [binary_sun] 
+	//RequireSpawnFlags = [binary_sun] 
 }
-RandomSubSpawnerCount = 1
+//RandomSubSpawnerCount = 3
 SubSpawners
 [
 	: ~/SpawnerBase
@@ -46,8 +46,8 @@ SpawnerBase
 	Type = Ships
 	Tags = [JaniBoss, Boss, target_leviathan, bounty_ship] // target_leviathan is used for avoiding if existing idk
 	Count = [1, 1]
-	Distance = [20000, 25000]
-	MinDistanceFromTags = [[Boss, 8000],[station, 8000],[target_leviathan, 8000]]
+	Distance = [17500, 25000]
+	MinDistanceFromTags = [[Boss, 8000],[station, 8000],[target_leviathan, 8000],[bounty_ship, 5000]]
 	Allegiance = Unique
 	SynchronizeAllegiance = true
 	FamePerTier = &<./data/modes/career/tier_tables.rules>/StandardFamePerTier
@@ -64,10 +64,10 @@ SpawnerBase
 	AI
 	{
 		Type = BossAICosmilite
-		PatrolRadius = 800
-		TargetAcquireRangeFromOrigin = 1000
-		TargetUnacquireRangeFromOrigin = 7000
-		StasisSpeed = 0
+		PatrolRadius = 200
+		TargetAcquireRangeFromOrigin = 800
+		TargetUnacquireRangeFromOrigin = 6000
+		StasisSpeed = 50
 	}
 	SubSpawners
 	[

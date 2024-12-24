@@ -18,7 +18,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	[
 	uses_power
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory, JaniPipe_Connection]
 	ForceManhattanPathInPart = true
 	HasNonContiguousPathing = true
 	AllowedDoorLocations
@@ -156,11 +156,24 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = molten.iron
 		}
 		
+		ProxyBuffTop
+		{
+			Type = AreaBuffProvider
+			BuffType = JaniPipe_Connection
+			BuffArea = [0, -1, 1, 1]
+			BuffAmount = 1
+			ChainsFromBuffType = JaniPipe_Connection
+		}
+		
 		CombinedFluidStorage
 		{
 			Type = MultiResourceStorage
 			ResourceType = molten.iron
-			ResourceStorages = [BottomProxy1, BottomProxy2]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [ProxyBuffTop]
+				ComponentIDs = [FluidProxyIron]
+			}
 			AddMode = PrioritizeLeastResources
 			RemoveMode = PrioritizeMostResources
 			DropResourcesWhenDestroyed = false

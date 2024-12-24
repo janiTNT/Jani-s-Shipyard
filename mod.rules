@@ -1233,12 +1233,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 				[
 					{
 						Type = AreaPatrol
-						DefaultPatrolRadius = 800
+						DefaultPatrolRadius = 300
 						AvoidableDoodadTags = [sun, station]
 						AvoidableDoodadBuffer = 100
-					}
-					{
-						Type = FollowFleetLeader
 					}
 					{
 						Type = AggroEnemies
