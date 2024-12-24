@@ -11,6 +11,7 @@ FlexGridPriorityKey = "flex_grid_astral"
 FlexGridDefaultPriority = 1
 //CarrySpeed = 0.5
 DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
+Rarity = Unique
 /*
 DropRates
 {

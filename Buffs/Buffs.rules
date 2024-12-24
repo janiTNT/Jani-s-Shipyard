@@ -389,3 +389,8 @@ Hauler_Engine
 	Exponent = 1
 	BaseValue = 100%
 }
+JaniPipe_Connection
+{
+	CombineMode = Max
+	BaseValue = 0%
+}

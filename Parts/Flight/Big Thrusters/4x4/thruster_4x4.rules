@@ -23,6 +23,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ProhibitBelow = 13
 	ThrusterForce = 1200 * 4^2
 	ThrustIncreaseTime = { BaseValue=4.25; BuffType=Hauler_Thrust; BuffMode=Divide; }
+	ThrustDecreaseTime = { BaseValue=0.6; BuffType=Engine; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 4^2
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution,Hauler_Engine, Hauler_Thrust]
@@ -62,6 +63,16 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
+		RampProgressBar
+		{
+			Type = ProgressBar
+			ShowProgressFor = MainThruster
+			ValueRange = [0, &~/Part/Components/MainThruster/MaxActivation]
+			LowColor = [255, 127, 0]
+			HighColor = [255, 127, 0]
+			FullColor = [255, 127, 0]
+		}
+		
 		IsOperational
 		{
 			Type = MultiToggle
@@ -695,13 +706,14 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = Thruster
 			Location = [2, 4.666]// Relative to upper-left corner of unrotated part.
 			Rotation = 90d// Relative to unrotated part.
-			OperationalToggle = IsOperational
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = 0
 			MaxActivation = { BaseValue=1; BuffType=Hauler_Thrust; BuffMode=Multiply; }
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			ActivationIncreaseTime = &../../ThrustIncreaseTime
+			ActivationDecreaseTime = &../../ThrustDecreaseTime
 			ActivationRecoveryTime = &../../ThrustRecoveryTime
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
@@ -847,6 +859,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	{
 		ThrusterForce = &~/Part/ThrusterForce
 		ThrusterRampUp = &~/Part/ThrustIncreaseTime/Basevalue
+		ThrusterRampDown = &~/Part/ThrustDecreaseTime/BaseValue
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 

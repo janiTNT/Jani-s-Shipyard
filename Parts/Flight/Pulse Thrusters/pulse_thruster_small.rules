@@ -47,9 +47,6 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Location = [0.5, 1]// Relative to upper-left corner of unrotated part.
 			Force = &../../ThrusterForce
-			ActivationIncreaseTime = &../../ThrustIncreaseTime
-			ActivationRecoveryTime = &../../ThrustRecoveryTime
-			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
 
