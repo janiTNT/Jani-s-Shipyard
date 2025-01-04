@@ -206,7 +206,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles
 			[
-				{Toggle = CRAM_LOADER_AmmoStorageToggleRight, invert = true}//if ammo storage is not full.
+				// {Toggle = CRAM_LOADER_AmmoStorageToggleRight, invert = true}//if ammo storage is not full.
 			]
 			Mode = All
 		}
@@ -215,7 +215,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = MultiToggle
 			Toggles
 			[
-				{Toggle = CRAM_LOADER_AmmoStorageToggleLeft, invert = true}//if ammo storage is not full.
+				// {Toggle = CRAM_LOADER_AmmoStorageToggleLeft, invert = true}//if ammo storage is not full.
 			]
 			Mode = All
 		}
