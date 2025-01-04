@@ -358,22 +358,22 @@ FluidStorageBase
 FluidSpreaderBase
 {
 	Type = ResourceConverter
-	Interval = .5
+	Interval = .1
 	From
 	[
 		
 		{
 			Storage = CombinedFluidStorage
-			Quantity = 500
-			MinQuantityForConversion = 500
+			Quantity = 200
+			MinQuantityForConversion = 200
 		}
 	]
 	To
 	[
 		{
 			Storage = CombinedFluidStorage
-			Quantity = 500
-			MinQuantityForConversion = 500
+			Quantity = 200
+			MinQuantityForConversion = 200
 		}
 	]
 	OperationalToggle = CombinedFluidStorage

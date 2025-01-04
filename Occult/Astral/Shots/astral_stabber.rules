@@ -1,7 +1,7 @@
 ID = "janiTNT.astralhomingstabbers_0"
 Range = 1500
 IdealRange = 1000
-Speed = 400
+Speed = 100
 
 Components
 {
@@ -111,8 +111,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 200000* 4
-					Radius = 10 * 4^0.5
+					TotalDamage = 200000* 2
+					Radius = 10 * 2^0.5
 					ExpandDuration = .8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
@@ -127,8 +127,8 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000 * 4
-					Radius = 8 * 4^0.5 
+					TotalDamage = 60000 * 2
+					Radius = 8 * 2^0.5 
 					ExpandDuration = .8
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
@@ -195,7 +195,7 @@ Components
 		Type = Sprite
 		Offset = [-1, 0]
 		ReduceScaleWith = Hit
-		RenderBucket = BulletLower3
+		RenderBucket = BulletUpper1
 		ReduceScaleExponent = 0.5
 		Sprite
 		{

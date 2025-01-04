@@ -1,7 +1,7 @@
 ID = "janiTNT.astralhomingstabbers_1"
 Range = 1500
 IdealRange = 1000
-Speed = 750
+Speed = 500
 
 Components : &<../astral_stabber.rules>/Components
 {

@@ -26,7 +26,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	{
 		Texture
 		{
-			File = "intake.png"
+			File = "icon.png"
 			SampleMode = Linear
 		}
 		Size = [64, 32]
@@ -59,7 +59,33 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "intake.png"
+						File = "floor.png"
+						Size = [2, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 1]
+						UVRotation = 0
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "lights.png"
 						Size = [2, 1]
 						UVRotation = 0
 					}
@@ -93,7 +119,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RandomUVRotation = true
 			Layer = "roofs"
 		}
-		ViaBuffsAmmoStorage
+		BatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [IntakeAmmoDistribution]
+				ComponentIDs = [BatteryStorage]
+			}
+			AddMode = PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		AmmoStorage
 		{
 			Type = MultiResourceStorage
 			ResourceType = bullet
@@ -116,11 +154,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowBuffRange = true
 			OperationalToggle = PowerToggle
 		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
 		AmmoConsumer
 		{
 			Type = ResourceConsumer
 			ResourceType = bullet
-			Storage = ViaBuffsAmmoStorage
+			Storage = AmmoStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			OperationalToggle = PowerToggle
 		}
