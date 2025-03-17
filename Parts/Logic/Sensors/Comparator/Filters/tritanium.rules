@@ -1,0 +1,28 @@
+ResourceStorage = TritaniumStorage
+LightColor = [64, 128, 128]
+Components
+{
+	ValueProxy
+	{
+		Type = ValueProxy
+		PartLocation = [0, -1]
+		ComponentID = &~/ResourceStorage
+	}
+	ColoredLight
+	{
+		Type = Graphics
+		Location = [.5, 0]
+		OperationalLighting
+		{
+			Layer = "lights_add"
+			DamageLevels
+			[
+				{
+					File = "filter_light.png"
+					Size = [1, 1]
+					VertexColor = &~/LightColor
+				}
+			]
+		}
+	}
+}

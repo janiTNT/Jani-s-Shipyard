@@ -24,6 +24,7 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 		[0, -1]
 		[1, 0]
 	]
+	DoorAccessWarningLevel = Weak
 	ProhibitRects
 	[
 		[default, [0, 2, 1, 4]]

@@ -1,5 +1,5 @@
 ID = "janiTNT.combat_drone_shot"
-Range = 300
+Range = 200
 IdealRange = 150
 Speed = 210
 
@@ -25,7 +25,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 80d
+		TurnVelocity = 20d
 		Delay = .05
 		ModifiesLinearVelocity = true
 	}

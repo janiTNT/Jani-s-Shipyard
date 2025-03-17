@@ -1,0 +1,214 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/Logic_Gauge_Comparator_Resources"
+	IconNameKey = "Parts/Logic_Gauge_Comparator_ResourcesIcon"
+	ID = janiTNT.gauge_comparator_filter_ // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/Logic_Gauge_Comparator_ResourcesDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil2, 1]
+		[cut.tristeel, 6]
+	]
+	Size = [1, 1]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "sensor"
+	TypeCategories = [sensor, logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, AdvS_Setting, AdvS_Setting_Second] 
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_gauge_filter.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	{		
+		ValueCheck
+		{
+			Type = ValueProxy
+			ComponentID = ValueProxy
+		}
+		
+		OutputSignal
+		{
+			Type = MultiToggle
+			Toggles = [Maxed, LogicSignal]
+			Mode = Any
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		
+		GaugeValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=-0.01; BuffType=AdvS_Setting_Second; BuffMode=Multiply; }
+		}
+		
+		VisualGaugeValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0.01; BuffType=AdvS_Setting_Second; BuffMode=Multiply; }
+		}
+		
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Red
+		}
+		RotationLerpValue
+		{
+			Type = TransformLerp
+			Location = [0.5, 0.5 - 0.25]
+			StartRotation = -89.5d
+			EndRotation = 89.5d
+			ValueFrom = ValueCheck
+		}
+		RotationLerpDefined
+		{
+			Type = TransformLerp
+			Location = [0.5, 0.5 - 0.25]
+			StartRotation = -89.5d
+			EndRotation = 89.5d
+			ValueFrom = VisualGaugeValue
+		}
+		TotalMultiValue
+		{
+			Type = MultiValue
+			Values
+			[
+				ValueCheck
+				GaugeValue
+			]
+			Mode = Add
+		}
+		Maxed
+		{
+			Type = ThresholdToggle
+			ValueFrom = TotalMultiValue
+			MinAmount = 0%
+		}
+		BuffProviderLogicA
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = Maxed
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, 1, 1, 1]
+		}
+		GaugeHandleGraphic
+		{
+			Type = Graphics
+			Location = [0, 0]
+			ChainedTo = RotationLerpValue
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "gauge.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+		GaugeTickGraphic
+		{
+			Type = Graphics
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefined
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "gauge2.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = OutputSignal
+			ShowToggledDoodadsWhenNotOperational = false
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doothose2.png"
+						Size = [1, 1]
+						Offset = [0, 0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doothose1.png"
+						Size = [1, 1]
+						Offset = [0, 0.5]
+					}
+				]
+			}
+			
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = OutputSignal
+			ShowToggledDoodadsWhenNotOperational = false
+			OperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "advanced_filter2.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "advanced_filter1.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints4.png"
+			Size = [1, 1]
+		}
+	}
+}

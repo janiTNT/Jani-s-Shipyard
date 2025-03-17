@@ -46,7 +46,7 @@ Part : <../base_part_occult.rules>/Part
 			Mode = All
 		}
 		
-		ShieldingOn
+		/* ShieldingOn
 		{
 			Type = MultiToggle
 			Toggles = [ActiveWeakpoints, ShieldStorage, CommandToggle, PowerToggle]
@@ -281,7 +281,7 @@ Part : <../base_part_occult.rules>/Part
 					IgnoreIntensity = true
 				}
 			]
-		}
+		} */
 		
 		IsNotOperational
 		{
@@ -372,7 +372,7 @@ Part : <../base_part_occult.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = { BaseValue=8.5; BuffType=JaniWeakpointDetector; BuffMode=Divide; MinValue=5; }
+			FireInterval = 8.5
 			FiringArc = 0d;
 			ValidArc = 360d;
 			FireThresholdAngle = 180d;

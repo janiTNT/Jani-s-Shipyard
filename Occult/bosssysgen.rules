@@ -68,6 +68,7 @@ SpawnerBase
 		TargetAcquireRangeFromOrigin = 800
 		TargetUnacquireRangeFromOrigin = 6000
 		StasisSpeed = 50
+		ChanceToConsiderSurrenderingToPlayer = 0
 	}
 	SubSpawners
 	[

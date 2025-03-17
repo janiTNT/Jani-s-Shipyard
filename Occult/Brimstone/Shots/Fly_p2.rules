@@ -1,0 +1,238 @@
+ID = "janiTNT.CursedFly_0_Phase2"
+Range = 2000
+IdealRange = 450
+Speed = 80
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 0.1
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 2
+		Range = 1000
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+	
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = [10, 125]
+		AccelerationOverTime = [0, 3]
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = [6, 7]
+	}
+	
+	DeathByEnemyProximity
+	{
+		Type = DeathByEnemyProximity
+		Interval = .1
+		Range = 20
+		DetectsShips = true
+		DetectsBullets = false
+		StartDelay = 1
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<Fly1.rules>
+					Count = 4
+					Distance = .5
+					Spread = [-20d, 40d]
+					InheritVelocity = true
+					RandomizeTarget = true
+				}
+			]
+		}
+	}
+	
+	WingSprite
+	{
+		Type = AnimatedSprite
+		Offset = [-6, -6]
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "FlyWing_flip_becausethegamedoesnthaveit.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [12, 12]
+				TargetBlendMode = Add
+			}
+			FrameCount = 8
+			FrameSize = [328, 332]
+			TargetBlendMode = Add
+			FramesPerRow = 8
+			FramesPerSecond = 50
+		}
+	}
+	WingSprite2
+	{
+		Type = AnimatedSprite
+		Offset = [-6, 6]
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "FlyWing.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [12, 12]
+				TargetBlendMode = Add
+			}
+			FrameCount = 8
+			FrameSize = [328, 332]
+			TargetBlendMode = Add
+			FramesPerRow = 8
+			FramesPerSecond = 50
+		}
+	}
+	
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = 324d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Other/PortalSpinner.png"
+				SampleMode = Linear
+				MipLevels = max
+			}
+			Size = [12, 12]
+			TargetBlendMode = Add
+			VertexColor = [350, 25, 25]
+		}
+	}
+	
+	Aimlaser
+	{
+		Type = Sprite
+		Z = .25
+		IsLight = true
+		RenderBucket = BulletUpper3
+		//IsLit = true
+		Offset = [2000/2, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "../../other/SightLaserB.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [2000, 3]
+			VertexColor = [255/2, 0, 25/2]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = 1
+		}
+		EndTime = 1
+	}
+	
+	LightsSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		//Spin = 500d
+		Z = .25
+		IsLight = true
+		//Offset = [24/64, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [24, 24]
+			TargetBlendMode = Add
+			VertexColor = [255 , 0, 0]
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = 0.15
+		}
+	}
+	
+	Targetable
+	{
+		Type = Targetable
+		Health = 10000
+		TargetCategory = "missile"
+
+		OnDeath = &../DeathByEnemyProximity/OnDeath
+	}
+	
+
+	Hit
+	{
+		Type = SimpleHit
+
+		HitShield = &HitOperational
+		SourceShipCollisionDelay = 1.5/30
+		SourceShipLowCollisions = false
+		HitOperational = &../DeathByEnemyProximity/OnDeath
+		HitStructural
+		{
+			Bounce = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 1000
+				}
+				{
+					Type = Impulse;
+					Impulse = 1.5;
+				}
+			]
+
+			MediaEffects
+			[
+				&<./Data/shots/bullet_med/particles/bullet_hit_med_sparks.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					Volume = .1
+					SpeedVariation = .4
+				}
+			]
+		}
+		HitFriendly
+		{
+			Bounce = true
+		}
+	}
+}

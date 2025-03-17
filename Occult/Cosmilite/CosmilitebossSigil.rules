@@ -15,7 +15,7 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
-	MaxHealth = 32000 * 100
+	MaxHealth = 32000 * 25 * 5
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_cosmilite
@@ -159,30 +159,17 @@ Part : <../base_part_occult.rules>/Part
 		    Type = FanArcController
 		    ChainedTo = Turret
 		    GetTargetFrom = Turret
-		    MaxArc = 90d
-			MinArc = 90d
+		    MaxArc = 120d
+			MinArc = 20d
 		    DefaultArc = &MaxArc
-		    ArcSizeFactor = 75%
+		    ArcSizeFactor = 600%
 		    FanComponents
 		    [
-		        BoltEmitter2,
-		        BoltEmitter3,
-				BoltEmitter4,
-				BoltEmitter5,
-				BoltEmitter6,
-				BoltEmitter7,
-				BoltEmitter8,
 		        BoltEmitter,
-		        BoltEmitter9,
-		        BoltEmitter10,
-				BoltEmitter11,
-				BoltEmitter12,
-				BoltEmitter13,
-				BoltEmitter14,
-				BoltEmitter15
+		        BoltEmitter2
 		    ]
 		}
-
+		
 		BoltEmitter
 		{
 			Type = BulletEmitter
@@ -190,27 +177,15 @@ Part : <../base_part_occult.rules>/Part
 			Location = [1.5, 0]
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			OperationalToggle = CanUseDOG_P1
+			OperationalToggle = PowerToggle
 			FireDelay = 0.75
-			Bullet = &<shots/deathbolt.rules>
-			//Spread = [-1.5d, 1.5d]
+			Bullet = &<shots/deathboltPortal.rules>
+			Spread = [-5d, 5d]
+			Burst = 8
+			BurstDelay = 0
 		}
-
-		// Note: When adding or removing emitters, make sure to update BeamCount at the top of this file as well.
+		
 		BoltEmitter2  = &BoltEmitter
-		BoltEmitter3  = &BoltEmitter
-		BoltEmitter4  = &BoltEmitter
-		BoltEmitter5  = &BoltEmitter
-		BoltEmitter6  = &BoltEmitter
-		BoltEmitter7  = &BoltEmitter
-		BoltEmitter8  = &BoltEmitter
-		BoltEmitter9  = &BoltEmitter
-		BoltEmitter10  = &BoltEmitter
-		BoltEmitter11  = &BoltEmitter
-		BoltEmitter12  = &BoltEmitter
-		BoltEmitter13  = &BoltEmitter
-		BoltEmitter14  = &BoltEmitter
-		BoltEmitter15  = &BoltEmitter
 		
 		BoltEffectComponents
 		{
@@ -618,7 +593,7 @@ Part : <../base_part_occult.rules>/Part
 			[
 				{
 					TargetType = Bullets
-					BulletTargetCategories = [parry_targetable]
+					BulletTargetCategories = [parry_targetable, BrutaTralb.shocklance.parry]
 				}
 			]
 		}

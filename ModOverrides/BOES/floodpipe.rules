@@ -1,0 +1,57 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe.rules>/Part"
+		Name = "ReceivableBuffs"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe.rules>/Part/ReceivableBuffs"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [BossesDisableComponents];}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides : &<Base_BOES_overrides.rules>/Base
+		{
+			Indicators
+			{
+				Type = IndicatorSprites
+				Location = [.5, .5]
+				Layer = "indicators"
+				Indicators
+				[
+					// Disabled.
+					{
+						Toggle = JS_Boss_Components_Enabled
+						ShowInBuildMode = true
+						AtlasSprite
+						{
+							File = &/JANI_COMMON/JSvsBOES
+							Size = [1, 1]
+						}
+					}
+				]
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe.rules>/Part/Components/Take"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe.rules>/Part/Components/Give"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe.rules>/Part/Components/Spread"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+]

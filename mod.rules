@@ -7,11 +7,11 @@ ID = "janiTNT.TechMod"
 //Name = "Jani's Shipyard"
 Name = "[Beta]Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.22(beta v2 (peak))"
+Version = "Modern 1.23(beta v1)"
 //Version = "Modern 1.21(quickpatch)"
 //Logo = "evil jani.png"
 Logo = "newlogo.png"
-CompatibleGameVersions = ["0.27.0", "0.27.1", "0.27.2", "0.27.3", "0.27.4", "0.27.5", "0.27.6", "0.27.7", "0.27.8", "0.27.9", "0.27.10", "0.27.11", "0.27.12", "0.27.13", "0.27.14", "0.27.15"]
+CompatibleGameVersions = ["0.28.0", "0.28.1", "0.28.2", "0.28.3", "0.28.4", "0.28.5", "0.28.6", "0.28.7", "0.28.8", "0.28.9", "0.28.10", "0.28.11", "0.28.12", "0.28.13", "0.28.14", "0.28.15"]
 ModifiesMultiplayer = true
 Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
 " - Mod previously known as Juan's Workshop or Juans Shipyard\n"\
@@ -24,8 +24,7 @@ Description = "Adds a lot of content i have made (porting most of content missin
 "Aephiex : Slight Compatibility with their advanced storages + AI core mod's code (just used the name for compatibility)\n"\
 "syy1125 : Code from leviathan boss \"Stellarborn\" in order to use in this mod's Bossfights. Spritework and whatnot for batteries in order to ensure compatibility.\n"\
 "\n\nBlock shading's sprites were taken from the game Mindustry by Anuke"\
-"\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource."\
-"\n\nPatricia Taxxon : \"All of my (non-contract) tunes are free to use for any of your projects, commercial or otherwise, with credit.\""
+"\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource."
 StringsFolder = "Strings"
 
 //Stop reading my code!!!!! it sucks!!!! i mean it doe'snt but is poorly commented and messy
@@ -45,6 +44,8 @@ CanBuild
 	]
 	Mode = All
 }
+
+use IgnoreStructureUnlessTargeted = false on simplehit projectiles
 */
 
 Actions : &<inserter_compatibility_list.rules>/Actions
@@ -135,6 +136,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
 			
+			&<Parts/Production/Zetasphere_factory/Zetasphere_factory.rules>/Part
 			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
 			
 			&<Parts/Production/inserter/inserter.rules>/Part
@@ -152,16 +154,16 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Stack inserter/StackinserterModded.rules>/Part
 			&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part
 			
-			&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
+			//&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
 			//TODO
 			
-			&<Parts/Production/Pipe/pipe1.rules>/Part
+			/* &<Parts/Production/Pipe/pipe1.rules>/Part
 			&<Parts/Production/Pipe/pipe2.rules>/Part
 			&<Parts/Production/Pipe/pipe3.rules>/Part
 			&<Parts/Production/Pipe/pipe4.rules>/Part
 			&<Parts/Production/Pipe/pipe5.rules>/Part
 			
-			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part
+			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part */
 			
 			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
 			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
@@ -241,6 +243,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Wires/Split1/Split1.rules>/Part
 			&<Parts/Logic/Wires/Split2/Split2.rules>/Part
 			&<Parts/Logic/Wires/Split3/Split3.rules>/Part
+			&<Parts/Logic/Wires/JumpWire/logic_jump_wire.rules>/Part
 			
 			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part
 			&<Parts/Logic/Gates/Bulb/Bulb.rules>/Part
@@ -256,7 +259,17 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Logic/Util/MiniTB/MiniTB.rules>/Part
 			
-			&<Parts/Logic/Sensor/Sensor.rules>/Part
+			&<Parts/Logic/Sensors/LIDAR/Sensor.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/comparator.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterComparator_Ammo.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterComparator_Build.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterComparator_Mod.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterComparator_Ore.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/gauge_comparator.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Ammo.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Build.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Mod.rules>/Part
+			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Ore.rules>/Part
 			
 			&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part
@@ -269,6 +282,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor2.rules>/Part
+			
+			&<Parts/BossRewards/Profaned/holy_room_small/holy_room_small.rules>/Part
+			&<Parts/BossRewards/Profaned/Holymantle/Holymantle.rules>/Part
+			
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor2.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmorwedge.rules>/Part
@@ -291,10 +308,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Common/Corridors/FactoryCorridor.rules>/Part
 			&<Parts/Common/Corridors/FactoryCorridorDark.rules>/Part
 			
-			&<Parts/Common/Corridors/SmelteryFloor.rules>/Part			
+			/* &<Parts/Common/Corridors/SmelteryFloor.rules>/Part			
 			&<Parts/Production/Smeltery/Smeltery_Wall1.rules>/Part
 			&<Parts/Production/Smeltery/Smeltery_Wall2.rules>/Part
-			&<Parts/Production/Smeltery/Brain/Smeltery_Controller.rules>/Part
+			&<Parts/Production/Smeltery/Brain/Smeltery_Controller.rules>/Part */
 			
 			//DEV PARTS
 			
@@ -347,7 +364,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 
 		ManyToAdd
 		[
-			&<Occult/bosssysgen.rules>
+			//&<Occult/bosssysgen.rules>
 			&<Hyperoid/Hyperoid_sysgen.rules>
 		]
 	}
@@ -620,7 +637,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			//{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
-			{ ResourceType=cut.tristeel;          DesiredDelta=[-60, 60]; }
+			{ ResourceType=cut.tristeel;          DesiredDelta=[-60/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity), 60/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity)]; }
 		]
 	}
 	{
@@ -657,6 +674,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			&<resources/Heat/Heat.rules>
 			&<resources/Enragement/Enragement.rules>
+			&<resources/Enragement/bossanticheese.rules>
+			//&<resources/Enragement/boss_weaponstun.rules>
 			&<resources/Plasma/Plasma.rules>
 			&<resources/Mining Energy/mining_energy.rules>
 			&<resources/SigilDeath/sigildeath.rules>
@@ -674,7 +693,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Cursed Pages/cursedpages.rules>
 			&<resources/Zetasphere/zetasphere.rules>
 			
-			&<resources/fluids/molten.iron.rules>
+			/*&<resources/fluids/molten.iron.rules>
 			&<resources/fluids/molten.steel.rules>
 			&<resources/fluids/molten.copper.rules>
 			&<resources/fluids/molten.coil.rules>
@@ -684,7 +703,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/fluids/molten.gold.rules>
 			&<resources/fluids/molten.goldium.rules>
 			&<resources/fluids/molten.hyperium.rules>
-			&<resources/fluids/molten.sulfur.rules>
+			&<resources/fluids/molten.sulfur.rules> */
 		]
 	}
 	{
@@ -732,6 +751,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{
 				ID = CursedManaProvided
 				FormatKey = "Stats/CursedManaProvidedFmt"
+			}
+			{
+				ID = HolyManaAvailible
+				FormatKey = "Stats/HolyManaAvailibleFmt"
+			}
+			{
+				ID = HolyManaProvided
+				FormatKey = "Stats/HolyManaProvidedFmt"
 			}
 		]
 	}
@@ -1138,15 +1165,20 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/armoroid_foundation.rules>/Part
 			&<Occult/armoroid_w.rules>/Part
 			&<Occult/armoroid_w2.rules>/Part
-			&<Occult/lightball_core.rules>/Part
-			&<Occult/lightball_large.rules>/Part
+			&<Occult/Guardian Weapons/lightball_core.rules>/Part
+			&<Occult/Guardian Weapons/lightball_large.rules>/Part
+			&<Occult/Guardian Weapons/lightball_large_rapid.rules>/Part
+			&<Occult/Guardian Weapons/lightball_mega.rules>/Part
+			&<Occult/Guardian Weapons/ThumperSpawner.rules>/Part
+			&<Occult/Guardian Weapons/BurstThumperSpawner.rules>/Part
+			&<Occult/Guardian Weapons/ThumperSpawnerBlast.rules>/Part
+			&<Occult/Guardian Weapons/wall_blaster.rules>/Part
 			&<Occult/shipcore.rules>/Part
 			&<Occult/thrustcores.rules>/Part
 			&<Occult/shield2x1.rules>/Part
-			&<Occult/weakpoint_basic.rules>/Part
+			&<Occult/shield2x1_super.rules>/Part
+			//&<Occult/weakpoint_basic.rules>/Part
 			&<Occult/nothingroid.rules>/Part
-			&<Occult/BulletHell/ThumperSpawner.rules>/Part
-			&<Occult/BulletHell/BurstThumperSpawner.rules>/Part
 			
 			&<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
 			&<Occult/Cosmilite/armoroid_cosmilite_wide.rules>/Part
@@ -1190,12 +1222,24 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 
 		ManyToAdd
 		[
-			{ File="Ships/Occult Riptide.ship.png"; Tags=[HyperoidGuardian] Tier=6;  Difficulty=3; }
+			{ File="Ships/Minibosses/Occult Riptide.ship.png"; Tags=[HyperoidGuardian, HyperoidAttack] Tier=4;  Difficulty=3; }
 			//{ File="Occult/Twiceliver Guardian .ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }//remove todo quick NOW
-			{ File="Ships/MicroReaper.ship.png"; Tags=[HyperoidGuardian] Tier=8;  Difficulty=3; }
-			{ File="Ships/The Witch's Craft.ship.png"; Tags=[janibossship, janibossBrimstone] Tier=20;  Difficulty=3; }
-			{ File="Ships/Godslayer Guardian.ship.png"; Tags=[janibossship, janibossCosmilite] Tier=16;  Difficulty=3; }
-			{ File="Ships/Sol Profanatus.ship.png"; Tags=[janibossship, janibossProfaned] Tier=20;  Difficulty=3; }
+			{ File="Ships/Minibosses/MicroReaper.ship.png"; Tags=[HyperoidGuardian, HyperoidAttack] Tier=6;  Difficulty=3; }
+			{ File="Ships/Minibosses/Withering Starship.ship.png"; Tags=[HyperoidGuardian, HyperoidAttack] Tier=8;  Difficulty=3; }
+			{ File="Ships/Minibosses/TruffleBlaster.ship.png"; Tags=[HyperoidGuardian, HyperoidAttack] Tier=10;  Difficulty=3; }
+			{ File="Ships/Minibosses/Great Abolisher.ship.png"; Tags=[HyperoidGuardian, HyperoidAttack] Tier=12;  Difficulty=3; }
+			{ File="Ships/Minibosses/Altar Of Leprosy.ship.png"; Tags=[HyperoidGuardian, HyperoidAttack] Tier=18;  Difficulty=3; }
+			
+			{ File="Ships/Minibosses/Fascinator.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=8;  Difficulty=3; }
+			{ File="Ships/Minibosses/Traincoiner.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=10;  Difficulty=3; }
+			{ File="Ships/Minibosses/Blasphemic Tater.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=12;  Difficulty=3; }
+			{ File="Ships/Minibosses/Sapper Spiderling.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=18;  Difficulty=3; }
+			
+			// bosses
+			
+ 			{ File="Ships/Bosses/The Witch's Craft.ship.png"; Tags=[janibossship, janibossBrimstone] Tier=20;  Difficulty=3; }
+			{ File="Ships/Bosses/Godslayer Guardian.ship.png"; Tags=[janibossship, janibossCosmilite] Tier=16;  Difficulty=3; }
+			{ File="Ships/Bosses/Sol Profanatus.ship.png"; Tags=[janibossship, janibossProfaned] Tier=20;  Difficulty=3; }
 		]
 	}
 	{
@@ -1260,6 +1304,59 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 						Type = RandomAttackAngle
 						AttackAngleChangeInterval = [40, 60]
 						AttackAngleChangeDelta = [-110d, 110d]
+						CoordinateFlanking = true
+					}
+				]
+
+				TargetingModules
+				[
+					{
+						Type = ValueTargeter
+						TargetChecksPerUpdate = 10
+						TargetSwitchThresholdFactor = 2
+						TargetValueFactorPerPenetrationDist = .75
+					}
+				]
+			}
+			HyperoidGuardianAI
+			{
+				NameKey = "AI/HyperoidGuardianAI"
+				UpdateInterval = [.5, 1] // A random range. Slower than the average AI.
+				IsAvailableInCreativeMode = false
+				IsAvailableInMultiplayer = false
+
+				StrategyModules
+				[
+					{
+						Type = AreaPatrol
+						DefaultPatrolRadius = 500
+						AvoidableDoodadTags = [sun]
+						AvoidableDoodadBuffer = 100
+					}
+					{
+						Type = AggroEnemies
+						TargetSwitchThresholdFactor = 1.7
+						TargetDistanceFactorExponent = 1
+						AlreadyTargetedByAllyFactor = 0.7
+						TargetFirepowerCacheTime = 10
+						AcquireAggroWithinRadar = false
+						ReleaseAggroWithinRadar = true
+						AvoidableDoodadTags = [sun]
+					}
+				]
+
+				TacticsModules
+				[
+					{
+						Type = DefaultAttackRadiusAndRotation
+						AttackRotationSwitchThresholdFactor = 1.25
+						AttackRotationsToCheck = 8
+						UseSavedAboveHealth = 50%
+					}
+					{
+						Type = RandomAttackAngle
+						AttackAngleChangeInterval = [5, 10]
+						AttackAngleChangeDelta = [-30d, 30d]
 						CoordinateFlanking = true
 					}
 				]
@@ -1493,6 +1590,23 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 				BlocksPerValue = 10
 				IdealExtraSpaceFactor = 1 
 			}
+			{
+				NameKey = "BuildBox/HolyMana"
+				NumberFormat = "0"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/stat_holymana.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				RecommendedStat = HolyManaProvided	
+				ProvidedStat = HolyManaAvailible
+				BlocksPerValue = 10
+				IdealExtraSpaceFactor = 1 
+			}
 		]
 	}
 	
@@ -1511,9 +1625,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 ]
 ShipLibraries
 [
-	{
+ 	{
 		Folder = "Ships"
 		NameKey = "JaniBossShips"
 		TooltipKey = "JaniBossShipsTip" // Optional
+	} 
+	{
+		Folder = "Ships/Minibosses"
+		NameKey = "JaniMinibossesShips"
+		TooltipKey = "JaniMinibossesShipsTip" // Optional
 	}
 ]

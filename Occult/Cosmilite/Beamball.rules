@@ -12,7 +12,7 @@ Part : <../base_part_occult.rules>/Part
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeakpointDetector, JaniCosmilitebossShouldHaveNoOrbs]
 	Density = 3
 	AIValueFactor = 32
-	MaxHealth = 32000 * 42
+	MaxHealth = 32000 * 10 * 5
 	EditorReplacementPartID = ""
 	Size = [2, 4]
 	SelectionPriority = 1
@@ -43,7 +43,7 @@ Part : <../base_part_occult.rules>/Part
 			RequiresCommand = false
 		}
 		
-		ShieldingOn
+		/* ShieldingOn
 		{
 			Type = MultiToggle
 			Toggles = [ActiveWeakpoints, ShieldStorage]
@@ -285,7 +285,7 @@ Part : <../base_part_occult.rules>/Part
 					IgnoreIntensity = true
 				}
 			]
-		}
+		} */
 		
 		SelfTerminateSignal
 		{
@@ -761,7 +761,7 @@ Part : <../base_part_occult.rules>/Part
 		//Deathbolts attack
 		
 		
-		EmitterFanArcController
+/* 		EmitterFanArcController
 		{
 		    Type = FanArcController
 		    ChainedTo = Turret
@@ -817,7 +817,53 @@ Part : <../base_part_occult.rules>/Part
 		BoltEmitter12  = &BoltEmitter
 		BoltEmitter13  = &BoltEmitter
 		BoltEmitter14  = &BoltEmitter
-		BoltEmitter15  = &BoltEmitter
+		BoltEmitter15  = &BoltEmitter */
+		
+		/* EmitterFanArcController
+		{
+		    Type = FanArcController
+		    ChainedTo = Turret
+		    GetTargetFrom = Turret
+		    MaxArc = 120d
+			MinArc = 20d
+		    DefaultArc = &MaxArc
+		    ArcSizeFactor = 600%
+		    FanComponents
+		    [
+		        BoltEmitter,
+		        BoltEmitter2
+		    ]
+		}
+		
+		BoltEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = EmitterFanArcController
+			Location = [1.5, 0]
+			FireTrigger = BoltsCharged
+			GetTargetFrom = Turret
+			OperationalToggle = PowerToggle
+			FireDelay = 0.75
+			Bullet = &<shots/deathboltPortal.rules>
+			Spread = [-3d, 3d]
+			Burst = 2
+			BurstDelay = .05
+		}
+		
+		BoltEmitter2  = &BoltEmitter */
+		
+		BoltEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Turret
+			Location = [1.5, 0]
+			FireTrigger = BoltsCharged
+			GetTargetFrom = Turret
+			OperationalToggle = PowerToggle
+			FireDelay = 0.75
+			Bullet = &<shots/DeathboltPortalSummoner.rules>
+			Spread = [-3d, 3d]
+		}
 		
 		BoltsCharged
 		{

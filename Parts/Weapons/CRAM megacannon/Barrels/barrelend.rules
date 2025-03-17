@@ -10,7 +10,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[steel, 32]
 	]
-	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_light]
+	TypeCategories = [CRAM_barrel, barrel_heavy]
 	Size = [1, 1]
 	UnderlyingPartPerTile = ""
 	//PhysicalRect = [0, 1, 3, 2]
@@ -22,8 +22,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Flammable = false
 	SelectionTypeID = "cannons"
 	AllowedContiguity = [Bottom]
+		
+	SalvageProgressMediaEffects
+	CreateUnderlyingWhenDestroyed = false
+	
 	MaxHealth = 2000
-	InitialPenetrationResistance = 5
+	InitialPenetrationResistance = 20
 	ExternalWalls = [None]
 	InternalWalls = [All]
 	PenetrationRectType = Normal
@@ -95,6 +99,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Graphics
 			ChainedTo = PositionProxy
 			Location = [0, -1]
+			IncludeWhenUnderConstruction = false
 		}
 		
 		HeavyBarrelConnection
@@ -174,10 +179,567 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size17BuffToggle : Size1BuffToggle
 		{MinBuffValue = 17; MaxBuffValue = 17}
 		
+		ConstructionCollider
+		{
+			Type = PolygonCollider
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Location = [0, 0]
+			ProperSize = &../BarrelGraphics0/ProperSize
+			Vertices
+			[
+				[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+				[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+				[0.5 + (&../../ProperSize/0)*7/20, 1]
+				[0.5 - (&../../ProperSize/0)*7/20, 1]
+			]
+			Density = 8
+			DamageResistances =
+			{
+				default = -(1/ (1.00)/1) +1,
+				explosive = &default
+			}
+		}
+		
+		BarrelCollider0
+		{
+			Type = PolygonCollider
+			IncludeWhenUnderConstruction = false
+			ChainedTo = PositionProxy
+			OperationalToggle = Size0
+			Location = [0, 0]
+			ProperSize = &../BarrelGraphics0/ProperSize
+			Vertices
+			[
+				[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+				[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+				[0.5 + (&../../ProperSize/0)*7/20, 1]
+				[0.5 - (&../../ProperSize/0)*7/20, 1]
+			]
+			Density = 8
+			DamageResistances =
+			{
+				default = -(1/ (1.00)/1) +1,
+				explosive = &default
+			}
+		}
+		
+		Size1Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size1BuffToggle
+			Components
+			{	
+				BarrelCollider1
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics1/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (1.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size2Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size2BuffToggle
+			Components
+			{	
+				BarrelCollider2
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics2/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (2.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size3Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size3BuffToggle
+			Components
+			{	
+				BarrelCollider3
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics3/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (3.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size4Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size4BuffToggle
+			Components
+			{	
+				BarrelCollider4
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics4/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (4.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size5Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size5BuffToggle
+			Components
+			{	
+				BarrelCollider5
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics5/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (5.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size6Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size6BuffToggle
+			Components
+			{	
+				BarrelCollider6
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics6/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (6.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size7Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size7BuffToggle
+			Components
+			{	
+				BarrelCollider7
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics7/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (7.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size8Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size8BuffToggle
+			Components
+			{	
+				BarrelCollider8
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics8/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (8.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size9Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size9BuffToggle
+			Components
+			{	
+				BarrelCollider9
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics9/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (9.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size10Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size10BuffToggle
+			Components
+			{	
+				BarrelCollider10
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics10/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (10.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size11Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size11BuffToggle
+			Components
+			{	
+				BarrelCollider11
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics11/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (11.00)/1) +1,
+						explosive = &default
+					}
+				}				
+			}
+		}
+		Size12Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size12BuffToggle
+			Components
+			{	
+				BarrelCollider12
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics12/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (12.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size13Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size13BuffToggle
+			Components
+			{	
+				BarrelCollider13
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics13/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (13.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size14Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size14BuffToggle
+			Components
+			{	
+				BarrelCollider14
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics14/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (14.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size15Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size15BuffToggle
+			Components
+			{	
+				BarrelCollider15
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics15/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (15.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size16Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size16BuffToggle
+			Components
+			{	
+				BarrelCollider16
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics16/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (16.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		Size17Collider
+		{
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = Size17BuffToggle
+			Components
+			{	
+				BarrelCollider17
+				{
+					Type = PolygonCollider
+					IncludeWhenUnderConstruction = false
+					ChainedTo = PositionProxy
+					Location = [0, 0]
+					ProperSize = &../../../BarrelGraphics17/ProperSize
+					Vertices
+					[
+						[0.5 - (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1 - (&../../ProperSize/0)*4/8]
+						[0.5 + (&../../ProperSize/0)*7/20, 1]
+						[0.5 - (&../../ProperSize/0)*7/20, 1]
+					]
+					Density = 8
+					DamageResistances =
+					{
+						default = -(1/ (17.00)/1) +1,
+						explosive = &default
+					}
+				}
+			}
+		}
+		
 		BarrelGraphics0
 		{
 			Type = Graphics
 			ChainedTo = PositionProxy
+			IncludeWhenUnderConstruction = false
 			Location = [0.5, 1]//WARNING
 			ProperSize = [1.25, 1]
 			OperationalToggle = Size0
@@ -632,8 +1194,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			ChainedTo = PositionProxy
+			IncludeWhenUnderConstruction = false
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
 			Location = [0.5, 0.5]
+		}
+		
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/common/salvage_finish.wav"
+					Volume = 0.75
+					SpeedVariation = .25
+				}
+			]
 		}
 		
 		/*Indicators

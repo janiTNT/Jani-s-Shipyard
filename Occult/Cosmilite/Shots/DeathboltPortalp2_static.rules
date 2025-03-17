@@ -1,0 +1,216 @@
+ID = "janiTNT.DeathboltSpawnerPortalp2_static"
+Range = 1000
+IdealRange = 600
+Speed = 0
+Stage2 = &<deathbolt.rules>
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 0.1
+		LinearDamping = 8
+		FrameOfReferenceDuration = 0.5
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 1
+		Range = 560
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	DeployDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = 7
+		//FactorEffectsWith = Targetable
+
+		OnDeath
+		{
+			MediaEffectsScale = 12
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+			]
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 1
+					InheritVelocity = true
+					ScaleHealth = true
+					Distance = -250
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = 324d
+		Sprite
+		{
+			Texture
+			{
+				File = "flare.png"
+				MipLevels = max
+			}
+			Size = [5, 5]
+			TargetBlendMode = Add
+			VertexColor = [0 , 180 * 0.9, 255* 0.9]
+		}
+		LerpScaleFrom = [0.32, 0.35]
+		LerpTime = 1
+	}
+	Sprite2
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = -102d
+		Sprite
+		{
+			Texture
+			{
+				File = "flare.png"
+				MipLevels = max
+			}
+			Size = [6, 6]
+			TargetBlendMode = Add
+			VertexColor = [255* 0.9 , 120 * 0.9, 255* 0.9]
+		}
+		LerpScaleFrom = [0.32, 0.35]
+		LerpTime = 2
+	}
+ 	Sprite3
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = -92d
+		Sprite
+		{
+			Texture
+			{
+				File = "flare.png"
+				MipLevels = max
+			}
+			Size = [12, 12]
+			TargetBlendMode = Add
+			VertexColor = [255 , 0, 0]
+		}
+		LerpScaleFrom = [0, 0]//time offset meth
+		LerpTime = 7
+	} 
+ 	Aimlaser
+	{
+		Type = Sprite
+		Z = .25
+		IsLight = true
+		RenderBucket = BulletUpper3
+		//IsLit = true
+		Offset = [2000/2, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "../../other/SightLaserB.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [2000, 3]
+			VertexColor = [0, 128, 255]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = 1
+		}
+		LerpScaleFrom = [0.5, 0]
+		LerpTime = .25
+		StartTime = 1
+		EndTime = 6.5
+	}
+
+	LightsSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		//Spin = 500d
+		Z = .25
+		IsLight = true
+		//Offset = [24/64, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = 0
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.75
+	}
+
+
+	/*Targetable
+	{
+		Type = Targetable
+		Health = 32000
+		TargetCategory = "missile"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}*/
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5/30
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+			]
+		}
+	}
+}

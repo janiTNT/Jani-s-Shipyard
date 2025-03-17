@@ -218,7 +218,7 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 			}
 		} */
 		
-		PattyHum
+		/* PattyHum
 		{
 			Type = ContinuousEffects
 			Location = [.5, .5]
@@ -266,7 +266,7 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 					ConcurrencyMode = PerShip
 				}
 			]
-		}
+		} */
 
 		Blueprints = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Blueprints
 		//BlueprintWalls = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/BlueprintWalls

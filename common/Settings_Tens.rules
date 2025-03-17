@@ -18,103 +18,64 @@ Part
 			Mode = NumberSelectTens
 			OnMode = 0
 		}
-		ZeroLength2
+		BuffProviderSettingZero2
 		{
-			Type = ToggledComponents
-			Toggle = ZeroLengthToggle2
-			Components
-			{
-				BuffProviderSettingOne2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = ZeroLengthToggle2
+			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting; BuffMode=Add }
 		}
-
 		OneLengthToggle2
 		{
 			Type = ModeToggle
 			Mode = NumberSelectTens
 			OnMode = 1
 		}
-		OneLength2
+		BuffProviderSettingOne2
 		{
-			Type = ToggledComponents
-			Toggle = OneLengthToggle2
-			Components
-			{
-				BuffProviderSettingOne2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="10*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = OneLengthToggle2
+			BuffAmount = { BaseValue="10*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
-
 		TwoLengthToggle2
 		{
 			Type = ModeToggle
 			Mode = NumberSelectTens
 			OnMode = 2
 		}
-		TwoLength2
+		BuffProviderSettingTwo2
 		{
-			Type = ToggledComponents
-			Toggle = TwoLengthToggle2
-			Components
-			{
-				BuffProviderSettingTwo2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="20*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = TwoLengthToggle2
+			BuffAmount = { BaseValue="20*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
-
 		ThreeLengthToggle2
 		{
 			Type = ModeToggle
 			Mode = NumberSelectTens
 			OnMode = 3
 		}
-		ThreeLength2
+		BuffProviderSettingThree2
 		{
-			Type = ToggledComponents
-			Toggle = ThreeLengthToggle2
-			Components
-			{
-				BuffProviderSettingThree2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="30*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = ThreeLengthToggle2
+			BuffAmount = { BaseValue="30*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
-
 		FourLengthToggle2
 		{
 			Type = ModeToggle
 			Mode = NumberSelectTens
 			OnMode = 4
 		}
-		FourLength2
+		BuffProviderSettingFour2
 		{
-			Type = ToggledComponents
-			Toggle = FourLengthToggle2
-			Components
-			{
-				BuffProviderSettingFour2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="40*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = FourLengthToggle2
+			BuffAmount = { BaseValue="40*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
 		FiveLengthToggle2
 		{
@@ -122,19 +83,12 @@ Part
 			Mode = NumberSelectTens
 			OnMode = 5
 		}
-		FiveLength2
+		BuffProviderSettingFive2
 		{
-			Type = ToggledComponents
-			Toggle = FiveLengthToggle2
-			Components
-			{
-				BuffProviderSettingFive2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="50*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = FiveLengthToggle2
+			BuffAmount = { BaseValue="50*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
 		SixLengthToggle2
 		{
@@ -142,19 +96,12 @@ Part
 			Mode = NumberSelectTens
 			OnMode = 6
 		}
-		SixLength2
+		BuffProviderSettingSix2
 		{
-			Type = ToggledComponents
-			Toggle = SixLengthToggle2
-			Components
-			{
-				BuffProviderSettingSix2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="60*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = SixLengthToggle2
+			BuffAmount = { BaseValue="60*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
 		SevenLengthToggle2
 		{
@@ -162,19 +109,12 @@ Part
 			Mode = NumberSelectTens
 			OnMode = 7
 		}
-		SevenLength2
+		BuffProviderSettingSeven2
 		{
-			Type = ToggledComponents
-			Toggle = SevenLengthToggle2
-			Components
-			{
-				BuffProviderSettingSeven2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="70*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = SevenLengthToggle2
+			BuffAmount = { BaseValue="70*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
 		EightLengthToggle2
 		{
@@ -182,19 +122,12 @@ Part
 			Mode = NumberSelectTens
 			OnMode = 8
 		}
-		EightLength2
+		BuffProviderSettingEight2
 		{
-			Type = ToggledComponents
-			Toggle = EightLengthToggle2
-			Components
-			{
-				BuffProviderSettingEight2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="80*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = EightLengthToggle2
+			BuffAmount = { BaseValue="80*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
 		NineLengthToggle2
 		{
@@ -202,19 +135,12 @@ Part
 			Mode = NumberSelectTens
 			OnMode = 9
 		}
-		NineLength2
+		BuffProviderSettingNine2
 		{
-			Type = ToggledComponents
-			Toggle = NineLengthToggle2
-			Components
-			{
-				BuffProviderSettingNine2
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Second
-					BuffAmount = { BaseValue="90*(&../../../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			OperationalToggle = NineLengthToggle2
+			BuffAmount = { BaseValue="90*(&../../../SettingsMultiplier)"; BuffType=AdvS_Setting; BuffMode=Add }
 		}
 	}
 }

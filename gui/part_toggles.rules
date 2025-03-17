@@ -1,4 +1,4 @@
-PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
+PartToggles : &<part_toggles_comparator.rules>/PartToggles
 [
 	// Fabricator type
 	{
@@ -720,7 +720,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_zero"
 				//ButtonToolTipKey = "PartToggles/MissileType_HE"
-				//DefaultHotkey = []
+				DefaultHotkey = [0]
 				ButtonSprite
 				{
 					Texture
@@ -736,7 +736,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_one"
 				//ButtonToolTipKey = "PartToggles/MissileType_HE"
-				//DefaultHotkey = []
+				DefaultHotkey = [1]
 				ButtonSprite
 				{
 					Texture
@@ -752,7 +752,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_two"
 				//ButtonToolTipKey = "PartToggles/MissileType_EMP"
-				//DefaultHotkey = []
+				DefaultHotkey = [2]
 				ButtonSprite
 				{
 					Texture
@@ -768,7 +768,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_three"
 				//ButtonToolTipKey = "PartToggles/MissileType_Nuke"
-				//DefaultHotkey = []
+				DefaultHotkey = [3]
 				ButtonSprite
 				{
 					Texture
@@ -784,7 +784,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_four"
 				//ButtonToolTipKey = "PartToggles/MissileType_Mine"
-				//DefaultHotkey = []
+				DefaultHotkey = [4]
 				ButtonSprite
 				{
 					Texture
@@ -800,7 +800,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_five"
 				//ButtonToolTipKey = "PartToggles/MissileType_HE"
-				//DefaultHotkey = []
+				DefaultHotkey = [5]
 				ButtonSprite
 				{
 					Texture
@@ -816,7 +816,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_six"
 				//ButtonToolTipKey = "PartToggles/MissileType_EMP"
-				//DefaultHotkey = []
+				DefaultHotkey = [6]
 				ButtonSprite
 				{
 					Texture
@@ -832,7 +832,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_seven"
 				//ButtonToolTipKey = "PartToggles/MissileType_Nuke"
-				//DefaultHotkey = []
+				DefaultHotkey = [7]
 				ButtonSprite
 				{
 					Texture
@@ -848,7 +848,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_Eight"
 				//ButtonToolTipKey = "PartToggles/MissileType_Mine"
-				//DefaultHotkey = []
+				DefaultHotkey = [8]
 				ButtonSprite
 				{
 					Texture
@@ -864,7 +864,7 @@ PartToggles// : &<part_toggles_othermods.rules>/PartTogglesGA
 			{
 				ChoiceID = "advships_lengths_nine"
 				//ButtonToolTipKey = "PartToggles/MissileType_HE"
-				//DefaultHotkey = []
+				DefaultHotkey = [9]
 				ButtonSprite
 				{
 					Texture

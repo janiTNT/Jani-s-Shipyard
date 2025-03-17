@@ -1,0 +1,101 @@
+Part : <FilterComparator_base.rules>/Part
+{
+	NameKey = "Parts/Logic_Comparator_Resources_Ammo"
+	IconNameKey = "Parts/Logic_Comparator_Resources_AmmoIcon"
+	ID = janiTNT.comparator_filter_ammo // Part IDs  somthing something
+	Components : ^/0/Components
+	{	
+		AmmoType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_ammo"
+			Default = 1
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		hyperiumToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 0
+		}
+		hyperiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = hyperiumToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/hyperium.rules>/Components
+		}
+		
+		bulletToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 1
+		}
+		bulletComponents
+		{
+			Type = ToggledComponents
+			Toggle = bulletToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/bullet.rules>/Components
+		}
+		
+		missile_part_heToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 2
+		}
+		missile_part_heComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_heToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/missile_part_he.rules>/Components
+		}
+		
+		missile_part_empToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 3
+		}
+		missile_part_empComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_empToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/missile_part_emp.rules>/Components
+		}
+		
+		missile_part_nukeToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 4
+		}
+		missile_part_nukeComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_nukeToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/missile_part_nuke.rules>/Components
+		}
+		
+		mine_partToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 5
+		}
+		mine_partComponents
+		{
+			Type = ToggledComponents
+			Toggle = mine_partToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/mine_part.rules>/Components
+		}
+	}
+}

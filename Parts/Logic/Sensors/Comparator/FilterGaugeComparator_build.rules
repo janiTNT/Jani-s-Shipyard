@@ -1,0 +1,143 @@
+Part : <FilterGaugeComparator_base.rules>/Part
+{
+	NameKey = "Parts/Logic_Gauge_Comparator_Resources_Build"
+	IconNameKey = "Parts/Logic_Gauge_Comparator_Resources_BuildIcon"
+	ID = janiTNT.gauge_comparator_filter_build // Part IDs  somthing something
+	Components : ^/0/Components
+	{	
+		BuildType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_material"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		steelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 0
+		}
+		steelComponents
+		{
+			Type = ToggledComponents
+			Toggle = steelToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/steel.rules>/Components
+		}
+		
+		coilToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 1
+		}
+		coilComponents
+		{
+			Type = ToggledComponents
+			Toggle = coilToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/coil.rules>/Components
+		}
+		
+		coil2Toggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 2
+		}
+		coil2Components
+		{
+			Type = ToggledComponents
+			Toggle = coil2Toggle
+			IncludeInBlueprints = true
+			Components = &<Filters/coil2.rules>/Components
+		}
+		
+		tristeelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 3
+		}
+		tristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = tristeelToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/tristeel.rules>/Components
+		}
+		
+		diamondToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 4
+		}
+		diamondComponents
+		{
+			Type = ToggledComponents
+			Toggle = diamondToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/diamond.rules>/Components
+		}
+		
+		processorToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 5
+		}
+		processorComponents
+		{
+			Type = ToggledComponents
+			Toggle = processorToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/processor.rules>/Components
+		}
+		
+		enriched_uraniumToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 6
+		}
+		enriched_uraniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = enriched_uraniumToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/enriched_uranium.rules>/Components
+		}
+		
+		goldiumToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 7
+		}
+		goldiumComponents
+		{
+			Type = ToggledComponents
+			Toggle = goldiumToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/goldium.rules>/Components
+		}
+		
+		cuttristeelToggle
+		{
+			Type = ModeToggle
+			Mode = BuildType
+			OnMode = 8
+		}
+		cuttristeelComponents
+		{
+			Type = ToggledComponents
+			Toggle = cuttristeelToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/cuttristeel.rules>/Components
+		}
+	}
+}

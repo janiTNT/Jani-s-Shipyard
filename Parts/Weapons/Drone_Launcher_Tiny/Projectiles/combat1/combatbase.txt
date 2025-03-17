@@ -1,7 +1,7 @@
 ID = "janiTNT.combatdronebase"
 Range = 650
 IdealRange = 550
-Speed = 30
+Recoil = -2
 
 Components
 {
@@ -10,7 +10,7 @@ Components
 		Type = CirclePhysics
 		Radius = .25
 		Density = 0.2
-		LinearDamping = 4
+		LinearDamping = 0.4
 		AngularDamping = 2
 		FrameOfReferenceDuration = 5
 		CollidesWithBullets = true
@@ -40,8 +40,8 @@ Components
 	Repulsion
 	{
 		Type = Acceleration
-		Acceleration = [-180 * 4, 0]
-		AccelerationOverTime = [0, 2]
+		Acceleration = [-250 * 0.4, 0]
+		AccelerationOverTime = [0, 1]
 		Direction = Target
 	}
 	
@@ -49,7 +49,7 @@ Components
 	{
 		Type = ProximityAcceleration
 		Range = 3.5
-		Acceleration = -91 * 4
+		Acceleration = -91 * 0.4
 		AccelerateTowardsShips = false
 		AccelerateTowardsBullets = true
 		AccelerateTowardsBulletCategories = [missile]
@@ -83,16 +83,17 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 360d
+		TurnVelocity = 110d
 		Delay = .3
 		TargetLeadPrediction = false
+		VelocityCompensation = 20%
 		AvoidanceRaycastDistance = 100	
 	}
 	
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 135 * 4
+		Acceleration = 165 * 0.4
 	}
 	Retarget
 	{
@@ -127,7 +128,7 @@ Components
 		Range = 90
 		DetectsShips = true
 		DetectsBullets = false
-		StartDelay = 0.75
+		StartDelay = 1
 		FactorEffectsWith = Targetable
 		
 		OnDeath

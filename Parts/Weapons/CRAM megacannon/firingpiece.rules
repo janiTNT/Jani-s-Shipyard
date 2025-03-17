@@ -8,8 +8,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/CRAM_FiringpieceDesc"
 	Resources
 	[
-		[steel, 80]
-		[coil, 30]
+		[steel, 40]
+		[coil2, 20]
+		[tristeel, 15]
 	]
 	TypeCategories = [weapon, uses_ammo, is_crewed, CRAM_barrel, barrel_heavy, CRAM_Firing_Piece, CRAM, CRAMconnector]
 	Size = [1, 4]
@@ -22,7 +23,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations = []
 	//ProhibitAbove = 2
 	CrewSpeedFactor = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_Pen, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal, JaniCRAM_PackerCount, JaniCRAM_PackerReady, JaniCRAM_Momentum]
+	ReceivableBuffs : ^/0/ReceivableBuffs [JaniCRAM_BarrelMassFinal, JaniCRAM_BarrelMass, JaniCRAM_Velocity, JaniCRAM_Range, JaniCRAM_Health, JaniCRAM_DamageMain, AdvS_Setting, AdvS_Setting_Second, JaniCRAM_ReverseBarrelGauge, JaniCRAM_Accuraccy, JaniCRAM_TurretRotation, JaniCRAM_Pen, JaniCRAM_AOEMain, JaniCRAM_StatMultiplier, JaniCRAM_VelocityPre,JaniCRAM_ChainLoaderCount,JaniCRAM_ChainLoaderReady, JaniCRAM_BarrelGauge, JaniCRAM_CoolingSpeedNerf, JaniCRAM_CoolingSpeedBuff, JaniCRAM_ReloadSpeedFinal, JaniCRAM_PackerCount, JaniCRAM_PackerReady, JaniCRAM_Momentum, JaniCRAM_Range_Pre, JaniCRAM_BarrelGauge_Root]
 	/*AllowedDoorLocations
 	[
 		[-1, 1]
@@ -40,7 +41,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64/4, 64]
+		Size = [(64/4)*1.5, 64*1.5]
 	}
 	Components : ^/0/Components
 	{
@@ -55,6 +56,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_ReverseBarrelGauge
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=17;}
+		}
+		
+		BarrelGaugeSelfBuffProviderRoot
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_BarrelGauge_Root
 			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge; BuffMode=Add; MinValue=1; MaxValue=17;}
 		}
 		
@@ -118,6 +126,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = BuffableValue
 			Value = { BaseValue=1; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Divide; MaxValue=1;}
 		}
+		InvGaugeBuffValue_Root
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=JaniCRAM_BarrelGauge_Root; BuffMode=Divide; MaxValue=1;}
+		}
 		
 		CoolingNerfBuffProvider
 		{
@@ -153,7 +166,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_VelocityPre
 			BuffAmount = { BaseValue=0.1; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply;}
-			BuffMultiplier = InvGaugeBuffValue
+			BuffMultiplier = InvGaugeBuffValue_Root
 		}
 		VelocityBuffProvider
 		{
@@ -178,8 +191,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = JaniCRAM_Range
-			BuffAmount = { BaseValue=0.45; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply; }
-			BuffMultiplier = InvGaugeBuffValue
+			BuffAmount = { BaseValue=1; BuffType=JaniCRAM_Range_Pre; BuffMode=Multiply; }
+			//BuffMultiplier = InvGaugeBuffValue
+		}
+		RangeBuffProviderPre
+		{
+			Type = SelfBuffProvider
+			BuffType = JaniCRAM_Range_Pre
+			BuffAmount = { BaseValue=0.175; BuffType=JaniCRAM_BarrelMass; BuffMode=Multiply; }
+			BuffMultiplier = InvGaugeBuffValue_Root
 		}
 		AccuraccyBuffProvider
 		{

@@ -1,0 +1,481 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ShieldOvercharger"
+	IconNameKey = "Parts/ShieldOverchargerIcon"
+	ID = janiTNT.holy_mantle_shield // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups = ["Defenses"]
+	DescriptionKey = "Parts/ShieldOverchargerDesc"
+	Resources
+	[
+		[steel, 20]
+		[profanedcore, 4]
+		[coil, 20]
+	]
+	Size = [2, 2]
+	IsRotateable = false
+	MaxHealth = 4000
+	TypeCategories = [uses_power, is_crewed]
+	ReceivableBuffs : ^/0/ReceivableBuffs [HolyMantleToggle, HolyMana_Consumed, HolyMana_Provided]
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [ManaRequirementToggle, PowerToggle]
+			Mode = All
+		}
+		ShieldOperational
+		{
+			Type = MultiToggle
+			Toggles = [ShieldStorage, IsOperational, {Toggle = MantleBuffToggle, invert = true}]
+			Mode = All
+		}
+		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 5
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 1]
+			OperationalToggle = ShieldOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "spinA.png"
+						RotSpeed = -10d
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "spinB.png"
+						RotSpeed = -22d
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+		
+		RoofGridFlat
+		{
+			Type = SpriteGrid
+			Location = [.5, .5]
+			RandomDamageLevels
+			[
+				[
+					{
+						File = "./Data/ships/terran/corridor/roof.png"
+						NormalsFile = "./Data/ships/terran/corridor/roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/corridor/roof_33.png"
+						NormalsFile = "./Data/ships/terran/corridor/roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./Data/ships/terran/corridor/roof_66.png"
+						NormalsFile = "./Data/ships/terran/corridor/roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			]
+			RandomUVRotation = true
+			Layer = "roofs"
+		}
+		
+		MantleBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = HolyMantleToggle
+		}
+		
+		Regeneration
+		{
+			Type = ResourceConverter
+			OperationalToggle = ShieldStorage
+			InvertOperationalToggle = true
+			ToStorage = ShieldStorage
+			ToQuantity = 50000
+			MinFromQuantityForConversion = 1
+			Interval = 40
+		}
+		
+		SlowRegeneration
+		{
+			Type = ResourceConverter
+			OperationalToggle = ShieldStorage
+			ToStorage = ShieldStorage
+			ToQuantity = 50
+			MinFromQuantityForConversion = 1
+			Interval = 2
+		}
+		
+		HolyManaConsumerBuffProvider
+		{
+			Type = GridBuffProvider
+			OperationalToggle = PowerToggle
+			BuffType = HolyMana_Consumed
+			GridDistance = 50000//should be enough
+			AllowDiagonals = true
+			BuffAmount = 5
+			BuffsSelf = true
+		}
+		
+		ManaRequirementToggle
+		{
+			Type = ThresholdToggle
+			ValueFrom = HolyManaValue
+			MinAmount = 0%
+		}
+		
+		HolyManaProvidedAdd
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=HolyMana_Provided; BuffMode=Add; }
+		}
+		
+		HolyManaConsumedSubtract
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=HolyMana_Consumed; BuffMode=Subtract; }
+		}
+		
+		HolyManaValue
+		{
+			Type = MultiValue
+			Values
+			[
+				HolyManaProvidedAdd
+				HolyManaConsumedSubtract
+			]
+			Mode = Add
+		}
+		
+		MantleDisablerProvider
+		{
+			Type = WholeShipProvider
+			OperationalToggle = ShieldStorage
+			InvertOperationalToggle = true
+			BuffType = HolyMantleToggle
+			BuffAmount = 1
+		}
+		
+		ShieldStorage
+		{
+			Type = ResourceStorage
+			ResourceType = janiTNT.SuperShieldEnergy
+			MaxResources = 50000
+			StartingResources = &MaxResources
+			DrainOnFtlJump = false
+		}
+		
+		ProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = ShieldOperational
+			ShowProgressFor = ShieldStorage
+			LowColor = [128, 128, 128]
+			HighColor = [255, 255, 255]
+			FullColor = [200, 200, 255]
+			Height = 10
+		}
+		
+		ArcShield
+		{
+			Type = ArcShield
+			Radius = 25
+			Arc = 360d
+			OperationalToggle = ShieldOperational
+			PenetrationResistance = [200]
+			ExplosiveDamageAbsorption = 100%
+			ExplosiveDamageResistance = 50%
+			DrainResourcesFrom = ShieldStorage
+			ResourceDrainPerDamage = 1
+			Rotation = -90d
+			Location = [1, 1]
+
+			BlueprintArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1]
+				Color = [0, 255, 0, 127]
+			}
+			BlueprintArcSpriteSegments = 64
+
+			CoverageArcSprite
+			{
+				Texture
+				{
+					File = "./data/ships/terran/shield_gen_small/shield_energy.png"
+					SampleMode = Linear
+					MipLevels = 1
+				}
+				Size = [0, 1]
+				Color = [255, 255, 255, 127]
+			}
+			CoverageArcSpriteSegments = 64
+
+			ShieldMediaEffects
+			[]
+
+			HitMediaEffects
+			[
+				{
+					Type = ArcShield
+					FadeInTime = .1
+					FadeOutTime = .5
+					Radius = &~/Part/Components/ArcShield/Radius
+					Arc = 50d
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_waveSpeed = -2
+						_waveAlpha = .75
+						_waveCurveInterval = 1
+						_waveCurveMagnitude = .25
+						_waveCurveUOffsetPerSecond = 0
+						//TargetBlendMode = Add
+						_fullPowerColor1 = [255, 255, 255, 127]
+						_lowPowerColor1 = [255, 255, 255, 200]
+						_fullPowerColor2 = [255, 255, 255, 127]
+						_lowPowerColor2 = [255, 255, 255, 127]
+						_lowPowerThicknessExponent = .6
+						_xScale = 1
+						TargetBlendMode = Add
+						Size = [0, 2]
+					}
+					ArcSpriteSegments = 6
+					Bucket = Upper3
+				}
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = &<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/HitMediaEffects/1/RandomSounds
+					Volume = 1
+					Speed = .8
+					IgnoreIntensity = true
+					SpeedVariation = .25
+					MaxConcurrent = 10
+				}
+			]
+		}
+		
+		ShieldVisuals
+		{
+			Type = ContinuousEffects
+			ChainedTo = ArcShield
+			Location = [&~/Part/Components/ArcShield/Radius, 0]
+			FactorMediaEffectsIntensityWith = ShieldStorage
+			OperationalToggle = ShieldOperational
+			ParentToShip = true
+			MediaEffects
+			[
+				{
+					Type = ArcShield
+					Radius = 25
+					Arc = 366d
+					FadeInTime = .25
+					FadeOutTime = .25
+					ArcSprite
+					{
+						Texture
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						//UVRect = [0, 1, 1, -1]
+						Shader = "./data/ships/terran/shield_gen_small/shield.shader"
+						_waveTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_wave.png"
+							UVMode = Wrap
+							SampleMode = Linear
+							MipLevels = max
+						}
+						_maskTex
+						{
+							File = "./data/ships/terran/shield_gen_small/shield_energy_original.png"
+							SampleMode = Linear
+							MipLevels = 1
+						}
+						_waveSpeed = -4
+						_waveAlpha = 0.8
+						_waveCurveInterval = .5
+						_waveCurveMagnitude = .35
+						_waveCurveUOffsetPerSecond = .2
+						_fullPowerColor1 = [255, 255, 255, 25]
+						_lowPowerColor1 = [255, 255, 255, 8]
+						_fullPowerColor2 = [255, 255, 255, 25]
+						_lowPowerColor2 = [255, 255, 255, 8]
+						_lowPowerThicknessExponent = .2
+						TargetBlendMode = Add
+						_xScale = 4
+						Size = [0, 0.5]
+					}
+					ArcSpriteSegments = 64
+					Bucket = Lower1
+				}
+
+				: /BASE_SOUNDS/AudioExteriorDetail
+				{
+					Sound = "./data/ships/terran/shield_gen_small/shield_emitter_loop.wav"
+					Volume = .2
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .4
+					IgnoreIntensity = true
+				}
+			]
+		}	
+		
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 1]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = ShieldStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [2, 2]
+		}
+	}
+
+	Stats
+	{
+		ShieldHP = (&~/Part/Components/ShieldStorage/MaxResources) / (&~/Part/Components/ArcShield/ResourceDrainPerDamage) * 5
+		ShieldPenResist = &~/Part/Components/ArcShield/PenetrationResistance/0
+		ShieldArc = deg(&~/Part/Components/ArcShield/Arc)
+		ShieldDist = (&~/Part/Components/ArcShield/Radius)
+		
+		HolyManaAvailible = -(&~/Part/Components/HolyManaConsumerBuffProvider/BuffAmount)
+	}
+}

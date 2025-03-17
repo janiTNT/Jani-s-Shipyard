@@ -1,0 +1,518 @@
+ID = "janiTNT.cosmilite_boss_deathbolt_initializer"
+Range = 1000
+IdealRange = 800
+Speed = 240
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 2
+		Density = 1
+		LinearDamping = 2
+		AngularDamping = 1
+		FrameOfReferenceDuration = 1
+	}
+
+	Homing
+	{
+		Type = TargetHoming
+		TurnVelocity = 2080d
+		Delay = 0.5
+		//AvoidanceRaycastDistance = 250
+		//VelocityCompensation = 10%
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 2
+		Range = 800
+		TargetTypesByPriority = [ShipCenters]
+		TargetType = ShipCenters
+	}
+
+	Retarget
+	{
+		Type = SameShipRetarget
+	}
+
+	Acceleration
+	{
+		Type = Acceleration
+		Acceleration = 1200 * 2
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 5
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = Random
+					RandomOptions
+					[
+						{
+							RandomWeight = 4// One side crosses the center
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<DeathboltPortal.rules>
+									Count = 16
+									Distance = 1100
+									Arc = [-70d, 40d]
+									Spread = [-15d, 15d]
+									InheritVelocity = false
+								}
+							]
+						}
+						{
+							RandomWeight = 2// Ring missing a side 
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<DeathboltPortalp2_static.rules>
+									Count = 28
+									Distance = -2025 //ayy
+									Arc = [0d, 270d]
+									Spread = [-2d, 2d]
+									InheritVelocity = false
+								}
+							]
+						}
+						{
+							RandomWeight = 3// Three sides Cross at center max dist
+							HitEffects
+							[
+								{
+									Type = SpawnBullets
+									Bullet = &<DeathboltPortal.rules>
+									Count = 6
+									Distance = 2000
+									Arc = [0d, 10d]
+									Spread = [-5d, 5d]
+									InheritVelocity = false
+								}
+								{
+									Type = SpawnBullets
+									Bullet = &<DeathboltPortal.rules>
+									Count = 6
+									Distance = 2000
+									Arc = [120d, 10d]
+									Spread = [-5d, 5d]
+									InheritVelocity = false
+								}
+								{
+									Type = SpawnBullets
+									Bullet = &<DeathboltPortal.rules>
+									Count = 6
+									Distance = 2000
+									Arc = [-120d, 10d]
+									Spread = [-5d, 5d]
+									InheritVelocity = false
+								}
+							]
+						}
+						{
+							RandomWeight = 2// One side Cross at center Repeatedly, High dist
+							HitEffects
+							[
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortal.rules>
+											Count = 4
+											Distance = 1000
+											Arc = [85d, 15d]
+											Spread = [-15d, 15d]
+											InheritVelocity = false
+										}
+									]
+									Count = 5
+									Interval = 0.75
+								}
+							]
+						}
+						{
+							RandomWeight = 1// Ohio Spinner
+							HitEffects
+							[
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [0d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 0
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [10d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = .5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [20d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 1 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [30d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 1.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [40d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 2 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [50d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 2.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [60d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 3 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [70d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 3.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [80d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 4 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [90d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 4.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [100d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [110d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 5.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [120d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 6 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [130d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 6.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [140d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 7 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [150d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 7.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [160d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 8 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [170d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 8.5 * .5
+								}
+								{
+									Type = Repeating
+									HitEffects
+									[
+										{
+											Type = SpawnBullets
+											Bullet = &<DeathboltPortalp2_static.rules>
+											Count = 2
+											Distance = -2000
+											Arc = [180d, 180d]
+											Spread = [-2d, 2d]
+											InheritVelocity = false
+										}
+									]
+									Count = 1
+									Interval = 0
+									InitialDelay = 9 * .5
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+	
+	CrosshairSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = 45d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../biggoodring.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [90, 90]
+			VertexColor = [255, 255, 255, 20]
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 1
+	}
+}

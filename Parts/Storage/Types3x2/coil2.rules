@@ -36,7 +36,7 @@ Components
 			DamageLevels
 			[
 				{
-					File = "./data/resources/coil2/coil2_stack_20.png"
+					File = "./data/resources/coil2/coil2_stack_40.png"
 					Size = [1, 1]
 				}
 			]

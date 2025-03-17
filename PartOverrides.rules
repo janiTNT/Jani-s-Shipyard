@@ -1,0 +1,10 @@
+PartOverrides : &<ModOverrides/BOES/Floodpipe.rules>/Overrides
+&<ModOverrides/BOES/Floodpipe_ranged.rules>/Overrides
+&<ModOverrides/BOES/Floodpipe_omni.rules>/Overrides
+&<ModOverrides/BOES/eva_core.rules>/Overrides
+&<ModOverrides/BOES/bh_reactor.rules>/Overrides
+&<ModOverrides/BOES/scythe_turret.rules>/Overrides
+&<ModOverrides/BOES/eva_shield.rules>/Overrides
+&<ModOverrides/BOES/eva_bomber.rules>/Overrides
+[
+]

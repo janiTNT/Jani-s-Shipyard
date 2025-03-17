@@ -1,0 +1,152 @@
+ID = "janiTNT.CursedFlySpawnerPortal"
+Range = 1000
+IdealRange = 600
+Speed = 0
+Stage2 = &<CursedFlySpawnerPortal2.rules>
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 4
+		Density = 0.1
+		LinearDamping = 1
+		FrameOfReferenceDuration = 2
+	}
+	
+	TargetSearch
+	{
+		Type = TargetSearch
+		Interval = 2
+		Range = 1000
+		TargetTypesByPriority = [ShipParts]
+	}
+
+	DeployDeath
+	{
+		Type = DeathByLifetime
+		Lifetime = 5
+		//FactorEffectsWith = Targetable
+
+		OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &~/Stage2
+					Count = 1
+					InheritVelocity = false
+					ScaleHealth = true
+					Distance = 0
+				}
+ 				{
+					Type = Repeating
+					HitEffects
+					[
+						{
+							Type = SpawnBullets
+							Bullet = &<Fly.rules>
+							Count = 1
+							Distance = 2
+							Spread = [-360d, 360d]
+							InheritVelocity = false
+							RandomizeTarget = true
+						}
+					]
+					Count = 25
+					Interval = .08
+					InitialDelay = 1
+				}
+			]
+		}
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = 324d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Other/PortalSpinner.png"
+				MipLevels = max
+			}
+			Size = [8*5, 8*5]
+			TargetBlendMode = Add
+			VertexColor = [255, 25, 128]
+		}
+		LerpScaleFrom = [0.32, 0.35]
+		LerpTime = 1
+	}
+	Sprite2
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = 300d
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Other/PortalSpinner.png"
+				MipLevels = max
+			}
+			Size = [8.1*5, 8.1*5]
+			TargetBlendMode = Add
+			VertexColor = [255 , 25, 128]
+		}
+		LerpScaleFrom = [0.32, 0.35]
+		LerpTime = 1.5
+	}
+/* 	Sprite3
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = -92d
+		Sprite
+		{
+			Texture
+			{
+				File = "flare.png"
+				MipLevels = max
+			}
+			Size = [12, 12]
+			TargetBlendMode = Add
+			VertexColor = [255 , 0, 0]
+		}
+		LerpScaleFrom = [-1, -1]//time offset meth
+		LerpTime = 6
+		StartTime = 3.75
+	} */
+
+	LightsSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		//Spin = 500d
+		Z = .25
+		IsLight = true
+		//Offset = [24/64, 0]
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/ships/common/light_blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [12, 12]
+			TargetBlendMode = Add
+			VertexColor = [255 , 0, 0]
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0.25
+			_unlitAdditiveStrength = 0.15
+		}
+		LerpScaleFrom = [0, 0]
+		LerpTime = 0.75
+	}
+}

@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 18d
+		TurnVelocity = 8d
 		ModifiesLinearVelocity = true
 		Delay = 0
 	}

@@ -50,7 +50,7 @@ Components
 			DamageLevels
 			[
 				{
-					File = "./data/resources/tristeel/tristeel_stack_20.png"
+					File = "./data/resources/tristeel/tristeel_stack_40.png"
 					Size = [1, 1]
 				}
 			]

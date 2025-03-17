@@ -1,0 +1,112 @@
+ID = "janiTNT.megabeam_hit_thing"
+Range = 1300
+IdealRange = 1000
+Speed = 1500
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [6, 6]
+		Density = 2
+	}
+	
+	DeathByDistanceTraveled
+	{
+		Type = DeathByDistanceTraveled
+	}
+	
+	LaserSprite // Subltle to debug and whatnot
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//Spin = 360d
+		Z = .25
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "laser.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [25, 25]
+			VertexColor = [256*0.1, 0, 0]
+			TargetBlendMode = Add
+		}
+	}
+	
+	Hit
+	{
+		Type = SimpleHit
+		SourceShipLowCollisions = false
+
+		HitShield = &HitOperational
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = ExplosiveDamage
+					TotalDamage = 160000 * 2
+					Radius = 30
+					Slices = 1
+				}
+				{
+					Type = Impulse;
+					Impulse = 400;
+				}
+			]
+			
+			MediaEffectsScale = 1
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/ion_beam/particles/ion_beam_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = .1
+					Speed = 5
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .2
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			MediaEffectsScale = 40
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_shockwave.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_hit.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

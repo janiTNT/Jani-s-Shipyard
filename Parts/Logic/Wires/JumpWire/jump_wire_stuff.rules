@@ -1,0 +1,977 @@
+Part
+{
+	Components
+	{
+		LengthSelect
+		{
+			Type = UIToggle
+			ToggleID = "advships_length_value"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+		}
+		ZeroLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 0
+		}
+		ZeroLength_L
+		{
+			Type = ToggledComponents
+			Toggle = ZeroLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -2, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -1.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+			IncludeInBlueprintsInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 0
+			}
+		}
+
+		OneLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 1
+		}
+		OneLength_L
+		{
+			Type = ToggledComponents
+			Toggle = OneLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -3, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -2.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+			IncludeInBlueprintsInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 1
+			}
+		}
+
+		TwoLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 2
+		}
+		TwoLength_L
+		{
+			Type = ToggledComponents
+			Toggle = TwoLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -4, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -3.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+			IncludeInBlueprintsInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 2
+			}
+		}
+
+		ThreeLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 3
+		}
+		ThreeLength_L
+		{
+			Type = ToggledComponents
+			Toggle = ThreeLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -5, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -4.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+			IncludeInBlueprintsInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 3
+			}
+		}
+
+		FourLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 4
+		}
+		FourLength_L
+		{
+			Type = ToggledComponents
+			Toggle = FourLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -6, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -5.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		FiveLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 5
+		}
+		FiveLength_L
+		{
+			Type = ToggledComponents
+			Toggle = FiveLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -7, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -6.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		SixLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 6
+		}
+		SixLength_L
+		{
+			Type = ToggledComponents
+			Toggle = SixLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -8, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -7.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		SevenLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 7
+		}
+		SevenLength_L
+		{
+			Type = ToggledComponents
+			Toggle = SevenLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -9, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -8.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		EightLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 8
+		}
+		EightLength_L
+		{
+			Type = ToggledComponents
+			Toggle = EightLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -10, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -9.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		NineLengthToggle_L
+		{
+			Type = ModeToggle
+			Mode = LengthSelect
+			OnMode = 9
+		}
+		NineLength_L
+		{
+			Type = ToggledComponents
+			Toggle = NineLengthToggle_L
+			Components
+			{
+				BuffProviderLogic
+				{
+					Type = AreaBuffProvider
+					OperationalToggle = LogicSignal
+					BuffType = Logic
+					BuffAmount = 10
+					BuffArea = [0, -11, 1, 1]
+				}
+				EndGraphics
+				{
+					Type = Graphics
+					Location = [0.5, -10.5]
+					OperationalToggle = LogicSignal
+					Walls
+					{
+						Layer = "doors"
+						DamageLevels
+						[
+							{
+								File = "end.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+				ColoredEndGraphics
+				{
+					Type = Graphics
+					Location = &../EndGraphics/Location
+					OperationalToggle = LogicSignal
+					GetColorFrom = ColorPicker
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms2.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doomoms1.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		BlueprintsCapOne
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -2]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 0
+			}
+		}
+		BlueprintsMidOne
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 1]
+			Offset = [0, -1]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 0
+			}
+		}
+		BlueprintsCapTwo
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -3]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 1
+			}
+		}
+		BlueprintsMidTwo
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 2]
+			Offset = [0, -1.5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 1
+			}
+		}
+		BlueprintsCapThree
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -4]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 2
+			}
+		}
+		BlueprintsMidThree
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 3]
+			Offset = [0, -2]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 2
+			}
+		}
+		BlueprintsCapFour
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 3
+			}
+		}
+		BlueprintsMidFour
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 4]
+			Offset = [0, -2.5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 3
+			}
+		}
+		BlueprintsCapFive
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -6]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 4
+			}
+		}
+		BlueprintsMidFive
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 5]
+			Offset = [0, -3]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 4
+			}
+		}
+		BlueprintsCapSix
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -7]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 5
+			}
+		}
+		BlueprintsMidSix
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 6]
+			Offset = [0, -3.5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 5
+			}
+		}
+		BlueprintsCapSeven
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -8]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 6
+			}
+		}
+		BlueprintsMidSeven
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 7]
+			Offset = [0, -4]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 6
+			}
+		}
+		BlueprintsCapEight
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -9]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 7
+			}
+		}
+		BlueprintsMidEight
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 8]
+			Offset = [0, -4.5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 7
+			}
+		}
+		BlueprintsCapNine
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -10]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 8
+			}
+		}
+		BlueprintsMidNine
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 9]
+			Offset = [0, -5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 8
+			}
+		}
+		BlueprintsCapTen
+		{
+			Type = BlueprintSprite
+			File = "blueprints_cap.png"
+			Size = [1, 1]
+			Offset = [0, -11]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 9
+			}
+		}
+		BlueprintsMidTen
+		{
+			Type = BlueprintSprite
+			File = "blueprints_mid.png"
+			Size = [1, 10]
+			Offset = [0, -5.5]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = advships_length_value
+				Mode = 9
+			}
+		}
+	}
+}

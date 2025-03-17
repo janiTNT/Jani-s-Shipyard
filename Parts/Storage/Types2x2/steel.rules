@@ -28,7 +28,7 @@ Components
 			DamageLevels
 			[
 				{
-					File = "./data/resources/steel/steel_stack_20.png"
+					File = "./data/resources/steel/steel_stack_40.png"
 					Size = [1, 1]
 				}
 			]

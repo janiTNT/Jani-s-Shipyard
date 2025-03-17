@@ -7,16 +7,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/InserterOreLongDesc"
 	Resources
 	[
-		[steel, 16]
-		[coil, 6]
+		[steel, 12]
+		[coil, 12]
+		[goldium, 2]
 	]
 	//sus
 	Size = [1, 1]
 	MaxHealth = 1000
 	IsFlippable = true
 	IsRotateable = true
-	TypeCategories = [Inserter, uses_power, Port_IN]
-	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff]
+	TypeCategories = [Inserter, uses_power, Port_IN, logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff, Logic]
 	AllowedDoorLocations
 	[
 		[-1, 0]
@@ -39,7 +40,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = PowerToggle
-			CommandPoints = 2//TROLLER
+			CommandPoints = 5//TROLLER
 		}
 		
 		OreType

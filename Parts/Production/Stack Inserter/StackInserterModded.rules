@@ -7,17 +7,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/InserterModdedStackDesc"
 	Resources
 	[
-		[steel, 48]
-		[coil, 18]
-		[cut.tristeel, 20]
+		[steel, 36]
+		[coil, 6]
+		[goldium, 6]
 	]
 	//sus
 	Size = [1, 1]
 	MaxHealth = 1000
 	IsFlippable = true
 	IsRotateable = true
-	TypeCategories = [Inserter, uses_power, Port_IN]
-	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff]
+	TypeCategories = [Inserter, uses_power, Port_IN, logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff, Logic]
 	AllowedDoorLocations
 	[
 		[-1, 0]

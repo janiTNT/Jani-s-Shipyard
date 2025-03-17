@@ -10,9 +10,9 @@ Part : <../base_part_occult.rules>/Part
 	]
 	ReceivableBuffs : ^/0/ReceivableBuffs [JaniWeaponsDisabledBossSecondary]
 	Density = 3
-	MaxHealth = 320000 * 8
+	MaxHealth = 32000 * 50 * 10
 	EditorReplacementPartID = ""
-	Size = [3, 3]
+	Size = [4, 4]
 	SelectionPriority = 1
 	SelectionTypeID = "weapons"
 	IsRotateable = true
@@ -81,8 +81,8 @@ Part : <../base_part_occult.rules>/Part
 		Collider
 		{
 			Type = CircleCollider
-			Location = [1.5, 1.5]
-			Radius = 1.5
+			Location = [2, 2]
+			Radius = 2
 			Density = 5
 		}
 		
@@ -149,8 +149,8 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = fake
-			MaxResources = 18000 * 4
-			ToggleOnResources = 17001 * 4
+			MaxResources = 18000 * 8
+			ToggleOnResources = 17001 * 8
 			StartingResources = &MaxResources
 			InitToMaxResources = &MaxResources
 			DrainOnFtlJump = true
@@ -161,7 +161,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = ResourceConverter
 			ToStorage = ShieldStorage
-			ToQuantity = 8000
+			ToQuantity = 32000
 			Interval = 1
 		}
 
@@ -179,14 +179,14 @@ Part : <../base_part_occult.rules>/Part
 		ArcShield
 		{
 			Type = ArcShield
-			Radius = 5
+			Radius = 8
 			Arc = 360d
 			OperationalToggle = ShieldingOn
-			PenetrationResistance = [99, 50]
+			PenetrationResistance = [400, 200]
 			DrainResourcesFrom = ShieldStorage
 			ResourceDrainPerDamage = .5
 			Rotation = -90d
-			Location = [1.5, 1.5]
+			Location = [2, 2]
 
 			BlueprintArcSprite
 			{
@@ -378,7 +378,7 @@ Part : <../base_part_occult.rules>/Part
 				Graphics
 				{
 					Type = Graphics
-					Location = [1.5, 1.5]
+					Location = [2, 2]
 					Floor
 					{
 						Layer = "asteroid_lights_add"
@@ -387,7 +387,7 @@ Part : <../base_part_occult.rules>/Part
 						[
 							{
 								File = "../lightball.png"
-								Size = [6, 6]
+								Size = [8, 8]
 								RotSpeed = 180d
 								SampleMode = Linear
 								VertexColor = [255, 50, 50]
@@ -402,7 +402,7 @@ Part : <../base_part_occult.rules>/Part
 						[
 							{
 								File = "../lightball.png"
-								Size = [6.1, 6.1]
+								Size = [8.1, 8.1]
 								RotSpeed = -100d
 								SampleMode = Linear
 								VertexColor = [255, 50, 50]
@@ -412,12 +412,11 @@ Part : <../base_part_occult.rules>/Part
 					OperationalDoodad
 					{
 						Layer = "asteroid_lights_add"
-						RandomUVRotation = true
 						DamageLevels
 						[
 							{
 								File = "../lightballs.png"
-								Size = [6, 6]
+								Size = [8, 8]
 								RotSpeed = -80d
 								SampleMode = Linear
 								VertexColor = [255, 50, 50]
@@ -432,7 +431,7 @@ Part : <../base_part_occult.rules>/Part
 						[
 							{
 								File = "bigevilring.png"
-								Size = [9, 9]
+								Size = [12, 12]
 								RotSpeed = 120d
 							}
 						]
@@ -445,7 +444,7 @@ Part : <../base_part_occult.rules>/Part
 						[
 							{
 								File = "./Data/ships/common/light_blob.png"
-								Size = [19, 19]
+								Size = [24, 24]
 								Z = 2.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 								VertexColor = [255*2.25, 255*0, 255*0]
 							}
@@ -466,18 +465,51 @@ Part : <../base_part_occult.rules>/Part
 				Graphics2
 				{
 					Type = Graphics
-					Location = [1.5, 1.5]
+					Location = [2, 2]
 					Floor
 					{
-						Layer = "asteroid"
+						Layer = "asteroid_lights_add"
 						RandomUVRotation = true
+						SampleMode = Linear
 						DamageLevels
 						[
 							{
-								File = "../deadball.png"
-								NormalsFile = "../deadball_n.png"
-								Size = [6, 6]
-								RotSpeed = 0d
+								File = "../lightball.png"
+								Size = [8*0.9, 8*0.9]
+								RotSpeed = 180d
+								SampleMode = Linear
+								VertexColor = [180, 50, 210]
+							}
+						]
+					}
+					Walls
+					{
+						Layer = "asteroid_lights_add"
+						RandomUVRotation = true
+						SampleMode = Linear
+						DamageLevels
+						[
+							{
+								File = "../lightball.png"
+								Size = [8.1*0.9, 8.1*0.9]
+								RotSpeed = -100d
+								SampleMode = Linear
+								VertexColor = [180, 50, 210]
+							}
+						]
+					}
+					OperationalDoodad
+					{
+						Layer = "asteroid_lights_add"
+						SampleMode = Linear
+						DamageLevels
+						[
+							{
+								File = "../lightballs.png"
+								Size = [12, 12]
+								RotSpeed = -60d
+								SampleMode = Linear
+								VertexColor = [120, 50, 210]
 							}
 						]
 					}
@@ -570,7 +602,7 @@ Part : <../base_part_occult.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [1.5, 1.5]// Relative to upper-left corner of unrotated part.
+			Location = [2, 2]// Relative to upper-left corner of unrotated part.
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
@@ -622,7 +654,7 @@ Part : <../base_part_occult.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.8, 0]
+			Location = [2.3, 0]
 			OperationalToggle = IsOperational
 			FireDelay = 0
 			Bullet = &<shots/Sunbombp1.rules>
@@ -638,7 +670,7 @@ Part : <../base_part_occult.rules>/Part
 			ChainedTo = Turret
 			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.8, 0]
+			Location = [2.3, 0]
 			OperationalToggle = Phase2Toggle
 			FireDelay = 1
 			Bullet = &<shots/Sunbombp1.rules>
@@ -695,7 +727,7 @@ Part : <../base_part_occult.rules>/Part
 		
 		DestroyedEffects : &<../base_part_occult.rules>/Part/Components/DestroyedEffects
 		{
-			Location = [1.5, 1.5]
+			Location = [2, 2]
 			HitEffects
 			[
 				{
@@ -717,7 +749,7 @@ Part : <../base_part_occult.rules>/Part
 		
 		DestroyedEffectsDeathBySigil : &<../base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
 		{
-			Location = [1.5, 1.5]
+			Location = [2, 2]
 			HitEffects
 			[
 				{
@@ -740,7 +772,7 @@ Part : <../base_part_occult.rules>/Part
 		OperationSoundLoop
 		{
 			Type = ContinuousEffects
-			Location = [1, 1]
+			Location = [2, 2]
 			OperationalToggle = Phase2Toggle
 			MediaEffects
 			[
@@ -752,7 +784,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "haloring.png"
-			Size = [4, 4]
+			Size = [5, 5]
 		}
 	}
 }

@@ -1,5 +1,5 @@
 Type = None
-SpawnChance = 8/10
+SpawnChance = 17/18
 Conditions
 {
 	MinNodeTier = 4
@@ -11,7 +11,7 @@ SubSpawners
 		Count = [1, 1]
 		//Count = [10, 15]
 		Distance = [20750, 27000]
-		SpawnChance = 4/5
+		SpawnChance = 7/8
 		MinDistanceFromNebulas = [[ion_storm, 2000]]
 		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
 		Tags = [rare_asteroid, asteroid, megaroid, hyperoid, gigaroid]
@@ -19,7 +19,7 @@ SubSpawners
 		//MinDistanceFromTags = [[station, 1000], [asteroid, 1000], [bounty, 1000], [ftl_gate, 1000]]
 		DoodadTypes
 		[
-			{ Type=janiTNT.hyperoid_l;     ChanceWeight=1; }
+			{ Type=janiTNT.hyperoid_l;     ChanceWeight=1/2; }
 			{ Type=janiTNT.common_ore_hyperoid_m;       ChanceWeight=1; }
 			{ Type=janiTNT.metal_ore_hyperoid_m;       ChanceWeight=1; }
 			{ Type=janiTNT.rare_ore_hyperoid_m;       ChanceWeight=0.5; }
@@ -31,7 +31,7 @@ SubSpawners
 		Count = [0, 1]
 		//Count = 5
 		Distance = [4000, 16000]
-		SpawnChance = 4/5
+		SpawnChance = 7/8
 		MinDistanceFromNebulas = [[ion_storm, 2000]]
 		Tags = [rare_asteroid, asteroid, megaroid, hyperoid, gigaroid]
 		Conditions { RequireSpawnFlags = [multiple_asteroid_belts] }
@@ -39,7 +39,7 @@ SubSpawners
 		//MinDistanceFromTags = [[station, 1000], [asteroid, 1000], [bounty, 1000], [ftl_gate, 1000]]
 		DoodadTypes
 		[
-			{ Type=janiTNT.hyperoid_l;     ChanceWeight=4/3; }
+			{ Type=janiTNT.hyperoid_l;     ChanceWeight=1/3; }
 			{ Type=janiTNT.common_ore_hyperoid_m;       ChanceWeight=1; }
 			{ Type=janiTNT.metal_ore_hyperoid_m;       ChanceWeight=1; }
 			{ Type=janiTNT.rare_ore_hyperoid_m;       ChanceWeight=0.25; }
@@ -74,11 +74,12 @@ HyperoidSubSpawnersHandler
 		}
 		AI
 		{
-			Type = StationGuard
+			Type = HyperoidGuardianAI
 			PatrolRadius = 400
 			TargetAcquireRangeFromOrigin = 900
 			TargetUnacquireRangeFromOrigin = 1500
 			StasisSpeed = 0
+			ChanceToConsiderSurrenderingToPlayer = 0
 		}
 	}
 	{

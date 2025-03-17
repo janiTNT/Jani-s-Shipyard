@@ -1,0 +1,42 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_shield/eva_shield.rules>/Part"
+		Name = "ReceivableBuffs"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_shield/eva_shield.rules>/Part/ReceivableBuffs"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [BossesDisableComponents];}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_shield/eva_shield.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides : &<Base_BOES_overrides.rules>/Base
+		{
+			JS_DisabledPowerDrain
+			{
+				Type = ResourceConverter
+				OperationalToggle = JS_JaniDisableStorage
+				FromStorage = EvaStorage
+				FromQuantity = 30000
+				MinFromQuantityForConversion = 1
+				Interval = 0.2
+			}
+		}
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_shield/eva_shield.rules>/Part/Components/Indicators/Indicators"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd
+	[
+		// Disabled.
+		{
+			Toggle = JS_Boss_Components_Enabled
+			ShowInBuildMode = true
+			AtlasSprite
+			{
+				File = &/JANI_COMMON/JSvsBOES
+				Size = [3, 3]
+			}
+		}
+	];}
+]

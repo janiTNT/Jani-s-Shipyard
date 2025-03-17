@@ -164,8 +164,8 @@ Components
 		ResourceLevels
 		[
 			{
-				File = "laser.png"
-				NormalsFile = "laser_n.png"
+				File = "laser_folded.png"
+				NormalsFile = "laser_folded_n.png"
 				Size = [3, 2]
 			}
 		]
@@ -181,7 +181,7 @@ Components
 		[
 			{
 				File = "lasermask.png"
-				NormalsFile = "laser_n.png"
+				NormalsFile = "laser_folded_n.png"
 				Size = [3, 2]
 				VertexColor = [0, 0, 0, 255]
 			}

@@ -7,7 +7,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Cram_GaugeIncreaserDesc"
 	Resources
 	[
-		[steel, 4]
+		[steel, 8]
+		[coil2, 6]
+		[tristeel, 10]
 	]
 	AIValueFactor = 0
 	Size = [1, 1]

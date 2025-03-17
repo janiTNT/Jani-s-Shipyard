@@ -15,7 +15,7 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
-	MaxHealth = 32000 * 75
+	MaxHealth = 32000 * 80 * 10
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	UnderlyingPart = janiTNT.lootorb_brimstone
@@ -195,21 +195,21 @@ Part : <../base_part_occult.rules>/Part
 		    Type = FanArcController
 		    ChainedTo = Turret
 		    GetTargetFrom = ProximityWeapon
-		    MaxArc = 60d
-			MinArc = 60d
+		    MaxArc = 90d
+			MinArc = 90d
 		    DefaultArc = &MaxArc
 		    ArcSizeFactor = 75%
 		    FanComponents
 		    [
 		        DartEmitter2,
 		        DartEmitter3,
+				DartEmitter,
 				DartEmitter4,
 				DartEmitter5,
-		        DartEmitter,
-				DartEmitter6,
-				DartEmitter7,
-				DartEmitter8,
-				DartEmitter9
+				//DartEmitter6,
+				//DartEmitter7,
+				//DartEmitter8,
+				//DartEmitter9
 		    ]
 		}
 
@@ -218,11 +218,13 @@ Part : <../base_part_occult.rules>/Part
 			Type = BulletEmitter
 			ChainedTo = EmitterFanArcController
 			Location = [1.5, 0]
-			FireTrigger = DartsCharged
+			FireTrigger// = DartsCharged //Removed
 			GetTargetFrom = Turret
 			OperationalToggle = PowerToggle
 			FireDelay = 0.75
 			Bullet = &<shots/brimstonedart.rules>
+			//Burst = 4
+			//BurstDelay = .15
 			//Spread = [-1.5d, 1.5d]
 		}
 
@@ -231,10 +233,10 @@ Part : <../base_part_occult.rules>/Part
 		DartEmitter3  = &DartEmitter
 		DartEmitter4  = &DartEmitter
 		DartEmitter5  = &DartEmitter
-		DartEmitter6  = &DartEmitter
-		DartEmitter7  = &DartEmitter
-		DartEmitter8  = &DartEmitter
-		DartEmitter9  = &DartEmitter
+		//DartEmitter6  = &DartEmitter
+		//DartEmitter7  = &DartEmitter
+		//DartEmitter8  = &DartEmitter
+		//DartEmitter9  = &DartEmitter
 		
 		DartsCharged
 		{

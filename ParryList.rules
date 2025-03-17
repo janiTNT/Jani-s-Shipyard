@@ -1,4 +1,4 @@
-Parrylist
+ParryList : &<PartOverrides.rules>/PartOverrides
 [
 	{//BOES
 		Action = Overrides
@@ -35,6 +35,34 @@ Parrylist
 									{
 										Type = TargetHoming
 										TurnVelocity = 0d
+									}
+									
+									Hit : ^/0/Hit
+									{
+										SourceShipCollisionDelay = 0
+										SourceShipLowCollisions = true
+										NonFriendlyShipLowCollisions = false
+										NonFriendlyShipHighCollisions = false
+										PenetratesFriendlies = true
+										
+										HitOperational: ^/0/HitOperational
+										{
+											HitEffects : ^/0/HitEffects
+											[
+												{
+													Type = ExplosiveResourceDrain
+													ResourceType = janitnt.bossanticheese
+													TotalDrain = -400000
+													Slices = 1
+													Radius = 200
+													Filter
+													{
+														Friendlies = true
+													}
+													TreatShieldAsPart = true
+												}
+											]
+										}
 									}
 								}
 							}
@@ -114,7 +142,7 @@ Parrylist
 							Bullet : &<./data/../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_gun/bullet.rules>
 							{
 								ID = "BrutaTralb.bh_main.parry"
-								Speed = 200
+								Speed = 250
 								ForgetTarget = true
 								Components : ^/0/Components
 								{
@@ -241,7 +269,7 @@ Parrylist
 							Bullet : &<./data/../../../workshop/content/799600/2911126638/bitofevextra_mod/shocklance/lance.rules>
 							{
 								ID = "BrutaTralb.shocklance.parry"
-								Speed = 400
+								Speed = 600
 								ForgetTarget = true
 								Components : ^/0/Components
 								{	
@@ -282,6 +310,44 @@ Parrylist
 										SourceShipLowCollisions = true
 										NonFriendlyShipLowCollisions = false
 										NonFriendlyShipHighCollisions = false
+										PenetratesFriendlies = true
+										
+										HitShield : ^/0/HitShield
+										{
+											HitEffects : ^/0/HitEffects
+											[
+												{
+													Type = ExplosiveResourceDrain
+													ResourceType = janitnt.bossanticheese
+													TotalDrain = -4000
+													Slices = 1
+													Radius = 40
+													Filter
+													{
+														Friendlies = true
+													}
+													TreatShieldAsPart = true
+												}
+											]
+										}
+										HitOperational: ^/0/HitOperational
+										{
+											HitEffects : ^/0/HitEffects
+											[
+												{
+													Type = ExplosiveResourceDrain
+													ResourceType = janitnt.bossanticheese
+													TotalDrain = -4000
+													Slices = 1
+													Radius = 40
+													Filter
+													{
+														Friendlies = true
+													}
+													TreatShieldAsPart = true
+												}
+											]
+										}
 									}
 								}
 							}
@@ -340,11 +406,184 @@ Parrylist
 			}
 		}
 	}
+	/* {//scythe
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_shot.rules>/Components/Hit/HitOperational/HitEffects"
+		IgnoreIfNotExisting = true
+		ManyToAdd
+		[		
+			{
+				Type = TargetFilter
+				Filter
+				{
+					OnlyPartCategories = [boss_resistant]
+				}
+				AllowNoTarget = true
+				HitEffects
+				[
+					{
+						Type = Feedback
+						HitEffects
+						[
+							{
+								Type = Random
+								RandomOptions
+								[
+									{
+										RandomWeight = 1
+										HitEffects
+										[
+											{
+												Type = ResourceDrain
+												ResourceType = janitnt.boss_weaponstun
+												Amount = -1
+												Filter
+												{
+													Friendlies = true
+												}
+												TreatShieldAsPart = true
+											}
+										]
+									}
+									{
+										RandomWeight = 4
+										HitEffects
+										[
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+	{//scythe ghost
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_shot_ghost.rules>/Components/Hit/HitOperational/HitEffects"
+		IgnoreIfNotExisting = true
+		ManyToAdd
+		[		
+			{
+				Type = TargetFilter
+				Filter
+				{
+					OnlyPartCategories = [boss_resistant]
+				}
+				AllowNoTarget = true
+				HitEffects
+				[
+					{
+						Type = Feedback
+						HitEffects
+						[
+							{
+								Type = Random
+								RandomOptions
+								[
+									{
+										RandomWeight = 1
+										HitEffects
+										[
+											{
+												Type = ResourceDrain
+												ResourceType = janitnt.boss_weaponstun
+												Amount = -1
+												Filter
+												{
+													Friendlies = true
+												}
+												TreatShieldAsPart = true
+											}
+										]
+									}
+									{
+										RandomWeight = 4
+										HitEffects
+										[
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+	{//Dark Moon Turret
+		Action = AddMany
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_bomber/eva_bomb.rules>/Components/Hit/HitOperational/HitEffects"
+		IgnoreIfNotExisting = true
+		ManyToAdd
+		[		
+			{
+				Type = TargetFilter
+				Filter
+				{
+					OnlyPartCategories = [boss_resistant]
+				}
+				AllowNoTarget = true
+				HitEffects
+				[
+					{
+						Type = Feedback
+						HitEffects
+						[
+							{
+								Type = ResourceDrain
+								ResourceType = janitnt.boss_weaponstun
+								Amount = -12*4
+								Filter
+								{
+									Friendlies = true
+								}
+								TreatShieldAsPart = true
+							}
+						]
+					}
+				]
+			}
+		]
+	} */
+	//pilebunk
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/pile_bunk/Bonk.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; CreateIfNotExisting = true; IgnoreIfNotExisting = true;}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/pile_bunk/Bonk.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = false; IgnoreIfNotExisting = true;
+	ManyToAdd
+	[
+		{
+			Type = ExplosiveDamage
+			TotalDamage = 12000 //lol
+			Radius = 15
+			ExpandDuration = .8
+			ExpandStartRadius = 5
+			ExpandLoss = 50%
+			ImpulsePerNDamage = 10
+			NDamage = 1000
+			AllowFriendlyDamage = false
+			DamagesShips = true
+			DamagesOperationalHealth = true
+			DamagesStructuralHealth = true
+			DamagesShields = false
+			DamagesBullets = false
+			Filter
+			{
+				OnlyPartCategories = [boss_resistant]
+				AlliedShields = false
+				Shields = false	
+				Shield = false
+				Friendlies = false
+				Self=false
+				Crew = false
+			}
+		}
+	]}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/0/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/0/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
 	{Action = Add; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/1/Filter"; Name = "ExcludePartCategories"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ToAdd = [];}
 	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects/1/Filter/ExcludePartCategories"; ManyToAdd = [boss_resistant]; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;}
-	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true;
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/chainsaw/Hit1.rules>/HitNothing/HitEffects"; OnlyIfNotExisting = false; IgnoreIfNotExisting = true;
 	ManyToAdd
 	[
 		{

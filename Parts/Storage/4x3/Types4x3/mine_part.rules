@@ -45,7 +45,7 @@ Components
 			DamageLevels
 			[
 				{
-					File = "./data/resources/mine_part/mine_part_stack_4.png"
+					File = "./data/resources/mine_part/mine_part_stack_8.png"
 					Size = [1, 1]
 				}
 			]

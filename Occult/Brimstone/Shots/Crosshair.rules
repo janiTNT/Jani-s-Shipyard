@@ -69,14 +69,59 @@ Components
 					//Spread = [-15d, 15d]
 					InheritVelocity = false
 				}
+				// {
+					// Type = Repeating
+					// HitEffects
+					// [
+						{
+							Type = SpawnBullets
+							Bullet = &<CursedFlySpawnerPortal1.rules>
+							Count = 2
+							Distance = -1200
+							//Arc = [70d, 180d]
+							Spread = [-2d, 4d]
+							InheritVelocity = false
+						}
+					// ]
+					// Count = 1
+					// Interval = .25
+					// InitialDelay = 15
+				// }
 				{
+					Type = SpawnBullets
+					Bullet = &<BrimstonePortal.rules>
+					Count = 1
+					Distance = -1100
+					Arc = [-90d, 180d]
+					Spread = [-1d, 2d]
+					InheritVelocity = false
+				}
+				{
+					Type = Repeating
+					HitEffects
+					 [
+						{
+							Type = SpawnBullets
+							Bullet = &<BrimstonePortal.rules>
+							Count = 1
+							Distance = -1100
+							Arc = [95d, 180d]
+							Spread = [-1d, 2d]
+							InheritVelocity = false
+						}
+					]
+					Count = 1
+					Interval = 0
+					InitialDelay = 15
+				}
+				/* {
 					Type = SpawnBullets
 					Bullet = &<HellblastHandler1.rules>
 					Count = 60
 					Distance = 1150
 					Spread = [-1d, 1d]
 					InheritVelocity = false
-				}
+				} */
 			]
 		}
 	}

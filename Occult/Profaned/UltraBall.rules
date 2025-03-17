@@ -20,7 +20,7 @@ Part : <../base_part_occult.rules>/Part
 	SelectionTypeID = "weapons"
 	IsRotateable = true
 	TypeCategories = [armor, weapon, boss_resistant]
-	DamageResistances = {explosive = 100%, heat = 100%, default = 99.999%, salvage = 99.999%;}//solar resistant, higher explosive resistance
+	DamageResistances = {explosive = 100%, heat = 100%, default = 99.999999%, salvage = 99.999999%;}//solar resistant, higher explosive resistance
 	InitialPenetrationResistance = 250
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%
@@ -1182,6 +1182,7 @@ Part : <../base_part_occult.rules>/Part
 				{
 					Type = Damage
 					Damage = -320000
+					DamageType = healing
 					Filter
 					{
 						Friendlies = true

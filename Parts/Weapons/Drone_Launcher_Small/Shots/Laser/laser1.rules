@@ -1,7 +1,7 @@
 ID = "janiTNT.smalllaserdrone.1"
 Range = &<baselaser.rules>/Range
 IdealRange = &<baselaser.rules>/IdealRange
-Speed = 20
+Speed = 5
 
 Components : &<baselaser.rules>/Components
 {

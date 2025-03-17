@@ -29,8 +29,13 @@ Entries
 		TextKey = "Tutorials/Inserters/Types"
 	}
 	{
-		Image { Texture { File="Deckgun_Example.png"; SampleMode=Linear; } }
 		TextKey = "Tutorials/Inserters/Example"
+	}
+	{
+		Image { Texture { File="all_inserters_example.png"; SampleMode=Linear; } }
+	}
+	{
+		Image { Texture { File="missile_example.png"; SampleMode=Linear; } }
 	}
 	{
 		TextKey = "Tutorials/Inserters/Tip"

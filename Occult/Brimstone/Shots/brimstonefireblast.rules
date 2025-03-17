@@ -19,7 +19,7 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 20d
+		TurnVelocity = 8d
 		ModifiesLinearVelocity = true
 		Delay = 0
 		//AvoidanceRaycastDistance = 250

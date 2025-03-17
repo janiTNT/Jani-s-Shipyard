@@ -25,7 +25,7 @@ Part : <ProfanedbossSigil.rules>/Part
 		PulseEffect
 		{
 			Type = ContinuousEffects
-			Location = [1.5, 1.5]
+			Location = [4, 2]
 			OperationalToggle = BigAttackMode
 			//FactorMediaEffectsIntensityWith = RoofOpacity
 			MediaEffects
@@ -88,7 +88,7 @@ Part : <ProfanedbossSigil.rules>/Part
 		{
 			Type = Graphics
 			//OperationalToggle = IsOperational
-			Location = [2, 1]
+			Location = [4, 2]
 			OperationalDoodad
 			{
 				Layer = "asteroid_lights_add"
@@ -97,7 +97,7 @@ Part : <ProfanedbossSigil.rules>/Part
 				[
 					{
 						File = "bosssigil.png"
-						Size = [4, 2]
+						Size = [8, 4]
 					}
 				]
 			}
@@ -144,7 +144,7 @@ Part : <ProfanedbossSigil.rules>/Part
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [4, 2]
 			WhenSalvaged = true
 			MediaEffectsScale = 4.5
 			MediaEffects
@@ -233,14 +233,14 @@ Part : <ProfanedbossSigil.rules>/Part
 		ArcShield
 		{
 			Type = ArcShield
-			Radius = 4
+			Radius = 6
 			Arc = 360d
 			OperationalToggle = ShieldingOn
-			PenetrationResistance = [99, 50]
+			PenetrationResistance = [199, 150]
 			DrainResourcesFrom = ShieldStorage
 			ResourceDrainPerDamage = .5
 			Rotation = -90d
-			Location = [2, 1]
+			Location = [4, 2]
 
 			BlueprintArcSprite
 			{
@@ -470,14 +470,14 @@ Part : <ProfanedbossSigil.rules>/Part
 					Duration = 8
 				}
 			]
-			Location = [2, 1]
+			Location = [4, 2]
 		}
 
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "../sigilbp.png"
-			Size = [4, 2]
+			Size = [8, 4]
 		}
 	}
 }

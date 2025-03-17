@@ -7,8 +7,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/Cram_IntakeDesc"
 	Resources
 	[
-		[steel, 18]
-		[coil, 2]
+		[steel, 16]
+		[coil2, 2]
 	]
 	AIValueFactor = 0
 	Size = [2, 1]

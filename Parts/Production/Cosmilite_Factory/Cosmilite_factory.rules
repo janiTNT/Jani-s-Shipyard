@@ -24,7 +24,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	uses_power, fabricator
 	pipe_quad
 	]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Factory, JaniPipe_Connection]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
 	ForceManhattanPathInPart = true
 	AllowedDoorLocations
 	[
@@ -79,13 +79,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		FluidProxyIron
-		{
-			Type = ResourceStorage
-			ResourceType = molten.iron
-			MaxResources = 2000
-		}
-		
 		IsOperational
 		{
 			Type = MultiToggle
@@ -211,6 +204,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ToStorage = CosmiliteStorage
 			ToQuantity = 1
 			Interval = { BaseValue=2; BuffType=Factory; BuffMode=Divide; }
+			CheckResourceLimits = true
 		}
 
 		ConvertEffects

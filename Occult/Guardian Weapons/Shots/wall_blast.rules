@@ -1,0 +1,114 @@
+ID = "janiTNT.guardian_blast_wall"
+//OtherIDs = ["missile", "cosmoteer.missile"]
+Range = 500
+IdealRange = 450
+Speed = 80
+
+Components
+{
+	Physics
+	{
+		Type = BoxPhysics
+		Size = [8, 16]
+		Density = 4000
+		LinearDamping = 0.8
+		FrameOfReferenceDuration = 1
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 8
+		/*OnDeath
+		{
+			HitEffects
+			[
+				{
+					Type = SpawnBullets
+					Bullet = &<HellblastHandler1.rules>
+					Count = 1
+					InheritVelocity = true
+				}
+			]
+		}*/
+	}
+
+	Sprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		//IsLit = true
+		RotOffset = 180d
+		Sprite
+		{
+			Texture
+			{
+				File = "wallfacer.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [16, 32]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [1, 0]
+		LerpTime = 0.2
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		FriendlyShipLowCollisions = false
+		FriendlyShipHighCollisions = false
+
+		ShieldCollisions = { Shields=false; }
+
+		HitShield {}
+		
+		HitOperational
+		{
+			Bounce = true
+			
+			MediaEffectsScale = 1
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				//&<../../particles/bigflash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 0.2
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+		HitStructural = &HitOperational
+
+		HitFriendly
+		{
+			Bounce = true
+			MediaEffects
+			[
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
+				&<./data/shots/missile_nuke/particles/missile_nuke_flash.rules>
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_nuke/missile_nuke_hit.wav"
+					Volume = 1
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .15
+					Duration = .75
+				}
+			]
+		}
+	}
+}

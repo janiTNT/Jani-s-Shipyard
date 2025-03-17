@@ -45,6 +45,7 @@ Components
 			{
 				File = "wallsigil.png"
 				MipLevels = max
+				SampleMode = Linear
 			}
 			Size = [22, 44]
 			TargetBlendMode = Add
@@ -64,6 +65,7 @@ Components
 			{
 				File = "wallsigil.png"
 				MipLevels = max
+				SampleMode = Linear
 			}
 			Size = [22, 88]
 			TargetBlendMode = Add

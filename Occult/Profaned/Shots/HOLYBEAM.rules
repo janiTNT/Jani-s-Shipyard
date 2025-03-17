@@ -67,7 +67,7 @@ BeamMediaEffects
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
 			Size = [100%, 7]
-			_extraBeginLength = 20
+			_extraBeginLength = 5
 			_extraEndLength = 10
 			VertexColor = [255*1.5, 205*1.5, 128*1.5, 255]
 			_z = 0.4

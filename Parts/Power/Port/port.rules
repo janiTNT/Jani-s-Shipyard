@@ -62,7 +62,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CircleBuffProvider //GridBuffProvider
 			BuffType = PowerportBuff
-			BuffRadius = 5
+			BuffRadius = 3
 			BuffAmount = 1
 			OperationalToggle = IsOperational
 			ShowBuffRange = true

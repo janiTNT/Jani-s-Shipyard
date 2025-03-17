@@ -1,0 +1,67 @@
+PartToggles
+[
+	{
+		ToggleID = "comparator_compare_mode"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Battery Level
+			{
+				ChoiceID = "power_value"
+				ButtonToolTipKey = "PartToggles/power_value"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/designer/group_power.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Thruster Level
+			{
+				ChoiceID = "thrust_value"
+				ButtonToolTipKey = "PartToggles/thrust_value"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/designer/group_flight.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Fusion Reactor Level
+			{
+				ChoiceID = "fusionlevel_value"
+				ButtonToolTipKey = "PartToggles/fusionlevel_value"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "comparator_1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Check for Operational
+			{
+				ChoiceID = "operationallevel_value"
+				ButtonToolTipKey = "PartToggles/operationallevel_value"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/toggle_power_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+]

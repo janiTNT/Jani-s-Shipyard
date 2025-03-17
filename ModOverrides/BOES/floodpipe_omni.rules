@@ -1,0 +1,171 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe_omni.rules>/Part"
+		Name = "ReceivableBuffs"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe_omni.rules>/Part/ReceivableBuffs"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [BossesDisableComponents];}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe_omni.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides : &<Base_BOES_overrides.rules>/Base
+		{
+			Indicators
+			{
+				Type = IndicatorSprites
+				Location = [.5, .5]
+				Layer = "indicators"
+				Indicators
+				[
+					// Disabled.
+					{
+						Toggle = JS_Boss_Components_Enabled
+						ShowInBuildMode = true
+						AtlasSprite
+						{
+							File = &/JANI_COMMON/JSvsBOES
+							Size = [1, 1]
+						}
+					}
+				]
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe_omni.rules>/Part/Components/Take"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe_omni.rules>/Part/Components/Give"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/flood_pipe_omni.rules>/Part/Components/Spread"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_ammo.rules>/Components/Take_A"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_ammo.rules>/Components/Give_A"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_ammo.rules>/Components/Spread_A"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_he.rules>/Components/Take_H"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_he.rules>/Components/Give_H"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_he.rules>/Components/Spread_H"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_emp.rules>/Components/Take_E"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_emp.rules>/Components/Give_E"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_emp.rules>/Components/Spread_E"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_hyperium.rules>/Components/Take_Hyp"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_hyperium.rules>/Components/Give_Hyp"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_hyperium.rules>/Components/Spread_Hyp"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_nuke.rules>/Components/Take_N"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_nuke.rules>/Components/Give_N"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_nuke.rules>/Components/Spread_N"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_mine.rules>/Components/Take_M"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_mine.rules>/Components/Give_M"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/flood_pipe/omni_mine.rules>/Components/Spread_M"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+]

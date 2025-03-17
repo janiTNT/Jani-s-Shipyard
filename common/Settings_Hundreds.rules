@@ -17,103 +17,64 @@ Part
 			Mode = NumberSelectHunds
 			OnMode = 0
 		}
-		ZeroLength3
+		BuffProviderSettingZero3
 		{
-			Type = ToggledComponents
-			Toggle = ZeroLengthToggle3
-			Components
-			{
-				BuffProviderSettingOne3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = ZeroLengthToggle3
+			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
-
 		OneLengthToggle3
 		{
 			Type = ModeToggle
 			Mode = NumberSelectHunds
 			OnMode = 1
 		}
-		OneLength3
+		BuffProviderSettingOne3
 		{
-			Type = ToggledComponents
-			Toggle = OneLengthToggle3
-			Components
-			{
-				BuffProviderSettingOne3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=100; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = OneLengthToggle3
+			BuffAmount = { BaseValue=100; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
-
 		TwoLengthToggle3
 		{
 			Type = ModeToggle
 			Mode = NumberSelectHunds
 			OnMode = 2
 		}
-		TwoLength3
+		BuffProviderSettingTwo3
 		{
-			Type = ToggledComponents
-			Toggle = TwoLengthToggle3
-			Components
-			{
-				BuffProviderSettingTwo3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=200; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = TwoLengthToggle3
+			BuffAmount = { BaseValue=200; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
-
 		ThreeLengthToggle3
 		{
 			Type = ModeToggle
 			Mode = NumberSelectHunds
 			OnMode = 3
 		}
-		ThreeLength3
+		BuffProviderSettingThree3
 		{
-			Type = ToggledComponents
-			Toggle = ThreeLengthToggle3
-			Components
-			{
-				BuffProviderSettingThree3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=300; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = ThreeLengthToggle3
+			BuffAmount = { BaseValue=300; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
-
 		FourLengthToggle3
 		{
 			Type = ModeToggle
 			Mode = NumberSelectHunds
 			OnMode = 4
 		}
-		FourLength3
+		BuffProviderSettingFour3
 		{
-			Type = ToggledComponents
-			Toggle = FourLengthToggle3
-			Components
-			{
-				BuffProviderSettingFour3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=400; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = FourLengthToggle3
+			BuffAmount = { BaseValue=400; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
 		FiveLengthToggle3
 		{
@@ -121,19 +82,12 @@ Part
 			Mode = NumberSelectHunds
 			OnMode = 5
 		}
-		FiveLength3
+		BuffProviderSettingFive3
 		{
-			Type = ToggledComponents
-			Toggle = FiveLengthToggle3
-			Components
-			{
-				BuffProviderSettingFive3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=500; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = FiveLengthToggle3
+			BuffAmount = { BaseValue=500; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
 		SixLengthToggle3
 		{
@@ -141,19 +95,12 @@ Part
 			Mode = NumberSelectHunds
 			OnMode = 6
 		}
-		SixLength3
+		BuffProviderSettingSix3
 		{
-			Type = ToggledComponents
-			Toggle = SixLengthToggle3
-			Components
-			{
-				BuffProviderSettingSix3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=600; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = SixLengthToggle3
+			BuffAmount = { BaseValue=600; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
 		SevenLengthToggle3
 		{
@@ -161,19 +108,12 @@ Part
 			Mode = NumberSelectHunds
 			OnMode = 7
 		}
-		SevenLength3
+		BuffProviderSettingSeven3
 		{
-			Type = ToggledComponents
-			Toggle = SevenLengthToggle3
-			Components
-			{
-				BuffProviderSettingSeven3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=700; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = SevenLengthToggle3
+			BuffAmount = { BaseValue=700; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
 		EightLengthToggle3
 		{
@@ -181,19 +121,12 @@ Part
 			Mode = NumberSelectHunds
 			OnMode = 8
 		}
-		EightLength3
+		BuffProviderSettingEight3
 		{
-			Type = ToggledComponents
-			Toggle = EightLengthToggle3
-			Components
-			{
-				BuffProviderSettingEight3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=800; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = EightLengthToggle3
+			BuffAmount = { BaseValue=800; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
 		NineLengthToggle3
 		{
@@ -201,19 +134,13 @@ Part
 			Mode = NumberSelectHunds
 			OnMode = 9
 		}
-		NineLength3
+		BuffProviderSettingNine3
 		{
-			Type = ToggledComponents
-			Toggle = NineLengthToggle3
-			Components
-			{
-				BuffProviderSettingNine3
-				{
-					Type = SelfBuffProvider
-					BuffType = AdvS_Setting_Third
-					BuffAmount = { BaseValue=900; BuffType=AdvS_Setting_Second; BuffMode=Add }
-				}
-			}
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			OperationalToggle = NineLengthToggle3
+			BuffAmount = { BaseValue=900; BuffType=AdvS_Setting_Second; BuffMode=Add }
 		}
+		
 	}
 }

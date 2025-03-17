@@ -1,0 +1,4 @@
+// This is a "fake" type of resource used to disable the enemy ship's things
+ID = janitnt.boss_weaponstun
+NameKey = "Resource/IonEnergy"
+ReturnToStorage = false

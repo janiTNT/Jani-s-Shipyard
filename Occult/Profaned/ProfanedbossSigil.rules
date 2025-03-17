@@ -15,12 +15,12 @@ Part : <../base_part_occult.rules>/Part
 	AIValueFactor = 10 // Makes the AI destroy the small ones first i think i hope idk
 	SelectionTypeID = "sigils"
 	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
-	MaxHealth = 32000 * 45
+	MaxHealth = 32000 * 35 * 10
 	UnderlyingPartPerTile = ""
 	ContiguityOriginPriority = 1
 	//UnderlyingPart = janiTNT.lootorb_cosmilite
 	DestroyedPartHealthFraction = 100%
-	Size = [4, 2]
+	Size = [8, 4]
 	TypeCategories = [armor, command, boss_resistant]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
@@ -51,7 +51,7 @@ Part : <../base_part_occult.rules>/Part
 		PulseEffect
 		{
 			Type = ContinuousEffects
-			Location = [1.5, 1.5]
+			Location = [4, 2]
 			OperationalToggle = BigAttackMode
 			//FactorMediaEffectsIntensityWith = RoofOpacity
 			MediaEffects
@@ -155,7 +155,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = Graphics
 			//OperationalToggle = IsOperational
-			Location = [2, 1]
+			Location = [4, 2]
 			OperationalDoodad
 			{
 				Layer = "asteroid_lights_add"
@@ -164,7 +164,7 @@ Part : <../base_part_occult.rules>/Part
 				[
 					{
 						File = "bosssigil.png"
-						Size = [4, 2]
+						Size = [8, 4]
 					}
 				]
 			}
@@ -211,7 +211,7 @@ Part : <../base_part_occult.rules>/Part
 		SalvagedEffects
 		{
 			Type = DeathEffects
-			Location = [2, 1]
+			Location = [4, 2]
 			WhenSalvaged = true
 			MediaEffectsScale = 2.5
 			MediaEffects
@@ -300,14 +300,14 @@ Part : <../base_part_occult.rules>/Part
 		ArcShield
 		{
 			Type = ArcShield
-			Radius = 4
+			Radius = 6
 			Arc = 360d
 			OperationalToggle = ShieldingOn
-			PenetrationResistance = [99, 50]
+			PenetrationResistance = [199, 150]
 			DrainResourcesFrom = ShieldStorage
 			ResourceDrainPerDamage = .5
 			Rotation = -90d
-			Location = [2, 1]
+			Location = [4, 2]
 
 			BlueprintArcSprite
 			{
@@ -536,14 +536,14 @@ Part : <../base_part_occult.rules>/Part
 					Duration = 8
 				}
 			]
-			Location = [2, 1]
+			Location = [4, 2]
 		}
 
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "../sigilbp.png"
-			Size = [4, 2]
+			Size = [8, 4]
 		}
 	}
 }

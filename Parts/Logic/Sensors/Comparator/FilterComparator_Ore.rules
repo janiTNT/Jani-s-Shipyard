@@ -1,0 +1,115 @@
+Part : <FilterComparator_base.rules>/Part
+{
+	NameKey = "Parts/Logic_Comparator_Resources_Ore"
+	IconNameKey = "Parts/Logic_Comparator_Resources_OreIcon"
+	ID = janiTNT.comparator_filter_ore // Part IDs  somthing something
+	Components : ^/0/Components
+	{	
+		OreType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_ore"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		sulfurToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 0
+		}
+		sulfurComponents
+		{
+			Type = ToggledComponents
+			Toggle = sulfurToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/sulfur.rules>/Components
+		}
+		
+		ironToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 1
+		}
+		ironComponents
+		{
+			Type = ToggledComponents
+			Toggle = ironToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/iron.rules>/Components
+		}
+		
+		copperToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 2
+		}
+		copperComponents
+		{
+			Type = ToggledComponents
+			Toggle = copperToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/copper.rules>/Components
+		}
+		
+		tritaniumToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 3
+		}
+		tritaniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = tritaniumToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/tritanium.rules>/Components
+		}
+		
+		carbonToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 4
+		}
+		carbonComponents
+		{
+			Type = ToggledComponents
+			Toggle = carbonToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/carbon.rules>/Components
+		}
+		
+		goldToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 5
+		}
+		goldComponents
+		{
+			Type = ToggledComponents
+			Toggle = goldToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/gold.rules>/Components
+		}
+		
+		uraniumToggle
+		{
+			Type = ModeToggle
+			Mode = OreType
+			OnMode = 6
+		}
+		uraniumComponents
+		{
+			Type = ToggledComponents
+			Toggle = uraniumToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/uranium.rules>/Components
+		}
+	}
+}

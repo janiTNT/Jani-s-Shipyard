@@ -3,8 +3,21 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 	IsOperational
 	{
 		Type = MultiToggle
-		Toggles = [PowerToggle, BatteryStorage]
+		Toggles = [PowerToggle, BatteryStorage, LogicDisable]
 		Mode = All
+	}
+	
+	LogicDisable
+	{
+		Type = MultiToggle
+		Toggles = [LogicSignal]
+		Invert = true
+		Mode = All
+	}
+	LogicSignal
+	{
+		Type = BuffToggle
+		BuffType = Logic
 	}
 
 	PowerToggle

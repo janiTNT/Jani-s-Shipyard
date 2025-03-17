@@ -1,0 +1,65 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_turret.rules>/Part"
+		Name = "ReceivableBuffs"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_turret.rules>/Part/ReceivableBuffs"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [BossesDisableComponents];}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_turret.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides : &<Base_BOES_overrides.rules>/Base
+		//&<Base_BOES_weapon_stun.rules>/Base
+		{
+/* 			JS_JaniDisableStorage_Stun
+			{
+				Type = ResourceStorage
+				ResourceType = janitnt.boss_weaponstun
+				MaxResources = 20*4 //20 seconds
+				SuppliesResources = false
+				StartingResources = 0
+				InitToMaxResources = 0
+				InitToMaxResourcesPVP = 0
+				DropResourcesWhenDestroyed = false
+				DropResourcesWhenRemoved = false
+			} */
+			JS_DisabledPowerDrain
+			{
+				Type = ResourceConverter
+				OperationalToggle = JS_JaniDisableStorage
+				FromStorage = BatteryStorage
+				FromQuantity = 8000
+				MinFromQuantityForConversion = 1
+				Interval = 0.2
+			}
+			/* JS_Boss_Components_Enabled
+			{
+				Type = MultiToggle
+				Toggles = [
+				{Toggle = JS_DetectDisableBuff, invert = true}
+				{Toggle = JS_JaniDisableStorage_Stun, invert = true}
+				]
+				Mode = All
+			} */
+		}
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_turret.rules>/Part/Components/IsOperational/Toggles"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [JS_Boss_Components_Enabled];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/scythe_turret/scythe_turret.rules>/Part/Components/Indicators/Indicators"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd
+	[
+		// Disabled.
+		{
+			Toggle = JS_Boss_Components_Enabled
+			ShowInBuildMode = true
+			AtlasSprite
+			{
+				File = &/JANI_COMMON/JSvsBOES
+				Size = [3, 3]
+			}
+		}
+	];}
+]

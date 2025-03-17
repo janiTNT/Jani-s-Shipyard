@@ -19,10 +19,10 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 80d
+		TurnVelocity = 120d
 		Delay = 0
 		//AvoidanceRaycastDistance = 250
-		VelocityCompensation = 80%
+		VelocityCompensation = 100%
 	}
 	
 	TargetSearch

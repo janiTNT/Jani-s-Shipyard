@@ -1,7 +1,7 @@
 ID = "janiTNT.combatdroneMK_2.base"
 Range = 400
 IdealRange = 350
-Speed = -12.5
+Speed = -3
 
 Components
 {
@@ -10,7 +10,7 @@ Components
 		Type = CirclePhysics
 		Radius = .35
 		Density = 0.4
-		LinearDamping = 4
+		LinearDamping = 0.4
 		AngularDamping = 2
 		FrameOfReferenceDuration = 5
 		CollidesWithBullets = true
@@ -42,8 +42,8 @@ Components
 	Repulsion
 	{
 		Type = Acceleration
-		Acceleration = [-218 * 4, 0]
-		AccelerationOverTime = [0, 1.25]
+		Acceleration = [-280 * 0.4, 0]
+		AccelerationOverTime = [0, 1]
 		Direction = Target
 	}
 	
@@ -85,9 +85,10 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 360d
+		TurnVelocity = 140d
 		Delay = .3
 		TargetLeadPrediction = false
+		VelocityCompensation = 20%
 		AvoidanceRaycastDistance = 100
 		
 	}
@@ -95,7 +96,7 @@ Components
 	Acceleration
 	{
 		Type = Acceleration
-		Acceleration = 165 * 4
+		Acceleration = 165 * 0.4
 	}
 	Retarget
 	{
@@ -130,7 +131,7 @@ Components
 		Range = 100
 		DetectsShips = true
 		DetectsBullets = false
-		StartDelay = .5
+		StartDelay = 0.75
 		FactorEffectsWith = Targetable
 		
 		OnDeath

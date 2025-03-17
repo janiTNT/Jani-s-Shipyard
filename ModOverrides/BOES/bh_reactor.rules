@@ -1,0 +1,45 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_reactor/bh_reactor.rules>/Part"
+		Name = "ReceivableBuffs"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_reactor/bh_reactor.rules>/Part/ReceivableBuffs"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [BossesDisableComponents];}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_reactor/bh_reactor.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides : &<Base_BOES_overrides.rules>/Base
+		{
+			Indicators
+			{
+				Type = IndicatorSprites
+				Location = [1, 1]
+				Layer = "indicators"
+				Indicators
+				[
+					// Disabled.
+					{
+						Toggle = JS_Boss_Components_Enabled
+						ShowInBuildMode = true
+						AtlasSprite
+						{
+							File = &/JANI_COMMON/JSvsBOES
+							Size = [2, 2]
+						}
+					}
+				]
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/bh_reactor/bh_reactor.rules>/Part/Components/BatteryProducer"
+		IgnoreIfNotExisting = true
+		Overrides = {OperationalToggle = JS_Boss_Components_Enabled}
+	}
+]

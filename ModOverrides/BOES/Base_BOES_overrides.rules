@@ -1,0 +1,79 @@
+Base
+{
+	/* JS_JaniIndicators
+	{
+		Type = IndicatorSprites
+		Location = [.5, .5]
+		Layer = "indicators"
+		Indicators
+		[
+			// Turned off by the devilish one.
+			{
+				Toggle = JS_Boss_Components_Enabled
+				ShowInBuildMode = true
+				AtlasSprite
+				{
+					File = &/JANI_COMMON/JSvsBOES
+					Size = [1, 1]
+				}
+			}
+		]
+	} */
+	/* JS_OminousPulse
+	{
+		Type = ContinuousEffects
+		//Location = [1.5, 1.5]
+		OperationalToggle = JS_DetectDisableBuff
+		FactorMediaEffectsIntensityWith = JS_RoofOpacity
+		MediaEffects
+		[
+			&<../Common/darkaura_pulse.rules>
+			&<../Common/darkaura_pulse_simple.rules>
+		]
+	}
+	JS_RoofOpacity
+	{
+		Type = RoofOpacity // DO NOT EVER USE COMPONENTS OF THIS TYPE FOR GAMEPLAY LOGIC!!! IT WILL CAUSE DESYNCS!!! USE FOR RENDERING ONLY!!!
+	} */
+	JS_JaniDisableStorage
+	{
+		Type = ResourceStorage
+		ResourceType = janitnt.bossanticheese
+		MaxResources = 100 //Timeout for 10 seconds.
+		SuppliesResources = false
+		StartingResources = 0
+		InitToMaxResources = 0
+		InitToMaxResourcesPVP = 0
+		DropResourcesWhenDestroyed = false
+		DropResourcesWhenRemoved = false
+	}
+	JS_DisablingStorageDrain
+	{
+		Type = ResourceConverter
+		OperationalToggle = JS_JaniDisableStorage
+		FromStorage = JS_JaniDisableStorage
+		FromQuantity = 10
+		MinFromQuantityForConversion = 1
+		Interval = 1
+	}
+	JS_DisablingBuff
+	{
+		Type = WholeShipProvider
+		OperationalToggle = JS_JaniDisableStorage
+		BuffType = BossesDisableComponents
+		BuffAmount = 1
+		BuffsSelf = true
+	}
+	JS_DetectDisableBuff
+	{
+		Type = BuffToggle
+		BuffType = BossesDisableComponents
+		MinBuffValue = 1
+	}
+	JS_Boss_Components_Enabled
+	{
+		Type = MultiToggle
+		Toggles = [{Toggle = JS_DetectDisableBuff, invert = true}]
+		Mode = All
+	}
+}

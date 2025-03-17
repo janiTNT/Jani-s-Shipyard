@@ -64,7 +64,7 @@ Components
 		Type = ResourceChange
 		Trigger = ConsumePowerTrigger
 		ResourceStorage = BatteryStorage
-		Amount = -1000
+		Amount = -1750
 	}
 	
 	HandStorage

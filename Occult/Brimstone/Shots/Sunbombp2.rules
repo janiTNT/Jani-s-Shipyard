@@ -71,7 +71,7 @@ Components
 		Type = Sprite
 		RenderBucket = BulletUpper2
 		Spin = 500d
-		Offset = [-3, 0]
+		Offset = [-5, 0]
 		//IsLit = true
 		Sprite
 		{
@@ -93,7 +93,7 @@ Components
 		RenderBucket = BulletUpper2
 		Spin = -200d
 		//IsLit = true
-		Offset = [-6, 0]
+		Offset = [-10, 0]
 		Sprite
 		{
 			Texture

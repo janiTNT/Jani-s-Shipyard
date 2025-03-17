@@ -5,6 +5,7 @@ Speed = 400
 Stage2a = &<Sunbombp1.rules>
 Stage2b = &<Nukep1.rules>
 Stage2c = &<Hypernuke.rules>
+Stage2d = &<Fly.rules>
 
 Components
 {
@@ -42,7 +43,7 @@ Components
 				
 					Type = SpawnBullets
 					Bullet = &~/Stage2b
-					Count = 100
+					Count = 80
 					InheritVelocity = true
 					ScaleHealth = true
 				}
@@ -51,6 +52,14 @@ Components
 					Type = SpawnBullets
 					Bullet = &~/Stage2c
 					Count = 4
+					InheritVelocity = true
+					ScaleHealth = true
+				}
+				{
+				
+					Type = SpawnBullets
+					Bullet = &~/Stage2d
+					Count = 20
 					InheritVelocity = true
 					ScaleHealth = true
 				}

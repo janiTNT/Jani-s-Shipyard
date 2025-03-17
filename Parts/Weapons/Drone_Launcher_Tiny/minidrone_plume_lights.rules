@@ -18,7 +18,7 @@ BeamSprite
 	_coldColor =  [247, 29, 0, 255]
 	_pivot = 1/3
 	Size = [3, 2]
-	_lightLength = 1.25
+	_lightLength = 0.5
 	TargetBlendMode
 	{
 		SourceRgbFactor = InverseDestColor

@@ -1,0 +1,53 @@
+Base
+{
+	/* JS_JaniIndicators
+	{
+		Type = IndicatorSprites
+		Location = [.5, .5]
+		Layer = "indicators"
+		Indicators
+		[
+			// Turned off by the devilish one.
+			{
+				Toggle = JS_Boss_Components_Enabled
+				ShowInBuildMode = true
+				AtlasSprite
+				{
+					File = &/JANI_COMMON/JSvsBOES
+					Size = [1, 1]
+				}
+			}
+		]
+	} */
+	
+	JS_JaniDisableStorage_Stun
+	{
+		Type = ResourceStorage
+		ResourceType = janitnt.boss_weaponstun
+		MaxResources = 5*4 //Variable Timeout
+		SuppliesResources = false
+		StartingResources = 0
+		InitToMaxResources = 0
+		InitToMaxResourcesPVP = 0
+		DropResourcesWhenDestroyed = false
+		DropResourcesWhenRemoved = false
+	}
+	JS_StunDisablingStorageDrain
+	{
+		Type = ResourceConverter
+		OperationalToggle = JS_JaniDisableStorage_Stun
+		FromStorage = JS_JaniDisableStorage_Stun
+		FromQuantity = 1
+		MinFromQuantityForConversion = 1
+		Interval = 0.25
+	}
+	/* JS_Boss_Components_Enabled
+	{
+		Type = MultiToggle
+		Toggles = [
+		{Toggle = JS_DetectDisableBuff, invert = true}
+		{Toggle = JS_JaniDisableStorage_Stun, invert = true}
+		]
+		Mode = All
+	} */
+}

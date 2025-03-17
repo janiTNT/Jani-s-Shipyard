@@ -1,0 +1,32 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_core/eva_core.rules>/Part"
+		Name = "ReceivableBuffs"
+		OnlyIfNotExisting = true
+		IgnoreIfNotExisting = true
+		ToAdd = []
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_core/eva_core.rules>/Part/ReceivableBuffs"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [BossesDisableComponents];}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_core/eva_core.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides = &<Base_BOES_overrides.rules>/Base
+	}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_core/eva_core.rules>/Part/Components/IsOperational/Toggles"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd = [JS_Boss_Components_Enabled];}
+	{Action = AddMany; AddTo = "<../../../workshop/content/799600/2911126638/bitofevextra_mod/eva_core/eva_core.rules>/Part/Components/Indicators/Indicators"; OnlyIfNotExisting = true; IgnoreIfNotExisting = true; ManyToAdd
+	[
+		// Disabled.
+		{
+			Toggle = JS_Boss_Components_Enabled
+			ShowInBuildMode = true
+			AtlasSprite
+			{
+				File = &/JANI_COMMON/JSvsBOES
+				Size = [3, 3]
+			}
+		}
+	];}
+]

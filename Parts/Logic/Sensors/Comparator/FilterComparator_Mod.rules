@@ -1,0 +1,73 @@
+Part : <FilterComparator_base.rules>/Part
+{
+	NameKey = "Parts/Logic_Comparator_Resources_Modded"
+	IconNameKey = "Parts/Logic_Comparator_Resources_ModdedIcon"
+	ID = janiTNT.comparator_filter_modded // Part IDs  somthing something
+	Components : ^/0/Components
+	{	
+		ModType
+		{
+			Type = UIToggle
+			ToggleID = "resource_conveyor_mode_modded"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		
+		cosmiliteToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 0
+		}
+		cosmiliteComponents
+		{
+			Type = ToggledComponents
+			Toggle = cosmiliteToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/cosmilite.rules>/Components
+		}
+		
+		astralToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 1
+		}
+		astralComponents
+		{
+			Type = ToggledComponents
+			Toggle = astralToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/astral.rules>/Components
+		}
+		
+		profanedcoreToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 2
+		}
+		profanedcoreComponents
+		{
+			Type = ToggledComponents
+			Toggle = profanedcoreToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/profanedcore.rules>/Components
+		}
+		
+		cursedpagesToggle
+		{
+			Type = ModeToggle
+			Mode = ModType
+			OnMode = 3
+		}
+		cursedpagesComponents
+		{
+			Type = ToggledComponents
+			Toggle = cursedpagesToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/cursedpages.rules>/Components
+		}
+	}
+}

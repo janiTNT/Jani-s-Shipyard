@@ -1,7 +1,7 @@
 ID = "janiTNT.combatdroneMK_2.1"
 Range = &<twobase.rules>/Range
 IdealRange = &<twobase.rules>/IdealRange
-Speed = 30
+Speed = 8
 
 Components : &<twobase.rules>/Components
 {

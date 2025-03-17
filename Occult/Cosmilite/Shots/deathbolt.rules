@@ -1,8 +1,8 @@
 ID = "janiTNT.DeathboltCosmic"
-Range = 800
+Range = 2250
 IdealRange = [800, 470]
 IdealRadius = [5, 50]
-Speed = 60
+Speed = 800
 
 Components
 {
@@ -19,13 +19,6 @@ Components
 		// Lifetime will be auto-calculated based on range and speed.
 	}
 	
-	Acceleration
-	{
-		Type = Acceleration
-		Acceleration = [100, 800]
-		AccelerationOverTime = [0, 1]
-	}
-	
 	/*Homing
 	{
 		Type = TargetHoming
@@ -39,21 +32,21 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 1000
+		Health = 10000
 		TargetCategory = "laser"
 	}
 	
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = 20000
+		Damage = 180000
 	}
 
 	Hit
 	{
 		Type = PenetratingHit
 		FactorEffectsWith = Targetable
-		Penetration = 50
+		Penetration = 80
 		PenetrationSpeed = 30
 		
 		SourceShipLowCollisions = false
@@ -70,7 +63,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 80000
+					TotalDamage = 100000
 					Radius = 8
 					Filter
 					{
@@ -176,7 +169,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [12, 1.2]
+			Size = [40, 5]
 			VertexColor = [0 * 4, 128 * 4, 255 * 4]
 			TargetBlendMode = Add
 		}
@@ -198,7 +191,7 @@ Components
 				MipLevels = max
 				SampleMode = Linear
 			}
-			Size = [9, 9]
+			Size = [25, 25]
 			VertexColor = [0, 128, 255]
 			TargetBlendMode = Add
 			Shader = "./Data/common_effects/fancy_light.shader"

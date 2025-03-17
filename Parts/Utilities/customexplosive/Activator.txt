@@ -153,6 +153,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			Location = [.5, .5]
 			OperationalToggle = AllowNuke
+			IncludeWhenUnderConstruction = false
 
 			HitEffects
 			[
@@ -250,6 +251,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			Location = [.5, .5]
 			OperationalToggle = CanExplode1
+			IncludeWhenUnderConstruction = false
 
 			HitEffects
 			[

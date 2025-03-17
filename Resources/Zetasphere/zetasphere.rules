@@ -25,7 +25,7 @@ Overlay
 {
 	Texture
 	{
-		File = "zetasphere.png"
+		File = "Overlay.png"
 		SampleMode = Linear
 		MipLevels = max
 	}
@@ -38,7 +38,7 @@ NuggetSprites
 		File = "zetasphere.png"
 		NormalsFile = "zetasphere_n.png"
 		Size = [1, 1]
-		Offset = [.25+8/64, 0]
+		Offset = [24/64, 0]
 		UVRotation = 1
 	}
 ]

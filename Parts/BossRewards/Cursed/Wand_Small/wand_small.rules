@@ -211,7 +211,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				: /BASE_SOUNDS/AudioExterior
 				{
 					Sound = "shoot.wav"
-					Volume = .6
+					Volume = .8
 					SpeedVariation = .25
 				}
 			]

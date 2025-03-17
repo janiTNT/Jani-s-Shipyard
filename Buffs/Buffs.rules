@@ -222,6 +222,12 @@ JaniCRAM_BarrelGauge //Actual Gauge.
 	RectBorderColor = [84, 128, 255, 160]
 	RectFillColor = [0, 0, 255, 64]
 }
+JaniCRAM_BarrelGauge_Root
+{
+	CombineMode = Add
+	Exponent = 0.5
+	BaseValue = 0%
+}
 JaniCRAM_ReverseBarrelGauge //Visual Barrel Thickness
 {
 	CombineMode = Add
@@ -258,11 +264,16 @@ JaniCRAM_Momentum
 JaniCRAM_Range //Bullet RANGE
 {
 	CombineMode = Add
-	Exponent = 0.6
-	BaseValue = 15%
+	Exponent = 0.7
+	BaseValue = 5%
 	
 	IconTextFormatKey = "BuildBox/CustomCannon_RangeFmt"
 	IconTextMultiply = 100
+}
+JaniCRAM_Range_Pre //Bullet RANGE
+{
+	CombineMode = Add
+	BaseValue = 0%
 }
 JaniCRAM_Accuraccy //Bullet ACCURACCY
 {
@@ -368,6 +379,16 @@ CursedMana_Consumed // Checks Mana consumed
 	CombineMode = Add
 	BaseValue = 0%
 }
+HolyMana_Provided // Checks Provided Mana
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
+HolyMana_Consumed // Checks Mana consumed
+{
+	CombineMode = Add
+	BaseValue = 0%
+}
 
 Hauler_Thrust
 {
@@ -396,7 +417,12 @@ Hauler_Engine
 	Exponent = 1
 	BaseValue = 100%
 }
-JaniPipe_Connection
+HolyMantleToggle
+{
+	CombineMode = Max
+	BaseValue = 0%
+}
+BossesDisableComponents
 {
 	CombineMode = Max
 	BaseValue = 0%

@@ -1,0 +1,283 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/Logic_Comparator"
+	IconNameKey = "Parts/Logic_ComparatorIcon"
+	ID = janiTNT.comparator // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/Logic_ComparatorDesc"
+	Resources
+	[
+		[steel, 6]
+		[coil, 2]
+	]
+	Size = [1, 1]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "sensor"
+	TypeCategories = [sensor, logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		ComparatorType
+		{
+			Type = UIToggle
+			ToggleID = "comparator_compare_mode"
+			Default = 0
+			AvailableChoices = [0, 2, 3]
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		EnergyToggle
+		{
+			Type = ModeToggle
+			Mode = ComparatorType
+			OnMode = 0
+		}
+		EnergyComponents
+		{
+			Type = ToggledComponents
+			Toggle = EnergyToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ValueProxy
+					PartLocation = [0, -1]
+					ComponentID = BatteryStorage
+				}
+			}
+		}
+		ThrustToggle
+		{
+			Type = ModeToggle
+			Mode = ComparatorType
+			OnMode = 1
+		}
+		ThrustComponents
+		{
+			Type = ToggledComponents
+			Toggle = ThrustToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ValueProxy
+					PartLocation = [0, -1]
+					ComponentID = MainThruster
+				}
+			}
+		}
+		ReactorToggle
+		{
+			Type = ModeToggle
+			Mode = ComparatorType
+			OnMode = 2
+		}
+		ReactorComponents
+		{
+			Type = ToggledComponents
+			Toggle = ReactorToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = MultiValue
+					Values = [FusionReactorProxy]
+					Mode = Max
+				}
+				FusionReactorProxy
+				{
+					Type = ValueProxy
+					PartLocation = [0, -1]
+					ComponentID = ReactorCriticalityValueProxy
+				}
+			}
+		}
+		CheckForOperationalToggle
+		{
+			Type = ModeToggle
+			Mode = ComparatorType
+			OnMode = 3
+		}
+		CheckForOperationalComponents
+		{
+			Type = ToggledComponents
+			Toggle = CheckForOperationalToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ValueTween
+					IsOnToggle = CheckOperationalProxy
+					OnTweenDuration = 0
+					OffTweenDuration = 0
+				}
+				CheckOperationalProxy
+				{
+					Type = ToggleProxy
+					PartLocation = [0, -1]
+					ComponentID = IsOperational
+				}
+			}
+		}
+		
+		OutputSignal
+		{
+			Type = MultiToggle
+			Toggles = [Minimal, LogicSignal]
+			Mode = Any
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		
+		ValueCheck
+		{
+			Type = ValueProxy
+			ComponentID = ValueProxy
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Red
+		}
+		Minimal
+		{
+			Type = ThresholdToggle
+			ValueFrom = ValueCheck
+			MinAmount = 0.0000000000001%
+		}
+		Maxed
+		{
+			Type = ThresholdToggle
+			ValueFrom = ValueCheck
+			MinAmount = 100%
+		}
+		BuffProviderLogicA
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = OutputSignal
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, 1, 1, 1]
+		}
+		BuffProviderLogicB
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = Maxed
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [-1, 0, 3, 1]
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = OutputSignal
+			DoodadToggle = Maxed
+			ShowToggledDoodadsWhenNotOperational = false
+			GetColorFrom = ColorPicker
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads3.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = Minimal
+			DoodadToggle = Maxed
+			ShowToggledDoodadsWhenNotOperational = false
+			ToggleOnDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire3.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire2.png"
+						Size = [2, 2]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire1.png"
+						Size = [2, 2]
+					}
+				]
+			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints1.png"
+			Size = [1, 1]
+		}
+	}
+}

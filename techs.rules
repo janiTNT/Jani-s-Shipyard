@@ -214,7 +214,7 @@ Techs
 			&<Parts/Storage/4x4/ore4x4.rules>/Part/ID
 		]
 		Prerequisites = [janiTNT.material_reprocessing, cosmoteer.factory_ammo]
-		Cost = 6000
+		Cost = 4000
 	}
 	{
 		ID = janiTNT.longinserters
@@ -237,8 +237,8 @@ Techs
 			&<Parts/Production/Long inserter/LonginserterConstruction.rules>/Part/ID
 			&<Parts/Production/Long inserter/LonginserterOres.rules>/Part/ID
 		]
-		Prerequisites = [janiTNT.inserters]
-		Cost = 6000
+		Prerequisites = [janiTNT.inserters, janiTNT.advanced_material_manipulation]
+		Cost = 8000
 	}
 	{
 		ID = janiTNT.stackinserters
@@ -261,8 +261,8 @@ Techs
 			&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part/ID
 			&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part/ID
 		]
-		Prerequisites = [janiTNT.longinserters, cosmoteer.factory_steel]
-		Cost = 8000
+		Prerequisites = [janiTNT.longinserters]
+		Cost = 12000
 	}
 	{
 		ID = janiTNT.Controlroom1x1
@@ -296,7 +296,7 @@ Techs
 		Icon = &<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/EditorIcon
 		EditorGroup = &<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/EditorGroup
 		PartsUnlocked = [&<Parts/Flight/Pulse Thrusters/pulse_thruster_small.rules>/Part/ID]
-		Cost = 500
+		Cost = 5000
 	}
 	{
 		ID = janiTNT.pulsethrusters_med

@@ -57,63 +57,103 @@ Components
 		Type = Sprite
 		RenderBucket = BulletUpper2
 		RotOffset = 90d
+		Spin = 83d
 		//IsLit = true
 		Sprite
 		{
 			Texture
 			{
-				File = "../../../TheseAssetsAreFromCalamityMod/BrimstoneMonster.png"
+				File = "../../Other/PortalSpinnerVoid.png"
 				MipLevels = max
 			}
 			//UVRotation = 1
 			Size = [72*4, 72*4]
+			VertexColor = [128 , 25, 25]
 			TargetBlendMode = Add
 		}
 		LerpScaleFrom = [0.1, 0.1]
 		LerpTime = 1.5
 	}
-	
-	GlowSprite
+	Sprite2
 	{
 		Type = Sprite
-		RenderBucket = BulletUpper4
-		Z = 1
-		IsLight = true
+		RenderBucket = BulletUpper2
+		Spin = 94d
+		//IsLit = true
 		Sprite
 		{
 			Texture
 			{
-				File = "./data/ships/common/light_blob.png"
+				File = "../../Other/PortalSpinnerVoid.png"
+				MipLevels = max
+			}
+			//UVRotation = 1
+			Size = [72*4, 72*4]
+			VertexColor = [128 , 25, 25]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0.1, 0.1]
+		LerpTime = 1.6
+	}
+	Sprite3
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper3
+		Spin = 120d
+		//IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Other/PortalSpinner.png"
+				MipLevels = max
+			}
+			//UVRotation = 1
+			Size = [72*4, 72*4]
+			VertexColor = [20 , 0, 60]
+			TargetBlendMode = Add
+		}
+		LerpScaleFrom = [0.1, 0.1]
+		LerpTime = 1.6
+	}
+	
+	VoidSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletLower1
+		Sprite
+		{
+			Texture
+			{
+				File = "../../Other/VoidOfTheSpinner.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [72*4, 72*4]
+			VertexColor = [0, 0, 0, 256]
+		}
+		LerpScaleFrom = [0.1, 0.1]
+		LerpTime = 1.5
+	}
+	ShadowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletLower1
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/common_effects/particles/blob.png"
 				MipLevels = max
 				SampleMode = Linear
 			}
 			Size = [150*4, 150*4]
-			VertexColor = [255*2, 205*2, 128*2]
-			TargetBlendMode = Add
-			Shader = "./Data/common_effects/fancy_light.shader"
-			_litReflectiveStrength = 1
-			_litAdditiveStrength = 0.05
-			_unlitAdditiveStrength = 0.015
+			
+			VertexColor = [0, 0, 0, 80]
 		}
 		LerpScaleFrom = [0.2, 0.2]
 		LerpTime = 3
 	}
-
-	/*Targetable
-	{
-		Type = Targetable
-		Health = 7200 * 100
-		TargetCategory = "missile"
-
-		// No AOE damage when shot down.
-		OnDeath = &../Hit/HitFriendly
-	}*/
-	
-	/*DamagePool
-	{
-		Type = DamagePool
-		Damage = 80000 * 16 //quarter of DoG, yes its gonna break because big collider
-	}*/
 	
 	DeathProximity
 	{
@@ -139,9 +179,9 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1800000*4
-					Radius = 80 * 2
-					ImpulsePerNDamage = 10
+					TotalDamage = 1800000 * 2
+					Radius = 90 * 2
+					ImpulsePerNDamage = -550
 					NDamage = 1000
 					Slices = 1
 					Filter
@@ -152,9 +192,9 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 600000*4
-					Radius = 70 * 2
-					ImpulsePerNDamage = 5
+					TotalDamage = 600000 * 2
+					Radius = 80 * 2
+					ImpulsePerNDamage = -55
 					NDamage = 1000
 					Delay = .5
 					Slices = 1
@@ -164,25 +204,9 @@ Components
 						StructuralHealth = true
 					}
 				}
-				{
-					Type = SpawnBullets
-					Bullet = &<brimstonedart.rules>
-					Count = 128
-					Spread = [-6d, 6d]
-					Distance = 0
-					InheritVelocity = false
-				}
-				{
-					Type = SpawnBullets
-					Bullet = &<Sunbombp2.rules>
-					Count = 12
-					Spread = [-8d, 8d]
-					Distance = 0
-					InheritVelocity = false
-				}
 			]
 			
-			MediaEffectsScale = 10
+			MediaEffectsScale = 400
 			MediaEffects
 			[
 				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>

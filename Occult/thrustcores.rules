@@ -49,21 +49,6 @@ Part : <base_part_occult.rules>/Part
 			Type = SpriteGrid
 		}
 		
-		Graphics
-		{
-			Type = SpriteGrid
-			Location = [0.5, 0.5]
-			DamageLevels
-			[
-				{
-					File = "core.png"
-					NormalsFile = "core_n.png"
-					Size = [1, 1]
-				}
-			]
-			Layer = "secondary"
-		}
-		
 		Sigil
 		{
 			Type = Graphics
@@ -114,6 +99,8 @@ Part : <base_part_occult.rules>/Part
 			ChainedTo = MainThruster
 			Location = [0, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
+			IntensityTweenDuration = 0.1
+			MinMediaEffectsIntensity = 1%
 			//MediaEffectsScale = 16
 			MediaEffects
 			[

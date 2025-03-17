@@ -1,7 +1,7 @@
 ID = "janiTNT.combatdrone.1"
 Range = &<combatbase.txt>/Range
 IdealRange = &<combatbase.txt>/IdealRange
-Speed = 30
+Speed = 5
 
 Components : &<combatbase.txt>/Components
 {
