@@ -1,29 +1,32 @@
-Part : <base_part_occult.rules>/Part
+Part : <base_part_occult_2.rules>/Part
 {
-	NameKey = "Parts/MegaroidArmor1x1"
-	DescriptionKey = "Parts/MegaroidArmorDesc"
-	ID = janiTNT.megarockarmor_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	SelectionTypeID = "armor"
+	NameKey = "Parts/MegaroidArmor_foundation_1x1B"
+	DescriptionKey = "Parts/MegaroidArmor_foundation_1x1Desc"
+	ID = janiTNT.megarockarmor_foundation_1x1_alternate
+	OtherIDs = [janiTNT.megarockarmor_foundation_1x1]
+	//SelectionTypeID = "armor"
 	EditorGroup = "BossParts"
-	Resources = []
-	/*Resources
+	//Resources = []
+	Resources
 	[
-		[steel, 8 * 16]
-	]*/
+		[tristeel, 12]
+	]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	Density = 3
-	MaxHealth = 32000
+	Density = 2
+	MaxHealth = 32000 * 16
+	SelectionTypeID = "armor3"
 	TypeCategories = [armor, boss_resistant]
-	InitialPenetrationResistance = 2 * 7
-	ContinuingPenetrationResistance = 2 * 7
+	InitialPenetrationResistance = 4 * 12
+	ContinuingPenetrationResistance = 4 * 12
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 100%
-	DamageResistances = {explosive = 25%}
+	DamageResistances = {explosive = 50%}
 	IgnoreRotationForMirroredSelection = true
 	EditorIcon
 	{
 		Texture = "armoroid_icon.png"
 		Size = [32, 32]
+		VertexColor = [130, 100, 100]
 	}
 	Components : ^/0/Components
 	{
@@ -110,11 +113,17 @@ Part : <base_part_occult.rules>/Part
 			Location = [.5, .5]
 		}
 		
-		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		DestroyedEffectsDeathBySigil : &<base_part_occult_2.rules>/Part/Components/DestroyedEffectsDeathBySigil
 		{
 			Location = [.5, .5]
 		}
 
-		Blueprints = &<./Data/ships/asteroid/rock/rock_1x1.rules>/Part/Components/Blueprints
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "./data/ships/asteroid/rock/rock_1x1_blueprints.png"
+			Size = [1, 1]
+			VertexColor = [130, 60, 60]
+		}
 	}
 }

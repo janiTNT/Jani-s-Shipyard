@@ -18,8 +18,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Flammable = false
 	CrewSpeedFactor = 0
 	IsWalled = true
-	InitialPenetrationResistance = 2
-	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	IsSelfDestructible = false
 	AllowedDoorLocations = []
 	GeneratorRequiresDoor = false

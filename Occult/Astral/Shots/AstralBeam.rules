@@ -118,11 +118,11 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 6000
+			Damage = 5000
 		}
 		{
 			Type = Impulse
-			Impulse = 800
+			Impulse = 200
 		}
 	]
 

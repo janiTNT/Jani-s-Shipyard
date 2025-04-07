@@ -1,8 +1,8 @@
-Part : <base_part_occult_2.rules>/Part
+Part : <base_part_occult.rules>/Part
 {
 	NameKey = "Parts/MegaroidArmor_foundation_1x1"
-	DescriptionKey = "Parts/MegaroidArmor3Desc"
-	ID = janiTNT.megarockarmor_foundation_1x1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	DescriptionKey = "Parts/MegaroidArmor_foundation_1x1Desc"
+	ID = janiTNT.megarockarmor_foundation_1x1_base // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	//SelectionTypeID = "armor"
 	EditorGroup = "BossParts"
 	//Resources = []
@@ -112,7 +112,7 @@ Part : <base_part_occult_2.rules>/Part
 			Location = [.5, .5]
 		}
 		
-		DestroyedEffectsDeathBySigil : &<base_part_occult_2.rules>/Part/Components/DestroyedEffectsDeathBySigil
+		DestroyedEffectsDeathBySigil : &<base_part_occult.rules>/Part/Components/DestroyedEffectsDeathBySigil
 		{
 			Location = [.5, .5]
 		}

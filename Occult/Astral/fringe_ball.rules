@@ -68,7 +68,7 @@ Part : <../base_part_occult.rules>/Part
 		{
 			Type = CircleCollider
 			Location = [4, 4]
-			Radius = 2
+			Radius = 3
 			Density = 5
 		}
 		

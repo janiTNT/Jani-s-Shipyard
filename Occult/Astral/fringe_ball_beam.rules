@@ -96,14 +96,14 @@ Part : <fringe_ball.rules>/Part
 		{
 			Type = DelayTrigger
 			Trigger = Turret
-			Delay = 5
+			Delay = 6
 		}
 		
 		FiredTrigger
 		{
 			Type = DelayTrigger
 			Trigger = Turret
-			Delay = 5 + 8 + 4
+			Delay = 6 + 8 + 4
 		}
 		
 		BeamEmitterWarning : <shots/Warningbeam.rules>

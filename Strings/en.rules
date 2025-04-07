@@ -405,7 +405,7 @@ Parts
 	
 	PowerPort = "Part Energy Port"
 	PowerPortIcon = "Power Port"
-	PowerPortDesc = "This Part serves as a central delivery point for parts that cannot be powered by crew in Jani's shipyard. As a added bonus, this also powers inserters."
+	PowerPortDesc = "This Part serves as a crew and automation central delivery point for specific parts that cannot be manually powered by crew (Check description of said parts), Or similar parts that can accept it. .\n\n<s14><color r='80' g='80' b='220' a='255'>Jani's shipyard and DataDriven</color></s14>"
 	
 	ControlRoom1x1JANI = "Miniature Command Bunk"
 	ControlRoom1x1JANIIcon = "Command Bunk"
@@ -505,7 +505,15 @@ Parts
 	MegaroidArmorWedge = "Ancient Armor Wedge"
 	MegaroidArmorWedge1x2 = "Ancient Armor Wedge 1x2"
 	MegaroidArmorDesc = "Centuries-old huge bricks of armor that have minor regenerative capabilities. The metal still has degraded over time and cannot be salvaged"
-	MegaroidArmor2Desc = "Centuries-old huge bricks of armor that have minor regenerative capabilities. The metal still has degraded over time and cannot be salvaged. A small difference in internal structure appears to cause the part to only chain react when one of its similar parts had begun reacting."
+	MegaroidArmor2Desc = "Centuries-old huge bricks of armor that have minor regenerative capabilities. The metal still has degraded over time and cannot be salvaged. Alternative segments that will on only chain react when one of its similar parts had begun reacting."
+	
+	MegaroidArmorFDesc = ""
+	MegaroidArmor3BDescDesc = ""
+	
+	MegaroidArmor_foundation_1x1 = "Armored Rock Foundation"
+	MegaroidArmor_foundation_1x1B = "Alternate Rock Foundation"
+	MegaroidArmor_foundation_1x1Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only. Alternative segments that will on only chain react when one of its similar parts had begun reacting."
+	MegaroidArmor_foundation_1x1BDesc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only."
 	
 	MegaroidBallweapon = "Luminous Sphere"
 	MegaroidBallweaponDesc = "Powerful mystical spheres that fire at intruders that fly too close to the Hyperoids."
@@ -566,9 +574,6 @@ Parts
 	
 	MegaroidArmor4_1x1 = "Profaned Armored Rock"
 	MegaroidArmor4Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Explodes into damaging flame projectiles on destruction."
-	
-	MegaroidArmor_foundation_1x1 = "Armored Rock Foundation"
-	MegaroidArmor_foundation_1x1Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only. Will only chain react when one of its similar parts had begun reacting."
 	
 	
 	MegaroidBallWeaponProfanedBoss = "Miniaturized Weaponized Sun"

@@ -1163,6 +1163,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/armoroid.rules>/Part
 			&<Occult/armoroid_2.rules>/Part
 			&<Occult/armoroid_foundation.rules>/Part
+			&<Occult/armoroid_foundation_alternate.rules>/Part
 			&<Occult/armoroid_w.rules>/Part
 			&<Occult/armoroid_w2.rules>/Part
 			&<Occult/Guardian Weapons/lightball_core.rules>/Part
