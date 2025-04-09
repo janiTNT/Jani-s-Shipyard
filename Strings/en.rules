@@ -879,6 +879,14 @@ Parts
 	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
+	AstralConveyor = "Astral Conveyor"
+	AstralConveyorIcon = "Astral Conv."
+	AstralConveyorDesc = "Faster but no wall, fire resistance"
+	
+	AstralCorridor = "Astral Corridor"
+	AstralCorridorIcon = "Astral Cor."
+	AstralCorridorDesc = "Slightly Faster, fire resistance"
+	
 	CosmiliteArmor = "Heavy Cosmilite Armor"
 	CosmiliteArmorIcon = "Cosmilite Armor"
 	CosmiliteArmorDesc = "Heavy armor with a lot of hitpoints. Increases damage resistance against damage based on how many blocks of cosmilite armor is nearby. can affect a select number of other boss armor."

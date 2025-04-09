@@ -279,6 +279,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			//Boss Rewards minus factories
 			
+			&<Parts/BossRewards/Astral/Conveyor/astralconveyor.rules>/Part
+			&<Parts/BossRewards/Astral/Corridor/astralcorridor.rules>/Part
+			
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor2.rules>/Part
