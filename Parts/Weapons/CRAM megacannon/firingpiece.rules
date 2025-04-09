@@ -417,7 +417,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
-		ReloadFireEffect
+		/* ReloadFireEffect
 		{
 			Type = TriggeredEffects
 			Trigger = CRAMFiredTriggerProxy
@@ -426,7 +426,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MediaEffectsFactor = { BaseValue=.5; BuffType=JaniCRAM_ReverseBarrelGauge; BuffMode=Multiply; }
 
 			MediaEffects = &<./data/shots/chaingun_shot/chaingun_shot.rules>/HitOperational/MediaEffects
-		}
+		} */
 		Graphics
 		{
 			Type = Graphics
