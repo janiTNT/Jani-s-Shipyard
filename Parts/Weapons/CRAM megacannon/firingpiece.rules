@@ -530,6 +530,76 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalRoofDoodad = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofDoodad
 			OperationalRoofLighting = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofLighting
 		}
+		TinyLightGraphics
+		{
+			Type = Graphics
+			Location = [.5, 3.5]
+			OperationalToggle = HasPackers
+			DoodadToggle = PackersMaxedToggleProxy
+			ShowToggledDoodadsWhenNotOperational = false
+			ToggleOnDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "operation_lights3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "operation_lights1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "operation_lights3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		TinyLightGraphics2
+		{
+			Type = Graphics
+			Location = [.5, 3.5 + (9/64)]
+			OperationalToggle = CRAM_IsFiringTimer
+			ShowToggledDoodadsWhenNotOperational = true
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "operation_lights2.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "operation_lights3.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
 		
 		RoofCoverGrid
 		{
