@@ -38,8 +38,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, CommandToggle]
+			Toggles = [PowerToggle, CommandToggle, HasAnyConnectionToFiringPiece]
 			Mode = All
+		}
+		IsOperationalLights
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, AmmoStorage]
+			Mode = All
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
 		}
 		CommandToggle
 		{
@@ -56,7 +68,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = Graphics
 			Location = [.5, 1.5]
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalLights
 			Floor
 			{
 				Layer = "floors"
@@ -277,7 +289,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = bullet
-			MaxResources = 2 * (&<./data/resources/bullet/bullet.rules>/MaxStackSize)
+			MaxResources = 3 * (&<./data/resources/bullet/bullet.rules>/MaxStackSize)
 			//DelayBeforeReadyToUse = 1
 			//AnticipateMoreResourcesFrom = ["AmmoStorage"]
 			ToggleOnResources = 1
@@ -424,6 +436,79 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Size = [1, 3]
 			UVRotation = 0
 			//Offset = [0, -0.5]
+		}
+		
+		HasAConnectionToFiringPieceA
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [1, 0]
+			PartCriteria
+			{
+				//ExcludeCategories = [CRAM_PACKER] //needs to see packers to work
+			}
+			ComponentID = ConnectionToFiringPiece
+		}
+		
+		HasAConnectionToFiringPieceB
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [-1, 0]
+			PartCriteria
+			{
+				//ExcludeCategories = [CRAM_PACKER] //needs to see packers to work
+			}
+			ComponentID = ConnectionToFiringPiece
+		}
+		
+		HasAnyConnectionToFiringPiece
+		{
+			Type = MultiToggle
+			Toggles = [HasAConnectionToFiringPieceA, HasAConnectionToFiringPieceB]
+			Mode = Any
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 1.5]
+			Indicators
+			[		
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
+				
+				// Missing component
+				{
+					Toggle = HasAConnectionToFiringPieceA
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+				
+				// Missing component
+				{
+					Toggle = HasAConnectionToFiringPieceB
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
 		}
 	}
 }

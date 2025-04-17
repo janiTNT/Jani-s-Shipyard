@@ -1,0 +1,850 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/AstralShifter"
+	IconNameKey = "Parts/AstralShifterIcon"
+	ID = janiTNT.astral_boost_dodgedrive // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "JSBossParts"
+	DescriptionKey = "Parts/AstralShifterDesc"
+	Resources
+	[
+		[steel, 56]
+		[coil2, 10]
+		[tristeel, 8]
+	]
+	TypeCategories = [thruster, uses_power, uses_hyperium]
+	Size = [2, 4]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	SelectionTypeID = "dodgedrive"
+	MaxHealth = 8000
+	//Astral
+	CrewSpeedFactor = 65%
+	DamageResistances
+	{
+		fire = 80%
+	}
+	//Astral
+	BoostedThrusterForce = 60000
+	BoostedThrustIncreaseTime = 0
+	BoostedThrustDecreaseTime = 0
+	BoostedThrustRecoveryTime = 0
+	BoostedFuelUsage = 0
+	BoostedHyperiumUsage = 0
+	BoostedPowerDrain = -4000
+	BoostedHyperiumDrain = -1
+	BoostedDrainInterval = 0.4
+	ReceivableBuffs : ^/0/ReceivableBuffs [EnginePowerDistribution]
+	AllowedDoorLocations
+	[
+		[-1, 0]
+		[0, -1]
+		[1, -1]
+		[2, 0]
+		
+		[-1, 3]
+		[0, 4]
+		[1, 4]
+		[2, 3]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64 /2, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, RealBatteryStorage, VerySecretHyperiumStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 6
+		}
+
+		BoostToggle
+		{
+			Type = UIToggle
+			ToggleID = "thruster_boost"
+			Default = 0
+			AutoOffTrigger = AutoBoostOffTrigger
+			OperationalToggle = IsOperational
+			RememberValue = false
+		}
+
+		RealBatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000 * 6
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ToggleOnResources = (&MaxResources) - 999
+			ToggleOffResources = 0
+		}
+		CanFeedHyperiumToggle
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = BoostToggle, invert = true}]
+			Mode = All
+		}
+		VerySecretHyperiumStorage
+		{
+			Type = ResourceStorage
+			ResourceType = hyperium
+			MaxResources = 12
+			UITileRect = [0.5 + 7/64, 1.5 + 7/64, 1 - 14/64, 1 - 14/64]
+			ReceiveResourceMediaEffects = &<./data/resources/diamond/diamond.rules>/StackReceiveMediaEffects
+			ToggleOnResources = 6
+			ToggleOffResources = 0
+			AllowManualReceiveToggle = CanFeedHyperiumToggle
+		}
+
+		BoostProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = BoostToggle
+			ShowProgressFor = RealBatteryStorage
+			LowColor = [255, 255, 255]
+			HighColor = [255, 255, 255]
+			FullColor = [255, 255, 255]
+		}
+
+		FullPowerToggle
+		{
+			Type = MultiToggle
+			Toggles = [FullBatteryStorage, VerySecretHyperiumStorage]
+			Mode = All
+		}
+		FullBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [RealBatteryStorage]
+			ToggleOnResources = &../RealBatteryStorage/MaxResources
+			ToggleOffResources = (&ToggleOnResources) - 1
+		}
+
+		BoostOffInstantDrainToggles
+		{
+			Type = MultiToggle
+			Toggles = [BoostToggle, PowerToggle]
+			Mode = All
+		}
+
+		BoostOffInstantDrainTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = BoostOffInstantDrainToggles
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+			OperationalToggle = FullPowerToggle
+			InvertOperationalToggle = true
+		}
+
+		BoostOffInstantDrain
+		{
+			Type = ResourceChange
+			Trigger = BoostOffInstantDrainTrigger
+			ResourceStorage = RealBatteryStorage
+			Amount = -999999
+		}
+		AutoBoostOffTrigger
+		{
+			Type = MultiTrigger
+			Triggers = [AutoBoostOffTriggerBattery, AutoBoostOffTriggerHyperium]
+		}
+		AutoBoostOffTriggerBattery
+		{
+			Type = ToggleTrigger
+			Toggle = RealBatteryStorage
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		AutoBoostOffTriggerHyperium
+		{
+			Type = ToggleTrigger
+			Toggle = VerySecretHyperiumStorage
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		
+		PowerDistributionBuffToggle
+		{
+			Type = BuffToggle
+			BuffType = EnginePowerDistribution
+		}
+		BoostOffComponents
+		{
+			Type = ToggledComponents
+			Toggle = BoostToggle
+			Invert = true
+			IncludeInBlueprints = true
+			Components
+			{
+				BatteryStorage
+				{
+					Type = ResourceStorageProxy
+					ResourceType = battery
+					ComponentID = RealBatteryStorage
+				}
+				HyperiumStorage // Also here to avoid infinite boost
+				{
+					Type = ResourceStorageProxy
+					ResourceType = battery
+					ComponentID = VerySecretHyperiumStorage
+				}
+				ToggledBatteryConsumer
+				{
+					Type = ToggledComponents
+					Toggle = PowerDistributionBuffToggle
+					Invert = true
+					IncludeInBlueprints = true
+					Components
+					{
+						BatteryConsumer
+						{
+							Type = ResourceConsumer
+							ResourceType = battery
+							Storage = RealBatteryStorage
+							DefaultPriority = &/PRIORITIES/Thruster_Supply
+							ResupplyThreshold = 500
+							OperationalToggle = PowerToggle
+						}
+					}
+				}
+				HyperiumConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = hyperium
+					Storage = VerySecretHyperiumStorage
+					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					OperationalToggle = PowerToggle
+					ConsumptionToggleButtonOffset = [0, -.4]
+				}
+			}
+		}
+		
+		BoostOnComponents
+		{
+			Type = ToggledComponents
+			Toggle = BoostToggle
+			Components
+			{
+				HyperiumConsumer
+				{
+					Type = ResourceConsumer
+					ResourceType = hyperium
+					Storage = VerySecretHyperiumStorage
+					DefaultPriority = &/PRIORITIES/Thruster_Supply
+					OperationalToggle = BoostToggle //always off
+					InvertOperationalToggle = true //always off
+					ConsumptionToggleButtonOffset = [0, -.4]
+					AllowNonOperationalMinPriorityDelivery = false
+				}
+				MainThruster
+				{
+					Type = Thruster
+					Location = [1, 2]// Relative to upper-left corner of unrotated part.
+					Rotation = 90d// Relative to unrotated part.
+					SoftOperationalToggle = IsOperational
+					Force = (&~/Part/BoostedThrusterForce)
+					MinActivation = -1
+					MaxActivation = 1
+					MinUncommandedActivation = &MinActivation
+					MaxUncommandedActivation = &MaxActivation
+					ActivationIncreaseTime = &~/Part/BoostedThrustIncreaseTime
+					ActivationDecreaseTime = &~/Part/BoostedThrustDecreaseTime
+					ActivationRecoveryTime = &~/Part/BoostedThrustRecoveryTime
+					FuelUsage
+					[
+						/* {
+							FuelStorage = RealBatteryStorage
+							FuelUsagePerSecond = (&~/Part/BoostedFuelUsage)
+						} */
+						{
+							FuelStorage = VerySecretHyperiumStorage
+							FuelUsagePerSecond = (&~/Part/BoostedHyperiumUsage)
+						}
+					]
+				} /* 
+				
+				LateralThruster : MainThruster
+				{
+					Rotation = 0
+					MinActivation = -0.005
+					MaxActivation = 0.005
+				}  */
+
+				RampProgressBar1
+				{
+					Type = ProgressBar
+					ShowProgressFor = MainThruster
+					ValueRange = [0, &../../MainThruster/MaxActivation]
+					LowColor = [255, 127, 0]
+					HighColor = [255, 127, 0]
+					FullColor = [255, 127, 0]
+				}/* 
+				RampProgressBar2
+				{
+					Type = ProgressBar
+					ShowProgressFor = MainThruster2
+					ValueRange = [0, &../../MainThruster2/MaxActivation]
+					LowColor = [255, 127, 0]
+					HighColor = [255, 127, 0]
+					FullColor = [255, 127, 0]
+				} */
+
+				
+			}
+		}
+		
+		PowerDrainTimer
+		{
+			Type = Timer
+			OperationalToggle = BoostToggle
+			Duration = &~/Part/BoostedDrainInterval
+			AutoStart = true
+			Repeats = true
+		}
+
+		HyperiumDrain
+		{
+			Type = ResourceChange
+			Trigger = PowerDrainTimer
+			ResourceStorage = VerySecretHyperiumStorage
+			Amount = &~/Part/BoostedHyperiumDrain
+			InitialDelay = 0
+		}
+		PowerDrain
+		{
+			Type = ResourceChange
+			Trigger = PowerDrainTimer
+			ResourceStorage = RealBatteryStorage
+			Amount = &~/Part/BoostedPowerDrain
+			InitialDelay = 0
+		} 
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1, 2]
+			OperationalToggle = IsOperational
+			DoodadToggle = BoostToggle
+			//AnimationSpeedFactor = FtlDrive
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [2, 4]
+					}
+					{
+						File = "floor_33.png"
+						Size = [2, 4]
+					}
+					{
+						File = "floor_66.png"
+						Size = [2, 4]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [2, 4]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodad_active1.png"
+							"doodad_active2.png"
+							"doodad_active3.png"
+							"doodad_active4.png"
+							"doodad_active5.png"
+							"doodad_active6.png"
+							"doodad_active7.png"
+							"doodad_active8.png"
+						]
+						AnimationInterval = 0.03
+						Size = [2, 1]
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodad_on1.png"
+							"doodad_on2.png"
+							"doodad_on3.png"
+							"doodad_on4.png"
+							"doodad_on5.png"
+							"doodad_on6.png"
+							"doodad_on7.png"
+							"doodad_on8.png"
+							"doodad_on9.png"
+							"doodad_on10.png"
+							"doodad_on11.png"
+							"doodad_on12.png"
+							"doodad_on13.png"
+							"doodad_on14.png"
+							"doodad_on15.png"
+							"doodad_on16.png"
+						]
+						AnimationInterval = 0.1
+						Size = [2, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodad_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [2, 4]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_n.png"
+						Size = [2, 4]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_n_33.png"
+						Size = [2, 4]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_n_66.png"
+						Size = [2, 4]
+					}
+				]
+			}
+		}
+		Graphics2
+		{
+			Type = Graphics
+			Location = [1, 2]
+			OperationalToggle = IsOperational
+			DoodadToggle = BoostToggle
+			//AnimationSpeedFactor = FtlDrive
+			ToggleOnDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"active_lights1.png"
+							"active_lights2.png"
+							"active_lights3.png"
+							"active_lights4.png"
+							"active_lights5.png"
+							"active_lights6.png"
+							"active_lights7.png"
+							"active_lights8.png"
+						]
+						AnimationInterval = 0.03
+						Size = [2, 2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"panellights1.png"
+							"panellights2.png"
+							"panellights3.png"
+							"panellights4.png"
+						]
+						AnimationInterval = 0.25
+						Offset = [0, -1.5]
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"panellights1.png"
+							"panellights2.png"
+							"panellights3.png"
+							"panellights4.png"
+						]
+						AnimationInterval = 0.25
+						MirrorV = true
+						Offset = [0, 1.5]
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		BatterySprites1
+		{
+			Type = ResourceSprites
+			Location = [24/64, 1.25 + 6/64]
+			ResourceStorage = RealBatteryStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 6000
+			ResourceLevels
+			[
+				{
+					File = "batteries_1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_4.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_5.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_6.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_7.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_8.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		BatterySprites2
+		{
+			Type = ResourceSprites
+			Location = [2 - 24/64, 1.25 + 6/64]
+			ResourceStorage = RealBatteryStorage
+			Layer = "doodads_low"
+			RangeLow = 6000
+			RangeHigh = 12000
+			ResourceLevels
+			[
+				{
+					File = "batteries_1.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_2.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_3.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_4.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_5.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_6.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_7.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					File = "batteries_8.png"
+					MirrorU = true
+					Size = [1, 1]
+				}
+			]
+		}
+		BatterySprites3 : BatterySprites2
+		{
+			Type = ResourceSprites
+			Location = [2 - 24/64, 4 - (1.25 + 8/64)]
+			RangeLow = 12000
+			RangeHigh = 18000
+		}
+		BatterySprites4 : BatterySprites1
+		{
+			Type = ResourceSprites
+			Location = [24/64, 4 - (1.25 + 8/64)]
+			RangeLow = 18000
+			RangeHigh = 24000
+		}
+		HyperiumSprites1
+		{
+			Type = ResourceSprites
+			Location = [0.5, 1.25]
+			ResourceStorage = VerySecretHyperiumStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 3
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"hyperium_1_1.png"
+						"hyperium_1_2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_2_1.png"
+						"hyperium_2_2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_3_1.png"
+						"hyperium_3_2.png"
+					]
+					AnimationInterval = 0.15
+					Size = [1, 1]
+				}
+			]
+		}
+		HyperiumSprites2
+		{
+			Type = ResourceSprites
+			Location = [1.5, 1.25]
+			ResourceStorage = VerySecretHyperiumStorage
+			Layer = "doodads_low"
+			RangeLow = 3
+			RangeHigh = 6
+			ResourceLevels
+			[
+				{
+					AnimationFiles
+					[
+						"hyperium_1_1.png"
+						"hyperium_1_2.png"
+					]
+					AnimationInterval = 0.15
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_2_1.png"
+						"hyperium_2_2.png"
+					]
+					AnimationInterval = 0.15
+					MirrorU = true
+					Size = [1, 1]
+				}
+				{
+					AnimationFiles
+					[
+						"hyperium_3_1.png"
+						"hyperium_3_2.png"
+					]
+					AnimationInterval = 0.15
+					MirrorU = true
+					Size = [1, 1]
+				}
+			]
+		}
+		HyperiumSprites3 : HyperiumSprites1
+		{
+			Type = ResourceSprites
+			Location = [1.5, 2.75]
+			Rotation = 180d
+			RangeLow = 6
+			RangeHigh = 9
+		}
+		HyperiumSprites4 : HyperiumSprites2
+		{
+			Type = ResourceSprites
+			Location = [0.5, 2.75]
+			Rotation = 180d
+			RangeLow = 9
+			RangeHigh = 12
+		}
+		
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1, 2]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [1, 2]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1, 2]
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
+				
+				// No hyperium.
+				{
+					Toggle = VerySecretHyperiumStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoResource
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = RealBatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}/* 
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [2, 4]
+		} */
+	}
+
+	Stats
+	{
+		PowerCapacity = (&~/Part/Components/RealBatteryStorage/MaxResources) / 1000
+
+		RecPower = (&../StatsByCategory/1/Stats/BoostedPowerUsageContinuous) / 10 // assume its gonna be used only 10% continuously
+		RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/BoostOff"
+			Stats
+			{
+				ThrusterForce = 0
+			}
+		}
+		{
+			NameKey = "StatCategories/BoostOn"
+			Stats
+			{
+				ThrusterForce = &~/Part/BoostedThrusterForce
+				ThrusterRampUp = &~/Part/BoostedThrustIncreaseTime
+				ThrusterRampDown = &~/Part/BoostedThrustDecreaseTime
+				ThrusterPowerUsage = 0
+				JSThrusterHyperiumUsage = 0
+				BoostedPowerUsageContinuous = -(&~/Part/BoostedPowerDrain) / (&~/Part/BoostedDrainInterval) / 1000
+				JSBoostedHyperiumUsageContinuous = -(&~/Part/BoostedHyperiumDrain) / (&~/Part/BoostedDrainInterval)
+			}
+		}
+	]
+}

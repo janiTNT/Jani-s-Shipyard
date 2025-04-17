@@ -281,6 +281,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/BossRewards/Astral/Conveyor/astralconveyor.rules>/Part
 			&<Parts/BossRewards/Astral/Corridor/astralcorridor.rules>/Part
+			&<Parts/BossRewards/Astral/dodgedrive/dodgedrive.rules>/Part
 			
 			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
 			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
@@ -413,7 +414,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					}
 				}
 			}
-			BossParts
+			JSBossParts
 			{
 				NameKey = "EditorGroups/BossParts"
 				Icon
@@ -746,6 +747,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{
 				ID = DrainTime
 				FormatKey = "Stats/DrainTimeFmt"
+			}
+			{
+				ID = JSThrusterHyperiumUsage
+				FormatKey = "Stats/JSThrusterHyperiumUsageFmt"
+			}
+			{
+				ID = JSBoostedHyperiumUsageContinuous
+				FormatKey = "Stats/JSBoostedHyperiumUsageContinuousFmt"
 			}
 			{
 				ID = CursedManaAvailible

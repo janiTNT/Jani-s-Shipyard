@@ -57,7 +57,7 @@ BaseComponents
 		PenetrationSpeed = { BaseValue=100; BuffType=JaniCRAM_Velocity; BuffMode=Multiply; MinValue=10}
 
 		CrewCollisions = {Enemies=true; Junk=true}
-		FriendlyShipLowCollisions = false
+		//FriendlyShipLowCollisions = false
 		PenetratesCrew = true
 		HitCrew = &HitOperational
 

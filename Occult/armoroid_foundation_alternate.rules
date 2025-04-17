@@ -5,7 +5,7 @@ Part : <base_part_occult_2.rules>/Part
 	ID = janiTNT.megarockarmor_foundation_1x1_alternate
 	OtherIDs = [janiTNT.megarockarmor_foundation_1x1]
 	//SelectionTypeID = "armor"
-	EditorGroup = "BossParts"
+	EditorGroup = "JSBossParts"
 	//Resources = []
 	Resources
 	[

@@ -29,12 +29,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Components : ^/0/Components
 	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, DirectConnectionToFiringPiece]
+			Mode = All
+		}
 		PowerToggle
 		{
 			Type = UIToggle
 			ToggleID = "on_off"
 			Default = 1
 			RequiresCommand = false
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
 		}
 		Blueprints
 		{
@@ -372,6 +384,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+		IsReady
+		{
+			Type = MultiToggle
+			Toggles = [AmmoStorage__CRAM_PACKER, IsOperational]
+			Mode = All
+		}
 		AmmoStorage__CRAM_PACKER
 		{
 			Type = ResourceStorage
@@ -396,6 +414,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = bullet
 			PartLocation = [0, -1]
 			ComponentID = CombinedCRAMAmmoStorage
+			ProxyToggle = IsOperational
 			PartCriteria
 			{
 				ExcludeCategories = [CRAM_PACKER]
@@ -423,11 +442,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			OperationalToggle = IsOperational//won't count if off
 		}
 		PackerReadyBuff
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = AmmoStorage__CRAM_PACKER
+			OperationalToggle = IsReady //AmmoStorage__CRAM_PACKER //won't count if off
 			BuffType = JaniCRAM_PackerReady
 			BuffArea = [0, -1, 1, 1]
 			//ChainsFromBuffType = JaniCRAM_PackerReady
@@ -446,6 +466,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			ProxyToggle = IsOperational
 		}
 		PackerEatsYourAmmo
 		{
@@ -453,7 +474,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Trigger = PackerCRAMFiredTriggerProxy
 			ResourceStorage = AmmoStorage__CRAM_PACKER
 			Amount = -20
-		}		
+		}
 		
 		CoolerBuff
 		{
@@ -467,6 +488,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			OperationalToggle = IsOperational //no transfer
 		}
 		ChainLoaderCountBuff
 		{
@@ -479,6 +501,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			OperationalToggle = IsOperational //no transfer
 		}
 		ChainLoaderReadyBuff
 		{
@@ -491,6 +514,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			OperationalToggle = IsOperational //no transfer
 		}
 		CombinedCRAMAmmoStorageToggle
 		{
@@ -502,6 +526,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			ProxyToggle = IsOperational
 		}
 		ChainLoaderMaxedToggleProxy
 		{
@@ -513,6 +538,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			ProxyToggle = IsOperational
 		}
 		CRAMFiredTriggerProxy
 		{
@@ -523,6 +549,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			ProxyToggle = IsOperational
 		}
 		CRAM_IsFiringTimer
 		{
@@ -534,6 +561,57 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				ExcludeCategories = [CRAM_PACKER]
 			}
+			ProxyToggle = IsOperational
+		}
+		DirectConnectionToFiringPiece // disable if cant see
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [0, -1]
+			PartCriteria
+			{
+				ExcludeCategories = [CRAM_PACKER]
+			}
+			ComponentID = DirectConnectionToFiringPiece
+		}
+		ConnectionToFiringPiece
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [0, -1]
+			ComponentID = ConnectionToFiringPiece
+			ProxyToggle = IsOperational
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Indicators
+			[		
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
+				
+				// Missing component
+				{
+					Toggle = DirectConnectionToFiringPiece
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
 		}
 	}
 }

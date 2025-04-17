@@ -459,7 +459,7 @@ Parts
 	
 	Cram_Connector = "Custom Cannon Connector"
 	Cram_ConnectorIcon = "Connector"
-	Cram_ConnectorDesc = "Connects to a block 2 blocks fowards. should eventually connect to a firing piece."
+	Cram_ConnectorDesc = "Connects to a block 2 blocks forwards. should eventually connect to a firing piece."
 	
 	Cram_ConnectorD = "Custom Cannon Connector Diagonal"
 	Cram_ConnectorDIcon = "Connector D."
@@ -479,15 +479,15 @@ Parts
 	
 	Cram_Loader3x = "Custom Cannon Loader"
 	Cram_Loader3xIcon = "Loader"
-	Cram_Loader3xDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. (2 bullets/s)"
+	Cram_Loader3xDesc = "Stores 60 bullets, feeds ammo at a slowly but steady pace. (2 bullets/s)"
 	
 	Cram_Loader3xD = "Custom Cannon Dual Loader"
 	Cram_Loader3xDIcon = "Dual Loader"
-	Cram_Loader3xDDesc = "Stores 40 bullets, feeds ammo at a slowly but steady pace. Feeds the same speed on both sides, best used when both are in use."
+	Cram_Loader3xDDesc = "Stores 60 bullets, feeds ammo at a slowly but steady pace. Feeds the same speed on both sides, best used when both are in use."
 	
 	Cram_Packer1x = "CRAM Payload Packer"
 	Cram_Packer1xIcon = "Packer"
-	Cram_Packer1xDesc = "A alternative connector that houses 20 bullets that are consumed per shot,Increasing Health and penetration heavily, and damage slightly. Will direct effects fowards like a normal connector if full, The cannon will only fire once all packers are full. Cannot chain other Packers."
+	Cram_Packer1xDesc = "A alternative connector that houses 20 bullets that are consumed per shot,Increasing Health and penetration heavily, and damage slightly. Will direct effects forwards like a normal connector if full, The cannon will only fire once all packers are full. Cannot chain other Packers."
 	
 	Cram_Cooler1x = "Custom Cannon TurboCooler"
 	Cram_Cooler1xIcon = "TurboCooler"
@@ -577,7 +577,7 @@ Parts
 	
 	
 	MegaroidBallWeaponProfanedBoss = "Miniaturized Weaponized Sun"
-	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong foward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nPatically Indestructible."	
+	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong forward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nPatically Indestructible."	
 	
 	MegaroidBallWeaponBarrage = "Luminous Sphere (Barrage)"
 	MegaroidBallWeaponBarrageDesc = "Fires seven slow moving devastating bolts in a barrage. its advised to avoid them Altogether."
@@ -886,6 +886,10 @@ Parts
 	AstralCorridor = "Astral Corridor"
 	AstralCorridorIcon = "Astral Cor."
 	AstralCorridorDesc = "Slightly Faster, fire resistance"
+	
+	AstralShifter = "Astral Shifter"
+	AstralShifterIcon = "Astral Shifter"
+	AstralShifterDesc = "Internal High impulse thruster for quick manouvers, can provide thrust both forwards and backwards. uses hyperium and lasts a very short time."
 	
 	CosmiliteArmor = "Heavy Cosmilite Armor"
 	CosmiliteArmorIcon = "Cosmilite Armor"
@@ -1449,6 +1453,9 @@ Stats
 	HeatUsageContFmt = "<white>Heat Consumption:</white> <good>{0:0.###}</good><gray>/sec</gray>"
 	
 	EngineRoomBuffEffectivenessFmt = "<white>Engine Room Effectiveness:</white> <good>{0:0}</good><gray>%</gray>"
+	
+	JSThrusterHyperiumUsageFmt = "<white>Hyperium Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
+	JSBoostedHyperiumUsageContinuousFmt = "<zero>Hyperium Use:</zero> <good>{0:0.##}</good><gray>/sec (continuous)</gray>"
 	
 	JaniBurstShotsFmt = "<white>Shots per Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
 	DrainTimeFmt = "<white>Power Drain Duration:</white> <good>{0:0}</good><gray>sec</gray>"

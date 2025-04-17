@@ -28,6 +28,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	
 	MaxHealth = 8000
 	InitialPenetrationResistance = 35
+	IsExternal = true
 	ExternalWalls = [None]
 	InternalWalls = [All]
 	PenetrationRectType = Normal

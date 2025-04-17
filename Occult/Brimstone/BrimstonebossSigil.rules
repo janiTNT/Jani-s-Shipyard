@@ -3,7 +3,7 @@ Part : <../base_part_occult.rules>/Part
 	NameKey = "Parts/MegaSigilBrimstoneBoss"
 	DescriptionKey = "Parts/MegaSigilBrimstoneBossDesc"
 	ID = janiTNT.megasigil4x2_brimstoneboss // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "BossParts"
+	EditorGroup = "JSBossParts"
 	Resources
 	[
 		//[steel, 8 * 32]

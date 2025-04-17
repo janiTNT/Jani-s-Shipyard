@@ -57,10 +57,16 @@ Part : <../../baselogicpart.rules>/Part
 			InitToMaxResources = 0
 			InitToMaxResourcesPVP = 0
 		}
+		ShouldRemove
+		{
+			Type = MultiToggle
+			Toggles = [LogicalSensorInvert, LogicStorage]
+			Mode = All
+		}
 		SignalRemover
 		{
 			Type = ResourceConverter
-			OperationalToggle = LogicalSensorInvert
+			OperationalToggle = ShouldRemove
 			FromStorage = LogicStorage
 			FromQuantity = 1
 			MinFromQuantityForConversion = 0

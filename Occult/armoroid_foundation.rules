@@ -4,7 +4,7 @@ Part : <base_part_occult.rules>/Part
 	DescriptionKey = "Parts/MegaroidArmor_foundation_1x1Desc"
 	ID = janiTNT.megarockarmor_foundation_1x1_base // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	//SelectionTypeID = "armor"
-	EditorGroup = "BossParts"
+	EditorGroup = "JSBossParts"
 	//Resources = []
 	Resources
 	[

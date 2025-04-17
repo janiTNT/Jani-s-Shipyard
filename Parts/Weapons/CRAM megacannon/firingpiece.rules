@@ -348,7 +348,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PushingValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 0.2
+			OnTweenDuration = 0.35
 			OffTweenDuration = 0
 			IsOnToggle = FullThresholdAmmo
 		}
@@ -358,6 +358,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ValueFrom = PushingValueTween
 			StartLocation = [0, 1.1]
 			EndLocation = [0, 0]
+			
 		}
 		LoadedAmmoSprites
 		{
@@ -416,6 +417,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Size = [1, 2]
 				}
 			]
+		}
+		ConnectionToFiringPiece
+		{
+			Type = StaticToggle
+			ToggleOn = true
+		}
+		DirectConnectionToFiringPiece
+		{
+			Type = StaticToggle
+			ToggleOn = true
 		}
 		/* ReloadFireEffect
 		{
@@ -530,74 +541,83 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalRoofDoodad = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofDoodad
 			OperationalRoofLighting = &<./data/ships/terran/chaingun_magazine/chaingun_magazine.rules>/Part/Components/Graphics/OperationalRoofLighting
 		}
-		TinyLightGraphics
+		MiniLightComponents
 		{
-			Type = Graphics
-			Location = [.5, 3.5]
-			OperationalToggle = HasPackers
-			DoodadToggle = PackersMaxedToggleProxy
-			ShowToggledDoodadsWhenNotOperational = false
-			ToggleOnDoodad
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
+			Type = ToggledComponents
+			IncludeInBlueprints = false
+			Toggle = IsOperational
+			Components
+			{	
+				TinyLightGraphics
+				{
+					Type = Graphics
+					Location = [.5, 3.5]
+					OperationalToggle = HasPackers
+					DoodadToggle = PackersMaxedToggleProxy
+					ShowToggledDoodadsWhenNotOperational = false
+					ToggleOnDoodad
 					{
-						File = "operation_lights3.png"
-						Size = [1, 1]
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "operation_lights3.png"
+								Size = [1, 1]
+							}
+						]
 					}
-				]
-			}
-			ToggleOffDoodad
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
+					ToggleOffDoodad
 					{
-						File = "operation_lights1.png"
-						Size = [1, 1]
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "operation_lights1.png"
+								Size = [1, 1]
+							}
+						]
 					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
+					NonOperationalDoodad
 					{
-						File = "operation_lights3.png"
-						Size = [1, 1]
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "operation_lights3.png"
+								Size = [1, 1]
+							}
+						]
 					}
-				]
-			}
-		}
-		TinyLightGraphics2
-		{
-			Type = Graphics
-			Location = [.5, 3.5 + (9/64)]
-			OperationalToggle = CRAM_IsFiringTimer
-			ShowToggledDoodadsWhenNotOperational = true
-			OperationalDoodad
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
+				}
+				TinyLightGraphics2
+				{
+					Type = Graphics
+					Location = [.5, 3.5 + (9/64)]
+					OperationalToggle = CRAM_IsFiringTimer
+					ShowToggledDoodadsWhenNotOperational = true
+					OperationalDoodad
 					{
-						File = "operation_lights2.png"
-						Size = [1, 1]
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "operation_lights2.png"
+								Size = [1, 1]
+							}
+						]
 					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "lights_add"
-				DamageLevels
-				[
+					NonOperationalDoodad
 					{
-						File = "operation_lights3.png"
-						Size = [1, 1]
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "operation_lights3.png"
+								Size = [1, 1]
+							}
+						]
 					}
-				]
+				}
 			}
 		}
 		
@@ -1423,7 +1443,8 @@ BaseBulletEmitter
 BaseAmmoStorage
 {
 	Type = ResourceStorage
-	ResourceType = fake
+	//ResourceType = fake
+	ResourceType = bullet
 	MaxResources = 100
 	//DelayBeforeReadyToUse = .25
 	//AnticipateMoreResourcesFrom = ["AmmoStorage"]

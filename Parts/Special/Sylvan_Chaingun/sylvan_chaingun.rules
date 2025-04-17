@@ -3,7 +3,7 @@ Part : <./data/ships/terran/chaingun/chaingun.rules>/Part
 	NameKey = "Parts/SylvanChainGun"
 	IconNameKey = "Parts/SylvanChainGunIcon"
 	ID = janiTNT.Sylvans_Chaingun_enemy // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "BossParts"
+	EditorGroup = "JSBossParts"
 	DescriptionKey = "Parts/SylvanChainGunDesc"
 	Resources
 	[
