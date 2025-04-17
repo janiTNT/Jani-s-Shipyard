@@ -29,6 +29,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Components : ^/0/Components
 	{
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 2
+		}
 		Blueprints
 		{
 			Type = BlueprintSprite
@@ -88,6 +101,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				Categories = [CRAMGaugeIncrease]
 				Rot = 0
 			}
+			OperationalToggle = PowerToggle //no transfer
 		}
 		GaugeIncreaseBuff
 		{
@@ -107,6 +121,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Rot = 3
 				}
 			]
+			OperationalToggle = PowerToggle //no transfer
 		}
 		HasFront
 		{
@@ -117,6 +132,105 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				Rot = 0
 			}
+		}
+		IndicatorToggle
+		{
+			Type = MultiToggle
+			Toggles = [GaugeConnectionToFiringPiece, ConnectsToGaugeConnectionToFiringPiece]
+			Mode = Any
+		}
+		GaugeConnectionToFiringPiece
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [0, -1]
+			ProxyToggle = PowerToggle
+			ProxyableComponents
+			[
+				{
+					PartCriteria
+					{
+						Category = CRAM_Firing_Piece
+						Rot = 1
+					}
+					ComponentID = ConnectionToFiringPiece
+				}
+				{
+					PartCriteria
+					{
+						Category = CRAM_Firing_Piece
+						Rot = 3
+					}
+					ComponentID = ConnectionToFiringPiece
+				}
+			]
+		}
+		ConnectsToGaugeConnectionToFiringPiece
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [0, -1]
+			ComponentID = GaugeConnectionToFiringPiece
+			ProxyToggle = PowerToggle
+			PartCriteria
+			{
+				Categories = [CRAMGaugeIncrease]
+				Rot = 0
+			}
+		}
+		TripleConnectionToFiringPiece
+		{
+			Type = ToggleProxy
+			IsOnWhenNotConnected = false
+			PartLocation = [0, -1]
+			ComponentID = ConnectsToGaugeConnectionToFiringPiece
+			ProxyToggle = PowerToggle
+			PartCriteria
+			{
+				Categories = [CRAMGaugeIncrease]
+				Rot = 0
+			}
+		}
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Indicators
+			[		
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [1]
+				}
+				
+				// Missing component
+				{
+					Toggle = IndicatorToggle
+					ShowInBuildMode = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+				// Missing component
+				{
+					Toggle = TripleConnectionToFiringPiece
+					ShowInBuildMode = true
+					ShowWhenToggleOn = true
+					AtlasSprite
+					{
+						File = &/INDICATORS/MissingComponent
+						Size = [1, 1]
+					}
+				}
+			]
 		}
 	}
 }
