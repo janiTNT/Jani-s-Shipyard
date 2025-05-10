@@ -1,0 +1,81 @@
+ID = janitnt.lowdensitystructure
+NameKey = "Resource/LowDensityStructure"
+PluralNameKey = "Resource/LowDensityStructurePlural"
+DescriptionKey = "Resource/LowDensityStructureDesc"
+BuyPrice = 1500
+MaxPerNugget = 1 //2
+MaxStackSize = 6
+FlexGridPriorityKey = "flex_grid_lowdensitystructure"
+FlexGridDefaultPriority = 1
+DropRates = &<./Data/resources/resources.rules>/RareMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "low_density_structure1.png"
+		NormalsFile = "low_density_structure_normals1.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "low_density_structure2.png"
+		NormalsFile = "low_density_structure_normals2.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "low_density_structure_stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "low_density_structure_stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "low_density_structure_stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "low_density_structure_stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "low_density_structure_stack5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "low_density_structure_stack6.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

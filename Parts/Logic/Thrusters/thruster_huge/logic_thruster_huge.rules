@@ -58,7 +58,7 @@ Part : <./data/ships/terran/thruster_huge/thruster_huge.rules>/Part
 			Type = Thruster
 			Location = [1.5, 3.5]// Relative to upper-left corner of unrotated part.
 			Rotation = 90d// Relative to unrotated part.
-			OperationalToggle = Triggered
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
 			MaxActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
@@ -92,7 +92,7 @@ Part : <./data/ships/terran/thruster_huge/thruster_huge.rules>/Part
 			OffValue = 0
 			OnValue = 1
 			OnTweenDuration = &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/ThrustIncreaseTime/BaseValue
-			OffTweenDuration = &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/ThrustRecoveryTime
+			OffTweenDuration = &<./data/ships/terran/thruster_huge/thruster_huge.rules>/Part/ThrustDecreaseTime
 			IsOnToggle = Triggered
 		}		
 		EngineBuffMultiplier

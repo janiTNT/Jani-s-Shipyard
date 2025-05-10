@@ -9,8 +9,7 @@ Part : <../../baselogicpart.rules>/Part
 	Resources
 	[
 		[steel, 4]
-		[cut.tristeel, 2]
-		[coil, 1]
+		[janitnt.circuit1, 3]
 	]
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]

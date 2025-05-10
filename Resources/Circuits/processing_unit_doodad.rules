@@ -1,0 +1,13 @@
+ID = janitnt.circuit3
+Type = Resource
+DescriptionKey = "Resource/ProcessingUnit"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "processing_unit.png"
+		MipLevels = 2
+	}
+}
+ResourceType = janitnt.circuit3

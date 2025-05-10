@@ -997,6 +997,23 @@ Resource
 	CutGoldiumPlural = "Goldium Bars"
 	CutGoldiumDesc = "Cut down version of Goldium.\n\nA valuable, highly conductive metal alloy used to construct parts or armor"
 	
+	LowDensityStructure = "Low Density Structure"
+	LowDensityStructurePlural = "Low Density Structure"
+	LowDensityStructureDesc = "Very light, Highly tensile material."
+	
+	ElectronicCircuit = "Electronic Circuit"
+	ElectronicCircuitPlural = "Electronic Circuits"
+	ElectronicCircuitDesc = "Cheap mass produced little circuit boards that can do some basic processing, useful for simple drones or logic systems."
+	
+	
+	AdvancedCircuit = "Advanced Circuit"
+	AdvancedCircuitPlural = "Advanced Circuits"
+	AdvancedCircuitDesc = "A mass produced eletronic circuit with improved capabilities where simple electronic circuits do not suffice."
+	
+	ProcessingUnit = "Processing Unit"
+	ProcessingUnitPlural = "Processing Unit"
+	ProcessingUnitDesc = "A large data processing device useful for computationally intensive applications, such as target prediction, friend-foe recognition, heavy load bearing systems and of course, crypto mining."
+	
 	Cosmilite = "Cosmilite Bar"
 	CosmilitePlural = "Cosmilite Bars"
 	CosmiliteDesc = "A incredibly dense metal with great physical properties.\n Obtained by defeating The boss <good>\"Godslayer Guardian\"</good> or refining by using its own factory, which is only availible after obtaining Cosmilite Bars And <good>Astral Bars.</good>"\

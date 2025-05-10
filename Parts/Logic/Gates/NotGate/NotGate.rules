@@ -7,9 +7,8 @@ Part : <../../baselogicpart.rules>/Part
 	DescriptionKey = "Parts/LogicGateNotDesc"
 	Resources
 	[
-		[steel, 2]
-		[cut.tristeel, 1]
-		[coil, 1]
+		[steel, 4]
+		[janitnt.circuit1, 2]
 	]
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]

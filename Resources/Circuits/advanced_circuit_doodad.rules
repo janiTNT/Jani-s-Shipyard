@@ -1,0 +1,13 @@
+ID = janitnt.circuit2
+Type = Resource
+DescriptionKey = "Resource/AdvancedCircuit"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "advanced_circuit1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = janitnt.circuit2

@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[steel, 64]
 	]
-	TypeCategories = [CRAM_barrel, barrel_light]
+	TypeCategories = [CRAM_barrel, barrel_light, CRAM_barrel_slim]
 	Size = [1, 1]
 	UnderlyingPartPerTile = ""
 	//PhysicalRect = [0, 1, 3, 2]
@@ -78,6 +78,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Criteria
 			{
 				Rot = 0
+				Category = CRAM_barrel_slim
 			}
 		}
 		
@@ -92,6 +93,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Criteria
 			{
 				Rot = 0
+				Category = CRAM_barrel_slim
 			}
 		}
 		
@@ -106,6 +108,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				//Category = railgun_ammo
 				Rot = 0
+				Category = CRAM_barrel_slim
 				//Left = 0
 				//Right = 1
 				//Top = 1
@@ -128,6 +131,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			PartCriteria
 			{
 				Rot = 0
+				Category = CRAM_barrel_slim
 			}
 		}
 		
@@ -145,6 +149,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					PartCriteria
 					{
 						Rot = 0
+						Category = CRAM_barrel_slim
 					}
 				}
 			}

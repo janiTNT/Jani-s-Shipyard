@@ -7,16 +7,15 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 2]
-		[coil, 1]
+		[janitnt.circuit1, 1]
 	]
 	SelectionPriority = 0
 	SelectionTypeID = "logic"
 	AIValueFactor = 0
 	Size = [1, 1]
 	Flammable = false
-	MaxHealth = 1000
+	MaxHealth = 500
 	CreatePartPerTileWhenGrabbed = ""
-	ExplosiveDamageAbsorption = 100%
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	TypeCategories = [logic]
 	//ReceivableBuffs : ^/0/ReceivableBuffs []

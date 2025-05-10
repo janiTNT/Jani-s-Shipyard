@@ -8,7 +8,7 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 	DescriptionKey = "Parts/LogicThrusterSmallDesc"
 	TypeCategories = [thruster, uses_power, logic]
 	SelectionTypeID = "logic_thrusters"
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic,  RampUpJani, RampUpJaniFinal]
 	Components : ^/0/Components
 	{
 		Triggered
@@ -53,9 +53,9 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 
 		MainThruster : <./data/ships/terran/thruster_small/thruster_small.rules>/Part/Components/MainThruster
 		{
-			OperationalToggle = Triggered
-			MinActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
-			MaxActivation = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+			SoftOperationalToggle = IsOperational
+			MinActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
+			MaxActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
 		}
 		LateralThruster : MainThruster
 		{
@@ -65,6 +65,26 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 			MinUncommandedActivation = &MinActivation
 			MaxUncommandedActivation = &MaxActivation
 			AllowAutoFire = false
+		}
+		
+		RampUpBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = RampUpJani  //used as divide by the fixed weapon fire rate
+			BuffAmount = 1
+			OperationalToggle = Triggered
+		}	
+		EngineBuffMultiplier
+		{
+			Type = BuffableValue
+			Value = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
+		}
+		RampUpJaniFinalBuffProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = RampUpJaniFinal
+			BuffAmount = { BaseValue=0; BuffType=RampUpJani; BuffMode=Add; }
+			BuffMultiplier = EngineBuffMultiplier
 		}
 
 		Blueprints

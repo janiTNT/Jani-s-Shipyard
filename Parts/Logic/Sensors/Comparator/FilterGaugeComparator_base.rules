@@ -7,9 +7,9 @@ Part : <../../baselogicpart.rules>/Part
 	DescriptionKey = "Parts/Logic_Gauge_Comparator_ResourcesDesc"
 	Resources
 	[
-		[steel, 8]
-		[coil2, 1]
-		[cut.tristeel, 6]
+		[steel, 2]
+		[janitnt.circuit1, 4]
+		[cut.tristeel, 2]
 	]
 	Size = [1, 1]
 	SelectionPriority = 1

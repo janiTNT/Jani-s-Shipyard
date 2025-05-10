@@ -1,0 +1,273 @@
+ID = janitnt.circuit1
+NameKey = "Resource/ElectronicCircuit"
+PluralNameKey = "Resource/ElectronicCircuitPlural"
+DescriptionKey = "Resource/ElectronicCircuitDesc"
+BuyPrice = 25
+MaxPerNugget = 10
+MaxStackSize = 40
+FlexGridPriorityKey = "flex_grid_circuits1"
+FlexGridDefaultPriority = 1
+DropRates = &<./Data/resources/resources.rules>/VeryCommonMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "electronic_circuit_icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay1.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "electronic_circuit1.png"
+		NormalsFile = "electronic_circuit_n1.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit2.png"
+		NormalsFile = "electronic_circuit_n2.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit3.png"
+		NormalsFile = "electronic_circuit_n3.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit4.png"
+		NormalsFile = "electronic_circuit_n4.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit5.png"
+		NormalsFile = "electronic_circuit_n5.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit6.png"
+		NormalsFile = "electronic_circuit_n6.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit7.png"
+		NormalsFile = "electronic_circuit_n7.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit8.png"
+		NormalsFile = "electronic_circuit_n8.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit9.png"
+		NormalsFile = "electronic_circuit_n9.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "electronic_circuit10.png"
+		NormalsFile = "electronic_circuit_n10.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "electronic_circuit_stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack10.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack11.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack12.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack13.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack14.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack15.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack16.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack17.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack18.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack19.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack20.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack21.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack22.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack23.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack24.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack25.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack26.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack27.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack28.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack29.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack30.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack31.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack32.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack33.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack34.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack35.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack36.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack37.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack38.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack39.png"
+		Size = [1, 1]
+	}
+	{
+		File = "electronic_circuit_stack40.png"
+		Size = [1, 1]
+	}
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

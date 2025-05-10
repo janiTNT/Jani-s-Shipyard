@@ -58,7 +58,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			Type = Thruster
 			Location = [1.5, 4.5]// Relative to upper-left corner of unrotated part.
 			Rotation = 90d// Relative to unrotated part.
-			OperationalToggle = Triggered
+			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce
 			MinActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
 			MaxActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
@@ -92,7 +92,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			OffValue = 0
 			OnValue = 1
 			OnTweenDuration = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustIncreaseTime/BaseValue
-			OffTweenDuration = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustRecoveryTime/BaseValue
+			OffTweenDuration = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustDecreaseTime/BaseValue
 			IsOnToggle = Triggered
 		}		
 		JaniRocketBuffMultiplier

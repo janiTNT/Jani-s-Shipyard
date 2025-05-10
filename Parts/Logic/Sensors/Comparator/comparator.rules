@@ -7,8 +7,8 @@ Part : <../../baselogicpart.rules>/Part
 	DescriptionKey = "Parts/Logic_ComparatorDesc"
 	Resources
 	[
-		[steel, 6]
-		[coil, 2]
+		[steel, 2]
+		[janitnt.circuit1, 2]
 	]
 	Size = [1, 1]
 	SelectionPriority = 1

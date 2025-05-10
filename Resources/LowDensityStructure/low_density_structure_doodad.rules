@@ -1,0 +1,13 @@
+ID = janitnt.lowdensitystructure
+Type = Resource
+DescriptionKey = "Resource/LowDensityStructure"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "low_density_structure1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = janitnt.lowdensitystructure

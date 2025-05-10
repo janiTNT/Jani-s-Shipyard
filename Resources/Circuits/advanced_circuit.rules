@@ -1,0 +1,158 @@
+ID = janitnt.circuit2
+NameKey = "Resource/AdvancedCircuit"
+PluralNameKey = "Resource/AdvancedCircuitPlural"
+DescriptionKey = "Resource/AdvancedCircuitDesc"
+BuyPrice = 250
+MaxPerNugget = 2
+MaxStackSize = 10
+FlexGridPriorityKey = "flex_grid_circuits2"
+FlexGridDefaultPriority = 1
+DropRates = &<./Data/resources/resources.rules>/CommonMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "advanced_circuit_icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay2.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "advanced_circuit1.png"
+		NormalsFile = "advanced_circuit_n1.png"
+		Size = [1, 1]
+		Offset = [.25-2/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "advanced_circuit2.png"
+		NormalsFile = "advanced_circuit_n2.png"
+		Size = [1, 1]
+		Offset = [.25+0/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "advanced_circuit3.png"
+		NormalsFile = "advanced_circuit_n3.png"
+		Size = [1, 1]
+		Offset = [.25+2/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "advanced_circuit4.png"
+		NormalsFile = "advanced_circuit_n4.png"
+		Size = [1, 1]
+		Offset = [.25+4/64, 0]
+		UVRotation = 1
+	}
+	{
+		File = "advanced_circuit5.png"
+		NormalsFile = "advanced_circuit_n5.png"
+		Size = [1, 1]
+		Offset = [.25+6/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "advanced_circuit_stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack5.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack10.png"
+		Size = [1, 1]
+	}/* 
+	{
+		File = "advanced_circuit_stack11.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack12.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack13.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack14.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack15.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack16.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack17.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack18.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack19.png"
+		Size = [1, 1]
+	}
+	{
+		File = "advanced_circuit_stack20.png"
+		Size = [1, 1]
+	} */
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

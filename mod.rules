@@ -135,6 +135,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter.rules>/Part
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
+			&<Parts/Production/Circuit_factory/circuit_factory.rules>/Part
 			
 			&<Parts/Production/Zetasphere_factory/Zetasphere_factory.rules>/Part
 			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
@@ -157,13 +158,13 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//&<Parts/Production/TransportBelt/Transport_belt_ammo.rules>/Part
 			//TODO
 			
-			/* &<Parts/Production/Pipe/pipe1.rules>/Part
+			&<Parts/Production/Pipe/pipe1.rules>/Part
 			&<Parts/Production/Pipe/pipe2.rules>/Part
 			&<Parts/Production/Pipe/pipe3.rules>/Part
 			&<Parts/Production/Pipe/pipe4.rules>/Part
 			&<Parts/Production/Pipe/pipe5.rules>/Part
 			
-			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part */
+			&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part
 			
 			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
 			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
@@ -209,6 +210,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrel2.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Barrels/barrelend.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Firing Piece Wide/firingpiecewide.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/barrel_wide.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/barrel_wide2.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/barrelend_wide.rules>/Part
+			&<Parts/Weapons/CRAM megacannon/Barrels/heavybarrel_wide.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Connector/Connector1.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Connector/Connectord1.rules>/Part
 			&<Parts/Weapons/CRAM megacannon/Loader/loader3x.rules>/Part
@@ -466,6 +472,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/goldium/doodad_goldium.rules>
 			&<resources/tristeel_bars/doodad_tristeel.rules>
 			
+			&<resources/LowDensityStructure/low_density_structure_doodad.rules>
+			&<resources/Circuits/electronic_circuit_doodad.rules>
+			&<resources/Circuits/advanced_circuit_doodad.rules>
+			&<resources/Circuits/processing_unit_doodad.rules>
+			
 			&<resources/Cosmic Bar/cosmic_doodad.rules>
 			&<resources/Astral Bar/astral_doodad.rules>
 			&<resources/Profaned Core/profaned_doodad.rules>
@@ -601,27 +612,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	}
 	{	Action = AddMany
 
-		AddTo = "<roof_decals/roof_decals.rules>/Groups"
-
-		ManyToAdd
-		[
-			{
-				Folders = ["BlockShading"]
-				NameKey = "DecalGroups/Blockshading"
-				Icon
-				{
-					Texture
-					{
-						File = "blockshading.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
-		]
-	}
-	{	Action = AddMany
-
 		AddTo = "<modes/career/techs.rules>/Techs"
 
 		ManyToAdd = &<techs.rules>/Techs
@@ -690,6 +680,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 //			&<resources/cables/cables.rules>
 			&<resources/goldium/goldium.rules>
 			&<resources/tristeel_bars/tristeel_bars.rules>
+			&<resources/LowDensityStructure/low_density_structure.rules>
+			&<resources/Circuits/electronic_circuit.rules>
+			&<resources/Circuits/advanced_circuit.rules>
+			&<resources/Circuits/processing_unit.rules>
 			
 			&<resources/Cosmic Bar/cosmic_bar.rules>
 			&<resources/Astral Bar/astralbar.rules>
@@ -697,7 +691,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Cursed Pages/cursedpages.rules>
 			&<resources/Zetasphere/zetasphere.rules>
 			
-			/*&<resources/fluids/molten.iron.rules>
+			&<resources/fluids/molten.iron.rules>
 			&<resources/fluids/molten.steel.rules>
 			&<resources/fluids/molten.copper.rules>
 			&<resources/fluids/molten.coil.rules>
@@ -707,7 +701,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/fluids/molten.gold.rules>
 			&<resources/fluids/molten.goldium.rules>
 			&<resources/fluids/molten.hyperium.rules>
-			&<resources/fluids/molten.sulfur.rules> */
+			&<resources/fluids/molten.sulfur.rules>
 		]
 	}
 	{
@@ -715,12 +709,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		AddTo = "<cosmoteer.rules>"
 		Name = "JANI_COMMON"
 		ToAdd = &<common/common.rules>
-	}
-	// Add custom roof decals.
-	{
-		Action = Add
-		AddTo = "<roof_decals/roof_decals.rules>/Groups/1/Folders"
-		ToAdd = "shapes"
 	}
 	{
 		Action = AddMany

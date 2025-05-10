@@ -1,0 +1,90 @@
+ID = janitnt.circuit3
+NameKey = "Resource/ProcessingUnit"
+PluralNameKey = "Resource/ProcessingUnitPlural"
+DescriptionKey = "Resource/ProcessingUnitDesc"
+BuyPrice = 1000
+MaxPerNugget = 1
+MaxStackSize = 5
+FlexGridPriorityKey = "flex_grid_circuits3"
+FlexGridDefaultPriority = 1
+DropRates = &<./Data/resources/resources.rules>/CommonMaterialDropRates
+
+Icon
+{
+	Texture
+	{
+		File = "processing_unit_icon.png"
+		MipLevels = max
+	}
+	Size = [64, 64]
+}
+
+Overlay
+{
+	Texture
+	{
+		File = "overlay3.png"
+		SampleMode = Linear
+		MipLevels = max
+	}
+	Size = [1, 1]
+}
+
+NuggetSprites
+[
+	{
+		File = "processing_unit.png"
+		NormalsFile = "processing_unit_n.png"
+		Size = [1, 1]
+		Offset = [.25+5/64, 0]
+		UVRotation = 1
+	}
+]
+
+StackSprites
+[
+	{
+		File = "processing_unit_stack1.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack2.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack3.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack4.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack5.png"
+		Size = [1, 1]
+	}/* 
+	{
+		File = "processing_unit_stack6.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack7.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack8.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack9.png"
+		Size = [1, 1]
+	}
+	{
+		File = "processing_unit_stack10.png"
+		Size = [1, 1]
+	} */
+]
+
+StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
+NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

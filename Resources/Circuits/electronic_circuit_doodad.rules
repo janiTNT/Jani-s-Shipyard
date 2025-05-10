@@ -1,0 +1,13 @@
+ID = janitnt.circuit1
+Type = Resource
+DescriptionKey = "Resource/ElectronicCircuit"
+CategoryKey = "Doodads/Resources"
+Icon
+{
+	Texture
+	{
+		File = "electronic_circuit1.png"
+		MipLevels = 2
+	}
+}
+ResourceType = janitnt.circuit1
