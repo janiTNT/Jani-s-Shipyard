@@ -141,7 +141,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.2
+			FireInterval = 1.2 * 2
 			FiringArc = 360d
 			RotateSpeed = 50d
 			FireThresholdAngle = 80d

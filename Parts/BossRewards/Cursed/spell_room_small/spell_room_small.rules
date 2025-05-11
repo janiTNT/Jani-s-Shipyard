@@ -99,7 +99,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 250
 			MinFromQuantityForConversion = 1
-			Interval = 1
+			Interval = 2
 		}
 
 		CrewLocation
