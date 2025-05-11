@@ -1,0 +1,231 @@
+MAX_SCORCH_DAMAGE_PERCENT = 90%
+DAMAGE_PER_TICK = 100
+
+ID = janiTNT.BrimCurse
+Layer = Tile
+StatusCombineMode = CombineValue
+STATUS_TO_RESOURCE_RATIO = 1000
+RESOURCE_TO_STATUS_RATIO = 1 / (&STATUS_TO_RESOURCE_RATIO)
+ValueClampRange = [0, 700]
+RemoveAtMinValue = true
+TransferToUnderlyingOnPartDestroyed = true
+TickInterval = 0.5
+RequireValueRangeForTick = [500, Infinity]
+MediaIntensityValueType = Interpolated
+MediaIntensityInterpolationRange = [0, 700]
+ClampMediaIntensity = false
+CrewSpeedFactor = [1, .1]
+SoftRepair
+{
+	RepairType = Simultaneous
+	TargetValue = 0
+	WorkPerValueChange = 0.02
+	RegistrationValueRange = [0, infinity]
+	DeregistrationValueBuffer = 150
+}
+Diffusion
+{
+	Basis = 0
+	SpeedFactor = 0.2
+	MinDeltaThreshold = (&SpeedFactor) * 0.1
+	EmptyCellSpeedFactor = 0.0015
+	PartOutboundSpeedFactors
+	{
+		cosmoteer.structure = 4
+		cosmoteer.structure_1x3_wedge = &cosmoteer.structure
+		cosmoteer.structure_1x2_wedge = &cosmoteer.structure
+		cosmoteer.structure_tri = &cosmoteer.structure
+		cosmoteer.structure_wedge = &cosmoteer.structure
+	}
+}
+DamageResistances
+{
+	default {
+		MultiplyByStatusCount = false
+		Resistance
+		{
+			BaseValue = -2%
+			Modifiers
+			[
+				{
+					Type = StatusExponent
+					StatusType = janiTNT.BrimCurse
+					ValueType = Raw
+					ModificationMode = Multiply
+					Exponent = 0.75
+				}
+			]
+		}
+	}
+	explosive = &default
+	salvage = &default
+}
+PenetrationResistanceModifier
+{
+	ModificationMode = Multiply
+	MultiplyByStatusCount = false
+	Resistance
+	{
+		BaseValue = 1
+		Modifiers
+		[
+			{
+				Type = ScaledStatusExponent
+				StatusType = janiTNT.BrimCurse
+				ValueType = Raw
+				ModificationMode = Divide
+				BaseStatusValue = 1
+				Exponent = 0.5
+				Scale = 1/200
+			}
+		]
+	}
+}
+TickingEffects
+[
+	{
+		Type = Damage
+		Damage = 0
+		DamageType = default
+		DamagePerTileHealth
+		{
+			BaseValue = 1
+			Modifiers
+			[
+				{
+					Type = StatusRemap
+					StatusType = janiTNT.BrimCurse
+					ModificationMode = Multiply
+					RemapFrom = [100, 700]
+					RemapTo = [0, 1]
+					Exponent = 2
+				}
+			]
+		}
+		Filter
+		{
+			Friendlies = true
+			Neutrals = true
+		}
+	}
+	{
+		Type = StatusApplication
+		StatusType = cosmoteer.scorched
+		DivideValueByPartHealth = true
+		DivideValueByPartHealthFactor = true
+		// Value is balanced between the scorch remap modifier and DivideValueByPartHealth
+		// They offset each-other when fire is the only damage to the part
+		// When part health is proportionally lower (ie. something else damages the part), scorch rate increases
+		// This ensures that the part always scorches before it would die
+		// Formula: value = (damage / max_scorch_damage%) * ((1 - scorch * max_scorch_damage%) / health%)
+		StatusValue
+		{
+			BaseValue = (&~/DAMAGE_PER_TICK) / (&~/MAX_SCORCH_DAMAGE_PERCENT)
+			Modifiers 
+			[
+				{
+					StatusType = janiTNT.BrimCurse
+					ModificationMode = Multiply
+					Type = StatusRemap
+					RemapFrom = [100, 700]
+					RemapTo = [0, 1]
+					ValueType = Interpolated
+					Exponent = 2
+				}
+				{
+					Type = StatusRemap
+					StatusType = cosmoteer.scorched
+					ModificationMode = Multiply
+					RemapFrom = [0, 1]
+					RemapTo = [1, 1 - (&~/MAX_SCORCH_DAMAGE_PERCENT)]
+				}
+			]
+		}
+		Filter
+		{
+			Friendlies = true
+			Neutrals = true
+			ExcludePartCategories = [ non_flammable ]
+			StructuralHealth = false	
+		}
+	}
+]
+ValueModulators
+{
+	Modulators
+	[
+		{
+			Type = Constant
+			AffectedValueRange = [0, infinity]
+			Value = 0.25
+			ModificationMode = Subtract
+			ScaleByDeltaTime = true
+		}
+		// dissolve faster when part is scorched
+		{
+			Type = Constant
+			AffectedValueRange = [-infinity, infinity]
+			StatusFilter
+			{
+				StatusType = cosmoteer.scorched
+				MinValue = 1
+			}
+			ModificationMode = Add
+			Value = -1.5
+		}
+	]
+}
+ContinuousMediaEffects
+[
+	{
+		Type = TileQuad
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/statuses/heat/HeatNoise2.png"
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			_maskTexture
+			{
+				//File = "./Data/common_effects/particles/wet_light_cookie.png"
+				File = "./data/statuses/heat/single_tile_square_mask.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			_noiseTexture2
+			{
+				File = "./data/statuses/heat/heatNoise.png"
+				MipLevels = max
+				SampleMode = Linear
+				UVMode = Wrap
+			}
+			Shader = "./data/statuses/heat/heat.shader"
+			_hotColor = [255, 25, 70, 255]
+			_coldColor = [255, 10, 15, 255]
+			_normalIntensity = 0.005; //lower is more intense, 0.02 for ship
+			TargetBlendMode
+			{
+				SourceRgbFactor = SourceAlpha
+				DestRgbFactor = InverseSourceAlpha
+				RgbOperator = Add
+				SourceAlphaFactor = Zero
+				DestAlphaFactor = One
+				AlphaOperator = Add
+			}
+		}
+		Bucket = Surface2
+		Inflate = 0.5
+		FadeInTime = 0
+		FadeOutTime = 0.5
+		IsFancyLight = true
+		CaptureBackBuffer = true
+		ColorOverIntensity
+		[
+			[0, 0, 0, 0]
+			[255, 255, 255, 255]
+		]
+    }
+]

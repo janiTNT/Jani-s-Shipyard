@@ -81,6 +81,21 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 						OnlyPartCategories = [cursedarmor]
 					}
 				}
+				{
+					Type = GridStatusApplication
+					StatusType = janiTNT.BrimCurse
+					StatusValue = 0
+					StatusValuePool = 1000
+					ValueFalloff = 1
+					MaxCost = 4
+					FalloffPadding = 0.5
+					EmptyTileCost = 200
+					AllowDiagonals = true
+					Filter {
+						Friendlies = true
+						TargetedFriendlies = true
+					}
+				}
 			]
 		}
 		

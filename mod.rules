@@ -65,7 +65,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Utilities/customexplosive/NukeExplosive.txt>/Part
 			&<Parts/Power/Reactoraux/reac.txt>/Part
 			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part
-			&<Parts/Power/Radiator/Radiator.txt>/Part
+			//&<Parts/Power/Radiator/Radiator.txt>/Part //GONE
 			&<Parts/Power/Port/port.rules>/Part
 			
 			&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part
@@ -1609,6 +1609,17 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 				BlocksPerValue = 10
 				IdealExtraSpaceFactor = 1 
 			}
+		]
+	}
+	
+	
+	{	Action = AddMany
+
+		AddTo = "<statuses/statuses.rules>/Statuses"
+
+		ManyToAdd
+		[
+			&<Statuses/Cursed/Cursed.rules>
 		]
 	}
 	

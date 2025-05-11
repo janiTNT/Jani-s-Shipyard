@@ -40,9 +40,9 @@ Parts
 	CrewQuartersOnebyOneIcon = "Crew Bunk 1x"
 	CrewQuartersOnebyOneDesc = "Miniature room that houses one single bed."
 	
-	Radiator = "Radiator"
-	RadiatorIcon = "Radiator"
-	RadiatorDesc = "Passively Cools down. holds heat with connected radiators and heat accepting parts.\n The redder it is, the warmer it is.<image name='dahell'/>"
+	//Radiator = "Radiator"
+	//RadiatorIcon = "Radiator"
+	//RadiatorDesc = "Passively Cools down. holds heat with connected radiators and heat accepting parts.\n The redder it is, the warmer it is.<image name='dahell'/>"
 
 	FusionReactorLarge = "Large Hyperium Fusion Reactor Core"
 	FusionReactorLargeIcon = "Fusion Rea."
