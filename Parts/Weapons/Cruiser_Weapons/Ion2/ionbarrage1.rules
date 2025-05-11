@@ -682,7 +682,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/IonBlast"
 			Stats
 			{
-				ShieldDamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / (&<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage)
+				ShieldDamagePerShot = (&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / (&<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)
 				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
 				ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
 				PowerDrainPerShot = (&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / 1000

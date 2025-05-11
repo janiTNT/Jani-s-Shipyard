@@ -721,10 +721,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 				ID = InserterPowerUsage
 				FormatKey = "Stats/InserterPowerUsageFmt"
 			}
-			{
+			/* {
 				ID = HeatUsageContinuous
 				FormatKey = "Stats/HeatUsageContFmt"
-			}
+			} */
 			{
 				ID = EngineRoomBuffEffectiveness
 				FormatKey = "Stats/EngineRoomBuffEffectivenessFmt"

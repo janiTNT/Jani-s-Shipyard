@@ -124,7 +124,10 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					Type = ExplosiveDamage
 					TotalDamage = 30000
 					Radius = 3
-					FireChancePerNDamage = 80%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 80%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					NDamage = 1000
 					CrewKillChance = 0%
 					Filter
@@ -132,19 +135,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 						Friendlies = true
 					}
 				}
-				{
-					Type = AreaFires//the bad
-					FireChancePerTile = .15
-					Radius = 7
-					FireFalloff = 0
-					Delay = 0.5
-					Filter
-					{
-						Enemies = true
-						Junk = true
-						Friendlies = true
-					}
-				}
+				// SUPERTODO
 			]
 		}
 

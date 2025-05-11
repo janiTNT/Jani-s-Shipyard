@@ -1,3 +1,8 @@
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+HEAT_PER_SECOND = 2400
+
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/FusionReactorLarge"
@@ -19,7 +24,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewSpeedFactor = 1
 	SelectionTypeID = "reactors"
 	CrewCongestedSpeedFactor = .5
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula, ThermalActivity]
 	MaxHealth = 8000
 	TypeCategories = [uses_power, thermal, provides_power, bounty_objective, power_transmitter]
 	ForceManhattanPathInPart = true
@@ -308,6 +313,225 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DropResourcesWhenRemoved = false
 		}
 		
+		HasPlasma
+		{
+			Type = MultiResourceStorage
+			ResourceType = janitnt.reactorplasma
+			ResourceStorages = [ PlasmaStorage ]
+			ToggleOnResources = 1
+			ToggleOffResources = 0
+			DropResourcesWhenDestroyed = false
+			DropResourcesWhenRemoved = false
+		}
+		
+		IsProducingHeat
+		{
+			Type = MultiToggle
+			Toggles = [PlasmaProducer, BatteryProducer, HasPlasma]
+			Mode = Any
+		}
+		
+		ActivityBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = ThermalActivity
+			BuffMultiplier = PlasmaStorage
+		}
+		
+		GenerationHeatProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsProducingHeat
+			HEAT_PER_INTERVAL = (&~/HEAT_PER_SECOND) * (&Interval)
+			ToQuantity
+			{
+				BaseValue = ceil((&../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE))
+				BuffType = ThermalActivity
+				BuffMode = Multiply
+			}
+			ToStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
+			Interval = 0.5
+		}
+		
+		HeatStorage
+		{
+			Type = ResourceStorage
+			ResourceType = heat
+			MaxResources = 80000 * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			InitToMaxResources = 0
+			IgnoreResourcesForInitToMax = true
+		}
+		
+		NetworkedHeatStorage
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = HeatStorage
+			Categories = [ thermal_storage ]
+		}
+		
+		HeatDistributionStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/HeatDistributionStorage
+		
+		NetworkHeatInput = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/NetworkHeatInput
+		
+		OverflowHeatStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage
+		
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					HEAT_INPUT = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_NETWORK_INPUT
+					Routes
+					[
+						[Port_Thermal_Left5, Port_Thermal_Up0, 0]
+						[Port_Thermal_Up0, Port_Thermal_Up1, 0]
+						[Port_Thermal_Up1, Port_Thermal_Up2, 0]
+						[Port_Thermal_Up2, Port_Thermal_Up3, 0]
+						[Port_Thermal_Up3, Port_Thermal_Up4, 0]
+						[Port_Thermal_Up4, Port_Thermal_Up5, 0]
+						
+						[Port_Thermal_Up5, Port_Thermal_Right0, 0]
+						[Port_Thermal_Right0, Port_Thermal_Right1, 0]
+						[Port_Thermal_Right1, Port_Thermal_Right2, 0]
+						[Port_Thermal_Right2, Port_Thermal_Right3, 0]
+						[Port_Thermal_Right3, Port_Thermal_Right4, 0]
+						[Port_Thermal_Right4, Port_Thermal_Right5, 0]
+						
+						[Port_Thermal_Right5, Port_Thermal_Down0, 0]
+						[Port_Thermal_Down0, Port_Thermal_Down1, 0]
+						[Port_Thermal_Down1, Port_Thermal_Down2, 0]
+						[Port_Thermal_Down2, Port_Thermal_Down3, 0]
+						[Port_Thermal_Down3, Port_Thermal_Down4, 0]
+						[Port_Thermal_Down4, Port_Thermal_Down5, 0]
+						
+						[Port_Thermal_Down5, Port_Thermal_Left0, 0]
+						[Port_Thermal_Left0, Port_Thermal_Left1, 0]
+						[Port_Thermal_Left1, Port_Thermal_Left2, 0]
+						[Port_Thermal_Left2, Port_Thermal_Left3, 0]
+						[Port_Thermal_Left3, Port_Thermal_Left4, 0]
+						[Port_Thermal_Left4, Port_Thermal_Left5, 0]
+						
+						[Port_Thermal_Left5, NetworkHeatInput, 0]
+						[Port_Thermal_Left5, NetworkHeatOutput, 0]
+						[Port_Thermal_Left5, NetworkedHeatStorage, 0]
+					]
+				}
+			]
+		}
+		
+		Port_Thermal_Up0 : &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+		{
+			Location = [0,0]
+			Direction = Up
+		}
+		Port_Thermal_Up1 : Port_Thermal_Up0
+		{
+			Location = [1,0]
+		}
+		Port_Thermal_Up2 : Port_Thermal_Up0
+		{
+			Location = [2,0]
+		}
+		Port_Thermal_Up3 : Port_Thermal_Up0
+		{
+			Location = [3,0]
+		}
+		Port_Thermal_Up4 : Port_Thermal_Up0
+		{
+			Location = [4,0]
+		}
+		Port_Thermal_Up5 : Port_Thermal_Up0
+		{
+			Location = [5,0]
+		}
+		
+		Port_Thermal_Right0 : Port_Thermal_Up5
+		{
+			Direction = Right
+		}
+		Port_Thermal_Right1 : Port_Thermal_Right0
+		{
+			Location = [5,1]
+		}
+		Port_Thermal_Right2 : Port_Thermal_Right0
+		{
+			Location = [5,2]
+		}
+		Port_Thermal_Right3 : Port_Thermal_Right0
+		{
+			Location = [5,3]
+		}
+		Port_Thermal_Right4 : Port_Thermal_Right0
+		{
+			Location = [5,4]
+		}
+		Port_Thermal_Right5 : Port_Thermal_Right0
+		{
+			Location = [5,5]
+		}
+		
+		Port_Thermal_Left0 : Port_Thermal_Up0
+		{
+			Direction = Left
+		}
+		Port_Thermal_Left1 : Port_Thermal_Left0
+		{
+			Location = [0,1]
+		}
+		Port_Thermal_Left2 : Port_Thermal_Left0
+		{
+			Location = [0,2]
+		}
+		Port_Thermal_Left3 : Port_Thermal_Left0
+		{
+			Location = [0,3]
+		}
+		Port_Thermal_Left4 : Port_Thermal_Left0
+		{
+			Location = [0,4]
+		}
+		Port_Thermal_Left5 : Port_Thermal_Left0
+		{
+			Location = [0,5]
+		}
+		
+		Port_Thermal_Down0 : Port_Thermal_Left5
+		{
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1,5]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [2,5]
+		}
+		Port_Thermal_Down3 : Port_Thermal_Down0
+		{
+			Location = [3,5]
+		}
+		Port_Thermal_Down4 : Port_Thermal_Down0
+		{
+			Location = [4,5]
+		}
+		Port_Thermal_Down5 : Port_Thermal_Down0
+		{
+			Location = [5,5]
+		}
+		
+		OverheatEffects
+		{
+			Type = TriggeredEffects
+			Location = [2, 2]
+			Trigger = OverflowHeatStorage
+			FactorHitEffectsWith = OverflowHeatStorage
+			HitEffects = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects/HitEffects
+		}
+		
 		PlasmaProducer
 		{
 			Type = ResourceConverter
@@ -325,10 +549,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 			To
 			[
-				{
-					Storage = ThermalStorage
-					Quantity = 100
-				}
 				{
 					Storage = PlasmaStorage
 					Quantity = 40
@@ -361,11 +581,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Storage = BatteryStorage
 					Quantity =  { BaseValue=12000; BuffType=ElectronDebuff; BuffMode=Multiply; }
 				}
-				{
-					Storage = ThermalStorage
-					Quantity = 100
-					//DAMM BRO THATS
-				}
 			]
 			MinFromQuantityForConversion = 1000
 			//PLEASE EDIT FOR STATS
@@ -386,14 +601,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Storage = PlasmaStorage
 					Quantity = 10
 					MinQuantityForConversion = 1
-				}
-			]
-			To
-			[
-				{
-					Storage = ThermalStorage
-					Quantity = 10
-					//DAMM BRO THATS
 				}
 			]
 			//MinFromQuantityForConversion = 1000
@@ -736,17 +943,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			Location = [3, 3]
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
-		}
+		}/* 
 		OverheatTrigger
 		{
 			Type = ThresholdTrigger
-			AmountFrom = ThermalStorage
+			AmountFrom = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
 			MinAmount = .94
-		}
+		} */
 		OverheatDeathEffects
 		{
 			Type = TriggeredEffects
-			Trigger = OverheatTrigger
+			Trigger = OverflowHeatStorage
 			Location = [3, 3]
 			FactorMediaEffectsIntensityWith = PlasmaStorage
 			FactorHitEffectsWith = PlasmaStorage
@@ -885,6 +1092,51 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				&<./Data/nebulas/electron/particles/electron_reactor_sizzle.rules>
 			]
 		}
+		
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = PowerToggle
+			ValueFrom = BaseHeatGenerationValue
+		}
+		
+		BaseHeatGenerationValue { Type = StaticValue; Value = &~/HEAT_PER_SECOND; }
+
+		NetworkThermalCapacity
+		{
+			Type = NetworkValue
+			ValueSource = HeatStorage
+			Mode = Average
+			Categories = [ thermal_storage ]
+			AllowUncategorized = false
+		}
+		
+		ThermalLoadGlowColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = NetworkThermalCapacity
+		}
+
+		HeatGraphics
+		{
+			Type = Graphics
+			Location = [3, 3]
+			GetColorFrom = ThermalLoadGlowColorFactor
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "heating.png"
+						Size = [6, 6]
+					}
+				]
+			}
+		}
+		
+		
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -930,6 +1182,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
 		BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		HeatGeneration = 2100 * .001 //.01 * (&~/Part/Components/BatteryProducer/To/1/Quantity) + .01 * (&~/Part/Components/PlasmaProducer/To/1/Quantity) / (&~/Part/Components/BatteryProducer/Interval)
+		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+		HeatGeneration = (&~/HEAT_PER_SECOND)
 	}
 }

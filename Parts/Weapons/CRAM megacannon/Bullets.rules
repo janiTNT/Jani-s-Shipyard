@@ -182,8 +182,10 @@ BaseComponents
 					DoPooledDamageFirst = true
 				}
 				{
-					Type = Fire
-					FireChance = .4
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .4; EffectScaleExponent = 1 }
+					ValueType = Interpolated
 				}
 				{
 					Type = Impulse

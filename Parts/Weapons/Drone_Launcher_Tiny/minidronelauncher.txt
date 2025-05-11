@@ -813,7 +813,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 		
-		StellToggle
+		/*StellToggle
 		{
 			Type = ModeToggle
 			Mode = DroneType
@@ -1061,7 +1061,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 							Size = [1, 1]
 						}
 					]
-				}
+				}*/
 				/*DroneBuildSprite
 				{
 					Type = ResourceSprites
@@ -1083,7 +1083,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 				}*/
-				DroneBuildSprite
+				/*DroneBuildSprite
 				{
 					Type = ResourceSprites
 					Location = [.5, .5]
@@ -1234,7 +1234,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 				}
 			}
-		}
+		}*/
 
 		SparkerToggle
 		{

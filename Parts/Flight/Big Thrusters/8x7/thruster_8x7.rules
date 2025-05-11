@@ -672,7 +672,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			FuelUsagePerSecond = &../../FuelUsage
 		}
 
-		NozzleCollider
+		/* NozzleCollider
 		{
 			Type = PolygonCollider
 			Vertices
@@ -683,7 +683,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[1/3 * 8/3, 4 * 8/3 - 1]
 			]
 			Density = 1
-		}
+		} */
 
 		ThrustEffects
 		{

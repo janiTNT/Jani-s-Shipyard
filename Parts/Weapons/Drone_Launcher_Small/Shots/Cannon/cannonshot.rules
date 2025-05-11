@@ -137,8 +137,10 @@ Components
 					DamagePool = DamagePool
 				}
 				{
-					Type = Fire
-					FireChance = .03
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .03; EffectScaleExponent = 1 }
+					ValueType = Interpolated
 				}
 				{
 					Type = Impulse

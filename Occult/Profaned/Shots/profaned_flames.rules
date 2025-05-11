@@ -67,7 +67,7 @@ Components
 						Friendlies = true
 					}
 				}
-				{
+				/* {
 					Type = AreaFires
 					FireChancePerTile = .3
 					FireRadius = 10
@@ -79,7 +79,7 @@ Components
 					{
 						Friendlies = true
 					}
-				}
+				} */
 				{
 					Type = Impulse
 					Impulse = 180
@@ -155,7 +155,7 @@ Components
 					{
 						Friendlies = true
 					}
-				}
+				}/* 
 				{
 					Type = Fire
 					FireChance = .8
@@ -163,7 +163,7 @@ Components
 					{
 						Friendlies = true
 					}
-				}
+				} */
 				{
 					Type = Impulse
 					Impulse = 180

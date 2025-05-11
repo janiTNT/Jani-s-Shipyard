@@ -1475,7 +1475,7 @@ Stats
 	DroneLauncherNotes = "<bad>Warning:</bad> <gray><b>For Requirements, Statistics, and Misc info, hover above each Toggle when selecting a type of drone to show the description of each drone.</b></gray>"
 	
 	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
-	HeatUsageContFmt = "<white>Heat Consumption:</white> <good>{0:0.###}</good><gray>/sec</gray>"
+	//HeatUsageContFmt = "<white>Heat Consumption:</white> <good>{0:0.###}</good><gray>/sec</gray>"
 	
 	EngineRoomBuffEffectivenessFmt = "<white>Engine Room Effectiveness:</white> <good>{0:0}</good><gray>%</gray>"
 	

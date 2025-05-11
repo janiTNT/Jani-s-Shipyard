@@ -685,7 +685,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			{
 				Damage = [(&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue) , (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue) * (&../ROF) ]
 				BaseDamage = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue
-				ShieldDamagePerShot = ((&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / (&<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage)) + (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue)
+				ShieldDamagePerShot = ((&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / (&<./data/ships/terran/shield_gen_small/shield_gen_small.rules>/Part/Components/ArcShield/ResourceDrainPerDamage/BaseValue)) + (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue)
 				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
 				ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
 				PowerDrainPerShot = (&~/Part/Components/BulletEmitter/Bullet/TotalIonDamage) / 1000
