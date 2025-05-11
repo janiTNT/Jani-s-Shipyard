@@ -1,28 +1,30 @@
 Part : <./data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/FactoryElectronicCircuit"
-	IconNameKey = "Parts/FactoryElectronicCircuitIcon"
-	ID = janiTNT.electronic_circuit_factory // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	NameKey = "Parts/FactoryAdvancedCircuit"
+	IconNameKey = "Parts/FactoryAdvancedCircuitIcon"
+	ID = janiTNT.advanced_circuit_factory // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "Production"
-	DescriptionKey = "Parts/FactoryElectronicCircuitDesc"
+	DescriptionKey = "Parts/FactoryAdvancedCircuitDesc"
 	Resources
 	[
 		[steel, 80]
 		[coil2, 100]
 		[processor, 2]
 	]
-	Size = [3, 2]
+	Size = [3, 3]
 	IsFlippable = true
 	SelectionPriority = 1
-	MaxHealth = 6000
-	TypeCategories = [provides_electronic_circuit, uses_coils, uses_steel, uses_power]
+	MaxHealth = 9000
+	TypeCategories = [provides_advanced_circuit, uses_hypercoils, uses_coil2, uses_electronic_circuit, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
 	AllowedDoorLocations
 	[
-		[-1, 1]
-		[0, 2]
-		[1, 2]
-		[2, 2]
+		//[-1, 1]
+		[-1, 2]
+		[0, 3]
+		[1, 3]
+		[2, 3]
+		[3, 2]
 		[3, 1]
 	]
 	EditorIcon
@@ -32,14 +34,14 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 48]
+		Size = [64, 64]
 	}
 	Components : ^/0/Components
 	{
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, CoilPrereq, SteelPrereq, BatteryStorage]
+			Toggles = [PowerToggle, Coil2Prereq, ElectronicCircuitStorage, BatteryStorage]
 			Mode = All
 		}
 
@@ -58,11 +60,11 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			CommandPoints = 1
 		}
 
-		CoilStorage
+		Coil2Storage
 		{
 			Type = TypedResourceGrid
-			ResourceType = coil
-			GridRect = [0, 1, 1, 1]
+			ResourceType = coil2
+			GridRect = [0, 2, 1, 1]
 			Layer = "doodads_low"
 			SpriteInset = [15/64, 6/64, 2/64, 9/64]
 			ToggleOnResources = 1
@@ -70,34 +72,11 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			RandomSpriteRotation = true
 			AllowExternalPickupAndDelivery = true
 		}
-		CoilConsumer
+		Coil2Consumer
 		{
 			Type = TypedResourceGridConsumer
-			ResourceType = coil
-			Storage = CoilStorage
-			DefaultPriority = &/PRIORITIES/Factory_Supply
-			OperationalToggle = PowerToggle
-			ConsumptionToggleButtonOffset = [0, -.4]
-		}
-
-		SteelStorage
-		{
-			Type = TypedResourceGrid
-			ResourceType = steel
-			GridRect = [2, 1, 1, 1]
-			Layer = "doodads_low"
-			SpriteInset = [2/64, 6/64, 15/64, 9/64]
-			ToggleOnResources = 1
-			ToggleOffResources = 0
-			RandomSpriteRotation = true
-			AllowExternalPickupAndDelivery = true
-		}
-
-		SteelConsumer
-		{
-			Type = TypedResourceGridConsumer
-			ResourceType = steel
-			Storage = SteelStorage
+			ResourceType = coil2
+			Storage = Coil2Storage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
@@ -106,8 +85,31 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		ElectronicCircuitStorage
 		{
 			Type = TypedResourceGrid
-			ResourceType = janitnt.circuit1
-			GridRect = [1, 1, 1, 1]
+			ResourceType = janitnt.circuit2
+			GridRect = [2, 1, 1, 2]
+			Layer = "doodads_low"
+			SpriteInset = [2/64, 6/64, 15/64, 9/64]
+			ToggleOnResources = 2
+			ToggleOffResources = 0
+			RandomSpriteRotation = true
+			AllowExternalPickupAndDelivery = true
+		}
+
+		ElectronicCircuitConsumer
+		{
+			Type = TypedResourceGridConsumer
+			ResourceType = janitnt.circuit2
+			Storage = ElectronicCircuitStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+
+		AdvancedCircuitStorage
+		{
+			Type = TypedResourceGrid
+			ResourceType = janitnt.circuit2
+			GridRect = [1, 2, 1, 1]
 			Layer = "doodads_low"
 			SpriteInset = [8/64, 12/64, 8/64, 4/64]
 			SuppliesResources = true
@@ -121,7 +123,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 2000
+			MaxResources = 4000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -133,80 +135,45 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ResupplyThreshold = 500
 			OperationalToggle = PowerToggle
 		}
-
-		SteelPrereq
+		
+		Coil2Prereq
 		{
 			Type = MultiToggle
-			Toggles = [SteelStorage, SteelSplitter]
-			Mode = Any
-		}
-		CoilPrereq
-		{
-			Type = MultiToggle
-			Toggles = [CoilStorage, CoilSplitter]
+			Toggles = [Coil2Storage, CoilSplitter]
 			Mode = Any
 		}
 		AnimationToggle
 		{
 			Type = MultiToggle
-			Toggles = [SteelLoader, CoilLoader, ResourceConverter]
+			Toggles = [Coil2Loader, ResourceConverter]
 			Mode = Any
 		}
-
-		SteelLoader
+		
+		Coil2Loader
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsOperational
-			FromStorage = SteelStorage
-			FromQuantity = 1
-			ToStorage = LoadedSteel
-			ToQuantity = 1
-			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
-		}
-		
-		LoadedSteel
-		{
-			Type = ResourceStorage
-			OperationalToggle = IsOperational
-			ResourceType = fake
-			MaxResources = 1
-		}
-		SteelSplitter
-		{
-		    Type = InlineResourceConverter
-		    ResourceType = fake
-		    FromStorage = LoadedSteel
-		    FromQuantity = 1
-		    ToQuantity = 5
-			ToggleOnResources = &../ResourceConverter/From/1/Quantity
-			ToggleOffResources = (&ToggleOnResources) - 1
-		}
-		
-		CoilLoader
-		{
-			Type = ResourceConverter
-			OperationalToggle = IsOperational
-			FromStorage = CoilStorage
+			FromStorage = Coil2Storage
 			FromQuantity = 1
 			ToStorage = LoadedCoil
 			ToQuantity = 1
 			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
 		}
 		
-		LoadedCoil
+		LoadedCoil2
 		{
 			Type = ResourceStorage
 			OperationalToggle = IsOperational
 			ResourceType = fake
 			MaxResources = 1
 		}
-		CoilSplitter
+		Coil2Splitter
 		{
 		    Type = InlineResourceConverter
 		    ResourceType = fake
-		    FromStorage = LoadedCoil
+		    FromStorage = LoadedCoil2
 		    FromQuantity = 1
-		    ToQuantity = 20
+		    ToQuantity = 10
 			ToggleOnResources = &../ResourceConverter/From/0/Quantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -218,22 +185,22 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			From
 			[
 			    {
-			        Storage = CoilSplitter
-			        Quantity = 3
+			        Storage = Coil2Splitter
+			        Quantity = 1
 			    }
 			    {
-			        Storage = SteelSplitter
+			        Storage = ElectronicCircuitStorage
 			        Quantity = 1
 			    }
 			    {
 			        Storage = BatteryStorage
-			        Quantity = 50
+			        Quantity = 500
 			        MinQuantityForConversion = 1
 			    }
 			]
-			ToStorage = ElectronicCircuitStorage
+			ToStorage = AdvancedCircuitStorage
 			ToQuantity = 1
-			Interval = 0.5
+			Interval = 8
 			CheckResourceLimits = true
 		}
 
@@ -241,14 +208,14 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = ResourceConverter
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
 					Sound = "./data/ships/terran/factory_ammo/bullet_create.wav"
 					Volume = .1
-					Speed = 1.25
+					Speed = 0.5
 					SpeedVariation = .05
 				}
 			]
@@ -272,7 +239,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 			OperationalToggle = IsOperational
 			DoodadToggle = AnimationToggle
 			AnimationSpeedFactor = BeltSpeedFactor
@@ -283,13 +250,14 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "floor.png"
-						Size = [3, 2]
+						Size = [3, 3]
 					}
 				]
 			}
 			ToggleOnDoodad
 			{
 				Layer = "walls"		//walls layer so its over the batteries and under the crew layer
+				Offset = [-7/64, -0.5]
 				DamageLevels
 				[
 					{
@@ -312,6 +280,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ToggleOffDoodad
 			{
 				Layer = "walls"		//walls layer so its over the batteries and under the crew layer
+				Offset = [-7/64, -0.5]
 				DamageLevels
 				[
 					{
@@ -335,6 +304,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			NonOperationalDoodad
 			{
 				Layer = "walls"		//walls layer so its over the batteries and under the crew layer
+				Offset = [-7/64, -0.5]
 				DamageLevels
 				[
 					{
@@ -350,7 +320,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "walls.png"
-						Size = [3, 2]
+						Size = [3, 3]
 					}
 				]
 			}
@@ -361,14 +331,14 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "lights.png"
-						Size = [3, 2]
+						Size = [3, 3]
 					}
 				]
 			}
 			OperationalRoofLighting
 			{
 				Layer = "roof_lights_fancy"
-				Offset = [-45/64, -23/64]
+				Offset = [-45/64, -43/64]
 				DamageLevels
 				[
 					{
@@ -384,8 +354,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		CoilBeltAndRoboticArmGraphics
 		{
 			Type = Graphics
-			Location = [.5, 1]
-			ResetAnimationTrigger = CoilLoader
+			Location = [.75, 2]
+			ResetAnimationTrigger = Coil2Loader
 			//OperationalToggle = CoilLoader
 			AnimationSpeedFactor = BeltSpeedFactor
 			OperationalDoodad
@@ -396,27 +366,24 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					{
 						AnimationFiles
 						[
-							"coilbelt2.png"
-							"coilbelt3.png"
-							"coilbelt4.png"
-							"coilbelt5.png"
-							"coilbelt6.png"
-							"coilbelt7.png"
-							"coilbelt8.png"
-							"coilbelt9.png"
-							"coilbelt10.png"
-							"coilbelt11.png"
-							"coilbelt12.png"
-							"coilbelt13.png"
-							"coilbelt14.png"
-							"coilbelt15.png"
-							"coilbelt16.png"
-							"coilbelt17.png"
-							"coilbelt18.png"
-							"coilbelt1.png"
+							"coil2belt2.png"
+							"coil2belt3.png"
+							"coil2belt4.png"
+							"coil2belt5.png"
+							"coil2belt6.png"
+							"coil2belt7.png"
+							"coil2belt8.png"
+							"coil2belt9.png"
+							"coil2belt10.png"
+							"coil2belt11.png"
+							"coil2belt12.png"
+							"coil2belt13.png"
+							"coil2belt14.png"
+							"coil2belt15.png"
+							"coil2belt1.png"
 						]
 						Size = [1, 2]
-						AnimationInterval = 0.0789473684
+						AnimationInterval = 0.1
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}
@@ -435,13 +402,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			} */
 		}
 		
-		SteelBeltAndRoboticArmGraphics
+		CircuitBeltAndRoboticArmGraphics
 		{
 			Type = Graphics
-			Location = [2.5, 1]
-			ResetAnimationTrigger = SteelLoader
+			Location = [2, 1]
+			ResetAnimationTrigger = ResourceConverter
 			AnimationSpeedFactor = BeltSpeedFactor
-			// OperationalToggle = SteelLoader
+			OperationalToggle = ResourceConverter
 			OperationalDoodad
 			{
 				Layer = "doodads_high"	//doodads_high layer so the robotic arm sprites are draw over the resources sprites and crew
@@ -450,54 +417,45 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					{
 						AnimationFiles
 						[
-							"steelbelt2.png"
-							"steelbelt3.png"
-							"steelbelt4.png"
-							"steelbelt5.png"
-							"steelbelt6.png"
-							"steelbelt7.png"
-							"steelbelt8.png"
-							"steelbelt9.png"
-							"steelbelt10.png"
-							"steelbelt11.png"
-							"steelbelt12.png"
-							"steelbelt13.png"
-							"steelbelt14.png"
-							"steelbelt15.png"
-							"steelbelt16.png"
-							"steelbelt17.png"
-							"steelbelt18.png"
-							"steelbelt1.png"
+							"circuitbelt2.png"
+							"circuitbelt3.png"
+							"circuitbelt4.png"
+							"circuitbelt5.png"
+							"circuitbelt6.png"
+							"circuitbelt7.png"
+							"circuitbelt8.png"
+							"circuitbelt9.png"
+							"circuitbelt1.png"
 						]
-						Size = [1, 2]
-						AnimationInterval = 0.0789473684
+						Size = [2, 2]
+						AnimationInterval = 0.1
 						AnimationStartTime = MinValue
 						ClampAnimation = true
 					}
 				]
 			}
-			/* NonOperationalDoodad
+			NonOperationalDoodad
 			{
 				Layer = "doodads_high"	//doodads_high layer so the robotic arm sprites are draw over the resources sprites and crew
 				DamageLevels
 				[
 					{
-						File = "steelbelt1.png"
+						File = "circuitbelt2.png"
 						Size = [1, 2]
 					}
 				]
-			} */
+			}
 		}
 
 		Graphics2
 		{
 			Type = Graphics
-			Location = [1.5, 1]
+			Location = [24/64, .5]
 			OperationalToggle = IsOperational
 			OperationalRoofLighting
 			{
 				Layer = "roof_lights_fancy"
-				Offset = [45/64, -23/64]
+				Offset = [109/64, 21/64]
 				DamageLevels
 				[
 					{
@@ -513,11 +471,10 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		CircuitGraphics
 		{
 			Type = Graphics
-			Location = [1.5, 1]
-			OperationalToggle = IsOperational
-			DoodadToggle = ResourceConverter
+			Location = [1.5, 2]
 			AnimationSpeedFactor = BeltSpeedFactor
-			ToggleOnDoodad
+			ResetAnimationTrigger = ResourceConverter
+			OperationalDoodad
 			{
 				Layer = "walls" //Wall layer so the processor is show on top of the exit belt which use the doodad_low layer and under the crew sprite
 				DamageLevels
@@ -525,12 +482,15 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					{
 						AnimationFiles
 						[
-							"circuit1.png"
-							"circuit2.png"
-							"circuit3.png"
-							"circuit4.png"
-							"circuit5.png"
-							"circuit6.png"
+							"advancedcircuit1.png"
+							"advancedcircuit2.png"
+							"advancedcircuit3.png"
+							"advancedcircuit4.png"
+							"advancedcircuit5.png"
+							"advancedcircuit6.png"
+							"advancedcircuit7.png"
+							"advancedcircuit8.png"
+							"advancedcircuit9.png"
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.166666667 / 2
@@ -547,7 +507,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		RoofDoorSprite
 		{
 			Type = OpenCloseSprite
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 			OperationalToggle = RoofDoorOpenToggle
 			Layer = "roofs"
 			OpenDamageLevels
@@ -555,157 +515,163 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				{
 					AnimationFiles
 					[
-						"roof1.png"
-						"roof2.png"
-						"roof3.png"
-						"roof4.png"
-						"roof5.png"
-						"roof6.png"
+						"./data/ships/terran/factory_coil/roof1.png"
+						"./data/ships/terran/factory_coil/roof2.png"
+						"./data/ships/terran/factory_coil/roof3.png"
+						"./data/ships/terran/factory_coil/roof4.png"
+						"./data/ships/terran/factory_coil/roof5.png"
+						"./data/ships/terran/factory_coil/roof6.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_n1.png"
-						"roof_n2.png"
-						"roof_n3.png"
-						"roof_n4.png"
-						"roof_n5.png"
-						"roof_n6.png"
-					]
-					Size = [3, 2]
-					AnimationInterval = 0.06
-					AnimationStartTime = MinValue
-					ClampAnimation = true
-				}/* 
-				{
-					AnimationFiles
-					[
-						"roof1_33.png"
-						"roof2_33.png"
-						"roof3_33.png"
-						"roof4_33.png"
-						"roof5_33.png"
-						"roof6_33.png"
-					]
-					NormalsAnimationFiles
-					[
-						"roof_normals1_33.png"
-						"roof_normals2_33.png"
-						"roof_normals3_33.png"
-						"roof_normals4_33.png"
-						"roof_normals5_33.png"
-						"roof_normals6_33.png"
+						"./data/ships/terran/factory_coil/roof_normals1.png"
+						"./data/ships/terran/factory_coil/roof_normals2.png"
+						"./data/ships/terran/factory_coil/roof_normals3.png"
+						"./data/ships/terran/factory_coil/roof_normals4.png"
+						"./data/ships/terran/factory_coil/roof_normals5.png"
+						"./data/ships/terran/factory_coil/roof_normals6.png"
 					]
 					Size = [3, 3]
 					AnimationInterval = 0.06
 					AnimationStartTime = MinValue
 					ClampAnimation = true
+					MirrorU = true
 				}
 				{
 					AnimationFiles
 					[
-						"roof1_66.png"
-						"roof2_66.png"
-						"roof3_66.png"
-						"roof4_66.png"
-						"roof5_66.png"
-						"roof6_66.png"
+						"./data/ships/terran/factory_coil/roof1_33.png"
+						"./data/ships/terran/factory_coil/roof2_33.png"
+						"./data/ships/terran/factory_coil/roof3_33.png"
+						"./data/ships/terran/factory_coil/roof4_33.png"
+						"./data/ships/terran/factory_coil/roof5_33.png"
+						"./data/ships/terran/factory_coil/roof6_33.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_normals1_66.png"
-						"roof_normals2_66.png"
-						"roof_normals3_66.png"
-						"roof_normals4_66.png"
-						"roof_normals5_66.png"
-						"roof_normals6_66.png"
+						"./data/ships/terran/factory_coil/roof_normals1_33.png"
+						"./data/ships/terran/factory_coil/roof_normals2_33.png"
+						"./data/ships/terran/factory_coil/roof_normals3_33.png"
+						"./data/ships/terran/factory_coil/roof_normals4_33.png"
+						"./data/ships/terran/factory_coil/roof_normals5_33.png"
+						"./data/ships/terran/factory_coil/roof_normals6_33.png"
 					]
-					Size = [3, 2]
+					Size = [3, 3]
 					AnimationInterval = 0.06
 					AnimationStartTime = MinValue
 					ClampAnimation = true
-				} */
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"./data/ships/terran/factory_coil/roof1_66.png"
+						"./data/ships/terran/factory_coil/roof2_66.png"
+						"./data/ships/terran/factory_coil/roof3_66.png"
+						"./data/ships/terran/factory_coil/roof4_66.png"
+						"./data/ships/terran/factory_coil/roof5_66.png"
+						"./data/ships/terran/factory_coil/roof6_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"./data/ships/terran/factory_coil/roof_normals1_66.png"
+						"./data/ships/terran/factory_coil/roof_normals2_66.png"
+						"./data/ships/terran/factory_coil/roof_normals3_66.png"
+						"./data/ships/terran/factory_coil/roof_normals4_66.png"
+						"./data/ships/terran/factory_coil/roof_normals5_66.png"
+						"./data/ships/terran/factory_coil/roof_normals6_66.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+					MirrorU = true
+				}
 			]
 			ClosedDamageLevels
 			[
 				{
 					AnimationFiles
 					[
-						"roof6.png"
-						"roof5.png"
-						"roof4.png"
-						"roof3.png"
-						"roof2.png"
-						"roof1.png"
+						"./data/ships/terran/factory_coil/roof6.png"
+						"./data/ships/terran/factory_coil/roof5.png"
+						"./data/ships/terran/factory_coil/roof4.png"
+						"./data/ships/terran/factory_coil/roof3.png"
+						"./data/ships/terran/factory_coil/roof2.png"
+						"./data/ships/terran/factory_coil/roof1.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_n6.png"
-						"roof_n5.png"
-						"roof_n4.png"
-						"roof_n3.png"
-						"roof_n2.png"
-						"roof_n1.png"
-					]
-					Size = [3, 2]
-					AnimationInterval = 0.06
-					AnimationStartTime = MinValue
-					ClampAnimation = true
-				}/*
-				{
-					AnimationFiles
-					[
-						"roof6_33.png"
-						"roof5_33.png"
-						"roof4_33.png"
-						"roof3_33.png"
-						"roof2_33.png"
-						"roof1_33.png"
-					]
-					NormalsAnimationFiles
-					[
-						"roof_normals6_33.png"
-						"roof_normals5_33.png"
-						"roof_normals4_33.png"
-						"roof_normals3_33.png"
-						"roof_normals2_33.png"
-						"roof_normals1_33.png"
+						"./data/ships/terran/factory_coil/roof_normals6.png"
+						"./data/ships/terran/factory_coil/roof_normals5.png"
+						"./data/ships/terran/factory_coil/roof_normals4.png"
+						"./data/ships/terran/factory_coil/roof_normals3.png"
+						"./data/ships/terran/factory_coil/roof_normals2.png"
+						"./data/ships/terran/factory_coil/roof_normals1.png"
 					]
 					Size = [3, 3]
 					AnimationInterval = 0.06
 					AnimationStartTime = MinValue
 					ClampAnimation = true
+					MirrorU = true
 				}
 				{
 					AnimationFiles
 					[
-						"roof6_66.png"
-						"roof5_66.png"
-						"roof4_66.png"
-						"roof3_66.png"
-						"roof2_66.png"
-						"roof1_66.png"
+						"./data/ships/terran/factory_coil/roof6_33.png"
+						"./data/ships/terran/factory_coil/roof5_33.png"
+						"./data/ships/terran/factory_coil/roof4_33.png"
+						"./data/ships/terran/factory_coil/roof3_33.png"
+						"./data/ships/terran/factory_coil/roof2_33.png"
+						"./data/ships/terran/factory_coil/roof1_33.png"
 					]
 					NormalsAnimationFiles
 					[
-						"roof_normals6_66.png"
-						"roof_normals5_66.png"
-						"roof_normals4_66.png"
-						"roof_normals3_66.png"
-						"roof_normals2_66.png"
-						"roof_normals1_66.png"
+						"./data/ships/terran/factory_coil/roof_normals6_33.png"
+						"./data/ships/terran/factory_coil/roof_normals5_33.png"
+						"./data/ships/terran/factory_coil/roof_normals4_33.png"
+						"./data/ships/terran/factory_coil/roof_normals3_33.png"
+						"./data/ships/terran/factory_coil/roof_normals2_33.png"
+						"./data/ships/terran/factory_coil/roof_normals1_33.png"
 					]
 					Size = [3, 3]
 					AnimationInterval = 0.06
 					AnimationStartTime = MinValue
 					ClampAnimation = true
-				}*/
+					MirrorU = true
+				}
+				{
+					AnimationFiles
+					[
+						"./data/ships/terran/factory_coil/roof6_66.png"
+						"./data/ships/terran/factory_coil/roof5_66.png"
+						"./data/ships/terran/factory_coil/roof4_66.png"
+						"./data/ships/terran/factory_coil/roof3_66.png"
+						"./data/ships/terran/factory_coil/roof2_66.png"
+						"./data/ships/terran/factory_coil/roof1_66.png"
+					]
+					NormalsAnimationFiles
+					[
+						"./data/ships/terran/factory_coil/roof_normals6_66.png"
+						"./data/ships/terran/factory_coil/roof_normals5_66.png"
+						"./data/ships/terran/factory_coil/roof_normals4_66.png"
+						"./data/ships/terran/factory_coil/roof_normals3_66.png"
+						"./data/ships/terran/factory_coil/roof_normals2_66.png"
+						"./data/ships/terran/factory_coil/roof_normals1_66.png"
+					]
+					Size = [3, 3]
+					AnimationInterval = 0.06
+					AnimationStartTime = MinValue
+					ClampAnimation = true
+					MirrorU = true
+				}
 			]
 		}
 
 		BatterySprites
 		{
 			Type = ResourceSprites
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 			ResourceStorage = BatteryStorage
 			Layer = "doodads_low"
 			ResourceLevels
@@ -713,11 +679,19 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				{
 					File = "batteries1.png"
 					Size = [1, 1]
-					OffSet = [-0.5, 0]
+					OffSet = [0.75, -0.25]
 				}
 				{
 					File = "batteries2.png"
-					Size = [2, 1]
+					Size = [0.75, -0.25]
+				}
+				{
+					File = "batteries3.png"
+					Size = [0.75, -0.25]
+				}
+				{
+					File = "batteries4.png"
+					Size = [0.75, -0.25]
 				}
 			]
 		}
@@ -725,7 +699,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		OperationEffects
 		{
 			Type = ToggleEffects
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
@@ -735,13 +709,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 		}
 
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [1.5, 1]
+			Location = [1.5, 1.5]
 			Indicators
 			[
 				// Turned off.
@@ -757,7 +731,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 
 				// No coils.
 				{
-					Toggle = CoilPrereq
+					Toggle = Coil2Prereq
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoResource
@@ -765,9 +739,9 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					}
 				}
 
-				// No steel.
+				// No Circuits
 				{
-					Toggle = SteelPrereq
+					Toggle = ElectronicCircuitStorage
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoResource
@@ -792,7 +766,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = BlueprintSprite
 			//File = "blueprints.png"
 			File = "icon.png"
-			Size = [3, 2]
+			Size = [3, 3]
 		}
 	}
 
@@ -801,7 +775,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		/*Interval = (&~/Part/Components/GoldLoader/Interval/BaseValue) * (&~/Part/Components/ResourceConverter/From/1/Quantity)
 		ProcessorProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
 		ProcessorCapacity = (&~/Part/Components/ProcessorStorage/GridRect/2) * (&~/Part/Components/ProcessorStorage/GridRect/3) * (&<./Data/resources/processor/processor.rules>/MaxStackSize)
-		CoilCapacity = (&~/Part/Components/CoilStorage/GridRect/2) * (&~/Part/Components/CoilStorage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
+		CoilCapacity = (&~/Part/Components/Coil2Storage/GridRect/2) * (&~/Part/Components/Coil2Storage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
 		CoilPerProcessor = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
 		CoilPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&Interval)
 		ProcessorCoilUsage = [&../CoilPerProcessor, &../CoilPerSecond]

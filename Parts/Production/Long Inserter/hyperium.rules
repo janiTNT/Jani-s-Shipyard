@@ -10,8 +10,8 @@ Components
 		Type = ValueTween
 		OffValue = 0
 		OnValue = 1
-		OnTweenDuration = 1 / 2
-		OffTweenDuration = 1 / 2
+		OnTweenDuration = 1.5
+		OffTweenDuration = 1.5
 		IsOnToggle = HandStorage
 	}
 	

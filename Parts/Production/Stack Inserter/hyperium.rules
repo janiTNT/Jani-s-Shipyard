@@ -10,8 +10,8 @@ Components
 		Type = ValueTween
 		OffValue = 0
 		OnValue = 1
-		OnTweenDuration = 2 / 2
-		OffTweenDuration = 2 / 2
+		OnTweenDuration = 2
+		OffTweenDuration = 2
 		IsOnToggle = ToAvailible
 	}
 	
@@ -64,7 +64,7 @@ Components
 		Type = ResourceChange
 		Trigger = ConsumePowerTrigger
 		ResourceStorage = BatteryStorage
-		Amount = -1750
+		Amount = -2500
 	}
 	
 	HandStorage

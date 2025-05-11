@@ -124,7 +124,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 					// Loop back to beginning and clamp there.
 				]
 				Size = [1, 3]
-				AnimationInterval = 0.0515 * 2
+				AnimationInterval = 0.0515 * 8
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
@@ -146,7 +146,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 					// Loop back to beginning and clamp there.
 				]
 				Size = [1, 3]
-				AnimationInterval = 0.0515 * 2
+				AnimationInterval = 0.0515 * 8
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}

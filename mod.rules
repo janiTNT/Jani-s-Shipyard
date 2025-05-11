@@ -136,6 +136,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
 			&<Parts/Production/Circuit_factory/circuit_factory.rules>/Part
+			&<Parts/Production/Advanced_circuit/Advancedfactory.rules>/Part
 			
 			&<Parts/Production/Zetasphere_factory/Zetasphere_factory.rules>/Part
 			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part

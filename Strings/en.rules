@@ -106,6 +106,14 @@ Parts
 	FactorySplitterUraniumIcon = "Uranium Un-enrich."
 	FactorySplitterUraniumDesc = "A variation of the Cutter, This machine splits enriched uranium back into 4 pieces of un-enriched uranium. Output is manual to prevent crashes"
 	
+	FactoryElectronicCircuit = "Electronic Circuit Assembler"
+	FactoryElectronicCircuitIcon = "Circuits"
+	FactoryElectronicCircuitDesc = "Fabricates cheap circuits"
+	
+	FactoryAdvancedCircuit = "Advanced Circuit Assembler"
+	FactoryAdvancedCircuitIcon = "Adv. Circuits"
+	FactoryAdvancedCircuitDesc = "Fabricates advanced cheap circuits"
+	
 	TriSteelDoor = "TriSteel Door"
 	TriSteelDoorIcon = "Tr. Door"
 	TriSteelDoorDesc = "Fancy Door,using only tristeel bars, because why not???"
