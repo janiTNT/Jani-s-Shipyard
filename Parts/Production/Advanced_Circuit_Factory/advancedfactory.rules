@@ -7,8 +7,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FactoryAdvancedCircuitDesc"
 	Resources
 	[
-		[steel, 80]
-		[coil2, 100]
+		[steel, 84]
+		[coil2, 18]
 		[processor, 2]
 	]
 	Size = [3, 3]
@@ -85,10 +85,10 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		ElectronicCircuitStorage
 		{
 			Type = TypedResourceGrid
-			ResourceType = janitnt.circuit2
+			ResourceType = janitnt.circuit1
 			GridRect = [2, 1, 1, 2]
 			Layer = "doodads_low"
-			SpriteInset = [2/64, 6/64, 15/64, 9/64]
+			SpriteInset = [2/64, 14/64, 8/64, 6/64]
 			ToggleOnResources = 2
 			ToggleOffResources = 0
 			RandomSpriteRotation = true
@@ -98,7 +98,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		ElectronicCircuitConsumer
 		{
 			Type = TypedResourceGridConsumer
-			ResourceType = janitnt.circuit2
+			ResourceType = janitnt.circuit1
 			Storage = ElectronicCircuitStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			OperationalToggle = PowerToggle
@@ -111,7 +111,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = janitnt.circuit2
 			GridRect = [1, 2, 1, 1]
 			Layer = "doodads_low"
-			SpriteInset = [8/64, 12/64, 8/64, 4/64]
+			SpriteInset = [8/64, 6/64, 8/64, 9/64]
 			SuppliesResources = true
 			SupplyToggleButtonOffset = [0, -.4]
 			RandomSpriteRotation = true
@@ -139,7 +139,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Coil2Prereq
 		{
 			Type = MultiToggle
-			Toggles = [Coil2Storage, CoilSplitter]
+			Toggles = [Coil2Storage, Coil2Splitter]
 			Mode = Any
 		}
 		AnimationToggle
@@ -155,7 +155,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			FromStorage = Coil2Storage
 			FromQuantity = 1
-			ToStorage = LoadedCoil
+			ToStorage = LoadedCoil2
 			ToQuantity = 1
 			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
 		}
@@ -190,7 +190,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			    }
 			    {
 			        Storage = ElectronicCircuitStorage
-			        Quantity = 1
+			        Quantity = 2
 			    }
 			    {
 			        Storage = BatteryStorage
@@ -200,7 +200,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			]
 			ToStorage = AdvancedCircuitStorage
 			ToQuantity = 1
-			Interval = 8
+			Interval = 4
 			CheckResourceLimits = true
 		}
 
@@ -417,6 +417,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					{
 						AnimationFiles
 						[
+							"circuitbelt1.png"
 							"circuitbelt2.png"
 							"circuitbelt3.png"
 							"circuitbelt4.png"
@@ -441,7 +442,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "circuitbelt2.png"
-						Size = [1, 2]
+						Size = [2, 2]
 					}
 				]
 			}
@@ -494,6 +495,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.166666667 / 2
+						AnimationStartTime = MinValue
+						ClampAnimation = true
 					}
 				]
 			}
@@ -673,7 +676,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceSprites
 			Location = [1.5, 1.5]
 			ResourceStorage = BatteryStorage
-			Layer = "doodads_low"
+			Layer = "doodads_high"
 			ResourceLevels
 			[
 				{
@@ -683,15 +686,18 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					File = "batteries2.png"
-					Size = [0.75, -0.25]
+					Size = [1, 1]
+					OffSet = [0.75, -0.25]
 				}
 				{
 					File = "batteries3.png"
-					Size = [0.75, -0.25]
+					Size = [1, 1]
+					OffSet = [0.75, -0.25]
 				}
 				{
 					File = "batteries4.png"
-					Size = [0.75, -0.25]
+					Size = [1, 1]
+					OffSet = [0.75, -0.25]
 				}
 			]
 		}
@@ -764,32 +770,31 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			//File = "blueprints.png"
-			File = "icon.png"
+			File = "blueprints.png"
 			Size = [3, 3]
 		}
 	}
 
 	Stats
 	{
-		/*Interval = (&~/Part/Components/GoldLoader/Interval/BaseValue) * (&~/Part/Components/ResourceConverter/From/1/Quantity)
-		ProcessorProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
-		ProcessorCapacity = (&~/Part/Components/ProcessorStorage/GridRect/2) * (&~/Part/Components/ProcessorStorage/GridRect/3) * (&<./Data/resources/processor/processor.rules>/MaxStackSize)
-		CoilCapacity = (&~/Part/Components/Coil2Storage/GridRect/2) * (&~/Part/Components/Coil2Storage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
-		CoilPerProcessor = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
-		CoilPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&Interval)
-		ProcessorCoilUsage = [&../CoilPerProcessor, &../CoilPerSecond]
-		GoldCapacity = (&~/Part/Components/GoldStorage/GridRect/2) * (&~/Part/Components/GoldStorage/GridRect/3) * (&<./Data/resources/gold/gold.rules>/MaxStackSize)
-		GoldPerProcessor = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
-		GoldPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&Interval)
-		ProcessorGoldUsage = [&../GoldPerProcessor, &../GoldPerSecond]
-		PowerPerGold = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		Interval = (&~/Part/Components/ResourceConverter/Interval)
+		AdvancedCircuitProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
+		AdvancedCircuitCapacity = (&~/Part/Components/AdvancedCircuitStorage/GridRect/2) * (&~/Part/Components/AdvancedCircuitStorage/GridRect/3) * (&<../../../resources/Circuits/advanced_circuit.rules>/MaxStackSize)
+		Coil2Capacity = (&~/Part/Components/Coil2Storage/GridRect/2) * (&~/Part/Components/Coil2Storage/GridRect/3) * (&<./Data/resources/coil2/coil2.rules>/MaxStackSize)
+		Coil2PerCircuit = ((&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/Coil2Splitter/ToQuantity)) / (&~/Part/Components/ResourceConverter/ToQuantity) 
+		Coil2PerSecond = ((&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/Coil2Splitter/ToQuantity)) / (&Interval) 
+		AdvancedCircuitCoil2Usage = [&../Coil2PerCircuit, &../Coil2PerSecond]
+		ElectronicCircuitCapacity = (&~/Part/Components/ElectronicCircuitStorage/GridRect/2) * (&~/Part/Components/ElectronicCircuitStorage/GridRect/3) * (&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize)
+		ElectronicCircuitPerAdvancedCircuit = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) 
+		ElectronicCircuitPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&Interval) 
+		AdvancedCircuitElectronicCircuitUsage = [&../ElectronicCircuitPerAdvancedCircuit, &../ElectronicCircuitPerSecond]
+		PowerPerCircuit = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
 		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&Interval) / 1000
-		ProcessorPowerUsage = [&../PowerPerGold, &../PowerPerSecond]
+		AdvancedCircuitPowerUsage = [&../PowerPerCircuit, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
 
 		RecPower = &PowerPerSecond
-		RecCrew = (&RecPower) * 4*/
+		RecCrew = (&RecPower) * 4
 	}
 }

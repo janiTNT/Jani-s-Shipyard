@@ -90,7 +90,7 @@ Techs
 			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/ID
 		]
 		Cost = 8000
-		Prerequisites = [cosmoteer.missile_launcher, cosmoteer.factory_steel, cosmoteer.laser_blaster_small, janiTNT.material_reprocessing]
+		Prerequisites = [cosmoteer.missile_launcher, cosmoteer.factory_steel, cosmoteer.laser_blaster_small, janiTNT.ElectronicCircuitFactory]
 	}
 	{
 		ID = janiTNT.material_reprocessing
@@ -134,6 +134,32 @@ Techs
 		]
 		Cost = 25000
 		Prerequisites = [janiTNT.material_reprocessing, cosmoteer.factory_diamond, cosmoteer.factory_processor]
+	}
+	{
+		ID = janiTNT.ElectronicCircuitFactory
+		NameKey = &<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/DescriptionKey
+		Icon = &<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/EditorIcon
+		EditorGroups = ["Production"]
+		PartsUnlocked
+		[
+			&<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/ID
+		]
+		Cost = 5000
+		Prerequisites = [janiTNT.material_reprocessing]
+	}
+	{
+		ID = janiTNT.AdvancedCircuitFactory
+		NameKey = &<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/DescriptionKey
+		Icon = &<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/EditorIcon
+		EditorGroups = ["Production"]
+		PartsUnlocked
+		[
+			&<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/ID
+		]
+		Cost = 15000
+		Prerequisites = [janiTNT.ElectronicCircuitFactory, cosmoteer.factory_coil2]
 	}
 	{
 		ID = janiTNT.drone_launcher_small

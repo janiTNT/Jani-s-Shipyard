@@ -5,12 +5,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	ID = janiTNT.AmmoInserter_Stack // Part IDs  somthing something
 	EditorGroups = ["Production"]
 	DescriptionKey = "Parts/InserterAmmoStackDesc"
-	Resources
-	[
-		[steel, 36]
-		[coil, 6]
-		[goldium, 6]
-	]
+	Resources = &<stack_inserter_base.rules>/Resources
 	//sus
 	Size = [1, 1]
 	MaxHealth = 1000

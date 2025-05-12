@@ -1,0 +1,89 @@
+PartStats
+[
+	{
+		ID = InserterPowerUsage
+		FormatKey = "Stats/InserterPowerUsageFmt"
+	}
+	{
+		ID = HeatUsageContinuous
+		FormatKey = "Stats/HeatUsageContFmt"
+	}
+	{
+		ID = EngineRoomBuffEffectiveness
+		FormatKey = "Stats/EngineRoomBuffEffectivenessFmt"
+	}
+	{
+		ID = JaniBurstShots
+		FormatKey = "Stats/JaniBurstShotsFmt"
+	}
+	{
+		ID = DrainTime
+		FormatKey = "Stats/DrainTimeFmt"
+	}
+	{
+		ID = JSThrusterHyperiumUsage
+		FormatKey = "Stats/JSThrusterHyperiumUsageFmt"
+	}
+	{
+		ID = JSBoostedHyperiumUsageContinuous
+		FormatKey = "Stats/JSBoostedHyperiumUsageContinuousFmt"
+	}
+	{
+		ID = CursedManaAvailible
+		FormatKey = "Stats/CursedManaAvailibleFmt"
+	}
+	{
+		ID = CursedManaProvided
+		FormatKey = "Stats/CursedManaProvidedFmt"
+	}
+	{
+		ID = HolyManaAvailible
+		FormatKey = "Stats/HolyManaAvailibleFmt"
+	}
+	{
+		ID = HolyManaProvided
+		FormatKey = "Stats/HolyManaProvidedFmt"
+	}
+			
+	{
+		ID = ElectronicCircuitProduction
+		FormatKey = "Stats/ElectronicCircuitProductionFmt"
+	}
+	{
+		ID = ElectronicCircuitCapacity
+		FormatKey = "Stats/ElectronicCircuitCapacityFmt"
+	}
+	{
+		ID = ElectronicCircuitSteelUsage
+		FormatKey = "Stats/ElectronicCircuitSteelUsageFmt"
+	}
+	{
+		ID = ElectronicCircuitCoilUsage
+		FormatKey = "Stats/ElectronicCircuitCoilUsageFmt"
+	}
+	{
+		ID = ElectronicCircuitPowerUsage
+		FormatKey = "Stats/ElectronicCircuitPowerUsageFmt"
+	}
+	
+	{
+		ID = AdvancedCircuitProduction
+		FormatKey = "Stats/AdvancedCircuitProductionFmt"
+	}
+	{
+		ID = AdvancedCircuitCapacity
+		FormatKey = "Stats/AdvancedCircuitCapacityFmt"
+	}
+	{
+		ID = AdvancedCircuitElectronicCircuitUsage
+		FormatKey = "Stats/AdvancedCircuitElectronicCircuitUsageFmt"
+	}
+	{
+		ID = AdvancedCircuitCoil2Usage
+		FormatKey = "Stats/AdvancedCircuitCoil2UsageFmt"
+	}
+	{
+		ID = AdvancedCircuitPowerUsage
+		FormatKey = "Stats/AdvancedCircuitPowerUsageFmt"
+	}
+]

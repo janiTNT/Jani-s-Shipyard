@@ -6,12 +6,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	OtherIDs = [juanTNT.DroneAutoChute]//Heh.
 	EditorGroups = ["Production"]
 	DescriptionKey = "Parts/InserterAmmoDesc"
-	Resources
-	[
-		[steel, 12]
-		[coil, 8]
-		[cut.tristeel, 8]
-	]
+	Resources = &<inserter_base.rules>/Resources
 	//sus
 	Size = [1, 1]
 	MaxHealth = 1000
