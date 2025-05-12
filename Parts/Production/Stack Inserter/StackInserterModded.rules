@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/InserterModdedStackIcon"
 	ID = janiTNT.ModdedInserter_Stack // Part IDs  somthing something
 	EditorGroups = ["Production"]
-	DescriptionKey = "Parts/InserterModdedStackDesc"
+	DescriptionKey = "Parts/InserterStackDesc"
 	Resources = &<stack_inserter_base.rules>/Resources
 	//sus
 	Size = [1, 1]

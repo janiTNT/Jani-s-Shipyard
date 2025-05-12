@@ -1,5 +1,5 @@
 ID = "janiTNT.combatdronebase"
-Range = 650
+Range = 550
 IdealRange = 550
 Recoil = -2
 

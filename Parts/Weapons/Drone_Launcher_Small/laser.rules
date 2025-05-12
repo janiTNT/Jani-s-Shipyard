@@ -19,6 +19,7 @@ Components
 		[
 			{Toggle = IsOperational}
 			{Toggle = SteelReq}
+			{Toggle = CircuitReq}
 			{Toggle = LaserStorage, invert = true}
 		]
 		Mode = All
@@ -30,6 +31,14 @@ Components
 		ResourceStorages = [SteelStorage]
 		ToggleOnResources = 6
 		ToggleOffResources = 5
+	}
+	CircuitReq
+	{
+		Type = MultiResourceStorage
+		ResourceType = janitnt.circuit1
+		ResourceStorages = [ElectronicCircuitStorage]
+		ToggleOnResources = 8
+		ToggleOffResources = 7
 	}
 
 	BuildConverter
@@ -73,6 +82,10 @@ Components
 			{
 				Storage = SteelStorage
 				Quantity = 6
+			}
+			{
+				Storage = ElectronicCircuitStorage
+				Quantity = 8
 			}
 		]
 		ToStorage = LaserStorage

@@ -5,6 +5,18 @@ PartStats
 		FormatKey = "Stats/InserterPowerUsageFmt"
 	}
 	{
+		ID = InserterHandSize
+		FormatKey = "Stats/InserterHandSizeFmt"
+	}
+	{
+		ID = InserterHandSizeStacks
+		FormatKey = "Stats/InserterHandSizeStacksFmt"
+	}
+	{
+		ID = InserterSwingSpeed
+		FormatKey = "Stats/InserterSwingSpeedFmt"
+	}
+	{
 		ID = HeatUsageContinuous
 		FormatKey = "Stats/HeatUsageContFmt"
 	}

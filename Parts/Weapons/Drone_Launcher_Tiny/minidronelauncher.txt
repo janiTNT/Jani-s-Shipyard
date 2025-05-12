@@ -161,6 +161,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						{Toggle = IsOperational}
 						{Toggle = SteelReq}
+						{Toggle = CircuitReq}
 						{Toggle = Mk1Storage, invert = true}
 					]
 					Mode = All
@@ -170,6 +171,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = MultiResourceStorage
 					ResourceType = steel
 					ResourceStorages = [SteelStorage]
+					ToggleOnResources = 2
+					ToggleOffResources = 1
+				}
+				CircuitReq
+				{
+					Type = MultiResourceStorage
+					ResourceType = janitnt.circuit1
+					ResourceStorages = [ElectronicCircuitStorage]
 					ToggleOnResources = 2
 					ToggleOffResources = 1
 				}
@@ -214,6 +223,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 						{
 							Storage = SteelStorage
+							Quantity = 2
+						}
+						{
+							Storage = ElectronicCircuitStorage
 							Quantity = 2
 						}
 					]
@@ -493,6 +506,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						{Toggle = IsOperational}
 						{Toggle = SteelReq}
+						{Toggle = CircuitReq}
 						{Toggle = Mk2Storage, invert = true}
 					]
 					Mode = All
@@ -504,6 +518,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ResourceStorages = [SteelStorage]
 					ToggleOnResources = 4
 					ToggleOffResources = 3
+				}
+				CircuitReq
+				{
+					Type = MultiResourceStorage
+					ResourceType = janitnt.circuit1
+					ResourceStorages = [ElectronicCircuitStorage]
+					ToggleOnResources = 6
+					ToggleOffResources = 5
 				}
 		
 				BuildConverter
@@ -547,6 +569,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						{
 							Storage = SteelStorage
 							Quantity = 4
+						}
+						{
+							Storage = ElectronicCircuitStorage
+							Quantity = 6
 						}
 					]
 					ToStorage = Mk2Storage
@@ -1268,6 +1294,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						{Toggle = IsOperational}
 						{Toggle = SteelReq}
+						{Toggle = CircuitReq}
 						{Toggle = SparkerStorage, invert = true}
 					]
 					Mode = All
@@ -1277,6 +1304,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = MultiResourceStorage
 					ResourceType = steel
 					ResourceStorages = [SteelStorage]
+					ToggleOnResources = 1
+					ToggleOffResources = 0
+				}
+				CircuitReq
+				{
+					Type = MultiResourceStorage
+					ResourceType = janitnt.circuit1
+					ResourceStorages = [ElectronicCircuitStorage]
 					ToggleOnResources = 1
 					ToggleOffResources = 0
 				}
@@ -1321,6 +1356,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 						{
 							Storage = SteelStorage
+							Quantity = 1
+						}
+						{
+							Storage = ElectronicCircuitStorage
 							Quantity = 1
 						}
 					]
@@ -1635,6 +1674,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]
 		}
+		ElectronicCircuitStorage
+		{
+			Type = ResourceStorage
+			ResourceType = janitnt.circuit1
+			//MaxResources = 10
+			MaxResources = ceil((&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize) * 0.5)
+			DropResourcesWhenDestroyed = true
+			UITileRect = [0 + 16/64, -0.25 + 16/64, 1 - 32/64, 1 - 32/64]
+			ReceiveResourceMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
+		}
+		ElectronicCircuitConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = janitnt.circuit1
+			Storage = ElectronicCircuitStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
 		
 		SteelSprites
 		{
@@ -1660,6 +1718,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					File = "steelcount4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		CircuitSprites
+		{
+			Type = ResourceSprites
+			Location = [.5, 1.5]
+			ResourceStorage = ElectronicCircuitStorage
+			Layer = "doodads_low"
+			RangeLow = 0
+			RangeHigh = 8
+			ResourceLevels
+			[
+				{
+					File = "circuitcount1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "circuitcount2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "circuitcount3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "circuitcount4.png"
 					Size = [1, 1]
 				}
 			]
@@ -1754,7 +1840,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CrewLocation1
 		{
 			Type = CrewLocation
-			Location = [.5, 1.5]
+			Location = [.5, 1.4]
 			Rotation = 180d
 		}
 		
@@ -1767,7 +1853,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			PrerequisitesBeforeCrewing = [PowerToggle]
 			CrewDestinations
 			[
-				[.5, 1.5]
+				[.5, 1.4]
 			]
 			CrewLocations
 			[

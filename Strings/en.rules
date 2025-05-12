@@ -252,51 +252,42 @@ Parts
 	
 	InserterAmmo = "Ammo Resource Inserter"
 	InserterAmmoIcon = "Inserter [AMMO]"
-	InserterAmmoDesc = "[Ammo Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>\n<bad>Doesn't transfer to other mod's missile launchers.</bad>"
+	InserterDesc = "Inserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. Can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>\n<bad>Inserters may not be compatible with modded missile launchers and etc.</bad>"
 
 	InserterConstruction = "Building Material Resource Inserter"
 	InserterConstructionIcon = "Inserter [BUILD]"
-	InserterConstructionDesc = "[Building Material Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"
 	
 	InserterModded = "Modded Material Resource Inserter"
 	InserterModdedIcon = "Inserter [MOD]"
-	InserterModdedDesc = "[Jani Shipyard Modded Material Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"
 	
 	InserterOre = "Raw Ore Resource Inserter"
 	InserterOreIcon = "Inserter [ORES]"
-	InserterOreDesc = "[Ore Nugget Variant]\nInserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. transfers at a rate of 1.25/s, and can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>"
 	
 	InserterAmmoLong = "Long Handed Ammo Resource Inserter"
 	InserterAmmoLongIcon = "Long Inserter [AMMO]"
-	InserterAmmoLongDesc = "[Ammo Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"
+	InserterLongDesc = "Long Handed Inserters allow transfer even if there's a 1 block gap in between, having a extra tile of reach."
 	
 	InserterConstructionLong = "Long Handed Building Material Resource Inserter"
 	InserterConstructionLongIcon = "Long Inserter [BUILD]"
-	InserterConstructionLongDesc = "[Building Material Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"
 	
 	InserterModdedLong = "Long Handed Modded Material Resource Inserter"
 	InserterModdedLongIcon = "Long Inserter [MOD]"
-	InserterModdedLongDesc = "[Jani Shipyard Modded Material Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"
 	
 	InserterOreLong = "Long Handed Ore Resource Inserter"
 	InserterOreLongIcon = "Long Inserter [ORES]"
-	InserterOreLongDesc = "[Ores Variant]\nLong Handed Inserters allow transfer through a part in between, having a extra tile of reach.<bad>Slightly Slower than a inserter.(1s cooldown)</bad>"
 	
 	InserterAmmoStack = "Bulk Ammo Resource Inserter"
 	InserterAmmoStackIcon = "Bulk Inserter [AMMO]"
-	InserterAmmoStackDesc = "[Ammo Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>\n<bad>Still doesn't transfer to other mod's missile launchers.</bad>"
+	InserterStackDesc = "Bulk Inserters allow transfers of the same capacity of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but will swing back if the output is full, instead of waiting."
 	
 	InserterConstructionStack = "Bulk Building Material Resource Inserter"
 	InserterConstructionStackIcon = "Bulk Inserter [BUILD]"
-	InserterConstructionStackDesc = "[Building Material Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"
 	
 	InserterModdedStack = "Bulk Modded Material Resource Inserter"
 	InserterModdedStackIcon = "Bulk Inserter [MOD]"
-	InserterModdedStackDesc = "[Jani Shipyard Modded Material Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"
 	
 	InserterOreStack = "Bulk Ore Resource Inserter"
 	InserterOreStackIcon = "Bulk Inserter [ORES]"
-	InserterOreStackDesc = "[Ore Variant]\nBulk Inserters allow transfers of entire stacks, but ONLY entire stacks at a time, useful for intense throughput parts such as the Deck Cannon, but can be unreliable and also making some transfers completly impossible.<bad>Very Slower than a inserter.(2s cooldown)</bad>"
 	
 	AutoAStorage2x2 = "Ammo Only Inserter Compatible Storage 2x2"
 	AutoAStorage2x2Icon = "Ammo (4)"
@@ -1288,16 +1279,17 @@ PartToggles
 	"<b>Laser Cannon Drone Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>6</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>8</good> Electronic Circuit <gray>(</gray><good>1.3</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>30k</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
 	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
 	"<b>Laser Cannon Drone:</b>\n"\
 	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
-	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>4000</good><gray>/sec)</gray>\n"\
+	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>2000</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 30</good>\n"\
 	"<white>Durability:</white><good> 2500</good>\n"\
-	"<white>Drone ROF:</white><good> 4</good><gray>/sec</gray>"
+	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
 	
 	DroneMedCannon = "<b>Standard Cannon Drone</b>\n\n"\
 	"A Standard cannon with a slightly smaller caliber, but stacks way much firepower due to ignoring safety limits.\n\n"\
@@ -1350,16 +1342,17 @@ PartToggles
 	"<b>Combat MK1 Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>2</good> Steel <gray>(</gray><good>0.3</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>2</good> Electronic Circuit <gray>(</gray><good>0.3</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>0.8</good> Power <gray>(</gray><good>0.13</good><gray>/sec)</gray>\n"\
-	"<white>Range:</white> <good>650</good> <gray>metres</gray>\n"\
+	"<white>Range:</white> <good>550</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>5500</good><gray>/shot (</gray><good>916</good><gray>/sec)</gray>\n"\
 	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
 	"<b>Combat MK1 Drone:</b>\n"\
 	"<white>Drone Range:</white> <good>90</good> <gray>metres</gray>\n"\
-	"<white>Drone Damage:</white> <good>550</good><gray>/shot (</gray><good>825</good><gray>/sec)</gray>\n"\
+	"<white>Drone Damage:</white> <good>550</good><gray>/shot (</gray><good>550</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 10</good>\n"\
 	"<white>Durability:</white><good> 800</good>\n"\
-	"<white>Drone ROF:</white><good> 1.5</good><gray>/sec</gray>"
+	"<white>Drone ROF:</white><good> 1</good><gray>/sec</gray>"
 	
 	//DroneCombat2 = "Combat Drone Mk2\n\n<b>Requirements:</b>\n4 Steel\n1.6 Power\nBuild Time: 8s\n\n<b>Stats:</b>\n\nshots:25\nDrone ROF: 2 per second.\nDamage: 1200 Max"
 	
@@ -1368,16 +1361,17 @@ PartToggles
 	"<b>Combat MK2 Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>8</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>4</good> Steel <gray>(</gray><good>0.5</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>6</good> Electronic Circuit <gray>(</gray><good>0.75</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>1.6</good> Power <gray>(</gray><good>0.2</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>16.8k</good><gray>/shot (</gray><good>2100</good><gray>/sec)</gray>\n"\
 	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
 	"<b>Combat MK2 Drone:</b>\n"\
 	"<white>Drone Range:</white> <good>100</good> <gray>metres</gray>\n"\
-	"<white>Drone Damage:</white> <good>672</good><gray>/shot (</gray><good>1344</good><gray>/sec)</gray>\n"\
+	"<white>Drone Damage:</white> <good>672</good><gray>/shot (</gray><good>895</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 25</good>\n"\
 	"<white>Durability:</white><good> 1000</good>\n"\
-	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
+	"<white>Drone ROF:</white><good> 1.33</good><gray>/sec</gray>"
 	
 	//StellDrone = "Stell Micro Tank\n\n<b>Requirements:</b>\n4 Steel\n6 Bullets\n2 Power\nBuild Time: 10s\n\n<b>Stats:</b>\n\nshots:32\nDrone ROF: 1.5 per second.\nDamage: Max 2500\n\nExtremely slow, 'driving' on the backgroud"
 	
@@ -1406,7 +1400,8 @@ PartToggles
 	"<b>Sparker PulseCannon Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>2.5</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>1</good> Steel <gray>(</gray><good>0.4</good><gray>/sec)</gray>\n"\
-	"<img name='resource.battery'/> <good>0.5</good> Power <gray>(</gray><good>0.2</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>1</good> Electronic Circuit <gray>(</gray><good>0.4</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>2</good> Power <gray>(</gray><good>0.8</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>1120</good><gray>/shot (</gray><good>448</good><gray>/sec)</gray>\n"\
 	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
@@ -1475,6 +1470,11 @@ Stats
 	DroneLauncherNotes = "<bad>Warning:</bad> <gray><b>For Requirements, Statistics, and Misc info, hover above each Toggle when selecting a type of drone to show the description of each drone.</b></gray>"
 	
 	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	
+	InserterHandSizeFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Hand</good><gray>)</gray>"
+	InserterHandSizeStacksFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Stack</good><gray>)</gray>"
+	InserterSwingSpeedFmt = "<white>Swing Speed:</white> <good>{0:0.##}</good><gray> secs (</gray><good>{1:0.###}</good> <gray>transfers/sec)</gray>"
+	
 	HeatUsageContFmt = "<white>Heat Consumption:</white> <good>{0:0.###}</good><gray>/sec</gray>"
 	
 	EngineRoomBuffEffectivenessFmt = "<white>Engine Room Effectiveness:</white> <good>{0:0}</good><gray>%</gray>"

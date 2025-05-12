@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/InserterAmmoStackIcon"
 	ID = janiTNT.AmmoInserter_Stack // Part IDs  somthing something
 	EditorGroups = ["Production"]
-	DescriptionKey = "Parts/InserterAmmoStackDesc"
+	DescriptionKey = "Parts/InserterStackDesc"
 	Resources = &<stack_inserter_base.rules>/Resources
 	//sus
 	Size = [1, 1]
@@ -138,6 +138,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PowerPerTransfer = - (&<hyperium.rules>/Components/PowerDrainOnTransfer/Amount) / 1000
 		PowerPerSecond = - (&<hyperium.rules>/Components/PowerDrainOnTransfer/Amount) / ((&<hyperium.rules>/Components/MovingTween/OnTweenDuration)*2) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		
+		InserterHandSizeStacks = 1
+		InserterSwingSpeed = [(&<hyperium.rules>/Components/MovingTween/OnTweenDuration) * 2, 1/((&<hyperium.rules>/Components/MovingTween/OnTweenDuration) * 2)]
 
 		RecPower = &PowerPerSecond
 		RecCrew = (&RecPower) * 4

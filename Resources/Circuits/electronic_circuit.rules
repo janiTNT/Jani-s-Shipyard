@@ -36,14 +36,14 @@ NuggetSprites
 		File = "electronic_circuit1.png"
 		NormalsFile = "electronic_circuit_n1.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25-2/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit2.png"
 		NormalsFile = "electronic_circuit_n2.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+0/64, 0]
 		UVRotation = 1
 	}
 	{
@@ -57,49 +57,49 @@ NuggetSprites
 		File = "electronic_circuit4.png"
 		NormalsFile = "electronic_circuit_n4.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+6/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit5.png"
 		NormalsFile = "electronic_circuit_n5.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+7/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit6.png"
 		NormalsFile = "electronic_circuit_n6.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+7/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit7.png"
 		NormalsFile = "electronic_circuit_n7.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+7/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit8.png"
 		NormalsFile = "electronic_circuit_n8.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+7/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit9.png"
 		NormalsFile = "electronic_circuit_n9.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+7/64, 0]
 		UVRotation = 1
 	}
 	{
 		File = "electronic_circuit10.png"
 		NormalsFile = "electronic_circuit_n10.png"
 		Size = [1, 1]
-		Offset = [.25+5/64, 0]
+		Offset = [.25+7/64, 0]
 		UVRotation = 1
 	}
 ]
@@ -268,6 +268,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackReceiveMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
 StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup
