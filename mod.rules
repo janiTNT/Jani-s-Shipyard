@@ -23,7 +23,6 @@ Description = "Adds a lot of content i have made (porting most of content missin
 "Kroom : permission to port their 1x1 Cockpit from their classic mod, Kroom's forge.\n"\
 "Aephiex : Slight Compatibility with their advanced storages + AI core mod's code (just used the name for compatibility)\n"\
 "syy1125 : Code from leviathan boss \"Stellarborn\" in order to use in this mod's Bossfights. Spritework and whatnot for batteries in order to ensure compatibility.\n"\
-"\n\nBlock shading's sprites were taken from the game Mindustry by Anuke"\
 "\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource."
 StringsFolder = "Strings"
 
@@ -136,7 +135,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
 			&<Parts/Production/Circuit_factory/circuit_factory.rules>/Part
-			&<Parts/Production/Advanced_circuit/Advancedfactory.rules>/Part
+			&<Parts/Production/Advanced_circuit_factory/Advancedfactory.rules>/Part
 			
 			&<Parts/Production/Zetasphere_factory/Zetasphere_factory.rules>/Part
 			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
@@ -715,53 +714,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		Action = AddMany
 		AddTo = "<gui/game/parts/part_stats.rules>/PartStats"
 		//OnlyIfNotExisting = true
-		ManyToAdd
-		[
-			{
-				ID = InserterPowerUsage
-				FormatKey = "Stats/InserterPowerUsageFmt"
-			}
-			{
-				ID = HeatUsageContinuous
-				FormatKey = "Stats/HeatUsageContFmt"
-			}
-			{
-				ID = EngineRoomBuffEffectiveness
-				FormatKey = "Stats/EngineRoomBuffEffectivenessFmt"
-			}
-			{
-				ID = JaniBurstShots
-				FormatKey = "Stats/JaniBurstShotsFmt"
-			}
-			{
-				ID = DrainTime
-				FormatKey = "Stats/DrainTimeFmt"
-			}
-			{
-				ID = JSThrusterHyperiumUsage
-				FormatKey = "Stats/JSThrusterHyperiumUsageFmt"
-			}
-			{
-				ID = JSBoostedHyperiumUsageContinuous
-				FormatKey = "Stats/JSBoostedHyperiumUsageContinuousFmt"
-			}
-			{
-				ID = CursedManaAvailible
-				FormatKey = "Stats/CursedManaAvailibleFmt"
-			}
-			{
-				ID = CursedManaProvided
-				FormatKey = "Stats/CursedManaProvidedFmt"
-			}
-			{
-				ID = HolyManaAvailible
-				FormatKey = "Stats/HolyManaAvailibleFmt"
-			}
-			{
-				ID = HolyManaProvided
-				FormatKey = "Stats/HolyManaProvidedFmt"
-			}
-		]
+		ManyToAdd = &<Gui/part_stats.rules>/PartStats
 	}
 	{
 		Action = AddMany

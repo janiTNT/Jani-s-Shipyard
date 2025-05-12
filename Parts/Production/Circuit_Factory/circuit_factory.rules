@@ -7,9 +7,9 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FactoryElectronicCircuitDesc"
 	Resources
 	[
-		[steel, 80]
-		[coil2, 100]
-		[processor, 2]
+		[steel, 40]
+		[coil, 15]
+		[processor, 1]
 	]
 	Size = [3, 2]
 	IsFlippable = true
@@ -791,31 +791,31 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			//File = "blueprints.png"
-			File = "icon.png"
+			File = "blueprints.png"
 			Size = [3, 2]
 		}
 	}
 
 	Stats
 	{
-		/*Interval = (&~/Part/Components/GoldLoader/Interval/BaseValue) * (&~/Part/Components/ResourceConverter/From/1/Quantity)
-		ProcessorProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
-		ProcessorCapacity = (&~/Part/Components/ProcessorStorage/GridRect/2) * (&~/Part/Components/ProcessorStorage/GridRect/3) * (&<./Data/resources/processor/processor.rules>/MaxStackSize)
+		Interval = (&~/Part/Components/ResourceConverter/Interval)
+		ElectronicCircuitProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
+		ElectronicCircuitCapacity = (&~/Part/Components/ElectronicCircuitStorage/GridRect/2) * (&~/Part/Components/ElectronicCircuitStorage/GridRect/3) * (&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize)
 		CoilCapacity = (&~/Part/Components/CoilStorage/GridRect/2) * (&~/Part/Components/CoilStorage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
-		CoilPerProcessor = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
-		CoilPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&Interval)
-		ProcessorCoilUsage = [&../CoilPerProcessor, &../CoilPerSecond]
-		GoldCapacity = (&~/Part/Components/GoldStorage/GridRect/2) * (&~/Part/Components/GoldStorage/GridRect/3) * (&<./Data/resources/gold/gold.rules>/MaxStackSize)
-		GoldPerProcessor = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
-		GoldPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity) / (&Interval)
-		ProcessorGoldUsage = [&../GoldPerProcessor, &../GoldPerSecond]
-		PowerPerGold = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		CoilPerCircuit = ((&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/CoilSplitter/ToQuantity)) / (&~/Part/Components/ResourceConverter/ToQuantity) 
+		CoilPerSecond = ((&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/CoilSplitter/ToQuantity)) / (&Interval) 
+		ElectronicCircuitCoilUsage = [&../CoilPerCircuit, &../CoilPerSecond]
+		SteelCapacity = (&~/Part/Components/SteelStorage/GridRect/2) * (&~/Part/Components/SteelStorage/GridRect/3) * (&<./Data/resources/steel/steel.rules>/MaxStackSize)
+		SteelPerCircuit = ((&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/SteelSplitter/ToQuantity)) / (&~/Part/Components/ResourceConverter/ToQuantity) 
+		SteelPerSecond = ((&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/SteelSplitter/ToQuantity)) / (&Interval) 
+		ElectronicCircuitSteelUsage = [&../SteelPerCircuit, &../SteelPerSecond]
+		PowerPerCircuit = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
 		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&Interval) / 1000
-		ProcessorPowerUsage = [&../PowerPerGold, &../PowerPerSecond]
+		ElectronicCircuitPowerUsage = [&../PowerPerCircuit, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
 
 		RecPower = &PowerPerSecond
-		RecCrew = (&RecPower) * 4*/
+		RecCrew = (&RecPower) * 4
 	}
 }

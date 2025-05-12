@@ -1482,6 +1482,20 @@ Stats
 	JSThrusterHyperiumUsageFmt = "<white>Hyperium Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
 	JSBoostedHyperiumUsageContinuousFmt = "<zero>Hyperium Use:</zero> <good>{0:0.##}</good><gray>/sec (continuous)</gray>"
 	
+	ElectronicCircuitProductionFmt = "<white>Electronic Circuit Rate:</white> <good>{0:0.##}</good><gray> circuits/sec</gray>"
+	ElectronicCircuitCapacityFmt = "<white>Electronic Circuit Capacity:</white> <good>{0}</good>"
+	
+	ElectronicCircuitSteelUsageFmt = "<white>Steel Use:</white> <good>{0:0.###}</good><gray>/circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	ElectronicCircuitCoilUsageFmt = "<white>Coil Use:</white> <good>{0:0.###}</good><gray>/circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	ElectronicCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	
+	AdvancedCircuitProductionFmt = "<white>Advanced Circuit Rate:</white> <good>{0:0.##}</good><gray> a-circuits/sec</gray>"
+	AdvancedCircuitCapacityFmt = "<white>Advanced Circuit Capacity:</white> <good>{0}</good>"
+	
+	AdvancedCircuitElectronicCircuitUsageFmt = "<white>Electronic Circuit Use:</white> <good>{0}</good><gray>/a-circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	AdvancedCircuitCoil2UsageFmt = "<white>Hypercoil Use:</white> <good>{0:0.###}</good><gray>/a-circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	AdvancedCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	
 	JaniBurstShotsFmt = "<white>Shots per Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
 	DrainTimeFmt = "<white>Power Drain Duration:</white> <good>{0:0}</good><gray>sec</gray>"
 	CursedManaAvailibleFmt = "<white>Total Cursed Mana Alteration:</white> <good>{0:0}</good>"

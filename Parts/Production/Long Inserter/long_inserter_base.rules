@@ -1,3 +1,10 @@
+Resources
+[
+	[steel, 12]
+	[coil, 8]
+	[janitnt.circuit1, 16]
+]
+
 Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 {
 	IsOperational
