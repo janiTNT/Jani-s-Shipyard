@@ -272,17 +272,41 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ToggleOnResources = (&<./data/resources/steel/steel.rules>/MaxStackSize)
 			ToggleOffResources = (&<./data/resources/steel/steel.rules>/MaxStackSize) - 1
 			DelayBeforeReadyToUse = .5
-			UITileRect = [.5 + 7/64, 1 + 7/64, 1 - 14/64, 1 - 14/64]
+			UITileRect = [.5 + 16/64, 1 + 16/64, 1 - 32/64, 1 - 32/64]
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
 			DropResourcesWhenDestroyed = true
 			DropResourcesWhenRemoved = true
 		}
 		
-		Consumer
+		ElectronicCircuitStorage
+		{
+			Type = ResourceStorage
+			ResourceType = janitnt.circuit1
+			//MaxResources = 10
+			MaxResources = (&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize)
+			ToggleOnResources = (&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize)
+			ToggleOffResources = (&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize) - 1
+			DropResourcesWhenDestroyed = true 
+			DelayBeforeReadyToUse = .5
+			UITileRect = [0.5 + 16/64, -0.25 + 16/64, 1 - 32/64, 1 - 32/64]
+			ReceiveResourceMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
+		}
+		
+		SteelConsumer
 		{
 			Type = ResourceConsumer
 			ResourceType = steel
 			Storage = SteelStorage
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		
+		ElectronicCircuitConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = janitnt.circuit1
+			Storage = ElectronicCircuitStorage
 			DefaultPriority = &/PRIORITIES/Weapon_Supply
 			OperationalToggle = PowerToggle
 			ConsumptionToggleButtonOffset = [0, -.4]

@@ -14,7 +14,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 0
 	Size = [1, 1]
 	Flammable = false
-	MaxHealth = 500
+	MaxHealth = 800
 	CreatePartPerTileWhenGrabbed = ""
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	TypeCategories = [logic]

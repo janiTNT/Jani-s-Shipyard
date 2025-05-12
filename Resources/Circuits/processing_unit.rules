@@ -85,6 +85,6 @@ StackSprites
 	} */
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/MetalDeliver
+StackReceiveMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
 StackPickupMediaEffects = &/COMMON_EFFECTS/ResourcePickup
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

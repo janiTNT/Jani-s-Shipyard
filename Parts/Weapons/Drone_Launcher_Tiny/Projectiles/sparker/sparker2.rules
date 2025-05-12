@@ -1,7 +1,7 @@
 ID = "janiTNT.sparkerbase.2"
 Range = &<sparkerbase.rules>/Range
 IdealRange = &<sparkerbase.rules>/IdealRange
-Speed = -5
+Speed = -1
 
 Components : &<sparkerbase.rules>/Components
 {

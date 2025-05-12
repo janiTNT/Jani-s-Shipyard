@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/InserterAmmoLongIcon"
 	ID = janiTNT.AmmoInserter_long // Part IDs  somthing something
 	EditorGroups = ["Production"]
-	DescriptionKey = "Parts/InserterAmmoLongDesc"
+	DescriptionKey = "Parts/InserterLongDesc"
 	Resources = &<long_inserter_base.rules>/Resources
 	//sus
 	Size = [1, 1]
@@ -138,6 +138,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PowerPerTransfer = - (&<hyperium.rules>/Components/PowerDrainOnTransfer/Amount) / 1000
 		PowerPerSecond = - (&<hyperium.rules>/Components/PowerDrainOnTransfer/Amount) / ((&<hyperium.rules>/Components/MovingTween/OnTweenDuration)*2) / 1000
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		
+		InserterHandSize = 1
+		InserterSwingSpeed = [(&<hyperium.rules>/Components/MovingTween/OnTweenDuration) * 2, 1/((&<hyperium.rules>/Components/MovingTween/OnTweenDuration) * 2)]
 
 		RecPower = &PowerPerSecond
 		RecCrew = (&RecPower) * 4

@@ -240,6 +240,7 @@ Part : <../../../baselogicpart.rules>/Part
 		{
 			Type = PolygonCollider
 			ChainedTo = HeadSlider
+			IncludeWhenUnderConstruction = false
 			Vertices
 			[
 				[0, 0]
