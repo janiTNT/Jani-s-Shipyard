@@ -1572,7 +1572,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 
 		ManyToAdd
 		[
-			&<Statuses/Cursed/Cursed.rules>
+			&<Statuses/Brimstone/Brimstone.rules>
 		]
 	}
 	

@@ -67,7 +67,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = AreaDamage
-					Damage = 3000
+					Damage = 50
 					Radius = 2
 					Delay = 0
 					CrewKillChance = 0
@@ -83,7 +83,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					Type = GridStatusApplication
-					StatusType = janiTNT.BrimCurse
+					StatusType = janiTNT.Brimstone
 					StatusValue = 0
 					StatusValuePool = 1000
 					ValueFalloff = 1
@@ -137,7 +137,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 30000
+					TotalDamage = 50
 					Radius = 3
 					StatusType = cosmoteer.fire
 					StatusChancePerNDamage = 80%
@@ -148,6 +148,21 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					Filter
 					{
 						Friendlies = true
+					}
+				}
+				{
+					Type = GridStatusApplication
+					StatusType = janiTNT.Brimstone
+					StatusValue = 0
+					StatusValuePool = 8000
+					ValueFalloff = 1
+					MaxCost = 4
+					FalloffPadding = 0.5
+					EmptyTileCost = 1000
+					AllowDiagonals = true
+					Filter {
+						Friendlies = true
+						TargetedFriendlies = true
 					}
 				}
 				// SUPERTODO

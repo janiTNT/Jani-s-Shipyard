@@ -1,12 +1,12 @@
 MAX_SCORCH_DAMAGE_PERCENT = 90%
 DAMAGE_PER_TICK = 100
 
-ID = janiTNT.BrimCurse
+ID = janiTNT.Brimstone
 Layer = Tile
 StatusCombineMode = CombineValue
 STATUS_TO_RESOURCE_RATIO = 1000
 RESOURCE_TO_STATUS_RATIO = 1 / (&STATUS_TO_RESOURCE_RATIO)
-ValueClampRange = [0, 700]
+ValueClampRange = [0, Infinity]
 RemoveAtMinValue = true
 TransferToUnderlyingOnPartDestroyed = true
 TickInterval = 0.5
@@ -14,19 +14,19 @@ RequireValueRangeForTick = [500, Infinity]
 MediaIntensityValueType = Interpolated
 MediaIntensityInterpolationRange = [0, 700]
 ClampMediaIntensity = false
-CrewSpeedFactor = [1, .1]
+//CrewSpeedFactor = [1, .1]
 SoftRepair
 {
 	RepairType = Simultaneous
 	TargetValue = 0
 	WorkPerValueChange = 0.02
-	RegistrationValueRange = [0, infinity]
+	RegistrationValueRange = [500, infinity]
 	DeregistrationValueBuffer = 150
 }
 Diffusion
 {
 	Basis = 0
-	SpeedFactor = 0.2
+	SpeedFactor = 0.1
 	MinDeltaThreshold = (&SpeedFactor) * 0.1
 	EmptyCellSpeedFactor = 0.0015
 	PartOutboundSpeedFactors
@@ -49,7 +49,7 @@ DamageResistances
 			[
 				{
 					Type = StatusExponent
-					StatusType = janiTNT.BrimCurse
+					StatusType = janiTNT.Brimstone
 					ValueType = Raw
 					ModificationMode = Multiply
 					Exponent = 0.75
@@ -71,12 +71,12 @@ PenetrationResistanceModifier
 		[
 			{
 				Type = ScaledStatusExponent
-				StatusType = janiTNT.BrimCurse
+				StatusType = janiTNT.Brimstone
 				ValueType = Raw
 				ModificationMode = Divide
 				BaseStatusValue = 1
 				Exponent = 0.5
-				Scale = 1/200
+				Scale = 1/150
 			}
 		]
 	}
@@ -94,9 +94,9 @@ TickingEffects
 			[
 				{
 					Type = StatusRemap
-					StatusType = janiTNT.BrimCurse
+					StatusType = janiTNT.Brimstone
 					ModificationMode = Multiply
-					RemapFrom = [100, 700]
+					RemapFrom = [500, 5000]
 					RemapTo = [0, 1]
 					Exponent = 2
 				}
@@ -108,7 +108,7 @@ TickingEffects
 			Neutrals = true
 		}
 	}
-	{
+	/* {
 		Type = StatusApplication
 		StatusType = cosmoteer.scorched
 		DivideValueByPartHealth = true
@@ -124,7 +124,7 @@ TickingEffects
 			Modifiers 
 			[
 				{
-					StatusType = janiTNT.BrimCurse
+					StatusType = janiTNT.Brimstone
 					ModificationMode = Multiply
 					Type = StatusRemap
 					RemapFrom = [100, 700]
@@ -148,7 +148,7 @@ TickingEffects
 			ExcludePartCategories = [ non_flammable ]
 			StructuralHealth = false	
 		}
-	}
+	} */
 ]
 ValueModulators
 {
@@ -157,12 +157,12 @@ ValueModulators
 		{
 			Type = Constant
 			AffectedValueRange = [0, infinity]
-			Value = 0.25
+			Value = 15
 			ModificationMode = Subtract
 			ScaleByDeltaTime = true
 		}
 		// dissolve faster when part is scorched
-		{
+		/* {
 			Type = Constant
 			AffectedValueRange = [-infinity, infinity]
 			StatusFilter
@@ -172,7 +172,7 @@ ValueModulators
 			}
 			ModificationMode = Add
 			Value = -1.5
-		}
+		} */
 	]
 }
 ContinuousMediaEffects
@@ -202,10 +202,10 @@ ContinuousMediaEffects
 				SampleMode = Linear
 				UVMode = Wrap
 			}
-			Shader = "./data/statuses/heat/heat.shader"
+			Shader = "brimstone.shader"
 			_hotColor = [255, 25, 70, 255]
 			_coldColor = [255, 10, 15, 255]
-			_normalIntensity = 0.005; //lower is more intense, 0.02 for ship
+			_normalIntensity = 0.6; //lower is more intense, 0.02 for ship
 			TargetBlendMode
 			{
 				SourceRgbFactor = SourceAlpha
