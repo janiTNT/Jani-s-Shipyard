@@ -1,3 +1,7 @@
+OVERCLOCK : &<./data/ships/terran/thruster_large/thruster_large.rules>/OVERCLOCK
+{
+	THRUST_HEAT_PER_SECOND = 275 * 2
+}
 Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/PulseThrusterLarge"
@@ -20,12 +24,30 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 	[
 		[default, [0, 4, 2, 8]]
 	]
-	ThrusterForce = 3200 * 0.75
-	ThrustIncreaseTime = { BaseValue=2; BuffType=Engine; BuffMode=Divide; }
+	ThrusterForce = 1600 * 0.75
+	ThrustIncreaseTime
+	{
+		BaseValue = 4
+		Modifiers
+		[
+			{
+				Type = Buff
+				BuffType = Engine
+				ModificationMode = Divide
+			}
+			{
+				Type = BuffRemap
+				BuffType = Overclock
+				ModificationMode = Divide
+				RemapFrom = [0, 1]
+				RemapTo = [1, (&~/OVERCLOCK/THRUST_FACTOR)]
+			}
+		]
+	}
 	ThrustDecreaseTime = 0
-	ThrustRecoveryTime = 2
-	FuelUsage = 200 * 1.25
-	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution]
+	ThrustRecoveryTime = 4
+	FuelUsage = 100 * 1.25
+	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution, EngineHeatCollection, ThermalActivity]
 	AllowedDoorLocations
 	[
 		[-1, 0]
@@ -142,7 +164,20 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Location = [1, 2]// Relative to upper-left corner of unrotated part.
 			Force = &../../ThrusterForce
-			FuelUsagePerSecond = &../../FuelUsage
+			FuelUsagePerSecond
+			{
+				BaseValue = &~/Part/FuelUsage
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/POWER_USAGE_FACTOR)]
+					}
+				]
+			}
 		}
 
 		NozzleCollider
@@ -157,6 +192,8 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = MainThruster
 			Location = [0, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
+			IntensityTweenDuration = 0.1
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				&<particles/thruster_heat_large.rules>
@@ -177,6 +214,7 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 			Trigger = BurstTrigger
 			FactorMediaEffectsIntensityWith = MainThruster
 			AnchorMediaEffects = true
+			MinMediaEffectsIntensity = 1%
 			MediaEffects
 			[
 				: /COMMON_SOUNDS/ThrusterBurst
@@ -195,15 +233,28 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 			Size = [2, 2]
 		}
 	}
-
-	Stats
+	
+	Stats : &<./data/ships/terran/thruster_large/thruster_large.rules>/Part/Stats
 	{
 		ThrusterForce = &~/Part/ThrusterForce
 		ThrusterRampUp = &~/Part/ThrustIncreaseTime/BaseValue
+		ThrusterRampDown = &~/Part/ThrustDecreaseTime
 		ThrusterPowerUsage = (&~/Part/FuelUsage) / 1000
-		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-
+		
 		RecPower = (&ThrusterPowerUsage) / 2
 		RecCrew = (&RecPower) * 4
 	}
+	
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/Overclocked"
+			Stats
+			{
+				ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
+				ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
+				ThrusterPowerUsage = (&~/Part/FuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
+			}
+		}
+	]
 }
