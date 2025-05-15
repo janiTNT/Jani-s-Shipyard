@@ -3,7 +3,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/InserterConstructionLong"
 	IconNameKey = "Parts/InserterConstructionLongIcon"
 	ID = janiTNT.ConstructionInserter_long // Part IDs  somthing something
-	EditorGroups = ["Production"]
+	EditorGroups []
+	EditorParentParts = [ ["janiTNT.AmmoInserter_long", -1] ]
 	DescriptionKey = "Parts/InserterLongDesc"
 	Resources = &<long_inserter_base.rules>/Resources
 	//sus

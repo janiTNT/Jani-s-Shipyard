@@ -3,7 +3,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/InserterOreStack"
 	IconNameKey = "Parts/InserterOreStackIcon"
 	ID = janiTNT.OreInserter_Stack // Part IDs  somthing something
-	EditorGroups = ["Production"]
+	EditorGroups []
+	EditorParentParts = [ ["janiTNT.AmmoInserter_Stack", -1] ]
 	DescriptionKey = "Parts/InserterStackDesc"
 	Resources = &<stack_inserter_base.rules>/Resources
 	//sus

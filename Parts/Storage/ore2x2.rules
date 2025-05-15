@@ -3,7 +3,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/AutoOStorage2x2"
 	IconNameKey = "Parts/AutoOStorage2x2Icon"
 	ID = janiTNT.AutoStorage_ore_2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Storage"
+	EditorGroups []
+	EditorParentParts = [ ["janiTNT.AutoStorage_ammo_2x2", -1] ]
 	DescriptionKey = "Parts/AutoOStorage2x2Desc"
 	SelectionTypeID = "storage"
 	Resources
