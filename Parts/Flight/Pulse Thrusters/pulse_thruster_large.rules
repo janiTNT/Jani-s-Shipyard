@@ -225,6 +225,12 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+		
+		PeakHeatGenerationStatValue
+		{
+			Type = StaticValue
+			Value = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
+		}
 
 		Blueprints
 		{
