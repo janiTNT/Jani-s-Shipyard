@@ -1,0 +1,37 @@
+Resource = janitnt.circuit1
+StackSize = (&<../../../Resources/Circuits/electronic_circuit.rules>/MaxStackSize)
+Components
+{	
+	Consumer : &<hyperium.rules>/Components/Consumer
+	{
+		ResourceType = &~/Resource
+		Storage = ElectronicCircuitStorage
+	}
+	
+	ElectronicCircuitStorage : &<hyperium.rules>/Components/HyperiumStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
+		ReceiveResourceMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
+	}
+	
+	FillSprites : &<hyperium.rules>/Components/FillSprites
+	{
+		ResourceStorage = ElectronicCircuitStorage
+	}
+	
+	IconGraphics : &<hyperium.rules>/Components/IconGraphics
+	{
+		Floor
+		{
+			Layer = "doodads_low"
+			DamageLevels
+			[
+				{
+					File = "../../../Resources/Circuits/electronic_circuit_stack40.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+}

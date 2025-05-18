@@ -242,6 +242,51 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 					}
 				}
 			}
+			// Electronic Circuit
+			{
+				ChoiceID = "resource_electronic_circuit"
+				ButtonToolTipKey = "PartToggles/resource_electronic_circuit"
+				Mode = 100
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Circuits/electronic_circuit_icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Advaced Circuit
+			{
+				ChoiceID = "resource_advanced_circuit"
+				ButtonToolTipKey = "PartToggles/resource_advanced_circuit"
+				Mode = 101
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Circuits/advanced_circuit_icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Processing Unit
+			{
+				ChoiceID = "resource_processing_unit"
+				ButtonToolTipKey = "PartToggles/resource_processing_unit"
+				Mode = 102
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "../Resources/Circuits/processing_unit_icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
 		]
 	}
 	// Resource Type MATERIAL
