@@ -120,6 +120,48 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			IncludeInBlueprints = false
 			Components = &<Types3x3/mine_part.rules>/Components
 		}
+		
+		janitnt.circuit1Toggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 100
+		}
+		janitnt.circuit1Components
+		{
+			Type = ToggledComponents
+			Toggle = janitnt.circuit1Toggle
+			IncludeInBlueprints = false
+			Components = &<Types3x3/electronic_circuit.rules>/Components
+		}
+		
+		janitnt.circuit2Toggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 101
+		}
+		janitnt.circuit2Components
+		{
+			Type = ToggledComponents
+			Toggle = janitnt.circuit2Toggle
+			IncludeInBlueprints = false
+			Components = &<Types3x3/advanced_circuit.rules>/Components
+		}
+		
+		janitnt.circuit3Toggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 102
+		}
+		janitnt.circuit3Components
+		{
+			Type = ToggledComponents
+			Toggle = janitnt.circuit3Toggle
+			IncludeInBlueprints = false
+			Components = &<Types3x3/processing_unit.rules>/Components
+		}
 
 		Graphics
 		{
