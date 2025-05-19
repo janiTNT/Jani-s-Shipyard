@@ -39,7 +39,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 	{
 		Type = ResourceStorage
 		ResourceType = battery
-		MaxResources = 8000
+		MaxResources = 6000
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
 	PortBuffToggle
@@ -102,7 +102,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 	ArmGraphics
 	{
 		Type = OpenCloseSprite
-		Location = [.5, .5]
+		Location = [(-9/64)+.5, .5]
 		OperationalToggle = ToAvailibleProxy
 		Layer = "fire"
 		OpenDamageLevels
@@ -110,7 +110,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 			{
 				AnimationFiles
 				[
-					"arm2.png"
+					"arm1.png"
 					"arm2.png"
 					"arm3.png"
 					"arm4.png"
@@ -118,20 +118,22 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 					"arm6.png"
 					"arm7.png"
 					"arm8.png"
-					"arm9.png"/*
 					"arm9.png"
-					"arm8.png"
-					"arm7.png"
-					"arm6.png"
-					"arm5.png"
-					"arm4.png"
-					"arm3.png"
-					"arm2.png"
-					"arm1.png"*/
-					// Loop back to beginning and clamp there.
+					"arm10.png"
+					"arm11.png"
+					"arm12.png"
+					"arm13.png"
+					"arm14.png"
+					"arm15.png"
+					"arm16.png"
+					"arm17.png"
+					"arm18.png"
+					"arm19.png"
+					"arm20.png"
+					"arm21.png"
 				]
 				Size = [1, 3]
-				AnimationInterval = 0.0515 * 4
+				AnimationInterval = (1/20) * 2
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
@@ -141,6 +143,18 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 			{
 				AnimationFiles
 				[
+					"arm21.png"
+					"arm20.png"
+					"arm19.png"
+					"arm18.png"
+					"arm17.png"
+					"arm16.png"
+					"arm15.png"
+					"arm14.png"
+					"arm13.png"
+					"arm12.png"
+					"arm11.png"
+					"arm10.png"
 					"arm9.png"
 					"arm8.png"
 					"arm7.png"
@@ -150,10 +164,9 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 					"arm3.png"
 					"arm2.png"
 					"arm1.png"
-					// Loop back to beginning and clamp there.
 				]
 				Size = [1, 3]
-				AnimationInterval = 0.0515 * 4
+				AnimationInterval = (1/20) * 2
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
@@ -194,8 +207,8 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 		Type = ResourceSprites
 		Location = [.5, .5]
 		ResourceStorage = BatteryStorage
-		Layer = "doodads_low"
-		RangeHigh = 4000
+		Layer = "doodads_high"
+		RangeHigh = 6000
 		ResourceLevels
 		[
 			{
@@ -214,6 +227,14 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 				File = "batteries4.png"
 				Size = [1, 1]
 			}
+			{
+				File = "batteries5.png"
+				Size = [1, 1]
+			}
+			{
+				File = "batteries6.png"
+				Size = [1, 1]
+			}
 		]
 	}
 
@@ -227,7 +248,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 	Blueprints
 	{
 		Type = BlueprintSprite
-		File = "bp.png"
+		File = "blueprints.png"
 		Size = [1, 1]
 	}
 }
