@@ -96,7 +96,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 	ArmGraphics
 	{
 		Type = OpenCloseSprite
-		Location = [.5, .5]
+		Location = [(-19/64)+.5, .5]
 		OperationalToggle = HandStorageProxy
 		Layer = "fire"
 		OpenDamageLevels
@@ -104,7 +104,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 			{
 				AnimationFiles
 				[
-					"arm2.png"
+					"arm1.png"
 					"arm2.png"
 					"arm3.png"
 					"arm4.png"
@@ -112,20 +112,16 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 					"arm6.png"
 					"arm7.png"
 					"arm8.png"
-					"arm9.png"/*
 					"arm9.png"
-					"arm8.png"
-					"arm7.png"
-					"arm6.png"
-					"arm5.png"
-					"arm4.png"
-					"arm3.png"
-					"arm2.png"
-					"arm1.png"*/
-					// Loop back to beginning and clamp there.
+					"arm10.png"
+					"arm11.png"
+					"arm12.png"
+					"arm13.png"
+					"arm14.png"
+					"arm15.png"
 				]
-				Size = [1, 5]
-				AnimationInterval = 0.0515 * 3
+				Size = [1, 4]
+				AnimationInterval = (1/14) * 1.5
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
@@ -135,6 +131,12 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 			{
 				AnimationFiles
 				[
+					"arm15.png"
+					"arm14.png"
+					"arm13.png"
+					"arm12.png"
+					"arm11.png"
+					"arm10.png"
 					"arm9.png"
 					"arm8.png"
 					"arm7.png"
@@ -144,10 +146,70 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 					"arm3.png"
 					"arm2.png"
 					"arm1.png"
-					// Loop back to beginning and clamp there.
 				]
-				Size = [1, 5]
-				AnimationInterval = 0.0515 * 3
+				Size = [1, 4]
+				AnimationInterval = (1/14) * 1.5
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		]
+	}
+	ArmBitGraphics
+	{
+		Type = OpenCloseSprite
+		Location = [(-19/64)+(-.5), .5]
+		OperationalToggle = HandStorageProxy
+		Layer = "fire"
+		OpenDamageLevels
+		[
+			{
+				AnimationFiles
+				[
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm6.png"
+					"bitarm7.png"
+					"bitarm8.png"
+					"bitarm9.png"
+					"bitarm10.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+				]
+				Size = [1, 1]
+				AnimationInterval = (1/14) * 1.5
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		]
+		ClosedDamageLevels
+		[
+			{
+				AnimationFiles
+				[
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm10.png"
+					"bitarm9.png"
+					"bitarm8.png"
+					"bitarm7.png"
+					"bitarm6.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+					"bitarm1.png"
+				]
+				Size = [1, 1]
+				AnimationInterval = (1/14) * 1.5
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}
@@ -188,7 +250,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 		Type = ResourceSprites
 		Location = [.5, .5]
 		ResourceStorage = BatteryStorage
-		Layer = "doodads_low"
+		Layer = "doodads_high"
 		ResourceLevels
 		[
 			{
@@ -212,7 +274,7 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 	Blueprints
 	{
 		Type = BlueprintSprite
-		File = "bp.png"
+		File = "blueprints.png"
 		Size = [1, 1]
 	}
 }
