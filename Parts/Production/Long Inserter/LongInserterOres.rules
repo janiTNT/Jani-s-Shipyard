@@ -28,7 +28,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "Icon.png"
 			SampleMode = Linear
 		}
-		Size = [32, 160]
+		Size = [32, 80]
 	}
 	Components : &<long_inserter_base.rules>/Components
 	{	
