@@ -108,11 +108,11 @@ Parts
 	
 	FactoryElectronicCircuit = "Electronic Circuit Assembler"
 	FactoryElectronicCircuitIcon = "Circuits"
-	FactoryElectronicCircuitDesc = "Fabricates cheap circuits"
+	FactoryElectronicCircuitDesc = "Manufactures cheap electronic circuits, which are used for a range of applications, from drones, logic control systems and more. Consumes steel and coils. Gains +25% production speed for each adjacent factory of any type."
 	
 	FactoryAdvancedCircuit = "Advanced Circuit Assembler"
 	FactoryAdvancedCircuitIcon = "Adv. Circuits"
-	FactoryAdvancedCircuitDesc = "Fabricates advanced cheap circuits"
+	FactoryAdvancedCircuitDesc = "Manufactures advanced circuits, with more processing capabilities. Consumes electronic circuits and hypercoils. Gains +25% production speed for each adjacent factory of any type."
 	
 	TriSteelDoor = "TriSteel Door"
 	TriSteelDoorIcon = "Tr. Door"
