@@ -1,0 +1,63 @@
+Part : <./data/ships/terran/engine_room/engine_room.rules>/Part
+{
+	NameKey = "Parts/EngineRoom"
+	IconNameKey = "TESTENGINEROOM"
+	ID = janiTNT.engine_roomsuper_fortesting
+	EditorGroup = "Flight"
+	DescriptionKey = "Parts/EngineRoomDesc"
+	Resources
+	[
+		[steel, 96]
+		[coil2, 32]
+	]
+	Size = [3, 3]
+	IsRotateable = false
+	SelectionPriority = 1
+	MaxHealth = 9000
+	TypeCategories = [engine_room, uses_power]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 1
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Engine
+			BuffAmount = 200%
+			GridDistance = 1
+			OperationalToggle = IsOperational
+		}
+	}
+
+	Stats
+	{
+		CrewRequired = &~/Part/Components/PartCrew/Crew
+		ThrusterBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+
+		RecPower = &PowerUsageContinuous
+		RecCrew = (&CrewRequired) + (&RecPower) * 4
+	}
+}

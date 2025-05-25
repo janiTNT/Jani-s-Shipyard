@@ -393,7 +393,7 @@ HolyMana_Consumed // Checks Mana consumed
 Hauler_Thrust
 {
 	CombineMode = Add
-	Exponent = 0.8
+	Exponent = 1
 	BaseValue = 0%
 	Icon
 	{

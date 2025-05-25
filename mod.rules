@@ -326,6 +326,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//DEV PARTS
 			
 			//&<testsalvagebomb.rules>/Part
+			&<test/super_engineroom.rules>/Part
 			
 			
 			//Special... unfinished

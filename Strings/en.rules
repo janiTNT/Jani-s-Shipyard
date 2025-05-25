@@ -417,24 +417,24 @@ Parts
 	
 	ThrusterHuge4x4 = "Hauler Thruster 4x4"
 	ThrusterHuge4x4Icon = "Hauler Thruster (4)"
-	ThrusterHuge4x4Desc = "A Slightly Larger variant of the Huge Thruster that can propel the ship with a lot more thrust than the huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."
+	ThrusterHuge4x4Desc = "A Slightly Larger variant of the Huge Thruster that can propel the ship with a lot more thrust than the huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less."
 	
 	
 	ThrusterHuge5x5 = "Hauler Thruster 5x5"
 	ThrusterHuge5x5Icon = "Hauler Thruster (5)"
-	ThrusterHuge5x5Desc = "A Even Larger variant of the Huge Thruster that can propel the ship more than twice as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."
+	ThrusterHuge5x5Desc = "A Even Larger variant of the Huge Thruster that can propel the ship more than twice as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less."
 	
 	ThrusterHuge6x6 = "Hauler Thruster 6x6"
 	ThrusterHuge6x6Icon = "Hauler Thruster (6)"
-	ThrusterHuge6x6Desc = "A Larger variant of the Huge Thruster that can propel the ship about as 4x as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."
+	ThrusterHuge6x6Desc = "A Larger variant of the Huge Thruster that can propel the ship about as 4x as much as a huge thruster but has worse ramp-up time. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less."
 	
 	ThrusterHuge7x6 = "Hauler Thruster 7x6"
 	ThrusterHuge7x6Icon = "Hauler Thruster (7)"
-	ThrusterHuge7x6Desc = "A Enormous variant of the Huge Thruster that can propel the ship about as 5x as much as a huge thruster but has worse ramp-up time. Has alternative size and door placement. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."
+	ThrusterHuge7x6Desc = "A Enormous variant of the Huge Thruster that can propel the ship about as 5x as much as a huge thruster but has worse ramp-up time. Has alternative size and door placement. Stats are determined by a base value times internal area of a thruster. Engine rooms affect these thrusters less."
 	
 	ThrusterHuge8x7 = "Hauler Thruster 8x7"
 	ThrusterHuge8x7Icon = "Hauler Thruster (8)"
-	ThrusterHuge8x7Desc = "Highest tier of Hauler thruster. Has even higher peformance per tile. Has alternative size and door placement. Engine rooms affect these thrusters less, and has diminishing returns at higher levels."
+	ThrusterHuge8x7Desc = "Highest tier of Hauler thruster. Has even higher peformance per tile. Has alternative size and door placement. Engine rooms affect these thrusters less."
 	
 	CRAM_Firingpiece = "Customizable Reaper Ammo Mega Cannon - Firing piece"
 	CRAM_FiringpieceIcon = "CRAM Firing Piece"
