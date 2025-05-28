@@ -1,19 +1,19 @@
 Type = None
 Tags = [T_anomP]
 Count = [4]
-SpawnChance = 0.05
-//SpawnChance = 1
+//SpawnChance = 0.05
+SpawnChance = 1
 //SpawnChance = 0
 Conditions
 {
 	//RequireSpawnFlags = [no_sun, supernova_nebulas]
-	IsInitNode=false
+	//IsInitNode=false
 }
 SubSpawners
 [
 	{
 		Type = None
-		RandomSubSpawnerCount = 1
+		//RandomSubSpawnerCount = 1
 		SubSpawners
 		[
 			{
@@ -22,7 +22,7 @@ SubSpawners
 				Distance = [20750, 25000]
 				MinDistanceFromNebulas = [[ion_storm, 2000]]
 				Tags = [T_anomP2]
-				MinDistanceFromTags = [[station, 4000],[T_anomP2, 12000], [bounty, 3000], [asteroid_field, 1200], [ftl_gate, 8000]]
+				MinDistanceFromTags = [[station, 4000],[T_anomP2, 8000], [bounty, 3000], [asteroid_field, 1200], [ftl_gate, 8000]]
 				SubSpawners
 				[
 					: ~/RandomLarge
@@ -37,7 +37,7 @@ SubSpawners
 				Distance = [20750, 25000]
 				MinDistanceFromNebulas = [[ion_storm, 2000]]
 				Tags = [T_anomP2]
-				MinDistanceFromTags = [[station, 2000],[T_anomP2, 12000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 8000]]
+				MinDistanceFromTags = [[station, 2000],[T_anomP2, 8000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 8000]]
 				SubSpawners
 				[
 					: ~/RandomMedium
@@ -53,7 +53,7 @@ SubSpawners
 				MinDistanceFromNebulas = [[ion_storm, 2000]]
 				Count = [1 , 3]
 				Tags = [T_anomP2]
-				MinDistanceFromTags = [[station, 2000],[T_anomP2, 12000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 8000]]
+				MinDistanceFromTags = [[station, 2000],[T_anomP2, 8000], [bounty, 2000], [asteroid_field, 800], [ftl_gate, 8000]]
 				SubSpawners
 				[
 					: ~/RandomSmall

@@ -19,6 +19,8 @@ Hyperoid : <./Data/ships/base_ship.rules>
 	Roofs : <./Data/ships/base_ship.rules>/Roofs
 	{
 		RoofTexturesFolders = ["./Data/roof_textures"]
+		RoofTextureSizePerTile = [64 * 4, 64 * 4]
+		DecalSizePerTile = [64 * 4, 64 * 4]
 		DefaultRoofTexture = "bumpy1"
 		
 		RoofDecalGroups = &<./Data/roof_decals/roof_decals.rules>/Groups

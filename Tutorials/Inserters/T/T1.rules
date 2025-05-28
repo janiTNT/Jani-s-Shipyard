@@ -14,11 +14,11 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 	IsExternal = true
 	ExternalWalls = [None]
 	InternalWalls = [All]
-	FlipHRotate = [1, 0, 3, 2]
-	FlipVRotate = [3, 2, 1, 0]
+	//FlipHRotate = [1, 0, 3, 2]
+	//FlipVRotate = [3, 2, 1, 0]
 	IsWalled = false
 	
-	IsBuildable = false
+	IsBuildable = true
 	
 	EditorIcon
 	{
@@ -28,20 +28,16 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 	Components : ^/0/Components
 	{
 	
-		SpriteGridMain
+		Sprite
 		{
-			Type = SpriteGrid
-			RandomUVRotation = true
+			Type = Sprite
+			Location = [0.5, 0.5]
 			Layer = "sr"
-			Location = [0.5*0.25, 0.5*0.25]
-			GridSpacing = [0.25, 0.25]
-			GridSize = [4, 4]
 			RandomDamageLevels
 			[
 				[//Default
-					{File = "roof.png";NormalsFile = "roof_n1.png";Size = [0.25, 0.25]}
+					{File = "roof.png";NormalsFile = "roof_n1.png";Size = [1, 1]; UVRotation = 0}
 				]
-				
 			]
 		}
 /* 		

@@ -1,0 +1,78 @@
+Part : <T1.rules>/Part
+{
+	ID = T.janiTNT.sol 
+	MaxHealth = 1000 * 16*16 * 4000
+	Size = [16, 16]
+	EditorReplacementPartID = T.janiTNT.1
+	EditorIcon
+	{
+		Texture = "./Data/ships/terran/corridor/icon.png"
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		SpriteGrid
+		{
+			Type = SpriteGrid
+			RandomUVRotation = false
+			Layer = "sr"
+			Location = [0.5, 0.5]
+			GridSize = [16, 16]
+			RandomDamageLevels
+			[
+				[//Default
+					{File = "roof.png";NormalsFile = "roof_n1.png";Size = [1, 1]; UVRotation = 0}
+				]
+			]
+		}
+		Graphics
+		{
+			Type = Graphics
+			Location = [8, 8]
+			Floor
+			{
+				Layer = "secondary"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../../../Occult/lightball_lightless.png"
+						Size = [41, 41]
+						RotSpeed = 180d
+						SampleMode = Linear
+						VertexColor = [255*1.5, 205*1.5, 190*1.5]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "secondary"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "../../../Occult/lightball_lightless.png"
+						Size = [42, 42]
+						RotSpeed = -100d
+						SampleMode = Linear
+						VertexColor = [255*1.5, 205*1.5, 190*1.5]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "asteroid_roof_lights_fancy"
+				RandomUVRotation = true
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [128, 128]
+						Z = 6.0 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [255*8, 205*8, 128*8]
+					}
+				]
+			}
+		}
+	}
+}
