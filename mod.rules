@@ -302,10 +302,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x2_wedge.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x3_wedge.rules>/Part
 			&<Parts/BossRewards/cosmilite/armor/cosmilitearmortri.rules>/Part
+			
 			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
 			
 			&<Parts/BossRewards/Cursed/spell_room_small/spell_room_small.rules>/Part
 			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part
+			
+			&<Parts/BossRewards/Cursed/Blood_Pipe_adaptative/heat_pipe_adaptive.rules>/Part
+			&<Parts/BossRewards/Cursed/bloodgenerator/blood_generator.rules>/Part
 			
 			// Multiblock parts
 			
