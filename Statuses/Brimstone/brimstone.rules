@@ -183,7 +183,7 @@ ContinuousMediaEffects
 		{
 			Texture
 			{
-				File = "./data/statuses/heat/HeatNoise2.png"
+				File = "./Data/statuses/fire/particles/fire_noise.png"
 				MipLevels = max
 				SampleMode = Linear
 				UVMode = Wrap
@@ -197,7 +197,7 @@ ContinuousMediaEffects
 			}
 			_noiseTexture2
 			{
-				File = "./data/statuses/heat/heatNoise.png"
+				File = "./Data/common_effects/particles/noise_distorted_voronoi.png"
 				MipLevels = max
 				SampleMode = Linear
 				UVMode = Wrap

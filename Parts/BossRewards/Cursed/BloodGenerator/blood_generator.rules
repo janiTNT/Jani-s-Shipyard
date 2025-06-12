@@ -112,6 +112,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Direction = Up
 			Types = [ thermal, thermal_out ]
 			IncompatibleTypes = [ thermal_out ]
+			RouteSource = NetworkHeatInput
+			RouteEndpoint = NetworkHeatInput
 		}
 		
 		Port_TopRight : Port_TopLeft
