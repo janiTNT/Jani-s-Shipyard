@@ -23,7 +23,7 @@ Techs
 		PartsUnlocked
 		[
 			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/ID
-			&<Parts/Power/Radiator/Radiator.txt>/Part/ID
+			//&<Parts/Power/Radiator/Radiator.txt>/Part/ID
 		]
 		Cost = 100000
 		Prerequisites = [cosmoteer.reactor_large]
