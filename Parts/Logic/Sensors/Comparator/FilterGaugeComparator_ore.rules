@@ -3,6 +3,7 @@ Part : <FilterGaugeComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Gauge_Comparator_Resources_Ore"
 	IconNameKey = "Parts/Logic_Gauge_Comparator_Resources_OreIcon"
 	ID = janiTNT.gauge_comparator_filter_ore // Part IDs  somthing something
+	EditorParentParts = [ "janiTNT.gauge_comparator_filter_ammo" ]
 	Components : ^/0/Components
 	{	
 		OreType

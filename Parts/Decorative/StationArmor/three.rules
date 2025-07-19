@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/StationArmor1x3Wedge"
 	IconNameKey = "Parts/StationArmor1x3WedgeIcon"
 	ID = janiTNT.stationarmorwedge_1x3
-	EditorGroup = "Defenses"
+	EditorParentParts = [ "janiTNT.stationarmor" ]
 	DescriptionKey = "Parts/StationArmor1x3WedgeDesc"
 	EditorReplacementPartID = ""
 	Resources

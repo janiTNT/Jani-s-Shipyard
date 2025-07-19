@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/ThrusterHuge7x6"
 	IconNameKey = "Parts/ThrusterHuge7x6Icon"
 	ID = janiTNT.thruster_huge_7x6 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Flight"
+	EditorParentParts = [ "janiTNT.thruster_huge_4x4" ]
 	DescriptionKey = "Parts/ThrusterHuge7x6Desc"
 	Resources
 	[

@@ -3,6 +3,7 @@ Part : <FilterGaugeComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Gauge_Comparator_Resources_Ammo"
 	IconNameKey = "Parts/Logic_Gauge_Comparator_Resources_AmmoIcon"
 	ID = janiTNT.gauge_comparator_filter_ammo // Part IDs  somthing something
+	EditorGroup = "Logic"
 	Components : ^/0/Components
 	{	
 		AmmoType

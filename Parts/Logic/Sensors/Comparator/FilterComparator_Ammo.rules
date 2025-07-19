@@ -3,6 +3,7 @@ Part : <FilterComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Comparator_Resources_Ammo"
 	IconNameKey = "Parts/Logic_Comparator_Resources_AmmoIcon"
 	ID = janiTNT.comparator_filter_ammo // Part IDs  somthing something
+	EditorGroup = "Logic"
 	Components : ^/0/Components
 	{	
 		AmmoType

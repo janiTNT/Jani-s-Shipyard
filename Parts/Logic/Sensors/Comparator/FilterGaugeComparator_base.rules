@@ -3,7 +3,6 @@ Part : <../../baselogicpart.rules>/Part
 	NameKey = "Parts/Logic_Gauge_Comparator_Resources"
 	IconNameKey = "Parts/Logic_Gauge_Comparator_ResourcesIcon"
 	ID = janiTNT.gauge_comparator_filter_ // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Logic"
 	DescriptionKey = "Parts/Logic_Gauge_Comparator_ResourcesDesc"
 	Resources
 	[

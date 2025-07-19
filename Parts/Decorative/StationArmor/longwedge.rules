@@ -5,7 +5,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ID = janiTNT.stationarmorwedge_1x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [juanTNT.stationarmorwedge_1x2_L, juanTNT.stationarmorwedge_1x2_R]
 	FlipWhenLoadingIDs = [juanTNT.stationarmorwedge_1x2_R]
-	EditorGroup = "Defenses"
+	EditorParentParts = [ "janiTNT.stationarmor" ]
 	DescriptionKey = "Parts/StationArmor1x2WedgeDesc"
 	EditorReplacementPartID = ""
 	Resources

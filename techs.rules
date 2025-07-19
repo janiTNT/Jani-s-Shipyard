@@ -369,7 +369,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/EditorGroup // WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/5x5/thruster_5x5.rules>/Part/ID]
 		Cost = 12000
 		Prerequisites = [janiTNT.thruster4x4]
@@ -379,7 +379,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/EditorGroup // WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/6x6/thruster_6x6.rules>/Part/ID]
 		Cost = 20000
 		Prerequisites = [janiTNT.thruster5x5]
@@ -389,7 +389,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/EditorGroup // WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/7x6/thruster_7x6.rules>/Part/ID]
 		Cost = 35000
 		Prerequisites = [janiTNT.thruster6x6]
@@ -399,7 +399,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/4x4/thruster_4x4.rules>/Part/EditorGroup // WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/8x7/thruster_8x7.rules>/Part/ID]
 		Cost = 50000
 		Prerequisites = [janiTNT.thruster7x6]
@@ -419,7 +419,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/EditorGroup //WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_5x5.rules>/Part/ID]
 		Cost = 15000
 		Prerequisites = [janiTNT.thruster5x5, janiTNT.thruster4x4.pulse]
@@ -429,7 +429,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/EditorGroup //WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_6x6.rules>/Part/ID]
 		Cost = 30000
 		Prerequisites = [janiTNT.thruster5x5, janiTNT.thruster5x5.pulse]
@@ -439,7 +439,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/EditorGroup //WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part/ID]
 		Cost = 45000
 		Prerequisites = [janiTNT.thruster6x6, janiTNT.thruster6x6.pulse]
@@ -449,7 +449,7 @@ Techs
 		NameKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/DescriptionKey
 		Icon = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/EditorGroup
+		EditorGroup = &<Parts/Flight/Big Thrusters/Pulse/pulse_4x4.rules>/Part/EditorGroup //WARNING
 		PartsUnlocked = [&<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part/ID]
 		Cost = 60000
 		Prerequisites = [janiTNT.thruster7x6, janiTNT.thruster7x6.pulse]

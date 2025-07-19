@@ -3,8 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/StationArmor2x1"
 	IconNameKey = "Parts/StationArmor2x1Icon"
 	ID = janiTNT.stationarmor2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Defenses"
-	EditorReplacementPartID = janiTNT.stationarmor
+	EditorParentParts = [ "janiTNT.stationarmor" ]
 	DescriptionKey = "Parts/StationArmor2x1Desc"
 	Resources
 	[
