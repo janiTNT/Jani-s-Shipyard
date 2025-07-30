@@ -160,7 +160,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Components = &<advanced_circuit.rules>/Components
 		}
 		
-		janitnt.circuit3Toggle
+		/* janitnt.circuit3Toggle
 		{
 			Type = ModeToggle
 			Mode = AmmoType
@@ -172,7 +172,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Toggle = janitnt.circuit3Toggle
 			IncludeInBlueprints = true
 			Components = &<processing_unit.rules>/Components
-		}
+		} */
 	}
 
 	Stats

@@ -271,7 +271,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 						SampleMode = Linear
 					}
 				}
-			}
+			}/* 
 			// Processing Unit
 			{
 				ChoiceID = "resource_processing_unit"
@@ -286,7 +286,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 						SampleMode = Linear
 					}
 				}
-			}
+			} */
 		]
 	}
 	// Resource Type MATERIAL
