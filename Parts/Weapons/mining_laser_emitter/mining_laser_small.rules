@@ -14,6 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]//Cost = 8000
 	Size = [2, 3]
 	MaxHealth = 6000
+	SignificanceToggle = ScorchedToggle
 	TypeCategories = [weapon, uses_power, is_crewed, mining, miningbeam]
 	ProhibitedBy : ^/0/ProhibitedBy [tall]
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
@@ -36,8 +37,23 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle]
 			Mode = All
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 
 		PowerToggle
@@ -51,7 +67,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 3
 		}
 
@@ -350,6 +366,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RandomUVRotation = false
 			Layer = "structure_construction"
 		}*/
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+		
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+		}
 
 		DestroyedEffects
 		{
@@ -365,6 +396,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Layer = "indicators"
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3]
+				}
+				
 				// Turned off.
 				{
 					Toggle = PowerToggle

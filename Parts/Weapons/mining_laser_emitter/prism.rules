@@ -397,10 +397,23 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
+		
+		EmitterValue
+		{
+			Type = MultiValue
+			Values = [BeamEmitter]
+			Mode = Max
+		}
 
-		DestroyedEffectsCold = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/Components/DestroyedEffectsCold
+		DestroyedEffectsCold : &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/Components/DestroyedEffectsCold
+		{
+			OperationalToggle = BeamEmitter
+		}
 
-		DestroyedEffectsHot = &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/Components/DestroyedEffectsHot
+		DestroyedEffectsHot : &<./Data/ships/terran/ion_beam_prism/ion_beam_prism.rules>/Part/Components/DestroyedEffectsHot
+		{
+			OperationalToggle = BeamEmitter
+		}
 
 		Indicators
 		{

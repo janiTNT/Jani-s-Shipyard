@@ -6,6 +6,15 @@ PenetratesStructure = false
 SourceShipLowCollisions = false
 //FriendlyShipLowCollisions = true
 HitEffectsScaleOverRange = [1, 0.95]
+
+BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
+
+AttenuationLimit = { BaseValue=800 * (&~/HitInterval); BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+HitAttenuator
+{
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 ReceivableBuffs = [ElectronBuff]
@@ -128,6 +137,8 @@ HitShield = &HitOperational
 HitStructural = &HitOperational
 HitOperational
 {
+	HitEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
+	MediaEffectsScale = { BaseValue=1; EffectScaleExponent=1; }
 	HitEffects
 	[
 		{
@@ -141,7 +152,7 @@ HitOperational
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=1200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=1200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					DamageType = Salvage
 					SpawnUnderlying = false
 					Filter
@@ -153,7 +164,7 @@ HitOperational
 				}
 				{ //Damage to junk
 					Type = Damage
-					Damage = { BaseValue=9600/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=9600/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					DamageType = salvage
 					SpawnUnderlying = false
 					Filter
@@ -167,7 +178,7 @@ HitOperational
 				}
 				{ //Damage to junk armor
 					Type = Damage
-					Damage = { BaseValue=19200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=19200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					DamageType = salvage
 					SpawnUnderlying = false
 					Filter
@@ -182,7 +193,7 @@ HitOperational
 				}
 				{
 					Type = Damage
-					Damage = { BaseValue=64000/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=64000/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					DamageType = Salvage
 					SpawnUnderlying = false
 					Filter
@@ -196,7 +207,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=1200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 			DamageType = Salvage
 			SpawnUnderlying = false
 			Filter
@@ -208,7 +219,7 @@ HitOperational
 		}
 		{ //Damage to junk
 			Type = Damage
-			Damage = { BaseValue=9600/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=9600/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 			DamageType = salvage
 			SpawnUnderlying = false
 			Filter
@@ -222,7 +233,7 @@ HitOperational
 		}
 		{ //Damage to junk armor
 			Type = Damage
-			Damage = { BaseValue=19200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=19200/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 			DamageType = salvage
 			SpawnUnderlying = false
 			Filter
@@ -237,7 +248,7 @@ HitOperational
 		}
 		{
 			Type = Damage
-			Damage = { BaseValue=64000/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=64000/20 * 2.2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 			DamageType = Salvage
 			SpawnUnderlying = false
 			Filter
@@ -251,7 +262,7 @@ HitOperational
 		{
 			Type = ResourceDrain
 			ResourceType = mining_energy
-			Amount = -1000
+			Amount = { BaseValue = -1000; EffectScaleExponent = 1 }
 			Filter
 			{
 				Friendlies = true
