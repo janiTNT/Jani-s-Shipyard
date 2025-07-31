@@ -1,19 +1,19 @@
 Type = None
 Tags = [T_anomP]
 Count = [4]
-//SpawnChance = 0.05
-SpawnChance = 1
+SpawnChance = 0.05
+//SpawnChance = 1
 //SpawnChance = 0
 Conditions
 {
-	//RequireSpawnFlags = [no_sun, supernova_nebulas]
-	//IsInitNode=false
+	RequireSpawnFlags = [no_sun, supernova_nebulas]
+	IsInitNode=false
 }
 SubSpawners
 [
 	{
 		Type = None
-		//RandomSubSpawnerCount = 1
+		RandomSubSpawnerCount = 1
 		SubSpawners
 		[
 			{
