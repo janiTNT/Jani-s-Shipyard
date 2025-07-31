@@ -55,7 +55,7 @@ Components
 			[
 				{
 					Type = AreaCrewStun
-					Duration = 5
+					Duration = { BaseValue=5; EffectScaleExponent=1; }
 					Falloff = 2
 					Radius = 200
 					//Filter { Friendlies=true; IgnoreInvulnerability=true; }
@@ -64,7 +64,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 8000000 * 4
+					TotalDamage = { BaseValue=8000000 * 4; EffectScaleExponent=1; }
 					Radius = 80 * 2
 					ImpulsePerNDamage = 10
 					NDamage = 1000
@@ -77,7 +77,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 2400000 * 4
+					TotalDamage = { BaseValue=2400000 * 4; EffectScaleExponent=1; }
 					Radius = 80 * 2
 					ImpulsePerNDamage = 5
 					NDamage = 1000

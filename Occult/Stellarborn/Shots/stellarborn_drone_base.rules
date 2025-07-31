@@ -281,11 +281,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 350
+					Damage = { BaseValue=350; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 5;
+					Impulse = { BaseValue=5; EffectScaleExponent=1; }
 				}
 			]
 
@@ -308,11 +308,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 500
+					Damage = { BaseValue=500; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
-					Impulse = 1.5;
+					Impulse = { BaseValue=1.5; EffectScaleExponent=1; }
 				}
 			]
 

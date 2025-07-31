@@ -50,13 +50,13 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 160000 * 2
+					TotalDamage = { BaseValue=160000 * 2; EffectScaleExponent=1; }
 					Radius = 30
 					Slices = 1
 				}
 				{
 					Type = Impulse;
-					Impulse = 400;
+					Impulse = { BaseValue=400; EffectScaleExponent=1; }
 				}
 			]
 			

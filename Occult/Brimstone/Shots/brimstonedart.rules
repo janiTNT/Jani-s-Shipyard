@@ -58,7 +58,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 80;
+					Impulse = { BaseValue=80; EffectScaleExponent=1; }
 				}
 			]
 

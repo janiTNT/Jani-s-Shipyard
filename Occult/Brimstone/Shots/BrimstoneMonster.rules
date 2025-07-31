@@ -179,7 +179,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1800000 * 2
+					TotalDamage = { BaseValue=1800000 * 2; EffectScaleExponent=1; }
 					Radius = 90 * 2
 					ImpulsePerNDamage = -550
 					NDamage = 1000
@@ -192,7 +192,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 600000 * 2
+					TotalDamage = { BaseValue=600000 * 2; EffectScaleExponent=1; }
 					Radius = 80 * 2
 					ImpulsePerNDamage = -55
 					NDamage = 1000

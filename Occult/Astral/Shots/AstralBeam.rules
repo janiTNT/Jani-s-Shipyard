@@ -4,6 +4,7 @@ Width = 2
 HitInterval = .05
 HitEffectsScaleOverRange = [5, 5]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
 
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
@@ -118,11 +119,11 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 5000
+			Damage = { BaseValue=5000; EffectScaleExponent=1; }
 		}
 		{
 			Type = Impulse
-			Impulse = 200
+			Impulse = { BaseValue=200; EffectScaleExponent=1; }
 		}
 	]
 
@@ -158,11 +159,11 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = 1000
+			Damage = { BaseValue=1000; EffectScaleExponent=1; }
 		}
 		{
 			Type = Impulse
-			Impulse = 5
+			Impulse = { BaseValue=5; EffectScaleExponent=1; }
 		}
 	]
 }

@@ -63,7 +63,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 1500
+					Damage = { BaseValue=1500; EffectScaleExponent=1; }
 					Filter
 					{
 						Friendlies = true
@@ -71,7 +71,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 10;
+					Impulse = { BaseValue=10; EffectScaleExponent=1; }
 					Filter
 					{
 						Friendlies = true

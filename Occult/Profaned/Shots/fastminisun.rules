@@ -137,7 +137,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 300000
+					TotalDamage = { BaseValue=300000; EffectScaleExponent=1; }
 					Radius = 40 / 3
 					/*Filter
 					{
@@ -146,7 +146,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 100;
+					Impulse = { BaseValue=100; EffectScaleExponent=1; }
 				}
 			]
 			

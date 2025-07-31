@@ -63,7 +63,7 @@ Part : <base_part_occult.rules>/Part
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = sigil.death
-					TotalDrain = -640
+					TotalDrain = { BaseValue=-640; EffectScaleExponent=1; }
 					Radius = 7
 					Slices = 1
 					Filter

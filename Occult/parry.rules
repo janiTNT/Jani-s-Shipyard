@@ -103,7 +103,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 2000000
+					TotalDamage = { BaseValue=2000000; EffectScaleExponent=1; }
 					Radius = 22
 					Slices = 1
 					Filter

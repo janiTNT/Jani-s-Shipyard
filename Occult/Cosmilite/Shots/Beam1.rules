@@ -4,6 +4,7 @@ Width = 2
 HitInterval = .05
 HitEffectsScaleOverRange = [1, 0.75]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
 FriendlyShipLowCollisions = false
 
 CrewCollisions = {Enemies=true; Junk=true}
@@ -119,11 +120,11 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = 300
+			Damage = { BaseValue=300; EffectScaleExponent=1; }
 		}
 		{
 			Type = Impulse
-			Impulse = 400
+			Impulse = { BaseValue=400; EffectScaleExponent=1; }
 		}
 	]
 
@@ -159,11 +160,11 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = 600
+			Damage = { BaseValue=600; EffectScaleExponent=1; }
 		}
 		{
 			Type = Impulse
-			Impulse = 5
+			Impulse = { BaseValue=5; EffectScaleExponent=1; }
 		}
 	]
 }

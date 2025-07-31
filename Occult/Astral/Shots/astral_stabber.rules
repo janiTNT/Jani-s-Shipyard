@@ -111,7 +111,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 200000* 2
+					TotalDamage = { BaseValue=200000* 2; EffectScaleExponent=1; }
 					Radius = 10 * 2^0.5
 					ExpandDuration = .8
 					ExpandStartRadius = 2
@@ -127,7 +127,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000 * 2
+					TotalDamage = { BaseValue=60000 * 2; EffectScaleExponent=1; }
 					Radius = 8 * 2^0.5 
 					ExpandDuration = .8
 					ExpandStartRadius = 2

@@ -1181,7 +1181,7 @@ Part : <../base_part_occult.rules>/Part
 			[
 				{
 					Type = Damage
-					Damage = -320000
+					Damage = { BaseValue=-320000; EffectScaleExponent=1; }
 					DamageType = healing
 					Filter
 					{

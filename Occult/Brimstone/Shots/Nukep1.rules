@@ -167,7 +167,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 200000* 4
+					TotalDamage = { BaseValue=200000* 4; EffectScaleExponent=1; }
 					Radius = 10 * 4^0.5
 					ExpandDuration = .8
 					ExpandStartRadius = 2
@@ -183,7 +183,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000 * 4
+					TotalDamage = { BaseValue=60000 * 4; EffectScaleExponent=1; }
 					Radius = 8 * 4^0.5 
 					ExpandDuration = .8
 					ExpandStartRadius = 2

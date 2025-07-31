@@ -61,7 +61,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 12000
+					Damage = { BaseValue=12000; EffectScaleExponent=1; }
 					Filter
 					{
 						Friendlies = true
@@ -82,7 +82,7 @@ Components
 				} */
 				{
 					Type = Impulse
-					Impulse = 180
+					Impulse = { BaseValue=180; EffectScaleExponent=1; }
 				}
 			]
 
@@ -116,7 +116,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 10000
+					Damage = { BaseValue=10000; EffectScaleExponent=1; }
 					Filter
 					{
 						Friendlies = true
@@ -124,7 +124,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 90
+					Impulse = { BaseValue=90; EffectScaleExponent=1; }
 				}
 			]
 
@@ -150,23 +150,21 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 20000
+					Damage = { BaseValue=20000; EffectScaleExponent=1; }
 					Filter
 					{
 						Friendlies = true
 					}
-				}/* 
+				}
 				{
-					Type = Fire
-					FireChance = .8
-					Filter
-					{
-						Friendlies = true
-					}
-				} */
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .8; EffectScaleExponent = 1 }
+					ValueType = Interpolated
+				}
 				{
 					Type = Impulse
-					Impulse = 180
+					Impulse = { BaseValue=180; EffectScaleExponent=1; }
 				}
 			]
 

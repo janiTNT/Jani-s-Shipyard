@@ -137,7 +137,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 20;
+					Impulse = { BaseValue=20; EffectScaleExponent=1; }
 				}
 			]
 
@@ -190,7 +190,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 1000
+					Damage = { BaseValue=1000; EffectScaleExponent=1; }
 					DamagePool = DamagePool
 					DoPooledDamageFirst = true
 				}

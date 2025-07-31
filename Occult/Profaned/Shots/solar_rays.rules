@@ -6,6 +6,7 @@ HitInterval = .05
 Width = 4
 HitEffectsScaleOverRange = [1, 1]
 MediaEffectsScaleOverRange = &HitEffectsScaleOverRange
+BeamMediaEffectsIntensity = { BaseValue=1; EffectScaleExponent=1; }
 //TractorImpulse = 50000 * (&HitInterval) / (&<./Data/ships/terran/tractor_beam_emitter/tractor_beam_emitter.rules>/BeamCount) // Actual impulse per-ship is half; this is net total of both ships.
 //RampUpTime = 1
 //RequireHitForRampUp = true
@@ -158,15 +159,39 @@ BeamMediaEffects
 	}
 ]
 
-HitShield = &HitOperational
+HitShield : &HitOperational
+{
+	HitEffects
+	[
+		{
+			Type = Damage
+			Damage = { BaseValue=20; EffectScaleExponent=1; }
+		}
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = { BaseValue=30; EffectScaleExponent=1; }
+			ApplyToAllHitPartTiles = true;
+			DivideValueByPartArea = true;
+		}
+		/*{
+			Type = Impulse
+			Impulse = 100
+		}*/
+	]
+}
 HitOperational
 {
 	HitEffects
 	[
 		{
 			Type = Damage
-			Damage = 200
-			DamageType = heat
+			Damage = { BaseValue=10; EffectScaleExponent=1; }
+		}
+		{
+			Type = StatusApplication
+			StatusType = cosmoteer.heat
+			StatusValue = { BaseValue=200; EffectScaleExponent=1; }
 		}
 		/*{
 			Type = Impulse

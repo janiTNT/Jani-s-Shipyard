@@ -48,7 +48,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 40000
+					TotalDamage = { BaseValue=40000; EffectScaleExponent=1; }
 					Radius = 8
 					Filter
 					{
@@ -57,7 +57,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 800;
+					Impulse = { BaseValue=800; EffectScaleExponent=1; }
 				}
 			]
 
@@ -111,11 +111,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 9000
+					Damage = { BaseValue=9000; EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse
-					Impulse = 180
+					Impulse = { BaseValue=180; EffectScaleExponent=1; }
 				}
 			]
 			MediaEffects

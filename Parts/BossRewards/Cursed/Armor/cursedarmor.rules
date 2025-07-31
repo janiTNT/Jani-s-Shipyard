@@ -67,7 +67,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = AreaDamage
-					Damage = 50
+					Damage = { BaseValue=50; EffectScaleExponent=1; }
 					Radius = 2
 					Delay = 0
 					CrewKillChance = 0
@@ -137,7 +137,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 50
+					TotalDamage = { BaseValue=50; EffectScaleExponent=1; }
 					Radius = 3
 					StatusType = cosmoteer.fire
 					StatusChancePerNDamage = 80%

@@ -125,11 +125,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Location = [.5, .5]
 			HitEffects
 			[
-				/* {
-					Type = AreaFires//the bad
-					FireChancePerTile = .2
+				{
+					Type = AreaStatusApplication
+					StatusChance = .2
+					StatusType = cosmoteer.fire
 					Radius = 5
-					FireFalloff = 0
+					StatusValue = 50
 					Delay = 0.75
 					Filter
 					{
@@ -137,8 +138,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 						Junk = true
 						Friendlies = true
 					}
-				} */
-				// SUPERTODO
+				}
 			]
 		}
 
