@@ -62,7 +62,7 @@ Components
 					Bullet = &~/Stage2
 					Count = 1
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 					Distance = 0
 					Spread = [-.5d, .5d]
 				}

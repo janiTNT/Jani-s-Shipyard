@@ -20,7 +20,7 @@ Components : &<stellarborn_drone_base.rules>/Components
 					Arc = [0d, 0d]
 					Distance = 0
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 			]
 			MediaEffects = &<stellarborn_drone_base.rules>/Components/DeathByEnemyProximity/OnDeath/MediaEffects2 //EEP

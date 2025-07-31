@@ -37,7 +37,7 @@ Components
 					Bullet = &~/Stage2a
 					Count = 8
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 				{
 				
@@ -45,7 +45,7 @@ Components
 					Bullet = &~/Stage2b
 					Count = 80
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 				{
 				
@@ -53,7 +53,7 @@ Components
 					Bullet = &~/Stage2c
 					Count = 4
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 				{
 				
@@ -61,7 +61,7 @@ Components
 					Bullet = &~/Stage2d
 					Count = 20
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 			]
 			MediaEffectsScale = 5

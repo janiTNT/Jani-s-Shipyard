@@ -77,7 +77,7 @@ Components : &<StellBase.txt>/Components
 					Arc = [0d, 0d]
 					Distance = 0
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 			]
 		}

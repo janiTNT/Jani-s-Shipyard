@@ -48,7 +48,7 @@ Components
 					Bullet = &~/Stage2
 					Count = 1
 					InheritVelocity = false
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 					Distance = 0
 				}
  				{
@@ -60,7 +60,7 @@ Components
 							Bullet = &~/Beam0
 							Count = 1
 							InheritVelocity = false
-							ScaleHealth = true
+							HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 							Distance = 0+(130/2)
 						}
 						{
@@ -68,7 +68,7 @@ Components
 							Bullet = &~/Beam1
 							Count = 1
 							InheritVelocity = false
-							ScaleHealth = true
+							HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 							Distance = 130+(130/2)
 						}
 						: 1

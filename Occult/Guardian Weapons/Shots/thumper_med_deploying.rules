@@ -32,7 +32,7 @@ Components
 					Bullet = &<thumper_med_deployed.rules>
 					Count = 1
 					InheritVelocity = true
-					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 			]
 
