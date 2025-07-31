@@ -42,6 +42,7 @@ Components
 					Count = 1
 					InheritVelocity = true
 					ScaleHealth = true
+					HealthFactor = { BaseValue=1; EffectScaleExponent=1; }
 				}
 				{
 					Type = AreaCrewStun

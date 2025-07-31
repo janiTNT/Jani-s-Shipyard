@@ -14,6 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [3, 4]
 	SelectionPriority = 1
 	SelectionTypeByRotation = false
+	SignificanceToggle = ScorchedToggle
 	MaxHealth = 12000
 	TypeCategories = [weapon, uses_nukes, uses_launcher_parts, is_crewed]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
@@ -48,7 +49,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -60,10 +68,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			MinStatusValue = 1
+			StatusType = cosmoteer.scorched
+			Invert = true
+			IncludeWhenUnderConstruction = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 15
 		}
 
@@ -395,10 +412,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &~/Part/Components/DestroyedEffects/Location
+			FactorHitEffectsWith = MissileStorage
+			MediaEffects = &~/Part/Components/DestroyedEffects/MediaEffects
+			HitEffects = &~/Part/Components/DestroyedEffects/HitEffects	
+		}
 
 		DestroyedEffects
 		{
 			Type = DeathEffects
+			OperationalToggle = ScorchedToggle
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [1.5, 3]
 			IncludeWhenUnderConstruction = false
@@ -408,10 +443,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 60000
+					TotalDamage = { BaseValue = 60000; EffectScaleExponent = 1 }
 					Radius = 7
 					Delay = .3
-					FireChancePerNDamage = 50%
+					StatusType = cosmoteer.fire
+					StatusChancePerNDamage = 50%
+					StatusValue = 1
+					StatusValueType = Interpolated
 					NDamage = 1000
 					CrewKillChance = 50%
 					Filter
@@ -423,7 +461,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 40000
+					TotalDamage = { BaseValue = 40000; EffectScaleExponent = 1 }
 					Radius = 4
 					Delay = .4
 					Filter
