@@ -85,7 +85,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 500
+					Damage = { BaseValue =500; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -108,7 +108,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 560
+					Damage = { BaseValue =560; EffectScaleExponent = 1 }
 				}
 			]
 			MediaEffects = &../HitBullet/MediaEffects
@@ -122,7 +122,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 70
+					Damage = { BaseValue =70; EffectScaleExponent = 1 }
 				}
 			]
 			MediaEffects = &../HitBullet/MediaEffects

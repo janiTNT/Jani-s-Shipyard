@@ -77,13 +77,13 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 1750
+					TotalDamage = { BaseValue =1750; EffectScaleExponent = 1 }
 					Slices = 1
 					Radius = 4
 				}
 				{
 					Type = Impulse;
-					Impulse = 5;
+					Impulse = { BaseValue =5; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -111,11 +111,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 800
+					Damage = { BaseValue =800; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse;
-					Impulse = 2;
+					Impulse = { BaseValue =2; EffectScaleExponent = 1 }
 				}
 			]
 

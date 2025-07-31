@@ -14,6 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[processor, 1]//2500
 	]
 	Size = [1, 2]
+	SignificanceToggle = ScorchedToggle
 	PhysicalRect = [0, 1, 1, 1]
 	RectColliderRectType = Normal
 	SaveRect = &PhysicalRect
@@ -56,8 +57,23 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
 			Mode = All
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 		
 		IsOperatedByAI__Jani //Aephiex Code with zero interference.
@@ -96,7 +112,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 4
 		}
 		
@@ -1850,7 +1866,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 1
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			CrewDestinations
 			[
 				[.5, 1.4]
@@ -1957,6 +1973,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/MedPartScorched
 		}
 		
 		DestroyedEffects

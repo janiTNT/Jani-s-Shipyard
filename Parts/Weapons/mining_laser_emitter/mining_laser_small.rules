@@ -318,7 +318,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 1
 			DefaultPriority = &<./Data/ships/base_ship.rules>/DefaultSalvagePriority
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[

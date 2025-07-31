@@ -113,12 +113,12 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 100
+					Damage = { BaseValue =100; EffectScaleExponent = 1 }
 					DamagePool = DamagePool
 				}
 				{
 					Type = Impulse
-					Impulse = 20
+					Impulse = { BaseValue =20; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -132,11 +132,11 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 2000
+					Damage = { BaseValue =2000; EffectScaleExponent = 1 }
 				}
 				{
 					Type = Impulse
-					Impulse = 10
+					Impulse = { BaseValue =10; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -150,16 +150,18 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 100
+					Damage = { BaseValue =100; EffectScaleExponent = 1 }
 					DamagePool = DamagePool
 				}
 				{
-					Type = Fire
-					FireChance = .1
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .1; EffectScaleExponent = 1 }
+					ValueType = Interpolated
 				}
 				{
 					Type = Impulse
-					Impulse = 20
+					Impulse = { BaseValue =20; EffectScaleExponent = 1 }
 				}
 			]
 
