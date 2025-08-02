@@ -72,6 +72,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = All
 		}
 		
+		OverclockConstructionOverride
+		{
+			Type = UIToggleModeOverride
+			TargetUIToggle = PowerToggle
+			TargetMode = 0
+			OverrideTrigger = ShipConstructionStarted
+			ResetTrigger = ShipConstructionEnded
+		}
+		ShipConstructionStarted
+		{
+			Type = ToggleTrigger
+			Toggle = ShipConstructionToggle
+			TriggerWhenOff = false
+			AllowOperationalBypass = true
+		}
+		ShipConstructionEnded
+		{
+			Type = ToggleTrigger
+			Toggle = ShipConstructionToggle
+			TriggerWhenOn = false
+			AllowOperationalBypass = true
+		}
+		ShipConstructionToggle
+		{
+			Type = ShipConstructionToggle
+			IgnoreRepairs = true
+		}
+		
 		NonJunkToggle
 		{
 			Type = JunkToggle
@@ -979,6 +1007,57 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						IgnoreInvulnerability = true
 					}
 				}
+			]
+		}
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = [3, 3]
+			HitEffects
+			[
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = battery
+					TotalDrain = { BaseValue = 900000; EffectScaleExponent = 1 }
+					Radius = 32
+					Delay = .05
+					ExpandDuration = .8
+					ExpandStartRadius = 6
+					ExpandLoss = 100%
+					Filter
+					{
+						Friendlies = true
+					}
+
+					MediaEffectsOnDrainFactor = .0015
+					MediaEffectsOnDrain
+					[
+						&<./Data/shots/missile_emp/particles/missile_emp_hit_sizzle.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_lightning.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_drain.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+			]
+			MediaEffects : /COMMON_EFFECTS/HugePartScorched
+			[
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_orb.rules>
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_bolts.rules>
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_shockwave.rules>
 			]
 		}
 		Blueprints
