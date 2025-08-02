@@ -21,6 +21,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeID = "reactors"
 	MaxHealth = 1000
 	AutoDoorMaxPathLength = 3
+	SignificanceToggle = ScorchedToggle
 	TypeCategories = [provides_power, reactor]
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula]
 	CreatePartPerTileWhenDestroyed = ""
@@ -40,8 +41,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [ElectronDebuffToggle]
-			Mode = None
+			Toggles = [NonJunkToggle, ScorchedToggle, {Toggle = ElectronDebuffToggle, invert = true}]
+			Mode = All
+		}
+		
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 		
 		BatteryStorage
@@ -218,6 +233,57 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					File = "batteries4.png"
 					Size = [1, 1]
 				}
+			]
+		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = [1, 1]
+			HitEffects
+			[
+				{
+					Type = ExplosiveResourceDrain
+					ResourceType = battery
+					TotalDrain = { BaseValue = 50000; EffectScaleExponent = 1 }
+					Radius = 8
+					Delay = .05
+					ExpandDuration = .1
+					ExpandStartRadius = 2
+					ExpandLoss = 100%
+					Filter
+					{
+						Friendlies = true
+					}
+					MediaEffectsOnDrainFactor = .00025
+					MediaEffectsOnDrain
+					[
+						&<./Data/shots/missile_emp/particles/missile_emp_hit_sizzle.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_lightning.rules>
+						&<./Data/shots/missile_emp/particles/missile_emp_drain.rules>
+
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+							Volume = 1
+							SpeedVariation = .2
+						}
+					]
+				}
+			]
+			MediaEffects : /COMMON_EFFECTS/MedPartScorched
+			[
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_orb.rules>
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_bolts.rules>
+				&<./Data/shots/missile_emp/particles/missile_emp_hit_shockwave.rules>
 			]
 		}
 
