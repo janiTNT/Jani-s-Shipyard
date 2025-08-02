@@ -1,7 +1,7 @@
 HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
 HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
-HEAT_PER_SECOND = 2400
+HEAT_PER_SECOND = 5800
 
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
@@ -26,7 +26,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewCongestedSpeedFactor = .5
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula, ThermalActivity]
 	MaxHealth = 8000
-	TypeCategories = [uses_power, thermal, provides_power, bounty_objective, power_transmitter]
+	TypeCategories = [uses_power, thermal, provides_power, reactor, heat_management]
+	SignificanceToggle = ScorchedToggle
 	ForceManhattanPathInPart = true
 	BlockedTravelCells
 	[
@@ -64,10 +65,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Toggles
 			[
 				{Toggle = PowerToggle}
-				{Toggle = ThermalStorage, invert = true}
+				{Toggle = NonJunkToggle}
 				{Toggle = BatteryStorage}
+				{Toggle = ScorchedToggle}
 			]
 			Mode = All
+		}
+		
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 		
 		IsProducing
@@ -77,83 +93,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = All
 		}
 		
-		BuffProvider
-		{
-			Type = FloodFillBuffProvider
-			BuffType = Heat_Proxy
-			BuffAmount = 100%
-			BuffsSelf = true
-			BuffRegion 
-            {
-                Type = Grid
-                GridDistance = 1
-            }
-			Criteria
-			{
-				PartCategories = [thermal]
-			}
-		}
-		
-		CombinedThermalStorage
-		{
-			Type = MultiResourceStorage
-			ResourceType = janitnt.heat
-			ResourceStorages = [ThermalStorage]
-			ViaBuffs
-			{
-				OutgoingBuffProviders = [BuffProvider]
-				ComponentID = ThermalStorage
-			}
-			AddMode = PrioritizeLeastResources
-			DropResourcesWhenDestroyed = false
-			DropResourcesWhenRemoved = false
-		}
-		
-		HeatSpreader
-		{
-			Type = ResourceConverter
-			From
-			[
-				{
-					Storage = ThermalStorage
-					Quantity = 1000
-				}
-				{
-					Storage = CombinedThermalStorage
-					Quantity = 1000
-				}
-			]
-			ToStorage = CombinedThermalStorage
-			ToQuantity = 2000
-			Interval = .2
-		}
-		
-		ReactorCriticalityValueProxy
-		{
-			Type = ValueProxy
-			ComponentID = ThermalStorage
-		}
-		
-		ThermalStorage
-		{
-			Type = ResourceStorage
-			ResourceType = janitnt.heat
-			MaxResources = 8000
-			ToggleOnResources = 7500
-			ToggleOffResources = 6000
-			SuppliesResources = false
-			StartingResources = 0
-			InitToMaxResources = 0
-			InitToMaxResourcesPVP = 0
-			DropResourcesWhenDestroyed = false
-			DropResourcesWhenRemoved = false
-		}
-		
 		ThermalProgressBar
 		{
 			Type = ProgressBar
 			OperationalToggle = IsOperational
-			ShowProgressFor = ThermalStorage
+			ShowProgressFor = HeatStorage
 			LowColor = [255, 0, 40]
 			HighColor = [255, 100, 100]
 			FullColor = [255, 0, 0]
@@ -381,9 +325,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = NetworkRouter
 			RouteGenerators
 			[
-				{
+				/* {
 					Type = Bidirectional
-					HEAT_INPUT = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_NETWORK_INPUT
 					Routes
 					[
 						[Port_Thermal_Left5, Port_Thermal_Up0, 0]
@@ -415,17 +358,72 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						[Port_Thermal_Left4, Port_Thermal_Left5, 0]
 						
 						[Port_Thermal_Left5, NetworkHeatInput, 0]
-						[Port_Thermal_Left5, NetworkHeatOutput, 0]
+						//[Port_Thermal_Left5, NetworkHeatOutput, 0]
 						[Port_Thermal_Left5, NetworkedHeatStorage, 0]
+					]
+				} */
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkHeatInput, NetworkHeatOutput, 0]
+						/* [NetworkHeatInput, Port_Thermal_Up1, 0]
+						[NetworkHeatInput, Port_Thermal_Up2, 0]
+						[NetworkHeatInput, Port_Thermal_Up3, 0]
+						[NetworkHeatInput, Port_Thermal_Up4, 0]
+						[NetworkHeatInput, Port_Thermal_Up5, 0]
+						
+						[NetworkHeatInput, Port_Thermal_Right0, 0]
+						[NetworkHeatInput, Port_Thermal_Right1, 0]
+						[NetworkHeatInput, Port_Thermal_Right2, 0]
+						[NetworkHeatInput, Port_Thermal_Right3, 0]
+						[NetworkHeatInput, Port_Thermal_Right4, 0]
+						[NetworkHeatInput, Port_Thermal_Right5, 0]
+						
+						[NetworkHeatInput, Port_Thermal_Down0, 0]
+						[NetworkHeatInput, Port_Thermal_Down1, 0]
+						[NetworkHeatInput, Port_Thermal_Down2, 0]
+						[NetworkHeatInput, Port_Thermal_Down3, 0]
+						[NetworkHeatInput, Port_Thermal_Down4, 0]
+						[NetworkHeatInput, Port_Thermal_Down5, 0]
+						
+						[NetworkHeatInput, Port_Thermal_Left0, 0]
+						[NetworkHeatInput, Port_Thermal_Left1, 0]
+						[NetworkHeatInput, Port_Thermal_Left2, 0]
+						[NetworkHeatInput, Port_Thermal_Left3, 0]
+						[NetworkHeatInput, Port_Thermal_Left4, 0]
+						[NetworkHeatInput, Port_Thermal_Left5, 0] */
+						
+						[NetworkHeatInput, NetworkedHeatStorage, 0]
 					]
 				}
 			]
 		}
 		
-		Port_Thermal_Up0 : &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+		BlueprintNetworkNode
 		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+		Port_Thermal_Up0
+		{
+			Type = NetworkPort
+			Types = [ thermal ]
 			Location = [0,0]
 			Direction = Up
+			RouteSource = NetworkHeatInput
+			RouteEndpoint = NetworkHeatInput
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
 		}
 		Port_Thermal_Up1 : Port_Thermal_Up0
 		{
@@ -869,75 +867,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			RangeLow = 48000 +  24000
 			RangeHigh = 96000
 		}
-		DestroyedEffects
-		{
-			Type = DeathEffects
-			Location = [3, 3]
-			IncludeWhenUnderConstruction = false
-			
-			FactorMediaEffectsWith = PlasmaStorage
-			MediaEffects : &/JANI_COMMON/RadExplodeBig
-			[
-				&<./Data/ships/terran/reactor_large/particles/reactor_explode_flash_large.rules>
-				&<./Data/common_effects/particles/explosions/big_part_explode_debris.rules>
-				&<./Data/common_effects/particles/explosions/huge_part_explode_smoke.rules>
-
-				: /BASE_SOUNDS/AudioExterior
-				{
-					Sound = "./Data/ships/terran/reactor_small/destroyed.wav"
-					Volume = 2
-					Speed = .2
-					SpeedVariation = .25 * (&Speed)
-				}
-
-				: /BASE_SHAKE
-				{
-					ShakeAmount = 80
-					Duration = 5
-				}
-			]
-			
-			
-			FactorHitEffectsWith = PlasmaStorage
-			HitEffects
-			[
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 4000000
-					Radius = 75
-					Delay = 0.5
-					ExpandDuration = 2
-					ExpandStartRadius = 1
-					ExpandLoss = 100%
-					FireChancePerNDamage = 50%
-					ImpulsePerNDamage = 10
-					NDamage = 1000
-					Filter
-					{
-						OperationalHealth = true
-						StructuralHealth = false
-						Friendlies = true
-					}
-				}
-				{
-					Type = ExplosiveDamage
-					TotalDamage = 700000
-					Radius = 50
-					Delay = 1
-					ExpandDuration = 2
-					ExpandStartRadius = 2
-					ExpandLoss = 100%
-					ImpulsePerNDamage = 5
-					NDamage = 1000
-					Filter
-					{
-						OperationalHealth = false
-						StructuralHealth = true
-						Friendlies = true
-					}
-				}
-			]
-		}
 		DestroyedEffects2 // A separate destroyed effects for the base destruction that doesn't get scale with ammo.
 		{
 			Type = DeathEffects
@@ -950,10 +879,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			AmountFrom = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
 			MinAmount = .94
 		} */
-		OverheatDeathEffects
+		DestroyedEffects
 		{
-			Type = TriggeredEffects
-			Trigger = OverflowHeatStorage
+			Type = DeathEffects
 			Location = [3, 3]
 			FactorMediaEffectsIntensityWith = PlasmaStorage
 			FactorHitEffectsWith = PlasmaStorage
@@ -980,24 +908,33 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			HitEffects
 			[
 				{
-					Type = Damage
-					Damage = 999999
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 80000 * 4 //Bonus Heat Application
+						EffectScaleExponent = 1
+					}
+					MaxCost = 4 //higher range
+					EmptyTileCost = Infinity
+					ValueFalloff = 4
+					FalloffPadding = 1
 					Filter
 					{
-						Friendlies = true
-						IgnoreInvulnerability = true
+						Self = true
 					}
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 5000000
-					Radius = 125
+					TotalDamage = {BaseValue = 5000000, EffectScaleExponent = 1}
+					Radius = {BaseValue = 80, EffectScaleExponent = 0.5} 
 					//StrongerExplode
 					Delay = 0.2
-					ExpandDuration = 2
+					ExpandDuration = 4
 					ExpandStartRadius = 1
 					ExpandLoss = 100%
-					FireChancePerNDamage = 50%
 					ImpulsePerNDamage = 10
 					NDamage = 1000
 					Filter
@@ -1009,10 +946,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 300000
-					Radius = 50
+					TotalDamage = {BaseValue = 300000, EffectScaleExponent = 1}
+					Radius = {BaseValue = 50, EffectScaleExponent = 0.5} 
 					Delay = .5
-					ExpandDuration = 2
+					ExpandDuration = 4
 					ExpandStartRadius = 2
 					ExpandLoss = 100%
 					ImpulsePerNDamage = 5
@@ -1022,6 +959,24 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						OperationalHealth = false
 						StructuralHealth = true
 						Friendlies = true
+					}
+				}
+			]
+		}
+		OverheatDeathEffects
+		{
+			Type = TriggeredEffects
+			Trigger = OverflowHeatStorage
+			Location = [3, 3]
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = 999999
+					Filter
+					{
+						Friendlies = true
+						IgnoreInvulnerability = true
 					}
 				}
 			]
