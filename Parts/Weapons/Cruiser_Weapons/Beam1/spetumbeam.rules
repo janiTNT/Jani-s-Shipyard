@@ -39,6 +39,8 @@ BeamMediaEffects
 			_endCapSize = 4
 			Size = [100%, 3.5]
 			VertexColor = [255, 255, 255, 217]
+			_baseColor = [1, 0, 0, 1]
+			_halfHighlightColor = [0.5, 0.219, 0.213, 1]
 			TargetBlendMode
 			{
 				SourceRgbFactor = InverseDestColor

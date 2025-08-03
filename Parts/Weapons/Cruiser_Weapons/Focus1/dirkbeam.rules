@@ -32,12 +32,14 @@ BeamMediaEffects
 			Shader = "./data/shots/ion_beam/ion_beam.shader"
 			_extraBeginLength = 0.5
 			_extraEndLength = 0.25
-			_sizePulseFactor = 1.2
+			_sizePulseFactor = 2
 			_sizePulseInterval = .1
 			_sizePulseUOffsetFactor = -.03
 			_endCapSize = 4
 			Size = [100%, 3.5]
 			VertexColor = [255, 255, 255, 217]
+			_baseColor = [1, 0, 0, 1]
+			_halfHighlightColor = [0.6, 0.5, 0.5, 1]
 			TargetBlendMode
 			{
 				SourceRgbFactor = InverseDestColor
@@ -49,7 +51,7 @@ BeamMediaEffects
 			}
 		}
 		FadeInTime = .05
-		FadeOutTime = .25
+		FadeOutTime = .35
 		RandomTimeOffset = [0, 1]
 		Bucket = IonBeam
 	}
