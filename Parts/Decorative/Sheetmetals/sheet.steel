@@ -14,7 +14,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IsRotateable = false
 	SelectionTypeID = "armor"
 	MaxHealth = 250
-	TypeCategories = [sheetmetal]
+	TypeCategories = [sheetmetal, non_flammable]
 	Flammable = false
 	UnderlyingPartPerTile = ""
 	CreatePartPerTileWhenGrabbed = ""

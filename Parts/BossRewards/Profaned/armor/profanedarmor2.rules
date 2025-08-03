@@ -20,7 +20,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }, heat = 95%, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; };}//solar resistant, higher explosive resistance
 	Flammable = false
 	InitialPenetrationResistance = { BaseValue=14; MinValue = 14, MaxValue = 28; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }
-	TypeCategories = [armor]
+	TypeCategories = [armor, non_flammable]
 	FlipHRotate = [0, 1, 2, 3] // Disable flipping UI.
 	FlipVRotate = [0, 1, 2, 3] // Disable flipping UI.
 	IsRotateable = true

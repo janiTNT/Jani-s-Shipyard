@@ -21,7 +21,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 12000
 	ExplosiveDamageAbsorption = 100%
 	ExplosiveDamageResistance = 50%
-	TypeCategories = [armor]
+	TypeCategories = [armor, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Flammable = false
 	UnderlyingPartPerTile = ""

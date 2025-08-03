@@ -17,7 +17,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000 * 3
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = { BaseValue=50%; MinValue = 50%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }, heat = 95%, default = { BaseValue=0%; MinValue = 0%, MaxValue = 100%; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; };}//solar resistant, higher explosive resistance
-	TypeCategories = [armor]
+	TypeCategories = [armor, non_flammable]
 	Flammable = false
 	InitialPenetrationResistance = { BaseValue=14; MinValue = 14, MaxValue = 28; BuffType=Jani_BossProfanedHealthBonus; BuffMode=Lerp; }
 	ContinuingPenetrationResistance = &InitialPenetrationResistance

@@ -482,11 +482,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Circuits/advanced_circuit_doodad.rules>
 			//&<resources/Circuits/processing_unit_doodad.rules>
 			
-			/* &<resources/Cosmic Bar/cosmic_doodad.rules>
+			&<resources/Cosmic Bar/cosmic_doodad.rules>
 			&<resources/Astral Bar/astral_doodad.rules>
 			&<resources/Profaned Core/profaned_doodad.rules>
 			&<resources/Cursed Pages/cursed_doodad.rules>
-			&<resources/Zetasphere/doodad_zetasphere.rules> */
+			&<resources/Zetasphere/doodad_zetasphere.rules>
 			
 			&<planets/doodad_planet_deadsun.rules>
 			&<planets/doodad_planet_deadsun_mini.rules>
@@ -690,7 +690,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Circuits/advanced_circuit.rules>
 			//&<resources/Circuits/processing_unit.rules>
 			
-			/* &<resources/Cosmic Bar/cosmic_bar.rules>
+			&<resources/Cosmic Bar/cosmic_bar.rules>
 			&<resources/Astral Bar/astralbar.rules>
 			&<resources/Profaned Core/profaned_core.rules>
 			&<resources/Cursed Pages/cursedpages.rules>
@@ -706,7 +706,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/fluids/molten.gold.rules>
 			&<resources/fluids/molten.goldium.rules>
 			&<resources/fluids/molten.hyperium.rules>
-			&<resources/fluids/molten.sulfur.rules> */
+			&<resources/fluids/molten.sulfur.rules>
 		]
 	}
 	{
@@ -1140,7 +1140,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//&<Occult/weakpoint_basic.rules>/Part
 			&<Occult/nothingroid.rules>/Part
 			
-			/* &<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
+			&<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
 			&<Occult/Cosmilite/armoroid_cosmilite_wide.rules>/Part
 			&<Occult/Cosmilite/missilesigil.rules>/Part
 			&<Occult/Cosmilite/Beamball.rules>/Part
@@ -1173,7 +1173,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
 			&<Occult/Astral/fringe_ball_mine.rules>/Part
 			&<Occult/Astral/AstralEye.rules>/Part
-			&<Occult/Astral/lootorb.rules>/Part */
+			&<Occult/Astral/lootorb.rules>/Part
 		]
 	}
 	{	Action = AddMany
