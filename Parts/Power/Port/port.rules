@@ -18,6 +18,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IsRotateable = true
 	TypeCategories = [PowerPort, uses_power, Port_OUT]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
+	SignificanceToggle = ScorchedToggle
 	//AllowedDoorLocations
 	//[
 	//	[-1, 0]
@@ -39,7 +40,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, SelfBatteryStorage]
+			Toggles = [PowerToggle, SelfBatteryStorage, {Toggle = ScorchedToggle}]
+			Mode = All
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -54,8 +70,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
-			CommandPoints = 3//TROLLER
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 3
 		}
 		
 		BuffProvider
@@ -102,7 +118,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceConverter
 			OperationalToggle = IsOperational
 			FromStorage = SelfBatteryStorage
-			FromQuantity = 75
+			FromQuantity = 100
 			MinFromQuantityForConversion = 1
 			Interval = 1
 		}
@@ -207,12 +223,52 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
-
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
+		}
+		
 		DestroyedEffects
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
 			Location = [.5, .5]
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1]
+				}
+				
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
 		}
 
 		Blueprints

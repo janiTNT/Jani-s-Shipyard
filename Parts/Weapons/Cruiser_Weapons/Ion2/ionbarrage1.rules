@@ -15,6 +15,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	Size = [1, 2]
 	MaxHealth = 2000
+	SignificanceToggle = ScorchedToggle
 	TypeCategories = [uses_power, weapon]
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
@@ -45,7 +46,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle]
+			Mode = All
+		}
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 		PowerToggle
@@ -58,7 +73,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 		BatteryStorage
@@ -592,7 +607,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 1
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage]
 			CrewDestinations
 			[
@@ -611,6 +626,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Layer = "indicators"
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1, 2, 3]
+				}
+				
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -651,6 +673,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [.5, .5]
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
 		}
 
 		DestroyedEffects

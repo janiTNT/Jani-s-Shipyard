@@ -48,7 +48,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 5000
+					TotalDamage = { BaseValue = 5000; EffectScaleExponent = 1 }
 					Radius = 4
 					ImpulsePerNDamage = 10
 					NDamage = 500

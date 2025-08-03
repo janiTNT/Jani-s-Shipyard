@@ -45,7 +45,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 2500
+					Damage = { BaseValue = 2500; EffectScaleExponent = 1 }
 					//Filter
 					//{
 					//	Friendlies = true
@@ -53,7 +53,7 @@ Components
 				}
 				{
 					Type = Impulse
-					Impulse = 20
+					Impulse = { BaseValue = 20; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -86,7 +86,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 1200
+					Damage = { BaseValue = 1200; EffectScaleExponent = 1 }
 					//Filter
 					//{
 					//	Friendlies = true
@@ -94,7 +94,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = 10
+					Impulse = { BaseValue = 10; EffectScaleExponent = 1 }
 				}
 			]
 
@@ -118,7 +118,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = 2500
+					Damage = { BaseValue = 2500; EffectScaleExponent = 1 }
 					//Filter
 					//{
 					//	Friendlies = true
@@ -134,7 +134,7 @@ Components
 				}*/
 				{
 					Type = Impulse
-					Impulse = 60
+					Impulse = { BaseValue = 60; EffectScaleExponent = 1 }
 				}
 			]
 

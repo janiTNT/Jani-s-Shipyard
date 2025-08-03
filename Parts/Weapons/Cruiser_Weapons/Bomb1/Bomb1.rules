@@ -15,6 +15,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	Size = [1, 3]
 	MaxHealth = 2000
+	SignificanceToggle = ScorchedToggle
 	TypeCategories = [uses_power, weapon, uses_missiles, uses_launcher_parts]
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs []
@@ -47,7 +48,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Mode = All
+		}
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 		PowerToggle
@@ -627,6 +642,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Layer = "indicators"
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1, 2, 3]
+				}
+				
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -669,6 +691,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
 		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
+		}
 
 		DestroyedEffects
 		{
@@ -703,7 +740,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Stats
 			{
 				MaxDamage = [(&../BaseDamage), (&../BaseDamage) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
-				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Bullet/Components/DeathByLifetime/OnDeath/HitEffects/0/TotalDamage
+				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Bullet/Components/DeathByLifetime/OnDeath/HitEffects/0/TotalDamage/BaseValue
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				DamageArea = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Bullet/Components/DeathByLifetime/OnDeath/HitEffects/0/Radius
 				//HitInterval = &~/Part/Components/BeamEmitter/HitInterval

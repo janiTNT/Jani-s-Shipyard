@@ -21,6 +21,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeID = "reactors"
 	MaxHealth = 250 * 120 * 120 // weak but not
 	AutoDoorMaxPathLength = 5
+	SignificanceToggle = ScorchedToggle
 	TypeCategories = [weapon, is_crewed, uses_BFG, superweapon, BFG, uses_enriched_uranium, uses_power, BFG_class_weapon]
 	CrewCongestedSpeedFactor = 1
 	CrewSpeedFactor = 1.5 // mfw insanely long travel times are painful
@@ -51,14 +52,28 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew, UraniumPrereq]
+			Toggles = [PowerToggle, BatteryStorage, PartCrew, UraniumPrereq, ScorchedToggle]
 			Mode = All
+		}
+		
+		ConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 		
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = ConsumptionToggle
 			CommandPoints = 500
 		}
 		
@@ -174,7 +189,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 17
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			HighPriorityPrerequisites = [BatteryStorage, UraniumPrereq]
 			CrewDestinations
 			[
@@ -866,6 +881,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Layer = "walls"
 		}
 		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &../DestroyedEffects/MediaEffects
+		}
+		
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -901,6 +931,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Layer = "indicators"
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
 				// Out of power.
 				{
 					Toggle = BatteryStorage

@@ -80,7 +80,7 @@ Components
 				}
 				{
 					Type = ExplosiveDamage
-					TotalDamage = 900000
+					TotalDamage = { BaseValue =900000; EffectScaleExponent = 1 }
 					Radius = 80
 					Filter
 					{
@@ -89,7 +89,7 @@ Components
 				}
 				{
 					Type = AreaDamage
-					Damage = 100000 //90000000
+					Damage = { BaseValue =100000; EffectScaleExponent = 1 } //90000000
 					Radius = 210 //150
 					Falloff = 100%
 					Delay = .1
@@ -100,7 +100,7 @@ Components
 				}
 				{
 					Type = AreaDamage
-					Damage = 6400000
+					Damage = { BaseValue =6400000; EffectScaleExponent = 1 }
 					Radius = 200
 					Falloff = 100%
 					Delay = .2
@@ -112,7 +112,7 @@ Components
 				}
 				{
 					Type = AreaDamage
-					Damage = 16000 //90000
+					Damage = { BaseValue =16000; EffectScaleExponent = 1 } //90000
 					Radius = 210
 					Delay = .5
 					Falloff = 100%
@@ -124,7 +124,7 @@ Components
 				}
 				{
 					Type = Impulse
-					Impulse = 40000
+					Impulse = { BaseValue =40000; EffectScaleExponent = 1 }
 				}
 			]
 			MediaEffects
