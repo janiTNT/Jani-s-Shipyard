@@ -1,3 +1,5 @@
+OVERCLOCK = &<../large_fabricator.rules>/OVERCLOCK
+
 Components
 {
 	GoldStorage
@@ -59,7 +61,21 @@ Components
 		FromQuantity = 1
 		ToStorage = GoldiumStorage
 		ToQuantity = 1
-		Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+		Interval
+		{
+			BaseValue = 1
+			Modifiers
+			[
+				{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+				{
+					Type = BuffRemap
+					BuffType = Overclock
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					ModificationMode = Divide
+				}
+			]
+		}
 	}
 	
 	GoldPrereq
@@ -103,7 +119,21 @@ Components
 		FromQuantity = 1
 		ToStorage = LoadedGold
 		ToQuantity = 1
-		Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+		Interval
+		{
+			BaseValue = 1
+			Modifiers
+			[
+				{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+				{
+					Type = BuffRemap
+					BuffType = Overclock
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					ModificationMode = Divide
+				}
+			]
+		}
 	}
 
 	ResourceConverter
@@ -118,7 +148,18 @@ Components
 			}
 			{
 				Storage = BatteryStorage
-				Quantity = 750
+				Quantity
+				{
+					BaseValue = 750
+					Modifiers
+					[
+						: ~/MODIFIERS/OVERCLOCK_LERP
+						{
+							MinValue = &../../BaseValue
+							MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+						}
+					]
+				}
 				MinQuantityForConversion = 1
 			}
 		]
@@ -130,7 +171,21 @@ Components
 				MinQuantityForConversion = 5
 			}
 		]
-		Interval = { BaseValue=0.5; BuffType=Factory; BuffMode=Divide; }
+		Interval
+		{
+			BaseValue = 0.5
+			Modifiers
+			[
+				{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+				{
+					Type = BuffRemap
+					BuffType = Overclock
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					ModificationMode = Divide
+				}
+			]
+		}
 		CheckResourceLimits = true
 	}
 	
@@ -198,5 +253,15 @@ Components
 				}
 			]
 		}
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_LERP
+	{
+		Type = Buff
+		BuffType = Overclock
+		ModificationMode = Lerp
 	}
 }

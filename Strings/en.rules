@@ -92,6 +92,7 @@ Parts
 	LargeFabricator = "Goldium Plate Synthesizer"
 	LargeFabricatorIcon = "Goldium"
 	LargeFabricatorDesc = "Eletrochemically synthesizes goldium plates, which are used for a variety of advanced parts. Consumes gold. Gains +25% production speed for each adjacent factory of any type."
+	LargeFabricatorOverclockDesc = "Significantly increases production speed. Produces a lot of waste heat while producing goldium."
 	//"Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
 	
 	FactorySplitter = "[[LEGACY]]Building Material Resource Cutter"
