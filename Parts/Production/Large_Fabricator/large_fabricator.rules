@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	HEAT_PER_CONVERSION = 200
+	HEAT_PER_CONVERSION = 50 * 6
 	SPEED_FACTOR = 400%
 	POWER_USE_FACTOR = 150%
 }
@@ -254,12 +254,37 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
+		
+		BeltSpeedFactor
+        {
+        	Type = BuffableValue
+			Value
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Factory
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					}
+				]
+			}
+        }
 
 		Graphics
 		{
 			Type = Graphics
 			Location = [2, 2]
 			OperationalToggle = IsOperational
+			AnimationSpeedFactor = BeltSpeedFactor
 			DoodadToggle = AnimationToggle //IMPORTANT
 			/*Floor
 			{
@@ -441,6 +466,30 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
 			Location = [2, 2]
 		}
+		
+		Overclock_HeatProductionInterval
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/GoldLoader/Interval
+			IncludeInBlueprints = true
+		}
+		Overclock_HeatPerConversion { Type = StaticValue; Value = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / 6; }
+		HeatGenerationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_HeatPerConversion
+			ValueTwo = Overclock_HeatProductionInterval
+			NaNFallbackValue = 0
+			IncludeInBlueprints = Normal
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
 
 		Indicators
 		{
@@ -491,44 +540,38 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 
 	Stats
 	{
-		//PowerPerSteel = 125 / 1 / 1000
-		//PowerPerSecond = 125 / 1 / 1000
-		//SteelPowerUsage = [&../PowerPerSteel, &../PowerPerSecond]
 		
-		/* SteelProduction = (&~/Part/Components/GoldiumComponents/Components/ResourceConverter/To/0/Quantity) / (&~/Part/Components/GoldiumComponents/Components/ResourceConverter/Interval/BaseValue)
-		SteelCapacity = (&~/Part/Components/SteelStorage/GridRect/2) * (&~/Part/Components/SteelStorage/GridRect/3) * (&<./Data/resources/steel/steel.rules>/MaxStackSize)
-		IronCapacity = (&~/Part/Components/IronStorage/GridRect/2) * (&~/Part/Components/IronStorage/GridRect/3) * (&<./Data/resources/iron/iron.rules>/MaxStackSize)
-		IronPerSteel = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity)
-		IronPerSecond = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/Interval/BaseValue)
-		SteelIronUsage = [&../IronPerSteel, &../IronPerSecond]
-		PowerPerSteel = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		GoldiumProduction = ((&~/Part/Components/ResourceConverter/To/0/Quantity) / (&~/Part/Components/GoldLoader/Interval/BaseValue)) / (&~/Part/Components/ResourceConverter/From/0/Quantity)
+		GoldiumCapacity = (&~/Part/Components/GoldiumStorage/GridRect/2) * (&~/Part/Components/GoldiumStorage/GridRect/3) * (&<../../../Resources/goldium/goldium.rules>/MaxStackSize)
+		GoldCapacity = (&~/Part/Components/GoldStorage/GridRect/2) * (&~/Part/Components/GoldStorage/GridRect/3) * (&<./Data/resources/gold/gold.rules>/MaxStackSize)
+		GoldPerGoldium = (&~/Part/Components/ResourceConverter/From/0/Quantity) / (&~/Part/Components/ResourceConverter/To/0/Quantity)
+		GoldPerSecond = (&~/Part/Components/GoldLoader/FromQuantity) / (&~/Part/Components/GoldLoader/Interval/BaseValue)
+		GoldiumGoldUsage = [&../GoldPerGoldium, &../GoldPerSecond]
+		PowerPerGold = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/To/0/Quantity) / 1000
 		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/1/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) / 1000
-		SteelPowerUsage = [&../PowerPerSteel, &../PowerPerSecond]
-		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
-		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100 */
-		
+		GoldiumPowerUsage = [&../PowerPerGold, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
 
-		//RecPower = &PowerPerSecond
-		//RecCrew = (&RecPower) * 4
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4
 	}
 	
-	/* SecondaryToolTip
+	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
 		DescriptionKey = "Parts/FactorySteelOverclockDesc"
 		Stats
 		{
-			SteelProduction = (&~/Part/Stats/SteelProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
-			SteelIronUsage = [(&~/Part/Stats/SteelIronUsage/0), (&~/Part/Stats/SteelIronUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
-			POWER_PER_ITEM = (&~/Part/Stats/SteelPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
-			POWER_PER_SECOND = (&~/Part/Stats/SteelPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
-			SteelPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
-			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
+			GoldiumProduction = (&~/Part/Stats/GoldiumProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			GoldiumGoldUsage = [(&~/Part/Stats/GoldiumGoldUsage/0), (&~/Part/Stats/GoldiumGoldUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_ITEM = (&~/Part/Stats/GoldiumGoldUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/GoldiumGoldUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+			GoldiumPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/To/0/Quantity)
 			HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
-			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
-			SteelHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
+			HEAT_PER_SECOND = ((&~/OVERCLOCK/HEAT_PER_CONVERSION)/6) / (&~/Part/Components/GoldLoader/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
+			GoldiumHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
 		}
-	} */
+	}
 }

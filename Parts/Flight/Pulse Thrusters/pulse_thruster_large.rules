@@ -251,16 +251,15 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 		RecCrew = (&RecPower) * 4
 	}
 	
-	StatsByCategory
-	[
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/ThrusterLargeOverclockDesc"
+		Stats
 		{
-			NameKey = "StatCategories/Overclocked"
-			Stats
-			{
-				ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
-				ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
-				ThrusterPowerUsage = (&~/Part/FuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
-			}
+			ThrusterForce = (&~/Part/ThrusterForce) * (&~/OVERCLOCK/THRUST_FACTOR)
+			ThrusterHeatGeneration = &~/OVERCLOCK/THRUST_HEAT_PER_SECOND
+			ThrusterPowerUsage = (&~/Part/FuelUsage) * (&~/OVERCLOCK/MAX_POWER_USAGE_FACTOR) / 1000
 		}
-	]
+	}
 }

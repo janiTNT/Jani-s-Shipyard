@@ -196,6 +196,7 @@ Components
 		OperationalToggle = IsOperational
 		DoodadToggle = GoldLoader
 		ResetAnimationTrigger = GoldLoader
+		AnimationSpeedFactor = BeltSpeedFactor
 		ToggleOnDoodad
 		{
 			Layer = "walls" //walls layer so the Gold and Goldium are draw over the belts
@@ -229,6 +230,7 @@ Components
 		OperationalToggle = LoadedGoldium
 		DoodadToggle = GoldiumUnLoader
 		ResetAnimationTrigger = GoldiumUnLoader
+		AnimationSpeedFactor = BeltSpeedFactor
 		ToggleOnDoodad
 		{
 			Layer = "walls" //walls layer so the Gold and Goldium are draw over the belts

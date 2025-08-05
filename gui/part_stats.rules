@@ -98,4 +98,25 @@ PartStats
 		ID = AdvancedCircuitPowerUsage
 		FormatKey = "Stats/AdvancedCircuitPowerUsageFmt"
 	}
+	
+	{
+		ID = GoldiumProduction
+		FormatKey = "Stats/GoldiumProductionFmt"
+	}
+	{
+		ID = GoldiumCapacity
+		FormatKey = "Stats/GoldiumCapacityFmt"
+	}
+	{
+		ID = GoldiumGoldUsage
+		FormatKey = "Stats/GoldiumGoldUsageFmt"
+	}
+	{
+		ID = GoldiumPowerUsage
+		FormatKey = "Stats/GoldiumPowerUsageFmt"
+	}
+	{
+		ID = GoldiumHeatGeneration
+		FormatKey = "Stats/GoldiumHeatGenerationFmt"
+	}
 ]
