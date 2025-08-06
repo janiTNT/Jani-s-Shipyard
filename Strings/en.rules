@@ -92,7 +92,7 @@ Parts
 	LargeFabricator = "Goldium Plate Synthesizer"
 	LargeFabricatorIcon = "Goldium"
 	LargeFabricatorDesc = "Eletrochemically synthesizes goldium plates, which are used for a variety of advanced parts. Consumes gold. Gains +25% production speed for each adjacent factory of any type."
-	LargeFabricatorOverclockDesc = "Significantly increases production speed. Produces a lot of waste heat while producing goldium."
+	LargeFabricatorOverclockDesc = "Significantly increases production speed. Produces a waste heat while producing goldium."
 	//"Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
 	
 	FactorySplitter = "[[LEGACY]]Building Material Resource Cutter"
@@ -110,10 +110,12 @@ Parts
 	FactoryElectronicCircuit = "Electronic Circuit Assembler"
 	FactoryElectronicCircuitIcon = "Circuits"
 	FactoryElectronicCircuitDesc = "Manufactures cheap electronic circuits, which are used for a range of applications, from drones, logic control systems and more. Consumes steel and coils. Gains +25% production speed for each adjacent factory of any type."
+	FactoryElectronicCircuitOverclockDesc = "Significantly increases production speed. Produces waste heat while producing electronic circuits."
 	
 	FactoryAdvancedCircuit = "Advanced Circuit Assembler"
 	FactoryAdvancedCircuitIcon = "Adv. Circuits"
 	FactoryAdvancedCircuitDesc = "Manufactures advanced circuits, with more processing capabilities. Consumes electronic circuits and hypercoils. Gains +25% production speed for each adjacent factory of any type."
+	FactoryAdvancedCircuitOverclockDesc = "Significantly increases production speed. Produces waste heat while producing electronic circuits."
 	
 	TriSteelDoor = "TriSteel Door"
 	TriSteelDoorIcon = "Tr. Door"
@@ -1496,12 +1498,16 @@ Stats
 	ElectronicCircuitCoilUsageFmt = "<white>Coil Use:</white> <good>{0:0.###}</good><gray>/circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	ElectronicCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	
+	ElectronicCircuitHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/circuit (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	
 	AdvancedCircuitProductionFmt = "<white>Advanced Circuit Rate:</white> <good>{0:0.##}</good><gray> a-circuits/sec</gray>"
 	AdvancedCircuitCapacityFmt = "<white>Advanced Circuit Capacity:</white> <good>{0}</good>"
 	
 	AdvancedCircuitElectronicCircuitUsageFmt = "<white>Electronic Circuit Use:</white> <good>{0}</good><gray>/a-circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
 	AdvancedCircuitCoil2UsageFmt = "<white>Hypercoil Use:</white> <good>{0:0.###}</good><gray>/a-circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
-	AdvancedCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	AdvancedCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/a-circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	
+	AdvancedCircuitHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/a-circuit (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
 	
 	JaniBurstShotsFmt = "<white>Shots per Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
 	DrainTimeFmt = "<white>Power Drain Duration:</white> <good>{0:0}</good><gray>sec</gray>"

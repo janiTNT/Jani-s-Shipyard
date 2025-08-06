@@ -42,6 +42,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = All
 		}
 		
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
 		NonJunkToggle
 		{
 			Type = JunkToggle

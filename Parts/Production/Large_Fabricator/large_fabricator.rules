@@ -560,7 +560,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 	SecondaryToolTip
 	{
 		TitleKey = "StatCategories/Overclocked"
-		DescriptionKey = "Parts/FactorySteelOverclockDesc"
+		DescriptionKey = "Parts/LargeFabricatorOverclockDesc"
 		Stats
 		{
 			GoldiumProduction = (&~/Part/Stats/GoldiumProduction) * (&~/OVERCLOCK/SPEED_FACTOR)

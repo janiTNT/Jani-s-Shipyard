@@ -1,8 +1,8 @@
 Resources
 [
 	[steel, 16]
-	[janitnt.circuit1, 16]
-	[janitnt.circuit2, 22]
+	[coil2, 11]
+	[janitnt.circuit2, 13]
 ]
 
 Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components

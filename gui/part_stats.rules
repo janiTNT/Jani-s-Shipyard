@@ -77,6 +77,10 @@ PartStats
 		ID = ElectronicCircuitPowerUsage
 		FormatKey = "Stats/ElectronicCircuitPowerUsageFmt"
 	}
+	{
+		ID = ElectronicCircuitHeatGeneration
+		FormatKey = "Stats/ElectronicCircuitHeatGenerationFmt"
+	}
 	
 	{
 		ID = AdvancedCircuitProduction
@@ -97,6 +101,10 @@ PartStats
 	{
 		ID = AdvancedCircuitPowerUsage
 		FormatKey = "Stats/AdvancedCircuitPowerUsageFmt"
+	}
+	{
+		ID = AdvancedCircuitHeatGeneration
+		FormatKey = "Stats/AdvancedCircuitHeatGenerationFmt"
 	}
 	
 	{

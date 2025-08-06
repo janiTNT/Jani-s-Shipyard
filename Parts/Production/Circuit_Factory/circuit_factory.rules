@@ -1,4 +1,13 @@
-Part : <./data/ships/terran/base_part_terran.rules>/Part
+OVERCLOCK
+{
+	HEAT_PER_CONVERSION = 50
+	SPEED_FACTOR = 300%
+	POWER_USE_FACTOR = 125%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FactoryElectronicCircuit"
 	IconNameKey = "Parts/FactoryElectronicCircuitIcon"
@@ -39,7 +48,20 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, CoilPrereq, SteelPrereq, BatteryStorage]
+			Toggles = [PowerToggle, CoilPrereq, SteelPrereq, BatteryStorage, NonJunkToggle, ScorchedToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
 			Mode = All
 		}
 
@@ -51,10 +73,18 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			RequiresCommand = false
 		}
 
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 1
 		}
 
@@ -161,7 +191,21 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			FromQuantity = 1
 			ToStorage = LoadedSteel
 			ToQuantity = 1
-			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+			Interval
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
 		}
 		
 		LoadedSteel
@@ -190,7 +234,21 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			FromQuantity = 1
 			ToStorage = LoadedCoil
 			ToQuantity = 1
-			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+			Interval
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
 		}
 		
 		LoadedCoil
@@ -227,13 +285,38 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			    }
 			    {
 			        Storage = BatteryStorage
-			        Quantity = 50
+			        Quantity
+			        {
+			        	BaseValue = 50
+			        	Modifiers
+			        	[
+			        		: ~/MODIFIERS/OVERCLOCK_LERP
+			        		{
+			        			MinValue = &../../BaseValue
+			        			MaxValue = (&MinValue) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			        		}
+			        	]
+			        }
 			        MinQuantityForConversion = 1
 			    }
 			]
 			ToStorage = ElectronicCircuitStorage
 			ToQuantity = 1
-			Interval = 0.5
+			Interval
+			{
+				BaseValue = 0.5
+				Modifiers
+				[
+					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+						ModificationMode = Divide
+					}
+				]
+			}
 			CheckResourceLimits = true
 		}
 
@@ -266,7 +349,25 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		BeltSpeedFactor
         {
         	Type = BuffableValue
-        	Value = { BaseValue=1; BuffType=Factory; BuffMode=Multiply; }
+			Value
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Factory
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, &~/OVERCLOCK/SPEED_FACTOR]
+					}
+				]
+			}
         }
 
 		Graphics
@@ -519,7 +620,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			AnimationSpeedFactor = BeltSpeedFactor
 			ToggleOnDoodad
 			{
-				Layer = "walls" //Wall layer so the processor is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				Layer = "doors" //doors layer so the processor is show on top of the exit belt which use the doodad_low layer and under the crew sprite, and higher than walls
 				DamageLevels
 				[
 					{
@@ -730,6 +831,21 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
 		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
 
 		DestroyedEffects
 		{
@@ -744,6 +860,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Location = [1.5, 1]
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2,3,4]
+				}
+				
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -752,7 +875,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
-					HidesIndicators = [1,2,3]
+					HidesIndicators = [2,3,4]
 				}
 
 				// No coils.
@@ -786,6 +909,81 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+		
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		Overclock_ConversionHeatProducer
+		{
+			Type = ResourceChange
+			OperationalToggle = IsOverclocked
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_ResourceConverterProxy
+			Amount = (&~/OVERCLOCK/HEAT_PER_CONVERSION) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Overclock_ResourceConverterProxy
+		{
+			Type = TriggerProxy
+			ProxyToggle = IsOverclocked
+			ComponentID = ResourceConverter
+		}
+
+		Port_Thermal_Left0 : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Down0 : Port_Thermal_Left0
+		{
+			Location = [0, 1]
+			Direction = Down
+		}
+		Port_Thermal_Down1 : Port_Thermal_Down0
+		{
+			Location = [1, 1]
+		}
+		Port_Thermal_Down2 : Port_Thermal_Down0
+		{
+			Location = [2, 1]
+		}
+		Port_Thermal_Right0 : Port_Thermal_Left0
+		{
+			Location = [2, 1]
+			Direction = Right
+		}
+		
+		Overclock_HeatProductionInterval
+		{
+			Type = BuffableValue
+			Value = &~/Part/Components/ResourceConverter/Interval
+			IncludeInBlueprints = true
+		}
+		Overclock_HeatPerConversion { Type = StaticValue; Value = &~/OVERCLOCK/HEAT_PER_CONVERSION; }
+		HeatGenerationValue
+		{
+			Type = ValueOperation
+			Operator = Divide
+			ValueOne = Overclock_HeatPerConversion
+			ValueTwo = Overclock_HeatProductionInterval
+			NaNFallbackValue = 0
+			IncludeInBlueprints = Normal
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
 
 		Blueprints
 		{
@@ -798,7 +996,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		Interval = (&~/Part/Components/ResourceConverter/Interval)
+		Interval = (&~/Part/Components/ResourceConverter/Interval/BaseValue)
 		ElectronicCircuitProduction = (&~/Part/Components/ResourceConverter/ToQuantity) / (&Interval)
 		ElectronicCircuitCapacity = (&~/Part/Components/ElectronicCircuitStorage/GridRect/2) * (&~/Part/Components/ElectronicCircuitStorage/GridRect/3) * (&<../../../resources/Circuits/electronic_circuit.rules>/MaxStackSize)
 		CoilCapacity = (&~/Part/Components/CoilStorage/GridRect/2) * (&~/Part/Components/CoilStorage/GridRect/3) * (&<./Data/resources/coil/coil.rules>/MaxStackSize)
@@ -809,13 +1007,42 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		SteelPerCircuit = ((&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/SteelSplitter/ToQuantity)) / (&~/Part/Components/ResourceConverter/ToQuantity) 
 		SteelPerSecond = ((&~/Part/Components/ResourceConverter/From/1/Quantity) / (&~/Part/Components/SteelSplitter/ToQuantity)) / (&Interval) 
 		ElectronicCircuitSteelUsage = [&../SteelPerCircuit, &../SteelPerSecond]
-		PowerPerCircuit = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
-		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity) / (&Interval) / 1000
+		PowerPerCircuit = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&~/Part/Components/ResourceConverter/ToQuantity) / 1000
+		PowerPerSecond = (&~/Part/Components/ResourceConverter/From/2/Quantity/BaseValue) / (&Interval) / 1000
 		ElectronicCircuitPowerUsage = [&../PowerPerCircuit, &../PowerPerSecond]
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
 
 		RecPower = &PowerPerSecond
 		RecCrew = (&RecPower) * 4
+	}
+
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FactoryElectronicCircuitOverclockDesc"
+		Stats
+		{
+			ElectronicCircuitProduction = (&~/Part/Stats/ElectronicCircuitProduction) * (&~/OVERCLOCK/SPEED_FACTOR)
+			ElectronicCircuitCoilUsage = [(&~/Part/Stats/ElectronicCircuitCoilUsage/0), (&~/Part/Stats/ElectronicCircuitCoilUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			ElectronicCircuitSteelUsage = [(&~/Part/Stats/ElectronicCircuitSteelUsage/0), (&~/Part/Stats/ElectronicCircuitSteelUsage/1) * (&~/OVERCLOCK/SPEED_FACTOR)]
+			POWER_PER_ITEM = (&~/Part/Stats/ElectronicCircuitPowerUsage/0) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			POWER_PER_SECOND = (&~/Part/Stats/ElectronicCircuitPowerUsage/1) * (&~/OVERCLOCK/POWER_USE_FACTOR) * (&~/OVERCLOCK/SPEED_FACTOR)
+			ElectronicCircuitPowerUsage = [&../POWER_PER_ITEM, &../POWER_PER_SECOND]
+			CONVERSION_OUTPUT = (&~/Part/Components/ResourceConverter/ToQuantity)
+			HEAT_PER_ITEM = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&CONVERSION_OUTPUT)
+			HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_CONVERSION) / (&~/Part/Components/ResourceConverter/Interval/BaseValue) * (&~/OVERCLOCK/SPEED_FACTOR);
+			ElectronicCircuitHeatGeneration = [&../HEAT_PER_ITEM, &../HEAT_PER_SECOND]
+		}
+	}
+}
+
+MODIFIERS
+{
+	OVERCLOCK_LERP
+	{
+		Type = Buff
+		BuffType = Overclock
+		ModificationMode = Lerp
 	}
 }
