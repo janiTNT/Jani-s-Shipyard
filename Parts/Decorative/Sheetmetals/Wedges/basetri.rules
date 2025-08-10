@@ -1,0 +1,75 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	//EditorParentParts = [ "janiTNT.stationarmor" ]
+	EditorReplacementPartID = ""
+	AIValueFactor = 0
+	Size = [1, 1]
+	
+	HEALTHMULTIPLIER = 0.25
+	COSTMULTIPLIER = 0.25
+	PENETRATIONFACTOR = 3/7
+	
+	AllowedContiguity = [Bottom]
+	SelectionTypeID = "armor"
+	TypeCategories = [armor, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = cosmoteer.structure_tri
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top, TopRight, Right]
+	VirtualInternalCells
+	[
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+		{ExternalCell=[1, 0]; InternalCell=[0, 1]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "three_a.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[.5, .5]
+				[1, 1]
+				[0, 1]
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, .5]
+			Path = &/JANI_COMMON/BlankRoofs/Tri
+			Roof = &/JANI_COMMON/BlankRoofs/Tri/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

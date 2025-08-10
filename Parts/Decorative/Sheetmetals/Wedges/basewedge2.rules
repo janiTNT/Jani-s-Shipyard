@@ -1,0 +1,109 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	//EditorParentParts = [ "janiTNT.stationarmor" ]
+	EditorReplacementPartID = ""
+	AIValueFactor = 0
+	Size = [1, 2]
+	
+	HEALTHMULTIPLIER = 1
+	COSTMULTIPLIER = 1
+	PENETRATIONFACTOR = 5/7
+
+	
+	IsFlippable = true
+	AllowedContiguity = [Right, Bottom]
+	SelectionTypeID = "armor"
+	TypeCategories = [armor, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = cosmoteer.structure_1x2_wedge
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [TopRight, Right]
+		}
+		{
+			Key = [0, 1]
+			Value = [Right, BottomRight, Bottom, BottomLeft]
+		}
+	]
+	InternalWallsByCell
+	[
+	 	{
+	 		Key = [0, 0]
+	 		Value = [BottomLeft, Left, TopLeft, Top]
+	 	}
+	 	{
+	 		Key = [0, 1]
+	 		Value = [Left, TopLeft]
+	 	}
+	]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 1]; InternalCell=[0, 2]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [0, 3, 2, 1]
+	FlipVRotate = [2, 1, 0, 3]
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "three_a.png"
+			SampleMode = Linear
+		}
+		Size = [27, 80]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 2]
+				[0, 2]
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			Path = &/JANI_COMMON/BlankRoofs/Wedge2
+			Roof = &/JANI_COMMON/BlankRoofs/Wedge2/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, 1]
+		}
+
+		ConstructionStructureSprite
+		{
+			Type = Sprite
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "structure"
+			Location = [.5, 1]
+			AtlasSprite = &<../structure_1x2_wedge/structure_1x2_wedge.rules>/Part/Components/Graphics/Floor/DamageLevels/0
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

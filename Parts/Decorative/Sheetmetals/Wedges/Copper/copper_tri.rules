@@ -1,0 +1,101 @@
+BaseWedge = &<../basetri.rules>/Part
+Part : <../CopperBase.rules>/Part
+{
+	NameKey = "Parts/SheetmetalCopperTri"
+	IconNameKey = "Parts/SheetmetalCopperTriIcon"
+	ID = janiTNT.copper.sheetmetal_tri
+	EditorReplacementPartID = ""
+	Resources
+	[
+		[&~/Part/^/0/Resources/0/0, ceil((&~/Part/^/0/Resources/0/1)*(&~/BaseWedge/COSTMULTIPLIER))]
+	]
+	MaxHealth = ceil((&^/0/MaxHealth)*(&~/BaseWedge/HEALTHMULTIPLIER))
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	InitialPenetrationResistance = (&^/0/InitialPenetrationResistance)*(&~/BaseWedge/PENETRATIONFACTOR)
+	
+	Size = &~/BaseWedge/Size
+	
+	//Wedge copypaste
+	
+	AllowedContiguity = [Bottom]
+	SelectionTypeID = "armor"
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = ""
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top, TopRight, Right]
+	VirtualInternalCells
+	[
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+		{ExternalCell=[1, 0]; InternalCell=[0, 1]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	GenerateRectCollider = false
+	
+	EditorIcon
+	{
+		Texture
+		{
+			File = "copper_tri_icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber : ^/0/EmpAbsorber
+		{
+			AbsorbsResourceDrain = (&^/0/AbsorbsResourceDrain)*(&~/BaseWedge/HEALTHMULTIPLIER) 
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+		
+		Collider = &~/BaseWedge/Components/Collider
+		
+		DestroyedEffects = &~/BaseWedge/Components/DestroyedEffects
+		
+		Graphics : &~/BaseWedge/Components/Graphics
+		{
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{File = "copper_tri_floor1.png"; Size = [1, 1]}
+					{File = "copper_tri_floor2.png"; Size = [1, 1]}
+					{File = "copper_tri_floor3.png"; Size = [1, 1]}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{File = "copper_tri_walls1.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/WallNormals;Size = [1, 1]}
+					{File = "copper_tri_walls2.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/WallNormals_33;Size = [1, 1]}
+					{File = "copper_tri_walls3.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/WallNormals_66;Size = [1, 1]}
+				]
+			}
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "copper_tri_floor4.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		PenResist = &~/Part/InitialPenetrationResistance
+	}
+}

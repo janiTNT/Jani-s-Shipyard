@@ -1,0 +1,125 @@
+BaseWedge = &<../basewedge2.rules>/Part
+Part : <../CopperBase.rules>/Part
+{
+	NameKey = "Parts/SheetmetalCopperWedge2_Hybrid"
+	IconNameKey = "Parts/SheetmetalCopperWedge2_HybridIcon"
+	ID = janiTNT.copper.sheetmetal_wedge.2_hybrid
+	EditorReplacementPartID = ""
+	Resources
+	[
+		[&~/Part/^/0/Resources/0/0, ceil((&~/Part/^/0/Resources/0/1)*(&~/BaseWedge/COSTMULTIPLIER))]
+		[steel, 2]
+	]
+	MaxHealth = ceil((&^/0/MaxHealth)*(&~/BaseWedge/HEALTHMULTIPLIER))
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	InitialPenetrationResistance = (&^/0/InitialPenetrationResistance)*(&~/BaseWedge/PENETRATIONFACTOR)
+	
+	Size = &~/BaseWedge/Size
+	
+	//Wedge copypaste
+	
+	IsFlippable = true
+	//AllowedContiguity = [Right, Bottom]
+	SelectionTypeID = "armor"
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = ""
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWallsByCell
+	[
+		{
+			Key = [0, 0]
+			Value = [TopRight, Right]
+		}
+		{
+			Key = [0, 1]
+			Value = [Right, BottomRight, Bottom, BottomLeft]
+		}
+	]
+	InternalWallsByCell
+	[
+	 	{
+	 		Key = [0, 0]
+	 		Value = [BottomLeft, Left, TopLeft, Top]
+	 	}
+	 	{
+	 		Key = [0, 1]
+	 		Value = [Left, TopLeft]
+	 	}
+	]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 1]; InternalCell=[0, 2]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [0, 3, 2, 1]
+	FlipVRotate = [2, 1, 0, 3]
+	GenerateRectCollider = false
+	
+	EditorIcon
+	{
+		Texture
+		{
+			File = "copper_wedge2_hybrid_icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber : ^/0/EmpAbsorber
+		{
+			AbsorbsResourceDrain = (&^/0/AbsorbsResourceDrain)*(&~/BaseWedge/HEALTHMULTIPLIER) 
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+		
+		Collider = &~/BaseWedge/Components/Collider
+		
+		DestroyedEffects = &~/BaseWedge/Components/DestroyedEffects
+		
+		Graphics : &~/BaseWedge/Components/Graphics
+		{
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{File = "copper_wedge2_floor1.png"; Size = [1, 2]}
+					{File = "copper_wedge2_floor2.png"; Size = [1, 2]}
+					{File = "copper_wedge2_floor3.png"; Size = [1, 2]}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{File = "copper_wedge2_hybrid1.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/Hybrid_WallNormals;Size = [1, 2]}
+					{File = "copper_wedge2_hybrid2.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/Hybrid_WallNormals_33;Size = [1, 2]}
+					{File = "copper_wedge2_hybrid3.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/Hybrid_WallNormals_66;Size = [1, 2]}
+				]
+			}
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "copper_wedge2_hybrid4.png"
+			Size = [1, 2]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		PenResist = &~/Part/InitialPenetrationResistance
+	}
+}

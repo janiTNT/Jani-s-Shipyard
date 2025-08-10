@@ -1,0 +1,103 @@
+BaseWedge = &<../basewedge.rules>/Part
+Part : <../HullMassBase.rules>/Part
+{
+	NameKey = "Parts/HullMassWedge"
+	IconNameKey = "Parts/HullMassWedgeIcon"
+	ID = janiTNT.wallmass_wedge.1
+	EditorReplacementPartID = ""
+	Resources
+	[
+		[&~/Part/^/0/Resources/0/0, ceil((&~/Part/^/0/Resources/0/1)*(&~/BaseWedge/COSTMULTIPLIER))]
+	]
+	MaxHealth = ceil((&^/0/MaxHealth)*(&~/BaseWedge/HEALTHMULTIPLIER))
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	InitialPenetrationResistance = (&^/0/InitialPenetrationResistance)*(&~/BaseWedge/PENETRATIONFACTOR)
+	
+	Size = &~/BaseWedge/Size
+	
+	//Wedge copypaste
+	
+	AllowedContiguity = [Right, Bottom]
+	SelectionTypeID = "armor"
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = &~/BaseWedge/UnderlyingPart
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	
+	EditorIcon
+	{
+		Texture
+		{
+			File = "wedge_icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber : ^/0/EmpAbsorber
+		{
+			AbsorbsResourceDrain = (&^/0/AbsorbsResourceDrain)*(&~/BaseWedge/HEALTHMULTIPLIER) 
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+		
+		Collider = &~/BaseWedge/Components/Collider
+		
+		DestroyedEffects = &~/BaseWedge/Components/DestroyedEffects
+		
+		Graphics : &~/BaseWedge/Components/Graphics
+		{
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{File = "wedge_floor1.png"; Size = [1, 1]}
+					{File = "wedge_floor2.png"; Size = [1, 1]}
+					{File = "wedge_floor3.png"; Size = [1, 1]}
+				]
+			}
+			Walls
+			{
+				Layer = "external_walls"
+				DamageLevels
+				[
+					{File = "wedge_walls1.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/WallNormals;Size = [1, 1]}
+					{File = "wedge_walls2.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/WallNormals_33;Size = [1, 1]}
+					{File = "wedge_walls3.png"
+					NormalsFile = &~/BaseWedge/Components/Graphics/Path/WallNormals_66;Size = [1, 1]}
+				]
+			}
+		}
+		
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "wedge_floor4.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		PenResist = &~/Part/InitialPenetrationResistance
+	}
+}

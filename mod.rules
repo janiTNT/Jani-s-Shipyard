@@ -115,8 +115,32 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Decorative/ArmorBits/block9.rules>/Part
 			
 			&<Parts/Decorative/Sheetmetals/sheet.steel>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge2.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge3.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_tri.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge2_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge3_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_tri_hybrid.rules>/Part
 			&<Parts/Decorative/Sheetmetals/sheet.copper>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge2.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge3.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_tri.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge2_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge3_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_tri_hybrid.rules>/Part
 			&<Parts/Decorative/Sheetmetals/sheet.tristeel>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge2.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge3.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_tri.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge2_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge3_hybrid.rules>/Part
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_tri_hybrid.rules>/Part
 			
 			//&<Parts/Defense/Overdrive Shield/OverdriveShield.rules>/Part
 			
@@ -316,11 +340,25 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Common/Steelbig/Steelbig.rules>/Part
 			&<Parts/Common/Coilbig/Coilbig.rules>/Part
+			
+			//WallMass
+			
 			&<Parts/Common/WallMass/wallmass.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge2.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge3.rules>/Part
+			&<Parts/Common/WallMass/wedges/tri.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge_hybrid.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge2_hybrid.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge3_hybrid.rules>/Part
+			&<Parts/Common/WallMass/wedges/tri_hybrid.rules>/Part
+			
 			&<Parts/Common/MachineFrame/MachineFrame.rules>/Part
 			&<Parts/Common/Bulkhead/Bulkhead.rules>/Part
 			&<Parts/Common/Corridors/FactoryCorridor.rules>/Part
 			&<Parts/Common/Corridors/FactoryCorridorDark.rules>/Part
+			
+			
 			
 			/* &<Parts/Common/Corridors/SmelteryFloor.rules>/Part			
 			&<Parts/Production/Smeltery/Smeltery_Wall1.rules>/Part

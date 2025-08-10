@@ -79,5 +79,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Stats
 	{
 		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+		PenResist = &~/Part/InitialPenetrationResistance
 	}
 }

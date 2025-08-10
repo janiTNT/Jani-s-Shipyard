@@ -1,0 +1,87 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	//EditorParentParts = [ "janiTNT.stationarmor" ]
+	EditorReplacementPartID = ""
+	AIValueFactor = 0
+	Size = [1, 1]
+	
+	HEALTHMULTIPLIER = 0.5
+	COSTMULTIPLIER = 0.5
+	PENETRATIONFACTOR = 5/7
+	
+	AllowedContiguity = [Right, Bottom]
+	SelectionTypeID = "armor"
+	TypeCategories = [armor, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	UnderlyingPartPerTile = ""
+	UnderlyingPart = cosmoteer.structure_wedge
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	IsRotateable = true
+	IsWalled = true
+	IsSelfDestructible = false
+	ExternalWalls = [TopRight, Right, BottomRight, Bottom, BottomLeft]
+	InternalWalls = [Left, TopLeft, Top]
+	VirtualInternalCells
+	[
+		{ExternalCell=[0, -1]; InternalCell=[1, 0]}
+		{ExternalCell=[-1, 0]; InternalCell=[0, 1]}
+	]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	FlipHRotate = [1, 0, 3, 2]
+	FlipVRotate = [3, 2, 1, 0]
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "three_a.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Collider
+		{
+			Type = PolygonCollider
+			Vertices
+			[
+				[1, 0]
+				[1, 1]
+				[0, 1]
+			]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, .5]
+			Path = &/JANI_COMMON/BlankRoofs/Wedge1
+			Roof = &/JANI_COMMON/BlankRoofs/Wedge1/Roof
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		ConstructionStructureSprite
+		{
+			Type = Sprite
+			IncludeWhenUnderConstruction = true
+			IncludeWhenNotUnderConstruction = false
+			Layer = "structure"
+			Location = [.5, .5]
+			AtlasSprite = &<../structure_wedge/structure_wedge.rules>/Part/Components/Graphics/Floor/DamageLevels/0
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

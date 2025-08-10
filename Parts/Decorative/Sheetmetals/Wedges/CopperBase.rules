@@ -1,0 +1,54 @@
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/SheetmetalCopper"
+	IconNameKey = "Parts/SheetmetalCopperIcon"
+	ID = janiTNT.sheetmetal_copper
+	EditorParentParts = [ "janiTNT.sheetmetal_copper" ]
+	DescriptionKey = "Parts/SheetmetalCopperDesc"
+	Resources
+	[
+		[coil, 1]
+	]
+	AIValueFactor = 0
+	SelectionTypeID = "armor"
+	MaxHealth = 300
+	TypeCategories = [sheetmetal, non_flammable]
+	UnderlyingPartPerTile = ""
+	CreatePartPerTileWhenGrabbed = ""
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0.25
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 0.25
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	EditorIcon
+	{
+		Texture
+		{
+			File = "copper1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		EmpAbsorber
+		{
+			Type = ExplosiveResourceDrainSink
+			ResourceType = battery
+			AbsorbsResourceDrain = 2000
+			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+	}
+
+	Stats
+	{
+		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
+	}
+}

@@ -71,3 +71,6 @@ WallMassDamageLevels
 		Size = [1, 1]
 	}
 ]
+
+
+BlankRoofs =  &<../Parts/Common/BlankArmor/blankarmor.rules>
