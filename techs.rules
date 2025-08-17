@@ -26,7 +26,7 @@ Techs
 			//&<Parts/Power/Radiator/Radiator.txt>/Part/ID
 		]
 		Cost = 100000
-		Prerequisites = [cosmoteer.reactor_large]
+		Prerequisites = [cosmoteer.reactor_large, cosmoteer.heat_management]
 	}
 	{
 		ID = juanTNT.1x1ReactorFunnyTechTrollage
