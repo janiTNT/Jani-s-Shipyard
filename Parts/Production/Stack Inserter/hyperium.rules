@@ -1,3 +1,5 @@
+OVERCLOCK = &<stack_inserter_base.rules>/OVERCLOCK
+
 Resource = hyperium
 ResourceStorage = HyperiumStorage
 CarrySize = (&<./data/resources/hyperium/hyperium.rules>/MaxStackSize)
@@ -7,18 +9,39 @@ Components
 {	
 	MovingTween
 	{
-		Type = ValueTween
-		OffValue = 0
-		OnValue = 1
-		OnTweenDuration = 2
-		OffTweenDuration = 2
-		IsOnToggle = ToAvailible
+		Type = ValueAccumulator
+		AccumulatingToggle = ToAvailible
+		AccumulationRate
+		{
+			BaseValue = 1/2
+			Modifiers
+			[
+				{
+					Type = BuffRemap
+					BuffType = InserterSpeedBoost
+					ModificationMode = Multiply
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEEDBOOST/SPEED_FACTOR]
+				}
+			]
+		}
+		DissipationRate = &AccumulationRate
+		BaseValue = 0
+		MinValue = 0
+		MaxValue = 1
+	}
+	
+	StackinserterConsumptionToggle
+	{
+		Type = MultiToggle
+		Toggles = [HandStorage, {Toggle = HandRest, invert = true}, IsOperational]
+		Mode = All
 	}
 	
 	ToAvailible
 	{
 		Type = MultiToggle
-		Toggles = [ToProxyValue, HandStorage, ToProxyExists]
+		Toggles = [ToProxyValue, HandStorage, ToProxyExists, IsOperational]
 		Mode = All
 	}
 	
@@ -53,10 +76,24 @@ Components
 	
 	ConsumePowerTrigger
 	{
-		Type = ToggleTrigger
-		Toggle = HandRest
-		TriggerWhenOff = false
-		TriggerWhenOn = true
+		Type = Timer
+		Duration
+		{
+			BaseValue = 2
+			Modifiers
+			[
+				{
+					Type = BuffRemap
+					BuffType = InserterSpeedBoost
+					ModificationMode = Divide
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEEDBOOST/SPEED_FACTOR]
+				}
+			]
+		}
+		AutoStart = true
+		Repeats = true
+		OperationalToggle = StackinserterConsumptionToggle
 	}
 	
 	PowerDrainOnTransfer
@@ -64,7 +101,20 @@ Components
 		Type = ResourceChange
 		Trigger = ConsumePowerTrigger
 		ResourceStorage = BatteryStorage
-		Amount = -2500
+		Amount
+		{
+			BaseValue = -2500
+			Modifiers
+			[
+				{
+					Type = BuffRemap
+					BuffType = InserterSpeedBoost
+					ModificationMode = Multiply
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEEDBOOST/POWER_FACTOR]
+				}
+			]
+		}
 	}
 	
 	HandStorage

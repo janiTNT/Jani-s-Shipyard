@@ -427,3 +427,4 @@ BossesDisableComponents
 	CombineMode = Max
 	BaseValue = 0%
 }
+InserterSpeedBoost {}

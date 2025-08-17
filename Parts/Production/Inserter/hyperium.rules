@@ -1,3 +1,4 @@
+OVERCLOCK = &<inserter_base.rules>/OVERCLOCK
 Resource = hyperium
 ResourceStorage = HyperiumStorage
 CarrySize = (&<./data/resources/hyperium/hyperium.rules>/MaxPerNugget)
@@ -7,13 +8,36 @@ Components
 {	
 	MovingTween
 	{
+		Type = ValueAccumulator
+		AccumulatingToggle = HandStorage
+		AccumulationRate
+		{
+			BaseValue = 1
+			Modifiers
+			[
+				{
+					Type = BuffRemap
+					BuffType = InserterSpeedBoost
+					ModificationMode = Multiply
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEEDBOOST/SPEED_FACTOR]
+				}
+			]
+		}
+		DissipationRate = &AccumulationRate
+		BaseValue = 0
+		MinValue = 0
+		MaxValue = 1
+	}/* 
+	MovingTween
+	{
 		Type = ValueTween
 		OffValue = 0
 		OnValue = 1
 		OnTweenDuration = 1
 		OffTweenDuration = 1
 		IsOnToggle = HandStorage
-	}
+	} */
 	
 	HandRest
 	{
@@ -57,7 +81,20 @@ Components
 		Type = ResourceChange
 		Trigger = ConsumePowerTrigger
 		ResourceStorage = BatteryStorage
-		Amount = -300
+		Amount
+		{
+			BaseValue = -500
+			Modifiers
+			[
+				{
+					Type = BuffRemap
+					BuffType = InserterSpeedBoost
+					ModificationMode = Multiply
+					RemapFrom = [0, 1]
+					RemapTo = [1, &~/OVERCLOCK/SPEEDBOOST/POWER_FACTOR]
+				}
+			]
+		}
 	}
 	
 	HandStorage

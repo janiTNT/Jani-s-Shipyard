@@ -314,6 +314,8 @@ Parts
 	InserterOre = "Raw Ore Resource Inserter"
 	InserterOreIcon = "Inserter [ORES]"
 	
+	InserterBaseOverclock = "Choose between two modes of overclocked inserter operation:\n\n1. The inserter transfers items at a faster pace.\n\n2. The inserter self-recharges at a reduced rate and can work without powering.\n\nGenerates heat when active."
+	
 	InserterAmmoLong = "Long Handed Ammo Resource Inserter"
 	InserterAmmoLongIcon = "Long Inserter [AMMO]"
 	InserterLongDesc = "Long Handed Inserters allow transfer even if there's a 1 block gap in between, having a extra tile of reach."
@@ -1587,6 +1589,8 @@ StatCategories
 	FTLBomb = "Small Bomb"
 	FTLBreachBomb = "Small Mine Bomb"
 	EnergyBlast = "Energy Shot"
+	InserterFastInsertion = "Rapid Insertion Mode"
+	InserterPowerRegeneration = "Inserter Recharging Mode"
 }
 CombatDifficulty
 {
@@ -1612,12 +1616,17 @@ Techs
 	
 	Inserters = "Resource Inserters"
 	InsertersDesc = "Mechanical Arms that allow for automated supplying or Weapons, Factories, And Special storages. Researching this also unlocks Special Storages compatible with Inserters."
+	InserterOverclock = "Overclocked Inserters"
 	
 	LongInserters = "Longer Inserters"
 	LongInsertersDesc = "Unlocks a new variation of inserters that can reach a extra block of distance, but is slower and less efficient. The additional block of distance can be used for further use of space."
+	LongInserterOverclock = "Overclocked Long arm Inserters"
+	InserterLongOverclockShort = "Allows Long arm Inserters to also be overclocked in a similar manner to Inserters."
 	
 	StackInserters = "Bulk Inserters"
 	StackInsertersDesc = "Unlocks a new variation of heavy inserters that can transfer a entire stack of resources, useful for extreme throughput and high storage weapons, such as the deck cannon."
+	StackInserterOverclock = "Overclocked Stack Inserters"
+	InserterStackOverclockShort = "Allows Stack Inserters to also be overclocked in a similar manner to Inserters."
 	
 	LogicThrusters = "Logic Thrusters"
 	LogicThrustersDesc = "Unlocks a variation of Normal Thrusters that can interact with logic signals. Technical Limitations make the Ramp-up time not get affected by normal sources."

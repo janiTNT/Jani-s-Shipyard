@@ -1422,4 +1422,44 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			}
 		]
 	}
+	// Inserter Overclock mode toggle
+	{
+		ToggleID = "overclock_jani_inserters"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Speed Boost
+			{
+				ChoiceID = "inserter_speed_overclock"
+				ButtonToolTipKey = "PartToggles/OverclockInserter_Boost"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "inserter_overclock_speed.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+
+			// Power Generation
+			{
+				ChoiceID = "inserter_power_overclock"
+				ButtonToolTipKey = "PartToggles/OverclockInserter_Power"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "inserter_overclock_power.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+		]
+	}
 ]

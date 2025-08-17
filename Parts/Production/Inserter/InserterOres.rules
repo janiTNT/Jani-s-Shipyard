@@ -1,4 +1,4 @@
-Part : <./Data/ships/terran/base_part_terran.rules>/Part
+Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/InserterOre"
 	IconNameKey = "Parts/InserterOreIcon"
@@ -13,7 +13,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IsFlippable = true
 	IsRotateable = true
 	TypeCategories = [Inserter, uses_power, Port_IN, logic]
-	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff, Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [PowerportBuff, Logic, InserterSpeedBoost]
 	AllowedDoorLocations
 	[
 		[-1, 0]
@@ -31,14 +31,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Size = [32, 56]
 	}
 	Components : &<inserter_base.rules>/Components
-	{	
-		CommandConsumer
-		{
-			Type = CommandConsumer
-			OperationalToggle = PowerToggle
-			CommandPoints = 4//TROLLER
-		}
-		
+	{			
 		OreType
 		{
 			Type = UIToggle
@@ -148,4 +141,5 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 
 	Stats = &<Inserter.rules>/Part/Stats
+	SecondaryToolTip = &<Inserter.rules>/Part/SecondaryToolTip
 }

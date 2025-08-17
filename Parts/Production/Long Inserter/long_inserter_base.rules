@@ -1,3 +1,23 @@
+OVERCLOCK
+{
+	MODE_SWITCH_TIME = 1
+	SPEEDBOOST
+	{
+		SPEED_FACTOR = 200%
+		POWER_FACTOR = 150%
+		HEAT_PER_WORK = floor(500 * 1.5/1)
+		//HEAT_PER_SECOND = 50
+	}
+	REGENERATION
+	{
+		RECHARGE_USAGE_RATIO = 65%
+		RECHARGE_TIME_PER_SWING = (2 *(1/(&<hyperium.rules>/Components/MovingTween/AccumulationRate/Basevalue)))  / (&RECHARGE_USAGE_RATIO)
+		RECHARGING_HEAT_PER_SECOND = 500
+	}
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
 Resources
 [
 	[steel, 12]
@@ -5,13 +25,41 @@ Resources
 	[janitnt.circuit1, 16]
 ]
 
-Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
+Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Components
 {
 	IsOperational
 	{
 		Type = MultiToggle
-		Toggles = [PowerToggle, BatteryStorage, LogicDisable]
+		Toggles = [NonJunkToggle, PowerToggle, BatteryStorage, LogicDisable, ScorchedToggle]
 		Mode = All
+	}
+	
+	NonJunkToggle
+	{
+		Type = JunkToggle
+		OnWhenJunk = false
+	}
+
+	CommandConsumptionToggle
+	{
+		Type = MultiToggle
+		Toggles = [PowerToggle, ScorchedToggle]
+		Mode = All
+	}
+	
+	ScorchedToggle
+	{
+		Type = StatusToggle
+		StatusType = cosmoteer.scorched
+		MinStatusValue = 1
+		Invert = true
+	}
+	
+	CommandConsumer
+	{
+		Type = CommandConsumer
+		OperationalToggle = CommandConsumptionToggle
+		CommandPoints = 5
 	}
 	
 	LogicDisable
@@ -34,6 +82,82 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 		Default = 1
 		RequiresCommand = false
 	}
+	
+	Overclock_InserterModeToggle
+	{
+		Type = UIToggle
+		ToggleID = "overclock_jani_inserters"
+		Default = 0
+		VisibilityToggle = OverclockModeToggle
+	}
+	Overclock_SpeedboostModeToggle
+	{
+		Type = ModeToggle
+		Mode = Overclock_InserterModeToggle
+		OnModes = [ 0 ]
+	}
+	Overclock_RechargeModeToggle : Overclock_SpeedboostModeToggle
+	{
+		OnModes = [ 1 ]
+	}
+	Overclock_SpeedBoostModeRawValue
+	{
+		Type = ValueTween
+		IsOnToggle = Overclock_SpeedboostModeToggle
+		OnTweenDuration = &~/OVERCLOCK/MODE_SWITCH_TIME
+		OffTweenDuration = &OnTweenDuration
+	}
+	// Inheritors can override this component to change how overclock responds to being toggled on/off.
+	OverclockStateValue
+	{
+		Type = ValueTween
+		IsOnToggle = OverclockModeToggle
+		OnTweenDuration = 1;
+		OffTweenDuration = 1;
+	}
+	Overclock_SpeedBoostModeValue
+	{
+		Type = MultiValue
+		Values = [ Overclock_SpeedBoostModeRawValue, OverclockStateValue ]
+		Mode = Min
+	}
+	
+	OverclockSpeedBoostToggle
+	{
+		Type = ThresholdToggle
+		ValueFrom = Overclock_SpeedBoostModeValue
+		MinAmount = 0.05
+		MaxAmount = 1
+	}
+	
+	OverclockSpeedboostTriggerHigh
+	{
+		Type = ThresholdTrigger
+		AmountFrom = Overclock_SpeedBoostModeValue
+		MinAmount = 1
+		MaxAmount = 1
+	}
+	
+	OverclockSpeedboostTriggerLow : OverclockSpeedboostTriggerHigh
+	{
+		MinAmount = 0
+		MaxAmount = 0
+	}
+	
+	OverclockSpeedboostHeatGenerationToggle
+	{
+		Type = TriggeredToggle
+		OnTrigger = OverclockSpeedboostTriggerHigh
+		OffTrigger = OverclockSpeedboostTriggerLow
+	}
+	
+	Overclock_SpeedboostModeBuff
+	{
+		Type = SelfBuffProvider
+		OperationalToggle = OverclockSpeedBoostToggle
+		BuffType = InserterSpeedBoost
+		BuffMultiplier = Overclock_SpeedBoostModeValue
+	}
 
 	BatteryStorage
 	{
@@ -42,6 +166,67 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 		MaxResources = 2000
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
+	
+	HeatPowerConsumeProxy
+	{
+		Type = TriggerProxy
+		ProxyToggle = OverclockSpeedboostHeatGenerationToggle
+		ComponentID = ConsumePowerTrigger
+	}
+	
+	Overclock_WorkHeatProducer
+	{
+		Type = ResourceChange
+		ResourceStorage = &<./data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
+		Trigger = HeatPowerConsumeProxy
+		Amount = (&~/OVERCLOCK/SPEEDBOOST/HEAT_PER_WORK) * (&~/HEAT_TO_RESOURCE)
+	}
+
+	Overclock_RechargeHeatProducer
+	{
+		Type = ResourceConverter
+		OperationalToggle = Overclock_BatteryProducer
+		HEAT_PER_INTERVAL = ceil((&~/OVERCLOCK/REGENERATION/RECHARGING_HEAT_PER_SECOND) * (&Interval))
+		ToQuantity = (&HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE)
+		ToStorage = &<./data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
+		Interval = 0.5
+	}
+	
+	Port_Thermal_Left : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/BASE_THERMAL_PORT
+	{
+		Location = [0, 0]
+		Direction = Left
+	}
+	Port_Thermal_Right : Port_Thermal_Left
+	{
+		Direction = Right
+	}
+	
+	OverclockRechargeTrueToggle
+	{
+		Type = MultiToggle
+		Toggles = [Overclock_RechargeModeToggle, OverclockModeToggle]
+		Mode = All
+		IncludeInBlueprints = true
+	}
+	
+	OverclockSpeedboostStatsToggle
+	{
+		Type = MultiToggle
+		Toggles = [Overclock_SpeedboostModeToggle, OverclockModeToggle]
+		Mode = All
+	}
+	
+	Overclock_BatteryProducer
+	{
+		Type = ResourceConverter
+		OperationalToggle = OverclockRechargeTrueToggle
+		ToStorage = BatteryStorage
+		BATCH_COUNT = 2
+		ToQuantity = -(&<hyperium.rules>/Components/PowerDrainOnTransfer/Amount/BaseValue) * (&BATCH_COUNT)
+		Interval = (&~/OVERCLOCK/REGENERATION/RECHARGE_TIME_PER_SWING) * (&BATCH_COUNT)
+	}
+	
 	PortBuffToggle
 	{
 		Type = BuffToggle
@@ -93,127 +278,174 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 		MediaEffects = &/COMMON_EFFECTS/AmmoDeliver
 	}
 	
-	ArmGraphics
+	FromProxyProxified
 	{
-		Type = OpenCloseSprite
+		Type = ToggleProxy
+		ComponentID = FromProxy
+	}
+	
+	IndicativesLights
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = FromProxyProxified
+		DoodadToggle = FromProxyProxified
+		//ShowToggledDoodadsWhenNotOperational = false
+		OperationalDoodad
+		{
+			Layer = "doors"
+			DamageLevels
+			[
+				{
+					File = "../Inserter/indicatives_in3.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		NonOperationalDoodad
+		{
+			Layer = "doors"
+			DamageLevels
+			[
+				{
+					File = "../Inserter/indicatives_in1.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+	
+	ToProxy1proxified
+	{
+		Type = ToggleProxy
+		ComponentID = ToProxyValue
+	}
+	ToProxy2proxified
+	{
+		Type = ToggleProxy
+		ComponentID = ToProxyExists
+	}
+	ArmValueProxy
+	{
+		Type = ValueProxy
+		ComponentID = MovingTween
+	}
+	
+	ToProxyAble
+	{
+		Type = MultiToggle
+		Toggles = [ToProxy1proxified, ToProxy2proxified]
+		Mode = All
+	}
+	
+	IndicativesLights2
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = ToProxyAble
+		//ShowToggledDoodadsWhenNotOperational = false
+		OperationalDoodad
+		{
+			Layer = "doors"
+			DamageLevels
+			[
+				{
+					File = "../Inserter/indicatives_out3.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		NonOperationalDoodad
+		{
+			Layer = "doors"
+			DamageLevels
+			[
+				{
+					File = "../Inserter/indicatives_out1.png"
+					Size = [1, 1]
+				}
+			]
+		}
+	}
+	
+	ArmValueSprites
+	{
+		Type = ValueSprites
 		Location = [(-19/64)+.5, .5]
-		OperationalToggle = HandStorageProxy
+		ValueFrom = ArmValueProxy
 		Layer = "fire"
-		OpenDamageLevels
+		HasZeroValueSprite = true
+		ValueLevels
 		[
-			{
-				AnimationFiles
-				[
-					"arm1.png"
-					"arm2.png"
-					"arm3.png"
-					"arm4.png"
-					"arm5.png"
-					"arm6.png"
-					"arm7.png"
-					"arm8.png"
-					"arm9.png"
-					"arm10.png"
-					"arm11.png"
-					"arm12.png"
-					"arm13.png"
-					"arm14.png"
-					"arm15.png"
-				]
-				Size = [1, 4]
-				AnimationInterval = (1/14) * 1.5
-				AnimationStartTime = MinValue
-				ClampAnimation = true
-			}
-		]
-		ClosedDamageLevels
-		[
-			{
-				AnimationFiles
-				[
-					"arm15.png"
-					"arm14.png"
-					"arm13.png"
-					"arm12.png"
-					"arm11.png"
-					"arm10.png"
-					"arm9.png"
-					"arm8.png"
-					"arm7.png"
-					"arm6.png"
-					"arm5.png"
-					"arm4.png"
-					"arm3.png"
-					"arm2.png"
-					"arm1.png"
-				]
-				Size = [1, 4]
-				AnimationInterval = (1/14) * 1.5
-				AnimationStartTime = MinValue
-				ClampAnimation = true
-			}
+			{File = "arm1.png"; Size = [1, 4]}
+			{File = "arm2.png"; Size = [1, 4]}
+			{File = "arm3.png"; Size = [1, 4]}
+			{File = "arm4.png"; Size = [1, 4]}
+			{File = "arm5.png"; Size = [1, 4]}
+			{File = "arm6.png"; Size = [1, 4]}
+			{File = "arm7.png"; Size = [1, 4]}
+			{File = "arm8.png"; Size = [1, 4]}
+			{File = "arm9.png"; Size = [1, 4]}
+			{File = "arm10.png"; Size = [1, 4]}
+			{File = "arm11.png"; Size = [1, 4]}
+			{File = "arm12.png"; Size = [1, 4]}
+			{File = "arm13.png"; Size = [1, 4]}
+			{File = "arm14.png"; Size = [1, 4]}
+			{File = "arm15.png"; Size = [1, 4]}
 		]
 	}
-	ArmBitGraphics
+	ArmBitValueSprites
 	{
-		Type = OpenCloseSprite
+		Type = ValueSprites
 		Location = [(-19/64)+(-.5), .5]
-		OperationalToggle = HandStorageProxy
+		ValueFrom = ArmValueProxy
 		Layer = "fire"
-		OpenDamageLevels
+		HasZeroValueSprite = true
+		ValueLevels
 		[
-			{
-				AnimationFiles
-				[
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm6.png"
-					"bitarm7.png"
-					"bitarm8.png"
-					"bitarm9.png"
-					"bitarm10.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-				]
-				Size = [1, 1]
-				AnimationInterval = (1/14) * 1.5
-				AnimationStartTime = MinValue
-				ClampAnimation = true
-			}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm6.png"; Size = [1, 1]}
+			{File = "bitarm7.png"; Size = [1, 1]}
+			{File = "bitarm8.png"; Size = [1, 1]}
+			{File = "bitarm9.png"; Size = [1, 1]}
+			{File = "bitarm10.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}
+			{File = "bitarm1.png"; Size = [1, 1]}	
 		]
-		ClosedDamageLevels
-		[
-			{
-				AnimationFiles
-				[
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm10.png"
-					"bitarm9.png"
-					"bitarm8.png"
-					"bitarm7.png"
-					"bitarm6.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-					"bitarm1.png"
-				]
-				Size = [1, 1]
-				AnimationInterval = (1/14) * 1.5
-				AnimationStartTime = MinValue
-				ClampAnimation = true
-			}
-		]
+	}
+	
+	HeatGenerationValue1
+	{
+		Type = StaticValue
+		Value = ((&~/OVERCLOCK/SPEEDBOOST/HEAT_PER_WORK) / (2 *(1/(&<hyperium.rules>/Components/MovingTween/AccumulationRate/Basevalue))) * (&~/OVERCLOCK/SPEEDBOOST/SPEED_FACTOR))
+	}
+	HeatGenerationValue2
+	{
+		Type = StaticValue
+		Value = (&~/OVERCLOCK/REGENERATION/RECHARGING_HEAT_PER_SECOND)
+	}
+	
+	HeatGenerationStat
+	{
+		Type = MultiValue
+		Values = [ HeatGenerationValue1, HeatGenerationValue2 ]
+		Mode = Max
+		IncludeInBlueprints = All
+	}
+	
+	HeatGenerationStatProvider
+	{
+		Type = StatProvider
+		Stat = HeatGeneration
+		OperationalToggle = OverclockModeToggle
+		ValueFrom = HeatGenerationStat
 	}
 	
 	BaseGraphics
@@ -261,6 +493,51 @@ Components : &<./data/ships/terran/base_part_terran.rules>/Part/Components
 				File = "../Inserter/batteries2.png"
 				Size = [1, 1]
 			}
+		]
+	}
+	
+	Indicators
+	{
+		Type = IndicatorSprites
+		Location = [.5, .5]
+		Indicators
+		[
+			// Scorched
+			{
+				Toggle = ScorchedToggle
+				AtlasSprite = &/INDICATORS/Scorched
+				HidesIndicators = [1,2/* ,3 */]
+			}
+			// Turned off.
+			{
+				Toggle = PowerToggle
+				AtlasSprite
+				{
+					File = &/INDICATORS/PowerOff
+					Size = [1, 1]
+				}
+				HidesIndicators = [2/* ,3 */]
+			}
+
+			// Out of power.
+			{
+				Toggle = BatteryStorage
+				Delay = 0.5
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoPower
+					Size = [1, 1]
+				}
+			}
+
+			/* // Resetting from overclock
+			{
+				Toggle = &~/Part/^/0/OVERCLOCK_OPERATIONAL
+				AtlasSprite : /INDICATORS/OverclockReset
+				{
+					Size = [1, 1]
+				}
+			} */
 		]
 	}
 

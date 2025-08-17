@@ -142,6 +142,18 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge3_hybrid.rules>/Part
 			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_tri_hybrid.rules>/Part
 			
+			//WallMass
+			
+			&<Parts/Common/WallMass/wallmass.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge2.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge3.rules>/Part
+			&<Parts/Common/WallMass/wedges/tri.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge_hybrid.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge2_hybrid.rules>/Part
+			&<Parts/Common/WallMass/wedges/wedge3_hybrid.rules>/Part
+			&<Parts/Common/WallMass/wedges/tri_hybrid.rules>/Part
+			
 			//&<Parts/Defense/Overdrive Shield/OverdriveShield.rules>/Part
 			
 			&<Parts/Utilities/Decoupler/Decoupler.txt>/Part
@@ -340,18 +352,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Common/Steelbig/Steelbig.rules>/Part
 			&<Parts/Common/Coilbig/Coilbig.rules>/Part
-			
-			//WallMass
-			
-			&<Parts/Common/WallMass/wallmass.rules>/Part
-			&<Parts/Common/WallMass/wedges/wedge.rules>/Part
-			&<Parts/Common/WallMass/wedges/wedge2.rules>/Part
-			&<Parts/Common/WallMass/wedges/wedge3.rules>/Part
-			&<Parts/Common/WallMass/wedges/tri.rules>/Part
-			&<Parts/Common/WallMass/wedges/wedge_hybrid.rules>/Part
-			&<Parts/Common/WallMass/wedges/wedge2_hybrid.rules>/Part
-			&<Parts/Common/WallMass/wedges/wedge3_hybrid.rules>/Part
-			&<Parts/Common/WallMass/wedges/tri_hybrid.rules>/Part
 			
 			&<Parts/Common/MachineFrame/MachineFrame.rules>/Part
 			&<Parts/Common/Bulkhead/Bulkhead.rules>/Part

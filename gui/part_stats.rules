@@ -1,6 +1,10 @@
 PartStats
 [
 	{
+		ID = InserterSwingSpeed
+		FormatKey = "Stats/InserterSwingSpeedFmt"
+	}
+	{
 		ID = InserterPowerUsage
 		FormatKey = "Stats/InserterPowerUsageFmt"
 	}
@@ -11,10 +15,6 @@ PartStats
 	{
 		ID = InserterHandSizeStacks
 		FormatKey = "Stats/InserterHandSizeStacksFmt"
-	}
-	{
-		ID = InserterSwingSpeed
-		FormatKey = "Stats/InserterSwingSpeedFmt"
 	}
 	{
 		ID = HeatUsageContinuous
