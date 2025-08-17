@@ -12,7 +12,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[coil, 1]
 	]
 	TypeCategories = [logic]
-	Flammable = false
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
 	SelectionTypeID = "lightpanel"
 	Size = [1, 1]

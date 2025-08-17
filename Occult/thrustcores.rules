@@ -17,7 +17,7 @@ Part : <base_part_occult.rules>/Part
 	SelectionTypeID = "cores"
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = 25%}
-	TypeCategories = [armor, thruster]
+	TypeCategories = [armor, thruster, boss_resistant, non_flammable]
 	InitialPenetrationResistance = 2 * 7
 	Size = [2, 1]
 	ContinuingPenetrationResistance = 2 * 7

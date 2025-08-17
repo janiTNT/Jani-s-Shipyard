@@ -13,7 +13,7 @@ Part : <../../baselogicpart.rules>/Part
 		[coil, 6]
 	]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, PowerportBuff]
-	TypeCategories = [logic, Port_IN]
+	TypeCategories = [logic, Port_IN, non_flammable]
 	EditorIcon
 	{
 		Texture

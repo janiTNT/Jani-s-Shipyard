@@ -15,7 +15,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000
 	AllowedContiguity = [Top, Bottom]
 	HealthType = Structural
-	TypeCategories = [background_structure]
+	TypeCategories = [background_structure, non_flammable]
 	//ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
 	
 	SalvageProgressMediaEffects

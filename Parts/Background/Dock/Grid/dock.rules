@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Background_Dock"
 	IconNameKey = "Parts/Background_DockIcon"
 	ID = Skipydog.background_dock
-	EditorGroup = "Structure"
+	EditorParentParts = [ ["Skipydog.background_dock_underlay", -1] ]
 	DescriptionKey = "Parts/Background_DockDesc"
 	Cost = 3500
 	Size = [3, 3]
@@ -15,7 +15,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 3000
 	SelectionPriority = 1
 	HealthType = Structural
-	TypeCategories = [background_structure]
+	TypeCategories = [background_structure, non_flammable]
 	Flammable = false
 	CreatePartPerTileWhenDestroyed = ""
 	CreatePartPerTileWhenGrabbed = ""

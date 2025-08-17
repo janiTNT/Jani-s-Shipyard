@@ -12,6 +12,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[goldium, 40]
 	]
 	TypeCategories = [thruster, uses_power]
+	SignificanceToggle = ScorchedToggle
 	Size = [8, 7]
 	SelectionPriority = 1
 	SelectionTypeByRotation = true

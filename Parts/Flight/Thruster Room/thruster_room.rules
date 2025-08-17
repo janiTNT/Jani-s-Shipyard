@@ -13,6 +13,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	]
 	TypeCategories = [engine_room, uses_power, is_crewed]
 	Size = [1, 2]
+	SignificanceToggle = ScorchedToggle
 	SelectionPriority = 1
 	MaxHealth = 2000
 	ReceivableBuffs : ^/0/ReceivableBuffs []
@@ -36,8 +37,23 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
 			Mode = All
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
 		}
 
 		PowerToggle
@@ -51,7 +67,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 3
 		}
 		
@@ -305,6 +321,20 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
 			Location = [.5, 1]
+		}
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
 		}
 		
 		/*CrewLocation1

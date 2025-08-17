@@ -21,7 +21,7 @@ Part : <../base_part_occult.rules>/Part
 	UnderlyingPart = janiTNT.lootorb_astral
 	DestroyedPartHealthFraction = 100%
 	Size = [10, 10]
-	TypeCategories = [armor, command, boss_resistant]
+	TypeCategories = [armor, command, boss_resistant, non_flammable]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%

@@ -291,81 +291,6 @@ Techs
 		Cost = 12000
 	}
 	{
-		ID = janiTNT.inserter-overclock
-		Categories = [ overclock ]
-		NameKey = "Techs/InserterOverclock"
-		DescriptionKey = "Parts/InserterBaseOverclock"
-		Icon
-		{
-			Texture
-			{
-				File = "gui/inserter1.png"
-				SampleMode = Linear
-			}
-			Size = [80, 80]
-		}
-		SecondaryIcon = &~/OverclockIcon
-		EditorGroups = ["Production", "Technologies"]
-		ToggleChoicesUnlocked
-		[
-			{ PartID=&<Parts/Production/inserter/inserter.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-			{ PartID=&<Parts/Production/inserter/inserterConstruction.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-			{ PartID=&<Parts/Production/inserter/inserterOres.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-		]
-		Cost = 15000
-		Prerequisites = [cosmoteer.heat_management, janiTNT.inserters]
-	}
-	{
-		ID = janiTNT.longinserter-overclock
-		Categories = [ overclock ]
-		NameKey = "Techs/LongInserterOverclock"
-		DescriptionKey = "Techs/InserterLongOverclockShort"
-		Icon
-		{
-			Texture
-			{
-				File = "gui/inserter2.png"
-				SampleMode = Linear
-			}
-			Size = [80, 80]
-		}
-		SecondaryIcon = &~/OverclockIcon
-		EditorGroups = ["Production", "Technologies"]
-		ToggleChoicesUnlocked
-		[
-			{ PartID=&<Parts/Production/Long inserter/LonginserterOres.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-			{ PartID=&<Parts/Production/Long inserter/LonginserterConstruction.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-			{ PartID=&<Parts/Production/Long inserter/Longinserter.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-		]
-		Cost = 20000
-		Prerequisites = [cosmoteer.heat_management, janiTNT.longinserters, janiTNT.inserter-overclock]
-	}
-	{
-		ID = janiTNT.stackinserter-overclock
-		Categories = [ overclock ]
-		NameKey = "Techs/StackInserterOverclock"
-		DescriptionKey = "Techs/InserterStackOverclockShort"
-		Icon
-		{
-			Texture
-			{
-				File = "gui/inserter3.png"
-				SampleMode = Linear
-			}
-			Size = [80, 80]
-		}
-		SecondaryIcon = &~/OverclockIcon
-		EditorGroups = ["Production", "Technologies"]
-		ToggleChoicesUnlocked
-		[
-			{ PartID=&<Parts/Production/Stack inserter/Stackinserter.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-			{ PartID=&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-			{ PartID=&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
-		]
-		Cost = 40000
-		Prerequisites = [cosmoteer.heat_management, janiTNT.stackinserters, janiTNT.inserter-overclock]
-	}
-	{
 		ID = janiTNT.Controlroom1x1
 		NameKey = &<Parts/Flight/Command Room/control_room_tiny.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Command Room/control_room_tiny.rules>/Part/DescriptionKey
@@ -693,6 +618,123 @@ Techs
 		]
 		Prerequisites = [cosmoteer.thruster_rocket]
 		Cost = 1000
+	}
+	{
+		ID = janiTNT.inserter-overclock
+		Categories = [ overclock ]
+		NameKey = "Techs/InserterOverclock"
+		DescriptionKey = "Parts/InserterBaseOverclock"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/inserter1.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Production", "Technologies"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Production/inserter/inserter.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Production/inserter/inserterConstruction.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Production/inserter/inserterOres.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 15000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.inserters]
+	}
+	{
+		ID = janiTNT.longinserter-overclock
+		Categories = [ overclock ]
+		NameKey = "Techs/LongInserterOverclock"
+		DescriptionKey = "Techs/InserterLongOverclockShort"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/inserter2.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Production", "Technologies"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Production/Long inserter/LonginserterOres.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Production/Long inserter/LonginserterConstruction.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Production/Long inserter/Longinserter.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 20000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.longinserters, janiTNT.inserter-overclock]
+	}
+	{
+		ID = janiTNT.stackinserter-overclock
+		Categories = [ overclock ]
+		NameKey = "Techs/StackInserterOverclock"
+		DescriptionKey = "Techs/InserterStackOverclockShort"
+		Icon
+		{
+			Texture
+			{
+				File = "gui/inserter3.png"
+				SampleMode = Linear
+			}
+			Size = [80, 80]
+		}
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Production", "Technologies"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Production/Stack inserter/Stackinserter.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Production/Stack inserter/StackinserterConstruction.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Production/Stack inserter/StackinserterOres.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 40000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.stackinserters, janiTNT.inserter-overclock]
+	}
+	{
+		ID = janiTNT.goldiumFabricator-overclock
+		NameKey = "Parts/GoldiumFactoryOverclock"
+		DescriptionKey = "Parts/LargeFabricatorOverclockDesc"
+		Icon = &<Parts/Production/Large_Fabricator/large_fabricator.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Production"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Production/Large_Fabricator/large_fabricator.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 25000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.advanced_material_manipulation]
+	}
+	{
+		ID = janiTNT.ElectronicCircuitFactory-overclock
+		NameKey = "Parts/FactoryElectronicCircuitOverclock"
+		DescriptionKey = "Parts/FactoryElectronicCircuitOverclockDesc"
+		Icon = &<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Production"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 10000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.ElectronicCircuitFactory]
+	}
+	{
+		ID = janiTNT.AdvancedCircuitFactory-overclock
+		NameKey = "Parts/FactoryAdvancedCircuitOverclock"
+		DescriptionKey = "Parts/FactoryAdvancedCircuitOverclockDesc"
+		Icon = &<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Production"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 40000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.AdvancedCircuitFactory]
 	}
 ]
 

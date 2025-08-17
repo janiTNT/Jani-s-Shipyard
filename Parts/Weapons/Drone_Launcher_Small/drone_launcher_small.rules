@@ -16,6 +16,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	PhysicalRect = [0, 1, 2, 3]
 	RectColliderRectType = Normal
 	SaveRect = &PhysicalRect
+	SignificanceToggle = ScorchedToggle
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
@@ -76,8 +77,17 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
 			Mode = All
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			MinStatusValue = 1
+			StatusType = cosmoteer.scorched
+			Invert = true
+			IncludeWhenUnderConstruction = true
 		}
 		
 		IsOperatedByAI__Jani //Aephiex Code with zero interference.
@@ -104,6 +114,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				]
 			}
 		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
 
 		PowerToggle
 		{
@@ -116,7 +133,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 6
 		}
 
@@ -340,7 +357,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = PartCrew
 			Crew = 2
 			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle]
+			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
 			//HighPriorityPrerequisites = [MissilesPrereqProxy]
 			CrewDestinations
 			[

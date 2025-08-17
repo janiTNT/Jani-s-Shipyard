@@ -37,8 +37,8 @@ Components
 		Type = MultiResourceStorage
 		ResourceType = janitnt.circuit1
 		ResourceStorages = [ElectronicCircuitStorage]
-		ToggleOnResources = 8
-		ToggleOffResources = 7
+		ToggleOnResources = 12
+		ToggleOffResources = 11
 	}
 
 	BuildConverter
@@ -85,7 +85,7 @@ Components
 			}
 			{
 				Storage = ElectronicCircuitStorage
-				Quantity = 8
+				Quantity = 12
 			}
 		]
 		ToStorage = LaserStorage
@@ -320,6 +320,20 @@ Components
 				}
 			}
 		]
+	}
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+	}
+
+	ScorchedEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ScorchedTrigger
+		Location = &../DestroyedEffects/Location
+		MediaEffects = &/COMMON_EFFECTS/MedPartScorched
 	}
 	Indicators
 	{

@@ -11,7 +11,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[coil, 1]
 		[janitnt.circuit1, 1]
 	]
-	TypeCategories = [uses_power, logic]
+	TypeCategories = [uses_power, logic, non_flammable]
 	Flammable = false
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
 	Size = [1, 1]

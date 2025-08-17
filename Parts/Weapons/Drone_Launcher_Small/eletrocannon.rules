@@ -308,6 +308,20 @@ Components
 			}
 		]
 	}
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+	}
+
+	ScorchedEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ScorchedTrigger
+		Location = &../DestroyedEffects/Location
+		MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+	}
 	Indicators
 	{
 		Type = IndicatorSprites

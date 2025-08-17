@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Background_Structure_Gap"
 	IconNameKey = "Parts/Background_Structure_GapIcon"
 	ID = Skipydog.background_structure_invertwedge
-	EditorGroup = "Structure"
+	EditorParentParts = [ ["Skipydog.background_structure_small", -1] ]
 	DescriptionKey = "Parts/Background_StructureDesc"
 	Cost = 500
 	Resources
@@ -15,7 +15,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 2000
 	AllowedContiguity = [Right, Left, Bottom]
 	HealthType = Structural
-	TypeCategories = [background_structure]
+	TypeCategories = [background_structure, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	
 	SalvageProgressMediaEffects

@@ -93,6 +93,7 @@ Parts
 	LargeFabricatorIcon = "Goldium"
 	LargeFabricatorDesc = "Eletrochemically synthesizes goldium plates, which are used for a variety of advanced parts. Consumes gold. Gains +25% production speed for each adjacent factory of any type."
 	LargeFabricatorOverclockDesc = "Significantly increases production speed. Produces a waste heat while producing goldium."
+	GoldiumFactoryOverclock = "Overclocked Goldium Synthesizer"
 	//"Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
 	
 	FactorySplitter = "[[LEGACY]]Building Material Resource Cutter"
@@ -111,11 +112,13 @@ Parts
 	FactoryElectronicCircuitIcon = "Circuits"
 	FactoryElectronicCircuitDesc = "Manufactures cheap electronic circuits, which are used for a range of applications, from drones, logic control systems and more. Consumes steel and coils. Gains +25% production speed for each adjacent factory of any type."
 	FactoryElectronicCircuitOverclockDesc = "Significantly increases production speed. Produces waste heat while producing electronic circuits."
+	FactoryElectronicCircuitOverclock = "Overclocked Electronic Circuit Assembler"
 	
 	FactoryAdvancedCircuit = "Advanced Circuit Assembler"
 	FactoryAdvancedCircuitIcon = "Adv. Circuits"
 	FactoryAdvancedCircuitDesc = "Manufactures advanced circuits, with more processing capabilities. Consumes electronic circuits and hypercoils. Gains +25% production speed for each adjacent factory of any type."
 	FactoryAdvancedCircuitOverclockDesc = "Significantly increases production speed. Produces waste heat while producing electronic circuits."
+	FactoryAdvancedCircuitOverclock = "Overclocked Advanced Circuit Assembler"
 	
 	TriSteelDoor = "TriSteel Door"
 	TriSteelDoorIcon = "Tr. Door"
@@ -1349,7 +1352,7 @@ PartToggles
 	"<b>Laser Cannon Drone Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>6</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
-	"<img name='resource.janitnt.circuit1'/> <good>8</good> Electronic Circuit <gray>(</gray><good>1.3</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>12</good> Electronic Circuit <gray>(</gray><good>2</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>30k</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
@@ -1412,7 +1415,7 @@ PartToggles
 	"<b>Combat MK1 Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>2</good> Steel <gray>(</gray><good>0.3</good><gray>/sec)</gray>\n"\
-	"<img name='resource.janitnt.circuit1'/> <good>2</good> Electronic Circuit <gray>(</gray><good>0.3</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>4</good> Electronic Circuit <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>0.8</good> Power <gray>(</gray><good>0.13</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>550</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>5500</good><gray>/shot (</gray><good>916</good><gray>/sec)</gray>\n"\
@@ -1431,7 +1434,7 @@ PartToggles
 	"<b>Combat MK2 Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>8</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>4</good> Steel <gray>(</gray><good>0.5</good><gray>/sec)</gray>\n"\
-	"<img name='resource.janitnt.circuit1'/> <good>6</good> Electronic Circuit <gray>(</gray><good>0.75</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>8</good> Electronic Circuit <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>1.6</good> Power <gray>(</gray><good>0.2</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>16.8k</good><gray>/shot (</gray><good>2100</good><gray>/sec)</gray>\n"\
@@ -1470,7 +1473,7 @@ PartToggles
 	"<b>Sparker PulseCannon Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>2.5</good> <gray>sec</gray>\n"\
 	"<img name='resource.steel'/> <good>1</good> Steel <gray>(</gray><good>0.4</good><gray>/sec)</gray>\n"\
-	"<img name='resource.janitnt.circuit1'/> <good>1</good> Electronic Circuit <gray>(</gray><good>0.4</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>2</good> Electronic Circuit <gray>(</gray><good>0.8</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>2</good> Power <gray>(</gray><good>0.8</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
 	"<white>Launcher Raw DMG:</white> <good>1120</good><gray>/shot (</gray><good>448</good><gray>/sec)</gray>\n"\

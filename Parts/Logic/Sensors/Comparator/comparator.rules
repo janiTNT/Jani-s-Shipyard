@@ -14,7 +14,7 @@ Part : <../../baselogicpart.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	SelectionTypeID = "sensor"
-	TypeCategories = [sensor, logic]
+	TypeCategories = [sensor, logic, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
 	EditorIcon
 	{

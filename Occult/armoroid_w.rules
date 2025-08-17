@@ -17,7 +17,7 @@ Part : <base_part_occult.rules>/Part
 	GenerateRectCollider = false
 	AllowedDoorLocations = []
 	GeneratorRequiresDoor = false
-	TypeCategories = [armor, boss_resistant]
+	TypeCategories = [armor, boss_resistant, non_flammable]
 	InitialPenetrationResistance = 1.5 * 7
 	ContinuingPenetrationResistance = 1.5 * 7
 	ExplosiveDamageAbsorption = 100%

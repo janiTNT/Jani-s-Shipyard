@@ -10,7 +10,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[steel, 4]
 		[coil, 2]
 	]
-	TypeCategories = [uses_power]
+	TypeCategories = [uses_power, non_flammable]
 	Flammable = false
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Size = [1, 1]

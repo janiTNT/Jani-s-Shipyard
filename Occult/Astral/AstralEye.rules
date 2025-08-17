@@ -15,7 +15,7 @@ Part : <../base_part_occult.rules>/Part
 	EditorReplacementPartID = "janiTNT.megarockarmor_1x1"
 	MaxHealth = 32000 * 32
 	Size = [4, 4]
-	TypeCategories = [armor, weapon, boss_resistant]
+	TypeCategories = [armor, weapon, boss_resistant, non_flammable]
 	InitialPenetrationResistance = 2 * 7
 	ContinuingPenetrationResistance = 2 * 7
 	ExplosiveDamageAbsorption = 100%

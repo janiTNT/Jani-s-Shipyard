@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/BackgroundSteelFloor"
 	IconNameKey = "Parts/BackgroundSteelFloorIcon"
 	ID = janiTNT.BackgroundSteelFloor
-	EditorGroup = "Structure"
+	EditorParentParts = [ ["Skipydog.background_structure_small", -1] ]
 	DescriptionKey = "Parts/BackgroundSteelFloorDesc"
 	Resources
 	[
@@ -14,7 +14,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	SelectionTypeID = "structure"
 	MaxHealth = 500
 	HealthType = Structural
-	TypeCategories = [background_floor]
+	TypeCategories = [background_floor, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	
 	SalvageProgressMediaEffects

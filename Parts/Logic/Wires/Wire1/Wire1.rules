@@ -7,7 +7,6 @@ Part : <../../baselogicpart.rules>/Part
 	DescriptionKey = "Parts/LogicWireDesc"
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
-	TypeCategories = [logic]
 	EditorIcon
 	{
 		Texture

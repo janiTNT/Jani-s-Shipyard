@@ -17,7 +17,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 800
 	CreatePartPerTileWhenGrabbed = ""
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	TypeCategories = [logic]
+	TypeCategories = [logic, non_flammable]
 	//ReceivableBuffs : ^/0/ReceivableBuffs []
 	IsRotateable = true
 	CrewSpeedFactor = 0

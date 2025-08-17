@@ -21,7 +21,7 @@ Part : <../base_part_occult.rules>/Part
 	UnderlyingPart = janiTNT.lootorb_brimstone
 	DestroyedPartHealthFraction = 100%
 	Size = [8, 8]
-	TypeCategories = [armor, command, boss_resistant]
+	TypeCategories = [armor, command, boss_resistant, non_flammable]
 	InitialPenetrationResistance = 50
 	ContinuingPenetrationResistance = 50
 	ExplosiveDamageAbsorption = 100%

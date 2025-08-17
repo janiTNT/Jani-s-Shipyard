@@ -12,6 +12,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 10 * 2.5]
 	]
 	TypeCategories = [thruster, uses_power]
+	SignificanceToggle = ScorchedToggle
 	Size = [5, 5]
 	SelectionPriority = 1
 	SelectionTypeByRotation = true

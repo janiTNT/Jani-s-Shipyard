@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Background_Structure"
 	IconNameKey = "Parts/Background_StructureIcon"
 	ID = Skipydog.background_structure
-	EditorGroup = "Structure"
+	EditorParentParts = [ ["Skipydog.background_structure_small", -1] ]
 	EditorReplacementPartID = Skipydog.background_structure_small
 	DescriptionKey = "Parts/Background_StructureDesc"
 	Cost = 1000
@@ -16,7 +16,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000
 	AllowedContiguity = [Right, Left]
 	HealthType = Structural
-	TypeCategories = [background_structure]
+	TypeCategories = [background_structure, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	
 	SalvageProgressMediaEffects

@@ -38,7 +38,7 @@ Part : <../../../baselogicpart.rules>/Part
 			Value = [Right, TopRight, Top, TopLeft, Left]
 		}
 	]
-	TypeCategories = [logic, pistons]
+	TypeCategories = [logic, pistons, non_flammable]
 	EditorIcon
 	{
 		Texture

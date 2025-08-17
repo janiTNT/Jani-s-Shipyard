@@ -16,7 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 4000
 	ExplosiveDamageAbsorption = 100%
 	DamageResistances = {explosive = 75%}
-	TypeCategories = [armor]//trust
+	TypeCategories = [armor, non_flammable]//trust
 	Flammable = false
 	ConstructionDuration = 8
 	Density = 18

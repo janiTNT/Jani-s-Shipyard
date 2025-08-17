@@ -19,7 +19,7 @@ Part : <../base_part_occult.rules>/Part
 	Size = [10, 10] // must be same
 	AllowedContiguity = []
 	ContiguityOriginPriority = 2
-	TypeCategories = [armor, weapon, asteroid, boss_resistant] // buff mining
+	TypeCategories = [armor, weapon, asteroid, boss_resistant, non_flammable] // buff mining
 	InitialPenetrationResistance = 1
 	ContinuingPenetrationResistance = 1
 	ExplosiveDamageAbsorption = 100%

@@ -12,6 +12,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[tristeel, 10 * 1.8]
 	]
 	TypeCategories = [thruster, uses_power]
+	SignificanceToggle = ScorchedToggle
 	Size = [4, 6]
 	PhysicalRect = [0, 0, 4, 4]
 	SaveRect = &PhysicalRect
@@ -76,8 +77,28 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage]
+			Toggles = [PowerToggle, BatteryStorage, CommandToggle, ScorchedToggle]
 			Mode = All
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		
+		CommandToggle
+		{
+			Type = CommandToggle
 		}
 
 		PowerToggle
@@ -91,7 +112,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = PowerToggle
+			OperationalToggle = CommandConsumptionToggle
 			CommandPoints = 10
 		}
 
@@ -800,6 +821,21 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
 			Location = [2, 2]
 		}
+		
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/BigPartScorched
+		}
 
 		ThrusterHum
 		{
@@ -824,6 +860,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Layer = "indicators"
 			Indicators
 			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2]
+				}
 				// Turned off.
 				{
 					Toggle = PowerToggle
@@ -832,6 +874,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 						File = &/INDICATORS/PowerOff
 						Size = [1, 1]
 					}
+					HidesIndicators = [2]
 				}
 
 				// Out of power.
