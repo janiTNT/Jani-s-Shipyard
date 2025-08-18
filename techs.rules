@@ -25,8 +25,8 @@ Techs
 			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part/ID
 			//&<Parts/Power/Radiator/Radiator.txt>/Part/ID
 		]
-		Cost = 100000
-		Prerequisites = [cosmoteer.reactor_large, cosmoteer.heat_management]
+		Cost = 400000
+		Prerequisites = [cosmoteer.reactor_large, cosmoteer.heat_management, cosmoteer.reactor_large-overclock]
 	}
 	{
 		ID = juanTNT.1x1ReactorFunnyTechTrollage
