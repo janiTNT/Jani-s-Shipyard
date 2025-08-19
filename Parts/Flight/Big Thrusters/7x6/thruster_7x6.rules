@@ -23,8 +23,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 1000 * 7*6
 	ProhibitBelow = 30
 	ThrusterForce = 1200 * 7^2
-	ThrustIncreaseTime = { BaseValue=5; BuffType=Hauler_Thrust; BuffMode=Divide; }
-	ThrustDecreaseTime = { BaseValue=1.25; BuffType=Engine; BuffMode=Divide; }
+	ThrustIncreaseTime = { BaseValue=9; BuffType=Hauler_Thrust; BuffMode=Divide; }
+	ThrustDecreaseTime = { BaseValue=1.5; BuffType=Hauler_Thrust; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 7^2
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution,Hauler_Engine, Hauler_Thrust]

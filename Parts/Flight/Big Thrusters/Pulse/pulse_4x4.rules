@@ -24,8 +24,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[default, [0, 8, 4, 15]]
 	]
 	ThrusterForce = 1200 * 4^2 * 0.75
-	ThrustIncreaseTime = { BaseValue=4.25; BuffType=Hauler_Thrust; BuffMode=Divide; }
-	ThrustDecreaseTime = { BaseValue=0.6; BuffType=Engine; BuffMode=Divide; }
+	ThrustIncreaseTime = { BaseValue=1.5*(&<../4x4/thruster_4x4.rules>/Part/ThrustIncreaseTime/BaseValue); BuffType=Hauler_Thrust; BuffMode=Divide; }
+	ThrustDecreaseTime = { BaseValue=1.5*(&<../4x4/thruster_4x4.rules>/Part/ThrustDecreaseTime/BaseValue); BuffType=Engine; BuffMode=Divide; }
 	ThrustRecoveryTime = 2
 	FuelUsage = 50 * 4^2 * 1.25
 	ReceivableBuffs : ^/0/ReceivableBuffs [Engine, EnginePowerDistribution,Hauler_Engine, Hauler_Thrust]
@@ -178,6 +178,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 
 		RecPower = (&ThrusterPowerUsage) / 2
 		RecCrew = (&RecPower) * 4
-		EngineRoomBuffEffectiveness = 0 * 100
+		EngineRoomBuffEffectiveness = (&<../4x4/thruster_4x4.rules>/Part/Stats/EngineRoomBuffEffectiveness)
 	}
 }

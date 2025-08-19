@@ -29,7 +29,7 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 	ThrusterForce = 4000 * 0.75
 	ThrustIncreaseTime
 	{
-		BaseValue = 8
+		BaseValue = 4*1.5
 		Modifiers
 		[
 			{
