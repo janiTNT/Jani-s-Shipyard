@@ -164,6 +164,7 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 		Type = ResourceStorage
 		ResourceType = battery
 		MaxResources = 6000
+		ToggleOnResources = 2001
 		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 	}
 	PortBuffToggle
@@ -191,10 +192,13 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 		}
 	}
 	
-	SpeedBoostHeatTrigger
+	HeatGeneratePerWork
 	{
-		Type = Timer
-		Duration
+		Type = ResourceConverter
+		OperationalToggle = HeatPowerConsumeProxy
+		ToQuantity = (&~/OVERCLOCK/SPEEDBOOST/HEAT_PER_WORK) * (&~/HEAT_TO_RESOURCE) * 0.25
+		ToStorage = &<./data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
+		Interval
 		{
 			BaseValue = 0.5
 			Modifiers
@@ -208,11 +212,7 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 				}
 			]
 		}
-		AutoStart = true
-		Repeats = true
-		OperationalToggle = HeatPowerConsumeProxy
 	}
-	
 	HeatPowerConsumeProxy
 	{
 		Type = ToggleProxy
@@ -220,14 +220,6 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 		ComponentID = StackinserterConsumptionToggle
 	}
 	
-	Overclock_WorkHeatProducer
-	{
-		Type = ResourceChange
-		ResourceStorage = &<./data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
-		Trigger = SpeedBoostHeatTrigger
-		Amount = (&~/OVERCLOCK/SPEEDBOOST/HEAT_PER_WORK) * (&~/HEAT_TO_RESOURCE) * 0.25
-	}
-
 	Overclock_RechargeHeatProducer
 	{
 		Type = ResourceConverter
@@ -269,7 +261,7 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 		OperationalToggle = OverclockRechargeTrueToggle
 		ToStorage = BatteryStorage
 		BATCH_COUNT = 2
-		ToQuantity = -(&<hyperium.rules>/Components/PowerDrainOnTransfer/Amount/BaseValue) * (&BATCH_COUNT)
+		ToQuantity = (&<hyperium.rules>/Components/ConsumePowerDrain/FromQuantity/BaseValue) * (&BATCH_COUNT)
 		Interval = (&~/OVERCLOCK/REGENERATION/RECHARGE_TIME_PER_SWING) * (&BATCH_COUNT)
 	}
 	
