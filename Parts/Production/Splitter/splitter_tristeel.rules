@@ -237,6 +237,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DropResourcesWhenRemoved = true
 			AllowExternalPickupAndDelivery = true
 		}
+		TristeelBarStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = cut.tristeel
+			ResourceStorages = [ BarStorage ]
+			AddMode = PrioritizeLeastEmptyCapacity
+			RemoveMode = PrioritizeMostEmptyCapacity
+		}
 		InBarStorage
 		{
 			Type = ResourceStorage

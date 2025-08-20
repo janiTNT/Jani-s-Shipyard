@@ -78,6 +78,8 @@ Components
 	{
 		Type = ResourceConverter
 		OperationalToggle = StackinserterConsumptionToggle
+		FromStorage = BatteryStorage
+		MinFromQuantityForConversion = 1
 		FromQuantity
 		{
 			BaseValue = 2500

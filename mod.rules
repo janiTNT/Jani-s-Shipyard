@@ -1104,7 +1104,21 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			}
 		}
 	}
-	
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/missile_launcher/thermal/missile_launcher_thermal.rules>/Components"
+		Overrides
+		{
+			TrueTHERMALMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_thermal
+				ResourceStorages = [CombinedMissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
 	{
 		Action = Overrides
 		OverrideIn = "<./Data/ships/terran/factory_he/factory_he.rules>/Part/Components"
@@ -1144,6 +1158,21 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{
 				Type = MultiResourceStorage
 				ResourceType = missile_part_nuke
+				ResourceStorages = [MissileStorage]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./Data/ships/terran/factory_thermal/factory_thermal.rules>/Part/Components"
+		Overrides
+		{
+			TrueTHERMALMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_thermal
 				ResourceStorages = [MissileStorage]
 				AddMode = PrioritizeLeastEmptyCapacity
 				RemoveMode = PrioritizeMostEmptyCapacity

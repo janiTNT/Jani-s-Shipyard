@@ -1,0 +1,59 @@
+Resource = missile_part_thermal
+ResourceStorage = TrueTHERMALMissileStorage
+CarrySize = (&<./data/resources/missile_part_thermal/missile_part_thermal.rules>/MaxPerNugget)
+LightColor = [255, 148, 38]
+//CarrySize = 1
+Components : &<hyperium.rules>/Components
+{	HandStorage : &<hyperium.rules>/Components/HandStorage
+	{
+		ResourceType = &~/Resource
+		MaxResources = (&~/CarrySize)
+		ToggleOnResources = (&~/CarrySize)
+	}
+	
+	FromProxy : &<hyperium.rules>/Components/FromProxy
+	{
+		ResourceType = &~/Resource
+		ComponentID = &~/ResourceStorage
+	}
+	
+	ToProxy : &<hyperium.rules>/Components/ToProxy
+	{
+		ResourceType = &~/Resource
+		ComponentID = &~/ResourceStorage
+	}
+	
+	ToProxyExists : &<hyperium.rules>/Components/ToProxyExists
+	{
+		ComponentID = &~/ResourceStorage
+	}
+	
+	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
+	{
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To
+	{
+		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	Graphics
+	{
+		Type = Graphics
+		Location = [.5, .5]
+		OperationalToggle = IsOperational
+		OperationalLighting
+		{
+			Layer = "lights_add"
+			DamageLevels
+			[
+				{
+					File = "lights.png"
+					Size = [1, 1]
+					VertexColor = &~/LightColor
+				}
+			]
+		}
+	}
+}

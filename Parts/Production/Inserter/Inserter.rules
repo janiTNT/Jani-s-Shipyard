@@ -126,6 +126,20 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 			Components = &<mine_part.rules>/Components
 		}
 		
+		missile_part_thermalToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 6
+		}
+		missile_part_thermalComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_thermalToggle
+			IncludeInBlueprints = true
+			Components = &<missile_part_thermal.rules>/Components
+		}
+		
 		janitnt.circuit1Toggle
 		{
 			Type = ModeToggle

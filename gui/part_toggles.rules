@@ -158,23 +158,10 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 		ShowInEditor = true
 		Choices
 		[
-			// Hyperium
-			{
-				ChoiceID = "resource_0"
-				ButtonToolTipKey = "PartToggles/resource_0"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "./data/resources/hyperium/icon.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
 			// Bullet
 			{
 				ChoiceID = "resource_1"
+				Mode = 1
 				ButtonToolTipKey = "PartToggles/resource_1"
 				ButtonSprite
 				{
@@ -189,6 +176,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			// HE
 			{
 				ChoiceID = "resource_2"
+				Mode = 2
 				ButtonToolTipKey = "PartToggles/resource_2"
 				ButtonSprite
 				{
@@ -203,6 +191,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			// Emp
 			{
 				ChoiceID = "resource_3"
+				Mode = 3
 				ButtonToolTipKey = "PartToggles/resource_3"
 				ButtonSprite
 				{
@@ -214,9 +203,25 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 					}
 				}
 			}
+			// Thermal Canister Missiles, Meltdown Update
+			{
+				ChoiceID = "resource_thermalcanistermissiles"
+				Mode = 6
+				ButtonToolTipKey = "PartToggles/resource_4"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/missile_part_thermal/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
 			// Nuke
 			{
 				ChoiceID = "resource_4"
+				Mode = 4
 				ButtonToolTipKey = "PartToggles/resource_4"
 				ButtonSprite
 				{
@@ -231,12 +236,28 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			// Mine
 			{
 				ChoiceID = "resource_5"
+				Mode = 5
 				ButtonToolTipKey = "PartToggles/resource_5"
 				ButtonSprite
 				{
 					Texture
 					{
 						File = "./data/resources/mine_part/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Hyperium
+			{
+				ChoiceID = "resource_0"
+				ButtonToolTipKey = "PartToggles/resource_0"
+				Mode = 0
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/resources/hyperium/icon.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -257,7 +278,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 					}
 				}
 			}
-			// Advaced Circuit
+			// Advanced Circuit
 			{
 				ChoiceID = "resource_advanced_circuit"
 				ButtonToolTipKey = "PartToggles/resource_advanced_circuit"
