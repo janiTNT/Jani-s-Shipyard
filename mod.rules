@@ -666,6 +666,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			//{ ResourceType=goldium;         RandomWeight=1.5;  RandomQuantity=[25%, 75%]; }
 			{ ResourceType=cut.tristeel;         RandomWeight=2;  RandomQuantity=[100%, 100%]; }
+			{ ResourceType=janitnt.circuit1;         RandomWeight=5;  RandomQuantity=[25%, 100%]; }
 		]
 	}
 	{
@@ -675,6 +676,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			//{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
 			{ ResourceType=cut.tristeel;          DesiredDelta=[-60/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity), 60/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity)]; }
+			{ ResourceType=janitnt.circuit1;          DesiredDelta=[-40/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity), 40/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity)]; }
 		]
 	}
 	{
