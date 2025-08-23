@@ -26,6 +26,16 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 	MaxHealth = 9000
 	TypeCategories = [provides_advanced_circuit, uses_hypercoils, uses_coil2, uses_electronic_circuit, uses_power]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	ForceManhattanPathInPart = true
+	BlockedTravelCells
+	[
+		[0, 0]
+		[1, 0]
+		[2, 0]
+		[0, 0]
+		[1, 1]
+		//[2, 1]
+	]	
 	AllowedDoorLocations
 	[
 		//[-1, 1]
@@ -217,7 +227,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 		    ResourceType = fake
 		    FromStorage = LoadedCoil2
 		    FromQuantity = 1
-		    ToQuantity = 10
+		    ToQuantity = 6
 			ToggleOnResources = &../ResourceConverter/From/0/Quantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -257,7 +267,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			ToQuantity = 1
 			Interval
 			{
-				BaseValue = 4
+				BaseValue = 2
 				Modifiers
 				[
 					{ Type = Buff; BuffType = Factory; ModificationMode = Divide; }

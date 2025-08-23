@@ -1,6 +1,6 @@
 OVERCLOCK
 {
-	HEAT_PER_CONVERSION = 50
+	HEAT_PER_CONVERSION = 100
 	SPEED_FACTOR = 300%
 	POWER_USE_FACTOR = 125%
 }
@@ -264,7 +264,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 		    ResourceType = fake
 		    FromStorage = LoadedCoil
 		    FromQuantity = 1
-		    ToQuantity = 20
+		    ToQuantity = 5
 			ToggleOnResources = &../ResourceConverter/From/0/Quantity
 			ToggleOffResources = (&ToggleOnResources) - 1
 		}
@@ -277,7 +277,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			[
 			    {
 			        Storage = CoilSplitter
-			        Quantity = 3
+			        Quantity = 1
 			    }
 			    {
 			        Storage = SteelSplitter

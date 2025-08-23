@@ -121,6 +121,20 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Components = &<Types2x2/mine_part.rules>/Components
 		}
 		
+		missile_part_thermalToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 6
+		}
+		missile_part_thermalComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_thermalToggle
+			IncludeInBlueprints = false
+			Components = &<Types2x2/missile_part_thermal.rules>/Components
+		}
+		
 		janitnt.circuit1Toggle
 		{
 			Type = ModeToggle

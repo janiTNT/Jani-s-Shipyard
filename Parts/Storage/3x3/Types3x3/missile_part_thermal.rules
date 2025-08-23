@@ -1,23 +1,32 @@
-Resource = sulfur
-StackSize = (&<./data/resources/sulfur/sulfur.rules>/MaxStackSize)
+Resource = missile_part_thermal
+StackSize = (&<./data/resources/missile_part_thermal/missile_part_thermal.rules>/MaxStackSize)
 Components
 {	
+	THERMALMissileStorage__Aephiex //compatibility
+	{
+		Type = MultiResourceStorage
+		ResourceType = &~/Resource
+		ResourceStorages = [TrueTHERMALMissileStorage]
+		AddMode = PrioritizeLeastEmptyCapacity
+		RemoveMode = PrioritizeMostEmptyCapacity
+	}
+	
 	Consumer : &<hyperium.rules>/Components/Consumer
 	{
 		ResourceType = &~/Resource
-		Storage = SulfurStorage
+		Storage = TrueTHERMALMissileStorage
 	}
 	
-	SulfurStorage : &<hyperium.rules>/Components/HyperiumStorage
+	TrueTHERMALMissileStorage : &<hyperium.rules>/Components/HyperiumStorage
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites
 	{
-		ResourceStorage = SulfurStorage
+		ResourceStorage = TrueTHERMALMissileStorage
 	}
 	
 	IconGraphics : &<hyperium.rules>/Components/IconGraphics
@@ -28,7 +37,7 @@ Components
 			DamageLevels
 			[
 				{
-					File = "./data/resources/sulfur/sulfur_stack_5.png"
+					File = "./data/resources/missile_part_thermal/missile_part_thermal_stack_10.png"
 					Size = [1, 1]
 				}
 			]
@@ -38,7 +47,7 @@ Components
 	DestroyedEffects2
 	{
 		Type = DeathEffects
-		FactorHitEffectsWith = SulfurStorage
+		FactorHitEffectsWith = TrueTHERMALMissileStorage
 		HitEffects // Scaled with stack size.
 		[
 			{
