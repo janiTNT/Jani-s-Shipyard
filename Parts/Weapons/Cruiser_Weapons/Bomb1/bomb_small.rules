@@ -27,13 +27,14 @@ Components
 				{
 					Type = ExplosiveDamage
 					TotalDamage = { BaseValue = 25000; EffectScaleExponent = 1 }
-					Radius = 5
+					Radius = 4
 					ImpulsePerNDamage = 10
 					NDamage = 500
 					Filter
 					{
 						OperationalHealth = true
 						StructuralHealth = false
+						Friendlies = true
 					}
 				}
 			]

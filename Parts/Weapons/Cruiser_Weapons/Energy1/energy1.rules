@@ -10,8 +10,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FTL_energy1Desc"
 	Resources
 	[
-		[steel, 20]
-		[coil, 20]
+		[steel, 12]
+		[coil, 10]
+		[coil2, 4]
 	]
 	Size = [1, 2]
 	MaxHealth = 2000

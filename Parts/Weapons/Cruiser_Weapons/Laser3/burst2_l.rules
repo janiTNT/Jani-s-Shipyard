@@ -3,6 +3,8 @@ Part : <burst2.rules>/Part
 	NameKey = "Parts/FTL_burstlaser2"
 	IconNameKey = "Parts/FTL_burstlaser2LeftIcon"
 	ID = janiTNT.FTL_burst_lasermk2_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups//null
+	EditorParentParts = [ "janiTNT.FTL_burst_lasermk2" ]
 	ProhibitRects
 	[
 		[fighter, [-1, -1, 1, 1]]// TO ENSURE COMPATIBILITY

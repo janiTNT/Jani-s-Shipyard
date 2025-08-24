@@ -11,12 +11,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	AIValueFactor = 0
 	SelectionTypeID = "armor"
-	MaxHealth = 250
+	MaxHealth = 500
 	TypeCategories = [sheetmetal, non_flammable]
 	UnderlyingPartPerTile = ""
 	CreatePartPerTileWhenGrabbed = ""
 	CrewSpeedFactor = 0
-	InitialPenetrationResistance = 0.25
+	InitialPenetrationResistance = 0.2
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	Density = 0.25
 	ReceivableBuffs : ^/0/ReceivableBuffs []
@@ -31,14 +31,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		EmpAbsorber
-		{
-			Type = ExplosiveResourceDrainSink
-			ResourceType = battery
-			AbsorbsResourceDrain = 100
-			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
-		}
-
 		DestroyedEffects
 		{
 			Type = DeathEffects
@@ -49,6 +41,5 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
 	}
 }

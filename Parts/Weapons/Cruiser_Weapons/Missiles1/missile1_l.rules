@@ -3,6 +3,8 @@ Part : <missile1.rules>/Part
 	NameKey = "Parts/FTL_missile_leto"
 	IconNameKey = "Parts/FTL_missile_letoLeftIcon"
 	ID = janiTNT.FTL_missilelauncher1_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups//null
+	EditorParentParts = [ "janiTNT.FTL_missilelauncher1" ]
 	ProhibitRects
 	[
 		[fighter, [-1, -1, 1, 1]]// TO ENSURE COMPATIBILITY

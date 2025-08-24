@@ -128,7 +128,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		MainThruster
 		{
 			Type = Thruster
-			Location = [3.5, 6]// Relative to upper-left corner of unrotated part.
+			Location = [4, 7]// Relative to upper-left corner of unrotated part.
 			Rotation = 90d// Relative to unrotated part.
 			SoftOperationalToggle = IsOperational
 			Force = &../../ThrusterForce

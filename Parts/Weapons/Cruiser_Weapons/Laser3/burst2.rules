@@ -10,8 +10,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FTL_burstlaser2Desc"
 	Resources
 	[
-		[steel, 16]
-		[coil, 16]
+		[steel, 20]
+		[coil, 12]
+		[janitnt.circuit1, 12]
 	]
 	Size = [1, 2]
 	MaxHealth = 2000

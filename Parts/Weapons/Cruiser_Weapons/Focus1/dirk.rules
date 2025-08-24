@@ -10,8 +10,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FTL_dirkpinDesc"
 	Resources
 	[
-		[steel, 10]
-		[coil, 10]
+		[steel, 8]
+		[coil2, 4]
+		[janitnt.circuit1, 4]
 	]
 	Size = [1, 1]
 	MaxHealth = 1000

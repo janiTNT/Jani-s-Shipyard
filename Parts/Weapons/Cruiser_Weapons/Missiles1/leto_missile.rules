@@ -16,15 +16,15 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 40d
+		TurnVelocity = 120d
 		ModifiesLinearVelocity = true
-		Delay = 0
+		Delay = 0.5
 	}
 	
 	DeathByDistanceTraveled
 	{
 		Type = DeathByDistanceTraveled
-		Distance = (&~/Range) + 1
+		Distance = (&~/Range) * 1.15
 	}
 
 	Targetable

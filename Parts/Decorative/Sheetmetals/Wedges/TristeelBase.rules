@@ -13,12 +13,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	IsRotateable = false
 	SelectionTypeID = "armor"
-	MaxHealth = 500
+	MaxHealth = 1000
 	TypeCategories = [sheetmetal, non_flammable]
 	Flammable = false
 	UnderlyingPartPerTile = ""
 	CreatePartPerTileWhenGrabbed = ""
-	InitialPenetrationResistance = 10
+	InitialPenetrationResistance = 11
 	ContinuingPenetrationResistance = &InitialPenetrationResistance
 	CrewSpeedFactor = 0
 	Density = 0.25

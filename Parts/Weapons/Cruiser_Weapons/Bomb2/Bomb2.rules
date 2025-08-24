@@ -11,7 +11,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Resources
 	[
 		[steel, 16]
-		[coil, 16]
+		[coil2, 4]
+		[janitnt.circuit2, 14]
 	]
 	Size = [1, 3]
 	MaxHealth = 2000
@@ -226,12 +227,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Duration = 0
 			FireDelay = .5
 			Burst = 1
-			Spread = [-0.75d, 0.75d]
+			Spread = [-1d, 1d]
 			ResourceUsage
 			[
 				{
 					ResourceStorage = BatteryStorage
-					ResourcesUsed = 2000
+					ResourcesUsed = 3000
 					MinResourcesUsed = 1
 				}
 				{
@@ -751,7 +752,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
-		RecCrew = ((&RecPower) + (&../StatsByCategory/0/Stats/ROF) * (&../StatsByCategory/0/Stats/PartsPerMine)) * 4 
+		RecCrew = ((&RecPower) + (&../StatsByCategory/0/Stats/ROF) * (&../StatsByCategory/0/Stats/MineParts)) * 4 
 		
 		MineCapacity = 2
 	}
@@ -770,7 +771,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourceUsage/0/ResourcesUsed) / 1000
 				PowerPerSecond = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
-				PartsPerMine = (&~/Part/Components/BeamEmitter/ResourceUsage/1/ResourcesUsed)
+				//PartsPerMine = (&~/Part/Components/BeamEmitter/ResourceUsage/1/ResourcesUsed)
+				MineParts = (&~/Part/Components/BeamEmitter/ResourceUsage/1/ResourcesUsed)
 			}
 		}
 		

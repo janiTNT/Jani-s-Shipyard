@@ -158,8 +158,8 @@ Techs
 		[
 			&<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/ID
 		]
-		Cost = 15000
-		Prerequisites = [janiTNT.ElectronicCircuitFactory, cosmoteer.factory_coil2]
+		Cost = 17500
+		Prerequisites = [janiTNT.ElectronicCircuitFactory]
 	}
 	{
 		ID = janiTNT.drone_launcher_small

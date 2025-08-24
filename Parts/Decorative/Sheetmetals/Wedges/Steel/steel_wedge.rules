@@ -50,12 +50,6 @@ Part : <../SteelBase.rules>/Part
 	}
 	Components : ^/0/Components
 	{
-		EmpAbsorber : ^/0/EmpAbsorber
-		{
-			AbsorbsResourceDrain = (&^/0/AbsorbsResourceDrain)*(&~/BaseWedge/HEALTHMULTIPLIER) 
-			RecoveryRate = (&AbsorbsResourceDrain) * 0.1
-		}
-		
 		Collider = &~/BaseWedge/Components/Collider
 		
 		DestroyedEffects = &~/BaseWedge/Components/DestroyedEffects
@@ -97,7 +91,6 @@ Part : <../SteelBase.rules>/Part
 
 	Stats
 	{
-		EMPResist = (&~/Part/Components/EmpAbsorber/AbsorbsResourceDrain) / 1000
 		PenResist = &~/Part/InitialPenetrationResistance
 	}
 }

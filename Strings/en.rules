@@ -814,7 +814,7 @@ Parts
 	FTL_burstlaser3Icon = "Burst Mk3"
 	FTL_burstlaser3LeftIcon = "Burst Mk3 (L)"
 	FTL_burstlaser3LeftALTIcon = "Burst Mk3 (S)"
-	FTL_burstlaser3Desc = "A Powerful Burst Laser, Fires 5 consecutive shots rapidly. High effectiveness in destroying empty or low health armor"
+	FTL_burstlaser3Desc = "A Powerful Burst Laser, Fires 5 consecutive shots rapidly. High effectiveness in destroying empty or low health armor due to its splash damage preventing overkill damage from being wasted, spreading the damage in a area if the initial block is destroyed."
 	
 	FTL_basicion = "Basic Ion Blaster"
 	FTL_basicionIcon = "Basic Ion"
@@ -826,11 +826,11 @@ Parts
 	
 	FTL_bombsmall = "Small Bomb Hyperdrive Teleporter"
 	FTL_bombsmallIcon = "Bomb Teleport"
-	FTL_bombsmallDesc = "This weapon uses Prototype Blink Drive technology that allows teleportation of bombs directly at the enemy, at no cost of hyperium. Not efficient compared to other payload methods, but cannot be targetted.\nUses additional missiles. Requires no Crew."
+	FTL_bombsmallDesc = "This weapon uses Prototype Blink Drive technology that allows teleportation of bombs directly at the enemy's front, at no cost of hyperium. Not efficient compared to other payload methods, but cannot be intercepted or stopped by flak clouds.\nUses additional missiles. Requires no Crew."
 	
 	FTL_bombbreach = "Small Breach Mine Hyperdrive Teleporter"
 	FTL_bombbreachIcon = "Breach Mine"
-	FTL_bombbreachDesc = "Advances in Bomb teleportation allows for teleportation of miniature mines that can breach defenses more easily with its raw power.\nUses additional mine parts."
+	FTL_bombbreachDesc = "Advances in Bomb teleportation allows for teleportation of miniature mines that can breach defenses more easily with its raw power and penetration. cannot be intercepted or stopped by flak clouds.\nUses additional mine parts."
 	
 	FTL_energy1 = "Energy Blaster MkI"
 	FTL_energy1Icon = "Energy I"

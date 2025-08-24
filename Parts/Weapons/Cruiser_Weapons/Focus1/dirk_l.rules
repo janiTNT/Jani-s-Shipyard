@@ -3,6 +3,8 @@ Part : <dirk.rules>/Part
 	NameKey = "Parts/FTL_dirkpin"
 	IconNameKey = "Parts/FTL_dirkpinLeftIcon"
 	ID = janiTNT.FTL_focus_beam1_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups//null
+	EditorParentParts = [ "janiTNT.FTL_focus_beam1" ]
 	ProhibitRects
 	[
 		[fighter, [0, -1, 1, 1]]// TO ENSURE COMPATIBILITY, like the straight one

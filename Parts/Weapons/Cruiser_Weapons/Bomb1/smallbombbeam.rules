@@ -1,6 +1,7 @@
 Range = 190
 IdealRange = 150
 Width = .1 //  slim
+SecondaryWidth = 1
 //HitInterval = 1//once
 //HitEffectsScaleOverRange = [1, 1]
 //MediaEffectsScaleOverRange = [1, 1]
@@ -209,7 +210,7 @@ BeamMediaEffects
 
 HitNothing
 {
-	Offset = [-0.25, 0]
+	
 	
 	HitEffects
 	[

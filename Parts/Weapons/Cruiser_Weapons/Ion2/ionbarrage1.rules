@@ -10,8 +10,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/FTL_ionbar1Desc"
 	Resources
 	[
-		[steel, 16]
-		[coil, 16]
+		[steel, 12]
+		[coil, 8]
+		[coil2, 3]
 	]
 	Size = [1, 2]
 	MaxHealth = 2000

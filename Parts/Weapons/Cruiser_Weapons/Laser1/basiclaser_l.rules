@@ -3,6 +3,8 @@ Part : <basiclaser.rules>/Part
 	NameKey = "Parts/FTL_defenselaser"
 	IconNameKey = "Parts/FTL_defenselaserLeftIcon"
 	ID = janiTNT.FTL_defense_laser_L // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups//null
+	EditorParentParts = [ "janiTNT.FTL_defense_laser" ]
 	ProhibitRects
 	[
 		[fighter, [-1, -1, 1, 1]]// TO ENSURE COMPATIBILITY
