@@ -104,7 +104,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 8000
+			MaxResources = 4000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -251,7 +251,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 500
 			MinFromQuantityForConversion = 1
-			Interval = { BaseValue=4; BuffType=OverchargerRateReducer; BuffMode=Multiply; }
+			Interval = { BaseValue=2; BuffType=OverchargerRateReducer; BuffMode=Divide; }
 		}
 		
 		ShieldStorage5 = &ShieldStorage1
@@ -262,31 +262,31 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = janiTNT.SuperShieldEnergy
-			MaxResources = 600
+			MaxResources = 1000
 			DrainOnFtlJump = true
 		}
 		
 		ArcShield5 : &ArcShield
 		{
-			Radius = 10.1
+			Radius = 8.1
 			OperationalToggle = ShieldOperational5
 			DrainResourcesFrom = ShieldStorage5
 		}
 		ArcShield4 : &ArcShield
 		{
-			Radius = 10.075
+			Radius = 8.075
 			OperationalToggle = ShieldOperational4
 			DrainResourcesFrom = ShieldStorage4
 		}	
 		ArcShield3 : &ArcShield
 		{
-			Radius = 10.05
+			Radius = 8.05
 			OperationalToggle = ShieldOperational3
 			DrainResourcesFrom = ShieldStorage3
 		}
 		ArcShield2 : &ArcShield
 		{
-			Radius = 10.025
+			Radius = 8.025
 			OperationalToggle = ShieldOperational2
 			DrainResourcesFrom = ShieldStorage2
 			
@@ -320,10 +320,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ArcShield
 		{
 			Type = ArcShield
-			Radius = 10
+			Radius = 8
 			Arc = 360d
 			OperationalToggle = ShieldOperational
-			PenetrationResistance = [80]
+			PenetrationResistance = [35]
 			ExplosiveDamageAbsorption = 100%
 			ExplosiveDamageResistance = 50%
 			DrainResourcesFrom = ShieldStorage1
@@ -492,7 +492,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Type = ArcShield
-					Radius = 10
+					Radius = 8
 					Arc = 366d
 					FadeInTime = .25
 					FadeOutTime = .25
@@ -528,7 +528,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						_lowPowerColor1 = [39, 255, 39, 32]
 						_fullPowerColor2 = [50, 255, 50, 80]
 						_lowPowerColor2 = [50, 255, 50, 32]
-						_lowPowerThicknessExponent = .9
+						_lowPowerThicknessExponent = 0.2
 						TargetBlendMode = Add
 						_xScale = 4
 						Size = [0, 0.5]
@@ -557,13 +557,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = BatteryStorage
-					Quantity = 500
+					Quantity = 1000
 					MinQuantityForConversion = 1
 				}
 			]
 			ToStorage = CombinedShieldEnergy
-			ToQuantity = 600
-			Interval = { BaseValue=4; BuffType=OverchargerRateReducer; BuffMode=Multiply; }
+			ToQuantity = (&~/Part/Components/ShieldStorage1/MaxResources)
+			Interval = { BaseValue=8; BuffType=OverchargerRateReducer; BuffMode=Multiply; }
 		}
 		
 		CombinedShieldEnergy
