@@ -818,11 +818,11 @@ Parts
 	
 	FTL_basicion = "Basic Ion Blaster"
 	FTL_basicionIcon = "Basic Ion"
-	FTL_basicionDesc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage.\nA Weak ion blaster, with a reduced drain time, <bad>no stun</bad> but higher range. has a large 200 degree rotation, Requires no Crew."
+	FTL_basicionDesc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain. has a large 200 degree rotation, Compact, Requires no Crew."
 	
 	FTL_ionbar1 = "Ion Barrage Blaster"
 	FTL_ionbar1Icon = "Ion I"
-	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, but drains power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage.\nImproved ion blaster, Shoots fast enough that can keep an area constantly draining if it always hits on the same place."
+	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, draininh power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage."
 	
 	FTL_bombsmall = "Small Bomb Hyperdrive Teleporter"
 	FTL_bombsmallIcon = "Bomb Teleport"

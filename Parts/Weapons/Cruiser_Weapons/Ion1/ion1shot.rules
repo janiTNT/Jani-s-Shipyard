@@ -5,7 +5,7 @@ IdealRadius = [5, 50]
 Speed = 190
 ReceivableBuffs = [ElectronBuff]
 
-TotalIonDamage = 2000
+TotalIonDamage = 1000
 TotalIonTime = 4
 
 Components
@@ -103,12 +103,12 @@ Components
 				{
 					Delay = 4.5
 				}*/
-				: &0
+				/* : &0
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = janiTNT.IonReactorStun
 					TotalDrain = { BaseValue=-2000; BuffType=ElectronBuff; BuffMode=Multiply; }
-				}
+				} */
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = janiTNT.SuperShieldEnergy

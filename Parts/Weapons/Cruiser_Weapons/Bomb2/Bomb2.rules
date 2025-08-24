@@ -178,7 +178,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FiringArc = 320d
 			RotateSpeed = infinity //true
 			FireThresholdAngle = 45d
-			AIFirepowerRating = 2000
+			AIFirepowerRating = 3000
 			Emitter = BeamEmitter
 			FirePermissionToggle = FireModeToggle
 			HoldTargetAfterCancel = &../BeamEmitter/FireDelay

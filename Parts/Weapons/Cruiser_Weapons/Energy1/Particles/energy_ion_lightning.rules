@@ -320,23 +320,23 @@ Def
 			}
 			_centerColor
 			{
-				Rf = 0
-				Gf = 0.9882353
-				Bf = 0.25
+				Rf = 0 * 0.5
+				Gf = 0.9882353 * 0.5
+				Bf = 0.25 * 0.5
 				Af = 1
 			}
 			_outerColor
 			{
-				Rf = 0.16862
-				Gf = 0.4588
-				Bf = 0.15
+				Rf = 0.16862 * 0.5
+				Gf = 0.4588 * 0.5
+				Bf = 0.15 * 0.5
 				Af = 1
 			}
 			_bloomColor
 			{
-				Rf = 0.15
-				Gf = 0.85
-				Bf = 0.6
+				Rf = 0.15 * 0.5
+				Gf = 0.85 * 0.5
+				Bf = 0.6 * 0.5
 				Af = 1
 			}
 			Texture
@@ -358,8 +358,9 @@ Def
 				AlphaOperator = Add
 			}
 		}
-		LineThickness = [ 0.1, 1 ] //edit
+		LineThickness = [ 0.1, 0.75 ] //edit
 		EnableLightningShaderAnimation = true
+		LightningShaderAnimationSegments = 4
 		SourceLocationIn = source_location
 		DestLocationIn = dest_location
 		ScaleIn = scale
@@ -443,7 +444,7 @@ UnsharedRenderInWorldSpace = false
 DontEmitWhenOffScreen = true
 DontEmitWhenOffScreenSizeInflate = 5
 UseCustomShapeForOffScreenCheck = false
-MaxEmissionZoom = 3.4028235E+38
+MaxEmissionZoom = 30
 ScaleEmissionWithIntensity = false
 ScaleEmissionWithBeamLength = false
 ScaleEmissionWithWorldVelocity = false

@@ -148,11 +148,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 4
+			FireInterval = 2.25
 			FiringArc = 20d
 			RotateSpeed = 180d
 			FireThresholdAngle = 1d
-			AIFirepowerRating = 200
+			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
 			Emitter = BulletEmitter
 			FirePermissionToggle = FireModeToggle
 			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
@@ -198,7 +198,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			Location = [1.2, 0]
 			OperationalToggle = IsOperational
-			FireDelay = 2
+			FireDelay = 1.5
 			Bullet = &<burst1lasershot.rules>
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 200
@@ -629,9 +629,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Stats
 			{
 				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
-				DamagePerSecond = (&DamagePerShot) * (&ROF) * (&JaniBurstShots)
+				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				ROF = 1 / ((&~/Part/Components/Turret/FireInterval) / (&JaniBurstShots))
 				JaniBurstShots = &~/Part/Components/BulletEmitter/Burst
 				Range = &~/Part/Components/BulletEmitter/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
@@ -639,7 +639,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
 				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&ROF) * (&JaniBurstShots)
+				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
