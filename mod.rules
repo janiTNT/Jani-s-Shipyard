@@ -96,6 +96,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1_l_alt.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Bomb1/Bomb1.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Bomb2/Bomb2.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Particle1/Particle_1.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Particle1/Particle_1_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Particle1/Particle_1_l_alt.rules>/Part
 			
 			&<Parts/Decorative/StationArmor/main.rules>/Part
 			&<Parts/Decorative/StationArmor/long.rules>/Part

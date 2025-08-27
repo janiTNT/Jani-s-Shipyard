@@ -1,5 +1,11 @@
 PartStats
 [
+	
+	{
+		ID = ScorchDamage
+		FormatKey = "Stats/ScorchDamageFmt"
+	}
+	
 	{
 		ID = InserterSwingSpeed
 		FormatKey = "Stats/InserterSwingSpeedFmt"

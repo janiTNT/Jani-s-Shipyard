@@ -842,6 +842,12 @@ Parts
 	FTL_missile_letoLeftALTIcon = "Leto Missile (S)"
 	FTL_missile_letoDesc = "This miniature Missile launcher uses small amounts of power and missile parts to fire a small missile. Crude explosion, but effective with its ammo consumption, very light homing."
 	
+	FTL_particlelaser1 = "Particle Laser Blaster"
+	FTL_particlelaser1Icon = "Particle Blast"
+	FTL_particlelaser1LeftIcon = "Particle Blast (L)"
+	FTL_particlelaser1LeftALTIcon = "Particle Blast (S)"
+	FTL_particlelaser1Desc = "Fires special penetrating bolts that fries components, dealing most of its damage as the same type of post-fire scorch damage, leading parts to fail before being destroyed as if they had been burnt down.\nUseful to leave the ship less damaged in some cases. Has double armor penetration, and can start fires."
+	
 	PulseThrusterSmall = "Small Repulser Thruster"
 	PulseThrusterSmallIcon = "Small Repulser"
 	PulseThrusterMed = "Medium Repulser Thruster"
@@ -1542,6 +1548,7 @@ Stats
 {
 	DroneLauncherNotes = "<bad>Warning:</bad> <gray><b>For Requirements, Statistics, and Misc info, hover above each Toggle when selecting a type of drone to show the description of each drone.</b></gray>"
 	
+	ScorchDamageFmt =  "<white>Scorching Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	
 	InserterHandSizeFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Hand</good><gray>)</gray>"

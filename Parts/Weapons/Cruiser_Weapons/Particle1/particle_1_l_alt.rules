@@ -1,0 +1,41 @@
+Part : <particle_1.rules>/Part
+{
+	NameKey = "Parts/FTL_particlelaser1"
+	IconNameKey = "Parts/FTL_particlelaser1LeftALTIcon"
+	ID = janiTNT.FTL_particle_lasermk1_L_alt // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups//null
+	EditorParentParts = [ "janiTNT.FTL_particle_lasermk1" ]
+	ProhibitRects
+	[
+		[fighter, [1, -1, 1, 1]]// TO ENSURE COMPATIBILITY
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_l_alt.png"
+			SampleMode = Linear
+		}
+		Size = [160/3, 80*(1.5)]
+	}
+	Components : ^/0/Components
+	{
+		Collider  : &<particle_1.rules>/Part/Components/Collider
+		{
+			Type = CircleCollider
+			Location = [1.5, .5]
+		}
+		
+		Turret : &<particle_1.rules>/Part/Components/Turret
+		{
+			Location = [1.5, .5]// Slightly higher.
+			//Location = [.4, -0.475]// Slightly higher.
+		}
+		
+		TurretHolder : &<particle_1.rules>/Part/Components/TurretHolder
+		{
+			Location = [1.5, .5]
+			Rotation = 90d
+		}
+	}
+}

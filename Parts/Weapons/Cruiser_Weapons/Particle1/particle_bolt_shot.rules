@@ -1,0 +1,251 @@
+ID = "janiTNT.burst1asermk2shotb"
+Range = 220
+IdealRange = [60, 120]
+IdealRadius = [5, 50]
+Speed = 320
+ReceivableBuffs = [ElectronBuff]
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.01
+		Density = 0.0001
+	}
+
+	Death
+	{
+		Type = DeathByLifetime
+		// Lifetime will be auto-calculated based on range and speed.
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 200
+		TargetCategory = "laser"
+	}
+
+	Hit
+	{
+		Type = PenetratingHit
+		Penetration = 7
+		PartCategoryPenetrationFactors
+		{
+			armor = 0.5
+		}
+		PenetrationSpeed = 50
+		FactorEffectsWith = Targetable
+
+		CrewCollisions = {Enemies=true; Junk=true}
+		HitCrew = &HitOperational
+
+		HitShield : &HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=750; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+				{
+					Type = Impulse;
+					Impulse = { BaseValue= 2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+			]
+		}
+		HitOperational
+		{
+			ReduceEffectsByPenetration = true
+			Offset = [-0.15, 0]
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.scorched
+					DivideValueByPartHealth = true
+					DivideValueByPartHealthFactor = false
+					StatusValue = { BaseValue=750; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Filter
+					{
+						Shields = false
+						
+						NonWalkable = false
+						ExcludePartCategories = [ non_flammable ]
+						StructuralHealth = false
+					}
+				}
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .03; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					ValueType = Interpolated
+				}
+				{
+					Type = Impulse;
+					Impulse = { BaseValue= 2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+			]
+			
+			MediaEffectsScale = 1.25
+			MediaEffects
+			[
+				&<particles/particle_bolt_small_hit.rules>
+				&<particles/particle_bolt_small_flash.rules>
+				&<particles/particle_bolt_small_sparks.rules>
+				&<particles/particle_bolt_small_spikes.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .4
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .03
+					Duration = .3
+				}
+			]
+		}
+		HitStructural
+		{
+			ReduceEffectsByPenetration = true
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue=500; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+				{
+					Type = Impulse;
+					Impulse = { BaseValue= 1; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+			]
+
+			MediaEffectsScale = 1.25
+			MediaEffects
+			[
+				&<particles/particle_bolt_small_hit_struct.rules>
+				&<particles/particle_bolt_small_flash.rules>
+				&<particles/particle_bolt_small_sparks_struct.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					Volume = .3
+					SpeedVariation = .4
+				}
+			]
+		}
+		PenetratingOperational
+		{
+			ReduceEffectsByPenetration = true
+
+			HitEffects
+			[
+				{
+					Type = Damage
+					Damage = { BaseValue = 250; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+				}
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.fire
+					StatusChance = { BaseValue = .03; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					ValueType = Interpolated
+				}
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.scorched
+					DivideValueByPartHealth = true
+					DivideValueByPartHealthFactor = false
+					// Value is balanced between the scorch remap modifier and DivideValueByPartHealth
+					// They offset each-other when fire is the only damage to the part
+					// When part health is proportionally lower (ie. something else damages the part), scorch rate increases
+					// This ensures that the part always scorches before it would die
+					// Formula: value = (damage / max_scorch_damage%) * ((1 - scorch * max_scorch_damage%) / health%)
+					StatusValue = { BaseValue=750; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Filter
+					{
+						Shields = false
+						
+						NonWalkable = false
+						ExcludePartCategories = [ non_flammable ]
+						StructuralHealth = false
+					}
+				}
+				{
+					Type = Impulse
+					Impulse = { BaseValue = 5; EffectScaleExponent = 1 }
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/particle_bolt_small_hit_struct.rules>
+				&<particles/particle_bolt_small_sparks_struct.rules>
+			]
+		}
+		PenetratingStructural
+		{
+			// No effect.
+		}
+		FinishedPenetratingOperational = &PenetratingOperational
+		FinishedPenetratingStructural = &PenetratingStructural
+	}
+
+	Sprite
+	{
+		Type = AnimatedSprite
+		ReduceScaleWith = Hit
+		ReduceScaleExponent = 0.5
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "particle_bolt_small.png"
+					SampleMode = Linear
+					MipLevels = max
+				}
+				Size = [1.5, 1.5]
+			}
+			FrameCount = 8
+			FrameSize = [128, 128]
+			FramesPerRow = 2
+			FramesPerSecond = 60
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper2
+		Z = 0
+		IsLight = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [3, 3]
+			VertexColor = [256, 128, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+			_litReflectiveStrength = 24
+			_litAdditiveStrength = 0.05
+			_unlitAdditiveStrength = 0.25
+		}
+	}
+}
