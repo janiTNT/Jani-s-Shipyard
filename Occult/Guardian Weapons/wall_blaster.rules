@@ -348,7 +348,9 @@ Part : <../base_part_occult.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					RandomSounds = ["./data/ships/terran/railgun_loader/sounds/railgun_shot_01.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_02.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_03.wav"]
 					Volume = 0.4
 					Speed = 0.7
 					SpeedVariation = .15

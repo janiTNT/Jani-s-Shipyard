@@ -219,7 +219,9 @@ Part : <fringe_ball.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					RandomSounds = ["./data/ships/terran/railgun_loader/sounds/railgun_shot_01.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_02.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_03.wav"]
 					Volume = .8
 					SpeedVariation = .25
 				}
@@ -242,7 +244,9 @@ Part : <fringe_ball.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					RandomSounds = ["./data/ships/terran/railgun_loader/sounds/railgun_shot_01.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_02.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_03.wav"]
 					Volume = .8
 					Speed = 4
 					SpeedVariation = .25
@@ -266,7 +270,9 @@ Part : <fringe_ball.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/railgun_loader/shoot.wav"
+					RandomSounds = ["./data/ships/terran/railgun_loader/sounds/railgun_shot_01.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_02.wav",
+									"./data/ships/terran/railgun_loader/sounds/railgun_shot_03.wav"]
 					Volume = .8
 					Speed = 6
 					SpeedVariation = .25

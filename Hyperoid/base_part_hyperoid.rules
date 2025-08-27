@@ -23,7 +23,7 @@ Part : <./data/ships/base_part.rules>/Part
 		
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "../common/sounds/asteroid_damage_loop.wav"
+			Sound = "./data/ships/terran/common/sounds/asteroid_damage_loop.wav"
 			Volume = 1.5
 			SpeedOverIntensity = [0.5, 2] // Intensity over progress
 			VolumeOverIntensity = 1

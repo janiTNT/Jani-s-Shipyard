@@ -79,7 +79,9 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					RandomSounds = ["./data/common_effects/sounds/large_part_destroyed_01.wav",
+									"./data/common_effects/sounds/large_part_destroyed_02.wav",
+									"./data/common_effects/sounds/large_part_destroyed_03.wav"]
 					Volume = 1
 					SpeedVariation = .25
 				}
@@ -105,7 +107,9 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/common_effects/sounds/big_part_destroyed.wav"
+					RandomSounds = ["./data/common_effects/sounds/large_part_destroyed_01.wav",
+									"./data/common_effects/sounds/large_part_destroyed_02.wav",
+									"./data/common_effects/sounds/large_part_destroyed_03.wav"]
 					Volume = 1
 					SpeedVariation = .25
 				}

@@ -108,9 +108,16 @@ Part : <base_part_occult.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Volume = .075
-					Speed = 2
-					MaxConcurrentVolume = .15
+					Sound = "./data/ships/terran/thruster_huge/sounds/huge_thruster_loop_01.wav"
+					Speed = 1
+					Volume = 1
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
+				{
+					Sound = "./data/ships/terran/thruster_huge/sounds/huge_thruster_loop_02.wav"
+					Speed = 1
+					Volume = 1
 				}
 			]
 		}
