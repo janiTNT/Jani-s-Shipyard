@@ -182,7 +182,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireInterval = 1.5
 			FiringArc = 20d
 			RotateSpeed = 30d
-			FireThresholdAngle = 1d
+			ValidArc = 45d;
+			FireThresholdAngle = 45d
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/MaxDamage/1
 			Emitter = BulletEmitter
 			FirePermissionToggle = FireModeToggle
