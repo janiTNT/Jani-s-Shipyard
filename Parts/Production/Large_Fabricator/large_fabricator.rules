@@ -145,10 +145,33 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "./data/ships/terran/factory_ammo/bullet_create.wav"
+					RandomSounds = ["./data/ships/terran/factory_tristeel/sounds/tristeel_factory_putdown_01.wav",
+									"./data/ships/terran/factory_tristeel/sounds/tristeel_factory_putdown_02.wav",
+									"./data/ships/terran/factory_tristeel/sounds/tristeel_factory_putdown_03.wav",
+									"./data/ships/terran/factory_tristeel/sounds/tristeel_factory_putdown_04.wav",
+									"./data/ships/terran/factory_tristeel/sounds/tristeel_factory_putdown_05.wav"]
 					Volume = .2
 					Speed = .5
 					SpeedVariation = .05
+				}
+			]
+		}
+		
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [2, 2]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/factory_tristeel/sounds/tristeel_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
 				}
 			]
 		}

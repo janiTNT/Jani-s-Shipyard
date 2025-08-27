@@ -76,6 +76,6 @@ StackSprites
 	}
 ]
 
-StackReceiveMediaEffects = &/COMMON_EFFECTS/HeavyDeliver
+StackReceiveMediaEffects = &/COMMON_EFFECTS/PartDeliver
 StackPickupMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
 NuggetPickupMediaEffects = &/COMMON_EFFECTS/NuggetPickup

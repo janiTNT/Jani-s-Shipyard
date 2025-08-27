@@ -204,15 +204,29 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			FactorMediaEffectsIntensityWith = MainThruster
 			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
+			PlayEndMediaOnNonOperational = false
 			MediaEffects
 			[
 				&<particles/thruster_heat_med.rules>
 
-				: /COMMON_SOUNDS/ThrusterRumble
+				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
-					Volume = .125
-					Speed = 1.5
-					MaxConcurrentVolume = .25
+					Sound = "./data/ships/terran/thruster_med/sounds/standard_thruster_loop_02.wav"
+					Volume = .25
+					Db = 5
+					Speed = 1
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["./data/ships/terran/thruster_med/sounds/standard_thruster_finish_01.wav",
+									"./data/ships/terran/thruster_med/sounds/standard_thruster_finish_02.wav"]
+					Volume = .25
+					Db = 5
+					SpeedVariation = .1
+					Speed = 1
 				}
 			]
 		}
@@ -234,12 +248,14 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			AnchorMediaEffects = true
 			MediaEffects
 			[
-
 				: /COMMON_SOUNDS/ThrusterBurst
 				{
+					RandomSounds = ["./data/ships/terran/thruster_med/sounds/standard_thruster_start_01.wav",
+									"./data/ships/terran/thruster_med/sounds/standard_thruster_start_02.wav"]
 					Volume = .25
-					Speed = 1.5
-					MaxConcurrentVolume = .5
+					Db = 5
+					Speed = 1
+					SpeedVariation = .1
 				}
 			]
 		}

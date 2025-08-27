@@ -62,7 +62,10 @@ Components
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					RandomSounds = ["./data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}
@@ -138,7 +141,10 @@ Components
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/ships/terran/disruptor/shoot.wav"
+					RandomSounds = ["./Data/ships/terran/disruptor/sounds/disruptor_shot_01.wav",
+									"./Data/ships/terran/disruptor/sounds/disruptor_shot_02.wav",
+									"./Data/ships/terran/disruptor/sounds/disruptor_shot_03.wav",
+									"./Data/ships/terran/disruptor/sounds/disruptor_shot_04.wav"]
 					Volume = 0.8
 					Speed = 1
 					SpeedVariation = .25
@@ -169,7 +175,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					RandomSounds = ["./Data/shots/bullet_med/sounds/cannon_impact_01.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_02.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_03.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}
@@ -197,7 +206,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					RandomSounds = ["./Data/shots/bullet_med/sounds/cannon_impact_01.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_02.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_03.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}
@@ -224,7 +236,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					RandomSounds = ["./Data/shots/bullet_med/sounds/cannon_impact_01.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_02.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_03.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}
@@ -239,7 +254,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					RandomSounds = ["./Data/shots/bullet_med/sounds/cannon_impact_01.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_02.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_03.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}

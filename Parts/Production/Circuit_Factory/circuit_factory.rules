@@ -329,10 +329,29 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "./data/ships/terran/factory_ammo/bullet_create.wav"
+					Sound = "./Data/ships/terran/factory_ammo/sounds/originals/bullet_create.wav"
 					Volume = .1
 					Speed = 1.25
 					SpeedVariation = .05
+				}
+			]
+		}
+		
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 1]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/factory_coil/sounds/coil_factory_idle.wav"
+					Volume = 0.5
+					MaxConcurrentVolume = 1
+					Speed = 2
+					MaxConcurrent = 1
 				}
 			]
 		}

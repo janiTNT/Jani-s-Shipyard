@@ -132,7 +132,7 @@ Part : <../base_part_occult.rules>/Part
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/common/ftl_jump_out.wav"
+					Sound = "./data/ships/common/sounds/ftl_jump_out.wav"
 					Volume = 5
 					Speed = 0.25
 				}
@@ -193,7 +193,7 @@ Part : <../base_part_occult.rules>/Part
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/common/ftl_jump_out.wav"
+					Sound = "./data/ships/common/sounds/ftl_jump_out.wav"
 					Volume = 5
 					Speed = 0.25
 				}

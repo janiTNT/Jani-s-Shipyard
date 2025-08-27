@@ -225,6 +225,25 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				}
 			]
 		}
+		
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1, 1]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/factory_tristeel/sounds/tristeel_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
+				}
+			]
+		}
 
 		BuffProvider
 		{

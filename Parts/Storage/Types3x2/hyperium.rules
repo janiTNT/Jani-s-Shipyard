@@ -20,7 +20,7 @@ Components
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&~/StorageSize)
 		UITileRect = [0.5 + 0.75, 0.75, 0.5, 0.5]
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/HyperiumDeliver
 		SupplyToggleButtonOffset = [0.02, -.3]
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true

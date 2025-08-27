@@ -106,7 +106,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DelayBeforeReadyToUse = .5
 			DropResourcesWhenDestroyed = true
 			DropResourcesWhenRemoved = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/HeavyDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
 			UITileRect = [0 + 16/64, 1 + 16/64, 1 - 32/64, 1 - 32/64]
 		}
 		
@@ -259,7 +259,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/ships/common/ftl_jump_out.wav"
+					Sound = "./data/ships/common/sounds/ftl_jump_out.wav"
 					Volume = 0.6
 					Speed = 1
 					/*MaxConcurrent = 1

@@ -152,6 +152,17 @@ Components
 					Volume = .75
 					SpeedVariation = .4
 				}
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+									"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+									"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+									"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
+					Volume = 0.75
+					Speed = .5
+					SpeedVariation = .15
+				}
 
 				: /BASE_SHAKE
 				{
@@ -174,6 +185,17 @@ Components
 					Sound = "./data/shots/laser_bolt_large/laser_bolt_large_hit.wav"
 					Volume = .75
 					SpeedVariation = .4
+				}
+				
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+									"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+									"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+									"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
+					Volume = 0.75
+					Speed = .5
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE
@@ -232,7 +254,7 @@ Components
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/common/ftl_jump_out.wav"
+					Sound = "./data/ships/common/sounds/ftl_jump_out.wav"
 					Volume = 1
 					Speed = 1
 				}

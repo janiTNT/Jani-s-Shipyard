@@ -324,7 +324,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/ships/terran/missile_launcher/shoot.wav"
+							RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_launch_01.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_02.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_03.wav"]
 							Speed = 1.0
 							SpeedVariation = .1
 						}
@@ -669,7 +671,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/ships/terran/missile_launcher/shoot.wav"
+							RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_launch_01.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_02.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_03.wav"]
 							Speed = 1.0
 							SpeedVariation = .1
 						}
@@ -1081,7 +1085,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/ships/terran/missile_launcher/shoot.wav"
+							RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_launch_01.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_02.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_03.wav"]
 							Speed = 0.75
 							SpeedVariation = .1
 						}
@@ -1457,7 +1463,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					[
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/ships/terran/missile_launcher/shoot.wav"
+							RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_launch_01.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_02.wav",
+											"./data/ships/terran/missile_launcher/sounds/launcher_launch_03.wav"]
 							Speed = 1.0
 							SpeedVariation = .1
 						}
@@ -1772,7 +1780,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{

@@ -234,7 +234,7 @@ HitNothing
 		
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "./Data/ships/common/ftl_jump_in.wav"
+			Sound = "./data/ships/common/sounds/ftl_jump_in.wav"
 			Volume = 0.6
 			Speed = 1
 			/*MaxConcurrent = 1

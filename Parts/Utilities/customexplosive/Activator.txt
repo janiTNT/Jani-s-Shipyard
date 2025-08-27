@@ -359,7 +359,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/common_effects/sounds/med_part_destroyed.wav"
+					RandomSounds = ["./Data/common_effects/sounds/med_part_destroyed_01.wav",
+									"./Data/common_effects/sounds/med_part_destroyed_02.wav",
+									"./Data/common_effects/sounds/med_part_destroyed_03.wav"]
 					Volume = 1
 				}
 

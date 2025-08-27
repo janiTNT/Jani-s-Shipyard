@@ -290,12 +290,36 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			Location = [1.5, 1.5]
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioInterior
+				: /BASE_SOUNDS/AudioInteriorDetail
 				{
-					Sound = "./data/ships/terran/factory_ammo/bullet_create.wav"
-					Volume = .1
+					RandomSounds = ["./data/ships/terran/factory_coil/sounds/coil_factory_putdown_01.wav",
+									"./data/ships/terran/factory_coil/sounds/coil_factory_putdown_02.wav",
+									"./data/ships/terran/factory_coil/sounds/coil_factory_putdown_03.wav",
+									"./data/ships/terran/factory_coil/sounds/coil_factory_putdown_04.wav",
+									"./data/ships/terran/factory_coil/sounds/coil_factory_putdown_05.wav"]
+					Volume = 1
+					Db = -2
 					Speed = 0.5
 					SpeedVariation = .05
+				}
+			]
+		}
+		
+		OperationSoundLoop
+		{
+			Type = ContinuousEffects
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/terran/factory_coil/sounds/coil_factory_idle.wav"
+					Volume = 1
+					MaxConcurrentVolume = 1
+					Speed = 1
+					MaxConcurrent = 1
 				}
 			]
 		}

@@ -82,7 +82,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					RandomSounds = ["./data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
 					Volume = .3
 					SpeedVariation = .4
 				}
@@ -114,7 +117,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					RandomSounds = ["./data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
 					Volume = .3
 					SpeedVariation = .4
 				}
@@ -128,7 +134,10 @@ Components
 				
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/laser_bolt_small/laser_bolt_small_hit.wav"
+					RandomSounds = ["./data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+									"./data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}

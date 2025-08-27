@@ -193,14 +193,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			Location = [0.5, 0.5]
 			OperationalToggle = IsOperational
-			MediaEffects
-			[
-				MaxMediaEffectsZoom = 4
+			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "sounds/small_reactor_exterior_idle.wav"
+					Sound = "./data/ships/terran/reactor_small/sounds/small_reactor_exterior_idle.wav"
 					Db = -5
 					MaxConcurrent = 1
 					DynamicVolume : ^/0/DynamicVolume
@@ -211,11 +209,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "sounds/small_reactor_interior_idle.wav"
+					Sound = "./data/ships/terran/reactor_small/sounds/small_reactor_interior_idle.wav"
 					Db = -6
 					MaxConcurrent = 1
 				}
-			]
 			]
 		}
 		BatterySprites
@@ -282,9 +279,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 						: /BASE_SOUNDS/AudioExterior
 						{
-							Sound = "./Data/shots/disruptor_bolt/discharge.wav"
+							RandomSounds = ["./data/ships/terran/reactor_small/sounds/disruptor_discharge_01.wav",
+											"./data/ships/terran/reactor_small/sounds/disruptor_discharge_02.wav",
+											"./data/ships/terran/reactor_small/sounds/disruptor_discharge_03.wav",
+											"./data/ships/terran/reactor_small/sounds/disruptor_discharge_04.wav"]
 							Volume = 1
-							SpeedVariation = .2
+							SpeedVariation = .15
 						}
 					]
 				}

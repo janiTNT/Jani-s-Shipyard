@@ -467,7 +467,9 @@ Part : <../base_part_occult.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/missile_launcher/shoot.wav"
+					RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_launch_01.wav",
+									"./data/ships/terran/missile_launcher/sounds/launcher_launch_02.wav",
+									"./data/ships/terran/missile_launcher/sounds/launcher_launch_03.wav"]
 					SpeedVariation = .25
 					Speed = 0.75
 				}

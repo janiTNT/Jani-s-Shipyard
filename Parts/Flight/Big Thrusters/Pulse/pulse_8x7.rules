@@ -161,9 +161,27 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
-					Volume = .5
-					Speed = .75
-					MaxConcurrentVolume = 1
+					Sound = "./data/ships/terran/thruster_huge/sounds/huge_thruster_loop_01.wav"
+					Speed = 0.4
+					Volume = 1
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
+				{
+					Sound = "./data/ships/terran/thruster_huge/sounds/huge_thruster_loop_02.wav"
+					Speed = 0.4
+					Volume = 1
+				}
+			]
+			EndMediaEffects
+			[
+				: /COMMON_SOUNDS/ThrusterBurst
+				{
+					RandomSounds = ["./data/ships/terran/thruster_huge/sounds/huge_thruster_finish_01.wav",
+									"./data/ships/terran/thruster_huge/sounds/huge_thruster_finish_02.wav"]
+					Volume = 1
+					Speed = 1
+					SpeedVariation = .1
 				}
 			]
 		}
@@ -186,9 +204,11 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /COMMON_SOUNDS/ThrusterBurst
 				{
-					Volume = .75
-					Speed = .75
-					MaxConcurrentVolume = 1
+					RandomSounds = ["./data/ships/terran/thruster_huge/sounds/huge_thruster_start_01.wav",
+									"./data/ships/terran/thruster_huge/sounds/huge_thruster_start_02.wav"]
+					Volume = 1
+					Speed = 1
+					SpeedVariation = .1
 				}
 			]
 		}

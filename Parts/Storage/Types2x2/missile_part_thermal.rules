@@ -21,7 +21,7 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileDeliver
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites

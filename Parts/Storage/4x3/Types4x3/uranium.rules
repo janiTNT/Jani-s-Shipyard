@@ -12,7 +12,7 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/ElementDeliver
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/UraniumDeliver
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites

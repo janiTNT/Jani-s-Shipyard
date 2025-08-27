@@ -206,7 +206,10 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/bullet_med/bullet_med_hit.wav"
+					RandomSounds = ["./Data/shots/bullet_med/sounds/cannon_impact_01.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_02.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_03.wav",
+									"./Data/shots/bullet_med/sounds/cannon_impact_04.wav"]
 					Volume = .1
 					SpeedVariation = .4
 				}

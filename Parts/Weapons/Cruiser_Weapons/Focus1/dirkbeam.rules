@@ -165,6 +165,17 @@ HitOperational
 			Speed = 1.5
 			SpeedVariation = .25
 		}
+		
+		: /BASE_SOUNDS/AudioExterior
+		{
+			RandomSounds = ["./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_01.wav",
+							"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_02.wav",
+							"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_03.wav",
+							"./Data/shots/laser_bolt_small/sounds/laser_blaster_impact_04.wav"]
+			Volume = 0.75
+			Speed = .3
+			SpeedVariation = .15
+		}
 
 		: /BASE_SHAKE
 		{
