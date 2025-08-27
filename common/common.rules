@@ -34,7 +34,7 @@ RadexplodeBig
 	: /BASE_SOUNDS/AudioExterior
 	{
 		Sound = "rad_part_destroyed.wav"
-		Volume = 100
+		Volume = 1
 		SpeedVariation = .25
 	}
 

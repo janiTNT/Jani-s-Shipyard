@@ -120,24 +120,13 @@ BeamMediaEffects
 			UseCustomShapeForDistance = true
 		}
 	}
-
-	: /BASE_SOUNDS/AudioExterior
-	{
-		Sound = "./Data/shots/ion_beam/sounds/ion_beam_loop.wav"
-		Volume = 0.75
-		Speed = 2
-		MaxConcurrent = 1
-		MaxConcurrentVolume = 1
-		RampUpTime = .25
-		RampDownTime = .25
-	}
 ]
 EndMediaEffects
 [
 	: /BASE_SOUNDS/AudioExterior
 	{
 		RandomSounds = ["./data/shots/mining_beam_small/sounds/mining_laser_finish_01.wav", "./data/shots/mining_beam_small/sounds/mining_laser_finish_02.wav"]
-		Volume = 5
+		Volume = 2
 		Speed = 1
 		MaxConcurrent = 1
 
