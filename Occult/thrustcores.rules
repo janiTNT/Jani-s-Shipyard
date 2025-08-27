@@ -73,7 +73,6 @@ Part : <base_part_occult.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 1000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		MainThruster

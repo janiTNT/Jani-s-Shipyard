@@ -201,7 +201,6 @@ Part : <ProfanedbossSigil.rules>/Part
 			StartingResources = &MaxResources
 			InitToMaxResources = &MaxResources
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		ShieldingOn

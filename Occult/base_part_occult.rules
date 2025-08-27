@@ -52,7 +52,6 @@ Part : <./data/ships/base_part.rules>/Part
 			ToggleOnResources = 320
 			InitToMaxResources = 0
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		DetonateTrigger
 		{
@@ -163,7 +162,6 @@ Part : <./data/ships/base_part.rules>/Part
 			ToggleOnResources = 1
 			InitToMaxResources = 0
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		RageProvider

@@ -42,7 +42,6 @@ Part : <base_part_occult.rules>/Part
 			ToggleOnResources = 320
 			InitToMaxResources = 0
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		DetonateTrigger
 		{

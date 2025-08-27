@@ -68,7 +68,6 @@ Part : <base_part_occult.rules>/Part
 			StartingResources = &MaxResources
 			InitToMaxResources = &MaxResources
 			DrainOnFtlJump = true
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		ShieldGen
