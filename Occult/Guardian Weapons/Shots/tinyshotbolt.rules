@@ -63,9 +63,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/shots/missile_he/missile_he_hit.wav"
-					Volume = .3
-					SpeedVariation = .4
+					RandomSounds = ["./data/shots/missile_he/sounds/launcher_rocket_impact_01.wav",
+									"./data/shots/missile_he/sounds/launcher_rocket_impact_02.wav",
+									"./data/shots/missile_he/sounds/launcher_rocket_impact_03.wav"]
+					SpeedVariation = .1
+					Volume = 0.3
 				}
 
 				: /BASE_SHAKE
@@ -86,9 +88,11 @@ Components
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/shots/missile_he/missile_he_hit.wav"
-					Volume = .3
-					SpeedVariation = .4
+					RandomSounds = ["./data/shots/missile_he/sounds/launcher_rocket_impact_01.wav",
+									"./data/shots/missile_he/sounds/launcher_rocket_impact_02.wav",
+									"./data/shots/missile_he/sounds/launcher_rocket_impact_03.wav"]
+					SpeedVariation = .1
+					Volume = 0.3
 				}
 
 				: /BASE_SHAKE

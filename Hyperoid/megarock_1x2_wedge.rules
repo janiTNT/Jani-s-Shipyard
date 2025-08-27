@@ -164,23 +164,9 @@ Part : <base_part_hyperoid.rules>/Part
 				]
 			}
 		}
-		SalvagedEffects
+		SalvagedEffects : ^/0/SalvagedEffects
 		{
-			Type = DeathEffects
 			Location = [.5, .5]
-			WhenSalvaged = true
-
-			MediaEffects
-			[
-				&<salvage_complete_asteroid_pebbles.rules>
-
-				: /BASE_SOUNDS/AudioExteriorDetail
-				{
-					Sound = "./data/ships/common/salvage_finish.wav"
-					Volume = 0.75
-					SpeedVariation = .25
-				}
-			]
 		}
 		
 		DeathEffects : SalvagedEffects

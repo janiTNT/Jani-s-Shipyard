@@ -135,11 +135,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 			MediaEffects
 			[
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/common/salvage_finish.wav"
-					Volume = 0.75
-					SpeedVariation = .25
+					RandomSounds = ["./data/ships/common/sounds/metal_deconstruct_small_01.wav",
+									"./data/ships/common/sounds/metal_deconstruct_small_02.wav",
+									"./data/ships/common/sounds/metal_deconstruct_small_03.wav"]
+					Volume = 1.3
+					SpeedVariation = .15
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/common/sounds/small_deconstruct.wav"
+					Speed = 1
+					SpeedVariation = 0.1
 				}
 			]
 		}

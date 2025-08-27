@@ -123,11 +123,20 @@ Part : <../base_part_occult.rules>/Part
 				&<./data/shots/missile_nuke/particles/missile_nuke_flash_light.rules>
 
 
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/common/salvage_finish.wav"
-					Volume = 1
-					SpeedVariation = .25
+					RandomSounds = ["./data/ships/common/sounds/metal_deconstruct_small_01.wav",
+									"./data/ships/common/sounds/metal_deconstruct_small_02.wav",
+									"./data/ships/common/sounds/metal_deconstruct_small_03.wav"]
+					Volume = 1.3
+					SpeedVariation = .15
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/common/sounds/small_deconstruct.wav"
+					Speed = 1
+					SpeedVariation = 0.1
 				}
 				
 				: /BASE_SOUNDS/AudioExterior

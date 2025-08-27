@@ -20,6 +20,28 @@ Part : <./data/ships/base_part.rules>/Part
 	SalvageProgressMediaEffects
 	[
 		&<./data/ships/common/particles/salvage_progress_asteroid_quad.rules>
+		
+		: /BASE_SOUNDS/AudioExterior
+		{
+			Sound = "../common/sounds/asteroid_damage_loop.wav"
+			Volume = 1.5
+			SpeedOverIntensity = [0.5, 2] // Intensity over progress
+			VolumeOverIntensity = 1
+			RampUpTime = .2
+			RampDownTime = .5
+			MaxConcurrent = 0
+			
+			DynamicVolume
+			{
+				MinDistance = 0
+				MaxDistance = 10
+				DistanceFalloff = 2
+
+				MinZoom = 1
+				MaxZoom = 70
+				ZoomFalloff = 5
+			}
+		}
 	]
 
 	Components : ^/0/Components
@@ -34,11 +56,13 @@ Part : <./data/ships/base_part.rules>/Part
 			[
 				&<salvage_complete_asteroid_pebbles.rules>
 
-				: /BASE_SOUNDS/AudioExteriorDetail
+				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/common/salvage_finish.wav"
-					Volume = 0.75
-					SpeedVariation = .25
+					RandomSounds = ["./data/ships/common/sounds/asteroid_deconstruct_big_01.wav",
+									"./data/ships/common/sounds/asteroid_deconstruct_big_02.wav",
+									"./data/ships/common/sounds/asteroid_deconstruct_big_03.wav"]
+					Volume = 1.2
+					SpeedVariation = .1
 				}
 			]
 		}
