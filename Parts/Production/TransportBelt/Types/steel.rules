@@ -31,7 +31,7 @@ Components : &<base.rules>/Components
 		ResourceType = &~/Resource
 		MaxResources = (&~/CarrySize)
 		InitToMaxResources = 0
-		//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		ToggleOnResources = 1
 		ToggleOffResources = 0
 		DelayBeforeReadyToUse = .75 / 2

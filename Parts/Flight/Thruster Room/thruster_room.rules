@@ -88,7 +88,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				ComponentIDs = [BatteryStorage, ExtendableBatteryStorage] // ExtendableBatteryStorage is used by rocket thrusters.
 			}
 			AddMode = PrioritizeLeastResources
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{

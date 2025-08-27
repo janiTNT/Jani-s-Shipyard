@@ -427,7 +427,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 200000 * 2
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			DeliveryLocation = [60,60]
 		}
 		BatteryConsumer

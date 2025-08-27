@@ -94,7 +94,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000 * 6
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 			ToggleOnResources = (&MaxResources) - 999
 			ToggleOffResources = 0
 		}

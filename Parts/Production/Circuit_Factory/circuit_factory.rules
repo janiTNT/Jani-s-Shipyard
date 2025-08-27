@@ -152,7 +152,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 2000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 		}
 		BatteryConsumer
 		{

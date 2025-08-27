@@ -165,7 +165,7 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 		ResourceType = battery
 		MaxResources = 6000
 		ToggleOnResources = 2001
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
 	}
 	PortBuffToggle
 	{
