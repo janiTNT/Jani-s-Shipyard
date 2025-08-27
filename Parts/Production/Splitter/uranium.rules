@@ -93,6 +93,6 @@ Components
 		Type = TriggeredEffects
 		Trigger = ResourceConverterSplit
 		Location = [1, 1]
-		MediaEffects = &/COMMON_EFFECTS/ResourcePickup
+		MediaEffects = &/COMMON_EFFECTS/MinePickup
 	}
 }
