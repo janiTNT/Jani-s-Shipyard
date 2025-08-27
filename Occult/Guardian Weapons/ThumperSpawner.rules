@@ -407,10 +407,10 @@ Part : <../base_part_occult.rules>/Part
 				: /BASE_SOUNDS/AudioExterior
 				{
 					//Sound = "./data/common_effects/sounds/thruster_burst.wav"
-					RandomSounds = ["sounds/laser_blaster_shot_01.wav",
-									"sounds/laser_blaster_shot_02.wav",
-									"sounds/laser_blaster_shot_03.wav",
-									"sounds/laser_blaster_shot_04.wav"]
+					RandomSounds = ["./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_01.wav",
+									"./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_02.wav",
+									"./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_03.wav",
+									"./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_04.wav"]
 					Volume = 1.6
 					Speed = 0.25
 					SpeedVariation = .075

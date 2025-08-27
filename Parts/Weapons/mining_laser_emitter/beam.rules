@@ -104,12 +104,12 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "./Data/shots/mining_beam_small/mining_beam.wav"
-		Volume = 1
+		Sound = "./data/shots/mining_beam_small/sounds/mining_laser_loop.wav"
+		Volume = 1.6
 		Speed = 1
 		MaxConcurrent = 1
-		RampUpTime = .8
-		RampDownTime = .8
+		RampUpTime = .5
+		RampDownTime = .5
 
 		DynamicVolume : ^/0/DynamicVolume
 		{
@@ -123,13 +123,32 @@ BeamMediaEffects
 
 	: /BASE_SOUNDS/AudioExterior
 	{
-		Sound = "./Data/shots/ion_beam/ion_beam.wav"
+		Sound = "./Data/shots/ion_beam/sounds/ion_beam_loop.wav"
 		Volume = 0.75
 		Speed = 2
 		MaxConcurrent = 1
 		MaxConcurrentVolume = 1
 		RampUpTime = .25
 		RampDownTime = .25
+	}
+]
+EndMediaEffects
+[
+	: /BASE_SOUNDS/AudioExterior
+	{
+		RandomSounds = ["./data/shots/mining_beam_small/sounds/mining_laser_finish_01.wav", "./data/shots/mining_beam_small/sounds/mining_laser_finish_02.wav"]
+		Volume = 5
+		Speed = 1
+		MaxConcurrent = 1
+
+		DynamicVolume : ^/0/DynamicVolume
+		{
+			UseCustomShapeForDistance = true
+		}
+		DynamicFilter : ^/0/DynamicFilter
+		{
+			UseCustomShapeForDistance = true
+		}
 	}
 ]
 

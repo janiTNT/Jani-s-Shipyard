@@ -195,17 +195,27 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			MediaEffects
 			[
+				MaxMediaEffectsZoom = 4
+			MediaEffects
+			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "./Data/ships/terran/reactor_small/operating.wav"
-					Volume = .2
-					Speed = .5
+					Sound = "sounds/small_reactor_exterior_idle.wav"
+					Db = -5
 					MaxConcurrent = 1
 					DynamicVolume : ^/0/DynamicVolume
 					{
-						ExteriorVolume = .5
+						ExteriorVolume = .75
 					}
 				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "sounds/small_reactor_interior_idle.wav"
+					Db = -6
+					MaxConcurrent = 1
+				}
+			]
 			]
 		}
 		BatterySprites
@@ -303,7 +313,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/ships/terran/reactor_small/destroyed.wav"
+					RandomSounds = ["./data/ships/terran/reactor_small/destroyed/destroyed_01.wav", "./data/ships/terran/reactor_small/destroyed/destroyed_02.wav", "./data/ships/terran/reactor_small/destroyed/destroyed_03.wav"]
 					Volume = 1
 					SpeedVariation = .25
 				}
