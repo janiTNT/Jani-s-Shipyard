@@ -259,7 +259,7 @@ Part : <../base_part_occult.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/gui/game/ftl_ready.wav"
+					Sound = "./data/gui/game/sounds/UI_hyperdrive_ready.wav"
 					Volume = 2
 					Speed = 1
 				}

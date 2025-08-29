@@ -46,11 +46,12 @@ Components // Separate
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/shots/bullet_deck/bullet_deck_hit.wav"
-					Volume = .75
-					SpeedVariation = .4
+					RandomSounds = ["./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav",
+									"./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav",
+									"./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
-
 				: /BASE_SHAKE
 				{
 					ShakeAmount = .2
@@ -104,9 +105,11 @@ Components // Separate
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/shots/bullet_deck/bullet_deck_hit.wav"
-					Volume = .75
-					SpeedVariation = .4
+					RandomSounds = ["./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav",
+									"./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav",
+									"./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 
 				: /BASE_SHAKE
@@ -141,9 +144,11 @@ Components // Separate
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/shots/bullet_deck/bullet_deck_hit_structure.wav"
-					Volume = .5
-					SpeedVariation = .4
+					RandomSounds = ["./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav",
+									"./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav",
+									"./data/shots/bullet_deck/sounds/deck_cannon_impact_01.wav"]
+					Volume = 1
+					SpeedVariation = .15
 				}
 			]
 		}
