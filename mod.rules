@@ -1643,7 +1643,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	}
 	
 	
-	{	Action = AddMany
+	/* {	Action = AddMany
 
 		AddTo = "<statuses/statuses.rules>/Statuses"
 
@@ -1651,7 +1651,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			&<Statuses/Brimstone/Brimstone.rules>
 		]
-	}
+	} */
 	
 	/*{
 		Action = AddMany
