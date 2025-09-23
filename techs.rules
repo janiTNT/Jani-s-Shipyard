@@ -570,6 +570,21 @@ Techs
 		Prerequisites = [janiTNT.ion2tech]
 	}
 	{
+		ID = janiTNT.particle1tech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1_l.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1_l_alt.rules>/Part/ID
+		]
+		Cost = 3000
+		Prerequisites = [janiTNT.burst2lasertech]
+	}
+	{
 		ID = janiTNT.missile1tech
 		NameKey = &<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Missiles1/Missile1.rules>/Part/DescriptionKey
