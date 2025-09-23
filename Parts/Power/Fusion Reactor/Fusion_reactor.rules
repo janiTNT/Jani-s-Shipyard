@@ -268,7 +268,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DefaultPriority = &/PRIORITIES/Factory_Supply
 			ResupplyThreshold = 64000
 			OperationalToggle = TurnOffRefeeding
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
 		PlasmaStorage

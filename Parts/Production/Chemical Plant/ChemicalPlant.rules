@@ -75,7 +75,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = iron
 			MaxResources = 20
-			//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			//ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		IronConsumer
 		{
@@ -92,7 +92,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = battery
 			MaxResources = 4000
-			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/BatteryDeliver
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
 		{
