@@ -31,7 +31,7 @@ BeamMediaEffects
 				UVMode = Wrap
 			}
 			Shader = "./data/shots/ion_beam/ion_beam.shader"
-			_extraBeginLength = 0
+			_extraBeginLength = 0.25
 			_extraEndLength = 0.25
 			_sizePulseFactor = 1.2
 			_sizePulseInterval = .1
@@ -69,8 +69,8 @@ BeamMediaEffects
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 16]
-			_extraBeginLength = (&Size/1) / 16
+			Size = [100%, 10]
+			_extraBeginLength = (&Size/1) / 1.5
 			_extraEndLength = (&Size/1) / 2
 			VertexColor = [255, 0, 0, 255]
 			_z = 0.4

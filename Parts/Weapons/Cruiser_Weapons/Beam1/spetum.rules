@@ -200,6 +200,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			//OperationalToggle = IsOperational // allows to fire if no power when last fire
 			Duration = 1
+			ColliderOverlapTest = true
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 1250
 			FireDelay = .25

@@ -195,12 +195,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BeamEmitter
 			ChainedTo = Turret
-			Location = [-0.125, 0]
+			Location = [0.36, 0]
 			//FireTrigger = Turret
 			FireTrigger // none, but field is required
 			GetTargetFrom = Turret
 			OperationalToggle = IsOperational // stops firing if no power availible
 			Duration = 0.2
+			ColliderOverlapTest = true
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 6000 / 25
 			//FireDelay = .25
@@ -240,7 +241,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			ChainedTo = Oscillator
 			FireTrigger = Turret
-			Location = [0, 0]
+			Location = [0.36, 0]
 		}
 	
 		/*ChargeToggle
