@@ -69,7 +69,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part
 			&<Parts/Weapons/mining_laser_emitter/prism.rules>/Part
-			&<Parts/Weapons/BGF10k/BFG10k.rules>/Part
+			//&<Parts/Weapons/BGF10k/BFG10k.rules>/Part
 			&<Parts/Weapons/NukeSilo/nukesilo.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser_l.rules>/Part

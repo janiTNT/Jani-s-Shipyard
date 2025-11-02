@@ -175,19 +175,6 @@ Techs
 		Prerequisites = [janiTNT.drone_launcher_tiny, cosmoteer.factory_coil, cosmoteer.disruptor, cosmoteer.factory_ammo]
 	}
 	{
-		ID = janiTNT.BFG10k
-		NameKey = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/NameKey
-		DescriptionKey = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/DescriptionKey
-		Icon = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/EditorIcon
-		EditorGroup = &<Parts/Weapons/BGF10k/BFG10k.rules>/Part/EditorGroup
-		PartsUnlocked
-		[
-			&<Parts/Weapons/BGF10k/BFG10k.rules>/Part/ID
-		]
-		Cost = 1000000
-		Prerequisites = [janiTNT.advanced_material_manipulation, cosmoteer.cannon_deck, cosmoteer.control_room_large]
-	}
-	{
 		ID = janiTNT.fuelroom
 		NameKey = &<Parts/Flight/Thruster Room/thruster_room.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Flight/Thruster Room/thruster_room.rules>/Part/DescriptionKey

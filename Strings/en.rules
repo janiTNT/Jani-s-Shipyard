@@ -117,18 +117,12 @@ Parts
 	FactoryAdvancedCircuit = "Advanced Circuit Assembler"
 	FactoryAdvancedCircuitIcon = "Adv. Circuits"
 	FactoryAdvancedCircuitDesc = "Manufactures advanced circuits, with more processing capabilities. Consumes electronic circuits and hypercoils. Gains +25% production speed for each adjacent factory of any type."
-	FactoryAdvancedCircuitOverclockDesc = "Significantly increases production speed. Produces waste heat while producing electronic circuits."
+	FactoryAdvancedCircuitOverclockDesc = "Significantly increases production speed. Produces waste heat while producing advanced circuits."
 	FactoryAdvancedCircuitOverclock = "Overclocked Advanced Circuit Assembler"
 	
 	TriSteelDoor = "TriSteel Door"
 	TriSteelDoorIcon = "Tr. Door"
 	TriSteelDoorDesc = "Fancy Door,using only tristeel bars, because why not???"
-	
-	BFGSuperWeaponFull = "BFG 10000 Superweapon"
-	BFGSuperWeaponFullIcon = "BFG 10K"
-	BFGSuperWeaponFullDesc = "Fuses together a extreme amount of Enriched uranium into a huge, energetic blast that will obliterate targets.\nThe Weapon is Placed on top of the ship and has 360 degrees of rotation.\n\n Cannot be placed in 120 blocks of another BFG 10k, but shots from the BFG can travel above all Roof weapons.\n\n<bad>KNOWN ISSUE:</bad> the recoil animation has been disabled as railgun projectile code is no longer chaining to turrets and rotating correctly."\
-	"\n\nOriginal 3D Model by GameHorizons."
-	//\n\nNow requires Cosmilite, Therefore requiring you to defeat the respective boss.
 	
 	DecouplerBoomer = "Decoupler"
 	DecouplerBoomerIcon = "Decoupler"
