@@ -37,14 +37,14 @@ Components : &<hyperium.rules>/Components
 	IsShellFullyClosedPresence//because IsOnWhenNotConnected is not working
 	{
 		Type = ComponentPresenceToggle
-		PartLocation = [0, -2]
+		PartLocation = &<hyperium.rules>/Components/ToProxyExists/PartLocation
 		ComponentID = IsShellFullyClosed
 	}
 	
 	IsShellFullyClosedProxy
 	{
 		Type = ToggleProxy
-		PartLocation = [0, -2] //looking up. :3
+		PartLocation = &<hyperium.rules>/Components/ToProxyExists/PartLocation
 		ComponentID = IsShellFullyClosed
 	}
 
@@ -52,7 +52,7 @@ Components : &<hyperium.rules>/Components
 	ChaingunPatch_IsRequestingAmmoA
 	{
 		Type = ToggleProxy
-		PartLocation = [0, -2] //looking up.
+		PartLocation = &<hyperium.rules>/Components/ToProxyExists/PartLocation
 		ProxyableComponents
 		[
 			{
@@ -75,7 +75,7 @@ Components : &<hyperium.rules>/Components
 	ChaingunPatch_IsRequestingAmmoB
 	{
 		Type = ToggleProxy
-		PartLocation = [0, -2] //looking up.
+		PartLocation = &<hyperium.rules>/Components/ToProxyExists/PartLocation
 		ProxyableComponents
 		[
 			{
@@ -95,11 +95,10 @@ Components : &<hyperium.rules>/Components
 		]
 	}
 	
-	FromProxy
+	FromProxy : &<hyperium.rules>/Components/FromProxy
 	{
-		Type = ResourceStorageProxy
 		ResourceType = &~/Resource
-		PartLocation = [0, 2]
+		ComponentID
 		ProxyableComponents// btw part ID's are inside PartCategories
 		[
 			{
@@ -119,11 +118,10 @@ Components : &<hyperium.rules>/Components
 		]
 	}
 	
-	ToProxy
+	ToProxy : &<hyperium.rules>/Components/ToProxy
 	{
-		Type = ResourceStorageProxy
 		ResourceType = &~/Resource
-		PartLocation = [0, -2]
+		ComponentID
 		ProxyableComponents
 		[
 			{
