@@ -8,7 +8,6 @@ Part : <T1.rules>/Part
 	FlipHRotate = [1, 0, 3, 2]
 	FlipVRotate = [3, 2, 1, 0]
 	
-	IsBuildable = true
 	EditorIcon
 	{
 		Texture = "./Data/ships/terran/corridor/icon.png"

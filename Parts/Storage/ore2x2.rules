@@ -1,4 +1,4 @@
-Part : <./data/ships/terran/base_part_terran.rules>/Part
+Part : <base2x2.rules>/Part
 {
 	NameKey = "Parts/AutoOStorage2x2"
 	IconNameKey = "Parts/AutoOStorage2x2Icon"
@@ -6,18 +6,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	EditorGroups []
 	EditorParentParts = [ ["janiTNT.AutoStorage_ammo_2x2", -1] ]
 	DescriptionKey = "Parts/AutoOStorage2x2Desc"
-	SelectionTypeID = "storage"
-	Resources
-	[
-		[steel, 32]
-		[coil, 4]
-	]
-	Size = [2, 2]
-	IsRotateable = true
-	MaxHealth = 4000
-	TypeCategories = [storage]
+	TypeCategories = : ^/0/TypeCategories []
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	IgnoreRotationForMirroredSelection = true
 	EditorIcon
 	{
 		Texture
@@ -135,56 +125,5 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			IncludeInBlueprints = false
 			Components = &<Types2x2/uranium.rules>/Components
 		}
-		
-		Graphics
-		{
-			Type = Graphics
-			Location = [1, 1]
-			Floor
-			{
-				Layer = "floors"
-				DamageLevels
-				[
-					{
-						File = "floor1.png"
-						Size = [2, 2]
-					}
-				]
-			}
-			Walls
-			{
-				Layer = "walls"
-				DamageLevels
-				[
-					{
-						File = "walls1.png"
-						Size = [2, 2]
-					}
-				]
-			}
-		}
-
-		RoofDoorOpenToggle = &<./Data/ships/terran/storage_2x2/storage_2x2.rules>/Part/Components/RoofDoorOpenToggle
-		RoofDoorSprite = &<./Data/ships/terran/storage_2x2/storage_2x2.rules>/Part/Components/RoofDoorSprite
-
-
-		DestroyedEffects
-		{
-			Type = DeathEffects
-			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
-			Location = [1, 1]
-		}
-
-		Blueprints
-		{
-			Type = BlueprintSprite
-			File = "blueprints1.png"
-			Size = [2, 2]
-		}
-	}
-
-	Stats
-	{
-		StorageTiles = 4
 	}
 }

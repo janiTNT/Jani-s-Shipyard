@@ -18,7 +18,7 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 	//FlipVRotate = [3, 2, 1, 0]
 	IsWalled = false
 	
-	IsBuildable = true
+	IsBuildable = false
 	
 	EditorIcon
 	{

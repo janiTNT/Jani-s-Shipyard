@@ -1,6 +1,6 @@
 ID = inserter
 TitleKey = "Tutorials/Inserters/Title"
-TabNameKey = "Codex/JaniTutorials"
+TabNameKey = "Codex/Tutorials"
 TempShowCondition = "? game.HasPartCategoryInHand('Inserter') or game.HasTechUnlocked('janiTNT.inserters')"
 Entries
 [

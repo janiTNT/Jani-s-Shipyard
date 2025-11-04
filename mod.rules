@@ -431,7 +431,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			&<Tutorials/Inserters/Inserters.rules>
-			&<Tutorials/Bosses/bossesbeta.rules>
+			//&<Tutorials/Bosses/bossesbeta.rules>
 		]
 	}
 	{	Action = Overrides

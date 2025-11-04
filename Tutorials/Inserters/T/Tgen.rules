@@ -1,7 +1,7 @@
 Type = None
 Tags = [T_anomP]
 Count = [4]
-SpawnChance = 0.05
+SpawnChance = 0.1
 //SpawnChance = 1
 //SpawnChance = 0
 Conditions
