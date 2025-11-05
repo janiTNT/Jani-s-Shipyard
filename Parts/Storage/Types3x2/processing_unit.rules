@@ -1,5 +1,6 @@
-Resource = janitnt.circuit3
-StackSize = (&<../../../Resources/Circuits/processing_unit.rules>/MaxStackSize)
+Resource = &ResourceFile/ID
+StackSize = &ResourceFile/MaxStackSize
+ResourceFile = &<../../../Resources/Circuits/processing_unit.rules>
 Components
 {	
 	Consumer : &<hyperium.rules>/Components/Consumer
@@ -12,7 +13,8 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects = &<./data/resources/coil/coil.rules>/StackReceiveMediaEffects
+		ReceiveResourceMediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+		GiveResourceMediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites

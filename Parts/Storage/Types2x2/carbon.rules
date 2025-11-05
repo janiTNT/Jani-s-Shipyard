@@ -1,5 +1,6 @@
-Resource = carbon
-StackSize = (&<./data/resources/carbon/carbon.rules>/MaxStackSize)
+Resource = &ResourceFile/ID
+StackSize = &ResourceFile/MaxStackSize
+ResourceFile = &<./data/resources/carbon/carbon.rules>
 Components
 {	
 	Consumer : &<hyperium.rules>/Components/Consumer
@@ -12,7 +13,8 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MineDeliver
+		ReceiveResourceMediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+		GiveResourceMediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites

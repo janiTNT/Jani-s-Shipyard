@@ -1,5 +1,6 @@
-Resource = coil
-StackSize = (&<./data/resources/coil/coil.rules>/MaxStackSize)
+Resource = &ResourceFile/ID
+StackSize = &ResourceFile/MaxStackSize
+ResourceFile = &<./data/resources/coil/coil.rules>
 Components
 {	
 	Consumer : &<hyperium.rules>/Components/Consumer
@@ -12,15 +13,8 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects
-		[
-			: /BASE_SOUNDS/AudioInterior
-			{
-				Sound = "./data/resources/coil/coil_deliver.wav"
-				Volume = 1.0
-				SpeedVariation = .05
-			}
-		]
+		ReceiveResourceMediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+		GiveResourceMediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites

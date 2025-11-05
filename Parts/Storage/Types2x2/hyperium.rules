@@ -1,5 +1,6 @@
-Resource = hyperium
-StackSize = (&<./data/resources/hyperium/hyperium.rules>/MaxStackSize)
+Resource = &ResourceFile/ID
+StackSize = &ResourceFile/MaxStackSize
+ResourceFile = &<./data/resources/hyperium/hyperium.rules>
 StorageSize = 4
 Components
 {	
@@ -20,7 +21,8 @@ Components
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&~/StorageSize)
 		UITileRect = [0.75, 0.75, 0.5, 0.5]
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/HyperiumDeliver
+		ReceiveResourceMediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+		GiveResourceMediaEffects = &~/ResourceFile/StackPickupMediaEffects
 		SupplyToggleButtonOffset = [0.02, -.3]
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true

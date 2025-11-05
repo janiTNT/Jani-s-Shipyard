@@ -1,5 +1,6 @@
-Resource = missile_part_he
-StackSize = (&<./data/resources/missile_part_he/missile_part_he.rules>/MaxStackSize)
+Resource = &ResourceFile/ID
+StackSize = &ResourceFile/MaxStackSize
+ResourceFile = &<./data/resources/missile_part_he/missile_part_he.rules>
 Components
 {	
 	HEMissileStorage__Aephiex //compatibility
@@ -21,7 +22,8 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PartDeliver
+		ReceiveResourceMediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+		GiveResourceMediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites

@@ -1,5 +1,6 @@
-Resource = processor
-StackSize = (&<./data/resources/processor/processor.rules>/MaxStackSize)
+Resource = &ResourceFile/ID
+StackSize = &ResourceFile/MaxStackSize
+ResourceFile = &<./data/resources/processor/processor.rules>
 Components
 {	
 	Consumer : &<hyperium.rules>/Components/Consumer
@@ -12,16 +13,8 @@ Components
 	{
 		ResourceType = &~/Resource
 		MaxResources = (&~/StackSize) * (&<hyperium.rules>/StorageSize)
-		ReceiveResourceMediaEffects
-		[
-			: /BASE_SOUNDS/AudioInterior
-			{
-				Sound = "./Data/common_effects/sounds/metal_deliver.wav"
-				Volume = 0.75
-				Speed = 2
-				SpeedVariation = .05
-			}
-		]
+		ReceiveResourceMediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+		GiveResourceMediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	FillSprites : &<hyperium.rules>/Components/FillSprites
