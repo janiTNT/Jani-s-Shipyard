@@ -21,6 +21,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 5
 	Size = [6, 6]
 	SelectionPriority = 1
+	ConstructionWork = 48
+	WorkPerRepairedHealth = 32 / 1000
 	CrewSpeedFactor = 1
 	SelectionTypeID = "reactors"
 	CrewCongestedSpeedFactor = .5
@@ -913,6 +915,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [3, 3]
 			FactorMediaEffectsIntensityWith = PlasmaStorage
 			FactorHitEffectsWith = PlasmaStorage
+			IncludeWhenUnderConstruction = false
 			MediaEffects : &/JANI_COMMON/RadExplodeBig
 			[
 				&<./Data/ships/terran/reactor_large/particles/reactor_explode_flash_large.rules>
@@ -996,6 +999,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredEffects
 			Trigger = OverflowHeatStorage
 			Location = [3, 3]
+			IncludeWhenUnderConstruction = false
 			HitEffects
 			[
 				{
@@ -1075,6 +1079,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [3, 3]
 			OperationalToggle = PowerToggle
 			FactorMediaEffectsIntensityWith = PlasmaStorage
+			IncludeWhenUnderConstruction = false
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioExterior
