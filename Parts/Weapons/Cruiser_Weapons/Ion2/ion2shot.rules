@@ -42,7 +42,7 @@ Components
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = battery
-					TotalDrain = { BaseValue=4000/10; BuffType=ElectronBuff; BuffMode=Multiply; }
+					TotalDrain = { BaseValue=2000/10; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Radius = { BaseValue=8; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Slices = 1
 					Filter
