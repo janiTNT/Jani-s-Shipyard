@@ -338,7 +338,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "./Data/ships/terran/factory_ammo/sounds/originals/bullet_create.wav"
+					Sound = "../Circuit_Factory/bullet_create.wav"
 					Volume = .075
 					SpeedVariation = .1
 				}
