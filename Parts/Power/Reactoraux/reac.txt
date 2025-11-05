@@ -196,19 +196,22 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			MaxMediaEffectsZoom = 4
 			MediaEffects
 			[
-				: /COMMON_SOUNDS/ReactorHumExterior
+				: /BASE_SOUNDS/AudioInterior
 				{
-					Db = -4
+					Sound = "./data/ships/terran/reactor_small/sounds/small_reactor_exterior_idle.wav"
+					Db = -5
+					MaxConcurrent = 1
 					DynamicVolume : ^/0/DynamicVolume
 					{
-						ExteriorVolume = .2
+						ExteriorVolume = .75
 					}
 				}
-
-				: /COMMON_SOUNDS/ReactorHumInterior
+				
+				: /BASE_SOUNDS/AudioInterior
 				{
-					Sound = "./data/ships/terran/reactor_small/sounds/reactor_interior_idle.wav"
-					Db = -9
+					Sound = "./data/ships/terran/reactor_small/sounds/small_reactor_interior_idle.wav"
+					Db = -6
+					MaxConcurrent = 1
 				}
 			]
 		}
