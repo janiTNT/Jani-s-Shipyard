@@ -357,6 +357,8 @@ Parts
 	AutoOStorage2x2Icon = "Ores (4)"
 	AutoOStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of Raw Ore. Compatible With Inserters."
 	
+	AutoStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of resource. Compatible With Inserters."
+	
 	AutoAStorage3x2 = "Ammo Only Inserter Compatible Storage 3x2"
 	AutoAStorage3x2Icon = "Ammo (6)"
 	AutoAStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
@@ -377,6 +379,8 @@ Parts
 	AutoOStorage3x2Icon = "Ores (6)"
 	AutoOStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of Raw Ore. Compatible With Inserters."
 	
+	AutoStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of resource. Compatible With Inserters."
+	
 	AutoAStorage3x3 = "Ammo Only Inserter Compatible Storage 3x3"
 	AutoAStorage3x3Icon = "Ammo (9)"
 	AutoAStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
@@ -394,6 +398,8 @@ Parts
 	AutoOStorage3x3 = "Ore Only Inserter Compatible Storage 3x3"
 	AutoOStorage3x3Icon = "Ores (9)"
 	AutoOStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of Raw Ore. Compatible With Inserters."
+	
+	AutoStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of resource. Compatible With Inserters."
 	
 	AutoAStorage4x3 = "Ammo Only Inserter Compatible Storage 4x3"
 	AutoAStorage4x3Icon = "Ammo (12)"
@@ -413,7 +419,7 @@ Parts
 	AutoOStorage4x3Icon = "Ores (12)"
 	AutoOStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of Raw Ore. Compatible With Inserters."
 	
-	
+	AutoStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of resource. Compatible With Inserters."
 	
 	AutoAStorage4x4 = "Ammo Only Inserter Compatible Storage 4x4"
 	AutoAStorage4x4Icon = "Ammo (16)"
@@ -431,6 +437,8 @@ Parts
 	AutoOStorage4x4 = "Ore Only Inserter Compatible Storage 4x4"
 	AutoOStorage4x4Icon = "Ores (16)"
 	AutoOStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of Raw Ore. Compatible With Inserters."
+	
+	AutoStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of resource. Compatible With Inserters."
 	
 	Background_Structure_Small = "Small Background Structure"
 	Background_Structure_SmallIcon = "Background Structure"

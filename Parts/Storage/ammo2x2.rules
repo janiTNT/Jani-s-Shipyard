@@ -1,22 +1,11 @@
-Part : <./data/ships/terran/base_part_terran.rules>/Part
+Part : <base2x2.rules>/Part
 {
 	NameKey = "Parts/AutoAStorage2x2"
 	IconNameKey = "Parts/AutoAStorage2x2Icon"
 	ID = janiTNT.AutoStorage_ammo_2x2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "Storage"
-	DescriptionKey = "Parts/AutoAStorage2x2Desc"
-	SelectionTypeID = "storage"
-	Resources
-	[
-		[steel, 32]
-		[coil, 4]
-	]
-	Size = [2, 2]
-	IsRotateable = true
-	MaxHealth = 4000
-	TypeCategories = [storage, uses_ammo, uses_missiles, uses_emps, uses_nukes, uses_mines]
+	TypeCategories : ^/0/TypeCategories [uses_ammo, uses_missiles, uses_emps, uses_nukes, uses_mines]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
-	IgnoreRotationForMirroredSelection = true
 	EditorIcon
 	{
 		Texture
@@ -176,66 +165,5 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			IncludeInBlueprints = false
 			Components = &<Types2x2/processing_unit.rules>/Components
 		} */
-		
-		/*Storage
-		{
-			Type = FlexResourceGrid
-			GridRect = [0, 0, 2, 2]
-			Layer = "doodads_low"
-			SpriteInset = 8/64
-			RandomSpriteRotation = true
-			AllowExternalPickupAndDelivery = true
-		}*/
-
-		Graphics
-		{
-			Type = Graphics
-			Location = [1, 1]
-			Floor
-			{
-				Layer = "floors"
-				DamageLevels
-				[
-					{
-						File = "floor1.png"
-						Size = [2, 2]
-					}
-				]
-			}
-			Walls
-			{
-				Layer = "walls"
-				DamageLevels
-				[
-					{
-						File = "walls1.png"
-						Size = [2, 2]
-					}
-				]
-			}
-		}
-
-		RoofDoorOpenToggle = &<./Data/ships/terran/storage_2x2/storage_2x2.rules>/Part/Components/RoofDoorOpenToggle
-		RoofDoorSprite = &<./Data/ships/terran/storage_2x2/storage_2x2.rules>/Part/Components/RoofDoorSprite
-
-
-		DestroyedEffects
-		{
-			Type = DeathEffects
-			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyedDry
-			Location = [1, 1]
-		}
-
-		Blueprints
-		{
-			Type = BlueprintSprite
-			File = "blueprints1.png"
-			Size = [2, 2]
-		}
-	}
-
-	Stats
-	{
-		StorageTiles = 4
 	}
 }
