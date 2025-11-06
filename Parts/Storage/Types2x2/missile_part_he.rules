@@ -54,8 +54,8 @@ Components
 		[
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 6000 * (&<hyperium.rules>/StorageSize)
-				Radius = 3
+				TotalDamage = { BaseValue = 6000* (&<hyperium.rules>/StorageSize); EffectScaleExponent = 1 }
+				Radius = 3 + (((&<hyperium.rules>/StorageSize) ^ 0.5)/2)
 				Delay = .05
 				FireChancePerNDamage = 50%
 				NDamage = 1000
@@ -69,8 +69,8 @@ Components
 			}
 			{
 				Type = ExplosiveDamage
-				TotalDamage = 1200 * (&<hyperium.rules>/StorageSize)
-				Radius = 2
+				TotalDamage = { BaseValue = 1200 * (&<hyperium.rules>/StorageSize); EffectScaleExponent = 1 }
+				Radius = 2 + (((&<hyperium.rules>/StorageSize) ^ 0.5)/2)
 				Delay = .05
 				Filter
 				{
