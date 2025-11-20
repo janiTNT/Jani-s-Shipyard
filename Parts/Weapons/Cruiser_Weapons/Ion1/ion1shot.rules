@@ -5,8 +5,8 @@ IdealRadius = [5, 50]
 Speed = 190
 ReceivableBuffs = [ElectronBuff]
 
-TotalIonDamage = 1000
-TotalIonTime = 4
+TotalIonDamage = 500
+TotalIonTime = 1.5
 
 Components
 {
@@ -42,7 +42,7 @@ Components
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = battery
-					TotalDrain = { BaseValue=1000 / 8; BuffType=ElectronBuff; BuffMode=Multiply; }
+					TotalDrain = { BaseValue=500 / 4; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Radius = { BaseValue=5; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Slices = 1
 					Filter
@@ -82,10 +82,10 @@ Components
 				{
 					Delay = 1.5
 				}
-				: &0
+				/*: &0
 				{
 					Delay = 2.0
-				}
+				} 
 				: &0
 				{
 					Delay = 2.5
@@ -97,7 +97,7 @@ Components
 				: &0
 				{
 					Delay = 3.5
-				}/*
+				} *//*
 				: &0
 				{
 					Delay = 4.0

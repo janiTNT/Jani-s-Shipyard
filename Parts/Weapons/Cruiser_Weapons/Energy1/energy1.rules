@@ -149,7 +149,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 2.15
+			FireInterval = 1.15
 			FiringArc = 200d
 			RotateSpeed = 60d
 			FireThresholdAngle = 1d
@@ -199,10 +199,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			Location = [0.9, 0]
 			OperationalToggle = IsOperational
-			FireDelay = 1
+			FireDelay = 0.25
 			Bullet = &<energy1shot.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 1500
+			ResourcesUsed = 750
 			MinResourcesUsed = 1
 			Spread = [-2d, 2d]
 			

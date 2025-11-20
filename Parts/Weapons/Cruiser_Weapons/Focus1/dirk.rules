@@ -151,7 +151,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 5
+			FireInterval = 2.5
 			FiringArc = 10d
 			RotateSpeed = 15d//slower
 			FireThresholdAngle = 1d
@@ -204,7 +204,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//Duration = 1
 			ColliderOverlapTest = true
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 2000
+			ResourcesUsed = 1000
 			FireDelay = .75
 			MinResourcesUsed = 1
 			Recoil = 20

@@ -47,7 +47,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=750; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Damage = { BaseValue=375; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
@@ -64,14 +64,14 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Damage = { BaseValue=125; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 				{
 					Type = StatusApplication
 					StatusType = cosmoteer.scorched
 					DivideValueByPartHealth = true
 					DivideValueByPartHealthFactor = false
-					StatusValue = { BaseValue=750; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					StatusValue = { BaseValue=375; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					Filter
 					{
 						Shields = false
@@ -89,7 +89,7 @@ Components
 				}
 				{
 					Type = Impulse;
-					Impulse = { BaseValue= 2; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Impulse = { BaseValue= 4; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 			]
 			
@@ -125,7 +125,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=500; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Damage = { BaseValue=250; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
@@ -159,7 +159,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue = 250; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Damage = { BaseValue = 125; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 				{
 					Type = StatusApplication
@@ -177,7 +177,7 @@ Components
 					// When part health is proportionally lower (ie. something else damages the part), scorch rate increases
 					// This ensures that the part always scorches before it would die
 					// Formula: value = (damage / max_scorch_damage%) * ((1 - scorch * max_scorch_damage%) / health%)
-					StatusValue = { BaseValue=750; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					StatusValue = { BaseValue=375; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					Filter
 					{
 						Shields = false
@@ -189,7 +189,7 @@ Components
 				}
 				{
 					Type = Impulse
-					Impulse = { BaseValue = 5; EffectScaleExponent = 1 }
+					Impulse = { BaseValue = 2; EffectScaleExponent = 1 }
 				}
 			]
 

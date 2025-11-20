@@ -5,8 +5,8 @@ IdealRadius = [5, 50]
 Speed = 200
 ReceivableBuffs = [ElectronBuff]
 
-TotalIonDamage = 2000
-TotalIonTime = 5
+TotalIonDamage = 1000
+TotalIonTime = 3.5
 
 Components
 {
@@ -41,7 +41,7 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = { BaseValue=1200; BuffType=ElectronBuff; BuffMode=Multiply; }
+					TotalDamage = { BaseValue=600; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Radius = { BaseValue=2; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Slices = 1
 					DamageType = default
@@ -54,7 +54,7 @@ Components
 				{
 					Type = ExplosiveResourceDrain
 					ResourceType = battery
-					TotalDrain = { BaseValue=2000 / 10; BuffType=ElectronBuff; BuffMode=Multiply; }
+					TotalDrain = { BaseValue=1000 / 8; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Radius = { BaseValue=6; BuffType=ElectronBuff; BuffMode=Multiply; }
 					Slices = 1
 					Filter
@@ -105,20 +105,20 @@ Components
 				: &1
 				{
 					Delay = 3.0
-				}
+				} 
 				: &1
 				{
 					Delay = 3.5
 				}
-				: &1
+				/*: &1
 				{
 					Delay = 4.0
 				}
 				: &1
 				{
 					Delay = 4.5
-				}			
-				{
+				} */			
+				/* {
 					Type = ExplosiveResourceDrain
 					ResourceType = janiTNT.SuperShieldEnergy
 					TotalDrain = { BaseValue=2500 / 2; BuffType=ElectronBuff; BuffMode=Multiply; }
@@ -148,7 +148,7 @@ Components
 							SpeedVariation = .2
 						}
 					]
-				}
+				} */
 			]
 
 			MediaEffects

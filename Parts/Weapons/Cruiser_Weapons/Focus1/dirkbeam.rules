@@ -120,8 +120,8 @@ HitOperational
 	[
 		{
 			Type = ExplosiveDamage
-			TotalDamage = { BaseValue=3500; BuffType=ElectronBuff; BuffMode=Multiply; }
-			Radius = { BaseValue=4; BuffType=ElectronBuff; BuffMode=Multiply; }
+			TotalDamage = { BaseValue=1750; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Radius = { BaseValue=3; BuffType=ElectronBuff; BuffMode=Multiply; }
             Slices = 1
 			DamageType = default
 			Filter
@@ -196,7 +196,7 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=2000; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1000; BuffType=ElectronBuff; BuffMode=Multiply; }
 			Filter
 			{
 				OperationalHealth = false

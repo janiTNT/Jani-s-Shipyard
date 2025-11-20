@@ -82,7 +82,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 6000
+			MaxResources = 4000
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		BatteryConsumer
@@ -148,7 +148,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 4.5
+			FireInterval = 2.25
 			FiringArc = 20d
 			RotateSpeed = 180d
 			FireThresholdAngle = 1d
@@ -198,14 +198,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			GetTargetFrom = Turret
 			Location = [1.25, 0]
 			OperationalToggle = IsOperational
-			FireDelay = 4.5 / 2
+			FireDelay = 0.75
 			Bullet = &<burst2lasershot.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 425
+			ResourcesUsed = 225
 			MinResourcesUsed = 1
 			
 			Burst = 3
-			BurstDelay = 0.25
+			BurstDelay = 0.15
 			UseResourcePerShotInBurst = true
 		}
 

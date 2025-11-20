@@ -44,7 +44,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=400; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
 				}
 				{
 					Type = Impulse;
@@ -83,7 +83,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=200; BuffType=ElectronBuff; BuffMode=Multiply; }
+					Damage = { BaseValue=100; BuffType=ElectronBuff; BuffMode=Multiply; }
 				}
 				{
 					Type = Impulse;
