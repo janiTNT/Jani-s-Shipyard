@@ -26,7 +26,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -2, 1, 1]
 				}
 				EndGraphics
@@ -100,7 +100,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -3, 1, 1]
 				}
 				EndGraphics
@@ -174,7 +174,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -4, 1, 1]
 				}
 				EndGraphics
@@ -248,7 +248,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -5, 1, 1]
 				}
 				EndGraphics
@@ -322,7 +322,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -6, 1, 1]
 				}
 				EndGraphics
@@ -390,7 +390,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -7, 1, 1]
 				}
 				EndGraphics
@@ -458,7 +458,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -8, 1, 1]
 				}
 				EndGraphics
@@ -526,7 +526,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -9, 1, 1]
 				}
 				EndGraphics
@@ -594,7 +594,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -10, 1, 1]
 				}
 				EndGraphics
@@ -662,7 +662,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
-					BuffAmount = 10
+					BuffAmount = 1
 					BuffArea = [0, -11, 1, 1]
 				}
 				EndGraphics

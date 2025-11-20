@@ -31,7 +31,7 @@ Part : <../../baselogicpart.rules>/Part
 			Type = AreaBuffProvider
 			OperationalToggle = IsOperational
 			BuffType = Logic
-			BuffAmount = 10
+			BuffAmount = 1
 			BuffArea = [1, 0, 1, 1]
 		}
 		BuffProviderLogic2
@@ -39,7 +39,7 @@ Part : <../../baselogicpart.rules>/Part
 			Type = AreaBuffProvider
 			OperationalToggle = IsOperational
 			BuffType = Logic
-			BuffAmount = 10
+			BuffAmount = 1
 			BuffArea = [-1, 0, 1, 1]
 		}
 		IsOperational
