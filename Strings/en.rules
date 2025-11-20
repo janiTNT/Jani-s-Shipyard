@@ -127,9 +127,12 @@ Parts
 	DecouplerBoomer = "Decoupler"
 	DecouplerBoomerIcon = "Decoupler"
 	DecouplerBoomerIconB = "Decoupler (Broken)"
-	DecouplerBoomerDesc = "Separates itself from the part on the front, allowing a easier splitting of a ship.\n\nctrl-click the part to select and trigger it.\nAlso triggered by a logic signal."
-	DecouplerBoomerDescC = "Separates itself from the part on the front, allowing a easier splitting of a ship.\n\nWalkable Corridor Version.\n\nctrl-click the part to select and trigger it\nAlso triggered by a logic signal."
+	DecouplerBoomerDesc = "Separates itself from the part on the front, allowing easier splitting of a ship.\n\nctrl-click the part to select and trigger it.\nAlso triggered by a logic signal."
+	DecouplerBoomerDescC = "Separates itself from the part on the front, allowing easier splitting of a ship.\n\nWalkable Corridor Version.\n\nctrl-click the part to select and trigger it\nAlso triggered by a logic signal."
 	DecouplerBoomerDescD = "A spent Decoupler, not useful for anything."
+	DecouplerHeat = "Decoupler Heat Pipe"
+	DecouplerHeatIcon = "Decoupler Pipe"
+	DecouplerHeatDesc = "Separates itself from the part of the front,allowing easier splitting of a ship.\n\nHeat pipe Version.\n\nctrl-click the part to select and trigger it\nAlso triggered by a logic signal."
 	
 	NormalSlope1C = "Roof normal map Slope (Corridor)"
 	NormalSlope1CIcon = "Roof Slope C."
@@ -149,11 +152,11 @@ Parts
 	
 	DroneLauncherTiny = "Tiny Drone Launcher"
 	DroneLauncherTinyIcon = "T. Drones"
-	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates into Tiny Class Drones.\nOnce built, you can not get your resources back.\n<gray><b>The First iteration.</b> Research this technology further.</gray>"
+	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates and circuits into Tiny Class Drones.\nOnce built, you can not get your resources back." //\n<gray><b>The First iteration.</b> Research this technology further.</gray>
 	
 	DroneLauncherSmall = "Small Drone Launcher"
 	DroneLauncherSmallIcon = "S. Drones"
-	DroneLauncherSmallDesc = "Improving on the first design, this launcher also uses cheaper techiniques like milling and spooling to Build Larger parts of drones faster\nOnce built, you can not get your resources back.\n<gray><b>The Second iteration.</b> You're getting somewhere with this.</gray>"
+	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back."//\n<gray><b>The Second iteration.</b> You're getting somewhere with this.</gray>
 	
 	DroneLauncherLarge = "Medium Drone Launcher"
 	DroneLauncherLargeIcon = "M. Drones"
@@ -339,106 +342,81 @@ Parts
 	InserterOreStack = "Bulk Ore Resource Inserter"
 	InserterOreStackIcon = "Bulk Inserter [ORES]"
 	
+	
 	AutoAStorage2x2 = "Ammo Only Inserter Compatible Storage 2x2"
 	AutoAStorage2x2Icon = "Ammo (4)"
-	AutoAStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
 	
 	AutoBStorage2x2 = "Building Material Only Inserter Compatible Storage 2x2"
 	AutoBStorage2x2Icon = "Build (4)"
-	AutoBStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of Construction Material. Compatible With Inserters."
-	
-	
+
 	AutoMStorage2x2 = "Modded Materials Only Inserter Compatible Storage 2x2"
 	AutoMStorage2x2Icon = "Modded (4)"
-	AutoMStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."
-	
-	
+
 	AutoOStorage2x2 = "Ore Only Inserter Compatible Storage 2x2"
 	AutoOStorage2x2Icon = "Ores (4)"
-	AutoOStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of Raw Ore. Compatible With Inserters."
 	
 	AutoStorage2x2Desc = "Stores The equivalent of 4 stacks of one type of resource. Compatible With Inserters."
 	
+	
 	AutoAStorage3x2 = "Ammo Only Inserter Compatible Storage 3x2"
 	AutoAStorage3x2Icon = "Ammo (6)"
-	AutoAStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
 	
 	AutoBStorage3x2 = "Building Material Only Inserter Compatible Storage 3x2"
 	AutoBStorage3x2Icon = "Build (6)"
-	AutoBStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of Construction Material. Compatible With Inserters."
-	
-	
 	
 	AutoMStorage3x2 = "Modded Materials Only Inserter Compatible Storage 2x2"
 	AutoMStorage3x2Icon = "Modded (6)"
-	AutoMStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."
-	
-	
 	
 	AutoOStorage3x2 = "Ore Only Inserter Compatible Storage 3x2"
 	AutoOStorage3x2Icon = "Ores (6)"
-	AutoOStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of Raw Ore. Compatible With Inserters."
 	
 	AutoStorage3x2Desc = "Stores The equivalent of 6 stacks of one type of resource. Compatible With Inserters."
 	
+	
 	AutoAStorage3x3 = "Ammo Only Inserter Compatible Storage 3x3"
 	AutoAStorage3x3Icon = "Ammo (9)"
-	AutoAStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
 	
 	AutoBStorage3x3 = "Building Material Only Inserter Compatible Storage 3x3"
 	AutoBStorage3x3Icon = "Build (9)"
-	AutoBStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of Construction Material. Compatible With Inserters."
-	
 	
 	AutoMStorage3x3 = "Modded Materials Only Inserter Compatible Storage 3x3"
 	AutoMStorage3x3Icon = "Modded (9)"
-	AutoMStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."
-	
 	
 	AutoOStorage3x3 = "Ore Only Inserter Compatible Storage 3x3"
 	AutoOStorage3x3Icon = "Ores (9)"
-	AutoOStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of Raw Ore. Compatible With Inserters."
 	
 	AutoStorage3x3Desc = "Stores The equivalent of 9 stacks of one type of resource. Compatible With Inserters."
 	
+	
 	AutoAStorage4x3 = "Ammo Only Inserter Compatible Storage 4x3"
 	AutoAStorage4x3Icon = "Ammo (12)"
-	AutoAStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
 	
 	AutoBStorage4x3 = "Building Material Only Inserter Compatible Storage 4x3"
 	AutoBStorage4x3Icon = "Build (12)"
-	AutoBStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of Construction Material. Compatible With Inserters."
-	
 	
 	AutoMStorage4x3 = "Modded Materials Only Inserter Compatible Storage 4x3"
 	AutoMStorage4x3Icon = "Modded (12)"
-	AutoMStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."
-	
 	
 	AutoOStorage4x3 = "Ore Only Inserter Compatible Storage 4x3"
 	AutoOStorage4x3Icon = "Ores (12)"
-	AutoOStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of Raw Ore. Compatible With Inserters."
 	
 	AutoStorage4x3Desc = "Stores The equivalent of 12 stacks of one type of resource. Compatible With Inserters."
 	
+	
 	AutoAStorage4x4 = "Ammo Only Inserter Compatible Storage 4x4"
 	AutoAStorage4x4Icon = "Ammo (16)"
-	AutoAStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of ammo. Compatible With Inserters, and other ammo moving parts excluding for missiles.\nWorks with aephiex's auto storages."
 	
 	AutoBStorage4x4 = "Building Material Only Inserter Compatible Storage 4x4"
 	AutoBStorage4x4Icon = "Build (16)"
-	AutoBStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of Construction Material. Compatible With Inserters."
 	
 	AutoMStorage4x4 = "Modded Materials Only Inserter Compatible Storage 4x4"
 	AutoMStorage4x4Icon = "Modded (16)"
-	AutoMStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of A material Jani's Shipyard adds. Compatible With Inserters."
-	
-	
+
 	AutoOStorage4x4 = "Ore Only Inserter Compatible Storage 4x4"
 	AutoOStorage4x4Icon = "Ores (16)"
-	AutoOStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of Raw Ore. Compatible With Inserters."
 	
 	AutoStorage4x4Desc = "Stores The equivalent of 16 stacks of one type of resource. Compatible With Inserters."
+	
 	
 	Background_Structure_Small = "Small Background Structure"
 	Background_Structure_SmallIcon = "Background Structure"
@@ -601,6 +579,9 @@ Parts
 	MegaroidEmpty = "Empty Occult Block"
 	MegaroidEmptyDesc = "No Collision and used for floating parts. Technical."
 	
+	MegaroidBallweaponWall_Blaster = "Wall Blaster Sphere"
+	MegaroidBallweaponThumperWall_BlasterDesc = "Fire spectral walls that block ship movement similar to a thumper."
+	
 	
 	MegaroidArmor3_1x1 = "Cosmilite Armor Plating"
 	MegaroidArmor3_4x1 = "Cosmilite Armor Plating (Wide)"
@@ -722,7 +703,7 @@ Parts
 	
 	Logic_Jump_Wire = "Logic Jump Wire"
 	Logic_Jump_Wire_Icon = "Jump Wire"
-	Logic_Jump_Wire_Desc = "Crazy"\
+	Logic_Jump_Wire_Desc = "Configurable distance spacing logic wire."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofLight = "Logic Controlled Roof Light"
@@ -742,7 +723,7 @@ Parts
 	
 	LogicRoofPanelRound = "Roof Panel - Circle"
 	LogicRoofPanelRoundIcon = "Roof Panel C."
-	LogicRoofPanelRoundDesc = "Little Circulat light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
+	LogicRoofPanelRoundDesc = "Little Circular light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicRoofPanelWedge = "Roof Panel - Wedge"
@@ -810,7 +791,7 @@ Parts
 	FTL_burstlaser2Icon = "Burst Mk2"
 	FTL_burstlaser2LeftIcon = "Burst Mk2 (L)"
 	FTL_burstlaser2LeftALTIcon = "Burst Mk2 (S)"
-	FTL_burstlaser2Desc = "A Powerful Burst Laser, Fires 3 powerful lasers in quick sucession but takes a moment to charge, The Damage per second stays roughly the same as the standard Laser, and can be behind armor like most Cruiser Weapons."
+	FTL_burstlaser2Desc = "A Powerful Burst Laser, Fires 3 powerful lasers in quick sucession but takes a moment to charge."
 	
 	FTL_burstlaser3 = "Burst Laser Mk III"
 	FTL_burstlaser3Icon = "Burst Mk3"
@@ -824,7 +805,7 @@ Parts
 	
 	FTL_ionbar1 = "Ion Barrage Blaster"
 	FTL_ionbar1Icon = "Ion I"
-	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, draininh power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage."
+	FTL_ionbar1Desc = "Ion Blasters Act similar to Disruptors, draining power in a area over time instead of a immediate drain, gives a tiny stun and does not inflict any damage."
 	
 	FTL_bombsmall = "Small Bomb Hyperdrive Teleporter"
 	FTL_bombsmallIcon = "Bomb Teleport"
@@ -852,8 +833,8 @@ Parts
 	
 	PulseThrusterSmall = "Small Repulser Thruster"
 	PulseThrusterSmallIcon = "Small Repulser"
-	PulseThrusterMed = "Medium Repulser Thruster"
-	PulseThrusterMedIcon = "Med Repulser"
+	PulseThrusterMed = "Standard Repulser Thruster"
+	PulseThrusterMedIcon = "Standard Repulser"
 	PulseThrusterLarge = "Large Repulser Thruster"
 	PulseThrusterLargeIcon = "Large Repulser"
 	PulseThrusterHuge = "Huge Repulser Thruster"
@@ -916,6 +897,14 @@ Parts
 	Logic_Gauge_Comparator_Resources_Ore = "Ore Stockpile Precise Gauge Comparator"
 	Logic_Gauge_Comparator_Resources_OreIcon = "Ore G. Comparator"
 	Logic_Gauge_Comparator_ResourcesDesc = "Can Detect the fullness of a specific resource within the connected block. Emits a logic signal if detected value is higher the percentage configured. Detection fashion works similar to inserters."
+	
+	HeatPipeValveJani = "Heat Pipe Connection Control Valve"
+	HeatPipeValveJaniIcon = "Heat Pipe Valve"
+	HeatPipeValveJaniDesc = "Condiotionally transfers thermal energy between connected parts, Can be manually toggled to disable the connection between both sides after a short delay to turn the valve.\n If spawned toggled off, the network won't be detached for a entire second due to said delay."
+	
+	HeatPipeValveJaniLogic = "Logic controlled Heat Pipe Connection Control Valve"
+	HeatPipeValveJaniLogicIcon = "L. Heat Pipe Valve"
+	HeatPipeValveJaniLogicDesc = "Condiotionally transfers thermal energy between connected parts, Can be Logic controlled to disable the connection between both sides after a short delay to turn the valve.\n If spawned already receiving the logic buff, the network wont be toggled for a entire second due to said delay."
 	
 	LogicThrusterSmall = "Logic Small Thruster"
 	LogicThrusterSmallIcon = "L. Small Thruster"
@@ -1222,7 +1211,7 @@ Inputs
 		power_value = "Comparator mode : Battery Capacity"
 		thrust_value = "Comparator mode : Thruster Output"
 		reload_value = "Comparator mode : Weapon Reload"
-		fusionlevel_value = "Comparator mode : Critical Level"
+		heat_level_value = "Comparator mode : Heat Level"
 		operationallevel_value = "Comparator mode : IsOperational"
 		
 		DroneSmallLaser = "Select Drone: Small Laser"
@@ -1351,7 +1340,7 @@ PartToggles
 	power_value = "Battery Capacity Value\n(Searches BatteryStorage)"
 	thrust_value = "Thruster Output Value\n(Searches MainThruster. May go above 100%)"
 	reload_value = "Weapon Reload Value"
-	fusionlevel_value = "Critical Level Value\n(Searches For Compatible parts that explode if overcharged or similar, Such as Hyperium fusion reactor.)"
+	heat_level_value = "Heat Level Value\n(Searches For Compatible heat capacity parts, or connects directly to the network and searches total capacity.)"
 	operationallevel_value = "Check for Operational\n(Searches for IsOperational. Always returns 100% if its toggled)"
 	
 	//DroneSmallLaser = "Laser"

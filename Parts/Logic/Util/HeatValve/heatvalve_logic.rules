@@ -1,0 +1,330 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/HeatPipeValveJaniLogic"
+	IconNameKey = "Parts/HeatPipeValveJaniLogicIcon"
+	ID = janiTNT.heat_pipe_valve_logic
+	SelectionTypeID = heat_pipe
+	EditorGroups = [Logic]
+	EditorParentParts = [ "janiTNT.heat_pipe_valve", 1]
+	DescriptionKey = "Parts/HeatPipeValveJaniLogicDesc"
+	Resources
+	[
+		[steel, 4]
+		[coil, 4]
+		[janitnt.circuit1, 2]
+	]
+	Size = [1, 1]
+	IsRotateable = true
+	SelectionPriority = 0
+	MaxHealth = 1000
+	TypeCategories = [ heat_management ]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	CrewSpeedFactor = 0
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [TriggeredToggle, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [TriggeredToggle, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		//XorFinal
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		SwitchingTimeTween
+		{
+			Type = ValueTween
+			OffValue = 0
+			OnValue = 1
+			OnTweenDuration = 1
+			OffTweenDuration = 1
+			IsOnToggle = LogicSignal
+		}
+		TriggerHigh
+		{
+			Type = ThresholdTrigger
+			AmountFrom = SwitchingTimeTween
+			MinAmount = 1
+			MaxAmount = 1
+		}
+		TriggerLow
+		{
+			Type = ThresholdTrigger
+			AmountFrom = SwitchingTimeTween
+			MinAmount = 0
+			MaxAmount = 0
+		}
+		TriggeredToggle
+		{
+			Type = TriggeredToggle
+			OnTrigger = TriggerHigh
+			OffTrigger = TriggerLow
+		}
+
+		Port_Up
+		{
+			Type = NetworkPort
+			Location = [0, 0]
+			Direction = Up
+			Types = [ thermal ]
+			RouteSource = PortInterConnectionUp
+			RouteEndpoint = PortInterConnectionUp
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+			}
+		}
+		
+		PortInterConnectionUp
+		{
+			Type = NetworkBasicNode
+			IncludeInPhysical = true
+		}
+		
+		PortInterConnectionDown
+		{
+			Type = NetworkBasicNode
+			IncludeInPhysical = true
+		}
+		
+		Router
+		{
+			Type = NetworkRouter
+			OperationalToggle = IsOperational
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkAverageThermalDissipationLoadValue, PortInterConnectionUp, 0]
+						[NetworkAverageThermalDissipationLoadValue, PortInterConnectionDown, 0]
+					]
+				}
+			]
+		}
+		
+
+		Port_Down : Port_Up
+		{
+			RouteSource = PortInterConnectionDown
+			RouteEndpoint = PortInterConnectionDown
+			Direction = Down
+		}
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+
+		NetworkAverageThermalDissipationLoadValue
+		{
+			Type = NetworkValueReceiver
+			Mode = Average
+			Categories = [ thermal_load_dissipation ]
+			AllowUncategorized = false
+		}
+
+		ThermalLoadGlowColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = NetworkAverageThermalDissipationLoadValue
+		}
+		
+		ValveLerp
+		{
+			Type = TransformLerp
+			Location = [0.5, 0.5]
+			StartRotation = 0
+			EndRotation = 90d
+			ValueFrom = SwitchingTimeTween
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			InvertOperationalToggle = true
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "floor_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/heat_pipe_adaptive/roof_straight.png"
+						NormalsFile = "./data/ships/terran/heat_pipe_adaptive/roof_normals_straight.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/heat_pipe_adaptive/roof_straight_33.png"
+						NormalsFile = "./data/ships/terran/heat_pipe_adaptive/roof_normals_straight_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/heat_pipe_adaptive/roof_straight_66.png"
+						NormalsFile = "./data/ships/terran/heat_pipe_adaptive/roof_normals_straight_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		
+		ValveGraphic
+		{
+			Type = Graphics
+			Location = [0, 0]
+			ChainedTo = ValveLerp
+			OperationalToggle = InvertInput
+			OperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "valve.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "valve.png"
+						Size = [1, 1]
+						UVRotation = 1
+					}
+				]
+			}
+		}
+
+		HeatGlow_Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			GetColorFrom = ThermalLoadGlowColorFactor
+			OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				DamageLevels
+				[
+					{
+						File = "./data/ships/terran/heat_pipe_adaptive/roof_glows_straight.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/heat_pipe_adaptive/roof_glows_straight_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "./data/ships/terran/heat_pipe_adaptive/roof_glows_straight_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [1, 1]
+		}
+
+		//------------------------ PIPE CONNECTOR ------------------------
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+
+		//Draw a Pipe Connector Up if possible
+		PipeConnectorUp_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorUp_DrawToggle {}
+		PipeConnectorUp_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorUp_Toggle {}
+		PipeConnectorUp_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorUp_Components {}
+
+		//Draw a Pipe Connector Down if possible
+		PipeConnectorDown_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle {}
+		PipeConnectorDown_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle {}
+		PipeConnectorDown_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components {}
+		//---------------------- END PIPE CONNECTOR ----------------------
+	}
+}

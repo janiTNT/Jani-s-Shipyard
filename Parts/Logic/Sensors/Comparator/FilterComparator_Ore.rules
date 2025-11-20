@@ -3,7 +3,7 @@ Part : <FilterComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Comparator_Resources_Ore"
 	IconNameKey = "Parts/Logic_Comparator_Resources_OreIcon"
 	ID = janiTNT.comparator_filter_ore // Part IDs  somthing something
-	EditorParentParts = [ "janiTNT.comparator_filter_ammo" ]
+	EditorParentParts = [ "janiTNT.comparator" ]
 	Components : ^/0/Components
 	{	
 		OreType

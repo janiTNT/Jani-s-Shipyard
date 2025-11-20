@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/LogicRoofPanelRound"
 	IconNameKey = "Parts/LogicRoofPanelRoundIcon"
 	ID = janiTNT.roof_panel_logic_round // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroups = ["Logic", "Utilities"]
+	EditorParentParts = [ "janiTNT.roof_panel_logic_square_small" ]
 	DescriptionKey = "Parts/LogicRoofPanelRoundDesc"
 	Resources
 	[

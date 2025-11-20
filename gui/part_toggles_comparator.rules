@@ -36,8 +36,8 @@ PartToggles
 			}
 			// Fusion Reactor Level
 			{
-				ChoiceID = "fusionlevel_value"
-				ButtonToolTipKey = "PartToggles/fusionlevel_value"
+				ChoiceID = "heat_level_value"
+				ButtonToolTipKey = "PartToggles/heat_level_value"
 				ButtonSprite
 				{
 					Texture

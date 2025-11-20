@@ -3,7 +3,7 @@ Part : <FilterComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Comparator_Resources_Modded"
 	IconNameKey = "Parts/Logic_Comparator_Resources_ModdedIcon"
 	ID = janiTNT.comparator_filter_modded // Part IDs  somthing something
-	EditorParentParts = [ "janiTNT.comparator_filter_ammo" ]
+	EditorParentParts = [ "janiTNT.comparator" ]
 	Components : ^/0/Components
 	{	
 		ModType

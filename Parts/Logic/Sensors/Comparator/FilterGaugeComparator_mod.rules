@@ -3,7 +3,7 @@ Part : <FilterGaugeComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Gauge_Comparator_Resources_Modded"
 	IconNameKey = "Parts/Logic_Gauge_Comparator_Resources_ModdedIcon"
 	ID = janiTNT.gauge_comparator_filter_modded // Part IDs  somthing something
-	EditorParentParts = [ "janiTNT.gauge_comparator_filter_ammo" ]
+	EditorParentParts = [ "janiTNT.gauge_comparator" ]
 	Components : ^/0/Components
 	{	
 		ModType

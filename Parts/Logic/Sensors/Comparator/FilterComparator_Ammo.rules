@@ -3,7 +3,7 @@ Part : <FilterComparator_base.rules>/Part
 	NameKey = "Parts/Logic_Comparator_Resources_Ammo"
 	IconNameKey = "Parts/Logic_Comparator_Resources_AmmoIcon"
 	ID = janiTNT.comparator_filter_ammo // Part IDs  somthing something
-	EditorGroup = "Logic"
+	EditorParentParts = [ "janiTNT.comparator" ]
 	Components : ^/0/Components
 	{	
 		AmmoType
@@ -97,6 +97,48 @@ Part : <FilterComparator_base.rules>/Part
 			Toggle = mine_partToggle
 			IncludeInBlueprints = true
 			Components = &<Filters/mine_part.rules>/Components
+		}
+		
+		missile_part_thermalToggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 6
+		}
+		missile_part_thermalComponents
+		{
+			Type = ToggledComponents
+			Toggle = missile_part_thermalToggle
+			IncludeInBlueprints = true
+			Components = &<Filters/missile_part_thermal.rules>/Components
+		}
+		
+		janitnt.circuit1Toggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 100
+		}
+		janitnt.circuit1Components
+		{
+			Type = ToggledComponents
+			Toggle = janitnt.circuit1Toggle
+			IncludeInBlueprints = true
+			Components = &<Filters/electronic_circuit.rules>/Components
+		}
+		
+		janitnt.circuit2Toggle
+		{
+			Type = ModeToggle
+			Mode = AmmoType
+			OnMode = 101
+		}
+		janitnt.circuit2Components
+		{
+			Type = ToggledComponents
+			Toggle = janitnt.circuit2Toggle
+			IncludeInBlueprints = true
+			Components = &<Filters/advanced_circuit.rules>/Components
 		}
 	}
 }

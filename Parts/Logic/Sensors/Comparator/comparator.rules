@@ -36,6 +36,40 @@ Part : <../../baselogicpart.rules>/Part
 			AlwaysAllowInBuildMode = true
 			RequiresCommand = false
 		}
+		
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+		Port_Up
+		{
+			Type = NetworkPort
+			OperationalToggle = HeatToggle
+			BlueprintOperationalToggle = HeatToggle
+			Location = [0, 0]
+			Direction = Up
+			Types = [ thermal ]
+			RouteSource = NetworkHeatOutputProxy
+			RouteEndpoint = NetworkHeatOutputProxy
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+		
+		NetworkHeatOutputProxy
+		{
+			Type = NetworkNodeProxy
+			ComponentID = NetworkHeatOutput
+		}
 
 		EnergyToggle
 		{
@@ -79,30 +113,41 @@ Part : <../../baselogicpart.rules>/Part
 				}
 			}
 		}
-		ReactorToggle
+		HeatToggle
 		{
 			Type = ModeToggle
 			Mode = ComparatorType
 			OnMode = 2
 		}
-		ReactorComponents
+		HeatComponents
 		{
 			Type = ToggledComponents
-			Toggle = ReactorToggle
+			Toggle = HeatToggle
 			IncludeInBlueprints = true
 			Components
 			{
+				NetworkHeatOutput
+				{
+					Type = NetworkResourceOutput
+					ResourceType = heat
+					Mode = DistributeProportionallyByAvailable
+					Categories = [ thermal_storage ]
+					//ProvidedValueRange = [1, 0]
+				}
 				ValueProxy
 				{
-					Type = MultiValue
-					Values = [FusionReactorProxy]
-					Mode = Max
+					Type = ToggleValueSelector
+					Toggle = Port_Up
+					BlueprintToggle = True
+					ToggleOnValue = NetworkHeatOutput
+					ToggleOffValue = HeatStorageProxy
+					IncludeInBlueprints = true
 				}
-				FusionReactorProxy
+				HeatStorageProxy
 				{
 					Type = ValueProxy
 					PartLocation = [0, -1]
-					ComponentID = ReactorCriticalityValueProxy
+					ComponentID = HeatStorage
 				}
 			}
 		}

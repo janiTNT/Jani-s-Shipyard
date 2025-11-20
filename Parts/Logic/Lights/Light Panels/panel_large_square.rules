@@ -4,7 +4,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/LogicRoofPanelSquareLargeIcon"
 	ID = janiTNT.roof_panel_logic_square_large // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = [Skipydog.Logic_LED_Large, Skipydog.Logic_LED_Large_flipped]
-	EditorGroups = ["Logic", "Utilities"]
+	EditorParentParts = [ "janiTNT.roof_panel_logic_square_small" ]
 	DescriptionKey = "Parts/LogicRoofPanelSquareLargeDesc"
 	Resources
 	[

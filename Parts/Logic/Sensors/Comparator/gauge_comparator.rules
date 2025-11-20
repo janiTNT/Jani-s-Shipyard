@@ -29,13 +29,16 @@ Part : <../../baselogicpart.rules>/Part
 	&/JANI_COMMON/SettingsOnes/Part/Components
 	&/JANI_COMMON/SettingsTens/Part/Components
 	{	
+		BlueprintNetworkNode = &<comparator.rules>/Part/Components/BlueprintNetworkNode
+		Port_Up = &<comparator.rules>/Part/Components/Port_Up
+		NetworkHeatOutputProxy = &<comparator.rules>/Part/Components/NetworkHeatOutputProxy
 		ComparatorType = &<comparator.rules>/Part/Components/ComparatorType
 		EnergyToggle = &<comparator.rules>/Part/Components/EnergyToggle
 		EnergyComponents = &<comparator.rules>/Part/Components/EnergyComponents
 		ThrustToggle = &<comparator.rules>/Part/Components/ThrustToggle
 		ThrustComponents = &<comparator.rules>/Part/Components/ThrustComponents
-		ReactorToggle = &<comparator.rules>/Part/Components/ReactorToggle
-		ReactorComponents = &<comparator.rules>/Part/Components/ReactorComponents
+		HeatToggle = &<comparator.rules>/Part/Components/HeatToggle
+		HeatComponents = &<comparator.rules>/Part/Components/HeatComponents
 		CheckForOperationalToggle = &<comparator.rules>/Part/Components/CheckForOperationalToggle
 		CheckForOperationalComponents = &<comparator.rules>/Part/Components/CheckForOperationalComponents
 		

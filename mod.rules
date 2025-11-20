@@ -7,7 +7,7 @@ ID = "janiTNT.TechMod"
 Name = "Jani's Shipyard"
 //Name = "[Beta]Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.23.4b"
+Version = "Modern 1.23.5"
 //Version = "Modern 1.21(quickpatch)"
 //Logo = "evil jani.png"
 Logo = "newlogo.png"
@@ -161,6 +161,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Utilities/Decoupler/Decoupler.txt>/Part
 			&<Parts/Utilities/Decoupler/CorridorDecoupler.txt>/Part
+			&<Parts/Utilities/Decoupler/heat_pipe_decoupler.rules>/Part
 			&<Parts/Utilities/Decoupler/Decoupler_Boomed.txt>/Part			
 			
 			&<Parts/Crew/1x1 Crew/Crew1x1.rules>/Part
@@ -283,6 +284,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_7x6.rules>/Part	
 			&<Parts/Flight/Big Thrusters/Pulse/pulse_8x7.rules>/Part	
 			
+			
+			//Wiring
+			
 			&<Parts/Logic/Wires/Wire1/Wire1.rules>/Part
 			&<Parts/Logic/Wires/Wire2/Wire2.rules>/Part
 			&<Parts/Logic/Wires/Split1/Split1.rules>/Part
@@ -290,20 +294,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Wires/Split3/Split3.rules>/Part
 			&<Parts/Logic/Wires/JumpWire/logic_jump_wire.rules>/Part
 			
+			//Gates
 			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part
 			&<Parts/Logic/Gates/Bulb/Bulb.rules>/Part
 			
-			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part
-			//&<Parts/Logic/Lights/Light Panels/panel.rules>/Part
-			&<Parts/Logic/Lights/Light Panels/panel_small_square.rules>/Part
-			&<Parts/Logic/Lights/Light Panels/panel_large_square.rules>/Part
-			&<Parts/Logic/Lights/Light Panels/panel_round.rules>/Part
-			&<Parts/Logic/Lights/Light Panels/panel_wedge.rules>/Part
-			
-			&<Parts/Logic/Util/Pistons/1x1/piston1x1.rules>/Part
-			
-			&<Parts/Logic/Util/MiniTB/MiniTB.rules>/Part
-			
+			// Sensors
 			&<Parts/Logic/Sensors/LIDAR/Sensor.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/comparator.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/FilterComparator_Ammo.rules>/Part
@@ -315,6 +310,22 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Build.rules>/Part
 			//&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Mod.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Ore.rules>/Part
+			
+			
+			//Outputs
+			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part
+			//&<Parts/Logic/Lights/Light Panels/panel.rules>/Part
+			&<Parts/Logic/Lights/Light Panels/panel_small_square.rules>/Part
+			&<Parts/Logic/Lights/Light Panels/panel_large_square.rules>/Part
+			&<Parts/Logic/Lights/Light Panels/panel_round.rules>/Part
+			&<Parts/Logic/Lights/Light Panels/panel_wedge.rules>/Part
+			
+			&<Parts/Logic/Util/Pistons/1x1/piston1x1.rules>/Part
+			
+			&<Parts/Logic/Util/MiniTB/MiniTB.rules>/Part
+			
+			&<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part
+			&<Parts/Logic/Util/HeatValve/HeatValve_logic.rules>/Part
 			
 			&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part
