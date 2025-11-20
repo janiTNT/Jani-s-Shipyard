@@ -16,7 +16,7 @@ PartColors
 		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
 		SortOrder = 99
 		ShowInEditor = true
-		ValueRange = [0.5, 1]
+		ValueRange = [0.35, 1]
 		SaturationRange = [0, 0.8]
 	}
 	{
@@ -34,8 +34,8 @@ PartColors
 		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
 		SortOrder = 99
 		ShowInEditor = true
-		ValueRange = [0.5, 1]
-		SaturationRange = [0, 0.6]
+		ValueRange = [0.25, 1]
+		SaturationRange = [0, 0.8]
 	}
 	// Logic Color
 	{
