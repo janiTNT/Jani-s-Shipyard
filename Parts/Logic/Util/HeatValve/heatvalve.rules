@@ -269,7 +269,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "icon_red.png"
+			File = "blueprints1.png"
 			Size = [1, 1]
 		}
 

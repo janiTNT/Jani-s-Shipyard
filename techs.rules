@@ -622,6 +622,20 @@ Techs
 		Cost = 1000
 	}
 	{
+		ID = &<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part/ID
+		NameKey = &<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part/NameKey
+		DescriptionKey = "Parts/HeatPipeValveJaniTech"
+		Icon = &<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part/EditorIcon
+		EditorGroups = [Thermal]
+		PartsUnlocked
+		[
+			&<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part/ID
+			&<Parts/Logic/Util/HeatValve/HeatValve_logic.rules>/Part/ID
+		]
+		Prerequisites = [cosmoteer.heat_management]
+		Cost = 2000
+	}
+	{
 		ID = janiTNT.inserter-overclock
 		Categories = [ overclock ]
 		NameKey = "Techs/InserterOverclock"

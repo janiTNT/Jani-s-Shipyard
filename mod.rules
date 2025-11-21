@@ -327,6 +327,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part
 			&<Parts/Logic/Util/HeatValve/HeatValve_logic.rules>/Part
 			
+			&<Parts/Logic/Util/DockUnderlay/logic_background_dock_underlay.rules>/Part
+			
 			&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part

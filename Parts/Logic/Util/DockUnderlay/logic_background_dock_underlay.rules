@@ -1,0 +1,162 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Background_Dock_Underlay_Logic"
+	IconNameKey = "Parts/Background_Dock_Underlay_LogicIcon"
+	ID = Skipydog.logic_Pbackground_dock_underlay
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/Background_Dock_Underlay_LogicDesc"
+	Resources
+	[
+		[tristeel, 24]
+		[janitnt.circuit1, 4]
+	]
+	Size = [1, 1]
+	SelectionTypeID = "docking"
+	SelectionPriority = 1
+	MaxHealth = 4000
+	AllowedContiguity = [Top, Bottom]
+	HealthType = Structural
+	TypeCategories = [background_structure, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	
+	SalvageProgressMediaEffects
+	
+	Flammable = false
+	CreatePartPerTileWhenDestroyed = ""
+	CreatePartPerTileWhenGrabbed = ""
+	ConstructionDuration = 0.5
+	RepairDuration = 0.5
+	UnderlyingPartPerTile = ""
+	TempConstructionPartPerTile = cosmoteer.structure
+	CrewSpeedFactor = 0
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = &InitialPenetrationResistance
+	Density = 0.5
+	IsRotateable = true
+	IsExternal = true
+	ExternalWalls = [None]
+	InternalWalls = [All]
+	IsWalled = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	IgnoreRotationForMirroredSelection = true
+	GenerateRectCollider = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 86]
+	}
+	Components : ^/0/Components
+	<dock_base.rules>/Part/Components
+	{
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			GetColorFrom = ColorPicker1
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "structure"
+				DamageLevels
+				[
+					{
+						File = "floor_start.png"
+						NormalsFile = "floor_start_n.png"
+						UVRotation = 3
+						Size = [1, 1]
+					}
+					{
+						File = "floor_start_33.png"
+						NormalsFile = "floor_start_n_33.png"
+						UVRotation = 3
+						Size = [1, 1]
+					}
+					{
+						File = "floor_start_66.png"
+						NormalsFile = "floor_start_n_66.png"
+						UVRotation = 3
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		OperationalGraphicsStart
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker4
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "doodads_on.png"
+						Size = [1, 1]
+						UVRotation = 3
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [1, 1]
+						UVRotation = 3
+					}
+				]
+			}
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
+			Location = [0.5, -5.5]
+		}
+	
+		SalvagedEffects
+		{
+			Type = DeathEffects
+			WhenSalvaged = true
+
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["./data/ships/common/sounds/metal_deconstruct_small_01.wav",
+									"./data/ships/common/sounds/metal_deconstruct_small_02.wav",
+									"./data/ships/common/sounds/metal_deconstruct_small_03.wav"]
+					Volume = 1.3
+					SpeedVariation = .15
+				}
+				
+				: /BASE_SOUNDS/AudioInterior
+				{
+					Sound = "./data/ships/common/sounds/small_deconstruct.wav"
+					Speed = 1
+					SpeedVariation = 0.1
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints_pain_0.png"
+			UVRotation = 3
+			Size = [1, 1]
+			Offset = [0, 0]
+		}
+	}
+}

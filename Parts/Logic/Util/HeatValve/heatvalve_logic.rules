@@ -37,6 +37,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BuffToggle
 			BuffType = Logic
+			Invert = true
 		}
 		
 		InvertInput
@@ -96,6 +97,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = TriggeredToggle
 			OnTrigger = TriggerHigh
 			OffTrigger = TriggerLow
+			StartsOn = true
 		}
 
 		Port_Up
@@ -309,7 +311,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "icon.png"
+			File = "blueprints2.png"
 			Size = [1, 1]
 		}
 

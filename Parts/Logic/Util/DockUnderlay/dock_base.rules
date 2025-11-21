@@ -5,16 +5,43 @@ Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle]
+			Toggles = [XorFinal]
 			Mode = All
 		}
-
+		
 		LogicSignal
 		{
 			Type = BuffToggle
 			BuffType = Logic
 		}
-
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
 		ColorPicker1
 		{
 			Type = UIColor
@@ -34,6 +61,13 @@ Part
 			Type = UIColor
 			ColorID = "hullpartscolor"
 			Default = White
+		}
+		
+		ColorPicker4
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
 		}
 
 		LengthSelect
@@ -66,6 +100,28 @@ Part
 					GetColorFrom = ColorPicker3
 					Location = [0.5, -2.5]
 				}
+				/* OperationalGraphicsStretch : ~/OperationalGraphicsStretchBase
+				{
+					Location = [0.5, -.5]
+					OperationalDoodad : ^/0/OperationalDoodad
+					{
+						Offset = [0, 0]
+						DamageLevels
+						[
+							: ~/OperationalGraphicsStretchBase/OperationalDoodad/DamageLevels/0
+							{Size = [1, 1]}
+						]
+					}
+					NonOperationalDoodad : ^/0/NonOperationalDoodad
+					{
+						Offset = [0, 0]
+						DamageLevels
+						[
+							: ~/OperationalGraphicsStretchBase/NonOperationalDoodad/DamageLevels/0
+							{Size = [1, 1]}
+						]
+					}
+				} */
 				ColliderComponents
 				{
 					Type = ToggledComponents
@@ -487,7 +543,7 @@ Part
 		BlueprintsCapOne
 		{
 			Type = BlueprintSprite
-			File = "blueprints.png"
+			File = "../../../Background/Dock/Underlay/blueprints.png"
 			Size = [3, 3]
 			Offset = [0, -3]
 
@@ -500,7 +556,7 @@ Part
 		BlueprintsMidOne
 		{
 			Type = BlueprintSprite
-			File = "../../Structure/background_structure_small/blueprints.png"
+			File = "blueprints_pain_1.png"
 			UVRotation = 1
 			Size = [1, 1]
 			Offset = [0, -1]
@@ -523,7 +579,7 @@ Part
 		BlueprintsMidTwo
 		{
 			Type = BlueprintSprite
-			File = "../../Structure/background_structure/blueprints.png"
+			File = "blueprints_pain_2.png"
 			UVRotation = 1
 			Size = [1, 2]
 			Offset = [0, -1.5]
@@ -732,20 +788,20 @@ NeckSpriteGridBase
 	[
 		[
 			{
-				File = "../../Structure/background_structure_small/floor.png"
-				NormalsFile = "../../Structure/background_structure_small/normals.png"
+				File = "floor.png"
+				NormalsFile = "floor_n.png"
 				UVRotation = 1
 				Size = [1, 1]
 			}
 			{
-				File = "../../Structure/background_structure_small/floor_33.png"
-				NormalsFile = "../../Structure/background_structure_small/normals_33.png"
+				File = "floor_33.png"
+				NormalsFile = "floor_n_33.png"
 				UVRotation = 1
 				Size = [1, 1]
 			}
 			{
-				File = "../../Structure/background_structure_small/floor_66.png"
-				NormalsFile = "../../Structure/background_structure_small/normals_66.png"
+				File = "floor_66.png"
+				NormalsFile = "floor_n_66.png"
 				UVRotation = 1
 				Size = [1, 1]
 			}
@@ -774,7 +830,7 @@ OperationalGraphicsBase
 		DamageLevels
 		[
 			{
-				File = "../Dock_lights.png"
+				File = "../../../Background/Dock/Dock_lights.png"
 				Size = [3, 3]
 			}
 		]
@@ -785,10 +841,42 @@ OperationalGraphicsBase
 		DamageLevels
 		[
 			{
-				File = "../Dock_lights_fancy.png"
+				File = "../../../Background/Dock/Dock_lights_fancy.png"
 				Size = [3, 3]
 				Z = 0.5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
 				VertexColor = [255*4.5, 255*4.5, 255*4.5]
+			}
+		]
+	}
+}
+
+OperationalGraphicsStretchBase
+{
+	Type = Graphics
+	Location = [0.5, 0.5]
+	OperationalToggle = IsOperational
+	GetColorFrom = ColorPicker4
+	OperationalDoodad
+	{
+		Layer = "doodads_high"
+		Offset = [0, 0]
+		DamageLevels
+		[
+			{
+				File = "doodads_on.png"
+				Size = [1, 1]
+			}
+		]
+	}
+	NonOperationalDoodad
+	{
+		Layer = "doodads_high"
+		Offset = [0, 0]
+		DamageLevels
+		[
+			{
+				File = "doodads_off.png"
+				Size = [1, 1]
 			}
 		]
 	}
@@ -805,8 +893,8 @@ DockGraphicsBase
 		DamageLevels
 		[
 			{
-				File = "../Dock.png"
-				NormalsFile = "../Dock_n.png"
+				File = "../../../Background/Dock/Dock.png"
+				NormalsFile = "../../../Background/Dock/Dock_n.png"
 				Size = [3, 3]
 			}
 			/*{

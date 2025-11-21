@@ -740,6 +740,11 @@ Parts
 	Background_Dock_UnderlayDesc = "A Background Dock that can Toggle on or off a Circular Collider a few blocks away. Useful to make makeshift <good>Hinges</good> using multiple ships.\n Distance of Collider is customizable, as well as the Color of the structure, Dock and Lights separately."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
+	Background_Dock_Underlay_Logic = "Logic \"skipydog\" Background Structure Dock (Extendable)"
+	Background_Dock_Underlay_LogicIcon = "L.Skipy Dock. E."
+	Background_Dock_Underlay_LogicDesc = "A version of the Extendable background dock that is logic controlled."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
 	Background_Dock = "\"skipydog\" Background Structure Dock (Grid)"
 	Background_DockIcon = "Skipy Dock. G."
 	Background_DockDesc = "A Background Dock that can Toggle on or off a Circular Collider inside itself. Useful to make makeshift <good>Hinges</good> using multiple ships.\nThe Color of the structure, Dock and Lights can be changed separately."\
@@ -901,6 +906,8 @@ Parts
 	HeatPipeValveJani = "Heat Pipe Connection Control Valve"
 	HeatPipeValveJaniIcon = "Heat Pipe Valve"
 	HeatPipeValveJaniDesc = "Condiotionally transfers thermal energy between connected parts, Can be manually toggled to disable the connection between both sides after a short delay to turn the valve.\n If spawned toggled off, the network won't be detached for a entire second due to said delay."
+	
+	HeatPipeValveJaniTech = "<string id='Parts/HeatPipeValveJaniDesc'/>\n\nAlso comes with a logic variant."
 	
 	HeatPipeValveJaniLogic = "Logic controlled Heat Pipe Connection Control Valve"
 	HeatPipeValveJaniLogicIcon = "L. Heat Pipe Valve"
