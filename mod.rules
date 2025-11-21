@@ -296,6 +296,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			//Gates
 			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part
+			&<Parts/Logic/Gates/Andgate/ANDgate.rules>/Part
 			&<Parts/Logic/Gates/Bulb/Bulb.rules>/Part
 			
 			// Sensors

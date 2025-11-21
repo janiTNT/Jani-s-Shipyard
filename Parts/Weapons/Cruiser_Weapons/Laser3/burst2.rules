@@ -16,7 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	Size = [1, 2]
 	MaxHealth = 2000
-	TypeCategories = [uses_power, weapon, is_crewed]
+	TypeCategories = [uses_power, weapon]
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
@@ -46,7 +46,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, PartCrew, ScorchedToggle]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
 			Mode = All
 		}
 
@@ -201,7 +201,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireDelay = 0.75
 			Bullet = &<burst2lasershot.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 225
+			ResourcesUsed = 250
 			MinResourcesUsed = 1
 			
 			Burst = 3
@@ -577,28 +577,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 		
-		CrewLocation
-		{
-			Type = CrewLocation
-			Location = [.5, .7]
-		}
-		PartCrew
-		{
-			Type = PartCrew
-			Crew = 1
-			DefaultPriority = &/PRIORITIES/Weapon_Crew
-			PrerequisitesBeforeCrewing = [PowerToggle, ScorchedToggle]
-			HighPriorityPrerequisites = [BatteryStorage]
-			CrewDestinations
-			[
-				&../../CrewLocation/Location
-			]
-			CrewLocations
-			[
-				CrewLocation
-			]
-		}
-		
 		Indicators
 		{
 			Type = IndicatorSprites
@@ -610,7 +588,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Toggle = ScorchedToggle
 					AtlasSprite = &/INDICATORS/Scorched
-					HidesIndicators = [1, 2, 3]
+					HidesIndicators = [1, 2]
 				}
 				
 				// Turned off.
@@ -630,16 +608,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
-						Size = [1, 1]
-					}
-				}
-
-				// No crew.
-				{
-					Toggle = PartCrew
-					AtlasSprite
-					{
-						File = &/INDICATORS/NoCrew
 						Size = [1, 1]
 					}
 				}
@@ -687,11 +655,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 	Stats
 	{
-		CrewRequired = &~/Part/Components/PartCrew/Crew
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 
 		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
-		RecCrew = (&CrewRequired) + (&RecPower) * 4
+		RecCrew = (&RecPower) * 4
 	}
 
 	StatsByCategory

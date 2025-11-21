@@ -692,6 +692,11 @@ Parts
 	LogicGateNotDesc = "Transmits a logic signal if not receiving any, Stops transmitting if receiving any signal.\nSmall delay."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
+	LogicGateAND = "Logic AND Gate"
+	LogicGateANDIcon = "AND Gate"
+	LogicGateANDDesc = "Transmits a logic signal if the count of different signals active on the logic gate is equal or higher than the configured count.\nDefault is 0 and requires to be configured higher than 0"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
 	LogicWireSplitter2 = "Logic Wire Splitter (90)"
@@ -796,7 +801,7 @@ Parts
 	FTL_burstlaser2Icon = "Burst Mk2"
 	FTL_burstlaser2LeftIcon = "Burst Mk2 (L)"
 	FTL_burstlaser2LeftALTIcon = "Burst Mk2 (S)"
-	FTL_burstlaser2Desc = "A Powerful Burst Laser, Fires 3 powerful lasers in quick sucession but takes a moment to charge."
+	FTL_burstlaser2Desc = "A Powerful Burst Laser, Fires 3 powerful lasers in quick sucession but takes a moment to charge.  Requires no Crew."
 	
 	FTL_burstlaser3 = "Burst Laser Mk III"
 	FTL_burstlaser3Icon = "Burst Mk3"
