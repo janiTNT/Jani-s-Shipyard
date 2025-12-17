@@ -1,0 +1,183 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicGateNot"
+	IconNameKey = "Parts/LogicGateNotIcon"
+	ID = Skipydog.Logic_Gate_Not
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicGateNotDesc"
+	Resources
+	[
+		[steel, 4]
+		[janitnt.circuit1, 2]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [ToggledOn]
+			Invert = true
+			Mode = All
+		}
+		TriggerHigh
+		{
+			Type = ToggleTrigger
+			//OperationalToggle = DisableReceiving
+			//AllowOperationalBypass = false
+			//InvertOperationalToggle = true
+			Toggle = LogicSignal
+			TriggerWhenOn = true
+			TriggerWhenOff = false
+		}
+		TriggerLow
+		{
+			Type = ToggleTrigger
+			//OperationalToggle = DisableReceiving
+			//AllowOperationalBypass = false
+			//InvertOperationalToggle = true
+			Toggle = LogicSignal
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		Trigger
+		{
+			Type = ToggleTrigger
+			Toggle = LogicSignal
+			TriggerWhenOn = true
+			TriggerWhenOff = true
+		}
+		ModeCycle
+		{
+			Type = ModeCycle
+			IncrementTrigger = TriggerHigh
+			DecrementTrigger = TriggerLow
+			Clamp = true
+		} 
+		DelayCounter
+		{
+			Type = ModeCycle
+			IncrementTrigger = TriggerHigh
+			DecrementTrigger = ResetTimer
+			ModeRange = [0,3]
+			Clamp = true
+		}
+		ResetCycle
+		{
+			Type = ModeToggle
+			Mode = DelayCounter
+			OnModes = [1,2,3]
+		}
+		ResetTimer
+		{
+			Type = Timer
+			OperationalToggle = ResetCycle
+			Duration = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+			AutoStart = true
+			Repeats = true 
+		}
+		DisableReceiving
+		{
+			Type = ModeToggle
+			Mode = DelayCounter
+			OnModes = [3]
+		}
+		ToggledOn
+		{
+			Type = ModeToggle
+			Mode = ModeCycle
+			OnModes = [1]
+		}
+		LogicSignal
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = LogicSignalInput}, {Toggle = DisableReceiving, invert = true}]
+			Mode = All
+		}
+		LogicSignalInput
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		BuffProviderLogicBuffer
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, -1, 1, 1]
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = LogicSignal
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+	}
+}
