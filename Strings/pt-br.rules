@@ -1,0 +1,1701 @@
+Parts
+{
+	CustomExplosivesActivator = "Detonador de Explosivos Customizados"
+	CustomExplosivesActivatorIcon = "Detonador Customizado"
+	CustomExplosivesActivatorDesc = "Dispositivo explosivo que amplia a sua explosão através da quantidade de explosivos customizados posicionados em suas proximidades. Um único detonador pode explodir se tiver mais do que um detonador na área de ampliação, e as explosões podem ser ampliadas com uma vasta gama de melhorias.\nTambém pode ser acionado por sinal lógico."
+	
+	CustomExplosives = "Carga de Explosivos Customizados"
+	CustomExplosivesIcon = "Carga Customizada"
+	CustomExplosivesDesc = "Dispositivos de detonação altamente explosiva unidos para causar uma explosão violenta através de um detonador.\n\n"
+	
+	CustomExplosivesNuclear = "Carga de Explosivos Nucleares Customizada"
+	CustomExplosivesNuclearIcon = "Carga Nuclear"
+	CustomExplosivesNuclearDesc = "Melhora a capacidade explosiva do detonador com uma carga nuclear. Requer ao menos oito explosivos customizados comuns e um detonador para funcionar."
+	
+	CrewQuartersLong = "Quarto longo 3x1 de Tripulação"
+	CrewQuartersLongIcon = "Beliche 3x1"
+	CrewQuartersLongDesc = "Suporta 4 tripulantes."
+	
+	CrewQuartersLong2 = "Quarto longo 3x2 de Tripulação"
+	CrewQuartersLong2Icon = "Beliche 3x2"
+	CrewQuartersLong2Desc = "Suporta comfortavelmente 10 tripulantes."
+	
+	CrewQuartersBig = "Crew's namehere"
+	CrewQuartersBigIcon = "namehere"
+	CrewQuartersBigDesc = "Massive crew room, provides 16 crew"
+	
+	CrewQuartersLongBig = "Quartel da Tripulação"
+	CrewQuartersLongBigIcon = "Quartel Enorme"
+	CrewQuartersLongBigDesc = "Quarto massivo da Tripulação, suporta 22 tripulantes e tem muitas saídas.\nLEGACY PART"
+	
+	CrewQuartersLonger = "Quarto Alongado de Tripulação"
+	CrewQuartersLongerIcon = "Quarto 4x"
+	CrewQuartersLongerDesc = "Suporta 6 tripulantes."
+	
+	CrewQuartersLonger2 = "Quarto Melhorado de Tripulação"
+	CrewQuartersLonger2Icon = "Quarto Melhor 4x"
+	CrewQuartersLonger2Desc = "Suporta 14 tripulantes, e só há portas na área da frente."
+	
+	CrewQuartersOnebyOne = "Quarto Único de Tripulação"
+	CrewQuartersOnebyOneIcon = "Quarto Único 1x"
+	CrewQuartersOnebyOneDesc = "Quarto minúsculo que suporta uma única cama."
+	
+	//Radiator = "Radiador"
+	//RadiatorIcon = "Radiador"
+	//RadiatorDesc = "Faz refrigeração passiva e segura calor com radiadores que estejam conectados ou peças que aceitem calor.\n >O quão vermelho estiver, mais quente estará.<image name='dahell'/>"
+
+	FusionReactorLarge = "Grande Reator de Fusão de Hipério"
+	FusionReactorLargeIcon = "Rea. Fus."
+	FusionReactorLargeDesc = "Um Reator de Fusão Massivo. Usa constantemente hipério. Consome muita energia ao convertê-lo ao plasma hipérico, e a partir disso começa a produzir energia.\n Produz grandes baterias de capacidade 6x. (Baseado no Mod Space Leviathans)\n\nRequer radiadores para resfriá-lo, e devido à falta de mecanismos de segurança, se você negligenciar a limite de calor o fará <bad>explodir</bad> se sobreaquecer.\n\n Barras Informativas de Progresso: Vermelho: Calor\n Roxo: Plasma"
+	
+	ReactorAux = "Reator Auxíliar"
+	ReactorAuxIcon = "Rea. Aux."
+	ReactorAuxDesc = "Um reator gerador de energia auxíliar barato.  Produz baterias de meia-capacidade,  permitindo a tripulação a caminhar com quase a velocidade de corredores pelo o reator.\nPara de produzir energia quando a nave está numa Núvem de Elétrons."
+	
+	MiningBeam = "Emissor de Laser de Mineração M1"
+	MiningBeamIcon = "Emissor Laser Mineração M1"
+	MiningBeamDesc = "Atira um Laser de Mineração através do convés, pode ser combinado com outros raios no Prisma de Energia M1.\n<s15><bad>Por limitações Técnicas requer acionamento manual se for reciclar ou minerar algo.</bad></s15>"
+	MiningBeamTechDesc = "Sistema baseado em prismas no convés de mineração, houvendo alta eficiencia de combinação.\n<s15><bad>Por limitações Técnicas requer acionamento manual se for reciclar ou minerar algo.</bad></s15>"
+	
+	MiningPrism = "Prisma de Laser de Mineração M1"
+	MiningPrismIcon = "Prisma de Mineração M1"
+	MiningPrismDesc = "Prisma de Laser de mineração de Convés, similar ao Prisma de Emissor de Ions. Pode apenas usar os raios do Laser de Mineração M1.\n<s15><bad>Por limitações Técnicas requer acionamento manual se for reciclar ou minerar algo.</bad></s15>"
+	
+	Corridor_High = "High Corridor"
+	Corridor_HighIcon = "Cor. High"
+	Corridor_HighDesc = "Fancy High corridor that have 3 variations on appearance.\n\n <image name='sjaniwh'/>"
+	
+	StationArmor = "Armadura hiperdensa de Estação"
+	StationArmorIcon = "[Estação] Armadura"
+	StationArmorDesc = "Combinar armadura normal com tritânio traz uma durabilidade impressionante... Com o custo de ser <bad>extremamente pesado</bad> ao ponto de ser essencialmente bem mais útil em proteger estações ou partes muito importantes e sensíveis como os reatores."
+	
+	StationArmor2x1 = "Armadura hiperdensa 2x1 de Estação2x1"
+	StationArmor2x1Icon = "[Estação] 2x1"
+	StationArmor2x1Desc = &StationArmorDesc
+	
+	StationArmor1x2Wedge = "Armadura hiperdensa 1x2 de Estação"
+	StationArmor1x2WedgeIcon = "[Estação] 1x2 w"
+	StationArmor1x2WedgeDesc = &StationArmorDesc
+	
+	StationArmor1x3Wedge = "Armadura hiperdensa 1x3 de Estação"
+	StationArmor1x3WedgeIcon = "[Estação] 1x3 w"
+	StationArmor1x3WedgeDesc = &StationArmorDesc
+	
+	StationArmorTri = "Armadura hiperdensa Triangular de Estação"
+	StationArmorTriIcon = "[Estação] Triângulo"
+	StationArmorTriDesc = &StationArmorDesc
+	
+	StationArmorWedge = "Station Hyperdense Armor Wedge"
+	StationArmorWedgeIcon = "[Station] Wedge"
+	StationArmorWedgeDesc = &StationArmorDesc
+	
+	LargeFabricator = "Sintetizador de Placas de Gôldio"
+	LargeFabricatorIcon = "Gôldio"
+	LargeFabricatorDesc = "Sintetiza eletronicamente placas de gôldio na qual são usadas numa variedade de peças avançadas. Consome ouro. Ganha +25% de velocidade de produção para cada fábrica adjacente de qualquer tipo."
+	LargeFabricatorOverclockDesc = "Aumenta muito a velocidade de fabricação. Produz calor enquanto fabrica Gôldio."
+	GoldiumFactoryOverclock = "Sintetizador de Placas de Gôldio (Overclocking)"
+	//"Manufactures steel plates, which are used to construct almost all ship parts. Consumes iron. Gains +25% production speed for each adjacent factory of any type."
+	
+	FactorySplitter = "[[LEGACY]]Building Material Resource Cutter"
+	FactorySplitterIcon = "[[LEGACY]]Cutter"
+	FactorySplitterDesc = "[[LEGACY]]Specialized Machine that cuts down building resources into smaller pieces in order to construct Ship Parts with more fractionary costs.\nFractional costs of cut materials may vary.\n\nWARNING due to a game bug,<bad>SWAPPING</bad> what resource to split or merge while it still has resources inside it will <bad>ERASE</bad> the resources.\n\nDue to another bug, you need to use resource managment in <bad>Manual tile selection</bad> OR use <bad>Supply Lines</bad>, as crew will <bad>NOT</bad> automatically supply or deliver resources to and from this part.\n\nCurrently can make tristeel doors and station armor, or split enriched uranium back into uranium. other materials are useless."
+	
+	FactorySplitterTristeel = "Cortador de Tri-Aço"
+	FactorySplitterTristeelIcon = "Cortador de Tri-Aço"
+	FactorySplitterTristeelDesc = "Máquina especializada que corta tri-aço em barras pequenas usadas na construção de várias peças patenteadas pela Jani. O processo pode ser facilmente revertido.\n\nDevido aos bugs, você terá que usar o gerenciamento de recursos na <bad>seleção de peças manual<bad> ou usar as <bad>linahs de suprimentos + mudar os botões de suprimento automático</bad>, assim a tripulação <bad>não irá</bad> automaticamente suprir ou entregar recursos para ou desta parte."
+	
+	FactorySplitterUranium = "Desenriquecedor de Urânio"
+	FactorySplitterUraniumIcon = "Desenriq. Urânio."
+	FactorySplitterUraniumDesc = "Uma variação do Cortador, esta máquina divide novamente o urânio enriquecido em quatro partes de urânio não-enriquecido. A produção é manual para evitar crash no jogo."
+	
+	FactoryElectronicCircuit = "Produtor de Circuitos Eletrônicos"
+	FactoryElectronicCircuitIcon = "Circuitos"
+	FactoryElectronicCircuitDesc = "Fabrica circuitos eletrônicos baratos, que são usados em diversas aplicações, desde drones a sistemas de controle de lógica e etc. Consome aço e bobinas. Ganha +25% de velocidade de produção para cada fábrica adjacente de qualquer tipo."
+	FactoryElectronicCircuitOverclockDesc = "Amplifica significantemente a velocidade de produção e também gera calor enquanto produz os circuitos eletrônicos."
+
+    FactoryElectronicCircuitOverclock = "Produtor de Circuitos Eletrônicos (Overclocking)"
+	
+	FactoryAdvancedCircuit = "Produtor de Circuitos Avançados"
+	FactoryAdvancedCircuitIcon = "Adv. Circuitos"
+	FactoryAdvancedCircuitDesc = "Fabrica circuitos avançados com alta capacidade de processamento, consome circuitos eletrônicos e hiperbobinas. Ganha +25% de velocidade de produção para cada fábrica adjacente de qualquer tipo."
+	FactoryAdvancedCircuitOverclockDesc = "Amplifica significantemente a velocidade de produção e também gera calor enquanto produz os circuitos avançados."
+	FactoryAdvancedCircuitOverclock = "Produtor de Circuitos Avançados (Overclocking)"
+	
+	TriSteelDoor = "Porta de Tri-Aço"
+	TriSteelDoorIcon = "Porta de Tri-Aço"
+	TriSteelDoorDesc = "Porta Decorativa, usa barras de tri-aço, por que não???"
+	
+	DecouplerBoomer = "Desacoplador"
+	DecouplerBoomerIcon = "Desacoplador"
+	DecouplerBoomerIconB = "Desacoplador (detonado)"
+	DecouplerBoomerDesc = "Separador que divide uma seção facilmente da nave do que estava em sua frente.\n\nCtrl + Clique no Desacoplador para o selecionar e ativar.\nPode ser acionado também por um sinal lógico."
+	DecouplerBoomerDescC = "Separador que divide uma seção facilmente da nave do que estava em sua frente.\n\nVersão com Corredor Andável.\n\nCtrl + Clique no Desacoplador para o selecionar e ativar.\nPode ser acionado também por um sinal lógico."
+	DecouplerBoomerDescD = "Um Desacoplador detonado, não útil para nada."
+	
+	NormalSlope1C = "Roof normal map Slope (Corridor)"
+	NormalSlope1CIcon = "Roof Slope C."
+	NormalSlope1CDesc = "A decorative part that has a slope on the roof for decorative purposes."
+	
+	NormalSlope1A = "Roof normal map Slope (Armor)"
+	NormalSlope1AIcon = "Roof Slope A."
+	NormalSlope1ADesc = &NormalSlope1CDesc
+	
+	NormalSlope2C = "Roof normal map Slope Corner (Corridor)"
+	NormalSlope2CIcon = "Roof Corner C."
+	NormalSlope2CDesc = &NormalSlope1CDesc
+	
+	NormalSlope2A = "Roof normal map Slope Corner (Armor)"
+	NormalSlope2AIcon = "Roof Corner A."
+	NormalSlope2ADesc = &NormalSlope1CDesc
+	
+	DroneLauncherTiny = "Lançador de Drone Minúsculo"
+	DroneLauncherTinyIcon = "Drones PP"
+	DroneLauncherTinyDesc = "Os nossos engenheiros criaram minúsculos drones de uso único armados para vôo e ataque autônomos contra naves hostis, ou seja, são automáticos, frágeis e letais.\n\nEles usam energia e impressão 3D para transformar placas de aço e circuitos em drones minúsculos.\n\nUma vez construídos, não é possivel recuperar os recursos usados."
+	
+	DroneLauncherSmall = "Lançador de Drone Pequeno"
+	DroneLauncherSmallIcon = "Drone Peq"
+	DroneLauncherSmallDesc = "Sendo uma melhoria do primeiro design, este lançador lança drones mais potentes e menos compactos.\n\nUma vez construídos, não é possivel recuperar os recursos usados."
+	
+	DroneLauncherLarge = "Lançador de Drone Médio"
+	DroneLauncherLargeIcon = "Drone Med"
+	DroneLauncherLargeDesc = "Este design maior do pequeno lançador usa um braço autônomo extenso para soldar rapidamente grandes seções desses drones maiores e utilizam diversos materiais para criá-los.\n\nAlguns deles precisarão de bobinas ou outros materiais para construção.\n<gray><b>The Third iteration.</b> Algo maior é o melhor, para o seu desempenho. Acredite em mim!/gray>"
+	
+	Hyperoid4x4 = "Hiper-Rocha (4x4)"
+	Hyperoid3x3 = "Hiper-Rocha (3x3)"
+	Hyperoid2x2 = "Hiper-Rocha (2x2)"
+	Hyperoid1x1 = "Hiper-Rocha (1x1)"
+	HyperoidWedge1x1 = "Hiper-Rocha Cunha (1x1)"
+	HyperoidWedge1x2 = "Hiper-Rocha Cunha (1x2)"
+	
+	Hyperoid4x4_soft = "Hiper-Rocha Macia (4x4)"
+	Hyperoid3x3_soft = "Hiper-Rocha Macia (3x3)"
+	Hyperoid2x2_soft = "Hiper-Rocha Macia (2x2)"
+	Hyperoid1x1_soft = "Hiper-Rocha Macia (1x1)"
+	HyperoidWedge1x1_soft = "Hiper-Rocha Macia Cunha (1x1)"
+	HyperoidWedge1x2_soft = "Hiper-Rocha Macia Cunha (1x2)"
+	
+	HyperDepositIron4x = "Depósito de Ferro 4x"
+	HyperDepositIron9x = "Depósito de Ferro 9x"	
+	HyperDepositIron16x = "Depósito de Ferro 16x"	
+	HyperDepositIron4xHard = "Depósito de Ferro Hard 4x"
+	HyperDepositIron9xHard = "Depósito de Ferro Hard 9x"
+	HyperDepositIron16xHard = "Depósito de Ferro Hard 16x"
+	
+	HyperDepositSulfur4x = "Sulfur Deposit 4x"
+	HyperDepositSulfur9x = "Sulfur Deposit 9x"	
+	HyperDepositSulfur16x = "Sulfur Deposit 16x"	
+	HyperDepositSulfur4xHard = "Sulfur Deposit Hard 4x"
+	HyperDepositSulfur9xHard = "Sulfur Deposit Hard 9x"
+	HyperDepositSulfur16xHard = "Sulfur Deposit Hard 16x"
+	
+	HyperDepositHyperium4x = "Hyperium Deposit 4x"
+	HyperDepositHyperium9x = "Hyperium Deposit 9x"	
+	HyperDepositHyperium16x = "Hyperium Deposit 16x"	
+	HyperDepositHyperium4xHard = "Hyperium Deposit Hard 4x"
+	HyperDepositHyperium9xHard = "Hyperium Deposit Hard 9x"
+	HyperDepositHyperium16xHard = "Hyperium Deposit Hard 16x"
+	
+	HyperDepositCopper4x = "Copper Deposit 4x"
+	HyperDepositCopper9x = "Copper Deposit 9x"	
+	HyperDepositCopper16x = "Copper Deposit 16x"	
+	HyperDepositCopper4xHard = "Copper Deposit Hard 4x"
+	HyperDepositCopper9xHard = "Copper Deposit Hard 9x"
+	HyperDepositCopper16xHard = "Copper Deposit Hard 16x"
+	
+	HyperDepositGold4x = "Gold Deposit 4x"
+	HyperDepositGold9x = "Gold Deposit 9x"	
+	HyperDepositGold16x = "Gold Deposit 16x"	
+	HyperDepositGold4xHard = "Gold Deposit Hard 4x"
+	HyperDepositGold9xHard = "Gold Deposit Hard 9x"
+	HyperDepositGold16xHard = "Gold Deposit Hard 16x"
+	
+	HyperDepositCarbon4x = "Carbon Deposit 4x"
+	HyperDepositCarbon9x = "Carbon Deposit 9x"	
+	HyperDepositCarbon16x = "Carbon Deposit 16x"	
+	HyperDepositCarbon4xHard = "Carbon Deposit Hard 4x"
+	HyperDepositCarbon9xHard = "Carbon Deposit Hard 9x"
+	HyperDepositCarbon16xHard = "Carbon Deposit Hard 16x"
+	
+	HyperDepositTritanium4x = "Tritanium Deposit 4x"
+	HyperDepositTritanium9x = "Tritanium Deposit 9x"	
+	HyperDepositTritanium16x = "Tritanium Deposit 16x"	
+	HyperDepositTritanium4xHard = "Tritanium Deposit Hard 4x"
+	HyperDepositTritanium9xHard = "Tritanium Deposit Hard 9x"
+	HyperDepositTritanium16xHard = "Tritanium Deposit Hard 16x"
+	
+	HyperDepositUranium4x = "Uranium Deposit 4x"
+	HyperDepositUranium9x = "Uranium Deposit 9x"	
+	HyperDepositUranium16x = "Uranium Deposit 16x"	
+	HyperDepositUranium4xHard = "Uranium Deposit Hard 4x"
+	HyperDepositUranium9xHard = "Uranium Deposit Hard 9x"
+	HyperDepositUranium16xHard = "Uranium Deposit Hard 16x"
+	
+	NukeSilo = "Silo de Míssil Nuclear"
+	NukeSiloIcon = "Silo Nuclear"
+	NukeSiloDesc = "Similar ao Silo de mísseis Padrão, Esta versão maior pode acionar ogivas nucleares diretamente do topo da nave! tendo o dobro do tempo de recarga.\n\nO lançamento do míssil nuclear pode ser um pouco barulhento e pode atordoar a tripulação por perto sem distinção.\n\nOs engenheiros da Jani negam qualquer envolvimento com engenharia reversa ou fraudes similares como plantas ilegais, copyright e o infligir de patentes como falta de licensas para qualquer sistema de lançamento de mísseis pelo convés."\
+	"\n<gray>Ideia original, parte dos sprites e um pouco de codigo por:: Ultranova</gray>"
+	
+	SheetmetalSteel = "Chapa de Aço"
+	SheetmetalSteelIcon = "Chapa de Aço"
+	SheetmetalSteelDesc = "Mais leve do que peças de estrutura, servindo como parte da fuselagem, barato e fragil, sem muita utilidade."
+	SheetmetalSteelWedge = "Chapa de Aço em Cunha"
+	SheetmetalSteelWedgeIcon = "Chapa Aç. em Cunha"
+	SheetmetalSteelWedge2 = "Chapa de Aço 1x2 em Cunha"
+	SheetmetalSteelWedge2Icon = "Chapa Aç. 1x2 em Cunha"
+	SheetmetalSteelWedge3 = "Chapa de Aço 1x3 em Cunha"
+	SheetmetalSteelWedge3Icon = "Chapa Aç. 1x3 em Cunha"
+	SheetmetalSteelTri = "Chapa de Aço triangular"
+	SheetmetalSteelTriIcon = "Chapa Aç. Triangular"
+	SheetmetalSteelWedge_Hybrid = "Chapa de Aço híbrido"
+	SheetmetalSteelWedge_HybridIcon = "Chapa Aç. em Cunha H."
+	SheetmetalSteelWedge2_Hybrid = "Chapa de Aço 1x2 em Cunha híbrido"
+	SheetmetalSteelWedge2_HybridIcon = "Chapa Aç. 1x2 em Cunha H."
+	SheetmetalSteelWedge3_Hybrid = "Chapa de Aço 1x3 em Cunha híbrido"
+	SheetmetalSteelWedge3_HybridIcon = "Chapa Aç. 1x3 em Cunha H."
+	SheetmetalSteelTri_Hybrid = "Chapa de Aço triangular híbrido"
+	SheetmetalSteelTri_HybridIcon = "Chapa Aç. Triangular H."
+	
+	SheetmetalCopper = "Chapa de Cobre"
+	SheetmetalCopperIcon = "Chapa de Cobre"
+	SheetmetalCopperDesc = "Mais leve do que peças de estrutura, servindo como parte da fuselagem, barato e fragil, sem muita utilidade."
+	SheetmetalCopperWedge = "Chapa de Cobre em Cunha"
+	SheetmetalCopperWedgeIcon = "Chapa Co. em Cunha"
+	SheetmetalCopperWedge2 = "Chapa de Cobre 1x2 em Cunha"
+	SheetmetalCopperWedge2Icon = "Chapa Co. 1x2 em Cunha"
+	SheetmetalCopperWedge3 = "Chapa de Cobre 1x3 em Cunha"
+	SheetmetalCopperWedge3Icon = "Chapa Co. 1x3 em Cunha"
+	SheetmetalCopperTri = "Chapa de Cobre triangular"
+	SheetmetalCopperTriIcon = "Chapa Co. Triangular"
+	SheetmetalCopperWedge_Hybrid = "Chapa de Cobre híbrid"
+	SheetmetalCopperWedge_HybridIcon = "Chapa Co. em Cunha H."
+	SheetmetalCopperWedge2_Hybrid = "Chapa de Cobre 1x2 em Cunha híbrid"
+	SheetmetalCopperWedge2_HybridIcon = "Chapa Co. 1x2 em Cunha H."
+	SheetmetalCopperWedge3_Hybrid = "Chapa de Cobre 1x3 em Cunha híbrid"
+	SheetmetalCopperWedge3_HybridIcon = "Chapa Co. 1x3 em Cunha H."
+	SheetmetalCopperTri_Hybrid = "Chapa de Cobre triangular híbrid"
+	SheetmetalCopperTri_HybridIcon = "Chapa Co. Triangular H."
+	
+	SheetmetalTristeel = "Chapa de Triaço"
+	SheetmetalTristeelIcon = "Chapa de Triaço"
+	SheetmetalTristeelDesc = "Mais leve do que peças de estrutura, servindo como parte da fuselagem, barato e fragil, sem muita utilidade."
+	SheetmetalTristeelWedge = "Chapa de Triaço em Cunha"
+	SheetmetalTristeelWedgeIcon = "Chapa Tr. em Cunha"
+	SheetmetalTristeelWedge2 = "Chapa de Triaço 1x2 em Cunha"
+	SheetmetalTristeelWedge2Icon = "Chapa Tr. 1x2 em Cunha"
+	SheetmetalTristeelWedge3 = "Chapa de Triaço 1x3 em Cunha"
+	SheetmetalTristeelWedge3Icon = "Chapa Tr. 1x3 em Cunha"
+	SheetmetalTristeelTri = "Chapa de Triaço triangular"
+	SheetmetalTristeelTriIcon = "Chapa Tr. Triangular"
+	SheetmetalTristeelWedge_Hybrid = "Chapa de Triaço híbrido"
+	SheetmetalTristeelWedge_HybridIcon = "Chapa Tr. em Cunha H."
+	SheetmetalTristeelWedge2_Hybrid = "Chapa de Triaço 1x2 em Cunha híbrido"
+	SheetmetalTristeelWedge2_HybridIcon = "Chapa Tr. 1x2 em Cunha H."
+	SheetmetalTristeelWedge3_Hybrid = "Chapa de Triaço 1x3 em Cunha híbrido"
+	SheetmetalTristeelWedge3_HybridIcon = "Chapa Tr. 1x3 em Cunha H."
+	SheetmetalTristeelTri_Hybrid = "Chapa de Triaço triangular híbrido"
+	SheetmetalTristeelTri_HybridIcon = "Chapa Tr. Triangular H."
+	
+	Thruster_Room_Small = "Sala de Combustível de Propulsão"
+	Thruster_Room_SmallIcon = "Sala de Combustível"
+	Thruster_Room_SmallDesc = "Protótipo de Sala dos Motores, aumenta a potência dos propulsores adjacentes em 20% e funciona como uma central de energia em que os tripulantes podem transferir baterias sem ter que ir até cada propulsor individual.\nPode impulsionar propulsores na diagonal."
+	
+	InserterAmmo = "Tranferidor de Recursos de Munições"
+	InserterAmmoIcon = "Transferidor [Munição]"
+	InserterDesc = "Os transferidores permitem transferência automática de recursos de uma parte à outra em quantias equivalentes ao quanto um tripulante pode carregar. Pode transferir para fábricas, armas e armazéns especiais. <bad>Incompatível com baias de armazenamento padrão, use os armazéns deste mod.</bad>\n<bad>Os transferidores podem ser incompatíveis com de lançadores de mísseis de outros mods e etc.</bad>"
+
+	InserterConstruction = "Transferidor de Material de Construção"
+	InserterConstructionIcon = "Transferidor [Construir]"
+	
+	InserterModded = "Transferidor de Recursos - Mod"
+	InserterModdedIcon = "Transferidor [MOD]"
+	
+	InserterOre = "Transferidor de Recurso de Minério Bruto"
+	InserterOreIcon = "Transferidor [Minérios]"
+	
+	InserterBaseOverclock = "Escolha entre dois modos de operação de transferidor em overclock:\n\n1. O transferidor transfere itens num ritmo rápido.\n\n2. O transferidor regenera energia automaticamente num ritmo lento e pode trabalhar sem receber energia via tripulação.\n\nGera calor quando ativado."
+	
+	InserterAmmoLong = "Transferidor de Recurso de Braço Longo de Munições"
+	InserterAmmoLongIcon = "Transf. Longo [Munição]"
+	InserterLongDesc = "Transferidores de Braço Longo podem transferir em uma distancia maior permitindo 1 bloco de vão, por terem um alcançe extra."
+	
+	InserterConstructionLong = "Transferidor de Recurso de Braço Longo de Material de Construção"
+	InserterConstructionLongIcon = "Transf. Longo [Construir]"
+	
+	InserterModdedLong = "Transferidor de Recurso de Braço Longo - Mod"
+	InserterModdedLongIcon = "Transf. Longo [MOD]"
+	
+	InserterOreLong = "Transferidor de Recurso de Braço Longo de Minério Bruto"
+	InserterOreLongIcon = "Transf. Longo [Minérios]"
+	
+	InserterAmmoStack = "Transferidor em Massa de Munições"
+	InserterAmmoStackIcon = "Transf. Massa [Munição]"
+	InserterStackDesc = "Transferidoes em massa permitem transferencia de mesma capacidade do que uma pilha inteira de um recurso, mas apenas pilhas inteiras, Útil pra mover muitos recursos rapidamente, mas voltará o braço se o local estiver cheio."
+	
+	InserterConstructionStack = "Transferidor em Massa de Material de Construção"
+	InserterConstructionStackIcon = "Transf. Massa [Construir]"
+	
+	InserterModdedStack = "Transferidor em Massa - Mod"
+	InserterModdedStackIcon = "Transf. Massa [MOD]"
+	
+	
+	InserterOreStack = "Transferidor em Massa de Minério Bruto"
+	InserterOreStackIcon = "Transf. Massa [Minérios]"
+	
+	AutoAStorage2x2 = "Armazém dos transferidores para Munição 2x2"
+	AutoAStorage2x2Icon = "Munição (4)"
+	
+	AutoBStorage2x2 = "Armazém dos transferidores para Material de Construção  2x2"
+	AutoBStorage2x2Icon = "Construção (4)"
+	
+	AutoMStorage2x2 = "Armazém dos transferidores para Material Modded 2x2"
+	AutoMStorage2x2Icon = "Modded (4)"
+	
+	AutoOStorage2x2 = "Armazém dos transferidores para Minério Bruto 2x2"
+	AutoOStorage2x2Icon = "Minérios (4)"
+
+	AutoStorage2x2Desc = "Armazena o equivalente a 4 pilhas de um tipo de recurso. Compatível com transferidores."
+	
+	
+	AutoAStorage3x2 = "Armazém dos transferidores para Munição 3x2"
+	AutoAStorage3x2Icon = "Munição (6)"
+
+	AutoBStorage3x2 = "Armazém dos transferidores para Material de Construção 3x2"
+	AutoBStorage3x2Icon = "Construção (6)"
+	
+	AutoMStorage3x2 = "Armazém dos transferidores para Material Modded 2x2"
+	AutoMStorage3x2Icon = "Modded (6)"
+	
+	AutoOStorage3x2 = "Armazém dos transferidores para Minério Bruto 3x2"
+	AutoOStorage3x2Icon = "Minérios (6)"
+
+	AutoStorage3x2Desc = "Armazena o equivalente a 6 pilhas de um tipo de recurso. Compatível com transferidores."
+	
+	
+	AutoAStorage3x3 = "Armazém dos transferidores para Munição 3x3"
+	AutoAStorage3x3Icon = "Munição (9)"
+	
+	AutoBStorage3x3 = "Armazém dos transferidores para Material de Construção 3x3"
+	AutoBStorage3x3Icon = "Construção (9)"
+	
+	AutoMStorage3x3 = "Armazém dos transferidores para Material Modded 3x3"
+	AutoMStorage3x3Icon = "Modded (9)"
+	
+	AutoOStorage3x3 = "Armazém dos transferidores para Minério Bruto 3x3"
+	AutoOStorage3x3Icon = "Minérios (9)"
+
+	AutoStorage3x3Desc = "Armazena o equivalente a 9 pilhas de um tipo de recurso. Compatível com transferidores."
+	
+	
+	AutoAStorage4x3 = "Armazém dos transferidores para Munição 4x3"
+	AutoAStorage4x3Icon = "Munição (12)"
+
+	AutoBStorage4x3 = "Armazém dos transferidores para Material de Construção 4x3"
+	AutoBStorage4x3Icon = "Construção (12)"
+	
+	AutoMStorage4x3 = "Armazém dos transferidores para Material Modded 4x3"
+	AutoMStorage4x3Icon = "Modded (12)"
+	
+	AutoOStorage4x3 = "Armazém dos transferidores para Minério Bruto 4x3"
+	AutoOStorage4x3Icon = "Minérios (12)"
+
+	AutoStorage4x3Desc = "Armazena o equivalente a 12 pilhas de um tipo de recurso. Compatível com transferidores."
+	
+	
+	AutoAStorage4x4 = "Armazém dos transferidores para Munição 4x4"
+	AutoAStorage4x4Icon = "Munição (16)"
+
+	AutoBStorage4x4 = "Armazém dos transferidores para Material de Construção 4x4"
+	AutoBStorage4x4Icon = "Construção (16)"
+
+	AutoMStorage4x4 = "Armazém dos transferidores para Material Modded 4x4"
+	AutoMStorage4x4Icon = "Modded (16)"
+
+	AutoOStorage4x4 = "Armazém dos transferidores para Minério Bruto 4x4"
+	AutoOStorage4x4Icon = "Minérios (16)"
+
+	AutoStorage4x4Desc = "Armazena o equivalente a 16 pilhas de um tipo de recurso. Compatível com transferidores."
+	
+	
+	Background_Structure_Small = "Pequena Estrutura de Fundo"
+	Background_Structure_SmallIcon = "Estrutura de Fundo"
+	Background_Structure = "Estrutura de Fundo"
+	Background_StructureIcon = "Estrutura de Fundo"
+	Background_StructureDesc = "Uma estrutura sem colisão, pode ser usada para atravessar outras naves, não pode ser colorida normalmente, mas dá para você escolher qual a cor quiser usar.\nTecnicamente sem massa."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	Background_Structure_Block = "Estrutura de Fundo em bloco"
+	Background_Structure_BlockIcon = "Estrutura de F. Bloco"
+	
+	Background_Structure_Wedge = "Estrutura de Fundo em cunha"
+	Background_Structure_WedgeIcon = "Estrutura de F. Cunha"
+	
+	Background_Structure_Gap = "Estrutura de Fundo em T"
+	Background_Structure_GapIcon = "Estrutura de F. em T"
+	
+	BackgroundSteelFloor = "Chão de aço de Fundo"
+	BackgroundSteelFloorIcon = "Chão de Fundo"
+	BackgroundSteelFloorDesc = "Fundo de metal que pode ser usado como outra forma de partes de fundo. Útil pra decoração de hangares e etc. Não pode ser pintado normalmente Metal Flooring to be used as another background piece. useful for Hangar decoration and whatnot. While cannot be painted normally, you can choose any color to use.\nTechnically has zero weight."
+	
+	PowerPort = "Port de energia de partes Part Energy Port"
+	PowerPortIcon = "Port de energia"
+	PowerPortDesc = "Essa parte serve como centro de entrega de bateria pra partes especificas que não podem ser carregadas pela tripulação (Olhe a descrição dessas partes), ou partes similares.\n\n<s14><color r='80' g='80' b='220' a='255'>Jani's shipyard and DataDriven</color></s14>"
+	
+	ControlRoom1x1JANI = "Cabine de controle miniatura"
+	ControlRoom1x1JANIIcon = "Cabine Mini"
+	ControlRoom1x1JANIDesc = "Essa cabine miniatura permite a nave voar e coordenar suas armas, fornecendo <good>+12<image name='command_points' colored='true'/></good> Pontos de Comando."
+	
+	ControlRoom1x1KROOM = "Cabine de controle miniatura \"Kroom\""
+	ControlRoom1x1KROOMIcon = "Cabine Kroom"
+	ControlRoom1x1KROOMDesc = "Essa cabine miniatura fornece <good>+10<image name='command_points' colored='true'/></good> Pontos de comando. Quando operada, automaticamente transfere energia entre partes adjacente, tem uma cama e câmara de vácuo integrada pelo custo de pontos"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Krooms Forge by Kroom.</color></s14>"
+	
+	ThrusterHuge4x4 = "Propulsor de Transportador 4x4"
+	ThrusterHuge4x4Icon = "Propulsor Transportador (4)"
+	ThrusterHuge4x4Desc = "Uma variação maior do propulsor gigante que pode impulsionar a nave com muito mais força mas tem mais tempo pra alcançãr propulsão máxima. estatísticas são baseada na area interna do propulsor. Salas dos motores afetam esses propulsores menos."
+	
+	
+	ThrusterHuge5x5 = "Propulsor de Transportador 5x5"
+	ThrusterHuge5x5Icon = "Propulsor Transportador (5)"
+	ThrusterHuge5x5Desc = "Uma variação ainda maior do propulsor gigante que pode impulsionar a nave com mais do que dobro da força mas tem mais tempo pra alcançãr propulsão máxima. estatísticas são baseada na area interna do propulsor. Salas dos motores afetam esses propulsores menos."
+	
+	ThrusterHuge6x6 = "Propulsor de Transportador 6x6"
+	ThrusterHuge6x6Icon = "Propulsor Transportador (6)"
+	ThrusterHuge6x6Desc = "Uma variação maior ainda do propulsor gigante que pode impulsionar a nave com 4x mais força mas tem mais tempo pra alcançãr propulsão máxima. estatísticas são baseada na area interna do propulsor. Salas dos motores afetam esses propulsores menos."
+	
+	ThrusterHuge7x6 = "Propulsor de Transportador 7x6"
+	ThrusterHuge7x6Icon = "Propulsor Transportador (7)"
+	ThrusterHuge7x6Desc = "Uma variação maior ainda do propulsor gigante que pode impulsionar a nave com mais de 5x força mas tem mais tempo pra alcançãr propulsão máxima. tem portas alternativas. estatísticas são baseada na area interna do propulsor. Salas dos motores afetam esses propulsores menos."
+	
+	ThrusterHuge8x7 = "Propulsor de Transportador 8x7"
+	ThrusterHuge8x7Icon = "Propulsor Transportador (8)"
+	ThrusterHuge8x7Desc = "A maior variação de Propulsor de Transportador, tem ainda mais peformance por bloco, tem portas alternativas. Salas dos motores afetam esses propulsores menos."
+	
+	CRAM_Firingpiece = "Customizable Reaper Ammo Mega Cannon - Firing piece"
+	CRAM_FiringpieceIcon = "CRAM Firing Piece"
+	CRAM_FiringpieceDesc = "Main part of a CRAM cannon. requires both to be fully loaded and the cooldown to be finished. Higher firepower can be obtained from using gauge increasers or packers."
+	
+	CRAM_Barrel = "Custom Cannon Barrel"
+	CRAM_BarrelIcon = "Barrel"
+	CRAM_BarrelDesc = "Improves range and speed and accuracy of a CRAM cannon."
+	
+	CRAM_Barrel2 = "Custom Cannon Barrel Double Length"
+	CRAM_Barrel2Icon = "Barrel 2x"
+	CRAM_Barrel2Desc = "Extends a barrel by 2 blocks in a single block. double effect. (same per Length)"
+	
+	CRAM_barrelend = "Custom Cannon Barrel End"
+	CRAM_barrelendIcon = "Barrel End"
+	CRAM_barrelendDesc = "Decorative. looks better at the end and similar to a cosmoteer cannon."
+	
+	CRAM_HeavyBarrel = "Custom Cannon Heavy Barrel"
+	CRAM_HeavyBarrelIcon = "Heavy Barrel"
+	CRAM_HeavyBarrelDesc = "Double effect per barrel. higher hp."
+	
+	Cram_Connector = "Custom Cannon Connector"
+	Cram_ConnectorIcon = "Connector"
+	Cram_ConnectorDesc = "Connects to a block 2 blocks forwards. should eventually connect to a firing piece."
+	
+	Cram_ConnectorD = "Custom Cannon Connector Diagonal"
+	Cram_ConnectorDIcon = "Connector D."
+	Cram_ConnectorDDesc = "Connects to a block on the edge of the diagonal. should eventually connect to a firing piece."
+	
+	Cram_GaugeIncreaser = "CRAM Gauge Increase"
+	Cram_GaugeIncreaserIcon = "Gauge Increase"
+	Cram_GaugeIncreaserDesc = "Connects to the sides of a firing piece, or up to one gauge increaser in a straight line. increases the size of the barrel, affecting stats even ammo usage."
+	
+	Cram_Intake = "Custom Cannon Ammo Intake"
+	Cram_IntakeIcon = "Intake"
+	Cram_IntakeDesc = "Feeds Loaders remotely from a range. good for tight setups with no crew space."
+	
+	Cram_Loader1x = "Custom Cannon Chain loader"
+	Cram_Loader1xIcon = "Chain Loader"
+	Cram_Loader1xDesc = "Stores 20 bullets, functions like a chaingun magazine. high speed throughput. (10 bullets/s)"
+	
+	Cram_Loader3x = "Custom Cannon Loader"
+	Cram_Loader3xIcon = "Loader"
+	Cram_Loader3xDesc = "Stores 60 bullets, feeds ammo at a slowly but steady pace. (2 bullets/s)"
+	
+	Cram_Loader3xD = "Custom Cannon Dual Loader"
+	Cram_Loader3xDIcon = "Dual Loader"
+	Cram_Loader3xDDesc = "Stores 60 bullets, feeds ammo at a slowly but steady pace. Feeds the same speed on both sides, best used when both are in use."
+	
+	Cram_Packer1x = "CRAM Payload Packer"
+	Cram_Packer1xIcon = "Packer"
+	Cram_Packer1xDesc = "A alternative connector that houses 20 bullets that are consumed per shot,Increasing Health and penetration heavily, and damage slightly. Will direct effects forwards like a normal connector if full, The cannon will only fire once all packers are full. Cannot chain other Packers."
+	
+	Cram_Cooler1x = "Custom Cannon TurboCooler"
+	Cram_Cooler1xIcon = "TurboCooler"
+	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon. requires power to function, Avoid staying on the room too long to avoid third degree burns."\
+	"\n<gray><s10>Now You're 20% cooler</s10></gray>"
+	
+	
+	
+	
+	ExplosiveChargeHAX = "DECONSTRUCTOR BOBM HUGE BOBM"
+	ExplosiveChargeHAXIcon = "DECONSTRUCTOR DEV TOOL"
+	
+	MegaroidArmor1x1 = "Placas de Armadura Anciã"
+	MegaroidArmor2_1x1 = "Placas de Armadura Alternada"
+	MegaroidArmorWedge = "Armadura Anciã - Cunha"
+	MegaroidArmorWedge1x2 = "Armadura Anciã - Cunha 1x2"
+	MegaroidArmorDesc = "Armadura extremamente velha que tem pequena capacidade de se regenerar. O metal foi degradado por Séculos e não pode ser recuperado."
+	MegaroidArmor2Desc = "Armadura extremamente velha que tem pequena capacidade de se regenerar. O metal foi degradado por Séculos e não pode ser recuperado. Segmentos alternativos que apenas se destruirão quando partes similars começarem."
+	
+	MegaroidArmorFDesc = ""
+	MegaroidArmor3BDescDesc = ""
+	
+	MegaroidArmor_foundation_1x1 = "Rocha de Armadura Petrificada"
+	MegaroidArmor_foundation_1x1B = "Rocha de Armadura Alternada"
+	MegaroidArmor_foundation_1x1Desc = "Antigas Rochas extremamente fortes que tem pequena capacidade regenerativa. Mais forte de que Armadura Anciã, prevenindo partes críticas de se desconectarem. Partes exclusivas para chefões."
+	MegaroidArmor_foundation_1x1BDesc = "Antigas Rochas extremamente fortes que tem pequena capacidade regenerativa. Mais forte de que Armadura Anciã, prevenindo partes críticas de se desconectarem. Partes exclusivas para chefões. Segmentos alternativos que apenas se destruirão quando partes similars começarem."
+	
+	MegaroidBallweapon = "Esfera Luminosa"
+	MegaroidBallweaponDesc = "Poderosas esferas místicas que atiram em intrusos que sobrevoarem muito próximos dos hiperoides."
+	MegaroidBallWeaponLarge = "Esfera Luminosa Zeta"
+	MegaroidBallWeaponLargeDesc = "Uma esfera maior com um disparo potente que ajuda a afastar os indesejados."
+	MegaroidBallWeaponLarge_Rapid = "Esfera Luminosa Raga"
+	MegaroidBallWeaponLarge_RapidDesc = "Uma esfera larga com ataques de rajadas rápidas."
+	MegaroidBallWeaponLargerer = "Esfera Luminosa Zenith"
+	MegaroidBallWeaponLargererDesc = "Esfera gigante com recarga lenta e disparo de projéteis com potência nuclear."
+	
+	MegashieldSmall = "Projetor de Escudo Ancião"
+	MegashieldSmallDesc = "Um escudo autoregenerativo construído para proteger os guardiões. Uma runa pequena brilha nele."
+	MegashieldAdvancedSmall = "Projetor de Escudo Ancião Avançado"
+	MegashieldAdvancedSmallDesc = "Uma variante altamente defensiva para proteger os guardiões."
+	
+	MegaSigilSmall = "Pequena Runa de Controle"
+	MegaSigilSmallDesc = "A runa talhada energiza esta nave automatizada, possivelmente criada para proteger estes hiperoides até que outras naves surjam para minerá-los.Embora estes protejam algo para uma civilização que nunca virá...\nDestruir isso causa uma reação em cadeia na nave inteira\nNão é recomendado entrar em combate próximo."
+	
+	MegaroidThrustCR = "Propulsor Ancião"
+	MegaroidThrustCRDesc = "Maquina misteriosa de propulsores antigo. Como isso consegue voar é um misterio, sem sorte pra recriar os efeitos.\n<gray>contêm um tripulante escondido pra logica do jogo.</gray>"
+	
+	MegaroidMonoThrustCR = "Propulsor Ancião"
+	MegaroidMonoThrustCRDesc = "Uma versão do propulsor com maior velocidade, mas funciona mais como um propulsor genérico. Pode impulsionar apenas em uma direção.\n<gray>Contém tripulante oculto.</gray>"
+	
+	MegaroidWeakpoint = "Ponto Fraco do Boss"
+	MegaroidWeakpointDesc = "Você precisa destruir isso para desativar partes sobrecarregadas do Boss Cosmilite. Normalmente desativa escudos ou reduz a cadência de disparo de algumas armas."
+	
+	MegaroidEmpty = "Bloco Oculto Vazio"
+	MegaroidEmptyDesc = "Sem Colisão e usado para criar partes flutuantes. Tecnicamente sem peso."
+	
+	MegaroidBallweaponWall_Blaster = "Esfera atira-paredes"
+	MegaroidBallweaponThumperWall_BlasterDesc = "Atira paredes espectrais que travam movimento estilo Lançadores de Batedores."
+	
+	MegaroidArmor3_1x1 = "Cosmilite Armor Plating"
+	MegaroidArmor3_4x1 = "Cosmilite Armor Plating (Wide)"
+	MegaroidArmor3Desc = "Centuries-old huge bricks of extremely tough armor that have minor regenerative capabilities. Some of the metal can be salvaged.. A small difference in internal structure appears to cause the part to only chain react when one of its similar parts had begun reacting."
+	
+	MegaSigilCosmiliteBoss = "Supreme Control Sigil (Cosmic Boss)"
+	MegaSigilCosmiliteBossDesc = "Heart of the boss ship. turns into a \"loot bag\" once destroyed.\nThe usual deathbolts and guadian attacks, combined with a extremly high penetration \"Devourer of gods\". Upon being scratched with any damage, may summon an even stronger \"DoG\" and deploys a shield.\n\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"
+	
+	BossMissileweapon = "Missile Summoning Sigil"
+	BossMissileweaponDesc = "Summons large homing missiles to swifly destroy ships attempting to defeat these massive ships.\nSpawns a additional missile on hit."
+	
+	MegaroidBallWeaponCosmiliteBoss = "Luminous Sphere (Cosmic)"
+	MegaroidBallWeaponCosmiliteBossDesc = "Fires two similar Damaging and Tractor beams with opposite polarities at foes in a helix, After some time firing, fires a white superlaser.\n\nAt 60% health, Its beams focus down, Superlaser fire rate is increased, Can now fire a \"Deathbolts\" attack, that has very high penetration and damage.\nAt 30% health, Can summon portals that spawn Cosmic Guardians, Cosmic worms that can burrow into your ship and circle back.\nAfter destroyed, the rest of the front half of the ship crumbles to pieces."
+	
+	MegaroidCosmiliteLoot = "Boss Loot \"Bag\" (Cosmic)"
+	MegaroidCosmiliteLootDesc = "Salvage this part to recover some rare resources and some stacks of Cosmilite. Build a factory with them and Profaned Star Cores to get a steady supply of Cosmilite."
+	
+	
+	MegaSigilProfanedBoss = "Supreme Control Sigil (Profaned Boss)"
+	MegaSigilProfanedBossDesc = "This Sigil is used to control this massive Boss ship. Destroying this sigil Causes the boss to initiate more attacks until there is only one sigil left. and that sigil will contain the actual loot.\nOnce a Sigil is down, the boss doubles the spawn rate of Mini Suns, and can now summon faster suns when on Flamethrower Phase.\nOnce only one sigil is left, Can now summon 6 even faster suns when on Beams attack.\nFor more info, read the description of the Sun.\nMay contain Divine Geodes. Build a altar with them and Pages of Annihilation to get a steady supply of Divine Geodes."
+	
+	
+	MegaSigilProfanedBoss2 = "Supreme Control Sigil (Profaned Boss, With Loot)"
+	MegaSigilProfanedBoss2Desc = "Last Sigil of the boss. Will now Drop a Loot orb on destruction.\nIf you need A Recap:\n\nOnce a Sigil is down, the boss doubles the spawn rate of Mini Suns, and can now summon faster suns when on Flamethrower Phase.\nOnce only one sigil is left, Can now summon 6 even faster suns when on Beams attack.\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"
+	
+	MegaroidProfanedLoot = "Boss Loot \"Bag\" (Profaned)"
+	MegaroidProfanedLootDesc = "Salvage this part to recover some rare resources and some stacks of Divine Geodes. Build a altar with them and Pages of Annihilation to get a steady supply of Divine Geodes."
+	
+	MegaroidArmor4_1x1 = "Profaned Armored Rock"
+	MegaroidArmor4Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Explodes into damaging flame projectiles on destruction."
+	
+	
+	MegaroidBallWeaponProfanedBoss = "Miniaturized Weaponized Sun"
+	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong forward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nPatically Indestructible."	
+	
+	MegaroidBallWeaponBarrage = "Luminous Sphere (Barrage)"
+	MegaroidBallWeaponBarrageDesc = "Fires seven slow moving devastating bolts in a barrage. its advised to avoid them Altogether."
+	
+	MegaroidBallProfanedFlak = "Profaned Solar Flak"
+	MegaroidBallProfanedFlakDesc = "Fires Solar balls to defend the boss from projectiles."
+	
+	MegaSigilBrimstoneBoss = "Supreme Control Sigil (Brimstone Boss)"
+	MegaSigilBrimstoneBossDesc =  "t"
+	
+	BossNukeweapon = "Nuke Summoning Sigil"
+	BossNukeweaponDesc = "A Variant of the missile sigil that fires super nukes (Shocking <image name='dahell'/> i know). fires a triple burst if only the boss sigil is alive."
+	
+	MegaroidBallweaponThumper = "Lançador de Bolas Batedoras"
+	MegaroidBallweaponThumperDesc = "Atira projeteis que agem como barreiras físicas quando param perto do alvo."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Part Credit From: skipydog</color></s14>"
+	MegaroidBallweaponThumperBurst = "Lançador Batedor em múltiplo"
+	MegaroidBallweaponThumperBurstDesc = "Atira projeteis que agem como barreiras físicas quando param perto do alvo. Variante que atira em múltiplos de 4."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Part Credit From: skipydog</color></s14>"
+	MegaroidBallweaponThumper_Frag = "Lançador Batedor em espingarda"
+	MegaroidBallweaponThumper_FragDesc = "Atira projeteis que agem como barreiras físicas quando param perto do alvo. Variante com mais vida que atira em um combo forte de uma vez."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Part Credit From: skipydog</color></s14>"
+	
+	MegaSigilAstralBoss = "Supreme Control Sigil (Astral Boss)"
+	MegaSigilAstralBossDesc = "<image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\n"
+	
+	MegaroidAstralLoot = "Boss Loot \"Bag\" (Astral)"
+	MegaroidAstralLootDesc = "Salvage this part to recover some rare resources and some stacks of Astral Bars. Build a Factory with them and Cosmilite bars to get a steady supply of Astral Bars."
+	
+	MegaroidBallWeaponFringeBossBeam = "Luminous Sphere (Hyperbeam)"
+	MegaroidBallWeaponFringeBossBeamDesc = "Aims for some time, stops rotating and gives  concentrated beam at that rotation."
+	
+	MegaroidBallWeaponFringeBossBarrage = "Luminous Sphere (Giga Barrage)"
+	MegaroidBallWeaponFringeBossBarrageDesc = "Fires a cone of high damage extremly slow projectiles, along with some low damage fast laser bolts."
+	
+	MegaroidBallWeaponFringeBossCannon = "Luminous Sphere (TripleCannon)"
+	MegaroidBallWeaponFringeBossCannonDesc = "High penetration High damage triple shot cannon projectiles"
+	
+	MegaroidBallWeaponFringeBossDrone = "Luminous Sphere (Stellaborn Burst)"
+	MegaroidBallWeaponFringeBossDroneDesc = "Spawns Several Stellarborn \"drones\" to attack enemies with multiple ways.\n Can phase through the boss."
+	
+	MegaroidBallWeaponFringeBossLaser = "Luminous Sphere (Laser Barrage)"
+	MegaroidBallWeaponFringeBossLaserDesc = "Fires several laser bolts followed by a bigger bolt."
+	
+	MegaroidBallWeaponFringeBossFireBlast = "Luminous Sphere (Fireblast)"
+	MegaroidBallWeaponFringeBossFireBlastDesc = "Fires a homing slow projectile that eventually explodes into a circle of lasers in all directions. high damage if hit close.\n Can phase through the boss."
+	
+	MegaroidBallWeaponFringeBossMine = "Luminous Sphere (MineThrower)"
+	MegaroidBallWeaponFringeBossMineDesc = "Launches some mines in the general direction. mines have homing projectiles and therefore are deadly."
+	
+	MegaroidBallWeaponFringeBossMissile = "Luminous Sphere (Missile Strike)"
+	MegaroidBallWeaponFringeBossMissileDesc = "Fires a barrage of several missiles. missiles spawn missiles on hit.\n Can phase through the boss."
+	
+	CosmiliteFactory = "Cosmilite Bar Forge"
+	CosmiliteFactoryIcon = "Cosmilite"
+	CosmiliteFactoryDesc = "<image name='dahell'/>Forges and smashes bars of Cosmilite under extreme conditions. Consumes 4 Tristeel and 8 Hyperium per use. Requires Cosmilite to build, locking the obtaining of this resource only after you defeat and collect the loot of the \"Godslayer Guardian\" Boss in a Threat level 10+ system"
+	
+	ZetasphereFactory = "Zetasphere Compressor Forge"
+	ZetasphereFactoryIcon = "Zetaspheres"
+	ZetasphereFactoryDesc = "<image name='dahell'/>800 steel to 1 zetasphere"
+	
+	LogicWire = "Cabo de Lógica"
+	LogicWireIcon = "Cabo"
+	LogicWireDesc = "Transmite um sinal de lógica recebido pra outra parte na frente."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicWireDiag = "Cabo Diagonal de Lógica"
+	LogicWireDiagIcon = "Cabo Diag."
+	LogicWireDiagDesc = "Transmite um sinal de lógica recebido pra outra parte na diagonal."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicGateNot = "Porta Lógica NOT"
+	LogicGateNotIcon = "Porta NOT"
+	LogicGateNotDesc = "Transmite um sinal lógico se não tiver nenhum, Para de emitir um sinal se receber um sinal.\nPequeno delay."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicWireSplitter1 = "Cabo de Lógica Separador (180)"
+	LogicWireSplitter1Icon = "Cabo Separ. [-]"
+	LogicWireSplitter2 = "Cabo de Lógica Separador (90)"
+	LogicWireSplitter2Icon = "Cabo Separ. [L]"
+	LogicWireSplitter3 = "Cabo de Lógica Separador 3 Way"
+	LogicWireSplitter3Icon = "Cabo Separ. [T]"
+	LogicWireSplitterDesc = "Transmite um sinal recebido para mais de uma direção."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	Logic_Jump_Wire = "Cabo de Lógica Ponte"
+	Logic_Jump_Wire_Icon = "Cabo-Ponte"
+	Logic_Jump_Wire_Desc = "Cabo de sinal lógico extende uma distancia configurável."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicRoofLight = "Luz Externa Controlada por Lógica"
+	LogicRoofLightIcon = "Luz Lógica"
+	LogicRoofLightDesc = "A Roof Light that is logic controlled."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicRoofPanelSquare = "Painel de Teto - Quadrado"
+	LogicRoofPanelSquareIcon = "Painel Teto Q."
+	LogicRoofPanelSquareDesc = "Pequeno painel quadrado de luz usando as últimas tecnologia LED (Light Emitting Diode) (Que existiam há 300 anos.) Controlados por lógica. mas podem ser controlado manualmente."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicRoofPanelSquareLarge = "Painel de Teto - Quadrado Grande"
+	LogicRoofPanelSquareLargeIcon = "Painel Teto Q. XL"
+	LogicRoofPanelSquareLargeDesc = "Grande painel quadrado de luz usando as últimas tecnologia LED (Light Emitting Diode) (Que existiam há 300 anos.) Controlados por lógica. mas podem ser controlado manualmente."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicRoofPanelRound = "Painel de Teto - Circulo"
+	LogicRoofPanelRoundIcon = "Painel Teto Ci."
+	LogicRoofPanelRoundDesc = "Painel circular de luz usando as últimas tecnologia LED (Light Emitting Diode) (Que existiam há 300 anos.) Controlados por lógica. mas podem ser controlado manualmente."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicRoofPanelWedge = "Painel de Teto - Cunha"
+	LogicRoofPanelWedgeIcon = "Painel Teto Cu."
+	LogicRoofPanelWedgeDesc = "Pequeno painel triangular de luz usando as últimas tecnologia LED (Light Emitting Diode) (Que existiam há 300 anos.) Controlados por lógica. mas podem ser controlado manualmente."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicTBm = "Raio Trator de Lógica (Pequeno)"
+	LogicTBmIcon = "RT. Lógico."
+	LogicTBmDesc = "Uma versão modificado da turreta de um coletor de recursos que funciona como um pequeno raio trator controlado por lógica. pode ter um alvo ou ter uma direção fixa.\n<bad>Há nenhuma porta pra entrar, requer um port de energia.</bad>"
+	
+	Background_Dock_Underlay = "Doca de Estutura de fundo \"skipydog\" (Extendível)"
+	Background_Dock_UnderlayIcon = "Doca Skipy E."
+	Background_Dock_UnderlayDesc = "Uma doca de fundo que pode ligar ou desligar a colisão algums blocos de distancia. Útil pra fazer simples <good>Dobradiças</good> usando várias naves.\n Distancia e todas as cores podem ser customizadas."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	
+	Background_Dock_Underlay_Logic = "Doca de Estrutura de fundo \"skipydog\" (Extendível) De lógica"
+	Background_Dock_Underlay_LogicIcon = "Doca Skipy. E. L."
+	Background_Dock_Underlay_LogicDesc = "Uma versão da doca \"skipydog\" que é controlada por lógica."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	
+	Background_Dock = "Doca de Estutura de fundo \"skipydog\" (Grade)"
+	Background_DockIcon = "Doca Skipy G."
+	Background_DockDesc = "Uma doca de fundo que pode ligar ou desligar a colisão algums blocos de distancia. Útil pra fazer simples <good>Dobradiças</good> usando várias naves.\n todas as cores podem ser customizadas."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicPiston1x1 = "Pequeno pistão de lógica 1x1"
+	LogicPiston1x1Icon = "Pistão Lógico (1)"
+	LogicPiston1x1Desc = "Um pequeno dispositivo que pode extender ou não uma pequena placa pra fora. não pode empurrar blocos da sua própia nave, mas pode outras naves. Requer um sinal lógico ou inversão manual."
+	
+	LogicGateBulb = "Lâmpada alternadora Lógica"
+	LogicGateBulbIcon = "Lâmpada Lógica"
+	LogicGateBulbDesc = "Troca o seu sinal baseado se foi ligado ou se foi ativado manualmente. útil pra contadores binários e como um botão."
+	
+	ShieldOvercharger = "Artificial Zoltan Shield Overcharger"
+	ShieldOverchargerIcon = "Zoltan S. Over."
+	ShieldOverchargerDesc = "Generates a weak, extremly penetration resistant bubble shield that recharges quickly and can stack up to 5 layers. Recharge Rate reduces the more Overchargers are nearby."
+	
+	SylvanChainGun = "\"Rift Waker\" Travelling Merchant's Chaingun"
+	SylvanChainGunIcon = "Rift Waker"
+	SylvanChainGunDesc = "A modified, much much stronger variant of the chaingun. Uses less ammo, charges slightly slower, extremely resistant when closed, and deals double damage on top of firing two shots at once.\n\n<color r='85' g='43' b='122' a='255'>Heh.</color>"
+	
+	FTL_defenselaser = "Laser de Defesa"
+	FTL_defenselaserIcon = "Laser de Defesa"
+	FTL_defenselaserLeftIcon = "Laser de Defesa (L)"
+	FTL_defenselaserDesc = "Um dos Lasers mais baratos no mercado, Uma fraca cópia de laser de rajadas. Não é tão potente assim. Não requer tripulantes."
+	
+	FTL_spetumbeam = "Mini Feixe 'Spetum'"
+	FTL_spetumbeamIcon = "Feixe 'Spetum'"
+	FTL_spetumbeamLeftIcon = "Feixe 'Spetum'(L)"
+	FTL_spetumbeamDesc = "Um minúsculo feixe de rajada que causa um dano respeitável pelo seu tamanho, mas é meio ineficiente com o uso de energia. Não requer tripulantes."
+	
+	FTL_pikebeam = "Feixe Longo 'Pike'"
+	FTL_pikebeamIcon = "Feixe 'Pike'"
+	FTL_pikebeamLeftIcon = "Feixe 'Pike' (L)"
+	FTL_pikebeamLEftALTIcon = "Feixe 'Pike' (S)"
+	FTL_pikebeamDesc = "Um Feixe de longa distancia e duração com dano moderado, com pouca precisão como seu raio move para os lados um pouco."
+	
+	FTL_dirkpin = "Feixe á Ponta 'Dirk'"
+	FTL_dirkpinIcon = "Ponta 'Dirk' "
+	FTL_dirkpinLeftIcon = "Ponta 'Dirk' (L)"
+	FTL_dirkpinDesc = "Um Feixe especial que acerta um lugar em um único pulso, espalhando dando extra para blocos conectados ao ser destruído, gasta mais energia. Não requer tripulantes."
+	
+	FTL_burstlaser1 = "Laser em Rajada MkI"
+	FTL_burstlaser1Icon = "Laser em Rajada"
+	FTL_burstlaser1LeftIcon = "Laser em Rajada (L)"
+	FTL_burstlaser1Desc = "Uma alternativa melhor do que o Laser de Defesa, atira dois lasers numa rajada que causa mais dano, não é particulamente efetivo. Não requer tripulantes."
+	
+	FTL_burstlaser2 = "Laser em Rajada Mk II"
+	FTL_burstlaser2Icon = "Rajada Mk2"
+	FTL_burstlaser2LeftIcon = "Rajada (L)"
+	FTL_burstlaser2LeftALTIcon = "Rajada (S)"
+	FTL_burstlaser2Desc = "Um Laser em Rajada potente, atira 3 lasers rapidamente mas tem um tempo pra carregar. Não requer tripulantes."
+	
+	FTL_burstlaser3 = "Laser em Rajada III"
+	FTL_burstlaser3Icon = "Rajada Mk3"
+	FTL_burstlaser3LeftIcon = "Rajada Mk3 (L)"
+	FTL_burstlaser3LeftALTIcon = "Rajada Mk3 (S)"
+	FTL_burstlaser3Desc = "Um Laser em Rajada potente, atirando 5 lasers rapidamente, tendo maior eficiencia pra destruir areas vazias ou blindagem com pouca vida, vide seu dano splash prevenindo dano extra ser perdido e espalhando pra outros blocos se foi destruído."
+	
+	FTL_basicion = "Canhão Ion Básico"
+	FTL_basicionIcon = "Ion Básico"
+	FTL_basicionDesc = "Canhões de Ions agem parecido com Disruptores, mas drena energia com o tempo em vez de remover de uma vez. Tem 200 graus de rotação, compacto, Não requer tripulantes."
+	
+	FTL_ionbar1 = "Canhão Ions em barragem"
+	FTL_ionbar1Icon = "Ion I"
+	FTL_ionbar1Desc = "Canhões de Ions agem parecido com Disruptores, mas drena energia com o tempo em vez de remover de uma vez. causa um pequeno artodoamento e não causa nenhum dano."
+	
+	FTL_bombsmall = "Teleportador de bombas por Hiperpropulsão."
+	FTL_bombsmallIcon = "Teleportador Bomb."
+	FTL_bombsmallDesc = "Essa arma usa protótipos de hiperteleportes que permite teleportação de bombas diretamente para a frente do inimigo, sem utilizar Hipério. Não é eficiente comparado com outras formas de lançamento, mas não pode ser interceptado ou interrompido por núvems de flak\n Usa mísseis adicionais. Não requer tripulantes."
+	
+	FTL_bombbreach = "Teleportador de Minas de Brecha por Hiperpropulsão."
+	FTL_bombbreachIcon = "Mina de Brecha"
+	FTL_bombbreachDesc = "Avanços de teleportações de bombas permite teleportação de pequenas minas que pode invadir defesas mais facilmente com poder e penetração. não pode ser interceptado ou interrompido por núvems de flak\nUsa peças de minas adicionais."
+	
+	FTL_energy1 = "Canhão de energia MkI"
+	FTL_energy1Icon = "Energia I"
+	FTL_energy1Desc = "Canhões de energia são essentialmente uma combinação de Canhões de Ion e Lasers básicos, pelo custo de rotação, Cadência de disparo, precisão e artodoamento."
+	
+	FTL_missile_leto = "Lançador de Mísseis 'Leto'"
+	FTL_missile_letoIcon = "Mísseis Leto"
+	FTL_missile_letoLeftIcon = "Mísseis Leto (L)"
+	FTL_missile_letoLeftALTIcon = "Mísseis Leto (S)"
+	FTL_missile_letoDesc = "Esse lançador de mísseis minusculo usa pequenas quantidade de energia e partes de mísseis pra lançar um pequeno míssil. Esplosão barata, mas efetiva com o uso de Munição, tem uma leve teleguiação."
+	
+	FTL_particlelaser1 = "Canhão de Laser de Partícula"
+	FTL_particlelaser1Icon = "Canh. Particlula"
+	FTL_particlelaser1LeftIcon = "Canh. Particlula (L)"
+	FTL_particlelaser1LeftALTIcon = "Canh. Particlula (S)"
+	FTL_particlelaser1Desc = "Atira projéteis penetrantes que fritam componentes, causando maior parte do seu dano como o mesmo tipo de dano de ser fundida, levando partes pra falhar como se fossem queimadas.\nÚtil pra deixa uma nave menos danificada em algums casos. Tem o doubro de penetração para blindagem, e pode causar incêndios."
+	
+	PulseThrusterSmall = "Propulsor Repulsor pequeno"
+	PulseThrusterSmallIcon = "Repulsor pequeno"
+	PulseThrusterMed = "Propulsor Repulsor padrão"
+	PulseThrusterMedIcon = "Repulsor padrão"
+	PulseThrusterLarge = "Propulsor Repulsor Thruster"
+	PulseThrusterLargeIcon = "Repulsor grande"
+	PulseThrusterHuge = "Propulsor Repulsor Thruster"
+	PulseThrusterHugeIcon = "Repulsor gigante"
+	PulseThrustersDesc = "Versões ineficiente de propulsores que repele o espaço em si pra impulsionar de uma forma menos eficiente. Mas, esse design especial deixa usar mais espaço pra ser usado, que é extremamente útil pra proteger-los ou adicionar outra camada de propulsores."
+	
+	Pulse_ThrusterHuge4x4 = "Propulsor Repulsor Transportador 4x4"
+	Pulse_ThrusterHuge4x4Icon = "Repulsor Transp. (4)"
+	Pulse_ThrusterHuge4x4Desc = "Uma combinação de Repulsores e Propulsores Transportadores 4x4 Funciona como as versões combinadas, tendo espaco extendido e ineficiencia."
+	Pulse_ThrusterHuge5x5 = "Propulsor Repulsor Transportador 5x5"
+	Pulse_ThrusterHuge5x5Icon = "Repulsor Transp. (5)"
+	Pulse_ThrusterHuge5x5Desc = "Uma combinação de Repulsores e Propulsores Transportadores 5x5 Funciona como as versões combinadas, tendo espaco extendido e ineficiencia."
+	Pulse_ThrusterHuge6x6 = "Propulsor Repulsor Transportador 6x6"
+	Pulse_ThrusterHuge6x6Icon = "Repulsor Transp. (6)"
+	Pulse_ThrusterHuge6x6Desc = "Uma combinação de Repulsores e Propulsores Transportadores 6x6 Funciona como as versões combinadas, tendo espaco extendido e ineficiencia."
+	Pulse_ThrusterHuge7x6 = "Propulsor Repulsor Transportador 7x6"
+	Pulse_ThrusterHuge7x6Icon = "Repulsor Transp. (7)"
+	Pulse_ThrusterHuge7x6Desc = "Uma combinação de Repulsores e Propulsores Transportadores 7x6 Funciona como as versões combinadas, tendo espaco extendido e ineficiencia."
+	Pulse_ThrusterHuge8x7 = "Propulsor Repulsor Transportador 8x7"
+	Pulse_ThrusterHuge8x7Icon = "Repulsor Transp. (8)"
+	Pulse_ThrusterHuge8x7Desc = "Uma combinação de Repulsores e Propulsores Transportadores 8x7 Funciona como as versões combinadas, tendo espaco extendido e ineficiencia."
+	
+	//---------------------------------------------
+	
+	SuperheavyBrick = "Mini-Anchor Cosmic Weights"
+	SuperheavyBrickIcon = "Cosmic Weights"
+	SuperheavyBrickDesc = "Its just a 2000 ton 1x1 block that is very overpriced. uses some of the heaviest materials for the variety of uses this dead weight can do, such as show off how much weight your ship can push, or just pretend it can."
+	
+	//---------------------------------------------
+	
+	Logic_Sensor = "Sensor de inimigos LIDAR no teto"
+	Logic_SensorIcon = "Sensor Inimigos LIDAR"
+	Logic_SensorDesc = "Um sensor simples de lógica apenas capaz de detectar naves inimigas. A configuração de números define a distancia máxima de alcance e por padrão é 0 e detecta nada. Emite um sinal lógico se algum inimigo é visto na sua linha de vista e alcance, configurável como um prisma de íons.\n<gray>Era pra ter configuração para naves amigáveis, mas por mudanças do código do jogo não foi possivel adicionar essa funcionalidade.</gray>"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	Logic_Comparator = "Value Comparator"
+	Logic_ComparatorIcon = "Comparator"
+	Logic_ComparatorDesc = "Can detect some signals from connected parts, Emits a logic signal if value is higher than zero, And emits out from the sides if the value is at 100%. Hover the selection types for technical information on detection."
+	
+	Logic_Comparator_Resources_Ammo = "Ammo Stockpile Comparator"
+	Logic_Comparator_Resources_AmmoIcon = "Ammo Comparator"
+	Logic_Comparator_Resources_Build = "Building Stockpile Comparator"
+	Logic_Comparator_Resources_BuildIcon = "Building Comparator"
+	Logic_Comparator_Resources_Modded = "Modded Stockpile Comparator"
+	Logic_Comparator_Resources_ModdedIcon = "Modded Comparator"
+	Logic_Comparator_Resources_Ore = "Ore Stockpile Comparator"
+	Logic_Comparator_Resources_OreIcon = "Ore Comparator"
+	Logic_Comparator_ResourcesDesc = "Can Detect the fullness of a specific resource within the connected block, emits a signal if any amount detected, and on the sides if full. Detection fashion works similar to inserters."
+	
+	Logic_Gauge_Comparator = "Precise Gauge Comparator"
+	Logic_Gauge_ComparatorIcon = "Gauge Comparator"
+	Logic_Gauge_ComparatorDesc = "Can detect some signals from connected parts, Emits a logic signal if detected value is higher the percentage configured. Number toggles signify percentage and has a range of 0-99%. Hover the selection types for technical information on detection."
+	
+	Logic_Gauge_Comparator_Resources_Ammo = "Ammo Stockpile Precise Gauge Comparator"
+	Logic_Gauge_Comparator_Resources_AmmoIcon = "Ammo G. Comparator"
+	Logic_Gauge_Comparator_Resources_Build = "Building Stockpile Precise Gauge Comparator"
+	Logic_Gauge_Comparator_Resources_BuildIcon = "Building G. Comparator"
+	Logic_Gauge_Comparator_Resources_Modded = "Modded Stockpile Precise Gauge Comparator"
+	Logic_Gauge_Comparator_Resources_ModdedIcon = "Modded G. Comparator"
+	Logic_Gauge_Comparator_Resources_Ore = "Ore Stockpile Precise Gauge Comparator"
+	Logic_Gauge_Comparator_Resources_OreIcon = "Ore G. Comparator"
+	Logic_Gauge_Comparator_ResourcesDesc = "Can Detect the fullness of a specific resource within the connected block. Emits a logic signal if detected value is higher the percentage configured. Detection fashion works similar to inserters."
+	
+	HeatPipeValveJani = "Heat Pipe Connection Control Valve"
+	HeatPipeValveJaniIcon = "Heat Pipe Valve"
+	HeatPipeValveJaniDesc = "Condiotionally transfers thermal energy between connected parts, Can be manually toggled to disable the connection between both sides after a short delay to turn the valve.\n If spawned toggled off, the network won't be detached for a entire second due to said delay."
+	
+	HeatPipeValveJaniTech = "<string id='Parts/HeatPipeValveJaniDesc'/>\n\nAlso comes with a logic variant."
+	
+	HeatPipeValveJaniLogic = "Logic controlled Heat Pipe Connection Control Valve"
+	HeatPipeValveJaniLogicIcon = "L. Heat Pipe Valve"
+	HeatPipeValveJaniLogicDesc = "Condiotionally transfers thermal energy between connected parts, Can be Logic controlled to disable the connection between both sides after a short delay to turn the valve.\n If spawned already receiving the logic buff, the network wont be toggled for a entire second due to said delay."
+	
+	LogicThrusterSmall = "Logic Small Thruster"
+	LogicThrusterSmallIcon = "L. Small Thruster"
+	LogicThrusterSmallDesc = "A Small Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicThrusterMed = "Logic Med Thruster"
+	LogicThrusterMedIcon = "L. Med Thruster"
+	LogicThrusterMedDesc = "A Med Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicThrusterLarge = "Logic Large Thruster"
+	LogicThrusterLargeIcon = "L. Large Thruster"
+	LogicThrusterLargeDesc = "A Large Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicThrusterHuge = "Logic Huge Thruster"
+	LogicThrusterHugeIcon = "L. Huge Thruster"
+	LogicThrusterHugeDesc = "A Huge Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicThrusterRocketNozzle = "Logic Modular Rocket Thruster (M.R.T.)"
+	LogicThrusterRocketNozzleIcon = "L. M.R.T. Nozzle"
+	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
+	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	AstralConveyor = "Astral Conveyor"
+	AstralConveyorIcon = "Astral Conv."
+	AstralConveyorDesc = "Faster but no wall, fire resistance"
+	
+	AstralCorridor = "Astral Corridor"
+	AstralCorridorIcon = "Astral Cor."
+	AstralCorridorDesc = "Slightly Faster, fire resistance"
+	
+	AstralShifter = "Astral Shifter"
+	AstralShifterIcon = "Astral Shifter"
+	AstralShifterDesc = "Internal High impulse thruster for quick manouvers, can provide thrust both forwards and backwards. uses hyperium and lasts a very short time."
+	
+	CosmiliteArmor = "Heavy Cosmilite Armor"
+	CosmiliteArmorIcon = "Cosmilite Armor"
+	CosmiliteArmorDesc = "Heavy armor with a lot of hitpoints. Increases damage resistance against damage based on how many blocks of cosmilite armor is nearby. can affect a select number of other boss armor."
+	
+	ProfanedArmor = "High Resistance Profaned Armor"
+	ProfanedArmorIcon = "Profaned Armor"
+	ProfanedArmorDesc = "Armor that"
+	
+	JaniArmorBit = "Armor Plate"
+	JaniArmorBitIcon = "Armor Plate"
+	JaniArmorBitDesc = "Small pieces of armor to decorate or defend small amounts of your ship."
+
+	SpellRoomSmall = "Spellz Room Generator THingy"
+	SpellRoomSmallIcon = "Spellz Room"
+	SpellRoomSmallDesc = "I'm over here casting my spells I got tomes with my spells right now I'm just casting my shit I'm wizardly as Sol man I'm a freak man like <image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\nCreates 30 points of cursed mana."
+	
+	CursedwandSmall = "Ornate Cursed Wand"
+	CursedwandSmallIcon = "Cursed Wand"
+	CursedwandSmallDesc = "Deck mounted wand that Fires Weak homing projetiles. Always deals friendly fire, and is a danger to your deck weaporny and itself if hit.\nUses 5 points of cursed mana."
+	
+	CoilBig = "Large Copper Wire Coil"
+	CoilBigIcon = "Large Coil"
+	CoilBigDesc = "Big coil. Usable as it's own part, with little use apart from EMP resistance. used in other parts if you look close."
+	
+	WallMass = "Ship Hull Mass"
+	WallMassIcon = "Hull Mass"
+	WallMassDesc = "Essentially an unwalkable corridor filler mass for your ship. more health than sheetmetal and has half the EMP resistance of armor, and very little penetration resistance."
+	
+	HullMassWedge = "Wedge Hull Mass"
+	HullMassWedgeIcon = "Wedge Hu. Mass"
+	HullMassWedge2 = "1x2 Wedge Hull Mass"
+	HullMassWedge2Icon = "1x2 Wedge Hu. Mass"
+	HullMassWedge3 = "1x3 Wedge Hull Mass"
+	HullMassWedge3Icon = "1x3 Wedge Hu. Mass"
+	HullMassTri = "Triangle Hull Mass"
+	HullMassTriIcon = "Tri. Hu. Mass"
+	HullMassWedge_Hybrid = "Hybrid Wedge Hull Mass"
+	HullMassWedge_HybridIcon = "H. Wedge Hu. Mass"
+	HullMassWedge2_Hybrid = "1x2 Hybrid Wedge Hull Mass"
+	HullMassWedge2_HybridIcon = "1x2 H. Wedge Hu. Mass"
+	HullMassWedge3_Hybrid = "1x3 Hybrid Wedge Hull Mass"
+	HullMassWedge3_HybridIcon = "1x3 H. Wedge Hu. Mass"
+	HullMassTri_Hybrid = "Triangle Hybrid Hull Mass"
+	HullMassTri_HybridIcon = "Tri. H. Hu. Mass"
+	
+	SteelBig = "Big Solid Steel Block"
+	SteelBigIcon = "Steel Block"
+	SteelBigDesc = "Heavy big steel cube. Higher Explosive resistance but otherwise useless."
+	
+	MachineFrame = "Machine Frame"
+	MachineFrameIcon = "Machine Frame"
+	MachineFrameDesc = "Decorative Machine frame. has explosive resistance."
+	
+	BulkHeadJani = "Bulkhead"
+	BulkHeadJaniIcon = "Bulkhead"
+	BulkHeadJaniDesc = "Fireproof blast bulkhead thing. Decorative but has explosive resistance."
+	
+	CorridorFactory = "Corredor Industrial"
+	CorridorFactoryIcon = "Cor. Industrial"
+	CorridorFactoryDesc = "Uma variante de corredor com pisos e paredes em estilo industrial."
+	
+	CorridorFactoryDark = "Corredor Industrial Escuro"
+	CorridorFactoryDarkIcon = "Cor. Industrial"
+	CorridorFactoryDarkDesc = "Corredor Industrial com piso escuro."
+}
+PartColors
+{
+	StrutColor = "Background Structure Color"
+	LogicColor = "Logic Part Color"
+	HullColor = "Hull Part Color"
+	FullColor = "Full Color Range"
+}
+
+ShipClasses
+{
+	Hyperoid = "Hiperoide"
+}
+Doodads
+{
+	Hyperoid_L = "Tough Hyperoid (L)"
+	Hyperoid_XL = "Tough Hyperoid (XL)"
+	
+	Hyperoid_Common = "Common Ore Hyperoid"
+	Hyperoid_Metal = "Metallic Ore Hyperoid"
+	Hyperoid_Rare = "Rare Ore Hyperoid"
+	Ceres = "Ceres Hyperoid"
+	POILightsource = "Light Source"
+	POIHyperoid = "Hyperoid Location"
+	
+	POIBoss = "Boss Location"
+	
+	PlanetDeadSun = "Nebula Sun"
+	PlanetDeadMiniSun = "Miniature Nebula Sun"
+}
+DecalGroups
+{
+	Blockshading = "Block Shading"
+}
+Resource
+{
+	//Vanilla Cut Resources
+	CutSteel = "Steel Bar"
+	CutSteelPlural = "Steel Bars"
+	CutSteelDesc = "Steel that has been split into parts 1/5 as dense.\n\n A cheap alloy metal used for construction\nWILL BE REMOVED ON A NEXT UPDATE. MAY BREAK SAVE FILES."
+	
+	CutCoil = "Cable"
+	CutCoilPlural = "Cables"
+	CutCoilDesc = "Coils that has been cut down into parts 1/5 as long.\n\n A cheap cable to build simple parts\nWILL BE REMOVED ON A NEXT UPDATE. MAY BREAK SAVE FILES."
+	
+	CutTristeel = "Tri-\u200bSteel bar"
+	CutTristeelPlural = "Tri-\u200bSteel bars"
+	CutTristeelDesc = "Small Bars of tristeel, worth 1/4 as valuable\n\n Tristeel is a super-strong metal alloy used to construct some advanced ship parts.\n Made from the Cutter."
+	
+	//Modded Resources
+	
+	Goldium = "Goldium"
+	GoldiumPlural = &Goldium
+	GoldiumDesc = "A valuable, highly conductive metal alloy, Applications vary from fusion reactor walls, to Resource Inserters. Not usually sold. Built from the Goldium Synthetizer."
+	
+	CutGoldium = "Goldium Bar"
+	CutGoldiumPlural = "Goldium Bars"
+	CutGoldiumDesc = "Cut down version of Goldium.\n\nA valuable, highly conductive metal alloy used to construct parts or armor"
+	
+	LowDensityStructure = "Low Density Structure"
+	LowDensityStructurePlural = "Low Density Structure"
+	LowDensityStructureDesc = "Very light, Highly tensile material."
+	
+	ElectronicCircuit = "Electronic Circuit"
+	ElectronicCircuitPlural = "Electronic Circuits"
+	ElectronicCircuitDesc = "Cheap mass produced little circuit boards that can do some basic processing, useful for simple drones or logic systems."
+	
+	
+	AdvancedCircuit = "Advanced Circuit"
+	AdvancedCircuitPlural = "Advanced Circuits"
+	AdvancedCircuitDesc = "A mass produced eletronic circuit with improved capabilities where simple electronic circuits do not suffice."
+	
+	ProcessingUnit = "Processing Unit"
+	ProcessingUnitPlural = "Processing Unit"
+	ProcessingUnitDesc = "A large data processing device useful for computationally intensive applications, such as target prediction, friend-foe recognition, heavy load bearing systems and of course, crypto mining."
+	
+	Cosmilite = "Cosmilite Bar"
+	CosmilitePlural = "Cosmilite Bars"
+	CosmiliteDesc = "A incredibly dense metal with great physical properties.\n Obtained by defeating The boss <good>\"Godslayer Guardian\"</good> or refining by using its own factory, which is only availible after obtaining Cosmilite Bars And <good>Astral Bars.</good>"\
+	"\n<gray><s10>What Devourer?</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
+	
+	ProfanedCore = "Divine Core"
+	ProfanedCorePlural = "Divine Cores"
+	ProfanedCoreDesc = "A strange rock that seems to easily manipulate energy, but not really in a... controlled way.\nObtained by defeating <good>\"Sol Profanatus\"</good> or created with the Divine Core Altar \"Factory\", which requives both Divine Cores and <good>Pages of Annihilation</good>"\
+	"\n<gray><s10>Barely Holy Enough.</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
+	
+	AstralBar = "Astral Bar"
+	AstralBarPlural = "Astral Bars"
+	AstralBarDesc = "A valuable, glamorous metal alloy from the stars... ignoring that you can just make it and you can fly to these stars.\nObtained by defeating The boss <good>\"Name of ASTRAL BOSS\"</good> or fabricated by using its own factory, which is only availible after obtaining Astral Bars And <good>Cosmilite Bars</good>"\
+	"\n<gray><s10>I guess its a boss</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
+	
+	CursedPage = "Page of Annihilation"
+	CursedPagePlural = "Pages of Annihilation"
+	CursedPageDesc = "Scraps of brimstone books with incomphrehensible runes carved into them. Merely looking at it makes your eyes burn. it definetly is'nt friendly to your ship parts.\nObtained by defeating <good>\"[IMPERIUM BOSS NAME]\"</good> or cursed with the Annihilation Brimstone Altar \"Factory\", which requives both Pages of Annihilation and <good>Divine Cores.</good>"\
+	"\n<gray><s10>Who let Calamitas make a ship?</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
+	
+	Zetasphere = "Zetasphere"
+	ZetaspherePlural = "Zetaspheres"
+	ZetasphereDesc = "Brimming with potential energy. Incredibly Dense matter. May be dropped from Hyperoid Guardians under rare circustances.  "
+}
+Missions
+{
+	ClearHyperoid = "Clear Hyperoid Field"
+	ClearHyperoidDesc = "Many mining agencies are struggling to tackle on strange enemies guarding a giant \"Hyperoid\" asteroid, Which is likely full of resources. The {faction_name} alongside the mining companies have posted a bounty of {money} to be paid to any Cosmoteer that can clear the local area from these threats."
+	DefeatBossJani = "Defeat \"{target_ship}\" Boss"
+	DefeatBossJaniDesc = "There is Massive <b>{target_ship}</b> class \"Boss\" ship in the {mission_location} system terrorizing local ships. The {faction_name} have posted a bounty of {money} to be paid to any Cosmoteer that can eliminate it. Rumours state that the material the ship is built from is highly valuable and technologically advanced, and it may be highly useful to you to progress further."
+}
+Objectives
+{
+	DestroyGuardians = "Eliminate Guardians"
+	DefeatBossJani = "Defeat {0} Boss"
+}
+Inputs
+{
+	PartColors
+	{
+		StrutColor = "Background Structure Color"
+		LogicColor = "Logic Part Color"
+		HullColor = "Hull Color"
+	}
+
+	PartToggles
+	{
+		thrusterdetail_low = "Thruster Detail: Low"
+		thrusterdetail_med = "Thruster Detail: Med"
+		thrusterdetail_high = "Thruster Detail: High"
+		
+		invert_input_no = "Invert Toggle : Yes"
+		invert_input_yes = "Invert Toggle : No"
+		
+		advships_lengths_zero = "Length 1"
+		advships_lengths_one = "Length 2"
+		advships_lengths_two = "Length 3"
+		advships_lengths_three = "Length 4"
+		advships_lengths_four = "Length 5"
+		advships_lengths_five = "Length 6"
+		advships_lengths_six = "Length 7"
+		advships_lengths_seven = "Length 8"
+		advships_lengths_Eight = "Length 9"
+		advships_lengths_nine = "Length 10"
+		
+		advships_widths_zero = "Width 1"
+		advships_widths_one = "Width 2"
+		advships_widths_two = "Width 3"
+		advships_widths_three = "Width 4"
+		advships_widths_four = "Width 5"
+		advships_widths_five = "Width 6"
+		advships_widths_six = "Width 7"
+		advships_widths_seven = "Width 8"
+		advships_widths_Eight = "Width 9"
+		advships_widths_nine = "Width 10"
+		
+		corridor_blank = "Blank Corridor"
+		corridor_window = "Windowed Corridor"
+		corridor_vent = "Vent Roof Corridor"
+		
+		fabricator_large_type_goldium = "Fabricator Type: Goldium"
+		
+		splitter_split = "Cutter: Split"
+		splitter_merge = "Cutter: Merge"
+		splitter_large_type_steel = "Cutter Type: Steel"
+		splitter_large_type_coil = "Cutter Type: Coil"
+		splitter_large_type_tristeel = "Cutter Type: Tristeel"
+		splitter_large_type_uranium = "Cutter Type: Enriched Uranium"
+		
+		Ammos = "Ammo Category"
+		Builds = "Construction Category"
+		Ores = "Ores Category"
+		
+		resource_0 = "Choose Hyperium"
+		resource_1 = "Choose Bullet"
+		resource_2 = "Choose HE part"
+		resource_3 = "Choose EMP part"
+		resource_4 = "Choose Nuke Part"
+		resource_5 = "Choose Mine Part"
+		resource_6 = "Choose Steel"
+		resource_7 = "Choose Coil"
+		resource_8 = "Choose HyperCoil"
+		resource_9 = "Choose Tristeel"
+		resource_10 = "Choose Diamond"
+		resource_11 = "Choose Processor"
+		resource_12 = "Choose Enriched Uranium"
+		resource_13 = "Choose Sulfur"
+		resource_14 = "Choose Iron"
+		resource_15 = "Choose Copper"
+		resource_16 = "Choose Tritanium"
+		resource_17 = "Choose Carbon"
+		resource_18 = "Choose Gold"
+		resource_19 = "Choose Uranium"
+		
+		resource_goldium = "Choose Goldium"
+		resource_goldium_new = "Choose Goldium (2)"
+		resource_cuttristeel = "Choose Tri-\u200bSteel Bars"
+		resource_cosmilite = "Choose Cosmilite Bars"
+		resource_astralbar = "Choose Astral Bars"
+		resource_profanedcore = "Choose Divine Cores"
+		resource_cursedpage = "Choose Pages of Annihilation"
+		
+		resource_mod_GA_0 = "Choose Rocket Parts"
+		resource_mod_GA_1 = "Choose Ammo Boxes"
+		
+		power_value = "Comparator mode : Battery Capacity"
+		thrust_value = "Comparator mode : Thruster Output"
+		reload_value = "Comparator mode : Weapon Reload"
+		fusionlevel_value = "Comparator mode : Critical Level"
+		operationallevel_value = "Comparator mode : IsOperational"
+		
+		DroneSmallLaser = "Select Drone: Small Laser"
+		DroneMedCannon = "Select Drone: Med Cannon"
+		DroneEletroCannon = "Select Drone: EletroCannon"
+		
+		Laserdrone = "Select Drone: Laser"
+		Bulletdrone = "Select Drone: Bullet"
+		Beamdrone = "Select Drone: Beam"
+		Raildrone = "Select Drone: Railgun"
+		Missiledrone = "Select Drone: Missile"
+		BFGdrone = "Select Drone: BFG"
+		Fireballdrone = "Select Drone: Fireball"
+		XRoofful = "Select Roof Greebles: ON"
+		XRoofless = "Select Roof Greebles: OFF"
+		DroneCombat1 = "Select Combat Drone"
+		DroneCombat2 = "Select Combat MK2 Drone"
+		DroneWarcruiser = "Select drone: Warcruiser"
+		DroneBomber1 = "Select drone: Bomber Hybrid"
+		DroneBomber2 = "Select drone: Bomber Nukes"
+		DroneBomber3 = "Select drone: Bomber Emps"
+		DroneAmmo1 = "Select Drones ammo"
+		DroneAmmo2 = "Select Ibeams ammo"
+		DroneAmmo3 = "Select Hulls ammo"
+		DroneAmmo4 = "Select Silicon"
+		DroneAmmo5 = "Select Phase Fabric"
+		Mk3drone = "Select Combat MK3 Drone Swarm"
+		Shielddrone = "Select drone : Shield Drone"
+		StellDrone = "Select Stell Tank Unit"
+		Sparker = "Select Sparker Pulse Drone"
+		unit1 = "Select Unit: Dagger"
+		unit2 = "Select Unit: Mace"
+		unit3 = "Select Unit: Fortress"
+		unit4 = "Select Unit: Scepter"
+		unit5 = "Select Unit: Reign"
+		unit6 = "Select Unit: Nova"
+		unit7 = "Select Unit: Pulsar"
+		unit8 = "Select Unit: Quasar"
+		unit9 = "Select Unit: Vela"
+		unit10 = "Select Unit: Corvus"
+		unit11 = "Select Unit: Crawler"
+		unit12 = "Select Unit: Atrax"
+		unit13 = "Select Unit: Spiroct"
+		unit14 = "Select Unit: Arkyid"
+		unit15 = "Select Unit: Toxopid"
+		unit16 = "Select Unit: Flare"
+		unit17 = "Select Unit: Horizon"
+		unit18 = "Select Unit: Zenith"
+		unit19 = "Select Unit: Antnumbra"
+		unit20 = "Select Unit: Eclipse"
+		unit21 = "Select Unit: Mono"
+		unit22 = "Select Unit: Poly"
+		unit23 = "Select Unit: Mega"
+		unit24 = "Select Unit: Quad"
+		unit25 = "Select Unit: Oct"
+		unitdeployoff = "Deploy Units ON"
+		unitdeployauto = "Deploy Units AUTO"
+		unitdeployon = "Deploy Units OFF"
+		No_Phase = "Dont use Phase Fabric"
+		Yes_Phase = "Use Phase Fabric"
+		nophase = "no phase"
+		yesphase = "yes phase"
+	}
+}
+PartTargeters
+{
+	SensorAim = "Aim Sensor"
+}
+PartToggles
+{
+	thrusterdetail_low = "Thruster Detail: Low"
+	thrusterdetail_med = "Thruster Detail: Med"
+	thrusterdetail_high = "Thruster Detail: High"
+		
+	BlankCorridor = "Blank Corridor"
+	WindowCorridor = "Windowed Corridor"
+	VentCorridor = "Vent Roof Corridor"
+	FabricatorType_Goldium = "<b>Goldium</b>\n\nSet this Fabricator to manufacture Goldium.\n\nHotkey: <btn id='PartToggles.fabricator_large_type_goldium'/>"
+	SplitterType_Steel = "<b>Steel - Steel Bars</b>\n\nSet this Cutter to Merge or Split steel.\n\nRATIO: 1:5\n\nHotkey: <btn id='PartToggles.splitter_large_type_steel'/>\n\nWILL BE ERASED IN A FUTURE UPDATE"
+	SplitterType_Coil = "<b>Coils - Cables</b>\n\nSet this Cutter to Merge or Split coils.\n\nRATIO: 1:5\n\nHotkey: <btn id='PartToggles.splitter_large_type_coil'/>\n\nWILL BE ERASED IN A FUTURE UPDATE"
+	SplitterType_Tristeel = "<b>Tri-\u200bSteel - Tri-\u200bSteel Bars</b>\n\nSet this Cutter to Merge or Split Tri-\u200bSteel.\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_tristeel'/>"
+	SplitterType_Uranium = "<b>Enriched Uranium - Uranium</b>\n\nSet this Cutter to ONLY Split Enriched Uranium back to Uranium\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_uranium'/>"
+	splitter_split = "<b>SPLIT</b>"
+	splitter_merge = "<b>MERGE</b>"
+	
+	invert_input_no = "Normal Signal"
+	invert_input_yes = "Inverse Signal"
+	
+	Ammos = "Ammo Category"
+	Builds = "Construction Category"
+	Ores = "Ores Category"
+	
+	resource_0 = "Hyperium"
+	resource_1 = "Bullet"
+	resource_2 = "HE part"
+	resource_3 = "EMP part"
+	resource_4 = "Nuke Part"
+	resource_5 = "Mine Part"
+	resource_6 = "Steel"
+	resource_7 = "Coil"
+	resource_8 = "HyperCoil"
+	resource_9 = "Tristeel"
+	resource_10 = "Diamond"
+	resource_11 = "Processor"
+	resource_12 = "Enriched Uranium"
+	resource_13 = "Sulfur"
+	resource_14 = "Iron"
+	resource_15 = "Copper"
+	resource_16 = "Tritanium"
+	resource_17 = "Carbon"
+	resource_18 = "Gold"
+	resource_19 = "Uranium"
+	
+	//resource_goldium = "Goldium"
+	resource_goldium = "Goldium"
+	resource_goldium_new = "Goldium (2)"
+	resource_cuttristeel = "Tri-\u200bSteel Bars"
+	resource_cosmilite = "Cosmilite Bars"
+	resource_astralbar = "Astral Bars"
+	resource_profanedcore = "Divine Cores"
+	resource_cursedpage = "Pages of Annihilation"
+	
+	resource_mod_GA_0 = "Rocket Parts"
+	resource_mod_GA_1 = "Ammo Boxes"
+	
+	power_value = "Battery Capacity Value\n(Searches BatteryStorage)"
+	thrust_value = "Thruster Output Value\n(Searches MainThruster. May go above 100%)"
+	reload_value = "Weapon Reload Value"
+	fusionlevel_value = "Critical Level Value\n(Searches For Compatible parts that explode if overcharged or similar, Such as Hyperium fusion reactor.)"
+	operationallevel_value = "Check for Operational\n(Searches for IsOperational. Always returns 100% if its toggled)"
+	
+	//DroneSmallLaser = "Laser"
+	DroneSmallLaser = "<b>Laser Cannon Drone</b>\n\n"\
+	"Bigger. Better. Stronger. a severe upgrade in laser technology, Built with reverse engineering from competing brands, and reckless overclocking.\n\n"\
+	"<b>Laser Cannon Drone Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>6</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>12</good> Electronic Circuit <gray>(</gray><good>2</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>30k</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Laser Cannon Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>2000</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 30</good>\n"\
+	"<white>Durability:</white><good> 2500</good>\n"\
+	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
+	
+	DroneMedCannon = "<b>Standard Cannon Drone</b>\n\n"\
+	"A Standard cannon with a slightly smaller caliber, but stacks way much firepower due to ignoring safety limits.\n\n"\
+	"<b>Standard Cannon Drone Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>8</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>8</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.sulfur'/> <good>1</good> Sulfur <gray>(</gray><good>0.125</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.5</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>62.5k</good><gray>/shot (</gray><good>7812</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Standard Cannon Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>2500</good><gray>/shot (</gray><good>8333</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 25</good>\n"\
+	"<white>Durability:</white><good> 3000</good>\n"\
+	"<white>Drone ROF:</white><good> 3.33</good><gray>/sec</gray>"
+	
+	DroneEletroCannon = "<b>Disruptor Eletro-Cannon Drone</b>\n\n"\
+	"Strapping together a Laser cannon and a disruptor seems to work, it's extremely unstable, but These Drones won't last that long anyway.\n\n"\
+	"<b>Eletro-Cannon Drone Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>6</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>5</good> Power <gray>(</gray><good>0.8</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>18k</good><gray>/shot (</gray><good>3000</good><gray>/sec)</gray>\n"\
+	"<white>Raw Shield DMG:</white> <good>121k</good><gray>/shot (</gray><good>20k</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Eletro-Cannon Drone Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>110</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>600</good><gray>/shot (</gray><good>1710</good><gray>/sec)</gray>\n"\
+	"<white>Damage vs Shields:</white> <good>4050</good><gray>/shot (</gray><good>11k</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 30</good>\n"\
+	"<white>Durability:</white><good> 2000</good>\n"\
+	"<white>Drone ROF:</white><good> 2.85</good><gray>/sec</gray>"
+	
+	Laserdrone = "Laser Drone (4 drn 4 powr)"
+	Bulletdrone = "Bullet Drone (4 drn 6 bullet)"
+	Beamdrone = "Beam Drone (5 drn 8 powr)"
+	Raildrone = "Rail Drone (6 drn 8 powr 8 bullet)"
+	Missiledrone = "Missile Drone (6 drn 8 missle)"
+	BFGdrone = "BFG Drone (16 drn 16 powr 12 nuke 8 prot)"
+	Fireballdrone = "Fireball Drone (6 drn 4 powr)"
+	Mk3drone = "MK3 Drone Swarm (3drn X 8)"
+	Shielddrone = "Shield Drone (5 drn 4 powr)\n\n<bad><b>WARNING: DOESNT WORK WITH MULTIPLAYER</b></bad>"
+	XRoofful = "Roof Greebles: ON"
+	XRoofless = "Roof Greebles: OFF"
+	DroneCombat1 = "<b>Combat MK1</b>\n\n"\
+	"The (Second) Simplest form of a drone you can make. Shoots lasers at enemies.\n\n"\
+	"<b>Combat MK1 Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>2</good> Steel <gray>(</gray><good>0.3</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>4</good> Electronic Circuit <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>0.8</good> Power <gray>(</gray><good>0.13</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>550</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>5500</good><gray>/shot (</gray><good>916</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Combat MK1 Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>90</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>550</good><gray>/shot (</gray><good>550</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 10</good>\n"\
+	"<white>Durability:</white><good> 800</good>\n"\
+	"<white>Drone ROF:</white><good> 1</good><gray>/sec</gray>"
+	
+	//DroneCombat2 = "Combat Drone Mk2\n\n<b>Requirements:</b>\n4 Steel\n1.6 Power\nBuild Time: 8s\n\n<b>Stats:</b>\n\nshots:25\nDrone ROF: 2 per second.\nDamage: 1200 Max"
+	
+	DroneCombat2 = "<b>Combat MK2</b>\n\n"\
+	"Requires more materials and time. Shoots better, faster, for longer. Shorter Launch Range.\n\n"\
+	"<b>Combat MK2 Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>8</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>4</good> Steel <gray>(</gray><good>0.5</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>8</good> Electronic Circuit <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>1.6</good> Power <gray>(</gray><good>0.2</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>16.8k</good><gray>/shot (</gray><good>2100</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Combat MK2 Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>100</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>672</good><gray>/shot (</gray><good>895</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 25</good>\n"\
+	"<white>Durability:</white><good> 1000</good>\n"\
+	"<white>Drone ROF:</white><good> 1.33</good><gray>/sec</gray>"
+	
+	//StellDrone = "Stell Micro Tank\n\n<b>Requirements:</b>\n4 Steel\n6 Bullets\n2 Power\nBuild Time: 10s\n\n<b>Stats:</b>\n\nshots:32\nDrone ROF: 1.5 per second.\nDamage: Max 2500\n\nExtremely slow, 'driving' on the backgroud"
+	
+	StellDrone = "<b>Stell Micro Tank</b>\n\n"\
+	"<bad>Hidden Content. Removed for a reason or another but can still be accessed.</bad>\nA Land tank in space. <bad>Extremely slow, and sticks to background grid, and is tough to move.</bad> Extremely Deadly. Uses ammo.\n\n"\
+	"<b>Stell Micro Tank Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>10</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>4</good> Steel <gray>(</gray><good>0.4</good><gray>/sec)</gray>\n"\
+	"<img name='resource.bullet'/> <good>6</good> Bullets <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>2</good> Power <gray>(</gray><good>0.2</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>1000</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>80k</good><gray>/shot (</gray><good>8000</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Stell Tank:</b>\n"\
+	"<white>Tank Range:</white> <good>140</good> <gray>metres</gray>\n"\
+	"<white>Tank Damage:</white> <good>2500</good><gray>/shot (</gray><good>3750</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 32</good>\n"\
+	"<white>Durability:</white><good> 6000</good>\n"\
+	"<white>Tank ROF:</white><good> 1.5</good><gray>/sec</gray>"\
+	"\n\nOriginal sprite from Mindustry, by Anuke."
+	
+	//Sparker = "Sparker Pulse Drone\n\n<b>Requirements:</b>\n1 Steel\n0.5 Power\nBuild Time: 2.5s\n\n<b>Stats:</b>\n\nshots:16\nDrone ROF: 2 per second.\nDamage: 70\n\n\nShots Deal 8x damage to shields, and penetrates shields easily."
+	
+	Sparker = "<b>Sparker PulseCannon Drone</b>\n\n"\
+	"Cheapest Drone you can create. Shoots small weak shots in rapid fire, deals 8x more damage to shields and penetrates shields.\n\n"\
+	"<b>Sparker PulseCannon Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>2.5</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>1</good> Steel <gray>(</gray><good>0.4</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>2</good> Electronic Circuit <gray>(</gray><good>0.8</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>2</good> Power <gray>(</gray><good>0.8</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>400</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>1120</good><gray>/shot (</gray><good>448</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Sparker PulseCannon Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>90</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>70</good><gray>/shot (</gray><good>140</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 16</good>\n"\
+	"<white>Durability:</white><good> 500</good>\n"\
+	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
+	
+	DroneWarcruiser = "Warcruiser Drone (12 drn 21 IBeam 16 Hull 16 Power)"
+	DroneBomber1 = "Bomber Drone, Hybrid(8 drn 28 IBeam 15 Hull 12 Nuke 28 Power)"
+	DroneBomber2 = "Bomber Drone, Nukes(8 drn 28 IBeam 15 Hull 24 Nuke 8 Power)"
+	DroneBomber3 = "Bomber Drone, Emps(8 drn 28 IBeam 15 Hull 48 Power)"
+	DroneAmmo1 = "Drones"
+	DroneAmmo2 = "Ibeams"
+	DroneAmmo3 = "Hulls"
+	DroneAmmo4 = "Silicon"
+	DroneAmmo5 = "Phase Fabric"
+	unit1 = "<b>Dagger</b>\n\nAttacks enemy ships with its tiny guns, Recklessly running towards enemies.\nWalks along the background\n\nProduction Time: 15 Sec\n10 Silicon, 3 Bullets.\n\nShot Count: 50\n\nSize:1x1" //king remover :>
+	unit2 = "<b>Mace</b>\n\nAttacks enemies with two short range flamethrower weapons, Dealing massive damage. Runs tiredlessly towards enemies.\nWalks along the background\n\nShot Count: 50\n\nSize: 1.25x1.25" //king weapon
+	unit3 = "<b>Fortress</b>" //king place
+	unit4 = "<b>Scepter</b>" //king tool
+	unit5 = "<b>Reign</b>" //king existance
+	unit6 = "<b>Nova</b>\n\nAttacks enemy ships with lasers, Repairing nearby units when firing, Running endlessly towards enemies. Lasers can heal friendly ships (Disclaimer: Does not rebuild broken parts.).\nWalks along the background, also spawns Very Heavy copper walls that act as damage soakers and slows ships\n\n<bad>Can fly before reaching the destination, will stop flying to shoot, technically roof launchable</bad>\n\nProduction Time: 40 Sec\n30 Silicon, 9 Bullets, 6 Drone parts\n\nShot Count : 18\nSize:1x1" //there is no star
+	unit7 = "<b>Pulsar</b>" //star 1
+	unit8 = "<b>Quasar</b>" //star 2
+	unit9 = "<b>Vela</b>" //portable meltdown
+	unit10 = "<b>Corvus</b>" //birb
+	unit11 = "<b>Crawler</b>\n\nSelf Destructs near enemy ships, Dealing Damage.\n\nProduction Time: 10 Sec\n8 Silicon, 1 Battery.\n\nSize:1x1" //weakling go crawl
+	unit12 = "<b>Atrax</b>\n\nFires Orbs of damaging slag at enemies. Deals a damage Over time and Inflicts fires\n<good>Can Walk Above Ships</good>\n\n<bad>Technically Roof launchable</bad>\n\nShot Count: 32 (balance due to Roof Sheninigans)\n\nSize: 1.62x1.62" //trax
+	unit13 = "<b>Spiroct</b>" // i cant say it...
+	unit14 = "<b>Arkyid</b>" //???
+	unit15 = "<b>Toxopid</b>" //so TOXIC
+	unit16 = "<b>Flare</b>\n\nAttacks enemy ships at a distance, Capaple of <good>flying over ships</good>\n\n<bad>Roof launchable</bad>\n\nProduction Time: 15 Sec\nShot Count: 34\n15 Silicon\nSize:1.12x1.12" //Pyro mains
+	unit17 = "<b>Horizon</b>" //bring me the, can you feel my heart
+	unit18 = "<b>Zenith</b>" //NOT terraria
+	unit19 = "<b>Antnumbra</b>" //Who?
+	unit20 = "<b>Eclipse</b>" //the shadows...
+	unit21 = "<b>Mono</b>\n\nFires beams that drain enemy resources, spawning crates with their contents. Rare chance for a special crate with rare materials to drop.\n\n <bad>Creates resources out of thin air if the enemy doesn't have the resources to drain</bad>\n\n<bad>Roof Launchable</bad>\n\nProduction Time: 35 Sec\nShot Count = 8\n30 Silicon, 6 bullets\nSize:0.75x0.75" //the smol
+	unit22 = "<b>Poly</b>" //shhuip
+	unit23 = "<b>Mega</b>" //pew pew
+	unit24 = "<b>Quad</b>" //pheeew
+	unit25 = "<b>Oct</b>" //ominous braam sound effect
+	unitdeployoff = "Deploy Units: OFF"
+	unitdeployauto = "Deploy Units: <bad>ON RANGE</bad>"
+	unitdeployon = "<good>Deploy Units: ON</good>"
+	No_Phase = "Phase Use: off"
+	Yes_Phase = "Phase Use: on"
+	No_Phase2 = "Phase\n<bad>off</bad>"
+	Yes_Phase2 = "Phase\n<good>ON</good>"
+}
+EditorGroups
+{
+	NormalSlopes = "Roof Normal Map Slopes"
+	Technologies = "Research and Development"
+	Logic = "Logic Parts"
+	BossParts = "Boss Reward Parts"
+}
+Backgrounds
+{
+	Black2 = "Deep Dark"
+}
+Stats
+{
+	DroneLauncherNotes = "<bad>Warning:</bad> <gray><b>For Requirements, Statistics, and Misc info, hover above each Toggle when selecting a type of drone to show the description of each drone.</b></gray>"
+	
+	ScorchDamageFmt =  "<white>Scorching Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
+	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	
+	InserterHandSizeFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Hand</good><gray>)</gray>"
+	InserterHandSizeStacksFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Stack</good><gray>)</gray>"
+	InserterSwingSpeedFmt = "<white>Swing Speed:</white> <good>{0:0.##}</good><gray> secs (</gray><good>{1:0.###}</good> <gray>transfers/sec)</gray>"
+	
+	HeatUsageContFmt = "<white>Heat Consumption:</white> <good>{0:0.###}</good><gray>/sec</gray>"
+	
+	EngineRoomBuffEffectivenessFmt = "<white>Engine Room Effectiveness:</white> <good>{0:0}</good><gray>%</gray>"
+	
+	JSThrusterHyperiumUsageFmt = "<white>Hyperium Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
+	JSBoostedHyperiumUsageContinuousFmt = "<zero>Hyperium Use:</zero> <good>{0:0.##}</good><gray>/sec (continuous)</gray>"
+	
+	GoldiumProductionFmt = "<white>Production Rate:</white> <good>{0:0.##}</good><gray> goldium/sec</gray>"
+	GoldiumCapacityFmt = "<white>Goldium Capacity:</white> <good>{0}</good>"
+	GoldiumGoldUsageFmt = "<white>Gold Use:</white> <good>{0:0.##}</good><gray>/goldium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	GoldiumPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/goldium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	GoldiumHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/gold (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	
+	ElectronicCircuitProductionFmt = "<white>Electronic Circuit Rate:</white> <good>{0:0.##}</good><gray> circuits/sec</gray>"
+	ElectronicCircuitCapacityFmt = "<white>Electronic Circuit Capacity:</white> <good>{0}</good>"
+	
+	ElectronicCircuitSteelUsageFmt = "<white>Steel Use:</white> <good>{0:0.###}</good><gray>/circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	ElectronicCircuitCoilUsageFmt = "<white>Coil Use:</white> <good>{0:0.###}</good><gray>/circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	ElectronicCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	
+	ElectronicCircuitHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/circuit (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	
+	AdvancedCircuitProductionFmt = "<white>Advanced Circuit Rate:</white> <good>{0:0.##}</good><gray> a-circuits/sec</gray>"
+	AdvancedCircuitCapacityFmt = "<white>Advanced Circuit Capacity:</white> <good>{0}</good>"
+	
+	AdvancedCircuitElectronicCircuitUsageFmt = "<white>Electronic Circuit Use:</white> <good>{0}</good><gray>/a-circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	AdvancedCircuitCoil2UsageFmt = "<white>Hypercoil Use:</white> <good>{0:0.###}</good><gray>/a-circuit (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	AdvancedCircuitPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.##}</good><gray>/a-circuit (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
+	
+	AdvancedCircuitHeatGenerationFmt = "<white>Heat Gen.:</white> <good>{0:0.##}</good> <gray>MJ/a-circuit (</gray><good>{1:0.##}</good> <gray>MJ/sec)</gray>"
+	
+	JaniBurstShotsFmt = "<white>Shots per Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
+	DrainTimeFmt = "<white>Power Drain Duration:</white> <good>{0:0}</good><gray>sec</gray>"
+	CursedManaAvailibleFmt = "<white>Total Cursed Mana Alteration:</white> <good>{0:0}</good>"
+	CursedManaProvidedFmt = "<white>Cursed Mana Created:</white> <good>{0:0}</good>"
+	HolyManaAvailibleFmt = "<white>Total Holy Mana Alteration:</white> <good>{0:0}</good>"
+	HolyManaProvidedFmt = "<white>Holy Mana Created:</white> <good>{0:0}</good>"
+}
+StatCategories
+{
+	IonBlast = "Ion Shot"
+	FTLBomb = "Small Bomb"
+	FTLBreachBomb = "Small Mine Bomb"
+	EnergyBlast = "Energy Shot"
+	InserterFastInsertion = "Rapid Insertion Mode"
+	InserterPowerRegeneration = "Inserter Recharging Mode"
+}
+CombatDifficulty
+{
+	ModdedDifficulty1 = "Light Modded Captain"
+	ModdedDifficulty1Tip = "● Take normal damage from enemies.\n● Deal 90% damage to enemies.\nUseful to balance your playthrough with modded weapons."
+	
+	ModdedDifficulty2 = "Normal Modded Captain"
+	ModdedDifficulty2Tip = "● Take normal damage from enemies.\n● Deal 75% damage to enemies.\nUseful to balance your playthrough with modded weapons."
+	
+	ModdedDifficulty3 = "Tough Modded Captain"
+	ModdedDifficulty3Tip = "● Take 110% damage from enemies.\n● Deal 60% damage to enemies.\nUseful to balance your playthrough with modded weapons."
+	
+	TrollPhy = "Troll Combat"
+	TrollPhyTip = "● Take 69% damage from enemies.\n● Deal 69% damage to enemies.\nFire Chance, Etc is also 69%.\nCould be interesting or something i dunno."
+}
+Techs
+{
+	reprosessingName = "Basic Material Reprocessing"
+	reprosessingDesc = "Simple Technology that allows you to reprocess already processed materials, Such as to split down Tristeel or Un-Enrich uranium.\n(Unlocks Cutter)"
+	
+	advancedmaterialsName = "Advanced Material Manipulation"
+	advancedmaterialsDesc = "Advanced Technology that allows you to process advanced materials with ease, Such to convert hard gold into Goldium\n(Unlocks Large Fabricator)<gray>(More materials will be availble later)</gray>"
+	
+	Inserters = "Resource Inserters"
+	InsertersDesc = "Mechanical Arms that allow for automated supplying or Weapons, Factories, And Special storages. Researching this also unlocks Special Storages compatible with Inserters."
+	InserterOverclock = "Overclocked Inserters"
+	
+	LongInserters = "Longer Inserters"
+	LongInsertersDesc = "Unlocks a new variation of inserters that can reach a extra block of distance, but is slower and less efficient. The additional block of distance can be used for further use of space."
+	LongInserterOverclock = "Overclocked Long arm Inserters"
+	InserterLongOverclockShort = "Allows Long arm Inserters to also be overclocked in a similar manner to Inserters."
+	
+	StackInserters = "Bulk Inserters"
+	StackInsertersDesc = "Unlocks a new variation of heavy inserters that can transfer a entire stack of resources, useful for extreme throughput and high storage weapons, such as the deck cannon."
+	StackInserterOverclock = "Overclocked Stack Inserters"
+	InserterStackOverclockShort = "Allows Stack Inserters to also be overclocked in a similar manner to Inserters."
+	
+	LogicThrusters = "Logic Thrusters"
+	LogicThrustersDesc = "Unlocks a variation of Normal Thrusters that can interact with logic signals. Technical Limitations make the Ramp-up time not get affected by normal sources."
+}
+Codex
+{
+	JaniTutorials = "Tutorials (Jani's Shipyard)"
+	NoText = "     "
+	NoTextX = "<s24000000> \n</s24000000>"
+}
+Tutorials
+{
+	Bossfights
+	{	
+		BetaWarning1Title = "Bossfights (BETA README PLZ)"
+		BetaWarning1 = "Bosses have specific destruction patterns you are supposed to follow, if needed hold ctrl to read descriptions in parts for more information."
+		//BetaWarning1 = "This is the boss i was making. you are intended to destroy the front 6 balls to disable the blue shields and nerf the missile launchers. then you should destroy the orb in the middle to progress to the final part of the fight, where you are intended to destroy the core. Refer to the description of enemy parts for more help, if needed hold ctrl to read them."
+	}
+	Inserters
+	{
+		Title = "Resource Inserters"
+		Inserter = "<good>Inserters</good> are energy powered, resource moving parts that transfer <good>ammunition, building material and nuggets of ores</good> without needing crew to transfer them."
+		Factory = "Resources can be transferred from any block of a part, its not required to be connected to the specific resource tiles in case of factories."
+		Storage = "Your <good>Vanilla storage</good> are <bad>Unable</bad> to be used with inserters, As an alternative, the mod adds a <good>New Special Storage</good> that can be used with Inserters. these only store one type of resource, and has the <good>Same capacity</good> of a Vanilla storage of the same size."
+		Powering = "<good>Power Ports</good> Can be used to wirelessly power Inserters from a distance, they are very useful for making automated setups if you're relying on crew to power your machines."
+		Capacity = "Inserters transfer in batches equivalent to how much crew can carry of that resource. They will wait until their hand is full before swinging to the other side, then only swing back once they are empty.\n <bad>Hand capacity affected by Storage changing mods</bad>"
+		Types = "There are <good>Alternative types</good> of Inserters.\n\n<good>Long Handed Inserters</good> can reach over a one block gap.\n\n<good>Bulk Inserters</good> transfer a entire stack of resources at a time, instead of a hand. If the destination is full, will swing back to the grabbing position."
+		Example = "Setup Examples"
+		Tip = "<good>TIP:</good> Inserters are highly expensive in power usage, but overall requires less crew trips, "
+	}
+}
+AI
+{
+	JaniBossAICosmilite = "CSML. Boss AI"
+}
+JaniBossShips = "Bosses and Guardians"
+JaniBossShipsTip = "Boss and Hyperoid Guardian ships that come with Jani's Shipyard."
+JaniMinibossesShips = "Guardians"
+JaniMinibossesShipsTip = "Hyperoid Guardian ships that come with Jani's Shipyard."
+Buff
+{
+	Connected = "Connected"
+}
+BuildBox// Modular Missiles guided towards the right track. thanks
+{
+	CustomCannon_DamageFmt = "<red><image name='jani_customcannon_damage' colored='true' /><good>+{0:0}%</good>"\
+	"\n\n\n\n"
+	CustomCannon_RangeFmt = "<blue><image name='jani_customcannon_range' colored='true' /><good>+{0:0}%</good>"\
+	"\n\n\n"
+	CustomCannon_SpeedFmt = "<yellow><image name='jani_customcannon_speed' colored='true' /><good>+{0:0}%</good>"\
+	"\n\n"
+	CustomCannon_AmmoFmt = "<red><image name='jani_customcannon_ammo' colored='true' /><good>+{0:0}%</good>"\
+	"\n"
+	CursedMana = "Cursed Mana Points"
+	HolyMana = "Holy Mana Points"
+}
+//Misc
+//{
+//	LoadingUncachedAssets = "Loading mod assets for the first time.\nThis may take a while."
+//}
+Nebulas
+{
+	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have increased speed and increased sensor range."
+	DarkEnergyHudFmt = "<s12>{0:0.}%</s12>\n<s12><gray>energy</gray></s12>"
+}
