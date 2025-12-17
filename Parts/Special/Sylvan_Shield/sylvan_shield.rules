@@ -433,7 +433,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/shield_gen_small/activate.wav"
+					RandomSounds = ["./data/ships/terran/shield_gen_small/sounds/small_shield_start_01.wav",
+									"./data/ships/terran/shield_gen_small/sounds/small_shield_start_02.wav"]
 					Volume = 1.5
 					Speed = 0.25
 					IgnoreIntensity = true
@@ -443,7 +444,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/shield_gen_small/deactivate.wav"
+					Sound = "./data/ships/terran/shield_gen_small/sounds/small_shield_stop.wav"
 					Volume = 1.5
 					Speed = 0.25
 					IgnoreIntensity = true

@@ -924,7 +924,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					RandomSounds = ["./data/ships/terran/reactor_large/destroyed/destroyed_01.wav", "./data/ships/terran/reactor_large/destroyed/destroyed_02.wav", "./data/ships/terran/reactor_large/destroyed/destroyed_03.wav"]
+					RandomSounds = ["./data/ships/terran/reactor_large/destroyed/reactor_destroyed_01.wav", "./data/ships/terran/reactor_large/destroyed/reactor_destroyed_02.wav", "./data/ships/terran/reactor_large/destroyed/reactor_destroyed_03.wav"]
 					Volume = 2
 					Speed = 0.6
 					SpeedVariation = .25 * (&Speed)

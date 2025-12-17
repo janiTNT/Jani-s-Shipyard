@@ -141,7 +141,7 @@ Components
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/ships/terran/cannon_med/shoot.wav"
+					Sound = "./Data/ships/terran/cannon_med/sounds/cannon_med_shot.wav"
 					Volume = 0.8
 					Speed = 1
 					SpeedVariation = .25

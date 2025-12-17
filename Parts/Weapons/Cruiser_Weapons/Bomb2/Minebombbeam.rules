@@ -227,7 +227,7 @@ HitNothing
 
 		: /BASE_SOUNDS/AudioExterior
 		{
-			Sound = "./data/shots/mine/alarm.wav"
+			Sound = "./data/shots/mine/mine_alarm.wav"
 			Volume = 0.3
 			SpeedVariation = 0
 		}

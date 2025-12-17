@@ -179,7 +179,7 @@ Part : <../base_part_occult.rules>/Part
 
 				: /BASE_SOUNDS/AudioExteriorDetail
 				{
-					Sound = "./data/ships/terran/shield_gen_small/shield_loop.wav"
+					Sound = "./data/ships/terran/shield_gen_small/sounds/small_shield_energy_idle.wav"
 					Volume = .15
 					Speed = .5
 					MaxConcurrent = 1
@@ -264,7 +264,8 @@ Part : <../base_part_occult.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/shield_gen_small/activate.wav"
+					RandomSounds = ["./data/ships/terran/shield_gen_small/sounds/small_shield_start_01.wav",
+									"./data/ships/terran/shield_gen_small/sounds/small_shield_start_02.wav"]
 					Volume = .5
 					Speed = 1
 					IgnoreIntensity = true
@@ -274,7 +275,7 @@ Part : <../base_part_occult.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/shield_gen_small/deactivate.wav"
+					Sound = "./data/ships/terran/shield_gen_small/sounds/small_shield_stop.wav"
 					Volume = .5
 					Speed = 1
 					IgnoreIntensity = true

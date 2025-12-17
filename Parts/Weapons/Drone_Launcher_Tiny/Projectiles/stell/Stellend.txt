@@ -73,7 +73,7 @@ Components : &<StellBase.txt>/Components
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/ships/terran/cannon_med/shoot.wav"
+					Sound = "./Data/ships/terran/sounds/cannon_med_shot.wav"
 					Volume = 0.25
 					Speed = 1.25
 					SpeedVariation = .25
