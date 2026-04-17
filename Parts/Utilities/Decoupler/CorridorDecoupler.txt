@@ -67,6 +67,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 		
+		IsOperational = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/IsOperational
+		
+		Darkness_Components = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Darkness_Components
+		
 		WallsBlend : <./Data/ships/terran/walls/walls.rules>
 		{
 			Type = BlendSprite

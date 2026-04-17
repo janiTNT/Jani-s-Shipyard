@@ -6,6 +6,7 @@ Part : <./data/ships/terran/thruster_med/thruster_med.rules>/Part
 	OtherIDs = []
 	EditorParentParts = [ ["skipydog.logic_thruster_small", -1] ]
 	DescriptionKey = "Parts/LogicThrusterMedDesc"
+	EditorGroup = "Logic"
 	TypeCategories = [thruster, uses_power, logic]
 	SelectionTypeID = "logic_thrusters"
 	ThrustIncreaseTime = 0
