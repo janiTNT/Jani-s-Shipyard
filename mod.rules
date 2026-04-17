@@ -691,9 +691,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		AddTo = "<modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/StationResourceTradeDeltas"
 		ManyToAdd
 		[
-			//{ ResourceType=goldium;          DesiredDelta=[-60, 60]; }
-			{ ResourceType=cut.tristeel;          DesiredDelta=[-60/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity), 60/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity)]; }
-			{ ResourceType=janitnt.circuit1;          DesiredDelta=[-40/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity), 40/(&<./data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/TradeRoutes/_estimatedSmallStationCapacity)]; }
+			{ ResourceType=cut.tristeel;          PercentOfTypedTiles=[80%, 90%];   PercentOfUntypedTiles=[0%, 5%]; }
+			{ ResourceType=janitnt.circuit1;          PercentOfTypedTiles=[80%, 90%];   PercentOfUntypedTiles=[0%, 5%]; }
 		]
 	}
 	{
