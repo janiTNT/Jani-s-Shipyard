@@ -17,7 +17,7 @@ Part : <../../baselogicpart.rules>/Part
 	SelectionTypeByRotation = true
 	SelectionTypeID = "sensor"
 	TypeCategories = [sensor, logic, non_flammable]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Improve_Sensor_Range, AdvS_Setting, AdvS_Setting_Second, Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Improve_Sensor_Range, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third, Logic]
 	SettingsMultiplier = 1 //needed for the number 0 to 99 settings
 	IgnoreOwnShip = true
 	EditorIcon

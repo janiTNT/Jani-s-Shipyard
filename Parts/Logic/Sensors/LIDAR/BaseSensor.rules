@@ -4,12 +4,13 @@ Part
 	IgnoreOwnShip = true
 	Components : &/JANI_COMMON/SettingsOnes/Part/Components
 	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+	&/JANI_COMMON/SettingsHundreds/Part/Components //AdvS_Setting_Second
 	{
 		RangeSetting
 		{
 			Type = SelfBuffProvider
 			BuffType = Improve_Sensor_Range
-			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Second; BuffMode=Add }
+			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add }
 		}
 		FireModeToggle
 		{
