@@ -1,5 +1,5 @@
 Type = None
-SpawnChance = 17/18
+SpawnChance = 14/18
 Conditions
 {
 	MinNodeTier = 4
@@ -45,6 +45,16 @@ SubSpawners
 			{ Type=janiTNT.rare_ore_hyperoid_m;       ChanceWeight=0.25; }
 		]
 		SubSpawners = &~/HyperoidSubSpawnersHandler
+	}
+	: &0
+	{
+		SpawnChance = 1/5
+		Conditions {}
+	}
+	: &1
+	{
+		SpawnChance = 1/5
+		Conditions {}
 	}
 ]
 HyperoidSubSpawnersHandler

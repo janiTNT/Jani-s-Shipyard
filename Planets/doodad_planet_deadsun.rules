@@ -20,13 +20,14 @@ RenderStage = &<./Data/doodads/planets/doodad_planet_sun.rules>/RenderStage
 IsLightSource = &<./Data/doodads/planets/doodad_planet_sun.rules>/IsLightSource
 ShowInMinimap = &<./Data/doodads/planets/doodad_planet_sun.rules>/ShowInMinimap
 MinimapColorScale = &<./Data/doodads/planets/doodad_planet_sun.rules>/MinimapColorScale
+Tags = [sun]
 
-ProximityDamage : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage
+ProximityEffects : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityEffects
 {
-	InstantKillRadius = 0.5 //yes
+	InstantKillRadiusFactor = 0.5 //yes
 	//RaycastDamage = [200, 50]
 	//RaycastDamageDistanceExponent = 0.5
-	RaycastDamageCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage/RaycastDamageCircle
+	WarningCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityEffects/WarningCircle
 	{
 		Texture
 		{
@@ -36,7 +37,7 @@ ProximityDamage : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDam
 			MipLevels = max
 		}
 	}
-	RaycastDamageMinimapCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityDamage/RaycastDamageMinimapCircle
+	RaycastDamageMinimapCircle : &<./Data/doodads/planets/doodad_planet_sun.rules>/ProximityEffects/RaycastDamageMinimapCircle
 	{
 		Texture
 		{

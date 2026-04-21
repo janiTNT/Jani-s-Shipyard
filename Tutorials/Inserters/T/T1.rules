@@ -17,6 +17,10 @@ Part : <../../../Hyperoid/base_part_hyperoid.rules>/Part
 	//FlipHRotate = [1, 0, 3, 2]
 	//FlipVRotate = [3, 2, 1, 0]
 	IsWalled = false
+	StatusResistances
+	{
+		cosmoteer.heat = 1
+	}
 	
 	IsBuildable = false
 	

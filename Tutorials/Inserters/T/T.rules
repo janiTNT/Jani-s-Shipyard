@@ -24,11 +24,12 @@ A
 			{ File="Tsh/S-E-R-P.ship.png"; Tags=[T_anomM]}
 			{ File="Tsh/Prophet.ship.png"; Tags=[T_anomM]}
 			{ File="Tsh/Hyperium Composite.ship.png"; Tags=[T_anomM]}
-			{ File="Tsh/Studded.ship.png"; Tags=[T_anomM]}
+			//{ File="Tsh/Studded.ship.png"; Tags=[T_anomM]}
 			
 			{ File="Tsh/Karma.ship.png"; Tags=[T_anomL]}
 			{ File="Tsh/Abandon All Hope.ship.png"; Tags=[T_anomL]}
 			{ File="Tsh/Perfectly Still.ship.png"; Tags=[T_anomL]}
+			{ File="Tsh/Fantastical Ruin.ship.png"; Tags=[T_anomL]}
 		]
 	}
 ]

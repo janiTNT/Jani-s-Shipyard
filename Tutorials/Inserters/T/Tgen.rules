@@ -1,13 +1,14 @@
 Type = None
 Tags = [T_anomP]
-Count = [4]
+Count = [1]
 SpawnChance = 0.1
 //SpawnChance = 1
 //SpawnChance = 0
 Conditions
 {
-	RequireSpawnFlags = [no_sun, supernova_nebulas]
+	//RequireSpawnFlags = [no_sun, supernova_nebulas]
 	IsInitNode=false
+	MinTier = 8
 }
 SubSpawners
 [
