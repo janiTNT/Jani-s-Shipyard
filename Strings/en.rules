@@ -152,15 +152,31 @@ Parts
 	
 	DroneLauncherTiny = "Tiny Drone Launcher"
 	DroneLauncherTinyIcon = "T. Drones"
-	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates and circuits into Tiny Class Drones.\nOnce built, you can not get your resources back." //\n<gray><b>The First iteration.</b> Research this technology further.</gray>
+	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates and circuits into Tiny Class Drones.\nOnce built, you can not get your resources back."; //\n<gray><b>The First iteration.</b> Research this technology further.</gray>
 	
 	DroneLauncherSmall = "Small Drone Launcher"
 	DroneLauncherSmallIcon = "S. Drones"
-	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back."//\n<gray><b>The Second iteration.</b> You're getting somewhere with this.</gray>
+	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back."\
+	"<b>Laser Cannon Drone</b>\n\n"\
+	"Bigger. Better. Stronger. a severe upgrade in laser technology, Built with reverse engineering from competing brands, and reckless overclocking.\n\n"\
+	"<b>Laser Cannon Drone Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>6</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>12</good> Electronic Circuit <gray>(</gray><good>2</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>30k</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
+	"<b>Laser Cannon Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
+	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>2000</good><gray>/sec)</gray>\n"\
+	"<white>Shots:</white><good> 30</good>\n"\
+	"<white>Durability:</white><good> 2500</good>\n"\
+	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>";//\n<gray><b>The Second iteration.</b> You're getting somewhere with this.</gray>
 	
 	DroneLauncherLarge = "Medium Drone Launcher"
 	DroneLauncherLargeIcon = "M. Drones"
-	DroneLauncherLargeDesc = "This bigger design of the small launcher uses a larger arm placement to rapidly weld large sections of these larger drones, and to use multiple materials to create them. Some drones may require different materials.\nSome drones may need coils or other construction materials.\n<gray><b>The Third iteration.</b> Bigger is better. for your peformance. trust me./gray>"
+	DroneLauncherLargeDesc = "This bigger design of the small launcher uses a larger arm placement to rapidly weld large sections of these larger drones, and to use multiple materials to create them. Some drones may require different materials.\nSome drones may need coils or other construction materials.\n<gray><b>The Third iteration.</b> Bigger is better. for your peformance. trust me./gray>";
 	
 	Hyperoid4x4 = "Hyper-Rock (4x4)"
 	Hyperoid3x3 = "Hyper-Rock (3x3)"

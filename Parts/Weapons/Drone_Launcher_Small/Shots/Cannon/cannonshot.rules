@@ -31,13 +31,13 @@ Components
 	DamagePool
 	{
 		Type = DamagePool
-		Damage = 2500
+		Damage = 1200
 	}
 
 	Hit
 	{
 		Type = PenetratingHit
-		Penetration = 20
+		Penetration = 9
 		PenetrationSpeed = 15
 		
 		CrewCollisions = {Enemies=true; Junk=true}

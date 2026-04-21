@@ -62,7 +62,7 @@ Components
 			[
 				: ../../HitOperational/HitEffects/0
 				{
-					Amount = 900 * 1.8
+					Amount = 800
 					TreatShieldAsPart = true
 				}
 			]
@@ -77,7 +77,7 @@ Components
 				{
 					Type = ResourceDrain
 					ResourceType = battery
-					Amount = 600 * 1.8
+					Amount = 500
 
 					MediaEffectsOnDrain = &<./Data/shots/disruptor_bolt/disruptor_bolt.rules>/Components/Hit/HitOperational/HitEffects/0/MediaEffectsOnDrain
 				}

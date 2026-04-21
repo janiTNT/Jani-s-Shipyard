@@ -163,6 +163,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ToggleID = "smalldronetype"
 			Default = 0
 			AlwaysAllowInBuildMode = true
+			AvailableChoices = [0]
 		}
 
 		LaserToggle
