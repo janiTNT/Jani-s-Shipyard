@@ -67,7 +67,7 @@ Parts
 	
 	StationArmor = "Station Hyperdense Armor"
 	StationArmorIcon = "[Station] Armor"
-	StationArmorDesc = "infusing normal armor with tritanium greatly enhanced its toughness... for the cost of being <bad>Extremely heavy</bad> to the point of essentially being worth it only in protecting stations or highly sensitive parts such as reactors."
+	StationArmorDesc = "Infusing normal armor with tritanium greatly enhanced its toughness... for the cost of being <bad>Extremely heavy</bad> to the point of essentially being worth it only in protecting stations or highly sensitive parts such as reactors."
 	
 	StationArmor2x1 = "Station Hyperdense Armor 2x1"
 	StationArmor2x1Icon = "[Station] 2x1"
@@ -993,7 +993,7 @@ Parts
 	
 	CoilBig = "Large Copper Wire Coil"
 	CoilBigIcon = "Large Coil"
-	CoilBigDesc = "Big coil. Usable as it's own part, with little use apart from EMP resistance. used in other parts if you look close."
+	CoilBigDesc = "Big coil. Usable as it's own part, with little use apart from EMP resistance."
 	
 	WallMass = "Ship Hull Mass"
 	WallMassIcon = "Hull Mass"
@@ -1638,7 +1638,7 @@ CombatDifficulty
 Techs
 {
 	reprosessingName = "Basic Material Reprocessing"
-	reprosessingDesc = "Simple Technology that allows you to reprocess already processed materials, Such as to split down Tristeel or Un-Enrich uranium.\n(Unlocks Cutter)"
+	reprosessingDesc = "Simple Technology that allows you to reprocess already processed materials, Such as to split down Tristeel or Un-Enrich uranium\nUnlocks Tristeel bar cutter, Uranium Un-enricher, Sheetmetal armor, Steel block, Large coil, Machine frame, Bulkhead."
 	
 	advancedmaterialsName = "Advanced Material Manipulation"
 	advancedmaterialsDesc = "Advanced Technology that allows you to process advanced materials with ease, Such to convert hard gold into Goldium\n(Unlocks Large Fabricator)<gray>(More materials will be availble later)</gray>"

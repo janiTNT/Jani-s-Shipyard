@@ -105,12 +105,56 @@ Techs
 			}
 			Size = [80, 80]
 		}
-		EditorGroups = ["Production", "Technologies"]
+		EditorGroups = ["Production", "Technologies", "Defenses"]
 		PartsUnlocked
 		[
 			//&<Parts/Production/splitter/splitter.rules>/Part/ID
 			&<Parts/Production/Splitter/splitter_tristeel.rules>/Part/ID
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part/ID
+			
+			&<Parts/Decorative/Sheetmetals/sheet.steel>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge2.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge3.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_tri.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge2_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_wedge3_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/steel/steel_tri_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/sheet.copper>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge2.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge3.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_tri.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge2_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_wedge3_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/copper/copper_tri_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/sheet.tristeel>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge2.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge3.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_tri.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge2_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_wedge3_hybrid.rules>/Part/ID
+			&<Parts/Decorative/Sheetmetals/wedges/tristeel/tristeel_tri_hybrid.rules>/Part/ID
+			
+			&<Parts/Common/WallMass/wallmass.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/wedge.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/wedge2.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/wedge3.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/tri.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/wedge_hybrid.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/wedge2_hybrid.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/wedge3_hybrid.rules>/Part/ID
+			&<Parts/Common/WallMass/wedges/tri_hybrid.rules>/Part/ID
+			
+			&<Parts/Common/Steelbig/Steelbig.rules>/Part/ID
+			&<Parts/Common/Coilbig/Coilbig.rules>/Part/ID
+			
+			&<Parts/Common/MachineFrame/MachineFrame.rules>/Part/ID
+			&<Parts/Common/Bulkhead/Bulkhead.rules>/Part/ID
 		]
 		Cost = 1000
 	}
@@ -620,6 +664,24 @@ Techs
 		]
 		Prerequisites = [cosmoteer.thruster_rocket]
 		Cost = 1000
+	}
+	{
+		ID = janiTNT.stationarmor
+		NameKey = &<Parts/Decorative/StationArmor/main.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Decorative/StationArmor/main.rules>/Part/DescriptionKey
+		Icon = &<Parts/Decorative/StationArmor/main.rules>/Part/EditorIcon
+		EditorGroups = ["Defenses"]
+		PartsUnlocked
+		[
+			&<Parts/Decorative/StationArmor/main.rules>/Part/ID
+			&<Parts/Decorative/StationArmor/long.rules>/Part/ID
+			&<Parts/Decorative/StationArmor/wedge.rules>/Part/ID
+			&<Parts/Decorative/StationArmor/longwedge.rules>/Part/ID
+			&<Parts/Decorative/StationArmor/three.rules>/Part/ID
+			&<Parts/Decorative/StationArmor/t.rules>/Part/ID
+		]
+		Prerequisites = [janiTNT.material_reprocessing]
+		Cost = 2000
 	}
 	{
 		ID = &<Parts/Logic/Util/HeatValve/HeatValve.rules>/Part/ID
