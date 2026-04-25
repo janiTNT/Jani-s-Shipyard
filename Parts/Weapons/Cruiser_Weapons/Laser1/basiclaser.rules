@@ -345,40 +345,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "../base/1x1_floor.png"
-						Size = [1, 1]
-					}
-				]
-			}
-			OperationalDoodad
-			{
-				Layer = "doodads_low"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"../base/top_doodads_on1.png"
-							"../base/top_doodads_on2.png"
-							"../base/top_doodads_on3.png"
-							"../base/top_doodads_on4.png"
-							"../base/top_doodads_on5.png"
-							"../base/top_doodads_on6.png"
-							"../base/top_doodads_on7.png"
-							"../base/top_doodads_on8.png"
-						]
-						Size = [1, 1]
-						AnimationInterval = 0.1
-					}
-				]
-			}
-			NonOperationalDoodad
-			{
-				Layer = "doodads_low"
-				DamageLevels
-				[
-					{
-						File = "../base/top_doodads_off.png"
+						File = "floor.png"
 						Size = [1, 1]
 					}
 				]
@@ -389,9 +356,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "../base/1x1_lights.png"
+						AnimationFiles
+						[
+							"lights1.png"
+							"lights2.png"
+							"lights3.png"
+							"lights4.png"
+						]
 						Size = [1, 1]
-						VertexColor = [255, 0, 0]//Lasers
+						AnimationInterval = 0.15
 					}
 				]
 			}
@@ -401,60 +374,26 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				DamageLevels
 				[
 					{
-						File = "../base/1x1_walls.png"
+						File = "walls.png"
 						Size = [1, 1]
 					}
 				]
 			}
-			/*WallsStencil
+			Roof
 			{
-				Layer = "walls_stencil"
-				Offset = [0, -1]
+				Layer = "roofs"
 				DamageLevels
 				[
 					{
-						File = "../base/basicmount_stencil.png"
-						Size = [1, 1]
-					}
-				]
-			}*/
-			OperationalRoofDoodad
-			{
-				Layer = "doodads_low"
-				DamageLevels
-				[
-					{
-						AnimationFiles
-						[
-							"../base/bottom_doodads_on1.png"
-							"../base/bottom_doodads_on2.png"
-							"../base/bottom_doodads_on3.png"
-							"../base/bottom_doodads_on4.png"
-							"../base/bottom_doodads_on5.png"
-							"../base/bottom_doodads_on6.png"
-							"../base/bottom_doodads_on7.png"
-							"../base/bottom_doodads_on8.png"
-						]
-						Size = [1, 1]
-						AnimationInterval = 0.1
-					}
-				]
-			}
-			NonOperationalRoofDoodad
-			{
-				Layer = "doodads_low"
-				DamageLevels
-				[
-					{
-						File = "../base/bottom_doodads_off.png"
+						File = "roof.png"
+						NormalsFile = "roof_n.png"
 						Size = [1, 1]
 					}
 				]
 			}
-			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
 		}
 		
-		Graphics2
+		/* Graphics2
 		{
 			Type = Graphics
 			Location = [.5, .5]
@@ -505,7 +444,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					}
 				]
 			}
-		}
+		} */
 		
 		BatterySprites
 		{
@@ -516,27 +455,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceLevels
 			[
 				{
-					File = "../base/batteries1.png"
-					Size = [1, 1]
-				}
-				{
-					File = "../base/batteries2.png"
-					Size = [1, 1]
-				}
-				{
-					File = "../base/batteries3.png"
-					Size = [1, 1]
-				}
-				{
-					File = "../base/batteries4.png"
-					Size = [1, 1]
-				}
-				{
-					File = "../base/batteries5.png"
-					Size = [1, 1]
-				}
-				{
-					File = "../base/batteries6.png"
+					File = "battery.png"
 					Size = [1, 1]
 				}
 			]
