@@ -1,0 +1,315 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/Hullheater"
+	IconNameKey = "Parts/HullheaterIcon"
+	ID = janiTNT.hullheater
+	EditorGroup = "Thermal"
+	DescriptionKey = "Parts/HullheaterDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil, 7]
+		[janitnt.circuit1, 4]
+	]
+	Size = [1, 1]
+	IsRotateable = true
+	IsFlippable = true
+	SelectionPriority = 0
+	MaxHealth = 1000
+	TypeCategories = [ heat_management, Port_IN, non_flammable, logic ]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, PowerportBuff]
+	Flammable = false
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	CrewSpeedFactor = 0
+	ForceBrushCompatibility = false
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		//XorFinal
+		LogicOutput
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [NonJunkToggle, PowerToggle, {Toggle = LogicOutput, invert = true}, BatteryStorage]
+			Mode = All
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 2000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+
+		NonJunkToggle
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+		
+		HeatGenerationTimer
+		{
+			Type = Timer
+			OperationalToggle = IsOperational
+			Duration = 0.25
+			AutoStart = true
+			Repeats = true
+		}
+		
+		PowerDrain
+		{
+			Type = ResourceChange
+			Trigger = HeatGenerationTimer
+			ResourceStorage = BatteryStorage
+			Amount = -100
+		}
+		
+		HeaterEffects
+		{
+			Type = TriggeredEffects
+			Trigger = HeatGenerationTimer
+			FactorHitEffectsWith = ValueSmooth
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					//HitPartSourceRectType = Normal
+					StatusValue = 0
+					StatusValuePool
+					{
+						BaseValue = 1000
+						EffectScaleExponent = 1
+						Modifiers
+						[
+							{
+								Type = EffectScale
+								ModificationMode = Multiply
+							}
+						]
+					}
+					MaxCost = 4
+					EmptyTileCost = 1000
+					AllowDiagonals = true
+					ValueFalloff = 1
+					FalloffPadding = 1
+					Filter
+					{
+						Self = true
+					}
+				}
+			]
+		}
+
+		One { Type = StaticValue; Value = 1 }
+		Zero { Type = StaticValue; Value = 0 }
+		GenerationSmoothingTargetValue
+		{
+			Type = ToggleValueSelector
+			Toggle = IsOperational
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+		ValueSmoothVisual
+		{
+			Type = SmoothedValue
+			ValueSource = GenerationSmoothingTargetValue
+			MaxDelta = 0.5
+			Deterministic = false
+		}		
+		ValueSmooth
+		{
+			Type = SmoothedValue
+			ValueSource = GenerationSmoothingTargetValue
+			MaxDelta = 0.5
+			Deterministic = true
+		}		
+		ThermalLoadGlowColorFactor
+		{
+			Type = ValueColor
+			AlphaFrom = ValueSmoothVisual
+		}
+
+		Heat_Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			GetColorFrom = ThermalLoadGlowColorFactor
+			OperationalRoofDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "heat.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+
+		HeaterVisualEffects
+		{
+			Type = ContinuousEffects
+			Location = [.5, .5]
+			MinMediaEffectsIntensity = 1%
+			FactorMediaEffectsIntensityWith = ValueSmooth
+			MediaEffects
+			[
+				// Non-Overclocked
+				: /BASE_SOUNDS/AudioInteriorDetail
+				{
+					Sound = "heatnoise.wav"
+					Volume = { BaseValue=1; EffectScaleExponent = 1 }
+					Speed = 1
+					MaxConcurrent = 1
+					MaxConcurrentVolume = .4
+					IgnoreIntensity = true
+				}
+				//&<particles/heat_sink_max.rules>
+			]
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, .5]
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, .5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			//OperationalLighting
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 0.5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, .5]
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+	}
+
+	Stats
+	{
+		//HeatAbsorption = (&~/Part/Components/HeatExchanger/ValueDeltaPool) / (&~/Part/Components/HeatExchangerTimer/Duration)
+		//HeatAbsorptionInefficiency = (&~/Part/Components/HeatExchanger/INEFFICIENCY) * 100
+		//HeatAbsorptionRadius = (&~/Part/Components/HeatExchanger/Region/Distance)
+		HeatGeneration = (&~/Part/Components/HeaterEffects/HitEffects/0/StatusValuePool/BaseValue) / (&~/Part/Components/HeatGenerationTimer/Duration)
+		RecPower = (-(&~/Part/Components/PowerDrain/Amount)/ 1000) / (&~/Part/Components/HeatGenerationTimer/Duration)
+		PowerUsageContinuous = (&RecPower)
+		RecCrew = (&RecPower) * 4
+	}
+}
