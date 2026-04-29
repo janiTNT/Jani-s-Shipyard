@@ -1,0 +1,507 @@
+OVERCLOCK
+{
+	POWER_RADIUS = 6
+	HEAT_PER_SECOND = 300
+	HEAT_PER_INSERT = 20
+	EFFICIENCY = 90%
+	POWER_CONSUMPTION = 1.5
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
+{
+	NameKey = "Parts/PowerPort"
+	IconNameKey = "Parts/PowerPortIcon"
+	ID = janiTNT.power_port // Part IDs  somthing something
+	EditorGroups = ["Production", "Power"]
+	DescriptionKey = "Parts/PowerPortDesc"
+	Resources
+	[
+		[steel, 16]
+		[coil, 6]
+	]
+	//sus
+	Size = [1, 1]
+	MaxHealth = 1000
+	//IsFlippable = true
+	IsRotateable = true
+	TypeCategories = [PowerPort, uses_power, Port_OUT]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	SignificanceToggle = ScorchedToggle
+	//AllowedDoorLocations
+	//[
+	//	[-1, 0]
+	//	//[0, 1]
+	//	[1, 0]
+	//]
+	//IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "Icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{	
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, SelfBatteryStorage, {Toggle = ScorchedToggle}, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
+			Mode = All
+		}
+		
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+		
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 3
+		}
+		
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Up : Port_Thermal_Left
+		{
+			Direction = Up
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
+		}
+		
+		BuffProvider
+		{
+			Type = CircleBuffProvider
+			BuffType = PowerportBuff
+			BuffRadius = 3
+			BuffAmount = 1
+			OperationalToggle = IsOperationalNonOverclocked
+			ShowBuffRange = true
+			BlueprintOverlayToggle = OverclockModeToggle
+			InvertBlueprintOverlayToggle = true
+		}
+		/* BuffProviderBlueprintComponents
+		{
+			Type = ToggledComponents
+			Toggle = OverclockModeToggle
+			IncludeInBlueprints = dynamic
+			Invert = true
+			Components
+			{
+				BuffProviderBlueprint : &../../BuffProvider
+				{
+					ShowBuffRange = true
+					BlueprintsOnly = true
+					//BlueprintOverlayToggle = OverclockModeToggle
+				}
+			}
+		}*/
+		/* OverclockedProviderBlueprint
+		{
+			Type = ToggledComponents
+			Toggle = OverclockModeToggle
+			IncludeInBlueprints = dynamic
+			//Invert = true
+			Components
+			{
+				BuffProviderOverclockedBlueprint : &../../BuffProviderOverclocked
+				{
+					ShowBuffRange = true
+					BlueprintsOnly = true
+					//BlueprintOverlayToggle = OverclockModeToggle
+				}
+			}
+		} */
+		/* BuffProviderOverclockedBlueprint : &BuffProviderOverclocked
+		{
+			OperationalToggle = OverclockModeToggle
+			ShowBuffRange = true
+			BlueprintsOnly = true
+		} */
+		BuffProviderOverclocked
+		{
+			Type = CircleBuffProvider
+			BuffType = PowerportBuff
+			BuffRadius = &~/OVERCLOCK/POWER_RADIUS
+			BuffAmount = 1
+			OperationalToggle = IsOperationalOverclocked
+			//ShowBuffRange = true
+			BlueprintOverlayToggle = OverclockModeToggle
+			InvertBlueprintOverlayToggle = false
+		}		
+
+		SelfBatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+		}
+		CombinedBatteryStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [SelfBatteryStorage]
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [BuffProvider, BuffProviderOverclocked]
+				ComponentID = BatteryStorage
+			}
+			AddMode = PrioritizeLeastResources
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryStorage // When Underclocked, can accept power from other sources to retransmit.
+		{
+			Type = ResourceStorageProxy
+			ProxyToggle = IsOverclocked
+			InvertProxyToggle = true
+			ResourceType = battery
+			ComponentID = CombinedBatteryStorage
+		}
+		Overclock_CombinedBatteryStorageProxy : BatteryStorage
+		{
+			InvertProxyToggle = false
+			ComponentID = CombinedBatteryStorage
+			QuantityScale = 1 / (&~/OVERCLOCK/EFFICIENCY)
+		}
+		Overclock_DeliveryHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_CombinedBatteryStorageProxy
+			Amount 
+			{ 
+				BaseValue = (&~/OVERCLOCK/HEAT_PER_INSERT) * (&~/HEAT_TO_RESOURCE)
+				Modifiers
+				[
+					{
+						Type = ScaledEffectScale
+						ModificationMode = Multiply
+						// 1000 power = 1 battery
+						Scale = 1/1000
+					}
+				] 
+			}
+		}
+
+		BatteryDistributionStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = battery
+			ResourceStorages = [BatteryStorage, Overclock_CombinedBatteryStorageProxy]
+		}
+		
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryDistributionStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+
+		PowerDrain
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			FromStorage = SelfBatteryStorage
+			FromQuantity
+			{
+				BaseValue = 100
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Overclock
+						ModificationMode = Lerp
+						MinValue = &../../BaseValue
+						MaxValue = ceil("(&../../BaseValue) * (&~/OVERCLOCK/POWER_CONSUMPTION)")
+					}
+				]
+			}
+			MinFromQuantityForConversion = 1
+			Interval = 1
+		}
+		
+		BaseGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "../Reactoraux/walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+		
+		Port_NonOverclocked_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Invert = true
+			Components
+			{
+				NonOverclocked_Graphics
+				{
+					Type = Graphics
+					OperationalToggle = IsOperational
+					Location = [0.5, 0.5]
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								AnimationFiles
+								[
+									"doodads_on1.png"
+									"doodads_on2.png"
+									"doodads_on3.png"
+									"doodads_on4.png"
+									"doodads_on5.png"
+									"doodads_on6.png"
+									"doodads_on7.png"
+									"doodads_on8.png"
+								]
+								Size = [1, 1]
+								AnimationInterval = 0.075
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doodads_off.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		Port_Overclocked_Components
+		{
+			Type = ToggledComponents
+			Toggle = IsOverclocked
+			Components
+			{
+				NonOverclocked_Graphics
+				{
+					Type = Graphics
+					OperationalToggle = IsOperational
+					Location = [0.5, 0.5]
+					OperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								AnimationFiles
+								[
+									"doodads_on1.png"
+									"doodads_on2.png"
+									"doodads_on3.png"
+									"doodads_on4.png"
+									"doodads_on5.png"
+									"doodads_on6.png"
+									"doodads_on7.png"
+									"doodads_on8.png"
+								]
+								Size = [1, 1]
+								AnimationInterval = 0.004
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "doodads_off.png"
+								Size = [1, 1]
+							}
+						]
+					}
+					OperationalLighting
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "overclock_lights.png"
+								Size = [1, 1]
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [.5, .5]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "batteries4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+		}
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
+		}
+		
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+		
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [0.5, 0.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1]
+				}
+				
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+		}
+	}
+
+	Stats
+	{
+		//CrewRequired = &~/Part/Components/PartCrew/Crew
+		//ThrusterBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+		PowerUsageContinuous = (&~/Part/Components/PowerDrain/FromQuantity/BaseValue) / (&~/Part/Components/PowerDrain/Interval) / 1000
+		PowerCapacity = (&~/Part/Components/SelfBatteryStorage/MaxResources) / 1000
+
+		RecPower = &PowerUsageContinuous
+		RecCrew = (&RecPower) * 4
+	}
+}
