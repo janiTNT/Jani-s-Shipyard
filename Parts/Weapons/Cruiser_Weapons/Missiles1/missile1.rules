@@ -18,6 +18,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	MaxHealth = 2000
 	SignificanceToggle = ScorchedToggle
 	TypeCategories = [uses_power, weapon, is_crewed]
+	SelectionTypeID = "FTL_missilelauncher1"
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ForceManhattanPathInPart = true
@@ -57,7 +58,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Invert = true
 		}
 		
-		CommandConsumptionToggle
+		ConsumptionToggle
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, ScorchedToggle]

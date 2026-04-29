@@ -16,6 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 1]
 	MaxHealth = 1000
 	TypeCategories = [uses_power, weapon]
+	SelectionTypeID = "FTL_defense_laser"
 	IsFlippable = true
 	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
@@ -45,8 +46,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle]
 			Mode = All
+		}
+		
+		NonJunkToggle // Automated weapon, Disable if junk.
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 		
 		ConsumptionToggle
@@ -63,13 +70,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Invert = true
 		}
 		
-		CommandConsumptionToggle
-		{
-			Type = MultiToggle
-			Toggles = [PowerToggle, ScorchedToggle]
-			Mode = All
-		}
-		
 		PowerToggle
 		{
 			Type = UIToggle
@@ -80,7 +80,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = CommandConsumptionToggle
+			OperationalToggle = ConsumptionToggle
 			CommandPoints = 1
 		}
 		BatteryStorage

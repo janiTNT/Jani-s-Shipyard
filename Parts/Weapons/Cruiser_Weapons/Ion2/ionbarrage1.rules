@@ -58,7 +58,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Invert = true
 		}
 		
-		CommandConsumptionToggle
+		ConsumptionToggle
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, ScorchedToggle]
@@ -74,7 +74,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = CommandConsumptionToggle
+			OperationalToggle = ConsumptionToggle
 			CommandPoints = 1
 		}
 		BatteryStorage

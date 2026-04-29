@@ -49,9 +49,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle]
 			Mode = All
 		}
+		
+		NonJunkToggle // Automated weapon, Disable if junk.
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
+		}
+		
 		ScorchedToggle
 		{
 			Type = StatusToggle
@@ -60,7 +67,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Invert = true
 		}
 		
-		CommandConsumptionToggle
+		ConsumptionToggle
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, ScorchedToggle]

@@ -17,6 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 3]
 	MaxHealth = 3000
 	TypeCategories = [uses_power, weapon, is_crewed]
+	SelectionTypeID = "FTL_particle_lasermk1"
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
@@ -58,7 +59,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Invert = true
 		}
 		
-		CommandConsumptionToggle
+		ConsumptionToggle
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, ScorchedToggle]
@@ -75,7 +76,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = CommandConsumptionToggle
+			OperationalToggle = ConsumptionToggle
 			CommandPoints = 2
 		}
 		BatteryStorage

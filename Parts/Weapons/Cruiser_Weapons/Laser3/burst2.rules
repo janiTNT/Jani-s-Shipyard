@@ -17,6 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 2]
 	MaxHealth = 2000
 	TypeCategories = [uses_power, weapon]
+	SelectionTypeID = "FTL_burst_lasermk2"
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
@@ -46,8 +47,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle]
 			Mode = All
+		}
+		
+		NonJunkToggle // Automated weapon, Disable if junk.
+		{
+			Type = JunkToggle
+			OnWhenJunk = false
 		}
 
 		ScorchedToggle
@@ -58,7 +65,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Invert = true
 		}
 		
-		CommandConsumptionToggle
+		ConsumptionToggle
 		{
 			Type = MultiToggle
 			Toggles = [PowerToggle, ScorchedToggle]
@@ -75,7 +82,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CommandConsumer
 		{
 			Type = CommandConsumer
-			OperationalToggle = CommandConsumptionToggle
+			OperationalToggle = ConsumptionToggle
 			CommandPoints = 2
 		}
 		BatteryStorage
