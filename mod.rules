@@ -206,6 +206,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			//&<Parts/Production/Chemical plant/ChemicalPlant.rules>/Part
 			
+			&<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part
+			&<Parts/Heat/Hullheater/Hullheater.rules>/Part
+			
 			&<Parts/Background/Structure/background_structure_small/background_structure_small.rules>/Part
 			&<Parts/Background/Structure/background_structure/background_structure.rules>/Part
 			&<Parts/Background/Structure/background_structure_block/background_structure_block.rules>/Part

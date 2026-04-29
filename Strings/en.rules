@@ -1035,6 +1035,14 @@ Parts
 	CorridorFactoryDark = "Dark Factory Corridor"
 	CorridorFactoryDarkIcon = "Factory Cor."
 	CorridorFactoryDarkDesc = "Factory Corridor variant with a darker floor."
+	
+	CanisterDispenser = "Canister Dispenser"
+	CanisterDispenserIcon = "Can. Dispenser"
+	CanisterDispenserDesc = "Superheats Thermal Canister Missle parts and automatically ejects it out of the ship, as a cheaper alternative to using radiators. also can inflict light heat application to enemy ships if by chance hit by."
+	
+	Hullheater = "Hull Heater"
+	HullheaterIcon = "Heater"
+	HullheaterDesc = "Applies heat onto the hull, consuming power to generate waste heat in an area of your ship.\nCan be logic controlled.<bad>Has no doors and cannot be manually powered, requires a Power Port instead.</bad>"
 }
 PartColors
 {
@@ -1620,6 +1628,7 @@ StatCategories
 	EnergyBlast = "Energy Shot"
 	InserterFastInsertion = "Rapid Insertion Mode"
 	InserterPowerRegeneration = "Inserter Recharging Mode"
+	SingleCanisterThermal = "Thermal Canister"
 }
 CombatDifficulty
 {

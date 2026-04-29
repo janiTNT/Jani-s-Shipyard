@@ -156,7 +156,7 @@ Techs
 			&<Parts/Common/MachineFrame/MachineFrame.rules>/Part/ID
 			&<Parts/Common/Bulkhead/Bulkhead.rules>/Part/ID
 		]
-		Cost = 1000
+		Cost = 2000
 	}
 	{
 		ID = janiTNT.advanced_material_manipulation
@@ -696,6 +696,32 @@ Techs
 		]
 		Prerequisites = [cosmoteer.heat_management]
 		Cost = 2000
+	}
+	{
+		ID = &<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part/ID
+		NameKey = &<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part/DescriptionKey
+		Icon = &<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part/EditorIcon
+		EditorGroups = ["Thermal"]
+		PartsUnlocked
+		[
+			&<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part/ID
+		]
+		Cost = 2000
+		Prerequisites = [cosmoteer.heat_management]
+	}
+	{
+		ID = &<Parts/Heat/hullheater/hullheater.rules>/Part/ID
+		NameKey = &<Parts/Heat/hullheater/hullheater.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Heat/hullheater/hullheater.rules>/Part/DescriptionKey
+		Icon = &<Parts/Heat/hullheater/hullheater.rules>/Part/EditorIcon
+		EditorGroups = ["Thermal"]
+		PartsUnlocked
+		[
+			&<Parts/Heat/hullheater/hullheater.rules>/Part/ID
+		]
+		Cost = 500
+		Prerequisites = [cosmoteer.heat_management]
 	}
 	{
 		ID = janiTNT.inserter-overclock

@@ -1,0 +1,200 @@
+ID = "janiTNT.singular_canister_thermal"
+Range = 100
+IdealRange = 100
+Speed = 25
+
+Components
+{
+	Physics
+	{
+		Type = CirclePhysics
+		Radius = 0.15
+		Density = 0.01
+		FrameOfReferenceDuration = 5
+		LinearDamping = 0.2
+		AngularDamping = 0.2
+		//CollidesWithBullets = true
+	}
+
+	DeathByLifetime
+	{
+		Type = DeathByLifetime
+		Lifetime = 120
+	}
+	
+	Repulsion
+	{
+		Type = ProximityAcceleration
+		Range = 5
+		Acceleration = -1.5
+		AccelerateTowardsShips = false
+		AccelerateTowardsBullets = true
+		AccelerateTowardsBulletCategories = [mine]
+		AccelerateTowardsFriendlies = true
+		AccelerateTowardsEnemies = true
+	}
+
+	/* Sprite
+	{
+		Type = Sprite
+		IsLit = true
+		Sprite
+		{
+			Texture
+			{
+				File = "./data/resources/missile_part_thermal/missile_part_thermal1.png"
+				MipLevels = max
+			}
+			Size = [2, 1]
+		}
+
+		NormalsTexture
+		{
+			File = "./data/resources/missile_part_thermal/missile_part_thermal1_normals.png"
+			MipLevels = max
+		}
+	} */
+	
+	CanSprite
+	{
+		Type = AnimatedSprite
+		Spin = 5d
+		Animation
+		{
+			AtlasSprite
+			{
+				Texture
+				{
+					File = "projectile.png"
+					MipLevels = max
+					SampleMode = Linear
+				}
+				Size = [1, 1]
+			}
+			FrameCount = 4
+			FrameSize = [64, 64]
+			FramesPerRow = 4
+			FramesPerSecond = 16
+		}
+	}
+
+	GlowSprite
+	{
+		Type = Sprite
+		RenderBucket = BulletUpper4
+		Z = 0.5
+		IsLight = true
+		LerpScaleFrom = [0, 0]
+		LerpTime = 1
+		Sprite
+		{
+			Texture
+			{
+				File = "./Data/common_effects/particles/blob.png"
+				MipLevels = max
+				SampleMode = Linear
+			}
+			Size = [4, 4]
+			VertexColor = [147/2, 110/2, 0]
+			TargetBlendMode = Add
+			Shader = "./Data/common_effects/fancy_light.shader"
+            _z = 1
+			_nrmlStrengthLimit = 1
+			_litReflectiveStrength = 10
+			_litAdditiveStrength = 0
+			_unlitAdditiveStrength = .3
+		}
+	}
+
+	Targetable
+	{
+		Type = Targetable
+		Health = 100
+		TargetCategory = "mine"
+
+		// No AOE damage when shot down.
+		OnDeath = &../Hit/HitFriendly
+	}
+
+	Hit
+	{
+		Type = SimpleHit
+		SourcePartCollisionDelay = 1.5 / (&/Simulation/PhysicsUpdatesPerSecond)
+
+		HitOperational
+		{
+			HitEffects
+			[
+				{
+					Type = GridStatusApplication
+					StatusType = cosmoteer.heat
+					StatusValue = 0
+					StatusValuePool = (&<CanisterDispenser.rules>/STATS/CanisterCapacity)
+					ValueFalloff = 1
+					MaxCost = 3
+					FalloffPadding = 0.5
+					EmptyTileCost = 1000
+					AllowDiagonals = true
+					Filter {
+						Friendlies = false
+						TargetedFriendlies = true
+					}
+				}
+			]
+
+			MediaEffects
+			[
+				&<particles/thermal_canister_hit_cone.rules>
+				&<./data/shots/missile_thermal/particles/missile_thermal_shockwave.rules>
+				&<particles/thermal_canister_shrapnel.rules>
+				&<particles/thermal_canister_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_thermal/missile_thermal_hit.wav"
+					Volume = .2
+					SpeedVariation = .4
+				}
+
+				: /BASE_SHAKE
+				{
+					ShakeAmount = .05
+					Duration = .5
+				}
+			]
+		}
+		HitStructural = &HitOperational
+		HitShield
+		{
+			HitEffects
+			[
+				{
+					Type = StatusApplication
+					StatusType = cosmoteer.heat
+					StatusValue = 2500 * 10%
+					ApplyToAllHitPartTiles = true
+					DivideValueByPartArea = true
+				}
+			]
+			MediaEffects = &../HitOperational/MediaEffects
+		}
+
+		HitFriendly
+		{
+			MediaEffects
+			[
+				&<particles/thermal_canister_hit_cone.rules>
+				&<./data/shots/missile_thermal/particles/missile_thermal_shockwave.rules>
+				&<particles/thermal_canister_shrapnel.rules>
+				&<particles/thermal_canister_flash.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					Sound = "./data/shots/missile_thermal/missile_thermal_hit.wav"
+					Volume = .2
+					SpeedVariation = .4
+				}
+			]
+		}
+	}
+}

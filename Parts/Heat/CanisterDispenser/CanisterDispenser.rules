@@ -1,0 +1,866 @@
+STATS
+{
+	CanisterCapacity = 2500
+}
+Part : <./Data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/CanisterDispenser"
+	IconNameKey = "Parts/CanisterDispenserIcon"
+	ID = janiTNT.thermal_canister_dispenser // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroups = ["Thermal"]
+	DescriptionKey = "Parts/CanisterDispenserDesc"
+	Resources
+	[
+		[steel, 8]
+		[coil2, 6]
+		[coil, 10]
+	]
+	TypeCategories = [ heat_management, uses_missiles, uses_launcher_parts ]
+	SignificanceToggle = ScorchedToggle
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	Size = [1, 2]
+	PhysicalRect = [0, 1, 1, 1]
+	SaveRect = &PhysicalRect
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	MaxHealth = 1000
+	InitialPenetrationResistance = 3
+	ProhibitAbove = 3
+	AllowedDoorLocations
+	[
+		//[-1, 1]
+		//[1, 1]
+		[0, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+		
+		CanFire
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, LoadedMissile, HeatStorage]
+			Mode = All
+		}
+		
+		CanFill
+		{
+			Type = MultiToggle
+			Toggles = [{Toggle = HeatStorage, invert = true}, LoadedMissile]
+			Mode = All
+		}
+
+		CommandConsumptionToggle
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, ScorchedToggle]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		ScorchedToggle
+		{
+			Type = StatusToggle
+			StatusType = cosmoteer.scorched
+			MinStatusValue = 1
+			Invert = true
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = CommandConsumptionToggle
+			CommandPoints = 3
+		}
+		
+		LoadedMissile
+		{
+			Type = ResourceStorage
+			ResourceType = missile_part_thermal
+			MaxResources = 1
+			DelayBeforeReadyToUse = .25
+			AnticipateMoreResourcesFrom = ["TrueTHERMALMissileStorage"]
+			ToggleOnResources = 1
+			ToggleOffResources = 0
+			DropResourcesWhenDestroyed = true
+		}
+		CombinedMissiles
+		{
+			Type = MultiResourceStorage
+			ResourceType = missile_part_thermal
+			ResourceStorages = [LoadedMissile, TrueTHERMALMissileStorage]
+			UITileRect = [0 + 12/64, 1 + 12/64, 1 - 24/64, 1 - 24/64]
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoDeliver
+			AddMode = InReverseOrder
+		}
+		TrueTHERMALMissileStorage
+		{
+			Type = ResourceStorage
+			ResourceType = missile_part_thermal
+			MaxResources = 6
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/AmmoLoad
+			DropResourcesWhenDestroyed = true
+		}
+		ThermalConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = missile_part_thermal
+			Storage = CombinedMissiles
+			DefaultPriority = &/PRIORITIES/Weapon_Supply
+			OperationalToggle = PowerToggle
+			ConsumptionToggleButtonOffset = [0, -.4]
+		}
+		MissileLoader
+		{
+			Type = ResourceConverter
+			OperationalToggle = ScorchedToggle
+			FromStorage = TrueTHERMALMissileStorage
+			ToStorage = LoadedMissile
+			FromQuantity = 1
+			ToQuantity = 1
+			Interval = .2
+			DelayTrigger = Weapon
+			DelayAfterTrigger = .5
+		}
+
+		Port_Thermal_Left
+		{
+			Type = NetworkPort
+			Types = [ thermal ]
+			RouteSource = NetworkedHeatBuffer
+			RouteEndpoint = NetworkedHeatBuffer
+			BlueprintRouteSource = BlueprintNetworkNode
+			BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+			Location = [0, 1]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		
+		Dont_Draw_Pipe_Connector_Into_This_Part { Type = Graphics }	//When this fake component is present, the Heat Pipes dont draw a Pipe Conector to this part.
+		
+		//Don't allow connector down
+		/* PipeConnectorDown_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_DrawToggle
+		{
+			PartLocation = [0, 2]
+		}
+		PipeConnectorDown_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Toggle
+		{
+			Toggles = [Port_Thermal_Down, {Toggle = PipeConnectorDown_DrawToggle, invert = true}]
+		}
+		PipeConnectorDown_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components
+		{
+			Components
+			{
+				PipesConnectorDown_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorDown_Components/Components/PipesConnectorDown_Graphics
+				{
+					Location = [0.5, 2.5]
+				}
+			}
+		} */
+		Down_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_Thermal_Down
+			Components
+			{
+				Down_Pipes_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_graphics.rules>/BASE_PIPE_CONNECTOR_GRAPHICS
+				{
+					Location = [0.5, 1.5]
+					Floor
+					{
+						Layer = "doodads_high"
+						DamageLevels
+						[
+							{
+								File = "connection.png"
+								Size = [1, 1]
+								//MirrorU = true
+							}
+						]
+					}
+					WallsStencil
+					/* Roof
+					{
+						Layer = "roof_doodads"
+						Offset = [-0.5, 0]
+						DamageLevels
+						[
+							{
+								File = "pipe_connector_roof.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+								//MirrorU = true
+							}
+							{
+								File = "pipe_roof_33.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+								//MirrorU = true
+							}
+							{
+								File = "pipe_roof_66.png"
+								NormalsFile = "pipe_roof_normals.png"
+								Size = [1, 1]
+								//MirrorU = true
+							}
+						]
+					} */
+				}
+			}
+		}
+		PipeConnectorLeft_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorLeft_DrawToggle
+		{
+			PartLocation = [-1, 1]
+		}
+		PipeConnectorLeft_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorLeft_Toggle
+		{
+			Toggles = [Port_Thermal_Left, {Toggle = PipeConnectorLeft_DrawToggle, invert = true}]
+		}
+		PipeConnectorLeft_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorLeft_Components
+		{
+			Components
+			{
+				PipesConnectorLeft_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorLeft_Components/Components/PipesConnectorLeft_Graphics
+				{
+					Location = [-0.5, 1.5]
+				}
+			}
+		}
+		Left_Pipe_Components : &Down_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_Thermal_Left
+			Components
+			{
+				Left_Pipes_Graphics : &../../Down_Pipe_Components/Components/Down_Pipes_Graphics
+				{
+					Rotation = 90d
+				}
+			}
+		}
+		PipeConnectorRight_DrawToggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorRight_DrawToggle
+		{
+			PartLocation = [1, 1]
+		}
+		PipeConnectorRight_Toggle : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorRight_Toggle
+		{
+			Toggles = [Port_Thermal_Right, {Toggle = PipeConnectorRight_DrawToggle, invert = true}]
+		}
+		PipeConnectorRight_Components : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorRight_Components
+		{
+			Components
+			{
+				PipesConnectorRight_Graphics : <./Data/ships/terran/heat_pipe_adaptive/pipe_connector/heat_pipe_connector_toggles.rules>/PipeConnectorRight_Components/Components/PipesConnectorRight_Graphics
+				{
+					Location = [1.5, 1.5]
+				}
+			}
+		}
+		Right_Pipe_Components : &Down_Pipe_Components
+		{
+			Type = ToggledComponents
+			Toggle = Port_Thermal_Right
+			Components
+			{
+				Right_Pipes_Graphics : &../../Down_Pipe_Components/Components/Down_Pipes_Graphics
+				{
+					Rotation = -90d
+				}
+			}
+		}
+		
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+		
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkedHeatBuffer, NetworkHeatOutput, 0]
+						[NetworkedHeatBuffer, NetworkedThermalDissipationLoadValue, 0]
+					]
+				}
+			]
+		}
+		
+		HeatConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = CanFill
+			
+			CAN_FILL_TIME = 4.5
+			INTERVALS_TO_FILL = (&CAN_FILL_TIME) / (&Interval)
+			HEAT_PER_INTERVAL = ceil("((&~/STATS/CanisterCapacity) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)) / (&INTERVALS_TO_FILL)")
+			
+			FromStorage = NetworkHeatOutput
+			MinFromQuantityForConversion = &HEAT_PER_INTERVAL
+			FromQuantity = &HEAT_PER_INTERVAL
+			ToStorage = HeatStorage
+			MinToQuantityForConversion = 1
+			ToQuantity = &HEAT_PER_INTERVAL
+			Interval = 0.5
+		}
+		
+		NetworkedHeatBuffer
+		{
+			Type = NetworkResourceStore
+			ResourceType = heat
+			ResourceStorage = HeatBuffer
+			Categories = [ thermal_storage ]
+		}
+		
+		HeatBuffer
+		{
+			Type = ResourceStorage
+			ResourceType = heat
+			MAX_STATUS_HEAT = 3000
+			MaxResources = (&MAX_STATUS_HEAT) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			InitToMaxResources = 0
+			IgnoreResourcesForInitToMax = true
+		}
+		
+		HeatStorage
+		{
+			Type = ResourceStorage
+			ResourceType = heat
+			MAX_STATUS_HEAT = (&~/STATS/CanisterCapacity)
+			MaxResources = (&MAX_STATUS_HEAT) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+			InitToMaxResources = 0
+			ToggleOnResources = (&MaxResources)
+			ToggleOffResources = (&MaxResources) - 1
+			IgnoreResourcesForInitToMax = true
+		}
+		
+		NetworkHeatOutput
+		{
+			Type = NetworkResourceOutput
+			ResourceType = heat
+			Mode = DistributeProportionallyByAvailable
+			ProvidedValueRange = 0
+			ProvidedValuePerResource = 1
+			Categories = [ thermal_storage ]
+		}
+
+		/* TurretHolder
+		{
+			Type = Sprite
+			Location = [.5, 1]
+			Layer = "weapons"
+			AtlasSprite
+			{
+				File = "weaponmount.png"
+				NormalsFile = "weaponmount_n.png"
+				Size = [1, 1]
+			}
+		} */
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [.5, 1.5]
+			OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			/* OperationalDoodad
+			{
+				Layer = "weapons"
+				DamageLevels
+				[
+					{
+						File = "doodads.png"
+						Size = [1, 1]
+					}
+					{
+						File = "doodads_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "doodads_66.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad = &OperationalDoodad */
+			/*OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [1, 1]
+					}
+				]
+			}*/
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Roof = &<./Data/ships/terran/point_defense/point_defense.rules>/Part/Components/Graphics/Roof
+			/* {
+				Layer = "roofs"
+				DamageLevels
+				[
+					{
+						File = "roof.png"
+						NormalsFile = "roof_normals.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_33.png"
+						NormalsFile = "roof_normals_33.png"
+						Size = [1, 1]
+					}
+					{
+						File = "roof_66.png"
+						NormalsFile = "roof_normals_66.png"
+						Size = [1, 1]
+					}
+				]
+			} */
+		}
+		
+		CanisterSpriteComponents
+		{
+			Type = ToggledComponents
+			Toggle = LoadedMissile
+			Components
+			{
+				CanisterGraphics
+				{
+					Type = ResourceSprites
+					//OperationalToggle = LoadedMissile
+					Layer = "doodads_high"
+					ResourceStorage = HeatStorage
+					Location = [0.5, 1.25+2/64]
+					HasZeroResourceSprite = true
+					RangeLow = 0
+					RangeHigh = (&../../../HeatStorage/ToggleOnResources)
+					ResourceLevels
+					[
+						{
+							File = "canisterholder2.png"
+							Size = [1, 1]
+						}
+						{
+							File = "canisterholder3.png"
+							Size = [1, 1]
+						}
+						{
+							File = "canisterholder4.png"
+							Size = [1, 1]
+						}
+						{
+							File = "canisterholder5.png"
+							Size = [1, 1]
+						}
+						{
+							AnimationFiles
+							[
+								"canisterholder6_1.png"
+								"canisterholder6_2.png"
+								"canisterholder6_3.png"
+								"canisterholder6_4.png"
+							]
+							AnimationInterval = 0.15
+							Size = [1, 1]
+						}
+					]
+				}
+			}
+		}
+		
+		HeatBatterySprites
+		{
+			Type = ResourceSprites
+			Location = [0.5, 1.5+2/64]
+			ResourceStorage = HeatBuffer
+			Layer = "doodads_high"
+			HasZeroResourceSprite = false
+			Round = Up
+			ResourceLevels
+			[
+				{
+					File = "heatlevel1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "heatlevel2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "heatlevel3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "heatlevel4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		/* TurretCollider
+		{
+			Type = CircleCollider
+			Location = [0.5, 1]
+			Radius = 0.2
+			Density = 0.2
+		} */
+
+		ReloadProgressBar
+		{
+			Type = ProgressBar
+			ShowProgressFor = Weapon
+		}
+		
+		Weapon
+		{
+			Type = TurretWeapon // This has an arc of 0, but we don't want to use FixedWeapon because that will only shoot at things directly in the LOS.
+			Rotation = -90d
+			Location = [0.5, 1]
+			OperationalToggle = IsOperational
+			AutoFireToggle = CanFire
+			FireInterval = 5
+			FiringArc = 0d;
+			ValidArc = 360d;
+			FireThresholdAngle = 180d;
+			RotateSpeed = 0d
+			AllowFireWithBlockedLOS = true
+			// TODO
+			//AIFirepowerRating = &~/MissileStats/Stats/DamagePerSecond
+			//FirePermissionToggle = IsOperational
+			DefaultDirectControlBinding = 0
+			CanBeGivenExplicitTarget = false
+			AlwaysShowCoverage = true
+			AllowDirectControl = false
+
+			AutoTargets
+			[
+				{
+					TargetType = ShipParts
+					Toggle = False
+				}
+			]
+		}
+		
+		False
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+
+		BulletEmitter
+		{
+			Type = BulletEmitter
+			ChainedTo = Weapon
+			FireTrigger = Weapon
+			GetTargetFrom = Weapon
+			Location = [0.15, 0]
+			OperationalToggle = IsOperational
+			Bullet = &<canisterprojectile.rules>
+			Spread = [-1d, 1d]
+			RevealsShip = false
+			ResourceUsage
+			[
+				{
+					ResourceStorage = LoadedMissile
+					ResourcesUsed = 1
+				}
+				{
+					ResourceStorage = HeatStorage
+					ResourcesUsed = (&~/STATS/CanisterCapacity) * (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO) //2000 //2125
+				}
+			]
+		}
+
+		FireEffect
+		{
+			Type = TriggeredEffects
+			ChainedTo = BulletEmitter
+			Trigger = BulletEmitter
+			Location = [-.5, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<canister_shoot.rules>
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["granadethunk.wav"]
+					Volume = .15
+					Db = 1
+					Speed = 1
+					SpeedVariation = .2
+					//MaxConcurrent = 50
+				}
+			]
+		}
+
+		WeaponSprite
+		{
+			Type = Sprite
+			//OperationalToggle = IsOperational
+			Location = [.5, 1+2/64]
+			Layer = "weapons"
+			ResetAnimationTrigger = Weapon
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"core2.png"
+					"core3.png"
+					"core4.png"
+					"core5.png"
+					"core1.png"
+				]
+				NormalsAnimationFiles
+				[
+					"core_n2.png"
+					"core_n3.png"
+					"core_n4.png"
+					"core_n5.png"
+					"core_n1.png"
+				]
+				Size = [1, 1]
+				AnimationInterval = 0.075
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+		ClipSprite
+		{
+			Type = Sprite
+			OperationalToggle = LoadedMissile
+			InvertOperationalToggle = true
+			Location = [.5, 1.25+2/64]
+			Layer = "doodads_high"
+			ResetAnimationTrigger = Weapon
+			AtlasSprite
+			{
+				AnimationFiles
+				[
+					"canisterholder7.png"
+					"canisterholder8.png"
+					"canisterholder9.png"
+					"canisterholder10.png"
+					"canisterholder1.png"
+				]
+				Size = [1, 1]
+				AnimationInterval = 0.06
+				AnimationStartTime = MinValue
+				ClampAnimation = true
+			}
+		}
+
+		MissileSprites
+		{
+			Type = ResourceSprites
+			Location = [.5, 1.5]
+			ResourceStorage = TrueTHERMALMissileStorage
+			Layer = "doodads_low"
+			ResourceLevels
+			[
+				{
+					File = "ammopile1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "ammopile2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "ammopile3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "ammopile4.png"
+					Size = [1, 1]
+				}
+				{
+					File = "ammopile5.png"
+					Size = [1, 1]
+				}
+				{
+					File = "ammopile6.png"
+					Size = [1, 1]
+				}
+			]
+		}
+
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [.5, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/PowerOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/PowerOff
+		}
+
+		ScorchedTrigger
+		{
+			Type = ToggleTrigger
+			Toggle = ScorchedToggle
+			TriggerWhenOn = false
+		}
+
+		ScorchedEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ScorchedTrigger
+			Location = &../DestroyedEffects/Location
+			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			Location = [.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [.5, 1.5]
+			Indicators
+			[
+				// Scorched
+				{
+					Toggle = ScorchedToggle
+					AtlasSprite = &/INDICATORS/Scorched
+					HidesIndicators = [1,2]
+				}
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+					HidesIndicators = [2]
+				}
+
+				// Out of canisters.
+				{
+					Toggle = TrueTHERMALMissileStorage
+					Delay = &~/Part/Components/Weapon/FireInterval
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoThermalMissiles
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 2]
+		}
+
+		HeatDissipationValue
+		{
+			Type = StaticValue
+			Value = (&~/Part/Stats/HeatDissipation)
+		}
+		HeatDissipationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatDissipation
+			ValueFrom = HeatDissipationValue
+		}
+	}
+
+	Stats
+	{
+		//PowerCapacity = (&~/Part/Components/TrueTHERMALMissileStorage/MaxResources) / 1000
+
+
+		HeatCapacity = (&~/Part/Components/HeatBuffer/MaxResources)  / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
+		HeatDissipation = (&../StatsByCategory/0/Stats/HeatCapacity) * (&../StatsByCategory/0/Stats/ROF)
+		MissilePartCapacity = [(&~/Part/Components/TrueTHERMALMissileStorage/MaxResources) + 1, &0]
+		//RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		//RecCrew = (&RecPower) * 4
+	}
+
+	StatsByCategory
+	[
+		{
+			NameKey = "StatCategories/SingleCanisterThermal"
+			Stats
+			{
+				HeatCapacity = (&~/STATS/CanisterCapacity)
+				HeatSpreadDistance = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/MaxCost
+				ROF = 1 / (&~/Part/Components/Weapon/FireInterval)
+				ShotLaunchSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
+				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
+				MissileParts = &~/Part/Components/LoadedMissile/MaxResources
+				Lifetime = &~/Part/Components/BulletEmitter/Bullet/Components/DeathByLifetime/Lifetime
+			}
+		}
+	]
+}
