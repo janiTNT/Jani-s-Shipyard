@@ -791,6 +791,8 @@ Parts
 	FTL_defenselaserIcon = "Defense Laser"
 	FTL_defenselaserLeftIcon = "Defense Laser (L)"
 	FTL_defenselaserDesc = "One of the cheapest lasers on the market, a wannabe burst laser that does not have any additional shots. Not like you can ask too much bang for the buck for this weak laser. Requires no Crew."
+	FTL_defenselaserOverclock = "Overclocked Defense Laser"
+	FTL_defenselaserOverclockDesc = "Increases fire rate and range for tradeoffs in speed, efficiency and accuracy, Generates waste heat when firing."
 	
 	FTL_spetumbeam = "'Spetum' Mini beam"
 	FTL_spetumbeamIcon = "'Spetum' Beam"
@@ -1626,6 +1628,8 @@ StatCategories
 	FTLBomb = "Small Bomb"
 	FTLBreachBomb = "Small Mine Bomb"
 	EnergyBlast = "Energy Shot"
+	DefenselaserBolt = "Defense Laser bolt"
+	DefenselaserBoltOverclocked = "Overclocked Defense Laser bolt"
 	InserterFastInsertion = "Rapid Insertion Mode"
 	InserterPowerRegeneration = "Inserter Recharging Mode"
 	SingleCanisterThermal = "Thermal Canister"

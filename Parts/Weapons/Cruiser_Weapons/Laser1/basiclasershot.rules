@@ -1,9 +1,49 @@
 ID = "janiTNT.defenselasershot"
-Range = 200
-IdealRange = [60, 200]
+Range
+{
+	BaseValue = 200
+	Modifiers
+	[
+		{
+			Type = BuffRemap
+			BuffType = Overclock
+			ModificationMode = Replace
+			RemapFrom = [0, 1]
+			RemapTo = [&../../../BaseValue, &<basiclaser.rules>/OVERCLOCK/RANGE]
+		}
+	]
+}
+IdealRange = [60, 
+	{
+		BaseValue = 200
+		Modifiers
+		[
+			{
+				Type = BuffRemap
+				BuffType = Overclock
+				ModificationMode = Replace
+				RemapFrom = [0, 1]
+				RemapTo = [&../../../BaseValue, &<basiclaser.rules>/OVERCLOCK/RANGE]
+			}
+		]
+	}
+]
 IdealRadius = [5, 50]
-Speed = 200
-ReceivableBuffs = [ElectronBuff]
+Speed
+{
+	BaseValue = 200
+	Modifiers
+	[
+		{
+			Type = BuffRemap
+			BuffType = Overclock
+			ModificationMode = Replace
+			RemapFrom = [0, 1]
+			RemapTo = [&../../../BaseValue, &<basiclaser.rules>/OVERCLOCK/SPEED]
+		}
+	]
+}
+ReceivableBuffs = [ElectronBuff, Overclock]
 
 Components
 {

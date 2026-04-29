@@ -724,6 +724,22 @@ Techs
 		Prerequisites = [cosmoteer.heat_management]
 	}
 	{
+		ID = janiTNT.FTL_defense_laser-overclock
+		Categories = [ overclock ]
+		NameKey = "Parts/FTL_defenselaserOverclock"
+		DescriptionKey = "Parts/FTL_defenselaserOverclockDesc"
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser.rules>/Part/EditorGroups
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser_l.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 10000
+		Prerequisites = [cosmoteer.heat_management]
+	}
+	{
 		ID = janiTNT.inserter-overclock
 		Categories = [ overclock ]
 		NameKey = "Techs/InserterOverclock"
@@ -800,6 +816,7 @@ Techs
 	}
 	{
 		ID = janiTNT.goldiumFabricator-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/GoldiumFactoryOverclock"
 		DescriptionKey = "Parts/LargeFabricatorOverclockDesc"
 		Icon = &<Parts/Production/Large_Fabricator/large_fabricator.rules>/Part/EditorIcon
@@ -814,6 +831,7 @@ Techs
 	}
 	{
 		ID = janiTNT.ElectronicCircuitFactory-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryElectronicCircuitOverclock"
 		DescriptionKey = "Parts/FactoryElectronicCircuitOverclockDesc"
 		Icon = &<Parts/Production/Circuit_Factory/Circuit_Factory.rules>/Part/EditorIcon
@@ -828,6 +846,7 @@ Techs
 	}
 	{
 		ID = janiTNT.AdvancedCircuitFactory-overclock
+		Categories = [ overclock ]
 		NameKey = "Parts/FactoryAdvancedCircuitOverclock"
 		DescriptionKey = "Parts/FactoryAdvancedCircuitOverclockDesc"
 		Icon = &<Parts/Production/Advanced_Circuit_factory/advancedfactory.rules>/Part/EditorIcon

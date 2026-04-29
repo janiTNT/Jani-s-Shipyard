@@ -1,7 +1,21 @@
 //Somewhat Based On GA's Fighter weapons, which is in fact Inspired by Kroom's forge Fighter weapons
 //It was perfect for FTL styled weapons waaa
 //Some IDs are the same in order to ensure compatibility for things such as blocking eachother.
-Part : <./Data/ships/terran/base_part_terran.rules>/Part
+OVERCLOCK
+{
+	RANGE = 260
+	SPEED = 120
+	RANDOMSPREAD = [-1.5d, 1.5d]
+	//RECHARGE_PER_SEC = 75
+	//RECHARGING_HEAT_PER_SECOND = 125
+	ENERGY_PER_SHOT = 100
+	HEAT_PER_SHOT = 85
+	FIRE_RATE_FACTOR = 200%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FTL_defenselaser"
 	IconNameKey = "Parts/FTL_defenselaserIcon"
@@ -153,7 +167,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 0.7
+			FireInterval
+			{
+				BaseValue = 0.7
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/FIRE_RATE_FACTOR)]
+						ModificationMode = Divide
+					}
+				]
+			}
 			FiringArc = 30d
 			RotateSpeed = 360d
 			FireThresholdAngle = 1d
@@ -204,10 +231,79 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [1.05, 0]
 			OperationalToggle = IsOperational
 			FireDelay = 0.15
+			Spread
+			[
+				{
+					BaseValue = 0
+					Modifiers
+					[
+						{
+							Type = BuffRemap
+							BuffType = Overclock
+							ModificationMode = Replace
+							RemapFrom = [0, 1]
+							RemapTo = [&../../../BaseValue, &~/OVERCLOCK/RANDOMSPREAD/0]
+						}
+					]
+				}
+				{
+					BaseValue = 0
+					Modifiers
+					[
+						{
+							Type = BuffRemap
+							BuffType = Overclock
+							ModificationMode = Replace
+							RemapFrom = [0, 1]
+							RemapTo = [&../../../BaseValue, &~/OVERCLOCK/RANDOMSPREAD/1]
+						}
+					]
+				}
+			]
 			Bullet = &<basiclasershot.rules>
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 75
+			ResourcesUsed
+			{
+				BaseValue = 75
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Replace
+						RemapFrom = [0, 1]
+						RemapTo = [&../../../BaseValue, (&~/OVERCLOCK/ENERGY_PER_SHOT)]
+					}
+				]
+			}
 			MinResourcesUsed = 1
+		}
+		EmitterTriggered_Overclocked
+		{
+			Type = TriggerProxy
+			ComponentID = BulletEmitter
+			ProxyToggle = IsOverclocked
+		}
+		Overclock_ChargeHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = EmitterTriggered_Overclocked
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+		
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
 		}
 
 		FireEffect
@@ -488,7 +584,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
+					Delay = &~/Part/Components/Turret/FireInterval/BaseValue
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -521,6 +617,20 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = &../DestroyedEffects/Location
 			MediaEffects = &/COMMON_EFFECTS/SmallPartScorched
 		}
+		
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
 
 		DestroyedEffects
 		{
@@ -548,22 +658,44 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	StatsByCategory
 	[
 		{
-			NameKey = "StatCategories/LaserBoltSmall"
+			NameKey = "StatCategories/DefenselaserBolt"
 			Stats
 			{
 				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
-				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval/BaseValue)
+				Range = &~/Part/Components/BulletEmitter/Bullet/Range/BaseValue
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
+				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed/BaseValue
 				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
+				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed/BaseValue) / 1000
 				PowerPerSecond = (&PowerPerShot) * (&ROF)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/FTL_defenselaserOverclockDesc"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/DefenselaserBoltOverclocked"
+				Stats
+				{
+					ROF = (&~/Part/StatsByCategory/0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					DamagePerSecond = (&~/Part/StatsByCategory/0/Stats/DamagePerShot) * (&ROF)
+					Damage = [(&~/Part/StatsByCategory/0/Stats/DamagePerShot), &../DamagePerSecond]
+					ShotSpeed = &~/OVERCLOCK/SPEED
+					PowerPerShot = (&~/OVERCLOCK/ENERGY_PER_SHOT) / 1000
+					ShotPowerUsage = [&../PowerPerShot, (&../PowerPerShot) * (&../ROF)]
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+				}
+			}
+		]
+	}
 }
