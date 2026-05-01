@@ -3,25 +3,25 @@
 //Some IDs are the same in order to ensure compatibility for things such as blocking eachother.
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
-	NameKey = "Parts/FTL_particlelaser1"
-	IconNameKey = "Parts/FTL_particlelaser1Icon"
-	ID = janiTNT.FTL_particle_lasermk1 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	NameKey = "Parts/FTL_lucerne_beam"
+	IconNameKey = "Parts/FTL_lucerne_beamIcon"
+	ID = janiTNT.FTL_lucerne_beam // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroups = ["WeaponsEnergy"]
-	DescriptionKey = "Parts/FTL_particlelaser1Desc"
+	DescriptionKey = "Parts/FTL_lucerne_beamDesc"
 	Resources
 	[
-		[steel, 20]
-		[coil, 12]
-		[janitnt.circuit1, 12]
+		[steel, 48]
+		[coil2, 12]
+		[tristeel, 6]
 	]
 	Size = [1, 3]
 	MaxHealth = 3000
-	TypeCategories = [uses_power, weapon, is_crewed]
-	SelectionTypeID = "FTL_particle_lasermk1"
+	SignificanceToggle = ScorchedToggle
+	TypeCategories = [uses_power, weapon]
+	SelectionTypeID = "FTL_lucerne_beam"
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
 	ForceManhattanPathInPart = true
-	SignificanceToggle = ScorchedToggle
 	ProhibitedBy : ^/0/ProhibitedBy [fighter]
 	ProhibitRects
 	[
@@ -30,7 +30,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations
 	[
 		[-1, 2]
+		[-1, 1]
 		[1, 2]
+		[1, 1]
 		[0, 3]
 	]
 	EditorIcon
@@ -40,7 +42,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [90/5, 90]
+		Size = [128/5, 128]
 	}
 	Components : ^/0/Components
 	{
@@ -77,7 +79,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = ConsumptionToggle
-			CommandPoints = 2
+			CommandPoints = 3
 		}
 		BatteryStorage
 		{
@@ -119,8 +121,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		SliderValueTween
 		{
 			Type = ValueTween
-			OnTweenDuration = 0.25
-			OffTweenDuration = 0.5
+			OnTweenDuration = 0.75
+			OffTweenDuration = 1
 			IsOnToggle = IsOperational
 		}
 		
@@ -128,6 +130,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = TransformLerp
 			ValueFrom = SliderValueTween
+			//StartLocation = [0, 0.125]
 			StartLocation = [0, 0.75]
 			EndLocation = [0, 0]
 		}
@@ -135,8 +138,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Collider
 		{
 			Type = CircleCollider
-			Location = [.5, -0.35]
-			Radius = .3
+			Location = [.5, -0.4]
+			Radius = .25
 			ChainedTo = TurretSlider // Evil
 			IncludeWhenUnderConstruction = false //Evil 2
 		}
@@ -144,19 +147,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Turret
 		{
 			Type = TurretWeapon
-			Location = [.5, -0.35] // Slightly higher.
+			Location = [.5, -0.4] // Slightly higher.
 			Rotation = -90d// Relative to unrotated part.
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.5
+			FireInterval = 5
 			FiringArc = 20d
-			RotateSpeed = 90d
+			RotateSpeed = 10d//slower
 			FireThresholdAngle = 1d
-			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
-			Emitter = BulletEmitter
+			//AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/Damage/1
+			Emitter = BeamEmitter
 			FirePermissionToggle = FireModeToggle
-			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
+			HoldTargetAfterCancel = 2
 			AutoTargetCrewSafetyDist = 8
 
 			AutoTargets
@@ -183,6 +186,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				QuadCount = 64
 			}
 		}
+		
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			ChainedTo = TurretSlider
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			//MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			//InterpolateLocation = true
+			InterpolateRotation = true
+		}
 
 		ReloadProgressBar
 		{
@@ -191,106 +206,91 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ShowProgressFor = Turret
 		}
 		
-		ShotDelay
+		BeamEmitter : <hull_beam.rules>
 		{
-			Type = DelayTrigger
-			Trigger = Turret
-			Delay = 0.5
-		}
-
-		BulletEmitter
-		{
-			Type = BulletEmitter
+			Type = BeamEmitter
 			ChainedTo = Turret
-			FireTrigger = ShotDelay
+			Location = [0.95, 0]
+			FireTrigger = Turret
 			GetTargetFrom = Turret
-			Location = [1.75, 0]
-			OperationalToggle = IsOperational
-			FireDelay = 0
-			Bullet = &<particle_bolt_shot.rules>
+			AttachBeamMediaEffectsTo = InterpolatedTurret
+			OperationalToggle = IsOperational // pike beam logic reinstated
+			Duration = 0.2
+			ColliderOverlapTest = true
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 750
+			ResourcesUsed = ceil(2500 / 10)
+			//FireDelay = .25
 			MinResourcesUsed = 1
-			Spread = [-1.5d, 1.5d]
+			BeamMediaEffectsOffset = [(&../Location/0), 0]
+			//BeamMediaEffectsLengthOffset = -(&Location/0)
 			
-			Burst = 3
-			//BurstDelay = 0
-			UseResourcePerShotInBurst = false
-		}
+			Burst = 10
+			BurstDelay = 0.2
+			UseResourcePerShotInBurst = true
+			
+			//EffectsScaleFactor = BeamEffectsScale
+			
+			FireDelay = .25
 
-		FireEffect
-		{
-			Type = TriggeredEffects
-			ChainedTo = Turret
-			OperationalToggle = BulletEmitter
-			Trigger = ShotDelay
-			Location = [1.75, 0]
-			AnchorMediaEffects = true
-
-			MediaEffects
+			BeamMediaEffects : ^/0/BeamMediaEffects
 			[
-				&<weaponparticles/particle_blaster_small_shoot.rules>
-				&<weaponparticles/particle_blaster_small_shoot_flash.rules>
-
 				: /BASE_SOUNDS/AudioExterior
 				{
-					RandomSounds = ["./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_01.wav",
-									"./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_02.wav",
-									"./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_03.wav",
-									"./data/ships/terran/laser_blaster_small/sounds/laser_blaster_shot_04.wav"]
-					Volume = .6
-					Speed = 2
-					SpeedVariation = .25
+					Sound = "./Data/shots/ion_beam/sounds/ion_beam_emit_loop.wav"
+					Volume = 1
+					Speed = 1.05
+					MaxConcurrent = 1
+					MaxConcurrentVolume = 1
+					RampUpTime = .25
+					RampDownTime = .25
 				}
 			]
 		}
-		
-		BurstDelay
-		{
-			Type = DelayTrigger
-			Trigger = BulletEmitter
-			Delay = 0.4 * 0.75
-		}
-		ChargeToggle
+	
+		/*ChargeToggle
 		{
 			Type = TriggeredToggle
 			OnTrigger = Turret
-			OffTrigger = BurstDelay//burst kinda goes wack here xd
-		}
+			OffTrigger = BeamEmitter
+		}*/
 		
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
-			Location = [.75, 0]
+			ChainedTo = InterpolatedTurret
+			//ChainedTo = Oscillator
+			Location = [0.5, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational
-			//InvertOperationalToggle = true
-			DoodadToggle = ChargeToggle
+			DoodadToggle = BeamEmitter
 			ToggleOffDoodad
 			{
 				Layer = "FTLlowturrets"
 				DamageLevels
 				[
 					{
-						File = "weapon_on.png"
-						NormalsFile = "weapon_fire_n1.png"
+						AnimationFiles
+						[
+							"weapon_on5.png"
+							"weapon_on4.png"
+							"weapon_on3.png"
+							"weapon_on2.png"
+							"weapon_on1.png"
+						]
+						NormalsAnimationFiles
+						[
+							"weapon_n.png"
+							"weapon_n.png"
+							"weapon_n.png"
+							"weapon_n.png"
+							"weapon_n.png"
+						]
 						Size = [1, 2]
+						AnimationInterval = 0.6
+						ClampAnimation = true
 					}
 				]
-			}/* 
-			ToggleOffDoodad
-			{
-				Layer = "FTLlowturrets"
-				DamageLevels
-				[
-					{
-						File = "weapon_on.png"
-						NormalsFile = "weapon_fire_n1.png"
-						Size = [1, 2]
-					}
-				]
-			} */
+			}
 			NonOperationalDoodad
 			{
 				Layer = "FTLlowturrets"
@@ -298,54 +298,51 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "weapon_off.png"
-						NormalsFile = "weapon_fire_n1.png"
+						NormalsFile = "weapon_n.png"
 						Size = [1, 2]
 					}
 				]
 			}
 		}
-		
-		IsOperationalCharged
-		{
-			Type = MultiToggle
-			Toggles = [ChargeToggle, IsOperational]
-			Mode = All
-		}
 
-		BarrelSprite
+		ShootSprite
 		{
 			Type = Sprite
-			ChainedTo = Turret
-			Location = [.75, 0]
+			ChainedTo = InterpolatedTurret
+			//ChainedTo = Oscillator
+			Location = [0.5, 0]
 			Rotation = 90d
 			Layer = "FTLlowturrets"
-			OperationalToggle = IsOperationalCharged
-			//InvertOperationalToggle = true
-			ResetAnimationTrigger = BulletEmitter
+			//ResetAnimationTrigger = Turret // jank
+			OperationalToggle = BeamEmitter
 			AtlasSprite
 			{
 				AnimationFiles
 				[
-					"weapon_fire2.png"
-					"weapon_fire3.png"
-					"weapon_fire4.png"
-					"weapon_fire5.png"
-					"weapon_fire1.png"// Loop back to beginning and clamp there.
+					"weapon_on1.png"
+					"weapon_on2.png"
+					"weapon_on3.png"
+					"weapon_on4.png"
+					"weapon_on5.png"
+					"weapon_off.png"// stay dead
 				]
 				NormalsAnimationFiles
 				[
-					"weapon_fire_n2.png"
-					"weapon_fire_n3.png"
-					"weapon_fire_n4.png"
-					"weapon_fire_n5.png"
-					"weapon_fire_n1.png"
+				
+					"weapon_n.png"
+					"weapon_n.png"
+					"weapon_n.png"
+					"weapon_n.png"
+					"weapon_n.png"
+					"weapon_n.png"
 				]
 				Size = [1, 2]
-				AnimationInterval = 0.075
-				AnimationStartTime = MinValue
+				AnimationInterval = 0.4
+				AnimationStartTime = WhenSpawned
 				ClampAnimation = true
 			}
 		}
+		
 		TurretHolder
 		{
 			Type = Sprite
@@ -419,7 +416,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					{
 						File = "../base/3x1_lights.png"
 						Size = [1, 3]
-						VertexColor = [255, 128, 25]//Particle Weapons
+						VertexColor = [255, 25, 25]//Beams
 					}
 				]
 			}
@@ -527,7 +524,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.12
-						VertexColor = [255, 182, 64]//Particle Weapons 
+						VertexColor = [255, 120, 120]//Beams
 					}
 				]
 			}
@@ -551,7 +548,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						]
 						Size = [1, 1]
 						AnimationInterval = 0.1
-						VertexColor = [255, 182, 64]//Particle Weapons 
+						VertexColor = [255, 120, 120]//Beams
 					}
 				]
 			}
@@ -621,7 +618,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Rotation = 180d
 			RangeLow = 4001
 			RangeHigh = 8000
-		}
+		}		
 		
 		Indicators
 		{
@@ -650,14 +647,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = &~/Part/Components/Turret/FireInterval
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
 						Size = [1, 1]
 					}
 				}
-
+				
 				// No crew.
 				{
 					Toggle = PartCrew
@@ -697,7 +694,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		DestroyedEffects
 		{
 			Type = DeathEffects
-			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyed
+			MediaEffects = &/COMMON_EFFECTS/MedPartDestroyed
 			Location = [.5, 1.5]
 		}
 		
@@ -714,38 +711,49 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 
-		RecPower = &../StatsByCategory/0/Stats/PowerPerSecond
+		RecPower = &../StatsByCategory/1/Stats/PowerPerSecond
 		RecCrew = (&CrewRequired) + (&RecPower) * 4
 	}
 
 	StatsByCategory
 	[
 		{
-			NameKey = "StatCategories/LaserBoltSmall"
+			NameKey = "StatCategories/DamageStatBlock"
 			Stats
 			{
-				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
-				DamagePerSecond = (&DamagePerShot) * (&ROF) 
-				ShieldDamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitShield/HitEffects/0/Damage/BaseValue
-				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&ROF)
+				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue
+				DamagePerShot = (&BaseDamage) * (&DURATION) * (1 / (&HitInterval))
+				DamagePerSecond = (&DamagePerShot) * (&../../1/Stats/ROF)
+				
+				Damage = [ &../DamagePerShot , &../DamagePerSecond ]
+				
+				BaseShieldDamage = &~/Part/Components/BeamEmitter/HitShield/HitEffects/0/Damage/BaseValue
+				ShieldDamagePerShot = (&BaseShieldDamage) * (&DURATION) * (1 / (&HitInterval))
+				ShieldDamagePerSecond = (&ShieldDamagePerShot) * (&../../1/Stats/ROF)
+				
 				ShieldDamage = [&../ShieldDamagePerShot, &../ShieldDamagePerSecond]
-				ScorchingDamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/1/StatusValue/BaseValue
-				ScorchingDamagePerSecond = (&ScorchingDamagePerShot) * (&ROF)
-				ScorchDamage = [&../ScorchingDamagePerShot, &../ScorchingDamagePerSecond]
-				Penetration = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/Penetration
-				ArmorPenetrationResistance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PartCategoryPenetrationFactors/armor) * 100
-				FireChance = (&~/Part/Components/BulletEmitter/Bullet/Components/Hit/PenetratingOperational/HitEffects/1/StatusChance/BaseValue) * 100
-				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / ((&~/Part/Components/Turret/FireInterval) / (&JaniBurstShots))
-				JaniBurstShots = &~/Part/Components/BulletEmitter/Burst
-				Range = &~/Part/Components/BulletEmitter/Bullet/Range
+				
+				BaseHullDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/1/Damage/BaseValue
+				HullDamagePerShot = (&BaseHullDamage) * (&DURATION) * (1 / (&HitInterval))
+				HullDamagePerSecond = (&HullDamagePerShot) * (&../../1/Stats/ROF)
+				
+				HullDamageJ = [&../HullDamagePerShot, &../HullDamagePerSecond]
+				
+				
+				DURATION = (&~/Part/Components/BeamEmitter/Burst) * (&~/Part/Components/BeamEmitter/BurstDelay)
+				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
+			}
+		}
+		{
+			NameKey = "StatCategories/HullBeam"
+			Stats
+			{
+				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
+				Range = &~/Part/Components/BeamEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
-				Spread = deg(&~/Part/Components/BulletEmitter/Spread/1)
-				TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
-				ShotSpeed = &~/Part/Components/BulletEmitter/Bullet/Speed
-				ShotHP = &~/Part/Components/BulletEmitter/Bullet/Components/Targetable/Health
-				PowerPerShot = (&~/Part/Components/BulletEmitter/ResourcesUsed) / 1000
-				PowerPerSecond = (&PowerPerShot) * (&ROF) / (&JaniBurstShots)
+				ShotSpeed = Infinity
+				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000 * (&~/Part/Components/BeamEmitter/Burst)
+				PowerPerSecond = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}
 		}

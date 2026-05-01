@@ -30,7 +30,7 @@ Components
 	Hit
 	{
 		Type = PenetratingHit
-		Penetration = 7
+		Penetration = 5
 		PartCategoryPenetrationFactors
 		{
 			armor = 0.5
@@ -47,7 +47,7 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=375; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Damage = { BaseValue=275; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 				{
 					Type = Impulse;
@@ -64,14 +64,14 @@ Components
 			[
 				{
 					Type = Damage
-					Damage = { BaseValue=125; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					Damage = { BaseValue=100; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 				}
 				{
 					Type = StatusApplication
 					StatusType = cosmoteer.scorched
 					DivideValueByPartHealth = true
 					DivideValueByPartHealthFactor = false
-					StatusValue = { BaseValue=375; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
+					StatusValue = { BaseValue=275; BuffType=ElectronBuff; BuffMode=Multiply;  EffectScaleExponent=1; }
 					Filter
 					{
 						Shields = false

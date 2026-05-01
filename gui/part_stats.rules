@@ -5,6 +5,14 @@ PartStats
 		ID = ScorchDamage
 		FormatKey = "Stats/ScorchDamageFmt"
 	}
+	{
+		ID = DamageContinuousBurstbeam
+		FormatKey = "Stats/DamageContinuousBurstbeamFmt"
+	}
+	{
+		ID = HullDamageJ
+		FormatKey = "Stats/HullDamageJFmt"
+	}
 	
 	{
 		ID = InserterSwingSpeed

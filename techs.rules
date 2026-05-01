@@ -572,6 +572,21 @@ Techs
 		Prerequisites = [janiTNT.beam1tech, janiTNT.burst2lasertech]
 	}
 	{
+		ID = janiTNT.beam1_hulltech
+		NameKey = &<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne.rules>/Part/NameKey
+		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne.rules>/Part/DescriptionKey
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne.rules>/Part/EditorIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne.rules>/Part/EditorGroups
+		PartsUnlocked
+		[
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne_l.rules>/Part/ID
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne_l_alt.rules>/Part/ID
+		]
+		Cost = 4000
+		Prerequisites = [janiTNT.beam1tech, janiTNT.burst2lasertech]
+	}
+	{
 		ID = janiTNT.ion1tech
 		NameKey = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part/DescriptionKey
@@ -612,7 +627,7 @@ Techs
 			&<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1_l.rules>/Part/ID
 			&<Parts/Weapons/Cruiser_Weapons/Particle1/particle_1_l_alt.rules>/Part/ID
 		]
-		Cost = 3000
+		Cost = 4000
 		Prerequisites = [janiTNT.burst2lasertech]
 	}
 	{

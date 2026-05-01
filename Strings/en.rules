@@ -805,6 +805,12 @@ Parts
 	FTL_pikebeamLEftALTIcon = "'Pike' Beam (S)"
 	FTL_pikebeamDesc = "A long ranged, long fire time beam with moderate damage, however comes with the downside of being a bit innacurate, as its beam swings from side to side by small amounts."
 	
+	FTL_lucerne_beam = "'Lucerne' Hull Beam"
+	FTL_lucerne_beamIcon = "'Lucerne' Beam"
+	FTL_lucerne_beamLeftIcon = "'Lucerne' Beam (L)"
+	FTL_lucerne_beamLeftAltIcon = "'Lucerne' Beam (S)"
+	FTL_lucerne_beamDesc = "A specialized beam emitter variant, firing a beam that deals heavily increased damage to empty corridors and armor, but is very weak to shields. Very slow turning speed."
+	
 	FTL_dirkpin = "'Dirk' Pinpoint Beam"
 	FTL_dirkpinIcon = "'Dirk' Pinpoint"
 	FTL_dirkpinLeftIcon = "'Dirk' Pinpoint (L)"
@@ -1578,6 +1584,8 @@ Stats
 	DroneLauncherNotes = "<bad>Warning:</bad> <gray><b>For Requirements, Statistics, and Misc info, hover above each Toggle when selecting a type of drone to show the description of each drone.</b></gray>"
 	
 	ScorchDamageFmt =  "<white>Scorching Damage:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
+	DamageContinuousBurstbeamFmt = "<white>Damage :</white> <good>{0:n0}</good><gray>/sec when active</gray>"
+	HullDamageJFmt = "<white>Dmg vs Hull:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	
 	InserterHandSizeFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Hand</good><gray>)</gray>"
@@ -1629,6 +1637,8 @@ StatCategories
 	FTLBreachBomb = "Small Mine Bomb"
 	EnergyBlast = "Energy Shot"
 	DefenselaserBolt = "Defense Laser bolt"
+	HullBeam = "Hull Beam"
+	DamageStatBlock = "Damage Stats"
 	DefenselaserBoltOverclocked = "Overclocked Defense Laser bolt"
 	InserterFastInsertion = "Rapid Insertion Mode"
 	InserterPowerRegeneration = "Inserter Recharging Mode"

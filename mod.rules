@@ -86,6 +86,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike_l.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Beam1_long/pike_l_alt.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne_l.rules>/Part
+			&<Parts/Weapons/Cruiser_Weapons/Beam1_hull/lucerne_l_alt.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Focus1/dirk.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Focus1/dirk_l.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Ion1/basicion.rules>/Part

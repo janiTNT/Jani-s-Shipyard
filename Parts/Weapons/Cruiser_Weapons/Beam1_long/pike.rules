@@ -184,6 +184,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				QuadCount = 64
 			}
 		}
+		
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			ChainedTo = TurretSlider
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			//MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			//InterpolateLocation = true
+			InterpolateRotation = true
+		}
 
 		ReloadProgressBar
 		{
@@ -200,6 +212,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//FireTrigger = Turret
 			FireTrigger // none, but field is required
 			GetTargetFrom = Turret
+			AttachBeamMediaEffectsTo = InterpolatedTurret
 			OperationalToggle = IsOperational // stops firing if no power availible
 			Duration = 0.2
 			ColliderOverlapTest = true
@@ -207,6 +220,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourcesUsed = 6000 / 25
 			//FireDelay = .25
 			MinResourcesUsed = 1
+			BeamMediaEffectsOffset = [(&../Location/0), 0]
 			
 			//EffectsScaleFactor = BeamEffectsScale
 			
@@ -218,9 +232,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/ion_beam/ion_beam_emit.wav"
-					Volume = 1 * 6
-					Speed = 1.2
+					Sound = "./Data/shots/ion_beam/sounds/ion_beam_emit_loop.wav"
+					Volume = 1
+					Speed = 1.05
 					MaxConcurrent = 1
 					MaxConcurrentVolume = 1
 					RampUpTime = .25
@@ -238,9 +252,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Interval = 5 / 4
 			ResetWhenOperational = true
 		}
+		InterpolatedOscillator // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			MatchTransformOf = Oscillator
+			MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			InterpolateLocation = true
+			InterpolateRotation = true
+		}
 		BeamEmitter : BeamEmitterBase
 		{
 			ChainedTo = Oscillator
+			AttachBeamMediaEffectsTo = InterpolatedOscillator
 			FireTrigger = Turret
 			Location = [0.36, 0]
 		}
@@ -255,7 +279,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			//ChainedTo = Oscillator
 			Location = [0.05, 0]
 			Rotation = 90d
@@ -323,12 +347,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ShootSprite
 		{
 			Type = Sprite
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			//ChainedTo = Oscillator
 			Location = [0.05, 0]
 			Rotation = 90d
 			Layer = "FTLlowturrets"
-			ResetAnimationTrigger = BeamEmitter
+			//ResetAnimationTrigger = Turret // jank
 			OperationalToggle = BeamEmitter
 			AtlasSprite
 			{
@@ -357,7 +381,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				]
 				Size = [1, 1]
 				AnimationInterval = 0.75
-				AnimationStartTime = MinValue
+				AnimationStartTime = WhenSpawned
 				ClampAnimation = true
 			}
 		}
@@ -666,7 +690,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
+					//Delay = &~/Part/Components/Turret/FireInterval
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -740,17 +764,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			NameKey = "StatCategories/IonBeam"
 			Stats
 			{
-				Damage = [(&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue) * (5) * (1 / (&~/Part/Components/BeamEmitter/HitInterval)) , ((&~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue) * (5) * (1 / (&~/Part/Components/BeamEmitter/HitInterval))) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
+				Damage = [(&../BaseDamage) * (&../DURATION) * (1 / (&../HitInterval)) , ((&../BaseDamage) * (&../DURATION) * (1 / (&../HitInterval))) * (1 / (&~/Part/Components/Turret/FireInterval)) ]
+				DURATION = (&~/Part/Components/BeamEmitter/Burst) * (&~/Part/Components/BeamEmitter/BurstDelay)
 				BaseDamage = &~/Part/Components/BeamEmitter/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerShotNear = (&BaseDamage) * (&~/Part/Components/BeamEmitter/HitEffectsScaleOverRange/0)
 				DamagePerShotFar = (&BaseDamage) * (&~/Part/Components/BeamEmitter/HitEffectsScaleOverRange/1)
 				ROF = 1 / (&~/Part/Components/Turret/FireInterval)
 				HitInterval = &~/Part/Components/BeamEmitter/HitInterval
-				DamageContinuousNear = (&DamagePerShotNear) / (&HitInterval)
+				DamageContinuousBurstbeam = (&DamagePerShotNear) / (&HitInterval)
 				Range = &~/Part/Components/BeamEmitter/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
 				ShotSpeed = Infinity
-				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000 * 25
+				PowerPerShot = (&~/Part/Components/BeamEmitter/ResourcesUsed) / 1000 * (&~/Part/Components/BeamEmitter/Burst)
 				PowerPerSecond = (&PowerPerShot) / (&~/Part/Components/Turret/FireInterval)
 				ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
 			}

@@ -190,6 +190,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				QuadCount = 64
 			}
 		}
+		
+		InterpolatedTurret // Do not hook any gameplay logic to this! It will cause desyncs!
+		{
+			Type = TransformMatch
+			ChainedTo = TurretSlider
+			Location = &../Turret/Location
+			MatchTransformOf = Turret
+			//MatchLocationSpeed = Infinity
+			MatchRotationSpeed = Infinity
+			//InterpolateLocation = true
+			InterpolateRotation = true
+		}
 
 		ReloadProgressBar
 		{
@@ -206,12 +218,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			//OperationalToggle = IsOperational // allows to fire if no power when last fire
-			Duration = 1
+			Duration = 1.5
 			ColliderOverlapTest = true
 			ResourceStorage = BatteryStorage
 			ResourcesUsed = 1250
 			FireDelay = .25
 			MinResourcesUsed = 1
+			AttachBeamMediaEffectsTo = InterpolatedTurret
+			BeamMediaEffectsOffset = [(&../Location/0), 0]
 			
 			//EffectsScaleFactor = BeamEffectsScale
 
@@ -219,8 +233,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./Data/shots/ion_beam/ion_beam_emit.wav"
-					Volume = 1 * 6
+					Sound = "./Data/shots/ion_beam/sounds/ion_beam_emit_loop.wav"
+					Volume = 1
 					Speed = 1.8
 					MaxConcurrent = 1
 					MaxConcurrentVolume = 1
@@ -240,7 +254,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		TurretGraphics
 		{
 			Type = Graphics
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [0.05, 0]
 			Rotation = 90d
 			OperationalToggle = IsOperational
@@ -274,7 +288,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		ShootSprite
 		{
 			Type = Sprite
-			ChainedTo = Turret
+			ChainedTo = InterpolatedTurret
 			Location = [0.05, 0]
 			Rotation = 90d
 			Layer = "FTLlowturrets"
@@ -299,7 +313,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					"weapon_n.png"
 				]
 				Size = [1, 1]
-				AnimationInterval = 0.15
+				AnimationInterval = 0.35
 				AnimationStartTime = MinValue
 				ClampAnimation = true
 			}

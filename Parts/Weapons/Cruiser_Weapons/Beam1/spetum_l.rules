@@ -37,6 +37,11 @@ Part : <spetum.rules>/Part
 			Rotation = -180d
 		}
 		
+		InterpolatedTurret : &<spetum.rules>/Part/Components/InterpolatedTurret
+		{
+			Location = &../Turret/Location
+		}
+		
 		TurretHolder : &<spetum.rules>/Part/Components/TurretHolder
 		{
 			Location = [.25, -.5]

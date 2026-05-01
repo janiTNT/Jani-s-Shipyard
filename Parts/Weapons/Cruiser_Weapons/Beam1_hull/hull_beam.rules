@@ -1,9 +1,9 @@
-Range = 250
-IdealRange = 150
-Width = .15 // smaller so it fits
+Range = 200
+IdealRange = 190
+Width = .20 // smaller so it fits
 HitInterval = .1
 HitEffectsScaleOverRange = [1, 1]
-MediaEffectsScaleOverRange = [0.09, 0.09]
+MediaEffectsScaleOverRange = [0.18, 0.18]
 ReceivableBuffs = [ElectronBuff]
 
 CrewCollisions = {Enemies=true; Junk=true}
@@ -15,9 +15,9 @@ StartMediaEffects
 	{
 		Sound = "./data/shots/ion_beam/sounds/ion_beam_start.wav"
 		Volume = 1
-		Speed = 1.5
 		MaxConcurrent = 2
 		MaxConcurrentVolume = 1
+		Speed = 1
 
 		DynamicVolume : ^/0/DynamicVolume
 		{
@@ -47,6 +47,7 @@ EndMediaEffects
 		}
 	}
 ]
+
 BeamMediaEffects
 [
 	// The beam itself.
@@ -69,7 +70,7 @@ BeamMediaEffects
 				UVMode = Wrap
 			}
 			Shader = "./data/shots/ion_beam/ion_beam.shader"
-			_extraBeginLength = 0
+			_extraBeginLength = 0.15
 			_extraEndLength = 0.25
 			_sizePulseFactor = 1.2
 			_sizePulseInterval = .1
@@ -77,7 +78,7 @@ BeamMediaEffects
 			_endCapSize = 4
 			Size = [100%, 3.5]
 			VertexColor = [255, 255, 255, 217]
-			_baseColor = [1, 0, 0, 1]
+			_baseColor = [1, 0.15, 0, 1]
 			_halfHighlightColor = [0.5, 0.219, 0.213, 1]
 			TargetBlendMode
 			{
@@ -107,10 +108,10 @@ BeamMediaEffects
 				SampleMode = Linear
 			}
 			Shader = "./Data/common_effects/fancy_beam_light.shader"
-			Size = [100%, 6]
-			_extraBeginLength = (&Size/1) / 4
+			Size = [100%, 10]
+			_extraBeginLength = (&Size/1) / 5
 			_extraEndLength = (&Size/1) / 2
-			VertexColor = [255, 0, 0, 255]
+			VertexColor = [255, 32, 0, 255]
 			_z = 0.4
 			_litReflectiveStrength = 12
 			_litAdditiveStrength = 0
@@ -152,14 +153,43 @@ BeamMediaEffects
 	}
 ]
 
-HitShield = &HitOperational
+HitShield : &HitOperational
+{
+	HitEffects
+	[
+		{ //Damage to shields
+			Type = Damage
+			Damage = { BaseValue=30; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+		}
+		{
+			Type = Impulse
+			Impulse = 2
+			Filter
+			{
+				Friendlies = true
+			}
+		}
+	]
+}
 HitOperational
 {
 	HitEffects
 	[
-		{
+		{ //Damage to non armor
 			Type = Damage
-			Damage = { BaseValue=150; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=80; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Filter
+			{
+				ExcludePartCategories = [armor, corridor]
+			}
+		}
+		{ //Damage to armor
+			Type = Damage
+			Damage = { BaseValue=80*5; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Filter
+			{
+				OnlyPartCategories = [armor, corridor]
+			}
 		}
 		{
 			Type = Impulse
@@ -208,7 +238,7 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=100; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=1000; BuffType=ElectronBuff; BuffMode=Multiply; }
 		}
 		{
 			Type = Impulse

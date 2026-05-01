@@ -32,6 +32,11 @@ Part : <pike.rules>/Part
 			Rotation = -180d
 		}
 		
+		InterpolatedTurret : &<pike.rules>/Part/Components/InterpolatedTurret
+		{
+			Location = &../Turret/Location
+		}
+		
 		TurretHolder : &<pike.rules>/Part/Components/TurretHolder
 		{
 			Location = [.4, -.5]
