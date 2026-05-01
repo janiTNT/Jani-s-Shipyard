@@ -17,7 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 3]
 	MaxHealth = 3000
 	SignificanceToggle = ScorchedToggle
-	TypeCategories = [uses_power, weapon]
+	TypeCategories = [uses_power, weapon, is_crewed]
 	SelectionTypeID = "FTL_pike_beam"
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]
@@ -217,7 +217,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Duration = 0.2
 			ColliderOverlapTest = true
 			ResourceStorage = BatteryStorage
-			ResourcesUsed = 6000 / 25
+			ResourcesUsed = 6500 / 25
 			//FireDelay = .25
 			MinResourcesUsed = 1
 			BeamMediaEffectsOffset = [(&../Location/0), 0]
@@ -248,7 +248,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = Turret
 			OperationalToggle = BeamEmitter
 			Location = [0, 0]
-			Angle = 1d
+			Angle = 1.25d
 			Interval = 5 / 4
 			ResetWhenOperational = true
 		}

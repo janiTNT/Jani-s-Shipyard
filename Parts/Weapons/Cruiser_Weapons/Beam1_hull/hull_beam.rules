@@ -159,7 +159,7 @@ HitShield : &HitOperational
 	[
 		{ //Damage to shields
 			Type = Damage
-			Damage = { BaseValue=30; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Damage = { BaseValue=15; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 		}
 		{
 			Type = Impulse
@@ -177,18 +177,18 @@ HitOperational
 	[
 		{ //Damage to non armor
 			Type = Damage
-			Damage = { BaseValue=80; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Damage = { BaseValue=50; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
-				ExcludePartCategories = [armor, corridor]
+				ExcludePartCategories = [armor, corridor, sheetmetal]
 			}
 		}
 		{ //Damage to armor
 			Type = Damage
-			Damage = { BaseValue=80*5; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
+			Damage = { BaseValue=75*5; BuffType=ElectronBuff; BuffMode=Multiply; EffectScaleExponent=1; }
 			Filter
 			{
-				OnlyPartCategories = [armor, corridor]
+				OnlyPartCategories = [armor, corridor, sheetmetal]
 			}
 		}
 		{
@@ -203,11 +203,11 @@ HitOperational
 
 	MediaEffects
 	[
-		&<./data/shots/ion_beam/particles/ion_beam_hit.rules>
+		&<particles/hull_beam_hit.rules>
 
-		&<./data/shots/ion_beam/particles/ion_beam_hit_sparks.rules>
+		&<particles/hull_beam_hit_sparks.rules>
 
-		&<./data/shots/ion_beam/particles/ion_beam_hit_spikes.rules>
+		&<particles/hull_beam_hit_spikes.rules>
 
 		: /BASE_SOUNDS/AudioExterior
 		{

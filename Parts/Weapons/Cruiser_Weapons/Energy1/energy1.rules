@@ -16,7 +16,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	]
 	Size = [1, 2]
 	MaxHealth = 2000
-	TypeCategories = [uses_power, weapon]
+	TypeCategories = [uses_power, weapon, is_crewed]
 	IsFlippable = true
 	SignificanceToggle = ScorchedToggle
 	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronBuff]

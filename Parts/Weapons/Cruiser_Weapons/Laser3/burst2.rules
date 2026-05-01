@@ -83,7 +83,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandConsumer
 			OperationalToggle = ConsumptionToggle
-			CommandPoints = 2
+			CommandPoints = 3
 		}
 		BatteryStorage
 		{

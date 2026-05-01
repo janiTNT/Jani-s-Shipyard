@@ -17,7 +17,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	Size = [1, 3]
 	MaxHealth = 2000
 	SignificanceToggle = ScorchedToggle
-	TypeCategories = [uses_power, weapon, uses_mines, uses_launcher_parts]
+	TypeCategories = [uses_power, weapon, uses_mines, uses_launcher_parts, is_crewed]
 	IsFlippable = true
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ForceManhattanPathInPart = true

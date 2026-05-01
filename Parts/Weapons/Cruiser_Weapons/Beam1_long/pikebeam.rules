@@ -160,7 +160,7 @@ HitOperational
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=150; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=175; BuffType=ElectronBuff; BuffMode=Multiply; }
 		}
 		{
 			Type = Impulse
@@ -209,7 +209,7 @@ HitStructural
 	[
 		{
 			Type = Damage
-			Damage = { BaseValue=175; BuffType=ElectronBuff; BuffMode=Multiply; }
+			Damage = { BaseValue=125; BuffType=ElectronBuff; BuffMode=Multiply; }
 		}
 		{
 			Type = Impulse
