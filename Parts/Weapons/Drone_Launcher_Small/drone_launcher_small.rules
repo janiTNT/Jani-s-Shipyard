@@ -20,7 +20,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 6000
-	TypeCategories = [weapon, uses_steel, uses_sulfur, uses_launcher_parts, uses_ammo, is_crewed, drones]
+	TypeCategories = [weapon, uses_steel, uses_sulfur, uses_launcher_parts, uses_ammo, is_crewed, drones, uses_power]
 	//ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	ProhibitAbove = 2

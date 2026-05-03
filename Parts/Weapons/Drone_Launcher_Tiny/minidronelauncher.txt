@@ -21,7 +21,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
 	MaxHealth = 3000
-	TypeCategories = [weapon, uses_power, uses_drones, uses_launcher_parts, is_crewed]
+	TypeCategories = [weapon, uses_power, uses_drones, uses_launcher_parts, is_crewed, uses_power]
 	//ReceivableBuffs = [Improve_Weapon_Range, AutoWeaponsEnable]
 	ProhibitAbove = 2
 	AllowedDoorLocations

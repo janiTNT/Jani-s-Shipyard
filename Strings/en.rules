@@ -319,7 +319,7 @@ Parts
 	
 	InserterAmmo = "Ammo Resource Inserter"
 	InserterAmmoIcon = "Inserter [AMMO]"
-	InserterDesc = "Inserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. Can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>\n<bad>Inserters may not be compatible with modded missile launchers and etc.</bad>"
+	InserterDesc = "Inserters allow automated transfer of resources from a part to another in quantities equivalent to how much a crewmember can carry. Can transfer to Factories, Weapons or Special Storage. <bad>incompatible with vanilla default storage, use this mod's storage.</bad>\n<bad>Inserters may not be compatible with modded missile launchers and etc.</bad>\nCan be disabled with logic."
 
 	InserterConstruction = "Building Material Resource Inserter"
 	InserterConstructionIcon = "Inserter [BUILD]"
