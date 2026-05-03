@@ -8,8 +8,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	DescriptionKey = "Parts/ControlRoom1x1KROOMDesc"
 	Resources
 	[
-		[steel, 20]//500
-		[coil2, 10]//3000
+		[steel, 24]//500
+		[coil2, 13]//3000
 		[processor, 1]//2500
 	]
 	AIValueFactor = 5
@@ -188,7 +188,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FromStorage = BatteryStorage
 			FromQuantity = 250
 			MinFromQuantityForConversion = 1
-			Interval = 25
+			Interval = 2.5
 		}
 
 		//CODE COMPLETLY TAKEN FROM KROOM'S FORGE.   MINOR EDITS FOR COMPATIBILITY
@@ -251,7 +251,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					MinQuantityForConversion = 500
 				}
 			]
-			Interval = 0.2
+			Interval = 0.15
 		}
 		//------------------------------------------------------------------
 
@@ -259,7 +259,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CommandProvider
 			OperationalToggle = IsOperational
-			CommandPoints = 10
+			CommandPoints = 12
 		}
 		
 		Sensor
@@ -267,7 +267,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = Sensor
 			OperationalToggle = IsOperational
 			SightRadius = 250
-			RadarRadius = 1100
+			RadarRadius = 800
 		}
 
 		CrewLocation
