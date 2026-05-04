@@ -60,7 +60,7 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 		
@@ -694,6 +694,8 @@ Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 					PowerPerShot = (&~/OVERCLOCK/ENERGY_PER_SHOT) / 1000
 					ShotPowerUsage = [&../PowerPerShot, (&../PowerPerShot) * (&../ROF)]
 					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					Range = &~/OVERCLOCK/RANGE
+					Spread = deg(&~/OVERCLOCK/RANDOMSPREAD/1)
 				}
 			}
 		]

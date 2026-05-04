@@ -1,7 +1,17 @@
+OVERCLOCK
+{
+	BULLET = &<burst1lasershot_overclock.rules>
+	HEAT_PER_SHOT = 450
+	FIRE_RATE_FACTOR = 60%
+	POWER_USE_FACTOR = 500%
+}
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
 //Somewhat Based On GA's Fighter weapons, which is in fact Inspired by Kroom's forge Fighter weapons
 //It was perfect for FTL styled weapons waaa
 //Some IDs are the same in order to ensure compatibility for things such as blocking eachother.
-Part : <./Data/ships/terran/base_part_terran.rules>/Part
+Part : <./Data/ships/terran/base_part_terran_overclock.rules>/Part
 {
 	NameKey = "Parts/FTL_burstlaser1"
 	IconNameKey = "Parts/FTL_burstlaser1Icon"
@@ -46,7 +56,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle]
+			Toggles = [PowerToggle, BatteryStorage, ScorchedToggle, NonJunkToggle, &~/Part/^/0/OVERCLOCK_OPERATIONAL]
 			Mode = All
 		}
 		
@@ -54,6 +64,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = JunkToggle
 			OnWhenJunk = false
+		}
+		
+		IsOperationalNonOverclocked
+		{
+			Type = MultiToggle
+			Toggles = [ IsOperational, { Toggle=IsOverclocked; Invert=true } ]
+			Mode = All
 		}
 
 		ScorchedToggle
@@ -121,6 +138,41 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OnMode = 2
 		}
 		
+		OverclockStateValue
+		{
+			Type = ToggleValueSelector
+			Toggle = OverclockModeToggle
+			ToggleOffValue = Zero
+			ToggleOnValue = One
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+
+		OverheatEffects : ^/0/OverheatEffects {}
+
+		Overclock_ShotHeatProducer
+		{
+			Type = ResourceChange
+			ResourceStorage = &~/Part/^/0/HEAT_TARGET_STORAGE
+			Trigger = Overclock_BulletEmitter
+			Amount = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/HEAT_TO_RESOURCE)
+		}
+
+		Port_Thermal_Left : ~/Part/^/0/BASE_THERMAL_PORT
+		{
+			Location = [0, 0]
+			Direction = Left
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
+		}
+		
 		SliderValueTween
 		{
 			Type = ValueTween
@@ -154,12 +206,25 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ChainedTo = TurretSlider // Evil
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 1.125
+			FireInterval
+			{
+				BaseValue = 1.125
+				Modifiers
+				[
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/FIRE_RATE_FACTOR)]
+						ModificationMode = Divide
+					}
+				]
+			}
 			FiringArc = 20d
 			RotateSpeed = 180d
 			FireThresholdAngle = 1d
 			AIFirepowerRating = &~/Part/StatsByCategory/0/Stats/DamagePerSecond
-			Emitter = BulletEmitter
+			Emitter = WeaponEmitterSelector
 			FirePermissionToggle = FireModeToggle
 			HoldTargetAfterCancel = &../BulletEmitter/FireDelay
 			AutoTargetCrewSafetyDist = 8
@@ -195,6 +260,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			OperationalToggle = IsOperational
 			ShowProgressFor = Turret
 		}
+		
+		WeaponEmitterSelector
+		{
+			Type = ToggleEmitterSelector
+			Toggle = IsOverclocked
+			ToggleOffEmitter = BulletEmitter
+			ToggleOnEmitter = Overclock_BulletEmitter
+		}
 
 		BulletEmitter
 		{
@@ -203,7 +276,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			FireTrigger = Turret
 			GetTargetFrom = Turret
 			Location = [1.2, 0]
-			OperationalToggle = IsOperational
+			OperationalToggle = IsOperationalNonOverclocked
 			FireDelay = 0.5
 			Bullet = &<burst1lasershot.rules>
 			ResourceStorage = BatteryStorage
@@ -214,8 +287,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BurstDelay = 0.2
 			UseResourcePerShotInBurst = true
 		}
+		
+		Overclock_BulletEmitter : BulletEmitter
+		{
+			Type = BulletEmitter
+			OperationalToggle = IsOperationalOverclocked
+			ResourcesUsed = (&^/0/ResourcesUsed) * (&~/OVERCLOCK/POWER_USE_FACTOR)
+			FireDelay = (&^/0/FireDelay) / (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+			Bullet = &~/OVERCLOCK/BULLET
+			BurstDelay = 0.75
+		}
 
-		FireEffect
+		FireEffect_NonOverclocked
 		{
 			Type = TriggeredEffects
 			ChainedTo = Turret
@@ -241,11 +324,36 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 		
+		FireEffect_Overclocked
+		{
+			Type = TriggeredEffects
+			ChainedTo = Turret
+			Trigger = Overclock_BulletEmitter
+			Location = [1.2, 0]
+			AnchorMediaEffects = true
+
+			MediaEffects
+			[
+				&<./data/ships/terran/laser_blaster_large/particles/laser_blaster_large_shoot.rules>
+				&<./data/ships/terran/laser_blaster_large/particles/laser_blaster_large_shoot_flash.rules>
+
+
+				: /BASE_SOUNDS/AudioExterior
+				{
+					RandomSounds = ["./data/ships/terran/laser_blaster_small/sounds/laser_overclocked_shot_01.wav",
+									"./data/ships/terran/laser_blaster_small/sounds/laser_overclocked_shot_02.wav",
+									"./data/ships/terran/laser_blaster_small/sounds/laser_overclocked_shot_03.wav"]
+					Db = -2
+					SpeedVariation = .1
+				}
+			]
+		}
+		
 		ChargeToggle
 		{
 			Type = TriggeredToggle
 			OnTrigger = Turret
-			OffTrigger = BulletEmitter//burst kinda goes wack here xd
+			OffTrigger = WeaponEmitterSelector//burst kinda goes wack here xd
 		}
 		
 		TurretGraphics
@@ -301,7 +409,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [1.1, 0]
 			Rotation = 90d
 			Layer = "FTLlowturrets"
-			ResetAnimationTrigger = BulletEmitter
+			ResetAnimationTrigger = WeaponEmitterSelector
 			AtlasSprite
 			{
 				AnimationFiles
@@ -574,7 +682,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				// Out of power.
 				{
 					Toggle = BatteryStorage
-					Delay = &~/Part/Components/Turret/FireInterval
+					Delay = &~/Part/Components/Turret/FireInterval/BaseValue
 					AtlasSprite
 					{
 						File = &/INDICATORS/NoPower
@@ -621,6 +729,19 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "../base/blueprint1x1.png"
 			Size = [1, 1]
 		}
+		PeakHeatGenerationValue
+		{
+			Type = StaticValue
+			SHOT_HEAT_PER_SECOND = (&~/OVERCLOCK/HEAT_PER_SHOT) * (&~/Part/SecondaryToolTip/StatsByCategory/0/Stats/ROF)
+			Value = (&SHOT_HEAT_PER_SECOND)
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			OperationalToggle = OverclockModeToggle
+			ValueFrom = PeakHeatGenerationValue
+		}
 	}
 
 	Stats
@@ -634,13 +755,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	StatsByCategory
 	[
 		{
-			NameKey = "StatCategories/LaserBoltSmall"
+			NameKey = "StatCategories/Burst1BoltSmall"
 			Stats
 			{
 				DamagePerShot = &~/Part/Components/BulletEmitter/Bullet/Components/Hit/HitOperational/HitEffects/0/Damage/BaseValue
 				DamagePerSecond = (&DamagePerShot) * (&ROF)
 				Damage = [&../DamagePerShot, &../DamagePerSecond]
-				ROF = 1 / ((&~/Part/Components/Turret/FireInterval) / (&JaniBurstShots))
+				ROF = 1 / ((&~/Part/Components/Turret/FireInterval/BaseValue) / (&JaniBurstShots))
 				JaniBurstShots = &~/Part/Components/BulletEmitter/Burst
 				Range = &~/Part/Components/BulletEmitter/Bullet/Range
 				Arc = deg(&~/Part/Components/Turret/FiringArc)
@@ -653,4 +774,31 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 	]
+	
+	SecondaryToolTip
+	{
+		TitleKey = "StatCategories/Overclocked"
+		DescriptionKey = "Parts/BurstLaser1OverclockDesc"
+		StatsByCategory
+		[
+			{
+				NameKey = "StatCategories/Burst1BoltSmallOverclocked"
+				Stats
+				{
+					DamagePerShot = &~/OVERCLOCK/BULLET/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue
+					DamagePerSecond = (&DamagePerShot) * (&ROF)
+					MaxDamage = [&../DamagePerShot, &../DamagePerSecond]
+					DamageArea = &~/OVERCLOCK/BULLET/Components/Hit/HitOperational/HitEffects/0/Radius/BaseValue
+					ROF = (&~/Part/StatsByCategory/0/Stats/ROF) * (&~/OVERCLOCK/FIRE_RATE_FACTOR)
+					HeatPerShot = (&~/OVERCLOCK/HEAT_PER_SHOT)
+					PowerPerShot = (&~/Part/Components/Overclock_BulletEmitter/ResourcesUsed) / 1000
+					PowerPerSecond = (&PowerPerShot) * (&ROF)
+					ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond]
+					ShotHP = &~/OVERCLOCK/BULLET/Components/Targetable/Health
+					ShotSpeed = &~/OVERCLOCK/BULLET/Speed
+					Range = &~/OVERCLOCK/BULLET/Range
+				}
+			}
+		]
+	}
 }

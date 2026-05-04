@@ -8,6 +8,12 @@ ReceivableBuffs = [ElectronBuff]
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 
+AttenuationLimit = &HitOperational/HitEffects/0/TotalDamage
+HitAttenuator
+{
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
 BeamMediaEffects
 [
 	// The beam itself.

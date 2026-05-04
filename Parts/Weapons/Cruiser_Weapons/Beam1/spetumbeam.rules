@@ -9,6 +9,12 @@ ReceivableBuffs = [ElectronBuff]
 CrewCollisions = {Enemies=true; Junk=true}
 HitCrew = &HitOperational
 
+AttenuationLimit = &HitOperational/HitEffects/0/Damage
+HitAttenuator
+{
+	MediaEffects = &~/HitOperational/MediaEffects
+}
+
 StartMediaEffects
 [
 	: /BASE_SOUNDS/AudioExterior
