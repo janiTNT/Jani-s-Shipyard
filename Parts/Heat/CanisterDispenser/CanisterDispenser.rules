@@ -804,7 +804,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				// Out of canisters.
 				{
-					Toggle = TrueTHERMALMissileStorage
+					Toggle = CombinedMissiles
 					Delay = &~/Part/Components/Weapon/FireInterval
 					AtlasSprite
 					{

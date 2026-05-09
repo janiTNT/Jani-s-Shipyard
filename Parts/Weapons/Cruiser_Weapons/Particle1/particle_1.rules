@@ -136,7 +136,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = CircleCollider
 			Location = [.5, -0.35]
-			Radius = .3
+			Radius = .35
 			ChainedTo = TurretSlider // Evil
 			IncludeWhenUnderConstruction = false //Evil 2
 		}

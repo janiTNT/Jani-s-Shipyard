@@ -1,5 +1,5 @@
 ID = "janiTNT.FTLmissile1shot"
-Range = 200
+Range = 280
 IdealRange = [60, 200]
 IdealRadius = [5, 50]
 Speed = 140
@@ -30,7 +30,7 @@ Components
 	Targetable
 	{
 		Type = Targetable
-		Health = 150
+		Health = 400
 		TargetCategory = "missile"
 		// No AOE damage when shot down.
 		OnDeath = &../Hit/HitFriendly
@@ -48,8 +48,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = { BaseValue = 5000; EffectScaleExponent = 1 }
-					Radius = 4
+					TotalDamage = { BaseValue = 7000; EffectScaleExponent = 1 }
+					Radius = 4.5
 					ImpulsePerNDamage = 10
 					NDamage = 500
 					Filter
@@ -188,8 +188,8 @@ Components
 					{
 						BaseSize
 						{
-							X = 6
-							Y = 1
+							X = 7
+							Y = 1.5
 						}
 					}
 				}
