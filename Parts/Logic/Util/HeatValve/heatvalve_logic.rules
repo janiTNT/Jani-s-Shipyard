@@ -5,7 +5,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ID = janiTNT.heat_pipe_valve_logic
 	SelectionTypeID = heat_pipe
 	EditorGroups = [Logic]
-	EditorParentParts = [ "janiTNT.heat_pipe_valve", 1]
+	EditorParentParts = [ [ "janiTNT.heat_pipe_valve", 1] ]
 	DescriptionKey = "Parts/HeatPipeValveJaniLogicDesc"
 	Resources
 	[

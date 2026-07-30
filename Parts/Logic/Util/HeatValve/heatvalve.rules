@@ -5,7 +5,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	ID = janiTNT.heat_pipe_valve
 	SelectionTypeID = heat_pipe
 	EditorGroups = [Thermal]
-	EditorParentParts = [ "cosmoteer.resonance_beam_turret", -1]
+	EditorParentParts = [ ["cosmoteer.resonance_beam_turret", -1] ]
 	DescriptionKey = "Parts/HeatPipeValveJaniDesc"
 	Resources
 	[
