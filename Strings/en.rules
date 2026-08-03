@@ -1441,17 +1441,6 @@ PartToggles
 	"<white>Durability:</white><good> 2000</good>\n"\
 	"<white>Drone ROF:</white><good> 2.85</good><gray>/sec</gray>"
 	
-	Laserdrone = "Laser Drone (4 drn 4 powr)"
-	Bulletdrone = "Bullet Drone (4 drn 6 bullet)"
-	Beamdrone = "Beam Drone (5 drn 8 powr)"
-	Raildrone = "Rail Drone (6 drn 8 powr 8 bullet)"
-	Missiledrone = "Missile Drone (6 drn 8 missle)"
-	BFGdrone = "BFG Drone (16 drn 16 powr 12 nuke 8 prot)"
-	Fireballdrone = "Fireball Drone (6 drn 4 powr)"
-	Mk3drone = "MK3 Drone Swarm (3drn X 8)"
-	Shielddrone = "Shield Drone (5 drn 4 powr)\n\n<bad><b>WARNING: DOESNT WORK WITH MULTIPLAYER</b></bad>"
-	XRoofful = "Roof Greebles: ON"
-	XRoofless = "Roof Greebles: OFF"
 	DroneCombat1 = "<b>Combat MK1</b>\n\n"\
 	"The (Second) Simplest form of a drone you can make. Shoots lasers at enemies.\n\n"\
 	"<b>Combat MK1 Launcher:</b>\n"\
@@ -1526,48 +1515,6 @@ PartToggles
 	"<white>Shots:</white><good> 16</good>\n"\
 	"<white>Durability:</white><good> 500</good>\n"\
 	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
-	
-	DroneWarcruiser = "Warcruiser Drone (12 drn 21 IBeam 16 Hull 16 Power)"
-	DroneBomber1 = "Bomber Drone, Hybrid(8 drn 28 IBeam 15 Hull 12 Nuke 28 Power)"
-	DroneBomber2 = "Bomber Drone, Nukes(8 drn 28 IBeam 15 Hull 24 Nuke 8 Power)"
-	DroneBomber3 = "Bomber Drone, Emps(8 drn 28 IBeam 15 Hull 48 Power)"
-	DroneAmmo1 = "Drones"
-	DroneAmmo2 = "Ibeams"
-	DroneAmmo3 = "Hulls"
-	DroneAmmo4 = "Silicon"
-	DroneAmmo5 = "Phase Fabric"
-	unit1 = "<b>Dagger</b>\n\nAttacks enemy ships with its tiny guns, Recklessly running towards enemies.\nWalks along the background\n\nProduction Time: 15 Sec\n10 Silicon, 3 Bullets.\n\nShot Count: 50\n\nSize:1x1" //king remover :>
-	unit2 = "<b>Mace</b>\n\nAttacks enemies with two short range flamethrower weapons, Dealing massive damage. Runs tiredlessly towards enemies.\nWalks along the background\n\nShot Count: 50\n\nSize: 1.25x1.25" //king weapon
-	unit3 = "<b>Fortress</b>" //king place
-	unit4 = "<b>Scepter</b>" //king tool
-	unit5 = "<b>Reign</b>" //king existance
-	unit6 = "<b>Nova</b>\n\nAttacks enemy ships with lasers, Repairing nearby units when firing, Running endlessly towards enemies. Lasers can heal friendly ships (Disclaimer: Does not rebuild broken parts.).\nWalks along the background, also spawns Very Heavy copper walls that act as damage soakers and slows ships\n\n<bad>Can fly before reaching the destination, will stop flying to shoot, technically roof launchable</bad>\n\nProduction Time: 40 Sec\n30 Silicon, 9 Bullets, 6 Drone parts\n\nShot Count : 18\nSize:1x1" //there is no star
-	unit7 = "<b>Pulsar</b>" //star 1
-	unit8 = "<b>Quasar</b>" //star 2
-	unit9 = "<b>Vela</b>" //portable meltdown
-	unit10 = "<b>Corvus</b>" //birb
-	unit11 = "<b>Crawler</b>\n\nSelf Destructs near enemy ships, Dealing Damage.\n\nProduction Time: 10 Sec\n8 Silicon, 1 Battery.\n\nSize:1x1" //weakling go crawl
-	unit12 = "<b>Atrax</b>\n\nFires Orbs of damaging slag at enemies. Deals a damage Over time and Inflicts fires\n<good>Can Walk Above Ships</good>\n\n<bad>Technically Roof launchable</bad>\n\nShot Count: 32 (balance due to Roof Sheninigans)\n\nSize: 1.62x1.62" //trax
-	unit13 = "<b>Spiroct</b>" // i cant say it...
-	unit14 = "<b>Arkyid</b>" //???
-	unit15 = "<b>Toxopid</b>" //so TOXIC
-	unit16 = "<b>Flare</b>\n\nAttacks enemy ships at a distance, Capaple of <good>flying over ships</good>\n\n<bad>Roof launchable</bad>\n\nProduction Time: 15 Sec\nShot Count: 34\n15 Silicon\nSize:1.12x1.12" //Pyro mains
-	unit17 = "<b>Horizon</b>" //bring me the, can you feel my heart
-	unit18 = "<b>Zenith</b>" //NOT terraria
-	unit19 = "<b>Antnumbra</b>" //Who?
-	unit20 = "<b>Eclipse</b>" //the shadows...
-	unit21 = "<b>Mono</b>\n\nFires beams that drain enemy resources, spawning crates with their contents. Rare chance for a special crate with rare materials to drop.\n\n <bad>Creates resources out of thin air if the enemy doesn't have the resources to drain</bad>\n\n<bad>Roof Launchable</bad>\n\nProduction Time: 35 Sec\nShot Count = 8\n30 Silicon, 6 bullets\nSize:0.75x0.75" //the smol
-	unit22 = "<b>Poly</b>" //shhuip
-	unit23 = "<b>Mega</b>" //pew pew
-	unit24 = "<b>Quad</b>" //pheeew
-	unit25 = "<b>Oct</b>" //ominous braam sound effect
-	unitdeployoff = "Deploy Units: OFF"
-	unitdeployauto = "Deploy Units: <bad>ON RANGE</bad>"
-	unitdeployon = "<good>Deploy Units: ON</good>"
-	No_Phase = "Phase Use: off"
-	Yes_Phase = "Phase Use: on"
-	No_Phase2 = "Phase\n<bad>off</bad>"
-	Yes_Phase2 = "Phase\n<good>ON</good>"
 }
 EditorGroups
 {
