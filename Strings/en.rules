@@ -1253,6 +1253,9 @@ Inputs
 		resource_mod_GA_0 = "Choose Rocket Parts"
 		resource_mod_GA_1 = "Choose Ammo Boxes"
 		
+		inserter_speed_overclock = "Overclocked Inserter : Choose Speed"
+		inserter_power_overclock = "Overclocked Inserter : Choose Power"
+		
 		power_value = "Comparator mode : Battery Capacity"
 		thrust_value = "Comparator mode : Thruster Output"
 		reload_value = "Comparator mode : Weapon Reload"
@@ -1378,6 +1381,9 @@ PartToggles
 	resource_astralbar = "Astral Bars"
 	resource_profanedcore = "Divine Cores"
 	resource_cursedpage = "Pages of Annihilation"
+	
+	OverclockInserter_Boost = "Speed Increase Mode"
+	OverclockInserter_Power = "Power Generator Mode"
 	
 	resource_mod_GA_0 = "Rocket Parts"
 	resource_mod_GA_1 = "Ammo Boxes"

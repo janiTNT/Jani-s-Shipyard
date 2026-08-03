@@ -1,6 +1,7 @@
 Resource = bullet
 ResourceStorage = AmmoStorage
-CarrySize = (&<./data/resources/bullet/bullet.rules>/MaxPerNugget)
+ResourceFile = &<./data/resources/bullet/bullet.rules>
+CarrySize = (&ResourceFile/MaxPerNugget)
 LightColor = [255, 145, 27]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
@@ -165,6 +166,15 @@ Components : &<hyperium.rules>/Components
 	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
 	{
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	InsertEffects : &<hyperium.rules>/Components/InsertEffects
+	{
+		MediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+	}
+	CollectEffects : &<hyperium.rules>/Components/CollectEffects
+	{
+		MediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To

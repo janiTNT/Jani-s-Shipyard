@@ -1,6 +1,7 @@
 Resource = missile_part_thermal
 ResourceStorage = TrueTHERMALMissileStorage
-CarrySize = (&<./data/resources/missile_part_thermal/missile_part_thermal.rules>/MaxPerNugget)
+ResourceFile = &<./data/resources/missile_part_thermal/missile_part_thermal.rules>
+CarrySize = (&ResourceFile/MaxPerNugget)
 LightColor = [255, 148, 38]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
@@ -36,6 +37,15 @@ Components : &<hyperium.rules>/Components
 	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To
 	{
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	InsertEffects : &<hyperium.rules>/Components/InsertEffects
+	{
+		MediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+	}
+	CollectEffects : &<hyperium.rules>/Components/CollectEffects
+	{
+		MediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	Graphics

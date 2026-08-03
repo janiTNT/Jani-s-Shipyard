@@ -1,7 +1,8 @@
 OVERCLOCK = &<long_inserter_base.rules>/OVERCLOCK
 Resource = hyperium
 ResourceStorage = HyperiumStorage
-CarrySize = (&<./data/resources/hyperium/hyperium.rules>/MaxPerNugget)
+ResourceFile = &<./data/resources/hyperium/hyperium.rules>
+CarrySize = (&ResourceFile/MaxPerNugget)
 LightColor = [75, 245, 255]
 //CarrySize = 1
 Components
@@ -191,6 +192,93 @@ Components
 			}
 		]
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	MoveTriggerDeploying
+	{
+		Type = ToggleTrigger
+		Toggle = HandRest
+		TriggerWhenOff = true
+		TriggerWhenOn = false
+	}
+	MoveTriggerRetract
+	{
+		Type = ToggleTrigger
+		Toggle = HandExtend
+		TriggerWhenOff = true
+		TriggerWhenOn = false
+	}
+	TriggerInsert
+	{
+		Type = ToggleTrigger
+		Toggle = InsertPermission
+		TriggerWhenOff = false
+		TriggerWhenOn = true
+	}
+	TriggerCollect
+	{
+		Type = ToggleTrigger
+		Toggle = CollectPermission
+		TriggerWhenOff = false
+		TriggerWhenOn = true
+	}
+	DeployEffects
+	{
+		Type = TriggeredEffects
+		Trigger = MoveTriggerDeploying
+		FactorMediaEffectsWith = Overclock_SpeedBoostModeValue
+		Location = [0.5, 0.5]
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioInteriorDetail
+			{
+				RandomSounds = ["sounds/googe servo alt1.wav",
+								"sounds/googe servo alt2.wav",
+								"sounds/googe servo alt3.wav",]
+				Volume = 1
+				Db = -24
+				Speed = 1
+				VolumeOverIntensity = 1
+				SpeedOverIntensity = [1, 2]
+				SpeedVariation = .05
+			}
+		]
+	}
+	InsertEffects
+	{
+		Type = TriggeredEffects
+		Trigger = TriggerInsert
+		Location = [0.5, -1.5]
+		MediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+	}
+	RetractEffects
+	{
+		Type = TriggeredEffects
+		Trigger = MoveTriggerRetract
+		FactorMediaEffectsWith = Overclock_SpeedBoostModeValue
+		Location = [0.5, 0.5]
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioInteriorDetail
+			{
+				RandomSounds = ["sounds/googe servo alt1.wav",
+								"sounds/googe servo alt2.wav",
+								"sounds/googe servo alt3.wav",]
+				Volume = 1
+				Db = -24
+				Speed = 0.9
+				VolumeOverIntensity = 1
+				SpeedOverIntensity = [1, 2]
+				SpeedVariation = .05
+			}
+		]
+	}
+	CollectEffects
+	{
+		Type = TriggeredEffects
+		Trigger = TriggerCollect
+		Location = [0.5, 2.5]
+		MediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	Graphics

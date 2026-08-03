@@ -1,6 +1,7 @@
 Resource = goldium
 ResourceStorage = GoldiumStorage
-CarrySize = (&<../../../Resources/goldium/goldium.rules>/MaxPerNugget)
+ResourceFile = &<../../../Resources/goldium/goldium.rules>
+CarrySize = (&ResourceFile/MaxPerNugget)
 LightColor = [255*1.3, 192*1.3, 0]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
@@ -36,6 +37,15 @@ Components : &<hyperium.rules>/Components
 	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To
 	{
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	InsertEffects : &<hyperium.rules>/Components/InsertEffects
+	{
+		MediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+	}
+	CollectEffects : &<hyperium.rules>/Components/CollectEffects
+	{
+		MediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	Graphics

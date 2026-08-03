@@ -1,6 +1,7 @@
 Resource = janitnt.circuit3
 ResourceStorage = ProcessingUnitStorage
-CarrySize = (&<../../../Resources/Circuits/processing_unit.rules>/MaxPerNugget)
+ResourceFile = &<../../../Resources/Circuits/processing_unit.rules>
+CarrySize = (&ResourceFile/MaxPerNugget)
 LightColor = [46, 64, 204]
 //CarrySize = 1
 Components : &<hyperium.rules>/Components
@@ -31,6 +32,15 @@ Components : &<hyperium.rules>/Components
 	From_Into_Hand : &<hyperium.rules>/Components/From_Into_Hand
 	{
 		Interval = 1 / ((&/Simulation/PhysicsUpdatesPerSecond)*(&~/CarrySize))
+	}
+	
+	InsertEffects : &<hyperium.rules>/Components/InsertEffects
+	{
+		MediaEffects = &~/ResourceFile/StackReceiveMediaEffects
+	}
+	CollectEffects : &<hyperium.rules>/Components/CollectEffects
+	{
+		MediaEffects = &~/ResourceFile/StackPickupMediaEffects
 	}
 	
 	Hand_Into_To : &<hyperium.rules>/Components/Hand_Into_To
