@@ -402,7 +402,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 		]//&<armor.rules>/Part
 	}
-	{	Action = AddMany
+	/* {	Action = AddMany
 
 		AddTo = "<ships/terran/terran.rules>/Terran/Doors"
 
@@ -410,7 +410,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			&<Parts/Decorative/tristeel_door/door.rules>
 		]
-	}
+	} */
 	{
 		Action = AddMany
 		AddTo = "<./Data/gui/game/parts/part_toggles.rules>/PartToggles"
