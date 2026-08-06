@@ -161,7 +161,7 @@ Part : <fringe_ball.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/cannon_deck/shoot.wav"
+					Sound = "./data/ships/terran/cannon_deck/sounds/cannon_deck_shot.wav"
 					Volume = .8
 					SpeedVariation = .25
 				}

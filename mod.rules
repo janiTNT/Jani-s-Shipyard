@@ -1670,6 +1670,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			&<Statuses/Brimstone/Brimstone.rules>
+			&<Statuses/Warding/Warding.rules>
 		]
 	} */
 	
