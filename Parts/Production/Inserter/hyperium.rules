@@ -241,12 +241,10 @@ Components
 		[
 			: /BASE_SOUNDS/AudioInteriorDetail
 			{
-				RandomSounds = ["sounds/googe servo 1.wav",
-								"sounds/googe servo 2.wav",
-								"sounds/googe servo 3.wav",]
+				RandomSounds = ["sounds/googe servo low true1.wav"]
 				Volume = 1
-				Db = -25
-				Speed = 0.9
+				Db = -15
+				Speed = 1
 				//IntensityBounds = [0, 2]
 				VolumeOverIntensity = 1
 				SpeedOverIntensity = [1, 2]
@@ -271,12 +269,10 @@ Components
 		[
 			: /BASE_SOUNDS/AudioInteriorDetail
 			{
-				RandomSounds = ["sounds/googe servo 1.wav",
-								"sounds/googe servo 2.wav",
-								"sounds/googe servo 3.wav",]
+				RandomSounds = ["sounds/googe servo low true2.wav"]
 				Volume = 1
-				Db = -25
-				Speed = 0.8
+				Db = -15
+				Speed = 1
 				//IntensityBounds = [0, 2]
 				VolumeOverIntensity = 1
 				SpeedOverIntensity = [1, 2]
