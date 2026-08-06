@@ -1,0 +1,266 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicPulseRepeater"
+	IconNameKey = "Parts/LogicPulseRepeaterIcon"
+	ID = janiTNT.Logic_pulse_repeater
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicPulseRepeaterDesc"
+	Resources
+	[
+		[steel, 2]
+		[janitnt.circuit1, 3]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "repeater_icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+	&/JANI_COMMON/SettingsHundreds/Part/Components //AdvS_Setting_Third
+	{
+		NumberSelectOnes : ^/1/NumberSelectOnes
+		{
+			Default = 1
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			//File = "blueprints.png"
+			File = "repeater_icon.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		TimerActivator
+		{
+			Type = ToggleTrigger
+			Toggle = LogicSignal
+			TriggerWhenOff = false
+			TriggerWhenOn = true
+		}
+		PulseRepeaterTimer
+		{
+			Type = Timer
+			Duration
+			{
+				BaseValue = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = AdvS_Setting_Third
+						ModificationMode = Multiply
+					}
+				]
+			}
+			StartTrigger = TimerActivator
+			//StopTrigger = Overclock_OnPartDestroying
+			ResetTrigger = TimerActivator
+			StartExpired = true
+		}
+		IsOperational
+		{
+			Type = TriggeredToggle
+			OnTrigger = PulseRepeaterTimer
+			OffTrigger = TickDelay
+			StartsOn = false
+		}
+		TickDelay
+		{
+			Type = DelayTrigger
+			Trigger = PulseRepeaterTimer
+			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		BuffProviderLogic
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = XorFinal
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, -1, 1, 1]
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		PolledValue
+		{
+			Type = PolledValue
+			ValueSource = PulseRepeaterTimer
+			DefaultValue = 0
+		}
+		Lerp
+		{
+			Type = ValueLerp
+			InputValue = PolledValue
+			InputRange = [1, 0]
+			OutputRange = [0, 1]
+			ClampOutput = true
+		}
+		ColorLevel
+		{
+			Type = ValueColor
+			AlphaFrom = Lerp
+		}
+		LightGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			GetColorFrom = ColorLevel
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "repeater_light.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = XorFinal
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "repeater2.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "repeater1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		InvertIndicatorGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = InvertInput
+			OperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "other_invert2.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "other_invert1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+	}
+}

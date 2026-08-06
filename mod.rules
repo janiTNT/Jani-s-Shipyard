@@ -306,6 +306,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Gates/Andgate/ANDgate.rules>/Part
 			&<Parts/Logic/Gates/Bulb/Bulb.rules>/Part
 			
+			&<Parts/Logic/Gates/Repeaters/repeater.rules>/Part
+			&<Parts/Logic/Gates/Repeaters/extender.rules>/Part
+			&<Parts/Logic/Gates/Repeaters/timer.rules>/Part
+			
 			// Sensors
 			&<Parts/Logic/Sensors/LIDAR/Sensor.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/comparator.rules>/Part

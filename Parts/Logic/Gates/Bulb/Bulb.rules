@@ -8,7 +8,7 @@ Part : <../../baselogicpart.rules>/Part
 	DescriptionKey = "Parts/LogicGateBulbDesc"
 	Resources
 	[
-		[steel, 4]
+		[steel, 2]
 		[janitnt.circuit1, 3]
 	]
 	Size = [1, 1]

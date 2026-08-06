@@ -7,7 +7,7 @@ Part : <../../baselogicpart.rules>/Part
 	DescriptionKey = "Parts/LogicGateNotDesc"
 	Resources
 	[
-		[steel, 4]
+		[steel, 2]
 		[janitnt.circuit1, 2]
 	]
 	Size = [1, 1]
