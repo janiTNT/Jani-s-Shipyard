@@ -27,10 +27,6 @@ Part : <../../baselogicpart.rules>/Part
 	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
 	&/JANI_COMMON/SettingsHundreds/Part/Components //AdvS_Setting_Third
 	{
-		NumberSelectOnes : ^/1/NumberSelectOnes
-		{
-			Default = 1
-		}
 		Blueprints
 		{
 			Type = BlueprintSprite
