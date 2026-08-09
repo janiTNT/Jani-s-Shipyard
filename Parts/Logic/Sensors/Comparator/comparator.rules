@@ -32,7 +32,7 @@ Part : <../../baselogicpart.rules>/Part
 			Type = UIToggle
 			ToggleID = "comparator_compare_mode"
 			Default = 0
-			AvailableChoices = [0, 2, 3]
+			//AvailableChoices = [0, 2, 3]
 			AlwaysAllowInBuildMode = true
 			RequiresCommand = false
 		}
@@ -106,6 +106,12 @@ Part : <../../baselogicpart.rules>/Part
 			Components
 			{
 				ValueProxy
+				{
+					Type = SmoothedValue
+					ValueSource = ValueProxyPure
+					MaxDelta = 8
+				}
+				ValueProxyPure
 				{
 					Type = ValueProxy
 					PartLocation = [0, -1]

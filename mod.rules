@@ -1586,6 +1586,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 	}
 	{
 		Action = AddMany
+		AddTo = "<./data/ships/terran/thruster_rocket_extender/thruster_rocket_extender.rules>/Part/Components/MainThruster/PartCriteria/IDs"
+		ManyToAdd
+		[
+			janiTNT.logic_thruster_rocket_nozzle
+		]
+	}
+	{
+		Action = AddMany
 		AddTo = "<./data/ships/terran/thruster_rocket_battery/thruster_rocket_battery.rules>/Part/Components/LeftBatteryConnectionProvider/Criteria/IDs"
 		ManyToAdd = [janiTNT.logic_thruster_rocket_nozzle]
 	}

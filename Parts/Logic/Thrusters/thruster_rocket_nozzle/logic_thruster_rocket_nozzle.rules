@@ -70,43 +70,23 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			FuelStorage = CombinedBatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
-		LateralThruster : MainThruster
-		{
-			Rotation = 0d
-			MinActivation = 0
-			MaxActivation = 0
-			MinUncommandedActivation = &MinActivation
-			MaxUncommandedActivation = &MaxActivation
-			AllowAutoFire = false
-		}
-		
+
 		RampUpBuff
 		{
 			Type = SelfBuffProvider
-			BuffType = RampUpJani  //used as divide by the fixed weapon fire rate
+			BuffType = RampUpJaniFinal  //used as divide by the fixed weapon fire rate
 			BuffAmount = 1
 			BuffMultiplier = RampUpTween
 		}
 		RampUpTween
 		{
-			Type = ValueTween
-			OffValue = 0
-			OnValue = 1
-			OnTweenDuration = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustIncreaseTime/BaseValue
-			OffTweenDuration = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustDecreaseTime/BaseValue
-			IsOnToggle = Triggered
-		}		
-		JaniRocketBuffMultiplier
-		{
-			Type = BuffableValue
-			Value = { BaseValue=1; BuffType=RocketThrust; BuffMode=Multiply; }
-		}
-		RampUpJaniFinalBuffProvider
-		{
-			Type = SelfBuffProvider
-			BuffType = RampUpJaniFinal
-			BuffAmount = { BaseValue=0; BuffType=RampUpJani; BuffMode=Add; }
-			BuffMultiplier = JaniRocketBuffMultiplier
+			Type = ValueAccumulator
+			AccumulatingToggle = Triggered
+			AccumulationRate = { BaseValue=1 / (&<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustIncreaseTime/BaseValue); BuffType=RocketRampUpFinal; BuffMode=Divide; }
+			DissipationRate = { BaseValue=1 / (&<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustDecreaseTime/BaseValue); BuffType=RocketThrust; BuffMode=Multiply; }
+			BaseValue = 0
+			MinValue = 0
+			MaxValue = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Components/MainThruster/MaxActivation
 		}
 
 		Blueprints

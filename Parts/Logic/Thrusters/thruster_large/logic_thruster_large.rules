@@ -1,3 +1,5 @@
+OVERCLOCK = &<./data/ships/terran/thruster_large/thruster_large.rules>/OVERCLOCK
+
 Part : <./data/ships/terran/thruster_large/thruster_large.rules>/Part
 {
 	NameKey = "Parts/LogicThrusterLarge"
@@ -70,43 +72,41 @@ Part : <./data/ships/terran/thruster_large/thruster_large.rules>/Part
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
 		}
-		LateralThruster : MainThruster
-		{
-			Rotation = 0d
-			MinActivation = 0
-			MaxActivation = 0
-			MinUncommandedActivation = &MinActivation
-			MaxUncommandedActivation = &MaxActivation
-			AllowAutoFire = false
-		}
 		
 		RampUpBuff
 		{
 			Type = SelfBuffProvider
-			BuffType = RampUpJani  //used as divide by the fixed weapon fire rate
+			BuffType = RampUpJaniFinal  //used as divide by the fixed weapon fire rate
 			BuffAmount = 1
 			BuffMultiplier = RampUpTween
 		}
 		RampUpTween
 		{
-			Type = ValueTween
-			OffValue = 0
-			OnValue = 1
-			OnTweenDuration = &<./data/ships/terran/thruster_large/thruster_large.rules>/Part/ThrustIncreaseTime/BaseValue
-			OffTweenDuration = &<./data/ships/terran/thruster_large/thruster_large.rules>/Part/ThrustDecreaseTime
-			IsOnToggle = Triggered
-		}		
-		EngineBuffMultiplier
-		{
-			Type = BuffableValue
-			Value = { BaseValue=1; BuffType=Engine; BuffMode=Multiply; }
-		}
-		RampUpJaniFinalBuffProvider
-		{
-			Type = SelfBuffProvider
-			BuffType = RampUpJaniFinal
-			BuffAmount = { BaseValue=0; BuffType=RampUpJani; BuffMode=Add; }
-			BuffMultiplier = EngineBuffMultiplier
+			Type = ValueAccumulator
+			AccumulatingToggle = Triggered
+			AccumulationRate = 
+			{
+				BaseValue = 1 / (&<./data/ships/terran/thruster_large/thruster_large.rules>/Part/ThrustIncreaseTime/BaseValue)
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = Engine
+						ModificationMode = Multiply
+					}
+					{
+						Type = BuffRemap
+						BuffType = Overclock
+						ModificationMode = Multiply
+						RemapFrom = [0, 1]
+						RemapTo = [1, (&~/OVERCLOCK/THRUST_FACTOR)]
+					}
+				]
+			}
+			DissipationRate = (&/Simulation/PhysicsUpdatesPerSecond) * (&<./data/ships/terran/thruster_large/thruster_large.rules>/Part/ThrustIncreaseTime/BaseValue) // &<./data/ships/terran/thruster_large/thruster_large.rules>/Part/ThrustDecreaseTime
+			BaseValue = 0
+			MinValue = 0
+			MaxValue = &<./data/ships/terran/thruster_large/thruster_large.rules>/Part/Components/MainThruster/MaxActivation
 		}
 
 		Blueprints
