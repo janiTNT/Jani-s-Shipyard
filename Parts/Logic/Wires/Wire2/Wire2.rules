@@ -4,6 +4,7 @@ Part : <../../baselogicpart.rules>/Part
 	IconNameKey = "Parts/LogicWireDiagIcon"
 	ID = Skipydog.Logic_Wire_2
 	EditorParentParts = [ "Skipydog.Logic_Wire" ]
+	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/LogicWireDiagDesc"
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]

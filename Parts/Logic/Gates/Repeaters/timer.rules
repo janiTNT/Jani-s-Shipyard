@@ -3,7 +3,7 @@ Part : <../../baselogicpart.rules>/Part
 	NameKey = "Parts/LogicPulseTimer"
 	IconNameKey = "Parts/LogicPulseTimerIcon"
 	ID = janiTNT.Logic_pulse_timer
-	EditorGroup = "Logic"
+	EditorParentParts = [ "janiTNT.Logic_pulse_repeater" ]
 	DescriptionKey = "Parts/LogicPulseTimerDesc"
 	Resources
 	[

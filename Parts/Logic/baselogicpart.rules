@@ -10,7 +10,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[janitnt.circuit1, 1]
 	]
 	SelectionPriority = 0
-	SelectionTypeID = "logic"
+	//SelectionTypeID = "logic"
 	AIValueFactor = 0
 	Size = [1, 1]
 	Flammable = false

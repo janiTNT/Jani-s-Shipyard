@@ -4,6 +4,7 @@ Part : <../../baselogicpart.rules>/Part
 	IconNameKey = "Parts/Logic_Jump_Wire_Icon"
 	ID = Skipydog.logic_jump_wire
 	EditorGroup = "Logic"
+	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/Logic_Jump_Wire_Desc"
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]

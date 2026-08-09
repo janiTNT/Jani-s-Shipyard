@@ -4,6 +4,7 @@ Part : <../../baselogicpart.rules>/Part
 	IconNameKey = "Parts/LogicWireSplitter1Icon"
 	ID = Skipydog.Logic_Splitter
 	EditorParentParts = [ "Skipydog.Logic_Wire" ]
+	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/LogicWireSplitterDesc"
 	Size = [1, 1]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]

@@ -3,7 +3,7 @@ Part : <../../baselogicpart.rules>/Part
 	NameKey = "Parts/LogicPulseExtender"
 	IconNameKey = "Parts/LogicPulseExtenderIcon"
 	ID = janiTNT.Logic_pulse_extender
-	EditorGroup = "Logic"
+	EditorParentParts = [ "janiTNT.Logic_pulse_repeater" ]
 	DescriptionKey = "Parts/LogicPulseExtenderDesc"
 	Resources
 	[
