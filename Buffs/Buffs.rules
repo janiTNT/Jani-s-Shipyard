@@ -428,3 +428,8 @@ BossesDisableComponents
 	BaseValue = 0%
 }
 InserterSpeedBoost {}
+WirelessLogicSignal 
+{
+	CombineMode = Add
+	BaseValue = 0
+}

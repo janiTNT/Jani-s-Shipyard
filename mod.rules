@@ -292,6 +292,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Wires/Split2/Split2.rules>/Part
 			&<Parts/Logic/Wires/Split3/Split3.rules>/Part
 			&<Parts/Logic/Wires/JumpWire/logic_jump_wire.rules>/Part
+			&<Parts/Logic/Wires/Wireless/Transmitter/transmitter.rules>/Part
+			&<Parts/Logic/Wires/Wireless/Receiver/receiver.rules>/Part
 			
 			//Gates
 			&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part

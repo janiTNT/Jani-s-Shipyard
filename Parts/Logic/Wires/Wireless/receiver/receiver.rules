@@ -1,0 +1,111 @@
+Part : <../../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicWire"
+	IconNameKey = "Parts/LogicWireIcon"
+	ID = janiTNT.Logic_wireless_receiver
+	EditorGroup = "Logic"
+	SelectionTypeID = "logic_wire"
+	DescriptionKey = "Parts/LogicWireDesc"
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		GlobalProvider
+		{
+			Type = WholeShipProvider
+			BuffType = WirelessLogicSignal
+			BuffAmount = 1
+		}
+		IsOperational
+		{
+			Type = MultiToggle
+			WirelessLogicSignal00
+			ViaBuffs
+			{
+				OutgoingBuffProviders = [GlobalProvider]
+				ComponentIDs = [WirelessLogicSignal00]
+			}
+			Mode = Any
+		}
+		BuffProviderLogic
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, -1, 1, 1]
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		//-----------------------------------------------------------------
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "receiver.png"
+						Size = [1, 2]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+	}
+}

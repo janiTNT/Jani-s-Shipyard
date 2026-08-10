@@ -1,0 +1,91 @@
+Part : <../../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicWire"
+	IconNameKey = "Parts/LogicWireIcon"
+	ID = janiTNT.Logic_wireless_transmitter
+	EditorGroup = "Logic"
+	SelectionTypeID = "logic_wire"
+	DescriptionKey = "Parts/LogicWireDesc"
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, WirelessLogicSignal]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	{
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		}
+		WirelessLogicSignal00
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		//-----------------------------------------------------------------
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = WirelessLogicSignal00
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "fire"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "transmitter.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+	}
+}
