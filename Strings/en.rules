@@ -52,15 +52,6 @@ Parts
 	ReactorAuxIcon = "Aux. Rea."
 	ReactorAuxDesc = "A Cheap Auxiliary Power Supply Reactor. Provides half capacity batteries, Letting crew walk at near-corridor speeds on the reactor.\nCeases to produce power if inside a electron cloud."
 	
-	MiningBeam = "M1 Mining Beam Emitter"
-	MiningBeamIcon = "M1 Mining Beam"
-	MiningBeamDesc = "Fires a deck-based mining beam, can be combined with other mining beams with the M1 Mining Prism.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"
-	MiningBeamTechDesc = "Deck-Based Prism solution using mining beams, having high combining efficiency.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"
-	
-	MiningPrism = "M1 Mining Beam Prism"
-	MiningPrismIcon = "M1 Mining Prism"
-	MiningPrismDesc = "Deck-Mounted Mining beam prism, similar to a Ion Beam Prism. Can only use the beams from the M1 Mining beam.\n<s15><bad>Technical limitations require that they must be fired manually if salvaging or mining.</bad></s15>"
-	
 	Corridor_High = "High Corridor"
 	Corridor_HighIcon = "Cor. High"
 	Corridor_HighDesc = "Fancy High corridor that have 3 variations on appearance.\n\n <image name='sjaniwh'/>"

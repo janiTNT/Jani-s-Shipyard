@@ -65,8 +65,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//&<Parts/Power/Radiator/Radiator.txt>/Part //GONE
 			&<Parts/Power/Port/port.rules>/Part
 			
-			&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part
-			&<Parts/Weapons/mining_laser_emitter/prism.rules>/Part
+			//&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part
+			//&<Parts/Weapons/mining_laser_emitter/prism.rules>/Part
 			//&<Parts/Weapons/BGF10k/BFG10k.rules>/Part
 			&<Parts/Weapons/NukeSilo/nukesilo.rules>/Part
 			&<Parts/Weapons/Cruiser_Weapons/Laser1/basiclaser.rules>/Part
@@ -745,7 +745,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Enragement/bossanticheese.rules>
 			//&<resources/Enragement/boss_weaponstun.rules>
 			&<resources/Plasma/Plasma.rules>
-			&<resources/Mining Energy/mining_energy.rules>
+			//&<resources/Mining Energy/mining_energy.rules>
 			&<resources/SigilDeath/sigildeath.rules>
 			&<resources/SigilDeath/sigildeath2.rules>
 			&<resources/SuperShieldEnergy/SuperShieldEnergy.rules>

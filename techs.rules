@@ -41,20 +41,6 @@ Techs
 		Cost = 3000
 	}
 	{
-		ID = juanTNT.mining_laser_emitter
-		NameKey = &<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/NameKey
-		DescriptionKey = "Parts/MiningBeamTechDesc"
-		Icon = &<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/EditorIcon
-		EditorGroups = &<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/EditorGroups
-		PartsUnlocked
-		[
-			&<Parts/Weapons/mining_laser_emitter/mining_laser_small.rules>/Part/ID
-			&<Parts/Weapons/mining_laser_emitter/prism.rules>/Part/ID
-		]
-		Cost = 8000
-		Prerequisites = [cosmoteer.mining_laser_small, cosmoteer.ion_beam_prism]
-	}
-	{
 		ID = janiTNT.nuke_missile_silo
 		NameKey = &<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Weapons/NukeSilo/nukesilo.rules>/Part/DescriptionKey
