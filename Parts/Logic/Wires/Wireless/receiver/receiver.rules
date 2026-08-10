@@ -7,7 +7,7 @@ Part : <../../../baselogicpart.rules>/Part
 	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/LogicWireDesc"
 	Size = [1, 1]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third]
 	EditorIcon
 	{
 		Texture
@@ -19,7 +19,15 @@ Part : <../../../baselogicpart.rules>/Part
 	}
 
 	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+	&/JANI_COMMON/SettingsHundreds/Part/Components //AdvS_Setting_Third
 	{
+		ToggleValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add; }
+		}
 		Blueprints
 		{
 			Type = BlueprintSprite
@@ -33,10 +41,124 @@ Part : <../../../baselogicpart.rules>/Part
 			BuffType = WirelessLogicSignal
 			BuffAmount = 1
 		}
+		ThresholdToggle00
+		{
+			Type = ThresholdToggle
+			ValueFrom = ToggleValue
+			MinAmount = 0
+			MaxAmount = &MinAmount
+		}
 		IsOperational
 		{
 			Type = MultiToggle
-			WirelessLogicSignal00
+			Toggles
+			[
+			ReceiverProxy00
+			ReceiverProxy01
+			ReceiverProxy02
+			ReceiverProxy03
+			ReceiverProxy04
+			ReceiverProxy05
+			ReceiverProxy06
+			ReceiverProxy07
+			ReceiverProxy08
+			ReceiverProxy09
+			ReceiverProxy10
+			ReceiverProxy11
+			ReceiverProxy12
+			ReceiverProxy13
+			ReceiverProxy14
+			ReceiverProxy15
+			ReceiverProxy16
+			ReceiverProxy17
+			ReceiverProxy18
+			ReceiverProxy19
+			ReceiverProxy20
+			ReceiverProxy21
+			ReceiverProxy22
+			ReceiverProxy23
+			ReceiverProxy24
+			ReceiverProxy25
+			ReceiverProxy26
+			ReceiverProxy27
+			ReceiverProxy28
+			ReceiverProxy29
+			ReceiverProxy30
+			ReceiverProxy31
+			ReceiverProxy32
+			ReceiverProxy33
+			ReceiverProxy34
+			ReceiverProxy35
+			ReceiverProxy36
+			ReceiverProxy37
+			ReceiverProxy38
+			ReceiverProxy39
+			ReceiverProxy40
+			ReceiverProxy41
+			ReceiverProxy42
+			ReceiverProxy43
+			ReceiverProxy44
+			ReceiverProxy45
+			ReceiverProxy46
+			ReceiverProxy47
+			ReceiverProxy48
+			ReceiverProxy49
+			ReceiverProxy50
+			ReceiverProxy51
+			ReceiverProxy52
+			ReceiverProxy53
+			ReceiverProxy54
+			ReceiverProxy55
+			ReceiverProxy56
+			ReceiverProxy57
+			ReceiverProxy58
+			ReceiverProxy59
+			ReceiverProxy60
+			ReceiverProxy61
+			ReceiverProxy62
+			ReceiverProxy63
+			ReceiverProxy64
+			ReceiverProxy65
+			ReceiverProxy66
+			ReceiverProxy67
+			ReceiverProxy68
+			ReceiverProxy69
+			ReceiverProxy70
+			ReceiverProxy71
+			ReceiverProxy72
+			ReceiverProxy73
+			ReceiverProxy74
+			ReceiverProxy75
+			ReceiverProxy76
+			ReceiverProxy77
+			ReceiverProxy78
+			ReceiverProxy79
+			ReceiverProxy80
+			ReceiverProxy81
+			ReceiverProxy82
+			ReceiverProxy83
+			ReceiverProxy84
+			ReceiverProxy85
+			ReceiverProxy86
+			ReceiverProxy87
+			ReceiverProxy88
+			ReceiverProxy89
+			ReceiverProxy90
+			ReceiverProxy91
+			ReceiverProxy92
+			ReceiverProxy93
+			ReceiverProxy94
+			ReceiverProxy95
+			ReceiverProxy96
+			ReceiverProxy97
+			ReceiverProxy98
+			ReceiverProxy99
+			]
+			Mode = Any
+		}
+		ReceivingToggle00
+		{
+			Type = MultiToggle
 			ViaBuffs
 			{
 				OutgoingBuffProviders = [GlobalProvider]
@@ -44,6 +166,419 @@ Part : <../../../baselogicpart.rules>/Part
 			}
 			Mode = Any
 		}
+		ReceiverProxy00
+		{
+			Type = ToggleProxy
+			ComponentID = ReceivingToggle00
+			ProxyToggle = ThresholdToggle00
+		}
+		ThresholdToggle01 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 01};
+		ReceivingToggle01 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal01]}}
+		ReceiverProxy01 : ReceiverProxy00 {ComponentID = ReceivingToggle01;
+		ProxyToggle = ThresholdToggle01}
+		ThresholdToggle02 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 02};
+		ReceivingToggle02 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal02]}}
+		ReceiverProxy02 : ReceiverProxy00 {ComponentID = ReceivingToggle02;
+		ProxyToggle = ThresholdToggle02}
+		ThresholdToggle03 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 03};
+		ReceivingToggle03 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal03]}}
+		ReceiverProxy03 : ReceiverProxy00 {ComponentID = ReceivingToggle03;
+		ProxyToggle = ThresholdToggle03}
+		ThresholdToggle04 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 04};
+		ReceivingToggle04 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal04]}}
+		ReceiverProxy04 : ReceiverProxy00 {ComponentID = ReceivingToggle04;
+		ProxyToggle = ThresholdToggle04}
+		ThresholdToggle05 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 05};
+		ReceivingToggle05 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal05]}}
+		ReceiverProxy05 : ReceiverProxy00 {ComponentID = ReceivingToggle05;
+		ProxyToggle = ThresholdToggle05}
+		ThresholdToggle06 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 06};
+		ReceivingToggle06 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal06]}}
+		ReceiverProxy06 : ReceiverProxy00 {ComponentID = ReceivingToggle06;
+		ProxyToggle = ThresholdToggle06}
+		ThresholdToggle07 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 07};
+		ReceivingToggle07 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal07]}}
+		ReceiverProxy07 : ReceiverProxy00 {ComponentID = ReceivingToggle07;
+		ProxyToggle = ThresholdToggle07}
+		ThresholdToggle08 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 08};
+		ReceivingToggle08 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal08]}}
+		ReceiverProxy08 : ReceiverProxy00 {ComponentID = ReceivingToggle08;
+		ProxyToggle = ThresholdToggle08}
+		ThresholdToggle09 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 09};
+		ReceivingToggle09 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal09]}}
+		ReceiverProxy09 : ReceiverProxy00 {ComponentID = ReceivingToggle09;
+		ProxyToggle = ThresholdToggle09}
+		
+		ThresholdToggle10 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 10};
+		ReceivingToggle10 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal10]}}
+		ReceiverProxy10 : ReceiverProxy00 {ComponentID = ReceivingToggle10;
+		ProxyToggle = ThresholdToggle10}
+		ThresholdToggle11 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 11};
+		ReceivingToggle11 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal11]}}
+		ReceiverProxy11 : ReceiverProxy00 {ComponentID = ReceivingToggle11;
+		ProxyToggle = ThresholdToggle11}
+		ThresholdToggle12 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 12};
+		ReceivingToggle12 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal12]}}
+		ReceiverProxy12 : ReceiverProxy00 {ComponentID = ReceivingToggle12;
+		ProxyToggle = ThresholdToggle12}
+		ThresholdToggle13 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 13};
+		ReceivingToggle13 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal13]}}
+		ReceiverProxy13 : ReceiverProxy00 {ComponentID = ReceivingToggle13;
+		ProxyToggle = ThresholdToggle13}
+		ThresholdToggle14 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 14};
+		ReceivingToggle14 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal14]}}
+		ReceiverProxy14 : ReceiverProxy00 {ComponentID = ReceivingToggle14;
+		ProxyToggle = ThresholdToggle14}
+		ThresholdToggle15 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 15};
+		ReceivingToggle15 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal15]}}
+		ReceiverProxy15 : ReceiverProxy00 {ComponentID = ReceivingToggle15;
+		ProxyToggle = ThresholdToggle15}
+		ThresholdToggle16 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 16};
+		ReceivingToggle16 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal16]}}
+		ReceiverProxy16 : ReceiverProxy00 {ComponentID = ReceivingToggle16;
+		ProxyToggle = ThresholdToggle16}
+		ThresholdToggle17 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 17};
+		ReceivingToggle17 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal17]}}
+		ReceiverProxy17 : ReceiverProxy00 {ComponentID = ReceivingToggle17;
+		ProxyToggle = ThresholdToggle17}
+		ThresholdToggle18 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 18};
+		ReceivingToggle18 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal18]}}
+		ReceiverProxy18 : ReceiverProxy00 {ComponentID = ReceivingToggle18;
+		ProxyToggle = ThresholdToggle18}
+		ThresholdToggle19 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 19};
+		ReceivingToggle19 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal19]}}
+		ReceiverProxy19 : ReceiverProxy00 {ComponentID = ReceivingToggle19;
+		ProxyToggle = ThresholdToggle19}
+		
+		ThresholdToggle20 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 20};
+		ReceivingToggle20 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal20]}}
+		ReceiverProxy20 : ReceiverProxy00 {ComponentID = ReceivingToggle20;
+		ProxyToggle = ThresholdToggle20}
+		ThresholdToggle21 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 21};
+		ReceivingToggle21 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal21]}}
+		ReceiverProxy21 : ReceiverProxy00 {ComponentID = ReceivingToggle21;
+		ProxyToggle = ThresholdToggle21}
+		ThresholdToggle22 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 22};
+		ReceivingToggle22 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal22]}}
+		ReceiverProxy22 : ReceiverProxy00 {ComponentID = ReceivingToggle22;
+		ProxyToggle = ThresholdToggle22}
+		ThresholdToggle23 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 23};
+		ReceivingToggle23 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal23]}}
+		ReceiverProxy23 : ReceiverProxy00 {ComponentID = ReceivingToggle23;
+		ProxyToggle = ThresholdToggle23}
+		ThresholdToggle24 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 24};
+		ReceivingToggle24 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal24]}}
+		ReceiverProxy24 : ReceiverProxy00 {ComponentID = ReceivingToggle24;
+		ProxyToggle = ThresholdToggle24}
+		ThresholdToggle25 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 25};
+		ReceivingToggle25 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal25]}}
+		ReceiverProxy25 : ReceiverProxy00 {ComponentID = ReceivingToggle25;
+		ProxyToggle = ThresholdToggle25}
+		ThresholdToggle26 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 26};
+		ReceivingToggle26 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal26]}}
+		ReceiverProxy26 : ReceiverProxy00 {ComponentID = ReceivingToggle26;
+		ProxyToggle = ThresholdToggle26}
+		ThresholdToggle27 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 27};
+		ReceivingToggle27 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal27]}}
+		ReceiverProxy27 : ReceiverProxy00 {ComponentID = ReceivingToggle27;
+		ProxyToggle = ThresholdToggle27}
+		ThresholdToggle28 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 28};
+		ReceivingToggle28 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal28]}}
+		ReceiverProxy28 : ReceiverProxy00 {ComponentID = ReceivingToggle28;
+		ProxyToggle = ThresholdToggle28}
+		ThresholdToggle29 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 29};
+		ReceivingToggle29 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal29]}}
+		ReceiverProxy29 : ReceiverProxy00 {ComponentID = ReceivingToggle29;
+		ProxyToggle = ThresholdToggle29}
+		
+		ThresholdToggle30 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 30};
+		ReceivingToggle30 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal30]}}
+		ReceiverProxy30 : ReceiverProxy00 {ComponentID = ReceivingToggle30;
+		ProxyToggle = ThresholdToggle30}
+		ThresholdToggle31 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 31};
+		ReceivingToggle31 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal31]}}
+		ReceiverProxy31 : ReceiverProxy00 {ComponentID = ReceivingToggle31;
+		ProxyToggle = ThresholdToggle31}
+		ThresholdToggle32 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 32};
+		ReceivingToggle32 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal32]}}
+		ReceiverProxy32 : ReceiverProxy00 {ComponentID = ReceivingToggle32;
+		ProxyToggle = ThresholdToggle32}
+		ThresholdToggle33 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 33};
+		ReceivingToggle33 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal33]}}
+		ReceiverProxy33 : ReceiverProxy00 {ComponentID = ReceivingToggle33;
+		ProxyToggle = ThresholdToggle33}
+		ThresholdToggle34 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 34};
+		ReceivingToggle34 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal34]}}
+		ReceiverProxy34 : ReceiverProxy00 {ComponentID = ReceivingToggle34;
+		ProxyToggle = ThresholdToggle34}
+		ThresholdToggle35 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 35};
+		ReceivingToggle35 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal35]}}
+		ReceiverProxy35 : ReceiverProxy00 {ComponentID = ReceivingToggle35;
+		ProxyToggle = ThresholdToggle35}
+		ThresholdToggle36 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 36};
+		ReceivingToggle36 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal36]}}
+		ReceiverProxy36 : ReceiverProxy00 {ComponentID = ReceivingToggle36;
+		ProxyToggle = ThresholdToggle36}
+		ThresholdToggle37 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 37};
+		ReceivingToggle37 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal37]}}
+		ReceiverProxy37 : ReceiverProxy00 {ComponentID = ReceivingToggle37;
+		ProxyToggle = ThresholdToggle37}
+		ThresholdToggle38 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 38};
+		ReceivingToggle38 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal38]}}
+		ReceiverProxy38 : ReceiverProxy00 {ComponentID = ReceivingToggle38;
+		ProxyToggle = ThresholdToggle38}
+		ThresholdToggle39 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 39};
+		ReceivingToggle39 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal39]}}
+		ReceiverProxy39 : ReceiverProxy00 {ComponentID = ReceivingToggle39;
+		ProxyToggle = ThresholdToggle39}
+		
+		ThresholdToggle40 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 40};
+		ReceivingToggle40 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal40]}}
+		ReceiverProxy40 : ReceiverProxy00 {ComponentID = ReceivingToggle40;
+		ProxyToggle = ThresholdToggle40}
+		ThresholdToggle41 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 41};
+		ReceivingToggle41 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal41]}}
+		ReceiverProxy41 : ReceiverProxy00 {ComponentID = ReceivingToggle41;
+		ProxyToggle = ThresholdToggle41}
+		ThresholdToggle42 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 42};
+		ReceivingToggle42 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal42]}}
+		ReceiverProxy42 : ReceiverProxy00 {ComponentID = ReceivingToggle42;
+		ProxyToggle = ThresholdToggle42}
+		ThresholdToggle43 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 43};
+		ReceivingToggle43 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal43]}}
+		ReceiverProxy43 : ReceiverProxy00 {ComponentID = ReceivingToggle43;
+		ProxyToggle = ThresholdToggle43}
+		ThresholdToggle44 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 44};
+		ReceivingToggle44 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal44]}}
+		ReceiverProxy44 : ReceiverProxy00 {ComponentID = ReceivingToggle44;
+		ProxyToggle = ThresholdToggle44}
+		ThresholdToggle45 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 45};
+		ReceivingToggle45 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal45]}}
+		ReceiverProxy45 : ReceiverProxy00 {ComponentID = ReceivingToggle45;
+		ProxyToggle = ThresholdToggle45}
+		ThresholdToggle46 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 46};
+		ReceivingToggle46 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal46]}}
+		ReceiverProxy46 : ReceiverProxy00 {ComponentID = ReceivingToggle46;
+		ProxyToggle = ThresholdToggle46}
+		ThresholdToggle47 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 47};
+		ReceivingToggle47 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal47]}}
+		ReceiverProxy47 : ReceiverProxy00 {ComponentID = ReceivingToggle47;
+		ProxyToggle = ThresholdToggle47}
+		ThresholdToggle48 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 48};
+		ReceivingToggle48 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal48]}}
+		ReceiverProxy48 : ReceiverProxy00 {ComponentID = ReceivingToggle48;
+		ProxyToggle = ThresholdToggle48}
+		ThresholdToggle49 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 49};
+		ReceivingToggle49 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal49]}}
+		ReceiverProxy49 : ReceiverProxy00 {ComponentID = ReceivingToggle49;
+		ProxyToggle = ThresholdToggle49}
+		
+		ThresholdToggle50 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 50};
+		ReceivingToggle50 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal50]}}
+		ReceiverProxy50 : ReceiverProxy00 {ComponentID = ReceivingToggle50;
+		ProxyToggle = ThresholdToggle50}
+		ThresholdToggle51 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 51};
+		ReceivingToggle51 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal51]}}
+		ReceiverProxy51 : ReceiverProxy00 {ComponentID = ReceivingToggle51;
+		ProxyToggle = ThresholdToggle51}
+		ThresholdToggle52 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 52};
+		ReceivingToggle52 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal52]}}
+		ReceiverProxy52 : ReceiverProxy00 {ComponentID = ReceivingToggle52;
+		ProxyToggle = ThresholdToggle52}
+		ThresholdToggle53 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 53};
+		ReceivingToggle53 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal53]}}
+		ReceiverProxy53 : ReceiverProxy00 {ComponentID = ReceivingToggle53;
+		ProxyToggle = ThresholdToggle53}
+		ThresholdToggle54 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 54};
+		ReceivingToggle54 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal54]}}
+		ReceiverProxy54 : ReceiverProxy00 {ComponentID = ReceivingToggle54;
+		ProxyToggle = ThresholdToggle54}
+		ThresholdToggle55 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 55};
+		ReceivingToggle55 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal55]}}
+		ReceiverProxy55 : ReceiverProxy00 {ComponentID = ReceivingToggle55;
+		ProxyToggle = ThresholdToggle55}
+		ThresholdToggle56 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 56};
+		ReceivingToggle56 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal56]}}
+		ReceiverProxy56 : ReceiverProxy00 {ComponentID = ReceivingToggle56;
+		ProxyToggle = ThresholdToggle56}
+		ThresholdToggle57 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 57};
+		ReceivingToggle57 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal57]}}
+		ReceiverProxy57 : ReceiverProxy00 {ComponentID = ReceivingToggle57;
+		ProxyToggle = ThresholdToggle57}
+		ThresholdToggle58 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 58};
+		ReceivingToggle58 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal58]}}
+		ReceiverProxy58 : ReceiverProxy00 {ComponentID = ReceivingToggle58;
+		ProxyToggle = ThresholdToggle58}
+		ThresholdToggle59 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 59};
+		ReceivingToggle59 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal59]}}
+		ReceiverProxy59 : ReceiverProxy00 {ComponentID = ReceivingToggle59;
+		ProxyToggle = ThresholdToggle59}
+		
+		ThresholdToggle60 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 60};
+		ReceivingToggle60 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal60]}}
+		ReceiverProxy60 : ReceiverProxy00 {ComponentID = ReceivingToggle60;
+		ProxyToggle = ThresholdToggle60}
+		ThresholdToggle61 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 61};
+		ReceivingToggle61 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal61]}}
+		ReceiverProxy61 : ReceiverProxy00 {ComponentID = ReceivingToggle61;
+		ProxyToggle = ThresholdToggle61}
+		ThresholdToggle62 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 62};
+		ReceivingToggle62 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal62]}}
+		ReceiverProxy62 : ReceiverProxy00 {ComponentID = ReceivingToggle62;
+		ProxyToggle = ThresholdToggle62}
+		ThresholdToggle63 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 63};
+		ReceivingToggle63 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal63]}}
+		ReceiverProxy63 : ReceiverProxy00 {ComponentID = ReceivingToggle63;
+		ProxyToggle = ThresholdToggle63}
+		ThresholdToggle64 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 64};
+		ReceivingToggle64 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal64]}}
+		ReceiverProxy64 : ReceiverProxy00 {ComponentID = ReceivingToggle64;
+		ProxyToggle = ThresholdToggle64}
+		ThresholdToggle65 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 65};
+		ReceivingToggle65 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal65]}}
+		ReceiverProxy65 : ReceiverProxy00 {ComponentID = ReceivingToggle65;
+		ProxyToggle = ThresholdToggle65}
+		ThresholdToggle66 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 66};
+		ReceivingToggle66 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal66]}}
+		ReceiverProxy66 : ReceiverProxy00 {ComponentID = ReceivingToggle66;
+		ProxyToggle = ThresholdToggle66}
+		ThresholdToggle67 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 67};
+		ReceivingToggle67 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal67]}}
+		ReceiverProxy67 : ReceiverProxy00 {ComponentID = ReceivingToggle67;
+		ProxyToggle = ThresholdToggle67}
+		ThresholdToggle68 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 68};
+		ReceivingToggle68 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal68]}}
+		ReceiverProxy68 : ReceiverProxy00 {ComponentID = ReceivingToggle68;
+		ProxyToggle = ThresholdToggle68}
+		ThresholdToggle69 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 69};
+		ReceivingToggle69 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal69]}}
+		ReceiverProxy69 : ReceiverProxy00 {ComponentID = ReceivingToggle69;
+		ProxyToggle = ThresholdToggle69}
+		
+		ThresholdToggle70 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 70};
+		ReceivingToggle70 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal70]}}
+		ReceiverProxy70 : ReceiverProxy00 {ComponentID = ReceivingToggle70;
+		ProxyToggle = ThresholdToggle70}
+		ThresholdToggle71 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 71};
+		ReceivingToggle71 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal71]}}
+		ReceiverProxy71 : ReceiverProxy00 {ComponentID = ReceivingToggle71;
+		ProxyToggle = ThresholdToggle71}
+		ThresholdToggle72 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 72};
+		ReceivingToggle72 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal72]}}
+		ReceiverProxy72 : ReceiverProxy00 {ComponentID = ReceivingToggle72;
+		ProxyToggle = ThresholdToggle72}
+		ThresholdToggle73 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 73};
+		ReceivingToggle73 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal73]}}
+		ReceiverProxy73 : ReceiverProxy00 {ComponentID = ReceivingToggle73;
+		ProxyToggle = ThresholdToggle73}
+		ThresholdToggle74 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 74};
+		ReceivingToggle74 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal74]}}
+		ReceiverProxy74 : ReceiverProxy00 {ComponentID = ReceivingToggle74;
+		ProxyToggle = ThresholdToggle74}
+		ThresholdToggle75 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 75};
+		ReceivingToggle75 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal75]}}
+		ReceiverProxy75 : ReceiverProxy00 {ComponentID = ReceivingToggle75;
+		ProxyToggle = ThresholdToggle75}
+		ThresholdToggle76 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 76};
+		ReceivingToggle76 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal76]}}
+		ReceiverProxy76 : ReceiverProxy00 {ComponentID = ReceivingToggle76;
+		ProxyToggle = ThresholdToggle76}
+		ThresholdToggle77 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 77};
+		ReceivingToggle77 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal77]}}
+		ReceiverProxy77 : ReceiverProxy00 {ComponentID = ReceivingToggle77;
+		ProxyToggle = ThresholdToggle77}
+		ThresholdToggle78 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 78};
+		ReceivingToggle78 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal78]}}
+		ReceiverProxy78 : ReceiverProxy00 {ComponentID = ReceivingToggle78;
+		ProxyToggle = ThresholdToggle78}
+		ThresholdToggle79 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 79};
+		ReceivingToggle79 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal79]}}
+		ReceiverProxy79 : ReceiverProxy00 {ComponentID = ReceivingToggle79;
+		ProxyToggle = ThresholdToggle79}
+		
+		ThresholdToggle80 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 80};
+		ReceivingToggle80 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal80]}}
+		ReceiverProxy80 : ReceiverProxy00 {ComponentID = ReceivingToggle80;
+		ProxyToggle = ThresholdToggle80}
+		ThresholdToggle81 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 81};
+		ReceivingToggle81 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal81]}}
+		ReceiverProxy81 : ReceiverProxy00 {ComponentID = ReceivingToggle81;
+		ProxyToggle = ThresholdToggle81}
+		ThresholdToggle82 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 82};
+		ReceivingToggle82 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal82]}}
+		ReceiverProxy82 : ReceiverProxy00 {ComponentID = ReceivingToggle82;
+		ProxyToggle = ThresholdToggle82}
+		ThresholdToggle83 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 83};
+		ReceivingToggle83 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal83]}}
+		ReceiverProxy83 : ReceiverProxy00 {ComponentID = ReceivingToggle83;
+		ProxyToggle = ThresholdToggle83}
+		ThresholdToggle84 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 84};
+		ReceivingToggle84 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal84]}}
+		ReceiverProxy84 : ReceiverProxy00 {ComponentID = ReceivingToggle84;
+		ProxyToggle = ThresholdToggle84}
+		ThresholdToggle85 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 85};
+		ReceivingToggle85 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal85]}}
+		ReceiverProxy85 : ReceiverProxy00 {ComponentID = ReceivingToggle85;
+		ProxyToggle = ThresholdToggle85}
+		ThresholdToggle86 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 86};
+		ReceivingToggle86 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal86]}}
+		ReceiverProxy86 : ReceiverProxy00 {ComponentID = ReceivingToggle86;
+		ProxyToggle = ThresholdToggle86}
+		ThresholdToggle87 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 87};
+		ReceivingToggle87 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal87]}}
+		ReceiverProxy87 : ReceiverProxy00 {ComponentID = ReceivingToggle87;
+		ProxyToggle = ThresholdToggle87}
+		ThresholdToggle88 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 88};
+		ReceivingToggle88 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal88]}}
+		ReceiverProxy88 : ReceiverProxy00 {ComponentID = ReceivingToggle88;
+		ProxyToggle = ThresholdToggle88}
+		ThresholdToggle89 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 89};
+		ReceivingToggle89 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal89]}}
+		ReceiverProxy89 : ReceiverProxy00 {ComponentID = ReceivingToggle89;
+		ProxyToggle = ThresholdToggle89}
+		
+		ThresholdToggle90 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 90};
+		ReceivingToggle90 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal90]}}
+		ReceiverProxy90 : ReceiverProxy00 {ComponentID = ReceivingToggle90;
+		ProxyToggle = ThresholdToggle90}
+		ThresholdToggle91 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 91};
+		ReceivingToggle91 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal91]}}
+		ReceiverProxy91 : ReceiverProxy00 {ComponentID = ReceivingToggle91;
+		ProxyToggle = ThresholdToggle91}
+		ThresholdToggle92 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 92};
+		ReceivingToggle92 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal92]}}
+		ReceiverProxy92 : ReceiverProxy00 {ComponentID = ReceivingToggle92;
+		ProxyToggle = ThresholdToggle92}
+		ThresholdToggle93 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 93};
+		ReceivingToggle93 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal93]}}
+		ReceiverProxy93 : ReceiverProxy00 {ComponentID = ReceivingToggle93;
+		ProxyToggle = ThresholdToggle93}
+		ThresholdToggle94 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 94};
+		ReceivingToggle94 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal94]}}
+		ReceiverProxy94 : ReceiverProxy00 {ComponentID = ReceivingToggle94;
+		ProxyToggle = ThresholdToggle94}
+		ThresholdToggle95 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 95};
+		ReceivingToggle95 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal95]}}
+		ReceiverProxy95 : ReceiverProxy00 {ComponentID = ReceivingToggle95;
+		ProxyToggle = ThresholdToggle95}
+		ThresholdToggle96 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 96};
+		ReceivingToggle96 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal96]}}
+		ReceiverProxy96 : ReceiverProxy00 {ComponentID = ReceivingToggle96;
+		ProxyToggle = ThresholdToggle96}
+		ThresholdToggle97 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 97};
+		ReceivingToggle97 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal97]}}
+		ReceiverProxy97 : ReceiverProxy00 {ComponentID = ReceivingToggle97;
+		ProxyToggle = ThresholdToggle97}
+		ThresholdToggle98 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 98};
+		ReceivingToggle98 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal98]}}
+		ReceiverProxy98 : ReceiverProxy00 {ComponentID = ReceivingToggle98;
+		ProxyToggle = ThresholdToggle98}
+		ThresholdToggle99 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 99};
+		ReceivingToggle99 : ReceivingToggle00 {ViaBuffs : ^/0/ViaBuffs {ComponentIDs = [WirelessLogicSignal99]}}
+		ReceiverProxy99 : ReceiverProxy00 {ComponentID = ReceivingToggle99;
+		ProxyToggle = ThresholdToggle99}
+		
+		
 		BuffProviderLogic
 		{
 			Type = AreaBuffProvider

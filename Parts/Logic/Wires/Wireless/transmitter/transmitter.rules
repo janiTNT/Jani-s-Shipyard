@@ -7,7 +7,7 @@ Part : <../../../baselogicpart.rules>/Part
 	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/LogicWireDesc"
 	Size = [1, 1]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, WirelessLogicSignal]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, WirelessLogicSignal, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third]
 	EditorIcon
 	{
 		Texture
@@ -19,18 +19,248 @@ Part : <../../../baselogicpart.rules>/Part
 	}
 
 	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+	&/JANI_COMMON/SettingsHundreds/Part/Components //AdvS_Setting_Third
 	{
+		ToggleValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add; }
+		}
+		IsOperational
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		ThresholdToggle00
+		{
+			Type = ThresholdToggle
+			ValueFrom = ToggleValue
+			MinAmount = 0
+			MaxAmount = &MinAmount
+		}
+		WirelessLogicSignal00
+		{
+			Type = ToggleProxy
+			ComponentID = IsOperational
+			ProxyToggle = ThresholdToggle00
+		}
+		ThresholdToggle01 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 01}
+		WirelessLogicSignal01 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle01}
+		ThresholdToggle02 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 02}
+		WirelessLogicSignal02 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle02}
+		ThresholdToggle03 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 03}
+		WirelessLogicSignal03 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle03}
+		ThresholdToggle04 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 04}
+		WirelessLogicSignal04 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle04}
+		ThresholdToggle05 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 05}
+		WirelessLogicSignal05 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle05}
+		ThresholdToggle06 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 06}
+		WirelessLogicSignal06 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle06}
+		ThresholdToggle07 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 07}
+		WirelessLogicSignal07 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle07}
+		ThresholdToggle08 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 08}
+		WirelessLogicSignal08 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle08}
+		ThresholdToggle09 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 09}
+		WirelessLogicSignal09 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle09}
+		
+		ThresholdToggle10 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 10}
+		WirelessLogicSignal10 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle10}
+		ThresholdToggle11 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 11}
+		WirelessLogicSignal11 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle11}
+		ThresholdToggle12 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 12}
+		WirelessLogicSignal12 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle12}
+		ThresholdToggle13 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 13}
+		WirelessLogicSignal13 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle13}
+		ThresholdToggle14 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 14}
+		WirelessLogicSignal14 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle14}
+		ThresholdToggle15 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 15}
+		WirelessLogicSignal15 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle15}
+		ThresholdToggle16 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 16}
+		WirelessLogicSignal16 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle16}
+		ThresholdToggle17 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 17}
+		WirelessLogicSignal17 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle17}
+		ThresholdToggle18 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 18}
+		WirelessLogicSignal18 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle18}
+		ThresholdToggle19 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 19}
+		WirelessLogicSignal19 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle19}
+		
+		ThresholdToggle20 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 20}
+		WirelessLogicSignal20 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle20}
+		ThresholdToggle21 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 21}
+		WirelessLogicSignal21 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle21}
+		ThresholdToggle22 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 22}
+		WirelessLogicSignal22 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle22}
+		ThresholdToggle23 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 23}
+		WirelessLogicSignal23 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle23}
+		ThresholdToggle24 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 24}
+		WirelessLogicSignal24 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle24}
+		ThresholdToggle25 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 25}
+		WirelessLogicSignal25 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle25}
+		ThresholdToggle26 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 26}
+		WirelessLogicSignal26 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle26}
+		ThresholdToggle27 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 27}
+		WirelessLogicSignal27 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle27}
+		ThresholdToggle28 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 28}
+		WirelessLogicSignal28 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle28}
+		ThresholdToggle29 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 29}
+		WirelessLogicSignal29 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle29}
+		
+		ThresholdToggle30 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 30}
+		WirelessLogicSignal30 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle30}
+		ThresholdToggle31 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 31}
+		WirelessLogicSignal31 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle31}
+		ThresholdToggle32 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 32}
+		WirelessLogicSignal32 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle32}
+		ThresholdToggle33 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 33}
+		WirelessLogicSignal33 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle33}
+		ThresholdToggle34 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 34}
+		WirelessLogicSignal34 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle34}
+		ThresholdToggle35 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 35}
+		WirelessLogicSignal35 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle35}
+		ThresholdToggle36 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 36}
+		WirelessLogicSignal36 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle36}
+		ThresholdToggle37 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 37}
+		WirelessLogicSignal37 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle37}
+		ThresholdToggle38 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 38}
+		WirelessLogicSignal38 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle38}
+		ThresholdToggle39 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 39}
+		WirelessLogicSignal39 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle39}
+		
+		ThresholdToggle40 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 40}
+		WirelessLogicSignal40 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle40}
+		ThresholdToggle41 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 41}
+		WirelessLogicSignal41 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle41}
+		ThresholdToggle42 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 42}
+		WirelessLogicSignal42 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle42}
+		ThresholdToggle43 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 43}
+		WirelessLogicSignal43 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle43}
+		ThresholdToggle44 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 44}
+		WirelessLogicSignal44 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle44}
+		ThresholdToggle45 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 45}
+		WirelessLogicSignal45 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle45}
+		ThresholdToggle46 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 46}
+		WirelessLogicSignal46 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle46}
+		ThresholdToggle47 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 47}
+		WirelessLogicSignal47 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle47}
+		ThresholdToggle48 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 48}
+		WirelessLogicSignal48 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle48}
+		ThresholdToggle49 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 49}
+		WirelessLogicSignal49 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle49}
+		
+		ThresholdToggle50 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 50}
+		WirelessLogicSignal50 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle50}
+		ThresholdToggle51 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 51}
+		WirelessLogicSignal51 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle51}
+		ThresholdToggle52 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 52}
+		WirelessLogicSignal52 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle52}
+		ThresholdToggle53 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 53}
+		WirelessLogicSignal53 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle53}
+		ThresholdToggle54 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 54}
+		WirelessLogicSignal54 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle54}
+		ThresholdToggle55 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 55}
+		WirelessLogicSignal55 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle55}
+		ThresholdToggle56 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 56}
+		WirelessLogicSignal56 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle56}
+		ThresholdToggle57 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 57}
+		WirelessLogicSignal57 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle57}
+		ThresholdToggle58 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 58}
+		WirelessLogicSignal58 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle58}
+		ThresholdToggle59 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 59}
+		WirelessLogicSignal59 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle59}
+		
+		ThresholdToggle60 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 60}
+		WirelessLogicSignal60 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle60}
+		ThresholdToggle61 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 61}
+		WirelessLogicSignal61 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle61}
+		ThresholdToggle62 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 62}
+		WirelessLogicSignal62 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle62}
+		ThresholdToggle63 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 63}
+		WirelessLogicSignal63 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle63}
+		ThresholdToggle64 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 64}
+		WirelessLogicSignal64 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle64}
+		ThresholdToggle65 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 65}
+		WirelessLogicSignal65 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle65}
+		ThresholdToggle66 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 66}
+		WirelessLogicSignal66 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle66}
+		ThresholdToggle67 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 67}
+		WirelessLogicSignal67 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle67}
+		ThresholdToggle68 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 68}
+		WirelessLogicSignal68 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle68}
+		ThresholdToggle69 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 69}
+		WirelessLogicSignal69 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle69}
+		
+		ThresholdToggle70 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 70}
+		WirelessLogicSignal70 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle70}
+		ThresholdToggle71 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 71}
+		WirelessLogicSignal71 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle71}
+		ThresholdToggle72 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 72}
+		WirelessLogicSignal72 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle72}
+		ThresholdToggle73 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 73}
+		WirelessLogicSignal73 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle73}
+		ThresholdToggle74 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 74}
+		WirelessLogicSignal74 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle74}
+		ThresholdToggle75 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 75}
+		WirelessLogicSignal75 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle75}
+		ThresholdToggle76 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 76}
+		WirelessLogicSignal76 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle76}
+		ThresholdToggle77 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 77}
+		WirelessLogicSignal77 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle77}
+		ThresholdToggle78 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 78}
+		WirelessLogicSignal78 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle78}
+		ThresholdToggle79 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 79}
+		WirelessLogicSignal79 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle79}
+		
+		ThresholdToggle80 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 80}
+		WirelessLogicSignal80 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle80}
+		ThresholdToggle81 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 81}
+		WirelessLogicSignal81 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle81}
+		ThresholdToggle82 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 82}
+		WirelessLogicSignal82 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle82}
+		ThresholdToggle83 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 83}
+		WirelessLogicSignal83 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle83}
+		ThresholdToggle84 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 84}
+		WirelessLogicSignal84 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle84}
+		ThresholdToggle85 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 85}
+		WirelessLogicSignal85 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle85}
+		ThresholdToggle86 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 86}
+		WirelessLogicSignal86 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle86}
+		ThresholdToggle87 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 87}
+		WirelessLogicSignal87 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle87}
+		ThresholdToggle88 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 88}
+		WirelessLogicSignal88 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle88}
+		ThresholdToggle89 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 89}
+		WirelessLogicSignal89 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle89}
+		
+		ThresholdToggle90 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 90}
+		WirelessLogicSignal90 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle90}
+		ThresholdToggle91 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 91}
+		WirelessLogicSignal91 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle91}
+		ThresholdToggle92 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 92}
+		WirelessLogicSignal92 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle92}
+		ThresholdToggle93 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 93}
+		WirelessLogicSignal93 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle93}
+		ThresholdToggle94 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 94}
+		WirelessLogicSignal94 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle94}
+		ThresholdToggle95 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 95}
+		WirelessLogicSignal95 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle95}
+		ThresholdToggle96 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 96}
+		WirelessLogicSignal96 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle96}
+		ThresholdToggle97 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 97}
+		WirelessLogicSignal97 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle97}
+		ThresholdToggle98 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 98}
+		WirelessLogicSignal98 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle98}
+		ThresholdToggle99 : ThresholdToggle00 {MaxAmount = &MinAmount; MinAmount = 99}
+		WirelessLogicSignal99 : WirelessLogicSignal00 {ProxyToggle = ThresholdToggle99}
+		
+		
 		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "icon.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
-		}
-		WirelessLogicSignal00
-		{
-			Type = BuffToggle
-			BuffType = Logic
 		}
 		ColorPicker
 		{
@@ -43,7 +273,7 @@ Part : <../../../baselogicpart.rules>/Part
 		{
 			Type = Graphics
 			Location = [0.5, 0.5]
-			OperationalToggle = WirelessLogicSignal00
+			OperationalToggle = IsOperational
 			GetColorFrom = ColorPicker
 			OperationalDoodad
 			{
