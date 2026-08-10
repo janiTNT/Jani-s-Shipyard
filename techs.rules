@@ -5,7 +5,7 @@ Techs
 		NameKey = &<Parts/Utilities/customexplosive/Activator.txt>/Part/NameKey
 		DescriptionKey = &<Parts/Utilities/customexplosive/Activator.txt>/Part/DescriptionKey
 		Icon = &<Parts/Utilities/customexplosive/Activator.txt>/Part/EditorIcon
-		EditorGroup = &<Parts/Utilities/customexplosive/Activator.txt>/Part/EditorGroup
+		EditorGroups = ["Utilities", "Technologies"]
 		PartsUnlocked
 		[
 			&<Parts/Utilities/customexplosive/Activator.txt>/Part/ID

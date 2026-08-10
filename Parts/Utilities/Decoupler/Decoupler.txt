@@ -4,7 +4,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/DecouplerBoomerIcon"
 	ID = janiTNT.Decoupler // Meet the... uhhh
 	OtherIDs = [juanTNT.Part_Decoupler]
-	EditorGroups = ["Utilities"]
+	EditorGroups = ["Utilities", "Logic"]
 	DescriptionKey = "Parts/DecouplerBoomerDesc"
 	Cost = 200
 	Resources

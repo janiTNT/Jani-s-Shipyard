@@ -60,9 +60,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Flight/Command Room/control_room_tiny.rules>/Part
 			&<Parts/Flight/Command Room/Kroom_cockpit.rules>/Part
 			
-			&<Parts/Utilities/customexplosive/Activator.txt>/Part
-			&<Parts/Utilities/customexplosive/Explosive.txt>/Part
-			&<Parts/Utilities/customexplosive/NukeExplosive.txt>/Part
 			&<Parts/Power/Reactoraux/reac.txt>/Part
 			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part
 			//&<Parts/Power/Radiator/Radiator.txt>/Part //GONE
@@ -162,11 +159,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Common/WallMass/wedges/tri_hybrid.rules>/Part
 			
 			//&<Parts/Defense/Overdrive Shield/OverdriveShield.rules>/Part
-			
-			&<Parts/Utilities/Decoupler/Decoupler.txt>/Part
-			&<Parts/Utilities/Decoupler/CorridorDecoupler.txt>/Part
-			&<Parts/Utilities/Decoupler/heat_pipe_decoupler.rules>/Part
-			&<Parts/Utilities/Decoupler/Decoupler_Boomed.txt>/Part			
 			
 			&<Parts/Crew/1x1 Crew/Crew1x1.rules>/Part
 			&<Parts/Crew/3x1 Crew/Crew3x1.rules>/Part
@@ -346,6 +338,16 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part
+			
+			// extras 
+			&<Parts/Utilities/Decoupler/Decoupler.txt>/Part
+			&<Parts/Utilities/Decoupler/CorridorDecoupler.txt>/Part
+			&<Parts/Utilities/Decoupler/heat_pipe_decoupler.rules>/Part
+			&<Parts/Utilities/Decoupler/Decoupler_Boomed.txt>/Part	
+			
+			&<Parts/Utilities/customexplosive/Activator.txt>/Part
+			&<Parts/Utilities/customexplosive/Explosive.txt>/Part
+			&<Parts/Utilities/customexplosive/NukeExplosive.txt>/Part
 			
 			//Boss Rewards minus factories
 			
