@@ -7,13 +7,13 @@ ID = "janiTNT.TechMod"
 Name = "Jani's Shipyard"
 //Name = "[Beta]Jani's Shipyard"
 Author = "JaniTNT"
-Version = "Modern 1.23.5.1"
+Version = "Modern 1.24"
 //Version = "Modern 1.21(quickpatch)"
 //Logo = "evil jani.png"
-Logo = "newlogo.png"
+Logo = "small_icon.png"
 CompatibleGameVersions = ["0.30.0", "0.30.1", "0.30.2", "0.30.3", "0.30.4", "0.30.5", "0.30.6", "0.30.7", "0.30.8", "0.30.9", "0.30.10", "0.30.11", "0.30.12", "0.30.13", "0.30.14", "0.30.15"]
 ModifiesMultiplayer = true
-Description = "Adds a lot of content i have made (porting most of content missing), hope you enjoy!\n\n"\
+Description = "Adds a lot of content i have made, hope you enjoy!\n\n"\
 " - Mod previously known as Juan's Workshop or Juans Shipyard\n"\
 "Discord : @janitnt \n"\
 "Official Discord Server: discord.gg/avT5xBnZdK (Come see sneak peeks and vote on important mod polls!)\n\n"\
@@ -23,8 +23,8 @@ Description = "Adds a lot of content i have made (porting most of content missin
 "Kroom : permission to port their 1x1 Cockpit from their classic mod, Kroom's forge.\n"\
 "May/floofymay : sound design, additional sound design\n"\
 "Aephiex : Slight Compatibility with their advanced storages + AI core mod's code (just used the name for compatibility)\n"\
-"syy1125 : Code from leviathan boss \"Stellarborn\" in order to use in this mod's Bossfights. Spritework and whatnot for batteries in order to ensure compatibility.\n"\
-"\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource."
+"syy1125 : Code from leviathan boss \"Stellarborn\" in order to use in this mod's Bossfights. Spritework and whatnot for batteries in order to ensure compatibility."
+//"\n\nSome Assets were taken from Calamity mod for Tmodloader, A Terraria Mod loader. These Assets were taken from the Wiki and/Or the Public Sprite Resource." //this is like unused 
 StringsFolder = "Strings"
 
 //Stop reading my code!!!!! it sucks!!!! i mean it doe'snt but is poorly commented and messy
