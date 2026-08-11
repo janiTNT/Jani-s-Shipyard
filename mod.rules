@@ -339,6 +339,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part
+			&<Parts/Logic/Thrusters/thruster_boost/logic_thruster_boost.rules>/Part
 			&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part
 			
 			// extras 

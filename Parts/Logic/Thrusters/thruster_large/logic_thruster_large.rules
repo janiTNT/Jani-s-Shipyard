@@ -13,7 +13,7 @@ Part : <./data/ships/terran/thruster_large/thruster_large.rules>/Part
 	SelectionTypeID = "logic_thrusters"
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, RampUpJani, RampUpJaniFinal, LogicAlternativeA, LogicAlternativeD]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, RampUpJaniFinal, LogicAlternativeA, LogicAlternativeD]
 	Components : ^/0/Components
 	{
 		OverclockActivator

@@ -948,27 +948,31 @@ Parts
 	
 	LogicThrusterSmall = "Logic Small Thruster"
 	LogicThrusterSmallIcon = "L. Small Thruster"
-	LogicThrusterSmallDesc = "A Small Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	LogicThrusterSmallDesc = "A Small Thruster modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterMed = "Logic Med Thruster"
 	LogicThrusterMedIcon = "L. Med Thruster"
-	LogicThrusterMedDesc = "A Med Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	LogicThrusterMedDesc = "A Med Thruster modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterLarge = "Logic Large Thruster"
 	LogicThrusterLargeIcon = "L. Large Thruster"
-	LogicThrusterLargeDesc = "A Large Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	LogicThrusterLargeDesc = "A Large Thruster modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicThrusterHuge = "Logic Huge Thruster"
 	LogicThrusterHugeIcon = "L. Huge Thruster"
-	LogicThrusterHugeDesc = "A Huge Thruster modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting."\
+	LogicThrusterHugeDesc = "A Huge Thruster modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	LogicThrusterBoost = "Logic Boost Thruster"
+	LogicThrusterBoostIcon = "L. Boost Thruster"
+	LogicThrusterBoostDesc = "A Boost Thruster modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting. Can activate boost mode with signal type B."
 	
 	LogicThrusterRocketNozzle = "Logic Modular Rocket Thruster (M.R.T.)"
 	LogicThrusterRocketNozzleIcon = "L. M.R.T. Nozzle"
-	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using a logic signal instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
+	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	AstralConveyor = "Astral Conveyor"

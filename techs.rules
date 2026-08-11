@@ -650,23 +650,6 @@ Techs
 		Prerequisites = [janiTNT.bomb1tech]
 	}
 	{
-		ID = janiTNT.logicvanillathrusters
-		NameKey = "Techs/LogicThrusters"
-		DescriptionKey = "Techs/LogicThrustersDesc"
-		Icon = &<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/EditorIcon
-		EditorGroups = ["Flight", "Technologies"]
-		PartsUnlocked
-		[
-		&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part/ID
-		&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part/ID
-		&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part/ID
-		&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/ID
-		&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part/ID
-		]
-		Prerequisites = [cosmoteer.thruster_rocket]
-		Cost = 1000
-	}
-	{
 		ID = janiTNT.stationarmor
 		NameKey = &<Parts/Decorative/StationArmor/main.rules>/Part/NameKey
 		DescriptionKey = &<Parts/Decorative/StationArmor/main.rules>/Part/DescriptionKey
@@ -723,6 +706,44 @@ Techs
 		]
 		Cost = 500
 		Prerequisites = [cosmoteer.heat_management]
+	}
+	{
+		ID = janiTNT.logicvanillathrusters
+		NameKey = "Techs/LogicThrusters"
+		DescriptionKey = "Techs/LogicThrustersDesc"
+		Icon = &<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/EditorIcon
+		EditorGroups = ["Flight", "Technologies"]
+		PartsUnlocked
+		[
+		&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_boost/logic_thruster_boost.rules>/Part/ID
+		&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part/ID
+		]
+		Prerequisites = [cosmoteer.thruster_rocket]
+		Cost = 1000
+	}
+	{
+		ID = janiTNT.logicvanillathrusters-overclock
+		Categories = [ overclock ]
+		NameKey = "Techs/LogicThrustersOverclock"
+		DescriptionKey = "Techs/LogicThrustersOverclockDesc"
+		Icon = &<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Flight", "Technologies"]
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Logic/Thrusters/thruster_small/logic_thruster_small.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Logic/Thrusters/thruster_med/logic_thruster_med.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Logic/Thrusters/thruster_large/logic_thruster_large.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Logic/Thrusters/thruster_huge/logic_thruster_huge.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Logic/Thrusters/thruster_boost/logic_thruster_boost.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Prerequisites = [cosmoteer.thruster_rocket_nozzle-overclock, janiTNT.logicvanillathrusters]
+		Cost = 4000
 	}
 	{
 		ID = janiTNT.FTL_defense_laser-overclock
