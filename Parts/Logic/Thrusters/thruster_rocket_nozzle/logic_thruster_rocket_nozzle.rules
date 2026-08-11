@@ -113,6 +113,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			ActivationRecoveryTime = 0
 			FuelStorage = CombinedBatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
+			AllowAutoFire = false
 		}
 
 		RampUpBuff

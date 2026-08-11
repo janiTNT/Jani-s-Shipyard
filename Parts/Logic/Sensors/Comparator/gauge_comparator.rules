@@ -90,6 +90,10 @@ Part : <../../baselogicpart.rules>/Part
 		HeatComponents = &<comparator.rules>/Part/Components/HeatComponents
 		CheckForOperationalToggle = &<comparator.rules>/Part/Components/CheckForOperationalToggle
 		CheckForOperationalComponents = &<comparator.rules>/Part/Components/CheckForOperationalComponents
+		CheckForOverclockToggle = &<comparator.rules>/Part/Components/CheckForOverclockToggle
+		CheckForOverclockComponents = &<comparator.rules>/Part/Components/CheckForOverclockComponents
+		CheckForBoostToggle = &<comparator.rules>/Part/Components/CheckForBoostToggle
+		CheckForBoostComponents = &<comparator.rules>/Part/Components/CheckForBoostComponents
 		
 		OutputSignal
 		{

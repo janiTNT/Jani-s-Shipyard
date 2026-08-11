@@ -169,6 +169,7 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 							}
 						]
 					}
+					AllowAutoFire = false
 				}
 				RampUpBuff
 				{
@@ -240,6 +241,7 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 							}
 						]
 					}
+					AllowAutoFire = false
 				}
 				RampUpBuff
 				{
@@ -264,4 +266,5 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 			Size = [2, 5]
 		}
 	}
+	StatsNotesKey = "Stats/ThrusterBoostLogicNotes"
 }

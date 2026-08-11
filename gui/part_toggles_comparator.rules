@@ -34,7 +34,7 @@ PartToggles
 					}
 				}
 			}
-			// Fusion Reactor Level
+			// Heat Level
 			{
 				ChoiceID = "heat_level_value"
 				ButtonToolTipKey = "PartToggles/heat_level_value"
@@ -42,10 +42,11 @@ PartToggles
 				{
 					Texture
 					{
-						File = "comparator_1.png"
+						File = "./data/gui/game/designer/group_thermal.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
+					VertexColor = [0, 183, 255]
 				}
 			}
 			// Check for Operational
@@ -57,6 +58,35 @@ PartToggles
 					Texture
 					{
 						File = "./data/gui/game/parts/toggle_power_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Check for Overclocking
+			{
+				ChoiceID = "overclockmode_value"
+				ButtonToolTipKey = "PartToggles/overclockmode_value"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/overclock_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255, 4, 0]
+				}
+			}
+			// Check for boost thruster mode
+			{
+				ChoiceID = "boostthrustmode_value"
+				ButtonToolTipKey = "PartToggles/boostthrustmode_value"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/toggle_boost_on.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

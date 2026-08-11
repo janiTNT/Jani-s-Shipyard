@@ -1268,6 +1268,8 @@ Inputs
 		reload_value = "Comparator mode : Weapon Reload"
 		heat_level_value = "Comparator mode : Heat Level"
 		operationallevel_value = "Comparator mode : IsOperational"
+		overclockmode_value = "Comparator mode : Overclock"
+		boostthrustmode_value = "Comparator mode : Boost"
 		
 		DroneSmallLaser = "Select Drone: Small Laser"
 		DroneMedCannon = "Select Drone: Med Cannon"
@@ -1400,6 +1402,8 @@ PartToggles
 	reload_value = "Weapon Reload Value"
 	heat_level_value = "Heat Level Value\n(Searches For Compatible heat capacity parts, or connects directly to the network and searches total capacity.)"
 	operationallevel_value = "Check for Operational\n(Searches for IsOperational. Always returns 100% if its toggled)"
+	overclockmode_value = "Check for Overclock Mode\n(Searches for OverclockStateValue.)"
+	boostthrustmode_value = "Check for Boost mode\n(Searches for BoostToggle. Always returns 100% if its toggled)"
 	
 	//DroneSmallLaser = "Laser"
 	DroneSmallLaser = "<b>Laser Cannon Drone</b>\n\n"\
@@ -1590,6 +1594,18 @@ Stats
 	CursedManaProvidedFmt = "<white>Cursed Mana Created:</white> <good>{0:0}</good>"
 	HolyManaAvailibleFmt = "<white>Total Holy Mana Alteration:</white> <good>{0:0}</good>"
 	HolyManaProvidedFmt = "<white>Holy Mana Created:</white> <good>{0:0}</good>"
+	
+	ThrusterLogicNotes = "<b>Logic signal inputs:</b>\n"\
+	"<white>Signal A:</white> <good>Thruster activation</good>\n"\
+	"<gray>Signal B: Unused</gray>\n"\
+	"<gray>Signal C: Unused</gray>\n"\
+	"<white>Signal D:</white> <bad>Overclock Toggle</bad>"
+	
+	ThrusterBoostLogicNotes = "<b>Logic signal inputs:</b>\n"\
+	"<white>Signal A:</white> <good>Thruster activation</good>\n"\
+	"<white>Signal B:</white> <good>Boost toggle</good>\n"\
+	"<gray>Signal C: Unused</gray>\n"\
+	"<white>Signal D:</white> <bad>Overclock Toggle</bad>"
 }
 StatCategories
 {

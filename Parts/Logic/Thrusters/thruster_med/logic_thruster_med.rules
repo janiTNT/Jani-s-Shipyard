@@ -115,6 +115,7 @@ Part : <./data/ships/terran/thruster_med/thruster_med.rules>/Part
 			ActivationRecoveryTime = 0
 			FuelStorage = BatteryStorage
 			FuelUsagePerSecond = &../../FuelUsage
+			AllowAutoFire = false
 		}
 		
 		RampUpBuff
@@ -160,4 +161,5 @@ Part : <./data/ships/terran/thruster_med/thruster_med.rules>/Part
 			Size = [1, 3]
 		}
 	}
+	StatsNotesKey = "Stats/ThrusterLogicNotes"
 }

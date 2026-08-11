@@ -102,6 +102,7 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 			SoftOperationalToggle = IsOperational
 			MinActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
 			MaxActivation = { BaseValue=0; BuffType=RampUpJaniFinal; BuffMode=Add; }
+			AllowAutoFire = false
 		}
 		
 		RampUpBuff
@@ -131,4 +132,5 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 			Size = [1, 2]
 		}
 	}
+	StatsNotesKey = "Stats/ThrusterLogicNotes"
 }

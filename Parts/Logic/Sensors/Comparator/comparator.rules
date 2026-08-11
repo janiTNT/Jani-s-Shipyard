@@ -250,6 +250,55 @@ Part : <../../baselogicpart.rules>/Part
 				}
 			}
 		}
+		CheckForOverclockToggle
+		{
+			Type = ModeToggle
+			Mode = ComparatorType
+			OnMode = 4
+		}
+		CheckForOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = CheckForOverclockToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ValueProxy
+					PartLocation = [0, -1]
+					ComponentID = OverclockStateValue
+				}
+			}
+		}
+		CheckForBoostToggle
+		{
+			Type = ModeToggle
+			Mode = ComparatorType
+			OnMode = 5
+		}
+		CheckForBoostComponents
+		{
+			Type = ToggledComponents
+			Toggle = CheckForBoostToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ValueTween
+					IsOnToggle = CheckBoostProxy
+					OnTweenDuration = 0
+					OffTweenDuration = 0
+				}
+				CheckBoostProxy
+				{
+					Type = ToggleProxy
+					PartLocation = [0, -1]
+					ComponentID = BoostToggle
+				}
+			}
+		}
 		
 		OutputSignal
 		{
