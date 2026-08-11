@@ -32,32 +32,28 @@ Part : <./data/ships/terran/thruster_large/thruster_large.rules>/Part
 			OverrideTrigger = OverclockDeactivateTrigger
 			ResetTrigger = OverclockActivateTrigger
 		}
+		SwitchingTimeTween
+		{
+			Type = ValueTween
+			OffValue = 0
+			OnValue = 1
+			OnTweenDuration = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+			OffTweenDuration = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+			IsOnToggle = LogicAlternativeDSignal
+		}
 		OverclockActivateTrigger
 		{
-			Type = DelayTrigger
-			Trigger = OverclockActivateTriggerPre
-			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+			Type = ThresholdTrigger
+			AmountFrom = SwitchingTimeTween
+			MinAmount = 1
+			MaxAmount = 1
 		}
 		OverclockDeactivateTrigger
 		{
-			Type = DelayTrigger
-			Trigger = OverclockDeactivateTriggerPre
-			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
-		}
-		OverclockActivateTriggerPre
-		{
-			Type = ToggleTrigger
-			Toggle = LogicAlternativeDSignal
-			TriggerWhenOff = false
-			AllowOperationalBypass = true
-		}
-		OverclockDeactivateTriggerPre
-		{
-			Type = ToggleTrigger
-			Toggle = LogicAlternativeDSignal
-			TriggerWhenOn = false
-			TriggerWhenOff = true
-			AllowOperationalBypass = true
+			Type = ThresholdTrigger
+			AmountFrom = SwitchingTimeTween
+			MinAmount = 0
+			MaxAmount = 0
 		}
 		LogicAlternativeDSignal
 		{
