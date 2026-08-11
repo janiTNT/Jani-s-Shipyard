@@ -29,6 +29,54 @@ Part
 					BuffAmount = 1
 					BuffArea = [0, -2, 1, 1]
 				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -102,6 +150,54 @@ Part
 					BuffType = Logic
 					BuffAmount = 1
 					BuffArea = [0, -3, 1, 1]
+				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
 				}
 				EndGraphics
 				{
@@ -177,6 +273,54 @@ Part
 					BuffAmount = 1
 					BuffArea = [0, -4, 1, 1]
 				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -250,6 +394,54 @@ Part
 					BuffType = Logic
 					BuffAmount = 1
 					BuffArea = [0, -5, 1, 1]
+				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
 				}
 				EndGraphics
 				{
@@ -325,6 +517,54 @@ Part
 					BuffAmount = 1
 					BuffArea = [0, -6, 1, 1]
 				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -392,6 +632,54 @@ Part
 					BuffType = Logic
 					BuffAmount = 1
 					BuffArea = [0, -7, 1, 1]
+				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
 				}
 				EndGraphics
 				{
@@ -461,6 +749,54 @@ Part
 					BuffAmount = 1
 					BuffArea = [0, -8, 1, 1]
 				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -528,6 +864,54 @@ Part
 					BuffType = Logic
 					BuffAmount = 1
 					BuffArea = [0, -9, 1, 1]
+				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
 				}
 				EndGraphics
 				{
@@ -597,6 +981,54 @@ Part
 					BuffAmount = 1
 					BuffArea = [0, -10, 1, 1]
 				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -664,6 +1096,54 @@ Part
 					BuffType = Logic
 					BuffAmount = 1
 					BuffArea = [0, -11, 1, 1]
+				}
+				SignalAComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalAToggle
+					Components
+					{
+						BuffProviderLogicA : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+						}
+					}
+				}
+				SignalBComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalBToggle
+					Components
+					{
+						BuffProviderLogicB : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+						}
+					}
+				}
+				SignalCComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalCToggle
+					Components
+					{
+						BuffProviderLogicC : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+						}
+					}
+				}
+				SignalDComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalDToggle
+					Components
+					{
+						BuffProviderLogicD : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+						}
+					}
 				}
 				EndGraphics
 				{

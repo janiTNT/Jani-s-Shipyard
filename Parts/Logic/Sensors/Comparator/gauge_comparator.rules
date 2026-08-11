@@ -28,7 +28,56 @@ Part : <../../baselogicpart.rules>/Part
 	Components : ^/0/Components
 	&/JANI_COMMON/SettingsOnes/Part/Components
 	&/JANI_COMMON/SettingsTens/Part/Components
-	{	
+	<../../base_outputlogicpart.rules>/Base
+	{
+		SignalAComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalAToggle
+			Components
+			{
+				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+			}
+		}
+		SignalBComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalBToggle
+			Components
+			{
+				BuffProviderLogicB : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
+			}
+		}
+		SignalCComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalCToggle
+			Components
+			{
+				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+			}
+		}
+		SignalDComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalDToggle
+			Components
+			{
+				BuffProviderLogicD : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
+			}
+		}	
 		BlueprintNetworkNode = &<comparator.rules>/Part/Components/BlueprintNetworkNode
 		Port_Up = &<comparator.rules>/Part/Components/Port_Up
 		NetworkHeatOutputProxy = &<comparator.rules>/Part/Components/NetworkHeatOutputProxy
@@ -110,7 +159,7 @@ Part : <../../baselogicpart.rules>/Part
 			ValueFrom = TotalMultiValue
 			MinAmount = 0%
 		}
-		BuffProviderLogicA
+		BuffProviderLogic
 		{
 			Type = AreaBuffProvider
 			OperationalToggle = OutputSignal

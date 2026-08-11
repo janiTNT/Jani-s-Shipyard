@@ -19,7 +19,72 @@ Part : <../../baselogicpart.rules>/Part
 	}
 
 	Components : ^/0/Components
+	<../../base_outputlogicpart.rules>/Base
 	{
+		SignalAComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalAToggle
+			Components
+			{
+				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+				BuffProviderLogicA2 : ~/Part/Components/BuffProviderLogic2
+				{
+					BuffType = LogicAlternativeA
+				}
+			}
+		}
+		SignalBComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalBToggle
+			Components
+			{
+				BuffProviderLogicB : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
+				BuffProviderLogicB2 : ~/Part/Components/BuffProviderLogic2
+				{
+					BuffType = LogicAlternativeB
+				}
+			}
+		}
+		SignalCComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalCToggle
+			Components
+			{
+				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+				BuffProviderLogicC2 : ~/Part/Components/BuffProviderLogic2
+				{
+					BuffType = LogicAlternativeC
+				}
+			}
+		}
+		SignalDComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalDToggle
+			Components
+			{
+				BuffProviderLogicD : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
+				BuffProviderLogicD2 : ~/Part/Components/BuffProviderLogic2
+				{
+					BuffType = LogicAlternativeD
+				}
+			}
+		}
 		Blueprints
 		{
 			Type = BlueprintSprite

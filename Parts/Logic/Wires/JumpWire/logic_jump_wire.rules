@@ -25,6 +25,7 @@ Part : <../../baselogicpart.rules>/Part
 
 	Components : ^/0/Components
 	<jump_wire_stuff.rules>/Part/Components
+	<../../base_outputlogicpart.rules>/Base
 	{
 		Blueprints
 		{

@@ -25,11 +25,60 @@ Part : <../../baselogicpart.rules>/Part
 	Components : ^/0/Components
 	&/JANI_COMMON/SettingsOnes/Part/Components
 	&/JANI_COMMON/SettingsTens/Part/Components //AdvS_Setting_Second
+	<../../base_outputlogicpart.rules>/Base
 	{
-		NumberSelectOnes : ^/1/NumberSelectOnes
+		SignalAComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalAToggle
+			Components
+			{
+				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+			}
+		}
+		SignalBComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalBToggle
+			Components
+			{
+				BuffProviderLogicB : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
+			}
+		}
+		SignalCComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalCToggle
+			Components
+			{
+				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+			}
+		}
+		SignalDComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalDToggle
+			Components
+			{
+				BuffProviderLogicD : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
+			}
+		}
+		/* NumberSelectOnes : ^/1/NumberSelectOnes
 		{
 			Default = 1
-		}
+		} */
 		Blueprints
 		{
 			Type = BlueprintSprite

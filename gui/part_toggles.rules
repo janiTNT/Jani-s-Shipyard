@@ -1215,6 +1215,75 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			{ ChoiceID = "advships_num_100_9"; ButtonToolTipKey = "PartToggles/Numbers900"; 	ButtonSprite{Texture{File = "number100-9.png";MipLevels = 2;	SampleMode = Linear}}}
 		]
 	}
+	// Logic mode toggles
+	{
+		ToggleID = "logic_alternative_togglemode"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Mode A
+			{
+				ChoiceID = "logic_alt_a"
+				ButtonToolTipKey = "PartToggles/logic_alt_a"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "logic_alt_toggle1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+			// Mode B
+			{
+				ChoiceID = "logic_alt_b"
+				ButtonToolTipKey = "PartToggles/logic_alt_b"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "logic_alt_toggle2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [10, 212, 98]
+				}
+			}
+			// Mode C
+			{
+				ChoiceID = "logic_alt_c"
+				ButtonToolTipKey = "PartToggles/logic_alt_c"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "logic_alt_toggle3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [210, 255, 48]
+				}
+			}
+			// Mode D
+			{
+				ChoiceID = "logic_alt_d"
+				ButtonToolTipKey = "PartToggles/logic_alt_d"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "logic_alt_toggle4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255, 46, 46]
+				}
+			}
+		]
+	}
 	// Fluid Type
 	{
 		ToggleID = "fluid_type"

@@ -98,6 +98,26 @@ Logic
 	RectBorderColor = [0, 255, 84, 160]
 	RectFillColor = [0, 255, 84, 64]
 }
+LogicAlternativeA
+{
+	CombineMode = Add
+	BaseValue = 0
+}
+LogicAlternativeB
+{
+	CombineMode = Add
+	BaseValue = 0
+}
+LogicAlternativeC
+{
+	CombineMode = Add
+	BaseValue = 0
+}
+LogicAlternativeD
+{
+	CombineMode = Add
+	BaseValue = 0
+}
 JaniOrbDetectionCosmiliteBoss
 {
 	CombineMode = Add

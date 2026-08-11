@@ -1,0 +1,35 @@
+Base
+{
+	OutputType
+	{
+		Type = UIToggle
+		ToggleID = "logic_alternative_togglemode"
+		Default = 0
+		AlwaysAllowInBuildMode = true
+		RequiresCommand = false
+	}
+	SignalAToggle
+	{
+		Type = ModeToggle
+		Mode = OutputType
+		OnMode = 0
+	}
+	SignalBToggle
+	{
+		Type = ModeToggle
+		Mode = OutputType
+		OnMode = 1
+	}
+	SignalCToggle
+	{
+		Type = ModeToggle
+		Mode = OutputType
+		OnMode = 2
+	}
+	SignalDToggle
+	{
+		Type = ModeToggle
+		Mode = OutputType
+		OnMode = 3
+	}
+}

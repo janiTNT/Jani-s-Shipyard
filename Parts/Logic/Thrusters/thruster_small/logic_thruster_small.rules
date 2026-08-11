@@ -10,19 +10,67 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 	DescriptionKey = "Parts/LogicThrusterSmallDesc"
 	TypeCategories = [thruster, uses_power, logic]
 	SelectionTypeID = "logic_thrusters"
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic,  RampUpJani, RampUpJaniFinal]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic,  RampUpJani, RampUpJaniFinal, LogicAlternativeA, LogicAlternativeD]
 	Components : ^/0/Components
 	{
+		OverclockActivator
+		{
+			Type = UIToggleModeOverride
+			TargetUIToggle = OverclockModeToggle
+			TargetMode = 1
+			OverrideTrigger = OverclockActivateTrigger
+			ResetTrigger = OverclockDeactivateTrigger
+		}
+		OverclockDeactivator
+		{
+			Type = UIToggleModeOverride
+			TargetUIToggle = OverclockModeToggle
+			TargetMode = 0
+			OverrideTrigger = OverclockDeactivateTrigger
+			ResetTrigger = OverclockActivateTrigger
+		}
+		OverclockActivateTrigger
+		{
+			Type = DelayTrigger
+			Trigger = OverclockActivateTriggerPre
+			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		OverclockDeactivateTrigger
+		{
+			Type = DelayTrigger
+			Trigger = OverclockDeactivateTriggerPre
+			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		OverclockActivateTriggerPre
+		{
+			Type = ToggleTrigger
+			Toggle = LogicAlternativeDSignal
+			TriggerWhenOff = false
+			AllowOperationalBypass = true
+		}
+		OverclockDeactivateTriggerPre
+		{
+			Type = ToggleTrigger
+			Toggle = LogicAlternativeDSignal
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+			AllowOperationalBypass = true
+		}
+		LogicAlternativeDSignal
+		{
+			Type = BuffToggle
+			BuffType = LogicAlternativeD
+		}
 		Triggered
 		{
 			Type = MultiToggle
 			Toggles = [IsOperational, XorFinal]
 			Mode = All
 		}
-		LogicSignal
+		LogicAlternativeASignal
 		{
 			Type = BuffToggle
-			BuffType = Logic
+			BuffType = LogicAlternativeA
 		}
 		InvertInput
 		{
@@ -34,14 +82,14 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 		XorToggle1
 		{
 			Type = MultiToggle
-			Toggles = [LogicSignal, InvertInput]
+			Toggles = [LogicAlternativeASignal, InvertInput]
 			Invert = true
 			Mode = Any
 		}
 		XorToggle2
 		{
 			Type = MultiToggle
-			Toggles = [LogicSignal, InvertInput]
+			Toggles = [LogicAlternativeASignal, InvertInput]
 			Invert = false
 			Mode = All
 		}

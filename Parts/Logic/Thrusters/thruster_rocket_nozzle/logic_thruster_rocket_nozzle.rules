@@ -4,26 +4,74 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 	IconNameKey = "Parts/LogicThrusterRocketNozzleIcon"
 	ID = janiTNT.logic_thruster_rocket_nozzle // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	OtherIDs = []
-	EditorParentParts = [ ["skipydog.logic_thruster_small", -1] ]
+	//EditorParentParts = [ ["skipydog.logic_thruster_small", -1] ]
 	DescriptionKey = "Parts/LogicThrusterRocketNozzleDesc"
-	//EditorGroup = "Logic"
+	EditorGroup = "Logic"
 	TypeCategories = [thruster, uses_power, logic]
 	SelectionTypeID = "logic_thrusters"
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, RampUpJani, RampUpJaniFinal]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, RampUpJani, RampUpJaniFinal, LogicAlternativeA, LogicAlternativeD]
 	Components : ^/0/Components
 	{
+		OverclockActivator
+		{
+			Type = UIToggleModeOverride
+			TargetUIToggle = OverclockModeToggle
+			TargetMode = 1
+			OverrideTrigger = OverclockActivateTrigger
+			ResetTrigger = OverclockDeactivateTrigger
+		}
+		OverclockDeactivator
+		{
+			Type = UIToggleModeOverride
+			TargetUIToggle = OverclockModeToggle
+			TargetMode = 0
+			OverrideTrigger = OverclockDeactivateTrigger
+			ResetTrigger = OverclockActivateTrigger
+		}
+		OverclockActivateTrigger
+		{
+			Type = DelayTrigger
+			Trigger = OverclockActivateTriggerPre
+			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		OverclockDeactivateTrigger
+		{
+			Type = DelayTrigger
+			Trigger = OverclockDeactivateTriggerPre
+			Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		}
+		OverclockActivateTriggerPre
+		{
+			Type = ToggleTrigger
+			Toggle = LogicAlternativeDSignal
+			TriggerWhenOff = false
+			AllowOperationalBypass = true
+		}
+		OverclockDeactivateTriggerPre
+		{
+			Type = ToggleTrigger
+			Toggle = LogicAlternativeDSignal
+			TriggerWhenOn = false
+			TriggerWhenOff = true
+			AllowOperationalBypass = true
+		}
+		LogicAlternativeDSignal
+		{
+			Type = BuffToggle
+			BuffType = LogicAlternativeD
+		}
 		Triggered
 		{
 			Type = MultiToggle
 			Toggles = [IsOperational, XorFinal]
 			Mode = All
 		}
-		LogicSignal
+		LogicAlternativeASignal
 		{
 			Type = BuffToggle
-			BuffType = Logic
+			BuffType = LogicAlternativeA
 		}
 		InvertInput
 		{
@@ -35,14 +83,14 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 		XorToggle1
 		{
 			Type = MultiToggle
-			Toggles = [LogicSignal, InvertInput]
+			Toggles = [LogicAlternativeASignal, InvertInput]
 			Invert = true
 			Mode = Any
 		}
 		XorToggle2
 		{
 			Type = MultiToggle
-			Toggles = [LogicSignal, InvertInput]
+			Toggles = [LogicAlternativeASignal, InvertInput]
 			Invert = false
 			Mode = All
 		}
