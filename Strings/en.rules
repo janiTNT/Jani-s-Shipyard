@@ -823,6 +823,7 @@ Parts
 	FTL_burstlaser1Icon = "Burst Laser"
 	FTL_burstlaser1LeftIcon = "Burst Laser (L)"
 	FTL_burstlaser1Desc = "A better alternative than the Defense Laser, fires two shots in a burst that deal more damage, Not Particularly Effective, Requires no Crew."
+	BurstLaser1Overclock = "Overclocked Burst Laser MkI"
 	BurstLaser1OverclockDesc = "Switches to more concentrated explosive energy bolts, causing splash damage but decreasing fire rate. Generates waste heat when firing."
 	
 	FTL_burstlaser2 = "Burst Laser Mk II"

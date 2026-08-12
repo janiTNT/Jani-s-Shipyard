@@ -807,6 +807,22 @@ Techs
 		Prerequisites = [cosmoteer.heat_management]
 	}
 	{
+		ID = janiTNT.burst1lasertech-overclock
+		Categories = [ overclock ]
+		NameKey = "Parts/BurstLaser1Overclock"
+		DescriptionKey = "Parts/BurstLaser1OverclockDesc"
+		Icon = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = &<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/EditorGroups
+		ToggleChoicesUnlocked
+		[
+			{ PartID=&<Parts/Weapons/Cruiser_Weapons/Laser2/burst1.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+			{ PartID=&<Parts/Weapons/Cruiser_Weapons/Laser2/burst1_l.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
+		]
+		Cost = 10000
+		Prerequisites = [cosmoteer.heat_management, janiTNT.burst1lasertech]
+	}
+	{
 		ID = janiTNT.inserter-overclock
 		Categories = [ overclock ]
 		NameKey = "Techs/InserterOverclock"
