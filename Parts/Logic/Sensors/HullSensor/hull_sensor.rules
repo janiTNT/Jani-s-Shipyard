@@ -691,7 +691,7 @@ Part : <../../baselogicpart.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			File = "icon.png"
+			File = "blueprints.png"
 			Size = [1, 1]
 		}
 	}

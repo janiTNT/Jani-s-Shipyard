@@ -91,8 +91,7 @@ Part : <../../baselogicpart.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			//File = "blueprints.png"
-			File = "repeater_icon.png"
+			File = "blueprints_extender.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
 		}

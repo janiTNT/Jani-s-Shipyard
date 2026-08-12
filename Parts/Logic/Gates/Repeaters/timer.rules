@@ -91,8 +91,7 @@ Part : <../../baselogicpart.rules>/Part
 		Blueprints
 		{
 			Type = BlueprintSprite
-			//File = "blueprints.png"
-			File = "timer_icon.png"
+			File = "blueprints_timer.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
 		}
