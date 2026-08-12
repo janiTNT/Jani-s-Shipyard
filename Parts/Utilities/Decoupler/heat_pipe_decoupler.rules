@@ -10,7 +10,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		[steel, 4]
 		[coil, 4]
 	]
-	TypeCategories = [explosives, heat_management]
+	TypeCategories = [explosives, heat_management, logic]
 	AllowedDoorLocations = []
 	GeneratorRequiresDoor = false
 	CrewSpeedFactor = 0

@@ -17,7 +17,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	IsRotateable = true
 	SelectionPriority = 0
 	MaxHealth = 1000
-	TypeCategories = [ heat_management ]
+	TypeCategories = [ heat_management, logic ]
 	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
 	AllowedDoorLocations = []
 	GeneratorRequiresDoor = false
