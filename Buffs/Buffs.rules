@@ -118,6 +118,11 @@ LogicAlternativeD
 	CombineMode = Add
 	BaseValue = 0
 }
+LogicAlternativeOverclock
+{
+	CombineMode = Add
+	BaseValue = 0
+}
 JaniOrbDetectionCosmiliteBoss
 {
 	CombineMode = Add

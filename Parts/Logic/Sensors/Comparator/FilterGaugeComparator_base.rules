@@ -77,6 +77,18 @@ Part : <../../baselogicpart.rules>/Part
 					BuffType = LogicAlternativeD
 				}
 			}
+		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
 		}	
 		ValueCheck
 		{

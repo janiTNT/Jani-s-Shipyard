@@ -1282,6 +1282,21 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 					VertexColor = [255, 46, 46]
 				}
 			}
+			// Overclocking Mode
+			{
+				ChoiceID = "logic_alt_overclock"
+				ButtonToolTipKey = "PartToggles/logic_alt_overclock"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "logic_alt_toggle5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255, 4, 0]
+				}
+			}
 		]
 	}
 	// Fluid Type

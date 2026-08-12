@@ -85,6 +85,22 @@ Part : <../../baselogicpart.rules>/Part
 				}
 			}
 		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+				BuffProviderLogicOverclock2 : ~/Part/Components/BuffProviderLogic2
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
+		}
 		Blueprints
 		{
 			Type = BlueprintSprite

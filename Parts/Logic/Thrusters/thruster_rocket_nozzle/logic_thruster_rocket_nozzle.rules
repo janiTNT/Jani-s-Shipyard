@@ -11,7 +11,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 	SelectionTypeID = "logic_thrusters"
 	ThrustIncreaseTime = 0
 	ThrustRecoveryTime = 0
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, RampUpJani, RampUpJaniFinal, LogicAlternativeA, LogicAlternativeD]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, RampUpJani, RampUpJaniFinal, LogicAlternativeA, LogicAlternativeOverclock]
 	Components : ^/0/Components
 	{
 		OverclockActivator
@@ -37,7 +37,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			OnValue = 1
 			OnTweenDuration = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
 			OffTweenDuration = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
-			IsOnToggle = LogicAlternativeDSignal
+			IsOnToggle = LogicAlternativeOverclockSignal
 		}
 		OverclockActivateTrigger
 		{
@@ -53,10 +53,10 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			MinAmount = 0
 			MaxAmount = 0
 		}
-		LogicAlternativeDSignal
+		LogicAlternativeOverclockSignal
 		{
 			Type = BuffToggle
-			BuffType = LogicAlternativeD
+			BuffType = LogicAlternativeOverclock
 		}
 		Triggered
 		{

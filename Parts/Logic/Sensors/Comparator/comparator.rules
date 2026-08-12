@@ -92,6 +92,22 @@ Part : <../../baselogicpart.rules>/Part
 				}
 			}
 		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock1 : ~/Part/Components/BuffProviderLogic1
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+				BuffProviderLogicOverclock2 : ~/Part/Components/BuffProviderLogic2
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
+		}
 		ComparatorType
 		{
 			Type = UIToggle

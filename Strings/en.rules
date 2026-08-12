@@ -1189,6 +1189,12 @@ Inputs
 		invert_input_no = "Invert Toggle : Yes"
 		invert_input_yes = "Invert Toggle : No"
 		
+		logic_alt_a = "Logic Alt Mode A"
+		logic_alt_b = "Logic Alt Mode B"
+		logic_alt_c = "Logic Alt Mode C"
+		logic_alt_d = "Logic Alt Mode D"
+		logic_alt_overclock = "Logic Overclocking Mode"
+		
 		advships_lengths_zero = "Length 1"
 		advships_lengths_one = "Length 2"
 		advships_lengths_two = "Length 3"
@@ -1356,6 +1362,12 @@ PartToggles
 	
 	invert_input_no = "Normal Signal"
 	invert_input_yes = "Inverse Signal"
+	
+	logic_alt_a = "Logic Alt Signal A\n<gray>Alt signals only affect certain parts that require multiple inputs, such as thrusters</gray>"
+	logic_alt_b = "Logic Alt Signal B\n<gray>Alt signals only affect certain parts that require multiple inputs, such as thrusters</gray>"
+	logic_alt_c = "Logic Alt Signal C\n<gray>Alt signals only affect certain parts that require multiple inputs, such as thrusters</gray>"
+	logic_alt_d = "Logic Alt Signal D\n<gray>Alt signals only affect certain parts that require multiple inputs, such as thrusters</gray>"
+	logic_alt_overclock = "Logic Overclocking Signal\n<gray>Toggles overclock on compatible logic parts.</gray>"
 	
 	Ammos = "Ammo Category"
 	Builds = "Construction Category"
@@ -1599,13 +1611,15 @@ Stats
 	"<white>Signal A:</white> <good>Thruster activation</good>\n"\
 	"<gray>Signal B: Unused</gray>\n"\
 	"<gray>Signal C: Unused</gray>\n"\
-	"<white>Signal D:</white> <bad>Overclock Toggle</bad>"
+	"<gray>Signal D: Unused</gray>\n"\
+	"<white>Overclock:</white> <bad>Overclocking toggle</bad>"
 	
 	ThrusterBoostLogicNotes = "<b>Logic signal inputs:</b>\n"\
 	"<white>Signal A:</white> <good>Thruster activation</good>\n"\
 	"<white>Signal B:</white> <good>Boost toggle</good>\n"\
 	"<gray>Signal C: Unused</gray>\n"\
-	"<white>Signal D:</white> <bad>Overclock Toggle</bad>"
+	"<gray>Signal D: Unused</gray>\n"\
+	"<white>Overclock:</white> <bad>Overclocking toggle</bad>"
 }
 StatCategories
 {
@@ -1660,7 +1674,13 @@ Techs
 	InserterStackOverclockShort = "Allows Stack Inserters to also be overclocked in a similar manner to Inserters."
 	
 	LogicThrusters = "Logic Thrusters"
-	LogicThrustersDesc = "Unlocks a variation of Normal Thrusters that can interact with logic signals. Technical Limitations make the Ramp-up time not get affected by normal sources."
+	LogicThrustersDesc = "Unlocks a variation of Normal Thrusters that can interact with logic signals."
+	
+	LogicThrustersOverclock = "Logic Thruster Overclocking"
+	LogicThrustersOverclockDesc = "Allows overclocking logic thrusters, granting them the same benefits as a normal thruster's overclocking mode"
+	
+	LogicOverclockSelection = "Logic Overclocking Signal"
+	LogicOverclockSelectionDesc = "Adds a extra signal mode to logic wires that allows toggling overclocking in logic-compatible parts, such as logic thrusters."
 }
 Codex
 {

@@ -32,4 +32,10 @@ Base
 		Mode = OutputType
 		OnMode = 3
 	}
+	SignalOverclockToggle
+	{
+		Type = ModeToggle
+		Mode = OutputType
+		OnMode = 4
+	}
 }

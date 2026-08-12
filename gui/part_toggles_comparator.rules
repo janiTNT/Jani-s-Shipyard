@@ -75,7 +75,7 @@ PartToggles
 						MipLevels = 2
 						SampleMode = Linear
 					}
-					VertexColor = [255, 4, 0]
+					VertexColor = [0, 183, 255]
 				}
 			}
 			// Check for boost thruster mode

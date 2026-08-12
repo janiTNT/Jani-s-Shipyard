@@ -75,6 +75,18 @@ Part : <../../baselogicpart.rules>/Part
 				}
 			}
 		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
+		}
 		/* NumberSelectOnes : ^/1/NumberSelectOnes
 		{
 			Default = 1

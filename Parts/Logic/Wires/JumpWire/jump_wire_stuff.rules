@@ -77,6 +77,18 @@ Part
 						}
 					}
 				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -196,6 +208,18 @@ Part
 						BuffProviderLogicD : ../../../Components/BuffProviderLogic
 						{
 							BuffType = LogicAlternativeD
+						}
+					}
+				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
 						}
 					}
 				}
@@ -321,6 +345,18 @@ Part
 						}
 					}
 				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -440,6 +476,18 @@ Part
 						BuffProviderLogicD : ../../../Components/BuffProviderLogic
 						{
 							BuffType = LogicAlternativeD
+						}
+					}
+				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
 						}
 					}
 				}
@@ -565,6 +613,18 @@ Part
 						}
 					}
 				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -678,6 +738,18 @@ Part
 						BuffProviderLogicD : ../../../Components/BuffProviderLogic
 						{
 							BuffType = LogicAlternativeD
+						}
+					}
+				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
 						}
 					}
 				}
@@ -797,6 +869,18 @@ Part
 						}
 					}
 				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -910,6 +994,18 @@ Part
 						BuffProviderLogicD : ../../../Components/BuffProviderLogic
 						{
 							BuffType = LogicAlternativeD
+						}
+					}
+				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
 						}
 					}
 				}
@@ -1029,6 +1125,18 @@ Part
 						}
 					}
 				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
+						}
+					}
+				}
 				EndGraphics
 				{
 					Type = Graphics
@@ -1142,6 +1250,18 @@ Part
 						BuffProviderLogicD : ../../../Components/BuffProviderLogic
 						{
 							BuffType = LogicAlternativeD
+						}
+					}
+				}
+				SignalOverclockComponents
+				{
+					Type = ToggledComponents
+					Toggle = SignalOverclockToggle
+					Components
+					{
+						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
 						}
 					}
 				}

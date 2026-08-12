@@ -742,8 +742,53 @@ Techs
 			{ PartID=&<Parts/Logic/Thrusters/thruster_boost/logic_thruster_boost.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
 			{ PartID=&<Parts/Logic/Thrusters/thruster_rocket_nozzle/logic_thruster_rocket_nozzle.rules>/Part/ID; ToggleID=thermal_overclock; Mode=1; }
 		]
-		Prerequisites = [cosmoteer.thruster_rocket_nozzle-overclock, janiTNT.logicvanillathrusters]
+		Prerequisites = [cosmoteer.thruster_rocket_nozzle-overclock, cosmoteer.thruster_boost-overclock, cosmoteer.thruster_huge-overclock, janiTNT.logicvanillathrusters]
 		Cost = 4000
+	}
+	{
+		ID = janiTNT.logic_overclockmode
+		Categories = [ overclock ]
+		NameKey = "Techs/LogicOverclockSelection"
+		DescriptionKey = "Techs/LogicOverclockSelectionDesc"
+		Icon = &<Parts/Logic/Wires/Wire1/Wire1.rules>/Part/EditorIcon
+		SecondaryIcon = &~/OverclockIcon
+		EditorGroups = ["Technologies"]
+		ToggleChoicesUnlocked
+		[
+			[logic_alternative_togglemode, 4]
+			/*{ PartID=&<Parts/Logic/Wires/Wire1/Wire1.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Wires/Wire2/Wire2.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Wires/Split1/Split1.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Wires/Split2/Split2.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Wires/Split3/Split3.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Wires/JumpWire/logic_jump_wire.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+//			{ PartID=&<Parts/Logic/Wires/Wireless/Transmitter/transmitter.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+//			{ PartID=&<Parts/Logic/Wires/Wireless/Receiver/receiver.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			
+			//Gates
+			{ PartID=&<Parts/Logic/Gates/NotGate/NotGate.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Gates/Andgate/ANDgate.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Gates/Bulb/Bulb.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			
+			{ PartID=&<Parts/Logic/Gates/Repeaters/repeater.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Gates/Repeaters/extender.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Gates/Repeaters/timer.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			
+			// Sensors
+			{ PartID=&<Parts/Logic/Sensors/LIDAR/Sensor.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/comparator.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterComparator_Ammo.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterComparator_Build.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+//			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterComparator_Mod.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterComparator_Ore.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/gauge_comparator.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Ammo.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Build.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+//			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Mod.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }
+			{ PartID=&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Ore.rules>/Part/ID; ToggleID=logic_alternative_togglemode; Mode=4; }*/
+		]
+		Prerequisites = [janiTNT.logicvanillathrusters-overclock]
+		Cost = 1000
 	}
 	{
 		ID = janiTNT.FTL_defense_laser-overclock

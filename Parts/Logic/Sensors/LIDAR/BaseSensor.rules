@@ -55,6 +55,18 @@ Part
 				}
 			}
 		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
+		}
 		RangeSetting
 		{
 			Type = SelfBuffProvider
