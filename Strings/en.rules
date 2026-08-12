@@ -706,15 +706,15 @@ Parts
 	
 	LogicPulseRepeater = "Logic Pulse Repeater"
 	LogicPulseRepeaterIcon = "Repeater"
-	LogicPulseRepeaterDesc = "Transmits a single tick pulse after a configurable delay if it receives a signal. If it re-receives a signal again it will reset the delay. Has a minimum of 1 tick of delay."
+	LogicPulseRepeaterDesc = "Transmits a single tick pulse after a configurable delay if it receives a signal. If it re-receives a signal again it will reset the delay. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
 	LogicPulseExtender = "Logic Signal Extender"
 	LogicPulseExtenderIcon = "Extender"
-	LogicPulseExtenderDesc = "Outputs when receiving a signal, and continues outputs a signal for additional time when it does not receive a signal. If it re-receives a signal again it will reset the time remaining. Has a minimum of 1 tick of delay."
+	LogicPulseExtenderDesc = "Outputs when receiving a signal, and continues outputs a signal for additional time when it does not receive a signal. If it re-receives a signal again it will reset the time remaining. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
 	LogicPulseTimer = "Logic Pulse Timer"
 	LogicPulseTimerIcon = "Timer"
-	LogicPulseTimerDesc = "Repeatedly outputs a single tick pulse with a configurable time. Has a minimum of 1 tick of delay."
+	LogicPulseTimerDesc = "Repeatedly outputs a single tick pulse with a configurable time in ticks. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
