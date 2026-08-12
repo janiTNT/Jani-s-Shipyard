@@ -458,3 +458,15 @@ WirelessLogicSignal
 	CombineMode = Add
 	BaseValue = 0
 }
+
+CloudyNebula_JS
+{
+	CombineMode = Max
+	BaseValue = 0%
+}
+
+Ion_stormNebula_JS
+{
+	CombineMode = Max
+	BaseValue = 0%
+}

@@ -6,38 +6,10 @@ PartToggles
 		ShowInEditor = true
 		Choices
 		[
-			// Battery Level
+			// Heat Level
 			{
 				ChoiceID = "hull_sensor_heat"
 				ButtonToolTipKey = "PartToggles/hull_sensor_heat"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "./data/gui/game/designer/group_power.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
-			// Thruster Level
-			{
-				ChoiceID = "hull_sensor_command"
-				ButtonToolTipKey = "PartToggles/hull_sensor_command"
-				ButtonSprite
-				{
-					Texture
-					{
-						File = "./data/gui/game/designer/group_flight.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-			}
-			// Heat Level
-			{
-				ChoiceID = "hull_sensor_junk"
-				ButtonToolTipKey = "PartToggles/hull_sensor_junk"
 				ButtonSprite
 				{
 					Texture
@@ -46,10 +18,40 @@ PartToggles
 						MipLevels = 2
 						SampleMode = Linear
 					}
-					VertexColor = [0, 183, 255]
+					VertexColor = [255, 92, 92]
 				}
 			}
-			// Check for Operational
+			// Command Mode
+			{
+				ChoiceID = "hull_sensor_command"
+				ButtonToolTipKey = "PartToggles/hull_sensor_command"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "blanksprites/group_control.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255, 92, 92]
+				}
+			}
+			// Junk Mode
+			{
+				ChoiceID = "hull_sensor_junk"
+				ButtonToolTipKey = "PartToggles/hull_sensor_junk"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "blanksprites/group_rock.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255/2, 92/2, 92/2]
+				}
+			}
+			// Recent FTL
 			{
 				ChoiceID = "hull_sensor_ftl"
 				ButtonToolTipKey = "PartToggles/hull_sensor_ftl"
@@ -57,13 +59,14 @@ PartToggles
 				{
 					Texture
 					{
-						File = "./data/gui/game/parts/toggle_power_on.png"
+						File = "blanksprites/hud_ftl_jump.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
+					VertexColor = [255, 92, 92]
 				}
 			}
-			// Check for Overclocking
+			// Direct Control
 			{
 				ChoiceID = "hull_sensor_directcontrol"
 				ButtonToolTipKey = "PartToggles/hull_sensor_directcontrol"
@@ -71,28 +74,29 @@ PartToggles
 				{
 					Texture
 					{
-						File = "./data/gui/game/parts/overclock_on.png"
+						File = "blanksprites/directcontrol.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
-					VertexColor = [0, 183, 255]
+					VertexColor = [255, 92, 92]
 				}
 			}
-			// Check for boost thruster mode
-			{
+			// Direct control, firing
+			/* {
 				ChoiceID = "hull_sensor_directcontrol_firing"
 				ButtonToolTipKey = "PartToggles/hull_sensor_directcontrol_firing"
 				ButtonSprite
 				{
 					Texture
 					{
-						File = "./data/gui/game/parts/toggle_boost_on.png"
+						File = "blanksprites/directcontrol.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
+					VertexColor = [255, 0, 0]
 				}
-			}
-			// Check for boost thruster mode
+			} */
+			// Nebula modes
 			{
 				ChoiceID = "hull_sensor_nebula"
 				ButtonToolTipKey = "PartToggles/hull_sensor_nebula"
@@ -100,10 +104,67 @@ PartToggles
 				{
 					Texture
 					{
-						File = "./data/gui/game/parts/toggle_boost_on.png"
+						File = "blanksprites/nebula.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
+					VertexColor = [255, 92, 92]
+				}
+			}
+		]
+	}
+	{
+		ToggleID = "logic_sensor_nebula_detection_mode"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Cloudy Nebula
+			{
+				ChoiceID = "hull_sensor_nebula_cloudy"
+				ButtonToolTipKey = "PartToggles/hull_sensor_nebula_cloudy"
+				Mode = 0
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/nebulas/cloudy/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [255, 92, 92]
+				}
+			}
+			// Electron Nebula
+			{
+				ChoiceID = "hull_sensor_nebula_electron"
+				ButtonToolTipKey = "PartToggles/hull_sensor_nebula_electron"
+				Mode = 1000
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/nebulas/electron/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [255, 92, 92]
+				}
+			}
+			// Ion Storm Nebula
+			{
+				ChoiceID = "hull_sensor_nebula_ion_storm"
+				ButtonToolTipKey = "PartToggles/hull_sensor_nebula_ion_storm"
+				Mode = 2000
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/nebulas/ion_storm/icon.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [255, 92, 92]
 				}
 			}
 		]

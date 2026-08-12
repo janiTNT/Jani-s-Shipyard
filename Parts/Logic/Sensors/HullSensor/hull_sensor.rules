@@ -1,10 +1,10 @@
 Part : <../../baselogicpart.rules>/Part
 {
 	NameKey = "Parts/Logic_Hull_Sensor"
-	IconNameKey = "Parts/Logic_ComparatorIcon"
+	IconNameKey = "Parts/Logic_Hull_SensorIcon"
 	ID = janiTNT.hull_sensor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "Logic"
-	DescriptionKey = "Parts/Logic_ComparatorDesc"
+	DescriptionKey = "Parts/Logic_Hull_SensorDesc"
 	Resources
 	[
 		[steel, 2]
@@ -15,7 +15,14 @@ Part : <../../baselogicpart.rules>/Part
 	SelectionTypeByRotation = true
 	//SelectionTypeID = "comparator"
 	TypeCategories = [sensor, logic, non_flammable]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs 
+	[
+	Logic, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third
+	CloudyNebula_JS
+	//ElectronNebula_JS
+	ElectronNebula
+	Ion_stormNebula_JS
+	] 
 	EditorIcon
 	{
 		Texture
@@ -23,9 +30,12 @@ Part : <../../baselogicpart.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 128]
+		Size = [32, 32]
 	}
 	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	&/JANI_COMMON/SettingsHundreds/Part/Components //AdvS_Setting_Third
 	<../../base_outputlogicpart.rules>/Base
 	{
 		SignalAComponents
@@ -96,6 +106,43 @@ Part : <../../baselogicpart.rules>/Part
 			//AvailableChoices = [0, 2, 3]
 			AlwaysAllowInBuildMode = true
 			RequiresCommand = false
+		} 
+		
+		NumberSelectVisibility
+		{
+			Type = MultiToggle
+			Toggles = [HeatLevelToggle, NebulaLevelToggle]
+			Mode = Any
+		}
+		
+		NumberSelectOnes : ^/1/NumberSelectOnes
+		{
+			VisibilityToggle = NumberSelectVisibility
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+		}
+		NumberSelectTens : ^/2/NumberSelectTens
+		{
+			VisibilityToggle = NumberSelectVisibility
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+		}
+		NumberSelectHunds : ^/3/NumberSelectHunds
+		{
+			VisibilityToggle = NumberSelectVisibility
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility 
+		}
+		
+		NebulaSensorMode
+		{
+			Type = UIToggle
+			ToggleID = "logic_sensor_nebula_detection_mode"
+			Default = 0
+			//AvailableChoices = [0, 2, 3]
+			//AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+			VisibilityToggle = NebulaLevelToggle
 		}
 
 		HeatLevelToggle
@@ -114,15 +161,15 @@ Part : <../../baselogicpart.rules>/Part
 				ValueProxy
 				{
 					Type = ValueProxy
-					PartLocation = [0, -1]
-					ComponentID = HeatExchangerDeactivated
+					ComponentID = HeatValue
 				}
 				HeatValue
 				{
 					Type = BuffableValue
 					Value
 					{
-						Basevalue = 0.001
+						Basevalue = 1
+						//MaxValue = 1//prevent divide by zero giving one quintillion
 						Modifiers
 						[
 							{
@@ -130,16 +177,316 @@ Part : <../../baselogicpart.rules>/Part
 								StatusType = cosmoteer.heat
 								ModificationMode = Multiply
 							}
+							{
+								Type = ScaledBuff
+								BuffType = AdvS_Setting_Third
+								ModificationMode = Divide
+								Scale = 10 // 1 at 10 heat
+								MaxValue = 1
+							}
 						]
 					}
 				}
 			}
 		}
 		
+		CommandLevelToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 1
+		}
+		CommandLevelComponents
+		{
+			Type = ToggledComponents
+			Toggle = CommandLevelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ToggleValueSelector
+					Toggle = CommandToggle
+					ToggleOffValue = Zero
+					ToggleOnValue = One
+				}
+				CommandToggle
+				{
+					Type = CommandToggle
+				}
+			}
+		}
+		
+		JunkLevelToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 2
+		}
+		JunkLevelComponents
+		{
+			Type = ToggledComponents
+			Toggle = JunkLevelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ToggleValueSelector
+					Toggle = JunkToggle
+					ToggleOffValue = Zero
+					ToggleOnValue = One
+				}
+				JunkToggle
+				{
+					Type = JunkToggle
+					OnWhenJunk = true
+				}
+			}
+		}
+		
+		FtlLevelToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 3
+		}
+		FtlLevelComponents
+		{
+			Type = ToggledComponents
+			Toggle = FtlLevelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ToggleValueSelector
+					Toggle = SensingStorage
+					ToggleOffValue = One
+					ToggleOnValue = Zero
+				}
+				SensingStorage
+				{
+					Type = ResourceStorage
+					ResourceType = fake
+					MaxResources = 150
+					ToggleOnResources = 150
+					DrainOnFtlJump = true
+					StartingResources = &MaxResources
+					//InitToMaxResources = true
+				}
+				SensingRestore
+				{
+					Type = ResourceConverter
+					OperationalToggle = SensingStorage
+					InvertOperationalToggle = true
+					ToStorage = SensingStorage
+					ToQuantity = 30
+					Interval = 1
+				}
+			}
+		}
+		
+		DirectControlLevelToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 4
+		}
+		DirectControlLevelComponents
+		{
+			Type = ToggledComponents
+			Toggle = DirectControlLevelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ToggleValueSelector
+					Toggle = IsInDCMode
+					ToggleOffValue = Zero
+					ToggleOnValue = One
+				}
+				IsInDCMode
+				{
+					Type = DirectControlToggle
+				}
+			}
+		}
+		
+		NebulaLevelToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 5
+		}
+		NebulaLevelComponents
+		{
+			Type = ToggledComponents
+			Toggle = NebulaLevelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				CloudyNebulaToggle
+				{
+					Type = ModeToggle
+					Mode = NebulaSensorMode
+					OnMode = 0
+				}
+				CloudyComponents
+				{
+					Type = ToggledComponents
+					Toggle = CloudyNebulaToggle
+					IncludeInBlueprints = true
+					Components
+					{
+						CloudybuffToggle
+						{
+							Type = BuffToggle
+							BuffType = CloudyNebula_JS
+						}
+						ValueProxy
+						{
+							Type = ToggleValueSelector
+							Toggle = CloudybuffToggle
+							ToggleOffValue = Zero
+							ToggleOnValue = ValueNebula
+						}
+						ValueNebula
+						{
+							Type = BuffableValue
+							Value
+							{
+								Basevalue = 1
+								Modifiers
+								[
+									{
+										Type = Buff
+										BuffType = CloudyNebula_JS
+										ModificationMode = Multiply
+									}
+									{
+										Type = ScaledBuff
+										BuffType = AdvS_Setting_Third
+										ModificationMode = Divide
+										Scale = 0.01 // 1 at 10 heat
+										MaxValue = 1
+									}
+								]
+							}
+						}
+					}
+				}
+				ElectronNebulaToggle
+				{
+					Type = ModeToggle
+					Mode = NebulaSensorMode
+					OnMode = 1000
+				}
+				ElectronComponents
+				{
+					Type = ToggledComponents
+					Toggle = ElectronNebulaToggle
+					IncludeInBlueprints = true
+					Components
+					{
+						ElectronbuffToggle
+						{
+							Type = BuffToggle
+							BuffType = ElectronNebula
+						}
+						ValueProxy
+						{
+							Type = ToggleValueSelector
+							Toggle = ElectronbuffToggle
+							ToggleOffValue = Zero
+							ToggleOnValue = ValueNebula
+						}
+						ValueNebula
+						{
+							Type = BuffableValue
+							Value
+							{
+								Basevalue = 1
+								Modifiers
+								[
+									{
+										Type = Buff
+										BuffType = ElectronNebula
+										ModificationMode = Multiply
+									}
+									{
+										Type = ScaledBuff
+										BuffType = AdvS_Setting_Third
+										ModificationMode = Divide
+										Scale = 0.01 // 1 at 10 heat
+										MaxValue = 1
+									}
+								]
+							}
+						}
+					}
+				}
+				Ion_StormNebulaToggle
+				{
+					Type = ModeToggle
+					Mode = NebulaSensorMode
+					OnMode = 2000
+				}
+				Ion_StormComponents
+				{
+					Type = ToggledComponents
+					Toggle = Ion_StormNebulaToggle
+					IncludeInBlueprints = true
+					Components
+					{
+						Ion_StormbuffToggle
+						{
+							Type = BuffToggle
+							BuffType = Ion_stormNebula_JS
+						}
+						ValueProxy
+						{
+							Type = ToggleValueSelector
+							Toggle = Ion_StormbuffToggle
+							ToggleOffValue = Zero
+							ToggleOnValue = ValueNebula
+						}
+						ValueNebula
+						{
+							Type = BuffableValue
+							Value
+							{
+								Basevalue = 1
+								Modifiers
+								[
+									{
+										Type = Buff
+										BuffType = Ion_stormNebula_JS
+										ModificationMode = Multiply
+									}
+									{
+										Type = ScaledBuff
+										BuffType = AdvS_Setting_Third
+										ModificationMode = Divide
+										Scale = 0.01 // 1 at 10 heat
+										MaxValue = 1
+									}
+								]
+							}
+						}
+					}
+				}
+			}
+		}
+
+		Zero { Type = StaticValue; Value = 0; }
+		One { Type = StaticValue; Value = 1; }
+		
 		OutputSignal
 		{
 			Type = MultiToggle
-			Toggles = [Minimal, LogicSignal]
+			Toggles = [Maxed, LogicSignal]
 			Mode = Any
 		}
 		LogicSignal
@@ -153,17 +500,18 @@ Part : <../../baselogicpart.rules>/Part
 			Type = ValueProxy
 			ComponentID = ValueProxy
 		}
+		
+		VisualGaugeValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0.01; BuffType=AdvS_Setting_Third; BuffMode=Multiply; }
+		}
+		
 		ColorPicker
 		{
 			Type = UIColor
 			ColorID = "logiccolor"
 			Default = Red
-		}
-		Minimal
-		{
-			Type = ThresholdToggle
-			ValueFrom = ValueCheck
-			MinAmount = 0.0000000000001%
 		}
 		Maxed
 		{
@@ -179,35 +527,79 @@ Part : <../../baselogicpart.rules>/Part
 			BuffAmount = 1
 			BuffArea = [0, 1, 1, 1]
 		}
-		/* ColoredGraphics
+		LocationLerpDefined
+		{
+			Type = TransformLerp
+			Location = [0.5, 0.5]
+			StartLocation = [0, 1/64]
+			EndLocation = [0, -10/64]
+			ValueFrom = VisualGaugeValue
+		}
+		HandleGraphic
 		{
 			Type = Graphics
-			Location = [0.5, 0.5]
-			OperationalToggle = OutputSignal
-			DoodadToggle = Maxed
-			ShowToggledDoodadsWhenNotOperational = false
-			GetColorFrom = ColorPicker
-			ToggleOnDoodad
+			Location = [0, 0]
+			ChainedTo = LocationLerpDefined
+			OperationalDoodad
 			{
 				Layer = "doodads_high"
 				DamageLevels
 				[
 					{
-						File = "doodads3.png"
-						Size = [2, 1]
-						Offset = [0, 0.25]
+						File = "risers.png"
+						Size = [1, 1]
+						Offset = [0, 0]
 					}
 				]
 			}
-			ToggleOffDoodad
+		}
+		AnalogLights
+		{
+			Type = ValueSprites
+			Location = [0.5, 0.5]
+			ValueFrom = ValueCheck
+			Layer = "lights_add"
+			//Range = [-1, 0]
+			Round = Down
+			ResourceLevels
+			[
+				{
+					//Blank Frame
+				}
+				{
+					File = "analog1.png"
+					Size = [1, 1]
+				}
+				{
+					File = "analog2.png"
+					Size = [1, 1]
+				}
+				{
+					File = "analog3.png"
+					Size = [1, 1]
+				}
+				{
+					File = "analog4.png"
+					Size = [1, 1]
+				}
+			]
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = OutputSignal
+			ShowToggledDoodadsWhenNotOperational = false
+			GetColorFrom = ColorPicker
+			OperationalDoodad
 			{
 				Layer = "doodads_high"
 				DamageLevels
 				[
 					{
 						File = "doodads2.png"
-						Size = [2, 1]
-						Offset = [0, 0.25]
+						Size = [1, 1]
+						Offset = [0, 0.5]
 					}
 				]
 			}
@@ -218,20 +610,18 @@ Part : <../../baselogicpart.rules>/Part
 				[
 					{
 						File = "doodads1.png"
-						Size = [2, 1]
-						Offset = [0, 0.25]
+						Size = [1, 1]
+						Offset = [0, 0.5]
 					}
 				]
 			}
 			
-		} */
+		}
 		WireGraphics
 		{
 			Type = Graphics
-			Location = [0.5, 1]
-			OperationalToggle = Minimal
-			DoodadToggle = Maxed
-			ShowToggledDoodadsWhenNotOperational = false
+			Location = [15/64, 15/64]
+			OperationalToggle = Maxed
 			OperationalDoodad
 			{
 				Layer = "doors"
@@ -240,6 +630,7 @@ Part : <../../baselogicpart.rules>/Part
 					{
 						File = "wire2.png"
 						Size = [1, 2]
+						Offset = [17/64, 0.5 + 17/64]
 					}
 				]
 			}
@@ -251,6 +642,19 @@ Part : <../../baselogicpart.rules>/Part
 					{
 						File = "wire1.png"
 						Size = [1, 2]
+						Offset = [17/64, 0.5 + 17/64]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "spinlight.png"
+						Size = [1, 1]
+						RotSpeed = 120d
 					}
 				]
 			}

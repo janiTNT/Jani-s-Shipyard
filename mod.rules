@@ -50,6 +50,7 @@ use IgnoreStructureUnlessTargeted = false on simplehit projectiles
 
 Actions : &<inserter_compatibility_list.rules>/Actions
 &<Parrylist.rules>/Parrylist,
+&<Nebula_Detection_Buffs.rules>/Overrides,
 [
 	{	Action = AddMany
 

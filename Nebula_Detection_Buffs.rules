@@ -1,0 +1,60 @@
+Overrides
+[
+	{
+		Action = Add
+		AddTo = "<nebulas/cloudy/nebula_cloudy.rules>"
+		Name = "Buffs"
+		ToAdd = []
+		OnlyIfNotExisting = true
+	}
+	{
+		Action = AddMany
+		AddTo = "<nebulas/cloudy/nebula_cloudy.rules>/Buffs"
+		ManyToAdd
+		[
+			// A buff value between 0.0 and 1.0 to control effects.
+			{
+				BuffType = CloudyNebula_JS
+				BuffAmount = 100%
+			}
+		]
+	}
+	/* {
+		Action = Add
+		AddTo = "<nebulas/electron/nebula_electron.rules>"
+		Name = "Buffs"
+		ToAdd = []
+		OnlyIfNotExisting = true
+	}
+	{
+		Action = AddMany
+		AddTo = "<nebulas/electron/nebula_electron.rules>/Buffs"
+		ManyToAdd
+		[
+			// A buff value between 0.0 and 1.0 to control effects.
+			{
+				BuffType = ElectronNebula_JS
+				BuffAmount = 100%
+			}
+		]
+	} */
+	{
+		Action = Add
+		AddTo = "<nebulas/ion_storm/nebula_ion_storm.rules>"
+		Name = "Buffs"
+		ToAdd = []
+		OnlyIfNotExisting = true
+	}
+	{
+		Action = AddMany
+		AddTo = "<nebulas/ion_storm/nebula_ion_storm.rules>/Buffs"
+		ManyToAdd
+		[
+			// A buff value between 0.0 and 1.0 to control effects.
+			{
+				BuffType = Ion_stormNebula_JS
+				BuffAmount = 100%
+			}
+		]
+	}
+]
