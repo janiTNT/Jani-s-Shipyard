@@ -251,7 +251,7 @@ Components
 		Location = [0.5, 0.5]
 		MediaEffects
 		[
-			: /BASE_SOUNDS/AudioInteriorDetail
+			/* : /BASE_SOUNDS/AudioInteriorDetail
 			{
 				RandomSounds = ["sounds/googe servo fat1.wav",
 								"sounds/googe servo fat2.wav",
@@ -259,6 +259,17 @@ Components
 				Volume = 1
 				Db = -22
 				Speed = 1
+				VolumeOverIntensity = 1
+				SpeedOverIntensity = [1, 2]
+				SpeedVariation = .05
+			} */
+			: /BASE_SOUNDS/AudioInteriorDetail
+			{
+				RandomSounds = ["../inserter/sounds/googe servo low true1.wav"]
+				Volume = 1
+				Db = -10
+				Speed = 0.45
+				//IntensityBounds = [0, 2]
 				VolumeOverIntensity = 1
 				SpeedOverIntensity = [1, 2]
 				SpeedVariation = .05
@@ -290,7 +301,7 @@ Components
 		Location = [0.5, 0.5]
 		MediaEffects
 		[
-			: /BASE_SOUNDS/AudioInteriorDetail
+			/* : /BASE_SOUNDS/AudioInteriorDetail
 			{
 				RandomSounds = ["sounds/googe servo fat1.wav",
 								"sounds/googe servo fat2.wav",
@@ -298,6 +309,17 @@ Components
 				Volume = 1
 				Db = -22
 				Speed = 0.9
+				VolumeOverIntensity = 1
+				SpeedOverIntensity = [1, 2]
+				SpeedVariation = .05
+			} */
+			: /BASE_SOUNDS/AudioInteriorDetail
+			{
+				RandomSounds = ["../inserter/sounds/googe servo low true2.wav"]
+				Volume = 1
+				Db = -10
+				Speed = 0.45
+				//IntensityBounds = [0, 2]
 				VolumeOverIntensity = 1
 				SpeedOverIntensity = [1, 2]
 				SpeedVariation = .05

@@ -243,7 +243,7 @@ Components
 			{
 				RandomSounds = ["sounds/googe servo low true1.wav"]
 				Volume = 1
-				Db = -15
+				Db = -10
 				Speed = 1
 				//IntensityBounds = [0, 2]
 				VolumeOverIntensity = 1
@@ -271,7 +271,7 @@ Components
 			{
 				RandomSounds = ["sounds/googe servo low true2.wav"]
 				Volume = 1
-				Db = -15
+				Db = -10
 				Speed = 1
 				//IntensityBounds = [0, 2]
 				VolumeOverIntensity = 1
