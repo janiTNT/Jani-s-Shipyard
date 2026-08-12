@@ -317,6 +317,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			//&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Mod.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/FilterGaugeComparator_Ore.rules>/Part
 			
+			&<Parts/Logic/Sensors/HullSensor/Hull_Sensor.rules>/Part
 			
 			//Outputs
 			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part

@@ -1,0 +1,111 @@
+PartToggles
+[
+	{
+		ToggleID = "logic_sensor_detection_mode"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Battery Level
+			{
+				ChoiceID = "hull_sensor_heat"
+				ButtonToolTipKey = "PartToggles/hull_sensor_heat"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/designer/group_power.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Thruster Level
+			{
+				ChoiceID = "hull_sensor_command"
+				ButtonToolTipKey = "PartToggles/hull_sensor_command"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/designer/group_flight.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Heat Level
+			{
+				ChoiceID = "hull_sensor_junk"
+				ButtonToolTipKey = "PartToggles/hull_sensor_junk"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/designer/group_thermal.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+			// Check for Operational
+			{
+				ChoiceID = "hull_sensor_ftl"
+				ButtonToolTipKey = "PartToggles/hull_sensor_ftl"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/toggle_power_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Check for Overclocking
+			{
+				ChoiceID = "hull_sensor_directcontrol"
+				ButtonToolTipKey = "PartToggles/hull_sensor_directcontrol"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/overclock_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+			// Check for boost thruster mode
+			{
+				ChoiceID = "hull_sensor_directcontrol_firing"
+				ButtonToolTipKey = "PartToggles/hull_sensor_directcontrol_firing"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/toggle_boost_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			// Check for boost thruster mode
+			{
+				ChoiceID = "hull_sensor_nebula"
+				ButtonToolTipKey = "PartToggles/hull_sensor_nebula"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/gui/game/parts/toggle_boost_on.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+]

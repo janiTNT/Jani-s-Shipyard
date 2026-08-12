@@ -1,0 +1,265 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/Logic_Hull_Sensor"
+	IconNameKey = "Parts/Logic_ComparatorIcon"
+	ID = janiTNT.hull_sensor // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/Logic_ComparatorDesc"
+	Resources
+	[
+		[steel, 2]
+		[janitnt.circuit1, 2]
+	]
+	Size = [1, 1]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	//SelectionTypeID = "comparator"
+	TypeCategories = [sensor, logic, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 128]
+	}
+	Components : ^/0/Components
+	<../../base_outputlogicpart.rules>/Base
+	{
+		SignalAComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalAToggle
+			Components
+			{
+				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+			}
+		}
+		SignalBComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalBToggle
+			Components
+			{
+				BuffProviderLogicB : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
+			}
+		}
+		SignalCComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalCToggle
+			Components
+			{
+				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+			}
+		}
+		SignalDComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalDToggle
+			Components
+			{
+				BuffProviderLogicD : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
+			}
+		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
+		}	
+		HullSensorMode
+		{
+			Type = UIToggle
+			ToggleID = "logic_sensor_detection_mode"
+			Default = 0
+			//AvailableChoices = [0, 2, 3]
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+
+		HeatLevelToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 0
+		}
+		HeatLevelComponents
+		{
+			Type = ToggledComponents
+			Toggle = HeatLevelToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = ValueProxy
+					PartLocation = [0, -1]
+					ComponentID = HeatExchangerDeactivated
+				}
+				HeatValue
+				{
+					Type = BuffableValue
+					Value
+					{
+						Basevalue = 0.001
+						Modifiers
+						[
+							{
+								Type = Status
+								StatusType = cosmoteer.heat
+								ModificationMode = Multiply
+							}
+						]
+					}
+				}
+			}
+		}
+		
+		OutputSignal
+		{
+			Type = MultiToggle
+			Toggles = [Minimal, LogicSignal]
+			Mode = Any
+		}
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		
+		ValueCheck
+		{
+			Type = ValueProxy
+			ComponentID = ValueProxy
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Red
+		}
+		Minimal
+		{
+			Type = ThresholdToggle
+			ValueFrom = ValueCheck
+			MinAmount = 0.0000000000001%
+		}
+		Maxed
+		{
+			Type = ThresholdToggle
+			ValueFrom = ValueCheck
+			MinAmount = 100%
+		}
+		BuffProviderLogic
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = OutputSignal
+			BuffType = Logic
+			BuffAmount = 1
+			BuffArea = [0, 1, 1, 1]
+		}
+		/* ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = OutputSignal
+			DoodadToggle = Maxed
+			ShowToggledDoodadsWhenNotOperational = false
+			GetColorFrom = ColorPicker
+			ToggleOnDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads3.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [2, 1]
+						Offset = [0, 0.25]
+					}
+				]
+			}
+			
+		} */
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 1]
+			OperationalToggle = Minimal
+			DoodadToggle = Maxed
+			ShowToggledDoodadsWhenNotOperational = false
+			OperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire2.png"
+						Size = [1, 2]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire1.png"
+						Size = [1, 2]
+					}
+				]
+			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [1, 1]
+		}
+	}
+}
