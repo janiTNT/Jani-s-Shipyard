@@ -3,7 +3,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/Hullheater"
 	IconNameKey = "Parts/HullheaterIcon"
 	ID = janiTNT.hullheater
-	EditorGroup = "Thermal"
+	EditorGroups = ["Thermal", "Logic"]
 	DescriptionKey = "Parts/HullheaterDesc"
 	Resources
 	[
