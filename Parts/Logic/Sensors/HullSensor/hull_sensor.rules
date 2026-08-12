@@ -486,9 +486,38 @@ Part : <../../baselogicpart.rules>/Part
 		OutputSignal
 		{
 			Type = MultiToggle
-			Toggles = [Maxed, LogicSignal]
+			Toggles = [XorFinal, LogicSignal]
 			Mode = Any
 		}
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [Maxed, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [Maxed, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		
 		LogicSignal
 		{
 			Type = BuffToggle
@@ -621,7 +650,7 @@ Part : <../../baselogicpart.rules>/Part
 		{
 			Type = Graphics
 			Location = [15/64, 15/64]
-			OperationalToggle = Maxed
+			OperationalToggle = XorFinal
 			OperationalDoodad
 			{
 				Layer = "doors"
