@@ -465,6 +465,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			&<Tutorials/Inserters/Inserters.rules>
+			&<Tutorials/Logic/Logic.rules>
 			//&<Tutorials/Bosses/bossesbeta.rules>
 		]
 	}

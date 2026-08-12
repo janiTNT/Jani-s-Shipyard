@@ -1798,6 +1798,16 @@ Tutorials
 		Example = "Setup Examples"
 		Tip = "<good>TIP:</good> Inserters are expensive in power usage, but overall requires less crew trips, "
 	}
+	Logic
+	{
+		Info = "Logic System"
+		Info1 = "The logic system provided by Jani's Shipyard can be a bit complicated, but should allow for some extra freedom of control or simple automatic control for ships."
+		Info2 = "The mod comes with example ships that feature some ways you can use the logic system."
+		Info3 = "Some logic parts may need more than one signal to fully use it's capabilities, such as the boost thruster."
+		Info4 = "The final wire that connects to the part needs to be set to a different mode to use different signals."
+		Info5 = "Note: Any output logic part can choose a mode, such as NOT gates, Timers, etc."
+		Info6 = "Parts that use multiple signals will have it on their stats notes (Currenltly, Only thrusters use this)"
+	}
 }
 AI
 {

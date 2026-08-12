@@ -1,0 +1,30 @@
+ID = janiTNT.logic_info
+TitleKey = "Tutorials/Logic/Info"
+TabNameKey = "Codex/Tutorials"
+TempShowCondition = "? game.HasPartCategoryInHand('logic')"
+Entries
+[
+	{
+		TextKey = "Tutorials/Logic/Info1"
+	}
+	{
+		Image { Texture { File="example ships.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Logic/Info2"
+	}
+	{
+		Image { Texture { File="multi signal parts 2.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Logic/Info3"
+	}
+	{
+		Image { Texture { File="five signals.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Logic/Info4"
+	}
+	{
+		Image { Texture { File="final.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Logic/Info5"
+	}
+	{
+		Image { Texture { File="multi signal parts.png"; SampleMode=Linear; } }
+		TextKey = "Tutorials/Logic/Info6"
+	}
+]
