@@ -1375,6 +1375,11 @@ Inputs
 		nophase = "no phase"
 		yesphase = "yes phase"
 	}
+	
+	PartTriggers
+	{
+		LogicFlip = "Flip Logic State"
+	}
 }
 PartTargeters
 {
@@ -1625,6 +1630,10 @@ PartToggles
 	"<white>Shots:</white><good> 16</good>\n"\
 	"<white>Durability:</white><good> 500</good>\n"\
 	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
+}
+PartTriggers
+{
+	LogicFlip = "Flip State"
 }
 EditorGroups
 {
