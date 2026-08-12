@@ -1720,4 +1720,9 @@ ShipLibraries
 		NameKey = "JaniMinibossesShips"
 		TooltipKey = "JaniMinibossesShipsTip" // Optional
 	}
+	{
+		Folder = "Ships/LogicExamplePack"
+		NameKey = "LogicExamplePack"
+		TooltipKey = "LogicExamplePackTip" // Optional
+	}
 ]

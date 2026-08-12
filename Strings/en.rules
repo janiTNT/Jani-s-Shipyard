@@ -910,7 +910,7 @@ Parts
 	
 	Logic_Comparator = "Value Comparator"
 	Logic_ComparatorIcon = "Comparator"
-	Logic_ComparatorDesc = "Can detect some signals from connected parts, Emits a logic signal if value is higher than zero, And emits out from the sides if the value is at 100%. Hover the selection types for technical information on detection."
+	Logic_ComparatorDesc = "Can detect some information from the connected part, Emits a logic signal if value is higher than zero, And emits out from the sides if the value is at 100%. Hover the selection types for technical information on detection."
 	
 	Logic_Comparator_Resources_Ammo = "Ammo Stockpile Comparator"
 	Logic_Comparator_Resources_AmmoIcon = "Ammo Comparator"
@@ -924,7 +924,7 @@ Parts
 	
 	Logic_Gauge_Comparator = "Precise Gauge Comparator"
 	Logic_Gauge_ComparatorIcon = "Gauge Comparator"
-	Logic_Gauge_ComparatorDesc = "Can detect some signals from connected parts, Emits a logic signal if detected value is higher the percentage configured. Number toggles signify percentage and has a range of 0-99%. Hover the selection types for technical information on detection."
+	Logic_Gauge_ComparatorDesc = "Can detect some information from the connected part, Emits a logic signal if detected value is higher the percentage configured. Number toggles signify percentage and has a range of 0-99%. Hover the selection types for technical information on detection."
 	
 	Logic_Gauge_Comparator_Resources_Ammo = "Ammo Stockpile Precise Gauge Comparator"
 	Logic_Gauge_Comparator_Resources_AmmoIcon = "Ammo G. Comparator"
@@ -1796,7 +1796,7 @@ Tutorials
 		Capacity = "Inserters transfer in batches equivalent to how much crew can carry of that resource. They will wait until their hand is full before swinging to the other side, then only swing back once they are empty.\n <bad>Hand capacity affected by Storage changing mods</bad>"
 		Types = "There are <good>Alternative types</good> of Inserters.\n\n<good>Long Handed Inserters</good> can reach over a one block gap.\n\n<good>Bulk Inserters</good> transfer a entire stack of resources at a time, instead of a hand. If the destination is full, will swing back to the grabbing position."
 		Example = "Setup Examples"
-		Tip = "<good>TIP:</good> Inserters are highly expensive in power usage, but overall requires less crew trips, "
+		Tip = "<good>TIP:</good> Inserters are expensive in power usage, but overall requires less crew trips, "
 	}
 }
 AI
@@ -1807,6 +1807,8 @@ JaniBossShips = "Bosses and Guardians"
 JaniBossShipsTip = "Boss and Hyperoid Guardian ships that come with Jani's Shipyard."
 JaniMinibossesShips = "Guardians"
 JaniMinibossesShipsTip = "Hyperoid Guardian ships that come with Jani's Shipyard."
+LogicExamplePack = "Example Logic Ships"
+LogicExamplePackTip = "Example of Logic systems you can build in Jani's Shipyard."
 Buff
 {
 	Connected = "Connected"
