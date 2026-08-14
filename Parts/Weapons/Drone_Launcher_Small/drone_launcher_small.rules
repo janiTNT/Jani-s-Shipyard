@@ -208,18 +208,18 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Components = &<eletrocannon.rules>/Components
 		}
 		
-		BuildConverterProxy
+		BuildingProxy
 		{
 			Type = ToggleProxy
-			ComponentID = BuildConverter
+			ComponentID = CanBuild
 		}
 		
 		BuildingGraphics
 		{
 			Type = Graphics
 			Location = [1, 1.5]
-			OperationalToggle = BuildConverterProxy
-			AnimationToggle = BuildConverterProxy
+			OperationalToggle = BuildingProxy
+			AnimationToggle = BuildingProxy
 			OperationalDoodad
 			{
 				Layer = "doodads_high"

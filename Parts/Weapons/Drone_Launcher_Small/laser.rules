@@ -41,7 +41,7 @@ Components
 		ToggleOffResources = 11
 	}
 
-	BuildConverter
+	BuildingPowerDrain
 	{
 		Type = ResourceConverter
 		From
@@ -53,32 +53,38 @@ Components
 			}
 		]
 		OperationalToggle = CanBuild
-		ToStorage = BuildStorage
-		ToQuantity = 1
-		Interval = 6 / 16
+		Interval = 0.375
 	}
 	
-	BuildStorage
+	BuildProgress
 	{
-		Type = ResourceStorage
-		ResourceType = fake
-		MaxResources = 16
-		DelayBeforeReadyToUse = 0
-		StartingResources = 0
-		InitToMaxResources = 0
-		InitToMaxResourcesPVP = 0
+		Type = Timer
+		OperationalToggle = CanBuild
+		Duration = 6
+		AutoStart = true
+		StartTrigger = Emitter
 	}
-	
+	PolledValue
+	{
+		Type = PolledValue
+		ValueSource = BuildProgress
+		DefaultValue = 0
+	}
+	Lerp
+	{
+		Type = ValueLerp
+		InputValue = PolledValue
+		InputRange = [1, 0]
+		OutputRange = [0, 1]
+		ClampOutput = true
+	}
+
 	BuiltConverter
 	{
 		Type = ResourceConverter
-		OperationalToggle = CanBuild
+		OperationalToggle = BuildProgress
 		From
 		[
-			{
-				Storage = BuildStorage
-				Quantity = 16
-			}
 			{
 				Storage = SteelStorage
 				Quantity = 6
@@ -185,86 +191,33 @@ Components
 			}
 		]
 	}
+	ColorLevel
+	{
+		Type = ValueColor
+		RedFrom = Lerp
+		GreenFrom = Lerp
+		BlueFrom = Lerp
+	}
 	DroneBuildSprite
 	{
-		Type = ResourceSprites
+		Type = Graphics
 		Location = [1, 1]
 		Rotation = -90d
-		ResourceStorage = BuildStorage
-		Layer = "drone_construction"
-		ResourceLevels
-		[
-			{
-				File = "lasermask.png"
-				NormalsFile = "laser_folded_n.png"
-				Size = [3, 2]
-				VertexColor = [0, 0, 0, 255]
-			}
-			: &0
-			{VertexColor = [8, 8, 8, 255];}
-			: &0
-			{VertexColor = [16, 16, 16, 255];}
-			: &0
-			{VertexColor = [24, 24, 24, 255];}
-			: &0
-			{VertexColor = [32, 32, 32, 255];}
-			: &0
-			{VertexColor = [40, 40, 40, 255];}
-			: &0
-			{VertexColor = [48, 48, 48, 255];}
-			: &0
-			{VertexColor = [56, 56, 56, 255];}
-			: &0
-			{VertexColor = [64, 64, 64, 255];}
-			: &0
-			{VertexColor = [72, 72, 72, 255];}
-			: &0
-			{VertexColor = [80, 80, 80, 255];}
-			: &0
-			{VertexColor = [88, 88, 88, 255];}
-			: &0
-			{VertexColor = [96, 96, 96, 255];}
-			: &0
-			{VertexColor = [104, 104, 104, 255];}
-			: &0
-			{VertexColor = [112, 112, 112, 255];}
-			: &0
-			{VertexColor = [120, 120, 120, 255];}
-			: &0
-			{VertexColor = [128, 128, 128, 255];}
-			: &0
-			{VertexColor = [136, 136, 136, 255];}
-			: &0
-			{VertexColor = [144, 144, 144, 255];}
-			: &0
-			{VertexColor = [152, 152, 152, 255];}
-			: &0
-			{VertexColor = [160, 160, 160, 255];}
-			: &0
-			{VertexColor = [168, 168, 168, 255];}
-			: &0
-			{VertexColor = [176, 176, 176, 255];}
-			: &0
-			{VertexColor = [184, 184, 184, 255];}
-			: &0
-			{VertexColor = [192, 192, 192, 255];}
-			: &0
-			{VertexColor = [200, 200, 200, 255];}
-			: &0
-			{VertexColor = [208, 208, 208, 255];}
-			: &0
-			{VertexColor = [216, 216, 216, 255];}
-			: &0
-			{VertexColor = [224, 224, 224, 255];}
-			: &0
-			{VertexColor = [232, 232, 232, 255];}
-			: &0
-			{VertexColor = [240, 240, 240, 255];}
-			: &0
-			{VertexColor = [248, 248, 248, 255];}
-			: &0
-			{VertexColor = [256, 256, 256, 255] ;}
-		]
+		OperationalToggle = LaserStorage
+		InvertOperationalToggle = true
+		GetColorFrom = ColorLevel
+		OperationalDoodad
+		{
+			Layer = "drone_construction"
+			DamageLevels
+			[
+				{
+					File = "lasermask.png"
+					NormalsFile = "laser_folded_n.png"
+					Size = [3, 2]
+				}
+			]
+		}
 	}
 	HatchSprites
 	{
