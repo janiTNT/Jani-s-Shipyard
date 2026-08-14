@@ -515,7 +515,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Hyperoid/Mineables/rares.rules>
 			
 			&<Hyperoid/poi.rules>
-			&<Occult/bossPOI.rules>
+			&<Occult/unknown_poi.rules>
 //			&<resources/steel_bars/doodad_steel.rules>
 //			&<resources/cables/doodad_cable.rules>
 			&<resources/goldium/doodad_goldium.rules>

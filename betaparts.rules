@@ -62,6 +62,8 @@ Actions
 
 		ManyToAdd
 		[
+			&<Occult/bossPOI.rules>
+			
 			&<resources/Cosmic Bar/cosmic_doodad.rules>
 			&<resources/Astral Bar/astral_doodad.rules>
 			&<resources/Profaned Core/profaned_doodad.rules>

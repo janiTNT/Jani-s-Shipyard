@@ -1,0 +1,18 @@
+ID = janiTNT.poi_unknown2
+Type = POI
+//DescriptionKey = ""
+CategoryKey = "Doodads/POI"
+DefaultToUndiscovered = true
+Icon = &HudIcon
+HideInCreativeMode = true
+HudIcon
+{
+	Texture
+	{
+		File = "./data/doodads/poi/poi_unknown.png"
+		MipLevels = 2
+		SampleMode = Linear
+	}
+	Size = [20, 20]
+	VertexColor = [255, 255, 255, 12]
+}

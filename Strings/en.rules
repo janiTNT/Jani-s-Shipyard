@@ -1843,6 +1843,6 @@ BuildBox// Modular Missiles guided towards the right track. thanks
 //}
 Nebulas
 {
-	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have increased speed and increased sensor range."
+	JaniDarkEnergy = "<b>Dark Energy field</b>\nShips inside the Dark Energy field have increased speed and increased sensor range.\nMay house powerful enemies.\n<bad>Proceed with caution.</bad>"
 	DarkEnergyHudFmt = "<s12>{0:0.}%</s12>\n<s12><gray>energy</gray></s12>"
 }

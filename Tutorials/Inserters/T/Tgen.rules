@@ -8,7 +8,7 @@ Conditions
 {
 	//RequireSpawnFlags = [no_sun, supernova_nebulas]
 	IsInitNode=false
-	MinTier = 8
+	MinTier = 6
 }
 SubSpawners
 [
@@ -116,6 +116,16 @@ RandomMedium
 			RandomHealthRange = [10%, 75%]
 			NameGenerator = { Type=None; }
 		}
+		
+		// POI
+		{
+			Type = Doodads
+			SpawnChance = 0.85
+			DoodadType = janiTNT.poi_unknown2
+			Tags = [poi_xxxx]
+			AutoRemoveWhenDiscovered = true
+			HideIfUnexplored = false
+		}
 	]
 }
 
@@ -148,6 +158,16 @@ RandomSmall
 			ShipCriteria { Tags = [wreckage] }
 			RandomHealthRange = [10%, 75%]
 			NameGenerator = { Type=None; }
+		}
+		
+		// POI
+		{
+			Type = Doodads
+			SpawnChance = 1
+			DoodadType = janiTNT.poi_unknown2
+			Tags = [poi_xxxx]
+			AutoRemoveWhenDiscovered = true
+			HideIfUnexplored = false
 		}
 	]
 }
@@ -194,6 +214,15 @@ RandomLarge
 			ShipCriteria { Tags = [wreckage] }
 			RandomHealthRange = [2%, 75%]
 			NameGenerator = { Type=None; }
+		}
+		// POI
+		{
+			Type = Doodads
+			SpawnChance = 0.75
+			DoodadType = janiTNT.poi_unknown2
+			Tags = [poi_xxxx]
+			AutoRemoveWhenDiscovered = true
+			HideIfUnexplored = false
 		}
 	]
 }
