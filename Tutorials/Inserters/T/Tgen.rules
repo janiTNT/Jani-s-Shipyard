@@ -116,18 +116,6 @@ RandomMedium
 			RandomHealthRange = [10%, 75%]
 			NameGenerator = { Type=None; }
 		}
-		{
-			Type = Doodads
-			DoodadType = janiTNT.HyperoidPOI
-			Count = [2, 2]
-			Distance = [100, 100]
-			ShowOnlyInFog = true
-			Undiscovered = true
-			HideIfUnexplored = false
-			ScaleFactor = 1
-			Tags = [asteroid_field_poi, poi_unknown, hyperoid_field_poi]
-			//AutoRemoveWhenTagDestroyed = hyperoid
-		}
 	]
 }
 
@@ -160,18 +148,6 @@ RandomSmall
 			ShipCriteria { Tags = [wreckage] }
 			RandomHealthRange = [10%, 75%]
 			NameGenerator = { Type=None; }
-		}
-		{
-			Type = Doodads
-			DoodadType = janiTNT.HyperoidPOI
-			Count = [2, 2]
-			Distance = [100, 100]
-			ShowOnlyInFog = true
-			Undiscovered = true
-			HideIfUnexplored = false
-			ScaleFactor = 1
-			Tags = [asteroid_field_poi, poi_unknown, hyperoid_field_poi]
-			//AutoRemoveWhenTagDestroyed = hyperoid
 		}
 	]
 }
@@ -218,18 +194,6 @@ RandomLarge
 			ShipCriteria { Tags = [wreckage] }
 			RandomHealthRange = [2%, 75%]
 			NameGenerator = { Type=None; }
-		}
-		{
-			Type = Doodads
-			DoodadType = janiTNT.HyperoidPOI
-			Count = [2, 2]
-			Distance = [100, 100]
-			ShowOnlyInFog = true
-			Undiscovered = true
-			HideIfUnexplored = false
-			ScaleFactor = 1
-			Tags = [asteroid_field_poi, poi_unknown, hyperoid_field_poi]
-			//AutoRemoveWhenTagDestroyed = hyperoid
 		}
 	]
 }
