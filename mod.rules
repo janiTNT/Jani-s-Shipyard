@@ -578,19 +578,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 				EnemyCombatNoBuildRadius = 800
 				EnemyCombatNoBuildDuration = 5
 			}
-			{
-				ID = "trollphysics"
-				NameKey = "CombatDifficulty/TrollPhy"
-				TipKey = "CombatDifficulty/TrollPhyTip"
-				DamageVsEnemies = 69%
-				DamageFromEnemies = 69%
-				ResourceDrainVsEnemies = 69%
-				ResourceDrainFromEnemies = 69%
-				FireChanceVsEnemies = 69%
-				FireChanceFromEnemies = 69%
-				EnemyCombatNoBuildRadius = 800
-				EnemyCombatNoBuildDuration = 30
-			}
 		]
 	}
 	{	
