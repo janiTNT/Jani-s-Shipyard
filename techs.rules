@@ -76,7 +76,7 @@ Techs
 			&<Parts/Weapons/Drone_launcher_tiny/minidronelauncher.txt>/Part/ID
 		]
 		Cost = 8000
-		Prerequisites = [cosmoteer.missile_launcher, cosmoteer.factory_steel, cosmoteer.laser_blaster_small, janiTNT.ElectronicCircuitFactory]
+		Prerequisites = [cosmoteer.factory_steel, cosmoteer.laser_blaster_small, janiTNT.ElectronicCircuitFactory]
 	}
 	{
 		ID = janiTNT.material_reprocessing
@@ -202,7 +202,7 @@ Techs
 			&<Parts/Weapons/Drone_launcher_small/drone_launcher_small.rules>/Part/ID
 		]
 		Cost = 10000
-		Prerequisites = [janiTNT.drone_launcher_tiny, cosmoteer.factory_coil, cosmoteer.disruptor, cosmoteer.factory_ammo]
+		Prerequisites = [janiTNT.drone_launcher_tiny, cosmoteer.factory_coil, cosmoteer.missile_launcher_he]
 	}
 	{
 		ID = janiTNT.fuelroom

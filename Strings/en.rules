@@ -147,7 +147,7 @@ Parts
 	
 	DroneLauncherSmall = "Small Drone Launcher"
 	DroneLauncherSmallIcon = "S. Drones"
-	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back."\
+	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back.\n\n"\
 	"<b>Laser Cannon Drone</b>\n\n"\
 	"Bigger. Better. Stronger. a severe upgrade in laser technology, Built with reverse engineering from competing brands, and reckless overclocking.\n\n"\
 	"<b>Laser Cannon Drone Launcher:</b>\n"\
@@ -156,7 +156,7 @@ Parts
 	"<img name='resource.janitnt.circuit1'/> <good>12</good> Electronic Circuit <gray>(</gray><good>2</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
-	"<white>Launcher Raw DMG:</white> <good>30k</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>30.000</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
 	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
 	"<b>Laser Cannon Drone:</b>\n"\
 	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
@@ -1513,7 +1513,7 @@ PartToggles
 	"<img name='resource.janitnt.circuit1'/> <good>12</good> Electronic Circuit <gray>(</gray><good>2</good><gray>/sec)</gray>\n"\
 	"<img name='resource.battery'/> <good>4</good> Power <gray>(</gray><good>0.6</good><gray>/sec)</gray>\n"\
 	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
-	"<white>Launcher Raw DMG:</white> <good>30k</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
+	"<white>Launcher Raw DMG:</white> <good>30.000</good><gray>/shot (</gray><good>5000</good><gray>/sec)</gray>\n"\
 	"<gray>(How much potential damage a single launch has)</gray>\n\n"\
 	"<b>Laser Cannon Drone:</b>\n"\
 	"<white>Drone Range:</white> <good>120</good> <gray>metres</gray>\n"\
