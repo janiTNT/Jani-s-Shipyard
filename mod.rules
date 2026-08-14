@@ -51,6 +51,7 @@ use IgnoreStructureUnlessTargeted = false on simplehit projectiles
 Actions : &<inserter_compatibility_list.rules>/Actions
 &<Parrylist.rules>/Parrylist,
 &<Nebula_Detection_Buffs.rules>/Overrides,
+&<betaparts.rules>/Actions,
 [
 	{	Action = AddMany
 
@@ -173,9 +174,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Production/Splitter/splitter_uranium.rules>/Part
 			&<Parts/Production/Circuit_factory/circuit_factory.rules>/Part
 			&<Parts/Production/Advanced_circuit_factory/Advancedfactory.rules>/Part
-			
-			//&<Parts/Production/Zetasphere_factory/Zetasphere_factory.rules>/Part
-			//&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
 			
 			&<Parts/Production/inserter/inserter.rules>/Part
 			&<Parts/Production/inserter/inserterConstruction.rules>/Part
@@ -355,35 +353,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Heat/CanisterDispenser/CanisterDispenser.rules>/Part
 			&<Parts/Heat/Hullheater/Hullheater.rules>/Part
-			
-			//Boss Rewards minus factories
-			
-			/* &<Parts/BossRewards/Astral/Conveyor/astralconveyor.rules>/Part
-			&<Parts/BossRewards/Astral/Corridor/astralcorridor.rules>/Part
-			&<Parts/BossRewards/Astral/dodgedrive/dodgedrive.rules>/Part
-			
-			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
-			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
-			&<Parts/BossRewards/Profaned/armor/profanedarmor2.rules>/Part
-			
-			&<Parts/BossRewards/Profaned/holy_room_small/holy_room_small.rules>/Part
-			&<Parts/BossRewards/Profaned/Holymantle/Holymantle.rules>/Part
-			
-			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor.rules>/Part
-			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor2.rules>/Part
-			&<Parts/BossRewards/cosmilite/armor/cosmilitearmorwedge.rules>/Part
-			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x2_wedge.rules>/Part
-			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x3_wedge.rules>/Part
-			&<Parts/BossRewards/cosmilite/armor/cosmilitearmortri.rules>/Part
-			
-			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
-			
-			&<Parts/BossRewards/Cursed/spell_room_small/spell_room_small.rules>/Part
-			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part
-			
-			&<Parts/BossRewards/Cursed/Blood_Pipe_adaptative/heat_pipe_adaptive.rules>/Part
-			&<Parts/BossRewards/Cursed/bloodgenerator/blood_generator.rules>/Part */
-			
+
 			// Multiblock parts
 			
 			
@@ -454,7 +424,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 
 		ManyToAdd
 		[
-			//&<Occult/bosssysgen.rules>
 			&<Hyperoid/Hyperoid_sysgen.rules>
 		]
 	}
@@ -466,7 +435,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			&<Tutorials/Inserters/Inserters.rules>
 			&<Tutorials/Logic/Logic.rules>
-			//&<Tutorials/Bosses/bossesbeta.rules>
 		]
 	}
 	{	Action = Overrides
@@ -558,38 +526,11 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Circuits/advanced_circuit_doodad.rules>
 			//&<resources/Circuits/processing_unit_doodad.rules>
 			
-			/* &<resources/Cosmic Bar/cosmic_doodad.rules>
-			&<resources/Astral Bar/astral_doodad.rules>
-			&<resources/Profaned Core/profaned_doodad.rules>
-			&<resources/Cursed Pages/cursed_doodad.rules>
-			&<resources/Zetasphere/doodad_zetasphere.rules> */
-			
 			&<planets/doodad_planet_deadsun.rules>
 			&<planets/doodad_planet_deadsun_mini.rules>
 			&<planets/doodad_planet_sunminialt.rules>
 			
 			&<Nebulas/DarkEnergy_Doodad.rules>
-			
-			/*{
-				ID = janiTNT.lightsource
-				Type = POI
-				DescriptionKey = "Doodads/POILightsource"
-				CategoryKey = "Doodads/POI"
-				Icon = &HudIcon
-				IndicatorSort = 1
-				IsLightSource = true
-				ShowInMinimap = true
-				HudIcon
-				{
-					Texture
-					{
-						File = "lightsource.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-					Size = [32, 32]
-				}
-			}*/
 		]
 	}
 	{	Action = AddMany
@@ -749,9 +690,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		ManyToAdd
 		[
 			&<resources/Heat/Heat.rules>
-			&<resources/Enragement/Enragement.rules>
-			&<resources/Enragement/bossanticheese.rules>
-			//&<resources/Enragement/boss_weaponstun.rules>
 			&<resources/Plasma/Plasma.rules>
 			//&<resources/Mining Energy/mining_energy.rules>
 			&<resources/SigilDeath/sigildeath.rules>
@@ -767,13 +705,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<resources/Circuits/advanced_circuit.rules>
 			//&<resources/Circuits/processing_unit.rules>
 			
-			/* &<resources/Cosmic Bar/cosmic_bar.rules>
-			&<resources/Astral Bar/astralbar.rules>
-			&<resources/Profaned Core/profaned_core.rules>
-			&<resources/Cursed Pages/cursedpages.rules>
-			&<resources/Zetasphere/zetasphere.rules>
-			
-			&<resources/fluids/molten.iron.rules>
+			/*&<resources/fluids/molten.iron.rules>
 			&<resources/fluids/molten.steel.rules>
 			&<resources/fluids/molten.copper.rules>
 			&<resources/fluids/molten.coil.rules>
@@ -1245,41 +1177,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Occult/shield2x1_super.rules>/Part
 			//&<Occult/weakpoint_basic.rules>/Part
 			&<Occult/nothingroid.rules>/Part
-			
-			/* &<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
-			&<Occult/Cosmilite/armoroid_cosmilite_wide.rules>/Part
-			&<Occult/Cosmilite/missilesigil.rules>/Part
-			&<Occult/Cosmilite/Beamball.rules>/Part
-			&<Occult/Cosmilite/CosmilitebossSigil.rules>/Part
-			&<Occult/Cosmilite/lootorb.rules>/Part
-			
-			&<Occult/Profaned/armoroid_profaned.rules>/Part
-			&<Occult/Profaned/Barrageball.rules>/Part
-			&<Occult/Profaned/Pdball.rules>/Part
-			&<Occult/Profaned/UltraBall.rules>/Part
-			&<Occult/Profaned/ProfanedbossSigil.rules>/Part
-			&<Occult/Profaned/ProfanedbossSigil2.rules>/Part
-			&<Occult/Profaned/lootorb.rules>/Part
-			
-			&<Occult/Brimstone/BrimstonebossSigil.rules>/Part
-			&<Occult/Brimstone/legacyBrimstonebossSigil.rules>/Part
-			&<Occult/Brimstone/NukeSigil.rules>/Part
-			&<Occult/Brimstone/cursed_armor.rules>/Part
-			&<Occult/Brimstone/BrimSphere.rules>/Part
-			&<Occult/Brimstone/lootorb.rules>/Part
-			
-			&<Occult/Astral/AstralbossSigil.rules>/Part
-			//&<Occult/Astral/fringe_ball.rules>/Part NUH UH
-			&<Occult/Astral/fringe_ball_laser.rules>/Part
-			&<Occult/Astral/fringe_ball_cannon.rules>/Part
-			&<Occult/Astral/fringe_ball_beam.rules>/Part
-			&<Occult/Astral/fringe_ball_missile.rules>/Part
-			&<Occult/Astral/fringe_ball_drone.rules>/Part
-			&<Occult/Astral/fringe_ball_barrage.rules>/Part
-			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
-			&<Occult/Astral/fringe_ball_mine.rules>/Part
-			&<Occult/Astral/AstralEye.rules>/Part
-			&<Occult/Astral/lootorb.rules>/Part */
 		]
 	}
 	{	Action = AddMany
@@ -1300,12 +1197,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			{ File="Ships/Minibosses/Traincoiner.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=10;  Difficulty=3; }
 			{ File="Ships/Minibosses/Blasphemic Tater.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=12;  Difficulty=3; }
 			{ File="Ships/Minibosses/Sapper Spiderling.ship.png"; Tags=[HyperoidGuardian, HyperoidSupport] Tier=18;  Difficulty=3; }
-			
-			// bosses
-			
- 			{ File="Ships/Bosses/The Witch's Craft.ship.png"; Tags=[janibossship, janibossBrimstone] Tier=20;  Difficulty=3; }
-			{ File="Ships/Bosses/Godslayer Guardian.ship.png"; Tags=[janibossship, janibossCosmilite] Tier=16;  Difficulty=3; }
-			{ File="Ships/Bosses/Sol Profanatus.ship.png"; Tags=[janibossship, janibossProfaned] Tier=20;  Difficulty=3; }
 		]
 	}
 	{
@@ -1319,12 +1210,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 				DescriptionKey = "Missions/ClearHyperoidDesc"
 				CategoryID = bounties
 			}
-			DefeatBossJani
-			{
-				NameKey = "Missions/DefeatBossJani"
-				DescriptionKey = "Missions/DefeatBossJaniDesc"
-				CategoryID = bounties
-			}
 		}
 	}
 	{
@@ -1332,58 +1217,6 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		OverrideIn = "<./data/ai/ai.rules>"
 		Overrides
 		{
-			BossAICosmilite
-			{
-				NameKey = "AI/JaniBossAICosmilite"
-				UpdateInterval = [.5, 1] // A random range. Slower than the average AI.
-				IsAvailableInCreativeMode = true
-				IsAvailableInMultiplayer = true
-
-				StrategyModules
-				[
-					{
-						Type = AreaPatrol
-						DefaultPatrolRadius = 300
-						AvoidableDoodadTags = [sun, station]
-						AvoidableDoodadBuffer = 100
-					}
-					{
-						Type = AggroEnemies
-						TargetSwitchThresholdFactor = 2
-						TargetDistanceFactorExponent = 0.5
-						AlreadyTargetedByAllyFactor = 0.7
-						TargetFirepowerCacheTime = 10
-						AcquireAggroWithinRadar = true
-						ReleaseAggroWithinRadar = true
-					}
-				]
-
-				TacticsModules
-				[
-					{
-						Type = DefaultAttackRadiusAndRotation
-						AttackRotationSwitchThresholdFactor = 1.25
-						AttackRotationsToCheck = 8
-						UseSavedAboveHealth = 0%
-					}
-					{
-						Type = RandomAttackAngle
-						AttackAngleChangeInterval = [40, 60]
-						AttackAngleChangeDelta = [-110d, 110d]
-						CoordinateFlanking = true
-					}
-				]
-
-				TargetingModules
-				[
-					{
-						Type = ValueTargeter
-						TargetChecksPerUpdate = 10
-						TargetSwitchThresholdFactor = 2
-						TargetValueFactorPerPenetrationDist = .75
-					}
-				]
-			}
 			HyperoidGuardianAI
 			{
 				NameKey = "AI/HyperoidGuardianAI"
@@ -1640,61 +1473,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		[
 			janiTNT.hyperoid
 		]
-	}
-	{	Action = AddMany
-
-		AddTo = "<gui/game/designer/stat_bars.rules>/StatBars"
-		IgnoreIfNotExisting = true
-		ManyToAdd
-		[
-			{
-				NameKey = "BuildBox/CursedMana"
-				NumberFormat = "0"
-				Icon
-				{
-					Texture
-					{
-						File = "gui/stat_cursedmana.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-				RecommendedStat = CursedManaProvided	
-				ProvidedStat = CursedManaAvailible
-				BlocksPerValue = 10
-				IdealExtraSpaceFactor = 1 
-			}
-			{
-				NameKey = "BuildBox/HolyMana"
-				NumberFormat = "0"
-				Icon
-				{
-					Texture
-					{
-						File = "gui/stat_holymana.png"
-						MipLevels = 2
-						SampleMode = Linear
-					}
-				}
-				RecommendedStat = HolyManaProvided	
-				ProvidedStat = HolyManaAvailible
-				BlocksPerValue = 10
-				IdealExtraSpaceFactor = 1 
-			}
-		]
-	}
-	
-	
-	/* {	Action = AddMany
-
-		AddTo = "<statuses/statuses.rules>/Statuses"
-
-		ManyToAdd
-		[
-			&<Statuses/Brimstone/Brimstone.rules>
-			&<Statuses/Warding/Warding.rules>
-		]
-	} */
+	}	
 	
 	/*{
 		Action = AddMany

@@ -1,0 +1,273 @@
+Actions
+[
+	{	Action = AddMany
+
+		AddTo = "<ships/terran/terran.rules>/Terran/Parts"
+
+		ManyToAdd
+		[
+			//Boss Rewards minus factories
+			
+			&<Parts/Production/Zetasphere_factory/Zetasphere_factory.rules>/Part
+			&<Parts/Production/Cosmilite_Factory/Cosmilite_factory.rules>/Part
+			
+			&<Parts/BossRewards/Astral/Conveyor/astralconveyor.rules>/Part
+			&<Parts/BossRewards/Astral/Corridor/astralcorridor.rules>/Part
+			&<Parts/BossRewards/Astral/dodgedrive/dodgedrive.rules>/Part
+			
+			&<Parts/BossRewards/Cosmilite/Ultraweight/Ultraweight.rules>/Part
+			&<Parts/BossRewards/Profaned/armor/profanedarmor.rules>/Part
+			&<Parts/BossRewards/Profaned/armor/profanedarmor2.rules>/Part
+			
+			&<Parts/BossRewards/Profaned/holy_room_small/holy_room_small.rules>/Part
+			&<Parts/BossRewards/Profaned/Holymantle/Holymantle.rules>/Part
+			
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor2.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmorwedge.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x2_wedge.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmor_1x3_wedge.rules>/Part
+			&<Parts/BossRewards/cosmilite/armor/cosmilitearmortri.rules>/Part
+			
+			&<Parts/BossRewards/Cursed/armor/cursedarmor.rules>/Part
+			
+			&<Parts/BossRewards/Cursed/spell_room_small/spell_room_small.rules>/Part
+			&<Parts/BossRewards/Cursed/wand_small/wand_small.rules>/Part
+			
+			&<Parts/BossRewards/Cursed/Blood_Pipe_adaptative/heat_pipe_adaptive.rules>/Part
+			&<Parts/BossRewards/Cursed/bloodgenerator/blood_generator.rules>/Part
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<./Data/modes/career/sectors/sector_basic/sector_basic.rules>/Sector/SystemGenerator/Spawners"
+
+		ManyToAdd
+		[
+			&<Occult/bosssysgen.rules>
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<./Data/codex/tutorials/tutorials.rules>/CodexPages"
+
+		ManyToAdd
+		[
+			&<Tutorials/Bosses/bossesbeta.rules>
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<doodads/doodads.rules>/Doodads"
+
+		ManyToAdd
+		[
+			&<resources/Cosmic Bar/cosmic_doodad.rules>
+			&<resources/Astral Bar/astral_doodad.rules>
+			&<resources/Profaned Core/profaned_doodad.rules>
+			&<resources/Cursed Pages/cursed_doodad.rules>
+			&<resources/Zetasphere/doodad_zetasphere.rules>
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<resources/resources.rules>/Resources"
+
+		ManyToAdd
+		[
+			&<resources/Enragement/Enragement.rules>
+			&<resources/Enragement/bossanticheese.rules>
+			//&<resources/Enragement/boss_weaponstun.rules>
+			&<resources/Cosmic Bar/cosmic_bar.rules>
+			&<resources/Astral Bar/astralbar.rules>
+			&<resources/Profaned Core/profaned_core.rules>
+			&<resources/Cursed Pages/cursedpages.rules>
+			&<resources/Zetasphere/zetasphere.rules>
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<ships/megaroid/megaroid.rules>/Megaroid/Parts"
+
+		ManyToAdd
+		[
+			&<Occult/Cosmilite/armoroid_cosmilite.rules>/Part
+			&<Occult/Cosmilite/armoroid_cosmilite_wide.rules>/Part
+			&<Occult/Cosmilite/missilesigil.rules>/Part
+			&<Occult/Cosmilite/Beamball.rules>/Part
+			&<Occult/Cosmilite/CosmilitebossSigil.rules>/Part
+			&<Occult/Cosmilite/lootorb.rules>/Part
+			
+			&<Occult/Profaned/armoroid_profaned.rules>/Part
+			&<Occult/Profaned/Barrageball.rules>/Part
+			&<Occult/Profaned/Pdball.rules>/Part
+			&<Occult/Profaned/UltraBall.rules>/Part
+			&<Occult/Profaned/ProfanedbossSigil.rules>/Part
+			&<Occult/Profaned/ProfanedbossSigil2.rules>/Part
+			&<Occult/Profaned/lootorb.rules>/Part
+			
+			&<Occult/Brimstone/BrimstonebossSigil.rules>/Part
+			&<Occult/Brimstone/legacyBrimstonebossSigil.rules>/Part
+			&<Occult/Brimstone/NukeSigil.rules>/Part
+			&<Occult/Brimstone/cursed_armor.rules>/Part
+			&<Occult/Brimstone/BrimSphere.rules>/Part
+			&<Occult/Brimstone/lootorb.rules>/Part
+			
+			&<Occult/Astral/AstralbossSigil.rules>/Part
+			//&<Occult/Astral/fringe_ball.rules>/Part NUH UH
+			&<Occult/Astral/fringe_ball_laser.rules>/Part
+			&<Occult/Astral/fringe_ball_cannon.rules>/Part
+			&<Occult/Astral/fringe_ball_beam.rules>/Part
+			&<Occult/Astral/fringe_ball_missile.rules>/Part
+			&<Occult/Astral/fringe_ball_drone.rules>/Part
+			&<Occult/Astral/fringe_ball_barrage.rules>/Part
+			&<Occult/Astral/fringe_ball_fireblast.rules>/Part
+			&<Occult/Astral/fringe_ball_mine.rules>/Part
+			&<Occult/Astral/AstralEye.rules>/Part
+			&<Occult/Astral/lootorb.rules>/Part
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<builtin_ships/builtins.rules>/Ships"
+
+		ManyToAdd
+		[
+ 			{ File="Ships/Bosses/The Witch's Craft.ship.png"; Tags=[janibossship, janibossBrimstone] Tier=20;  Difficulty=3; }
+			{ File="Ships/Bosses/Godslayer Guardian.ship.png"; Tags=[janibossship, janibossCosmilite] Tier=16;  Difficulty=3; }
+			{ File="Ships/Bosses/Sol Profanatus.ship.png"; Tags=[janibossship, janibossProfaned] Tier=20;  Difficulty=3; }
+		]
+	}	
+	{
+		Action = Overrides
+		OverrideIn = "<./data/modes/career/career.rules>/MissionMetatypes"
+		Overrides
+		{
+			DefeatBossJani
+			{
+				NameKey = "Missions/DefeatBossJani"
+				DescriptionKey = "Missions/DefeatBossJaniDesc"
+				CategoryID = bounties
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<./data/ai/ai.rules>"
+		Overrides
+		{
+			BossAICosmilite
+			{
+				NameKey = "AI/JaniBossAICosmilite"
+				UpdateInterval = [.5, 1] // A random range. Slower than the average AI.
+				IsAvailableInCreativeMode = true
+				IsAvailableInMultiplayer = true
+
+				StrategyModules
+				[
+					{
+						Type = AreaPatrol
+						DefaultPatrolRadius = 300
+						AvoidableDoodadTags = [sun, station]
+						AvoidableDoodadBuffer = 100
+					}
+					{
+						Type = AggroEnemies
+						TargetSwitchThresholdFactor = 2
+						TargetDistanceFactorExponent = 0.5
+						AlreadyTargetedByAllyFactor = 0.7
+						TargetFirepowerCacheTime = 10
+						AcquireAggroWithinRadar = true
+						ReleaseAggroWithinRadar = true
+					}
+				]
+
+				TacticsModules
+				[
+					{
+						Type = DefaultAttackRadiusAndRotation
+						AttackRotationSwitchThresholdFactor = 1.25
+						AttackRotationsToCheck = 8
+						UseSavedAboveHealth = 0%
+					}
+					{
+						Type = RandomAttackAngle
+						AttackAngleChangeInterval = [40, 60]
+						AttackAngleChangeDelta = [-110d, 110d]
+						CoordinateFlanking = true
+					}
+				]
+
+				TargetingModules
+				[
+					{
+						Type = ValueTargeter
+						TargetChecksPerUpdate = 10
+						TargetSwitchThresholdFactor = 2
+						TargetValueFactorPerPenetrationDist = .75
+					}
+				]
+			}
+		}
+	}
+	{	Action = AddMany
+
+		AddTo = "<gui/game/designer/stat_bars.rules>/StatBars"
+		IgnoreIfNotExisting = true
+		ManyToAdd
+		[
+			{
+				NameKey = "BuildBox/CursedMana"
+				NumberFormat = "0"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/stat_cursedmana.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				RecommendedStat = CursedManaProvided	
+				ProvidedStat = CursedManaAvailible
+				BlocksPerValue = 10
+				IdealExtraSpaceFactor = 1 
+			}
+			{
+				NameKey = "BuildBox/HolyMana"
+				NumberFormat = "0"
+				Icon
+				{
+					Texture
+					{
+						File = "gui/stat_holymana.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				RecommendedStat = HolyManaProvided	
+				ProvidedStat = HolyManaAvailible
+				BlocksPerValue = 10
+				IdealExtraSpaceFactor = 1 
+			}
+		]
+	}
+	{	Action = AddMany
+
+		AddTo = "<statuses/statuses.rules>/Statuses"
+
+		ManyToAdd
+		[
+			&<Statuses/Brimstone/Brimstone.rules>
+			&<Statuses/Warding/Warding.rules>
+		]
+	}
+]
+/* ShipLibraries
+[
+ 	{
+		Folder = "Ships/Bosses"
+		NameKey = "JaniBossShips"
+		TooltipKey = "JaniBossShipsTip" // Optional
+	}
+] */
