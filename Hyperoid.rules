@@ -54,7 +54,7 @@ Hyperoid : <./Data/ships/base_ship.rules>
 	]
 
 	Parts : &Init
-	&<Hyperoid/Mineables/2.d>/a
+	&<Hyperoid/Mineables/2.png>/a
 	[
 		&<Hyperoid/Ores/hyperium_4x.rules>/Part
 		&<Hyperoid/Ores/hyperium_9x.rules>/Part
@@ -113,7 +113,7 @@ Hyperoid : <./Data/ships/base_ship.rules>
 		&<Hyperoid/Ores/uranium_16x_hard.rules>/Part
 	]
 
-	RenderLayers : &<Hyperoid/Mineables/2.d>/d
+	RenderLayers : &<Hyperoid/Mineables/2.png>/d
 	[
 		{
 			Key = "asteroid"// Asteroid bucket layer.
