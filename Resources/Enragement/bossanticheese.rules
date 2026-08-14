@@ -1,4 +1,0 @@
-// This is a "fake" type of resource used to disable the enemy ship's things
-ID = janitnt.bossanticheese
-NameKey = "Resource/IonEnergy"
-ReturnToStorage = false

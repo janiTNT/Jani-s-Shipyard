@@ -447,7 +447,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 		]
 	}
 	// Resource Type MODDED
-	{
+	/*{
 		ToggleID = "resource_conveyor_mode_modded"
 		Style = Popout
 		ShowInEditor = true
@@ -461,7 +461,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 				{
 					Texture
 					{
-						File = "../Resources/Cosmic Bar/icon.png"
+						File = "../Resources/	 Bar/icon.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
@@ -617,7 +617,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 				}
 			}
 		]
-	}
+	}*/
 	//TINY DRONE TYPE
 	{
 		ToggleID = "tinydronetype"
