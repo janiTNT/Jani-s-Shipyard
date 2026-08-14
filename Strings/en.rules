@@ -536,9 +536,6 @@ Parts
 	Cram_Cooler1xDesc = "Connects only on the two diagonals. Reduces the cooldown of the CRAM cannon. requires power to function, Avoid staying on the room too long to avoid third degree burns."\
 	"\n<gray><s10>Now You're 20% cooler</s10></gray>"
 	
-	
-	
-	
 	ExplosiveChargeHAX = "DECONSTRUCTOR BOBM HUGE BOBM"
 	ExplosiveChargeHAXIcon = "DECONSTRUCTOR DEV TOOL"
 	
@@ -551,11 +548,6 @@ Parts
 	
 	MegaroidArmorFDesc = ""
 	MegaroidArmor3BDescDesc = ""
-	
-	MegaroidArmor_foundation_1x1 = "Armored Rock Foundation"
-	MegaroidArmor_foundation_1x1B = "Alternate Rock Foundation"
-	MegaroidArmor_foundation_1x1Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only. Alternative segments that will on only chain react when one of its similar parts had begun reacting."
-	MegaroidArmor_foundation_1x1BDesc = "Ancient extremly tough rock that have minor regenerative capabilities. Even tougher than normal Armored rock, to prevent critical parts from disconnecting. Boss Only."
 	
 	MegaroidBallweapon = "Luminous Sphere"
 	MegaroidBallweaponDesc = "Powerful mystical spheres that fire at intruders that fly too close to the Hyperoids."
@@ -589,53 +581,6 @@ Parts
 	MegaroidBallweaponWall_Blaster = "Wall Blaster Sphere"
 	MegaroidBallweaponThumperWall_BlasterDesc = "Fire spectral walls that block ship movement similar to a thumper."
 	
-	
-	MegaroidArmor3_1x1 = "Cosmilite Armor Plating"
-	MegaroidArmor3_4x1 = "Cosmilite Armor Plating (Wide)"
-	MegaroidArmor3Desc = "Centuries-old huge bricks of extremely tough armor that have minor regenerative capabilities. Some of the metal can be salvaged.. A small difference in internal structure appears to cause the part to only chain react when one of its similar parts had begun reacting."
-	
-	MegaSigilCosmiliteBoss = "Supreme Control Sigil (Cosmic Boss)"
-	MegaSigilCosmiliteBossDesc = "Heart of the boss ship. turns into a \"loot bag\" once destroyed.\nThe usual deathbolts and guadian attacks, combined with a extremly high penetration \"Devourer of gods\". Upon being scratched with any damage, may summon an even stronger \"DoG\" and deploys a shield.\n\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"
-	
-	BossMissileweapon = "Missile Summoning Sigil"
-	BossMissileweaponDesc = "Summons large homing missiles to swifly destroy ships attempting to defeat these massive ships.\nSpawns a additional missile on hit."
-	
-	MegaroidBallWeaponCosmiliteBoss = "Luminous Sphere (Cosmic)"
-	MegaroidBallWeaponCosmiliteBossDesc = "Fires two similar Damaging and Tractor beams with opposite polarities at foes in a helix, After some time firing, fires a white superlaser.\n\nAt 60% health, Its beams focus down, Superlaser fire rate is increased, Can now fire a \"Deathbolts\" attack, that has very high penetration and damage.\nAt 30% health, Can summon portals that spawn Cosmic Guardians, Cosmic worms that can burrow into your ship and circle back.\nAfter destroyed, the rest of the front half of the ship crumbles to pieces."
-	
-	MegaroidCosmiliteLoot = "Boss Loot \"Bag\" (Cosmic)"
-	MegaroidCosmiliteLootDesc = "Salvage this part to recover some rare resources and some stacks of Cosmilite. Build a factory with them and Profaned Star Cores to get a steady supply of Cosmilite."
-	
-	
-	MegaSigilProfanedBoss = "Supreme Control Sigil (Profaned Boss)"
-	MegaSigilProfanedBossDesc = "This Sigil is used to control this massive Boss ship. Destroying this sigil Causes the boss to initiate more attacks until there is only one sigil left. and that sigil will contain the actual loot.\nOnce a Sigil is down, the boss doubles the spawn rate of Mini Suns, and can now summon faster suns when on Flamethrower Phase.\nOnce only one sigil is left, Can now summon 6 even faster suns when on Beams attack.\nFor more info, read the description of the Sun.\nMay contain Divine Geodes. Build a altar with them and Pages of Annihilation to get a steady supply of Divine Geodes."
-	
-	
-	MegaSigilProfanedBoss2 = "Supreme Control Sigil (Profaned Boss, With Loot)"
-	MegaSigilProfanedBoss2Desc = "Last Sigil of the boss. Will now Drop a Loot orb on destruction.\nIf you need A Recap:\n\nOnce a Sigil is down, the boss doubles the spawn rate of Mini Suns, and can now summon faster suns when on Flamethrower Phase.\nOnce only one sigil is left, Can now summon 6 even faster suns when on Beams attack.\n\n<bad>DO NOT SALVAGE. LOOT WILL NOT DROP, DESTROY FIRST</bad>"
-	
-	MegaroidProfanedLoot = "Boss Loot \"Bag\" (Profaned)"
-	MegaroidProfanedLootDesc = "Salvage this part to recover some rare resources and some stacks of Divine Geodes. Build a altar with them and Pages of Annihilation to get a steady supply of Divine Geodes."
-	
-	MegaroidArmor4_1x1 = "Profaned Armored Rock"
-	MegaroidArmor4Desc = "Ancient extremly tough rock that have minor regenerative capabilities. Explodes into damaging flame projectiles on destruction."
-	
-	
-	MegaroidBallWeaponProfanedBoss = "Miniaturized Weaponized Sun"
-	MegaroidBallWeaponProfanedBossDesc = "Main Component of the Profaned Boss. Fires a spread of beams to slowly damage a ship, similar to sun damage zones. Periodically Summons miniature homing suns that deal extreme damage when collided.\nAfter a while, changes to a flamethrower phase where its Sigils are vulnerable and Thrusters off, yet has a strong forward attack that is easily dodgeable, but hard to tank, While also firing a spread of fireballs, some that heal you.\nOnce that Phase is over, it slowly fires two strong Holy Beams to force you to go back into the front of the ship. Extremly Deadly.\nFor more details, Read the description of the Sigil.\n\nPatically Indestructible."	
-	
-	MegaroidBallWeaponBarrage = "Luminous Sphere (Barrage)"
-	MegaroidBallWeaponBarrageDesc = "Fires seven slow moving devastating bolts in a barrage. its advised to avoid them Altogether."
-	
-	MegaroidBallProfanedFlak = "Profaned Solar Flak"
-	MegaroidBallProfanedFlakDesc = "Fires Solar balls to defend the boss from projectiles."
-	
-	MegaSigilBrimstoneBoss = "Supreme Control Sigil (Brimstone Boss)"
-	MegaSigilBrimstoneBossDesc =  "t"
-	
-	BossNukeweapon = "Nuke Summoning Sigil"
-	BossNukeweaponDesc = "A Variant of the missile sigil that fires super nukes (Shocking <image name='dahell'/> i know). fires a triple burst if only the boss sigil is alive."
-	
 	MegaroidBallweaponThumper = "Thumper Ball Launcher"
 	MegaroidBallweaponThumperDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Part Credit From: skipydog</color></s14>"
@@ -645,44 +590,6 @@ Parts
 	MegaroidBallweaponThumper_Frag = "Shotgun Thumper Launcher"
 	MegaroidBallweaponThumper_FragDesc = "Fires projectiles that acts as a physical roadblock when it stops nearby the target. Variant that fires in a single mega burst faster, has more hp."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Part Credit From: skipydog</color></s14>"
-	
-	MegaSigilAstralBoss = "Supreme Control Sigil (Astral Boss)"
-	MegaSigilAstralBossDesc = "<image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\n"
-	
-	MegaroidAstralLoot = "Boss Loot \"Bag\" (Astral)"
-	MegaroidAstralLootDesc = "Salvage this part to recover some rare resources and some stacks of Astral Bars. Build a Factory with them and Cosmilite bars to get a steady supply of Astral Bars."
-	
-	MegaroidBallWeaponFringeBossBeam = "Luminous Sphere (Hyperbeam)"
-	MegaroidBallWeaponFringeBossBeamDesc = "Aims for some time, stops rotating and gives  concentrated beam at that rotation."
-	
-	MegaroidBallWeaponFringeBossBarrage = "Luminous Sphere (Giga Barrage)"
-	MegaroidBallWeaponFringeBossBarrageDesc = "Fires a cone of high damage extremly slow projectiles, along with some low damage fast laser bolts."
-	
-	MegaroidBallWeaponFringeBossCannon = "Luminous Sphere (TripleCannon)"
-	MegaroidBallWeaponFringeBossCannonDesc = "High penetration High damage triple shot cannon projectiles"
-	
-	MegaroidBallWeaponFringeBossDrone = "Luminous Sphere (Stellaborn Burst)"
-	MegaroidBallWeaponFringeBossDroneDesc = "Spawns Several Stellarborn \"drones\" to attack enemies with multiple ways.\n Can phase through the boss."
-	
-	MegaroidBallWeaponFringeBossLaser = "Luminous Sphere (Laser Barrage)"
-	MegaroidBallWeaponFringeBossLaserDesc = "Fires several laser bolts followed by a bigger bolt."
-	
-	MegaroidBallWeaponFringeBossFireBlast = "Luminous Sphere (Fireblast)"
-	MegaroidBallWeaponFringeBossFireBlastDesc = "Fires a homing slow projectile that eventually explodes into a circle of lasers in all directions. high damage if hit close.\n Can phase through the boss."
-	
-	MegaroidBallWeaponFringeBossMine = "Luminous Sphere (MineThrower)"
-	MegaroidBallWeaponFringeBossMineDesc = "Launches some mines in the general direction. mines have homing projectiles and therefore are deadly."
-	
-	MegaroidBallWeaponFringeBossMissile = "Luminous Sphere (Missile Strike)"
-	MegaroidBallWeaponFringeBossMissileDesc = "Fires a barrage of several missiles. missiles spawn missiles on hit.\n Can phase through the boss."
-	
-	CosmiliteFactory = "Cosmilite Bar Forge"
-	CosmiliteFactoryIcon = "Cosmilite"
-	CosmiliteFactoryDesc = "<image name='dahell'/>Forges and smashes bars of Cosmilite under extreme conditions. Consumes 4 Tristeel and 8 Hyperium per use. Requires Cosmilite to build, locking the obtaining of this resource only after you defeat and collect the loot of the \"Godslayer Guardian\" Boss in a Threat level 10+ system"
-	
-	ZetasphereFactory = "Zetasphere Compressor Forge"
-	ZetasphereFactoryIcon = "Zetaspheres"
-	ZetasphereFactoryDesc = "<image name='dahell'/>800 steel to 1 zetasphere"
 	
 	LogicWire = "Logic Wire"
 	LogicWireIcon = "Wire"
@@ -896,14 +803,6 @@ Parts
 	Pulse_ThrusterHuge8x7Icon = "Haul. Repulser (8)"
 	Pulse_ThrusterHuge8x7Desc = "A Combination of 8x7 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."
 	
-	//---------------------------------------------
-	
-	SuperheavyBrick = "Mini-Anchor Cosmic Weights"
-	SuperheavyBrickIcon = "Cosmic Weights"
-	SuperheavyBrickDesc = "Its just a 2000 ton 1x1 block that is very overpriced. uses some of the heaviest materials for the variety of uses this dead weight can do, such as show off how much weight your ship can push, or just pretend it can."
-	
-	//---------------------------------------------
-	
 	Logic_Sensor = "LIDAR Enemy Roof Logic Sensor"
 	Logic_SensorIcon = "LIDAR Enemy Sensor"
 	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</gray>"\
@@ -980,37 +879,9 @@ Parts
 	LogicThrusterRocketNozzleDesc = "A M.R.T. modified to function using logic signals instead of activating automatically with the ship's autopilot or your own piloting. Supports extenders as normal"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
-	AstralConveyor = "Astral Conveyor"
-	AstralConveyorIcon = "Astral Conv."
-	AstralConveyorDesc = "Faster but no wall, fire resistance"
-	
-	AstralCorridor = "Astral Corridor"
-	AstralCorridorIcon = "Astral Cor."
-	AstralCorridorDesc = "Slightly Faster, fire resistance"
-	
-	AstralShifter = "Astral Shifter"
-	AstralShifterIcon = "Astral Shifter"
-	AstralShifterDesc = "Internal High impulse thruster for quick manouvers, can provide thrust both forwards and backwards. uses hyperium and lasts a very short time."
-	
-	CosmiliteArmor = "Heavy Cosmilite Armor"
-	CosmiliteArmorIcon = "Cosmilite Armor"
-	CosmiliteArmorDesc = "Heavy armor with a lot of hitpoints. Increases damage resistance against damage based on how many blocks of cosmilite armor is nearby. can affect a select number of other boss armor."
-	
-	ProfanedArmor = "High Resistance Profaned Armor"
-	ProfanedArmorIcon = "Profaned Armor"
-	ProfanedArmorDesc = "Armor that"
-	
 	JaniArmorBit = "Armor Plate"
 	JaniArmorBitIcon = "Armor Plate"
 	JaniArmorBitDesc = "Small pieces of armor to decorate or defend small amounts of your ship."
-
-	SpellRoomSmall = "Spellz Room Generator THingy"
-	SpellRoomSmallIcon = "Spellz Room"
-	SpellRoomSmallDesc = "I'm over here casting my spells I got tomes with my spells right now I'm just casting my shit I'm wizardly as Sol man I'm a freak man like <image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/><image name='dahell'/>\nCreates 30 points of cursed mana."
-	
-	CursedwandSmall = "Ornate Cursed Wand"
-	CursedwandSmallIcon = "Cursed Wand"
-	CursedwandSmallDesc = "Deck mounted wand that Fires Weak homing projetiles. Always deals friendly fire, and is a danger to your deck weaporny and itself if hit.\nUses 5 points of cursed mana."
 	
 	CoilBig = "Large Copper Wire Coil"
 	CoilBigIcon = "Large Coil"
@@ -1089,8 +960,6 @@ Doodads
 	POILightsource = "Light Source"
 	POIHyperoid = "Hyperoid Location"
 	
-	POIBoss = "Boss Location"
-	
 	PlanetDeadSun = "Nebula Sun"
 	PlanetDeadMiniSun = "Miniature Nebula Sun"
 }
@@ -1139,42 +1008,15 @@ Resource
 	ProcessingUnit = "Processing Unit"
 	ProcessingUnitPlural = "Processing Unit"
 	ProcessingUnitDesc = "A large data processing device useful for computationally intensive applications, such as target prediction, friend-foe recognition, heavy load bearing systems and of course, crypto mining."
-	
-	Cosmilite = "Cosmilite Bar"
-	CosmilitePlural = "Cosmilite Bars"
-	CosmiliteDesc = "A incredibly dense metal with great physical properties.\n Obtained by defeating The boss <good>\"Godslayer Guardian\"</good> or refining by using its own factory, which is only availible after obtaining Cosmilite Bars And <good>Astral Bars.</good>"\
-	"\n<gray><s10>What Devourer?</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
-	
-	ProfanedCore = "Divine Core"
-	ProfanedCorePlural = "Divine Cores"
-	ProfanedCoreDesc = "A strange rock that seems to easily manipulate energy, but not really in a... controlled way.\nObtained by defeating <good>\"Sol Profanatus\"</good> or created with the Divine Core Altar \"Factory\", which requives both Divine Cores and <good>Pages of Annihilation</good>"\
-	"\n<gray><s10>Barely Holy Enough.</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
-	
-	AstralBar = "Astral Bar"
-	AstralBarPlural = "Astral Bars"
-	AstralBarDesc = "A valuable, glamorous metal alloy from the stars... ignoring that you can just make it and you can fly to these stars.\nObtained by defeating The boss <good>\"Name of ASTRAL BOSS\"</good> or fabricated by using its own factory, which is only availible after obtaining Astral Bars And <good>Cosmilite Bars</good>"\
-	"\n<gray><s10>I guess its a boss</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
-	
-	CursedPage = "Page of Annihilation"
-	CursedPagePlural = "Pages of Annihilation"
-	CursedPageDesc = "Scraps of brimstone books with incomphrehensible runes carved into them. Merely looking at it makes your eyes burn. it definetly is'nt friendly to your ship parts.\nObtained by defeating <good>\"[IMPERIUM BOSS NAME]\"</good> or cursed with the Annihilation Brimstone Altar \"Factory\", which requives both Pages of Annihilation and <good>Divine Cores.</good>"\
-	"\n<gray><s10>Who let Calamitas make a ship?</s10></gray>\n<s14><color r='80' g='80' b='220' a='255'>Based on Calamity Mod for Tmodloader.</color></s14>"
-	
-	Zetasphere = "Zetasphere"
-	ZetaspherePlural = "Zetaspheres"
-	ZetasphereDesc = "Brimming with potential energy. Incredibly Dense matter. May be dropped from Hyperoid Guardians under rare circustances.  "
 }
 Missions
 {
 	ClearHyperoid = "Clear Hyperoid Field"
 	ClearHyperoidDesc = "Many mining agencies are struggling to tackle on strange enemies guarding a giant \"Hyperoid\" asteroid, Which is likely full of resources. The {faction_name} alongside the mining companies have posted a bounty of {money} to be paid to any Cosmoteer that can clear the local area from these threats."
-	DefeatBossJani = "Defeat \"{target_ship}\" Boss"
-	DefeatBossJaniDesc = "There is Massive <b>{target_ship}</b> class \"Boss\" ship in the {mission_location} system terrorizing local ships. The {faction_name} have posted a bounty of {money} to be paid to any Cosmoteer that can eliminate it. Rumours state that the material the ship is built from is highly valuable and technologically advanced, and it may be highly useful to you to progress further."
 }
 Objectives
 {
 	DestroyGuardians = "Eliminate Guardians"
-	DefeatBossJani = "Defeat {0} Boss"
 }
 Inputs
 {
@@ -1295,11 +1137,6 @@ Inputs
 		
 		resource_goldium = "Choose Goldium"
 		resource_goldium_new = "Choose Goldium (2)"
-		resource_cuttristeel = "Choose Tri-\u200bSteel Bars"
-		resource_cosmilite = "Choose Cosmilite Bars"
-		resource_astralbar = "Choose Astral Bars"
-		resource_profanedcore = "Choose Divine Cores"
-		resource_cursedpage = "Choose Pages of Annihilation"
 		
 		resource_mod_GA_0 = "Choose Rocket Parts"
 		resource_mod_GA_1 = "Choose Ammo Boxes"
@@ -1484,11 +1321,6 @@ PartToggles
 	//resource_goldium = "Goldium"
 	resource_goldium = "Goldium"
 	resource_goldium_new = "Goldium (2)"
-	resource_cuttristeel = "Tri-\u200bSteel Bars"
-	resource_cosmilite = "Cosmilite Bars"
-	resource_astralbar = "Astral Bars"
-	resource_profanedcore = "Divine Cores"
-	resource_cursedpage = "Pages of Annihilation"
 	
 	OverclockInserter_Boost = "Speed Increase Mode"
 	OverclockInserter_Power = "Power Generator Mode"
@@ -1641,7 +1473,6 @@ EditorGroups
 	NormalSlopes = "Roof Normal Map Slopes"
 	Technologies = "Research and Development"
 	Logic = "Logic Parts"
-	BossParts = "Boss Reward Parts"
 }
 Backgrounds
 {
@@ -1693,10 +1524,6 @@ Stats
 	
 	JaniBurstShotsFmt = "<white>Shots per Burst:</white> <good>{0:0}</good> <gray>shots</gray>"
 	DrainTimeFmt = "<white>Power Drain Duration:</white> <good>{0:0}</good><gray>sec</gray>"
-	CursedManaAvailibleFmt = "<white>Total Cursed Mana Alteration:</white> <good>{0:0}</good>"
-	CursedManaProvidedFmt = "<white>Cursed Mana Created:</white> <good>{0:0}</good>"
-	HolyManaAvailibleFmt = "<white>Total Holy Mana Alteration:</white> <good>{0:0}</good>"
-	HolyManaProvidedFmt = "<white>Holy Mana Created:</white> <good>{0:0}</good>"
 	
 	ThrusterLogicNotes = "<b>Logic signal inputs:</b>\n"\
 	"<white>Signal A:</white> <good>Thruster activation</good>\n"\
@@ -1781,12 +1608,6 @@ Codex
 }
 Tutorials
 {
-	Bossfights
-	{	
-		BetaWarning1Title = "Bossfights (BETA README PLZ)"
-		BetaWarning1 = "Bosses have specific destruction patterns you are supposed to follow, if needed hold ctrl to read descriptions in parts for more information."
-		//BetaWarning1 = "This is the boss i was making. you are intended to destroy the front 6 balls to disable the blue shields and nerf the missile launchers. then you should destroy the orb in the middle to progress to the final part of the fight, where you are intended to destroy the core. Refer to the description of enemy parts for more help, if needed hold ctrl to read them."
-	}
 	Inserters
 	{
 		Title = "Resource Inserters"
@@ -1810,12 +1631,6 @@ Tutorials
 		Info6 = "Parts that use multiple signals will have it on their stats notes (Currenltly, Only thrusters use this)"
 	}
 }
-AI
-{
-	JaniBossAICosmilite = "CSML. Boss AI"
-}
-JaniBossShips = "Bosses and Guardians"
-JaniBossShipsTip = "Boss and Hyperoid Guardian ships that come with Jani's Shipyard."
 JaniMinibossesShips = "Guardians"
 JaniMinibossesShipsTip = "Hyperoid Guardian ships that come with Jani's Shipyard."
 LogicExamplePack = "Example Logic Ships"
@@ -1834,8 +1649,6 @@ BuildBox// Modular Missiles guided towards the right track. thanks
 	"\n\n"
 	CustomCannon_AmmoFmt = "<red><image name='jani_customcannon_ammo' colored='true' /><good>+{0:0}%</good>"\
 	"\n"
-	CursedMana = "Cursed Mana Points"
-	HolyMana = "Holy Mana Points"
 }
 //Misc
 //{
