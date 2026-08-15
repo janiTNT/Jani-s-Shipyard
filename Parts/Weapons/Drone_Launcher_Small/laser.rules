@@ -48,12 +48,12 @@ Components
 		[
 			{
 				Storage = BatteryStorage
-				Quantity = 250
+				Quantity = 500
 				MinQuantityForConversion = 1
 			}
 		]
 		OperationalToggle = CanBuild
-		Interval = 0.375
+		Interval = 0.75
 	}
 	
 	BuildProgress
@@ -68,7 +68,7 @@ Components
 	{
 		Type = PolledValue
 		ValueSource = BuildProgress
-		DefaultValue = 0
+		DefaultValue = 1
 	}
 	Lerp
 	{
