@@ -253,8 +253,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				}
 				{
 					ResourceStorage = MissileStorage
-					ResourcesUsed = 2
-					MinResourcesUsed = 2
+					ResourcesUsed = 4
+					MinResourcesUsed = 4
 				}
 			]
 		}
@@ -277,7 +277,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Sound = "./data/ships/common/sounds/ftl_jump_out.wav"
 					Volume = 0.6
-					Speed = 1
+					Speed = 1.25
 					/*MaxConcurrent = 1
 					MaxConcurrentVolume = 1
 					RampUpTime = .25

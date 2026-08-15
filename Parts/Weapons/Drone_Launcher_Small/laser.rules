@@ -76,7 +76,7 @@ Components
 		Type = ValueLerp
 		InputValue = PolledValue
 		InputRange = [1, 0]
-		OutputRange = [0, 1]
+		OutputRange = [0.15, 0.75]
 		ClampOutput = true
 	}
 
@@ -139,7 +139,8 @@ Components
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = Weapon
+		ShowProgressFor = BuildProgress
+		Invert = true
 	}
 
 	Emitter
@@ -192,11 +193,20 @@ Components
 			}
 		]
 	}
+	CoolingTween
+	{
+		Type = ValueTween
+		OffValue = 1
+		OnValue = 0
+		OnTweenDuration = 0
+		OffTweenDuration = 1
+		IsOnToggle = CanBuild
+	}
 	ColorLevel
 	{
 		Type = ValueColor
 		RedFrom = Lerp
-		GreenFrom = Lerp
+		GreenFrom = CoolingTween
 		BlueFrom = Lerp
 	}
 	DroneBuildSprite
@@ -298,6 +308,13 @@ Components
 		Layer = "indicators"
 		Indicators
 		[
+			// Scorched
+			{
+				Toggle = ScorchedToggle
+				AtlasSprite = &/INDICATORS/Scorched
+				HidesIndicators = [1,2,3,4,5]
+			}
+			
 			// Turned off.
 			{
 				Toggle = PowerToggle
@@ -306,12 +323,34 @@ Components
 					File = &/INDICATORS/PowerOff
 					Size = [1, 1]
 				}
+				HidesIndicators = [2,3,4,5]
+			}
+
+			// Out of power.
+			{
+				Toggle = BatteryStorage
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoPower
+					Size = [1, 1]
+				}
 			}
 
 			// Out of steel.
 			{
 				Toggle = SteelReq
-				Delay = 8
+				Delay = 0.5
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoResource
+					Size = [1, 1]
+				}
+			}
+
+			// Out of circuits.
+			{
+				Toggle = CircuitReq
+				Delay = 0.5
 				AtlasSprite
 				{
 					File = &/INDICATORS/NoResource

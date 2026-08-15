@@ -54,7 +54,7 @@ Components
 			{Toggle = SteelReq}
 			{Toggle = CircuitReq}
 			{Toggle = BatteryStorage}
-			{Toggle = MissileStorage}
+			//{Toggle = MissileStorage}
 			{Toggle = BomberStorage, invert = true}
 		]
 		Mode = All
@@ -83,7 +83,7 @@ Components
 		[
 			{
 				Storage = BatteryStorage
-				Quantity = 750
+				Quantity = 500
 				MinQuantityForConversion = 1
 			}
 		]
@@ -95,7 +95,7 @@ Components
 	{
 		Type = Timer
 		OperationalToggle = CanBuild
-		Duration = 10
+		Duration = 12
 		AutoStart = true
 		StartTrigger = Emitter
 	}
@@ -110,7 +110,7 @@ Components
 		Type = ValueLerp
 		InputValue = PolledValue
 		InputRange = [1, 0]
-		OutputRange = [0, 1]
+		OutputRange = [0.15, 0.75]
 		ClampOutput = true
 	}
 
@@ -127,10 +127,6 @@ Components
 			{
 				Storage = ElectronicCircuitStorage
 				Quantity = 10
-			}
-			{
-				Storage = MissileStorage
-				Quantity = 16
 			}
 		]
 		ToStorage = BomberStorage
@@ -177,7 +173,8 @@ Components
 	{
 		Type = ProgressBar
 		OperationalToggle = IsOperational
-		ShowProgressFor = Weapon
+		ShowProgressFor = BuildProgress
+		Invert = true
 	}
 
 	Emitter
@@ -187,8 +184,17 @@ Components
 		OperationalToggle = IsOperational
 		FireTrigger = Weapon
 		GetTargetFrom = Weapon
-		ResourceStorage = BomberStorage
-		ResourcesUsed = 1
+		ResourceUsage
+		[
+			{
+				ResourceStorage = BomberStorage
+				ResourcesUsed = 1
+			}
+			{
+				ResourceStorage  = MissileStorage
+				ResourcesUsed = 16
+			}
+		]
 		//Bullet = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>
 		Bullet = &<shots/bomber/bomber1.rules>
 		TargetLeadPrediction = false
@@ -230,11 +236,20 @@ Components
 			}
 		]
 	}
+	CoolingTween
+	{
+		Type = ValueTween
+		OffValue = 1
+		OnValue = 0
+		OnTweenDuration = 0
+		OffTweenDuration = 1
+		IsOnToggle = CanBuild
+	}
 	ColorLevel
 	{
 		Type = ValueColor
 		RedFrom = Lerp
-		GreenFrom = Lerp
+		GreenFrom = CoolingTween
 		BlueFrom = Lerp
 	}
 	DroneBuildSprite
@@ -336,6 +351,13 @@ Components
 		Layer = "indicators"
 		Indicators
 		[
+			// Scorched
+			{
+				Toggle = ScorchedToggle
+				AtlasSprite = &/INDICATORS/Scorched
+				HidesIndicators = [1,2,3,4,5]
+			}
+			
 			// Turned off.
 			{
 				Toggle = PowerToggle
@@ -344,15 +366,48 @@ Components
 					File = &/INDICATORS/PowerOff
 					Size = [1, 1]
 				}
+				HidesIndicators = [2,3,4,5]
+			}
+
+			// Out of power.
+			{
+				Toggle = BatteryStorage
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoPower
+					Size = [1, 1]
+				}
 			}
 
 			// Out of steel.
 			{
 				Toggle = SteelReq
-				Delay = 8
+				Delay = 0.5
 				AtlasSprite
 				{
 					File = &/INDICATORS/NoResource
+					Size = [1, 1]
+				}
+			}
+
+			// Out of circuits.
+			{
+				Toggle = CircuitReq
+				Delay = 0.5
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoResource
+					Size = [1, 1]
+				}
+			}
+
+			// Out of missiles.
+			{
+				Toggle = MissileStorage
+				Delay = &~/Components/BuildProgress/Duration
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoMissiles
 					Size = [1, 1]
 				}
 			}

@@ -94,10 +94,10 @@ Components
 	Homing
 	{
 		Type = TargetHoming
-		TurnVelocity = 180d
+		TurnVelocity = 120d
 		Delay = .75
 		TargetLeadPrediction = false
-		VelocityCompensation = 20%
+		VelocityCompensation = 25%
 		AvoidanceRaycastDistance = 100		
 	}
 	
@@ -139,7 +139,7 @@ Components
 		Range = 190
 		DetectsShips = true
 		DetectsBullets = false
-		StartDelay = 3
+		StartDelay = 5
 		FactorEffectsWith = Targetable
 		
 		OnDeath

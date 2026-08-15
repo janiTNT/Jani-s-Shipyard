@@ -238,7 +238,7 @@ HitNothing
 		{
 			Sound = "./data/ships/common/sounds/ftl_jump_in.wav"
 			Volume = 0.6
-			Speed = 1
+			Speed = 1.25
 			/*MaxConcurrent = 1
 			MaxConcurrentVolume = 1
 			RampUpTime = .25
@@ -258,7 +258,7 @@ HitStructural
 		{
 			Type = ExplosiveDamage
 			TotalDamage = 8000
-			Radius = 3
+			Radius = 4
 			ImpulsePerNDamage = 1
 			NDamage = 500
 			Filter

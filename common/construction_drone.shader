@@ -32,8 +32,8 @@ PIX_OUTPUT pix(in VERT_OUTPUT_CONSTRUCTION input) : SV_TARGET
 	inverseMask = ceil(1 - inverseMask);
 
 	hotEdge = saturate(inverseMask * mask * hotEdge);
-	//float heatFade = 1 - saturate((_gameTime - input.color.g) * 2);
-	//hotEdge = hotEdge * heatFade;
+	float heatFade = 1 - saturate((input.color.g) * 2);
+	hotEdge = hotEdge * heatFade;
 
 	float3 addColor = lerp(_coldColor.rgb, _hotColor.rgb, hotEdge) * hotEdge;
 	col.a = mask;

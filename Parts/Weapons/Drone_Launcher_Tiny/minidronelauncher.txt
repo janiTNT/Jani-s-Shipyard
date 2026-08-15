@@ -163,7 +163,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceStorage
 					OperationalToggle = IsOperational
 					ResourceType = fake
-					MaxResources = 2
+					MaxResources = 1
 					DelayBeforeReadyToUse = 0.5
 					//DropResourcesWhenDestroyed = true
 					//DropResourcesWhenRemoved = true
@@ -178,6 +178,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						{Toggle = IsOperational}
 						{Toggle = SteelReq}
 						{Toggle = CircuitReq}
+						{Toggle = BatteryStorage}
 						{Toggle = Mk1Storage, invert = true}
 					]
 					Mode = All
@@ -198,45 +199,51 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ToggleOnResources = 4
 					ToggleOffResources = 3
 				}
-		
-				BuildConverter
+				
+				BuildingPowerDrain
 				{
 					Type = ResourceConverter
 					From
 					[
 						{
 							Storage = BatteryStorage
-							Quantity = 6
+							Quantity = 100
 							MinQuantityForConversion = 1
 						}
 					]
 					OperationalToggle = CanBuild
-					ToStorage = BuildStorage
-					ToQuantity = 1
-					Interval = 6 / 16
+					Interval = 0.75
 				}
 				
-				BuildStorage
+				BuildProgress
 				{
-					Type = ResourceStorage
-					ResourceType = fake
-					MaxResources = 16
-					DelayBeforeReadyToUse = 0
-					StartingResources = 0
-					InitToMaxResources = 0
-					InitToMaxResourcesPVP = 0
+					Type = Timer
+					OperationalToggle = CanBuild
+					Duration = 6
+					AutoStart = true
+					StartTrigger = Emitter
+				}
+				PolledValue
+				{
+					Type = PolledValue
+					ValueSource = BuildProgress
+					DefaultValue = 1
+				}
+				Lerp
+				{
+					Type = ValueLerp
+					InputValue = PolledValue
+					InputRange = [1, 0]
+					OutputRange = [0.15, 0.75]
+					ClampOutput = true
 				}
 				
 				BuiltConverter
 				{
 					Type = ResourceConverter
-					OperationalToggle = CanBuild
+					OperationalToggle = BuildProgress
 					From
 					[
-						{
-							Storage = BuildStorage
-							Quantity = 16
-						}
 						{
 							Storage = SteelStorage
 							Quantity = 2
@@ -247,7 +254,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					ToStorage = Mk1Storage
-					ToQuantity = 2
+					ToQuantity = 1
 					Interval = .15
 				}
 				ConvertEffects
@@ -297,7 +304,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ProgressBar
 					OperationalToggle = IsOperational
-					ShowProgressFor = Weapon
+					ShowProgressFor = BuildProgress
+					Invert = true
 				}
 
 				Emitter
@@ -308,7 +316,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					FireTrigger = Weapon
 					GetTargetFrom = Weapon
 					ResourceStorage = Mk1Storage
-					ResourcesUsed = 2
+					ResourcesUsed = 1
 					Bullet = &<projectiles/combat1/combat1.txt>
 					TargetLeadPrediction = false
 					Recoil = 15
@@ -349,86 +357,42 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 				}
+				CoolingTween
+				{
+					Type = ValueTween
+					OffValue = 1
+					OnValue = 0
+					OnTweenDuration = 0
+					OffTweenDuration = 1
+					IsOnToggle = CanBuild
+				}
+				ColorLevel
+				{
+					Type = ValueColor
+					RedFrom = Lerp
+					GreenFrom = CoolingTween
+					BlueFrom = Lerp
+				}
 				DroneBuildSprite
 				{
-					Type = ResourceSprites
+					Type = Graphics
 					Location = [.5, .5]
 					Rotation = -90d
-					ResourceStorage = BuildStorage
-					Layer = "drone_construction"
-					ResourceLevels
-					[
-						{
-							File = "Onemask.png"
-							NormalsFile = "One_n1.png"
-							Size = [1, 1]
-							VertexColor = [0, 0, 0, 255]
-						}
-						: &0
-						{VertexColor = [8, 8, 8, 255];}
-						: &0
-						{VertexColor = [16, 16, 16, 255];}
-						: &0
-						{VertexColor = [24, 24, 24, 255];}
-						: &0
-						{VertexColor = [32, 32, 32, 255];}
-						: &0
-						{VertexColor = [40, 40, 40, 255];}
-						: &0
-						{VertexColor = [48, 48, 48, 255];}
-						: &0
-						{VertexColor = [56, 56, 56, 255];}
-						: &0
-						{VertexColor = [64, 64, 64, 255];}
-						: &0
-						{VertexColor = [72, 72, 72, 255];}
-						: &0
-						{VertexColor = [80, 80, 80, 255];}
-						: &0
-						{VertexColor = [88, 88, 88, 255];}
-						: &0
-						{VertexColor = [96, 96, 96, 255];}
-						: &0
-						{VertexColor = [104, 104, 104, 255];}
-						: &0
-						{VertexColor = [112, 112, 112, 255];}
-						: &0
-						{VertexColor = [120, 120, 120, 255];}
-						: &0
-						{VertexColor = [128, 128, 128, 255];}
-						: &0
-						{VertexColor = [136, 136, 136, 255];}
-						: &0
-						{VertexColor = [144, 144, 144, 255];}
-						: &0
-						{VertexColor = [152, 152, 152, 255];}
-						: &0
-						{VertexColor = [160, 160, 160, 255];}
-						: &0
-						{VertexColor = [168, 168, 168, 255];}
-						: &0
-						{VertexColor = [176, 176, 176, 255];}
-						: &0
-						{VertexColor = [184, 184, 184, 255];}
-						: &0
-						{VertexColor = [192, 192, 192, 255];}
-						: &0
-						{VertexColor = [200, 200, 200, 255];}
-						: &0
-						{VertexColor = [208, 208, 208, 255];}
-						: &0
-						{VertexColor = [216, 216, 216, 255];}
-						: &0
-						{VertexColor = [224, 224, 224, 255];}
-						: &0
-						{VertexColor = [232, 232, 232, 255];}
-						: &0
-						{VertexColor = [240, 240, 240, 255];}
-						: &0
-						{VertexColor = [248, 248, 248, 255];}
-						: &0
-						{VertexColor = [256, 256, 256, 255] ;}
-					]
+					OperationalToggle = Mk1Storage
+					InvertOperationalToggle = true
+					GetColorFrom = ColorLevel
+					OperationalDoodad
+					{
+						Layer = "drone_construction"
+						DamageLevels
+						[
+							{
+								File = "Onemask.png"
+								NormalsFile = "One_n1.png"
+								Size = [1, 1]
+							}
+						]
+					}
 				}
 				HatchSprites
 				{
@@ -457,6 +421,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Layer = "indicators"
 					Indicators
 					[
+						// Scorched
+						{
+							Toggle = ScorchedToggle
+							AtlasSprite = &/INDICATORS/Scorched
+							HidesIndicators = [1,2,3,4,5]
+						}
+						
 						// Turned off.
 						{
 							Toggle = PowerToggle
@@ -465,12 +436,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 								File = &/INDICATORS/PowerOff
 								Size = [1, 1]
 							}
+							HidesIndicators = [2,3,4,5]
+						}
+
+						// Out of power.
+						{
+							Toggle = BatteryStorage
+							AtlasSprite
+							{
+								File = &/INDICATORS/NoPower
+								Size = [1, 1]
+							}
 						}
 
 						// Out of steel.
 						{
 							Toggle = SteelReq
-							Delay = 6
+							Delay = 0.5
+							AtlasSprite
+							{
+								File = &/INDICATORS/NoResource
+								Size = [1, 1]
+							}
+						}
+
+						// Out of circuits.
+						{
+							Toggle = CircuitReq
+							Delay = 0.5
 							AtlasSprite
 							{
 								File = &/INDICATORS/NoResource
@@ -510,7 +503,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Type = ResourceStorage
 					OperationalToggle = IsOperational
 					ResourceType = fake
-					MaxResources = 4
+					MaxResources = 1
 					DelayBeforeReadyToUse = 0.5
 					//DropResourcesWhenDestroyed = true
 					//DropResourcesWhenRemoved = true
@@ -525,6 +518,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						{Toggle = IsOperational}
 						{Toggle = SteelReq}
 						{Toggle = CircuitReq}
+						{Toggle = BatteryStorage}
 						{Toggle = Mk2Storage, invert = true}
 					]
 					Mode = All
@@ -546,7 +540,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ToggleOffResources = 7
 				}
 		
-				BuildConverter
+				BuildingPowerDrain
 				{
 					Type = ResourceConverter
 					From
@@ -558,32 +552,38 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					OperationalToggle = CanBuild
-					ToStorage = BuildStorage
-					ToQuantity = 1
-					Interval = 8 / 16
+					Interval = 0.5
 				}
 				
-				BuildStorage
+				BuildProgress
 				{
-					Type = ResourceStorage
-					ResourceType = fake
-					MaxResources = 16
-					DelayBeforeReadyToUse = 0
-					StartingResources = 0
-					InitToMaxResources = 0
-					InitToMaxResourcesPVP = 0
+					Type = Timer
+					OperationalToggle = CanBuild
+					Duration = 8
+					AutoStart = true
+					StartTrigger = Emitter
+				}
+				PolledValue
+				{
+					Type = PolledValue
+					ValueSource = BuildProgress
+					DefaultValue = 1
+				}
+				Lerp
+				{
+					Type = ValueLerp
+					InputValue = PolledValue
+					InputRange = [1, 0]
+					OutputRange = [0.15, 0.75]
+					ClampOutput = true
 				}
 				
 				BuiltConverter
 				{
 					Type = ResourceConverter
-					OperationalToggle = CanBuild
+					OperationalToggle = BuildProgress
 					From
 					[
-						{
-							Storage = BuildStorage
-							Quantity = 16
-						}
 						{
 							Storage = SteelStorage
 							Quantity = 4
@@ -594,7 +594,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 					ToStorage = Mk2Storage
-					ToQuantity = 4
+					ToQuantity = 1
 					Interval = .15
 				}
 				ConvertEffects
@@ -644,7 +644,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ProgressBar
 					OperationalToggle = IsOperational
-					ShowProgressFor = Weapon
+					ShowProgressFor = BuildProgress
+					Invert = true
 				}
 
 				Emitter
@@ -655,7 +656,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					FireTrigger = Weapon
 					GetTargetFrom = Weapon
 					ResourceStorage = Mk2Storage
-					ResourcesUsed = 4
+					ResourcesUsed = 1
 					Bullet = &<projectiles/combat2/two1.rules>
 					TargetLeadPrediction = false
 					Recoil = 20
@@ -696,107 +697,42 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 				}
-				/*DroneBuildSprite
+				CoolingTween
 				{
-					Type = ResourceSprites
-					Location = [.5, .5]
-					Rotation = -90d
-					ResourceStorage = BuildStorage
-					Layer = "weapons"
-					ResourceLevels
-					[
-						{
-							File = "Two0.png"
-							NormalsFile = "Two_n0.png"
-							Size = [1, 1]
-						}
-						{
-							File = "Two1.png"
-							NormalsFile = "Two_n1.png"
-							Size = [1, 1]
-						}
-					]
-				}*/
+					Type = ValueTween
+					OffValue = 1
+					OnValue = 0
+					OnTweenDuration = 0
+					OffTweenDuration = 1
+					IsOnToggle = CanBuild
+				}
+				ColorLevel
+				{
+					Type = ValueColor
+					RedFrom = Lerp
+					GreenFrom = CoolingTween
+					BlueFrom = Lerp
+				}
 				DroneBuildSprite
 				{
-					Type = ResourceSprites
+					Type = Graphics
 					Location = [.5, .5]
 					Rotation = -90d
-					ResourceStorage = BuildStorage
-					Layer = "drone_construction"
-					ResourceLevels
-					[
-						{
-							File = "Twomask.png"
-							NormalsFile = "Two_n2.png"
-							Size = [1, 1]
-							VertexColor = [0, 0, 0, 255]
-						}
-						: &0
-						{VertexColor = [8, 8, 8, 255];}
-						: &0
-						{VertexColor = [16, 16, 16, 255];}
-						: &0
-						{VertexColor = [24, 24, 24, 255];}
-						: &0
-						{VertexColor = [32, 32, 32, 255];}
-						: &0
-						{VertexColor = [40, 40, 40, 255];}
-						: &0
-						{VertexColor = [48, 48, 48, 255];}
-						: &0
-						{VertexColor = [56, 56, 56, 255];}
-						: &0
-						{VertexColor = [64, 64, 64, 255];}
-						: &0
-						{VertexColor = [72, 72, 72, 255];}
-						: &0
-						{VertexColor = [80, 80, 80, 255];}
-						: &0
-						{VertexColor = [88, 88, 88, 255];}
-						: &0
-						{VertexColor = [96, 96, 96, 255];}
-						: &0
-						{VertexColor = [104, 104, 104, 255];}
-						: &0
-						{VertexColor = [112, 112, 112, 255];}
-						: &0
-						{VertexColor = [120, 120, 120, 255];}
-						: &0
-						{VertexColor = [128, 128, 128, 255];}
-						: &0
-						{VertexColor = [136, 136, 136, 255];}
-						: &0
-						{VertexColor = [144, 144, 144, 255];}
-						: &0
-						{VertexColor = [152, 152, 152, 255];}
-						: &0
-						{VertexColor = [160, 160, 160, 255];}
-						: &0
-						{VertexColor = [168, 168, 168, 255];}
-						: &0
-						{VertexColor = [176, 176, 176, 255];}
-						: &0
-						{VertexColor = [184, 184, 184, 255];}
-						: &0
-						{VertexColor = [192, 192, 192, 255];}
-						: &0
-						{VertexColor = [200, 200, 200, 255];}
-						: &0
-						{VertexColor = [208, 208, 208, 255];}
-						: &0
-						{VertexColor = [216, 216, 216, 255];}
-						: &0
-						{VertexColor = [224, 224, 224, 255];}
-						: &0
-						{VertexColor = [232, 232, 232, 255];}
-						: &0
-						{VertexColor = [240, 240, 240, 255];}
-						: &0
-						{VertexColor = [248, 248, 248, 255];}
-						: &0
-						{VertexColor = [256, 256, 256, 255] ;}
-					]
+					OperationalToggle = Mk2Storage
+					InvertOperationalToggle = true
+					GetColorFrom = ColorLevel
+					OperationalDoodad
+					{
+						Layer = "drone_construction"
+						DamageLevels
+						[
+							{
+								File = "Twomask.png"
+								NormalsFile = "Two_n2.png"
+								Size = [1, 1]
+							}
+						]
+					}
 				}
 				HatchSprites
 				{
@@ -824,6 +760,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Layer = "indicators"
 					Indicators
 					[
+						// Scorched
+						{
+							Toggle = ScorchedToggle
+							AtlasSprite = &/INDICATORS/Scorched
+							HidesIndicators = [1,2,3,4,5]
+						}
+						
 						// Turned off.
 						{
 							Toggle = PowerToggle
@@ -832,12 +775,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 								File = &/INDICATORS/PowerOff
 								Size = [1, 1]
 							}
+							HidesIndicators = [2,3,4,5]
+						}
+
+						// Out of power.
+						{
+							Toggle = BatteryStorage
+							AtlasSprite
+							{
+								File = &/INDICATORS/NoPower
+								Size = [1, 1]
+							}
 						}
 
 						// Out of steel.
 						{
 							Toggle = SteelReq
-							Delay = 8
+							Delay = 0.5
+							AtlasSprite
+							{
+								File = &/INDICATORS/NoResource
+								Size = [1, 1]
+							}
+						}
+
+						// Out of circuits.
+						{
+							Toggle = CircuitReq
+							Delay = 0.5
 							AtlasSprite
 							{
 								File = &/INDICATORS/NoResource
@@ -1047,7 +1012,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ProgressBar
 					OperationalToggle = IsOperational
-					ShowProgressFor = Weapon
+					ShowProgressFor = BuildProgress
+					Invert = true
 				}
 
 				Emitter
@@ -1317,6 +1283,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						{Toggle = IsOperational}
 						{Toggle = SteelReq}
 						{Toggle = CircuitReq}
+						{Toggle = BatteryStorage}
 						{Toggle = SparkerStorage, invert = true}
 					]
 					Mode = All
@@ -1338,44 +1305,50 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					ToggleOffResources = 1
 				}
 		
-				BuildConverter
+				BuildingPowerDrain
 				{
 					Type = ResourceConverter
 					From
 					[
 						{
 							Storage = BatteryStorage
-							Quantity = 200
+							Quantity = 100
 							MinQuantityForConversion = 1
 						}
 					]
 					OperationalToggle = CanBuild
-					ToStorage = BuildStorage
-					ToQuantity = 1
-					Interval = 2.5 / 10
+					Interval = 0.5
 				}
 				
-				BuildStorage
+				BuildProgress
 				{
-					Type = ResourceStorage
-					ResourceType = fake
-					MaxResources = 10
-					DelayBeforeReadyToUse = 0
-					StartingResources = 0
-					InitToMaxResources = 0
-					InitToMaxResourcesPVP = 0
+					Type = Timer
+					OperationalToggle = CanBuild
+					Duration = 2.5
+					AutoStart = true
+					StartTrigger = Emitter
+				}
+				PolledValue
+				{
+					Type = PolledValue
+					ValueSource = BuildProgress
+					DefaultValue = 1
+				}
+				Lerp
+				{
+					Type = ValueLerp
+					InputValue = PolledValue
+					InputRange = [1, 0]
+					OutputRange = [0.15, 0.75]
+					ClampOutput = true
 				}
 				
 				BuiltConverter
 				{
 					Type = ResourceConverter
-					OperationalToggle = CanBuild
+					OperationalToggle = BuildProgress
 					From
 					[
-						{
-							Storage = BuildStorage
-							Quantity = 10
-						}
 						{
 							Storage = SteelStorage
 							Quantity = 1
@@ -1436,7 +1409,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = ProgressBar
 					OperationalToggle = IsOperational
-					ShowProgressFor = Weapon
+					ShowProgressFor = BuildProgress
+					Invert = true
 				}
 
 				Emitter
@@ -1488,86 +1462,42 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						}
 					]
 				}
+				CoolingTween
+				{
+					Type = ValueTween
+					OffValue = 1
+					OnValue = 0
+					OnTweenDuration = 0
+					OffTweenDuration = 1
+					IsOnToggle = CanBuild
+				}
+				ColorLevel
+				{
+					Type = ValueColor
+					RedFrom = Lerp
+					GreenFrom = CoolingTween
+					BlueFrom = Lerp
+				}
 				DroneBuildSprite
 				{
-					Type = ResourceSprites
+					Type = Graphics
 					Location = [.5, .5]
 					Rotation = -90d
-					ResourceStorage = BuildStorage
-					Layer = "drone_construction"
-					ResourceLevels
-					[
-						{
-							File = "sparkerMask.png"
-							NormalsFile = "sparker_n.png"
-							Size = [1, 1]
-							VertexColor = [0, 0, 0, 255]
-						}
-						: &0
-						{VertexColor = [8, 8, 8, 255];}
-						: &0
-						{VertexColor = [16, 16, 16, 255];}
-						: &0
-						{VertexColor = [24, 24, 24, 255];}
-						: &0
-						{VertexColor = [32, 32, 32, 255];}
-						: &0
-						{VertexColor = [40, 40, 40, 255];}
-						: &0
-						{VertexColor = [48, 48, 48, 255];}
-						: &0
-						{VertexColor = [56, 56, 56, 255];}
-						: &0
-						{VertexColor = [64, 64, 64, 255];}
-						: &0
-						{VertexColor = [72, 72, 72, 255];}
-						: &0
-						{VertexColor = [80, 80, 80, 255];}
-						: &0
-						{VertexColor = [88, 88, 88, 255];}
-						: &0
-						{VertexColor = [96, 96, 96, 255];}
-						: &0
-						{VertexColor = [104, 104, 104, 255];}
-						: &0
-						{VertexColor = [112, 112, 112, 255];}
-						: &0
-						{VertexColor = [120, 120, 120, 255];}
-						: &0
-						{VertexColor = [128, 128, 128, 255];}
-						: &0
-						{VertexColor = [136, 136, 136, 255];}
-						: &0
-						{VertexColor = [144, 144, 144, 255];}
-						: &0
-						{VertexColor = [152, 152, 152, 255];}
-						: &0
-						{VertexColor = [160, 160, 160, 255];}
-						: &0
-						{VertexColor = [168, 168, 168, 255];}
-						: &0
-						{VertexColor = [176, 176, 176, 255];}
-						: &0
-						{VertexColor = [184, 184, 184, 255];}
-						: &0
-						{VertexColor = [192, 192, 192, 255];}
-						: &0
-						{VertexColor = [200, 200, 200, 255];}
-						: &0
-						{VertexColor = [208, 208, 208, 255];}
-						: &0
-						{VertexColor = [216, 216, 216, 255];}
-						: &0
-						{VertexColor = [224, 224, 224, 255];}
-						: &0
-						{VertexColor = [232, 232, 232, 255];}
-						: &0
-						{VertexColor = [240, 240, 240, 255];}
-						: &0
-						{VertexColor = [248, 248, 248, 255];}
-						: &0
-						{VertexColor = [256, 256, 256, 255] ;}
-					]
+					OperationalToggle = SparkerStorage
+					InvertOperationalToggle = true
+					GetColorFrom = ColorLevel
+					OperationalDoodad
+					{
+						Layer = "drone_construction"
+						DamageLevels
+						[
+							{
+								File = "Sparkermask.png"
+								NormalsFile = "sparker_n.png"
+								Size = [1, 1]
+							}
+						]
+					}
 				}
 				
 				HatchSprites
@@ -1596,6 +1526,13 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Layer = "indicators"
 					Indicators
 					[
+						// Scorched
+						{
+							Toggle = ScorchedToggle
+							AtlasSprite = &/INDICATORS/Scorched
+							HidesIndicators = [1,2,3,4,5]
+						}
+						
 						// Turned off.
 						{
 							Toggle = PowerToggle
@@ -1604,12 +1541,34 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 								File = &/INDICATORS/PowerOff
 								Size = [1, 1]
 							}
+							HidesIndicators = [2,3,4,5]
+						}
+
+						// Out of power.
+						{
+							Toggle = BatteryStorage
+							AtlasSprite
+							{
+								File = &/INDICATORS/NoPower
+								Size = [1, 1]
+							}
 						}
 
 						// Out of steel.
 						{
 							Toggle = SteelReq
-							Delay = 2.5
+							Delay = 0.5
+							AtlasSprite
+							{
+								File = &/INDICATORS/NoResource
+								Size = [1, 1]
+							}
+						}
+
+						// Out of circuits.
+						{
+							Toggle = CircuitReq
+							Delay = 0.5
 							AtlasSprite
 							{
 								File = &/INDICATORS/NoResource
@@ -1634,7 +1593,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		BuildConverterProxy
 		{
 			Type = ToggleProxy
-			ComponentID = BuildConverter
+			ComponentID = CanBuild
 		}
 		
 		BuildingGraphics

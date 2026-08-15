@@ -26,8 +26,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = { BaseValue = 20000; EffectScaleExponent = 1 }
-					Radius = 3
+					TotalDamage = { BaseValue = 25000; EffectScaleExponent = 1 }
+					Radius = 4
 					ImpulsePerNDamage = 10
 					NDamage = 500
 					Filter
@@ -40,7 +40,7 @@ Components
 				{
 					Type = ExplosiveDamage
 					TotalDamage = 8000
-					Radius = 3
+					Radius = 4
 					ImpulsePerNDamage = 1
 					NDamage = 500
 					Filter
@@ -78,6 +78,7 @@ Components
 				}
 			]
 		}
+
 	}
 
 	Sprite
@@ -143,6 +144,9 @@ Components
 		HitOperational = &../DeathByLifetime/OnDeath
 		HitStructural = &HitOperational
 
-		HitFriendly = &HitOperational
+		HitFriendly  
+		{
+			MediaEffects = &../HitOperational/MediaEffects
+		}
 	}
 }

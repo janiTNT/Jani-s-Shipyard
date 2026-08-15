@@ -89,7 +89,7 @@ Components
 		TurnVelocity = 110d
 		Delay = .3
 		TargetLeadPrediction = false
-		VelocityCompensation = 20%
+		VelocityCompensation = 25%
 		AvoidanceRaycastDistance = 100	
 	}
 	
