@@ -6,7 +6,7 @@ Components
 		OperationalToggle = IsOperational
 		ResourceType = fake
 		MaxResources = 1
-		DelayBeforeReadyToUse = 0.5
+		//DelayBeforeReadyToUse = 0.5
 		//DropResourcesWhenDestroyed = true
 		//DropResourcesWhenRemoved = true
 		InitToMaxResources = 0
@@ -368,5 +368,25 @@ Components
 				}
 			}
 		]
+	}
+}
+
+Stats
+{
+	NameKey = "StatCategories/Laser_Cannon_Drone"
+	Stats
+	{
+		DroneConstructionTime = &~/Components/BuildProgress/Duration
+		/* DamagePerSecond = (&DamagePerShot) * (&ROF)
+		Damage = [&../DamagePerShot, &../DamagePerSecond]
+		ROF = 1 / (&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration)
+		Range = &~/EMITTER_BASE/Bullet/Range
+		Arc = deg(&~/Part/Components/Turret/FiringArc)
+		TurretSpeed = deg(&~/Part/Components/Turret/RotateSpeed)
+		ShotSpeed = &~/EMITTER_BASE/Bullet/Speed
+		ShotHP = &~/EMITTER_BASE/Bullet/Components/Targetable/Health
+		PowerPerShot = (&~/EMITTER_BASE/ResourcesUsed) / 1000
+		PowerPerSecond = (&PowerPerShot) * (&ROF)
+		ShotPowerUsage = [&../PowerPerShot, &../PowerPerSecond] */
 	}
 }

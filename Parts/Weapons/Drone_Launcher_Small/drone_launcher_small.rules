@@ -517,6 +517,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		//RecCrew = (&CrewRequired) + (&<he/missile_launcher_he.rules>/MissileStats/Stats/ROF) * (&<he/missile_launcher_he.rules>/MissileStats/Stats/MissileParts) * 4
 		//RecCrew = (&CrewRequired) + 0.16 * 1.2 * 4
 	}
+	
+	
+	StatsByCategory
+	[
+		&<laser.rules>/Stats
+	]
 
 	StatsNotesKey = "Stats/DroneLauncherNotes"
 }

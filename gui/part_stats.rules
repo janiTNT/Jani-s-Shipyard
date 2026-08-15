@@ -14,6 +14,20 @@ PartStats
 		FormatKey = "Stats/HullDamageJFmt"
 	}
 	
+	
+	{
+		ID = DroneConstructionTime
+		FormatKey = "Stats/DroneConstructionTimeFmt"
+	}
+	{
+		ID = DroneElectronicCircuitUse
+		FormatKey = "Stats/DroneElectronicCircuitUseFmt"
+	}
+	{
+		ID = DroneSteelUse
+		FormatKey = "Stats/DroneSteelUseFmt"
+	}
+	
 	{
 		ID = InserterSwingSpeed
 		FormatKey = "Stats/InserterSwingSpeedFmt"

@@ -1487,6 +1487,10 @@ Stats
 	HullDamageJFmt = "<white>Dmg vs Hull:</white> <good>{0:n0}</good><gray>/shot (</gray><good>{1:n0}</good><gray>/sec)</gray>"
 	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	
+	DroneConstructionTimeFmt = "<white>Production Time:</white> <good>{0:n0}</good>"
+	DroneElectronicCircuitUseFmt = "<white>Electronic Circuit Use:</white> <good>{0:0.###}</good><gray>/Drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	DroneSteelUseFmt = "<white>Steel Use:</white> <good>{0:0.###}</good><gray>/Drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	
 	InserterHandSizeFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Hand</good><gray>)</gray>"
 	InserterHandSizeStacksFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Stack</good><gray>)</gray>"
 	InserterSwingSpeedFmt = "<white>Swing Speed:</white> <good>{0:0.##}</good><gray> secs (</gray><good>{1:0.###}</good> <gray>transfers/sec)</gray>"
