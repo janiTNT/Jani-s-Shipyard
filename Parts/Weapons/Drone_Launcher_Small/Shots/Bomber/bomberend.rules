@@ -1,0 +1,16 @@
+ID = "janiTNT.smallbomberdrone.end"
+Range = &<basebomber.rules>/Range
+IdealRange = &<basebomber.rules>/IdealRange
+Speed = &<basebomber.rules>/Speed
+
+Components : &<basebomber.rules>/Components
+{
+	DeathByEnemyProximity : &<basebomber.rules>/Components/DeathByEnemyProximity
+	{
+		OnDeath : &<basebomber.rules>/Components/DeathByEnemyProximity/OnDeath
+		{
+			HitEffects = &<basebomber.rules>/Components/DeathByEnemyProximity/OnDeath/HitEffects
+			MediaEffects = &<basebomber.rules>/Components/Targetable/OnDeath/MediaEffects
+		}
+	}
+}

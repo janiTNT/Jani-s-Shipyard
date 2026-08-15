@@ -163,7 +163,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			ToggleID = "smalldronetype"
 			Default = 0
 			AlwaysAllowInBuildMode = true
-			AvailableChoices = [0]
+			AvailableChoices = [0, 1]
 		}
 
 		LaserToggle
@@ -180,18 +180,18 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Components = &<laser.rules>/Components
 		}
 
-		CannonToggle
+		BomberToggle
 		{
 			Type = ModeToggle
 			Mode = DroneType
 			OnMode = 1
 		}
-		CannonComponents
+		BomberComponents
 		{
 			Type = ToggledComponents
-			Toggle = CannonToggle
+			Toggle = BomberToggle
 			IncludeInBlueprints = true
-			Components = &<cannon.rules>/Components
+			Components = &<bomber.rules>/Components
 		}
 		
 		EletroCannonToggle

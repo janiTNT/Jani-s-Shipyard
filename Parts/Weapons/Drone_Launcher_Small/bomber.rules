@@ -1,0 +1,370 @@
+Components
+{
+	BomberStorage
+	{
+		Type = ResourceStorage
+		OperationalToggle = IsOperational
+		ResourceType = fake
+		MaxResources = 1
+		DelayBeforeReadyToUse = 0.5
+		//DropResourcesWhenDestroyed = true
+		//DropResourcesWhenRemoved = true
+		InitToMaxResources = 0
+	}
+	
+	MissileStorage
+	{
+		Type = ResourceStorage
+		ResourceType = missile_part_he
+		MaxResources = 20
+		ToggleOnResources = 10
+		ToggleOffResources = 9
+		DelayBeforeReadyToUse = .5
+		DropResourcesWhenDestroyed = true
+		DropResourcesWhenRemoved = true
+		ReceiveResourceMediaEffects = &/COMMON_EFFECTS/MissileLoad
+		UITileRect = [.5 + 7/64, 2.5 + 7/64, 1 - 14/64, 1 - 14/64]
+	}
+	
+	MissileConsumer
+	{
+		Type = ResourceConsumer
+		ResourceType = missile_part_he
+		Storage = MissileStorage
+		DefaultPriority = &/PRIORITIES/Weapon_Supply
+		OperationalToggle = PowerToggle
+		ConsumptionToggleButtonOffset = [0, -.4]
+	}
+	
+	TrueHEMissileStorage
+	{
+		Type = MultiResourceStorage
+		ResourceType = missile_part_he
+		ResourceStorages = [MissileStorage]
+		AddMode = PrioritizeLeastEmptyCapacity
+		RemoveMode = PrioritizeMostEmptyCapacity
+	}
+	
+	CanBuild
+	{
+		Type = MultiToggle
+		Toggles
+		[
+			{Toggle = IsOperational}
+			{Toggle = SteelReq}
+			{Toggle = CircuitReq}
+			{Toggle = MissileStorage}
+			{Toggle = BomberStorage, invert = true}
+		]
+		Mode = All
+	}
+	SteelReq
+	{
+		Type = MultiResourceStorage
+		ResourceType = steel
+		ResourceStorages = [SteelStorage]
+		ToggleOnResources = 8
+		ToggleOffResources = 7
+	}
+	CircuitReq
+	{
+		Type = MultiResourceStorage
+		ResourceType = janitnt.circuit1
+		ResourceStorages = [ElectronicCircuitStorage]
+		ToggleOnResources = 10
+		ToggleOffResources = 9
+	}
+
+	BuildingPowerDrain
+	{
+		Type = ResourceConverter
+		From
+		[
+			{
+				Storage = BatteryStorage
+				Quantity = 750
+				MinQuantityForConversion = 1
+			}
+		]
+		OperationalToggle = CanBuild
+		Interval = 0.5
+	}
+	
+	BuildProgress
+	{
+		Type = Timer
+		OperationalToggle = CanBuild
+		Duration = 10
+		AutoStart = true
+		StartTrigger = Emitter
+	}
+	PolledValue
+	{
+		Type = PolledValue
+		ValueSource = BuildProgress
+		DefaultValue = 1
+	}
+	Lerp
+	{
+		Type = ValueLerp
+		InputValue = PolledValue
+		InputRange = [1, 0]
+		OutputRange = [0, 1]
+		ClampOutput = true
+	}
+
+	BuiltConverter
+	{
+		Type = ResourceConverter
+		OperationalToggle = BuildProgress
+		From
+		[
+			{
+				Storage = SteelStorage
+				Quantity = 8
+			}
+			{
+				Storage = ElectronicCircuitStorage
+				Quantity = 10
+			}
+			{
+				Storage = MissileStorage
+				Quantity = 10
+			}
+		]
+		ToStorage = BomberStorage
+		ToQuantity = 1
+		Interval = .15
+	}
+	
+	Weapon
+	{
+		Type = TurretWeapon
+		Location = [1, 1]
+		Rotation = -90d
+		Emitter = Emitter
+		OperationalToggle = IsOperational
+		AutoFireToggle = AutoFireToggle
+		FireInterval = 0
+		FiringArc = 0d
+		TargetingArc = 360d
+		ValidArc = 360d
+		FireThresholdAngle = (&TargetingArc) / 2
+		RotateSpeed = 0d
+		AllowFireWithBlockedLOS = true
+		AIFirepowerRating = 4800 * 0.75
+		FirePermissionToggle = FireModeToggle
+
+		AutoTargets
+		[
+			{
+				TargetType = ShipParts
+				Toggle = AutoTargetToggle
+				EnableInDirectControlMode = true
+			}
+		]
+
+		CoverageSectorArc
+		{
+			Texture = &/INDICATORS/VerticalGradient
+			VertexColor = [255, 255, 255, 51]
+			QuadCount = 64
+		}
+	}
+
+	ReloadProgressBar
+	{
+		Type = ProgressBar
+		OperationalToggle = IsOperational
+		ShowProgressFor = Weapon
+	}
+
+	Emitter
+	{
+		Type = BulletEmitter
+		ChainedTo = Weapon
+		OperationalToggle = IsOperational
+		FireTrigger = Weapon
+		GetTargetFrom = Weapon
+		ResourceStorage = BomberStorage
+		ResourcesUsed = 1
+		//Bullet = &<./data/shots/missile_nuke/missile_nuke_stage1.rules>
+		Bullet = &<shots/bomber/bomber1.rules>
+		TargetLeadPrediction = false
+		Recoil = 200
+	}
+
+	LaunchEffect
+	{
+		Type = TriggeredEffects
+		ChainedTo = Weapon
+		Trigger = Weapon
+
+		MediaEffects
+		[
+			: /BASE_SOUNDS/AudioExterior
+			{
+				RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_launch_01.wav",
+									"./data/ships/terran/missile_launcher/sounds/launcher_launch_02.wav",
+									"./data/ships/terran/missile_launcher/sounds/launcher_launch_03.wav"]
+				Speed = 0.85
+				SpeedVariation = .1
+			}
+		]
+	}
+	
+	DroneSprite
+	{
+		Type = ResourceSprites
+		Location = [1, 1]
+		Rotation = -90d
+		ResourceStorage = BomberStorage
+		Layer = "weapons"
+		ResourceLevels
+		[
+			{
+				File = "bomber.png"
+				NormalsFile = "bomber_n.png"
+				Size = [2, 2]
+			}
+		]
+	}
+	ColorLevel
+	{
+		Type = ValueColor
+		RedFrom = Lerp
+		GreenFrom = Lerp
+		BlueFrom = Lerp
+	}
+	DroneBuildSprite
+	{
+		Type = Graphics
+		Location = [1, 1]
+		Rotation = -90d
+		OperationalToggle = BomberStorage
+		InvertOperationalToggle = true
+		GetColorFrom = ColorLevel
+		OperationalDoodad
+		{
+			Layer = "drone_construction"
+			DamageLevels
+			[
+				{
+					File = "bomber_mask.png"
+					NormalsFile = "bomber_n.png"
+					Size = [2, 2]
+				}
+			]
+		}
+	}
+	HatchSprites
+	{
+		Type = ResourceSprites
+		Location = [1, 2.5 - 2/64]
+		ResourceStorage = BomberStorage
+		Layer = "doodads_high"
+		HasZeroResourceSprite = true
+		ResourceLevels
+		[
+			{
+				File = "../NukeSilo/hatch1.png"
+				Size = [2, 1]
+			}
+			{
+				File = "../NukeSilo/hatch3.png"
+				Size = [2, 1]
+			}
+		]
+	}
+	DestroyedEffects
+	{
+		Type = DeathEffects
+		MediaEffects = &/COMMON_EFFECTS/BigPartDestroyed
+		Location = [1, 2]
+
+		HitEffects
+		[
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 20000
+				Radius = 5
+				Delay = .05
+				FireChancePerNDamage = 50%
+				NDamage = 1000
+				CrewKillChance = 50%
+				Filter
+				{
+					OperationalHealth = true
+					StructuralHealth = false
+					Friendlies = true
+				}
+			}
+			{
+				Type = ExplosiveDamage
+				TotalDamage = 7500
+				Radius = 4
+				Delay = .05
+				Filter
+				{
+					OperationalHealth = false
+					StructuralHealth = true
+					Friendlies = true
+					Crew = false
+				}
+			}
+		]
+	}
+	ScorchedTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = ScorchedToggle
+		TriggerWhenOn = false
+	}
+
+	ScorchedEffects
+	{
+		Type = TriggeredEffects
+		Trigger = ScorchedTrigger
+		Location = &../DestroyedEffects/Location
+		MediaEffects = &/COMMON_EFFECTS/MedPartScorched
+	}
+	Indicators
+	{
+		Type = IndicatorSprites
+		Location = [1, 2]
+		Layer = "indicators"
+		Indicators
+		[
+			// Turned off.
+			{
+				Toggle = PowerToggle
+				AtlasSprite
+				{
+					File = &/INDICATORS/PowerOff
+					Size = [1, 1]
+				}
+			}
+
+			// Out of steel.
+			{
+				Toggle = SteelReq
+				Delay = 8
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoResource
+					Size = [1, 1]
+				}
+			}
+
+			// No crew.
+			{
+				Toggle = PartCrew
+				AtlasSprite
+				{
+					File = &/INDICATORS/NoCrew
+					Size = [1, 1]
+				}
+			}
+		]
+	}
+}
