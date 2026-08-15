@@ -26,8 +26,8 @@ Components
 			[
 				{
 					Type = ExplosiveDamage
-					TotalDamage = { BaseValue = 25000; EffectScaleExponent = 1 }
-					Radius = 4
+					TotalDamage = { BaseValue = 20000; EffectScaleExponent = 1 }
+					Radius = 3
 					ImpulsePerNDamage = 10
 					NDamage = 500
 					Filter

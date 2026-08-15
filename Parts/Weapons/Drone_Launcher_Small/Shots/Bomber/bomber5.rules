@@ -13,7 +13,7 @@ Components : &<basebomber.rules>/Components
 			[
 				{
 					Type = SpawnBullets
-					Bullet = &<bomberend.rules>
+					Bullet = &<bomber6.rules>
 					Count = 1
 					Spread = [0d, 0d]
 					Arc = [0d, 0d]

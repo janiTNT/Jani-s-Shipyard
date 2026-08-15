@@ -77,7 +77,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		IsOperational
 		{
 			Type = MultiToggle
-			Toggles = [PowerToggle, PartCrew, ScorchedToggle]
+			Toggles = [PowerToggle, PartCrew, ScorchedToggle, BatteryStorage]
 			Mode = All
 		}
 

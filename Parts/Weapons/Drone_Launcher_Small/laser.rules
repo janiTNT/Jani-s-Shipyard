@@ -20,6 +20,7 @@ Components
 			{Toggle = IsOperational}
 			{Toggle = SteelReq}
 			{Toggle = CircuitReq}
+			{Toggle = BatteryStorage}
 			{Toggle = LaserStorage, invert = true}
 		]
 		Mode = All

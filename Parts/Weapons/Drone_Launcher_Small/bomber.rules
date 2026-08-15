@@ -17,8 +17,8 @@ Components
 		Type = ResourceStorage
 		ResourceType = missile_part_he
 		MaxResources = 20
-		ToggleOnResources = 10
-		ToggleOffResources = 9
+		ToggleOnResources = 16
+		ToggleOffResources = 15
 		DelayBeforeReadyToUse = .5
 		DropResourcesWhenDestroyed = true
 		DropResourcesWhenRemoved = true
@@ -53,6 +53,7 @@ Components
 			{Toggle = IsOperational}
 			{Toggle = SteelReq}
 			{Toggle = CircuitReq}
+			{Toggle = BatteryStorage}
 			{Toggle = MissileStorage}
 			{Toggle = BomberStorage, invert = true}
 		]
@@ -129,7 +130,7 @@ Components
 			}
 			{
 				Storage = MissileStorage
-				Quantity = 10
+				Quantity = 16
 			}
 		]
 		ToStorage = BomberStorage
