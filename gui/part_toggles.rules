@@ -510,7 +510,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 				}
 			}
 		]
-	}
+	}*/
 	// Resource Type ORE
 	{
 		ToggleID = "resource_conveyor_mode_ore"
@@ -617,7 +617,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 				}
 			}
 		]
-	}*/
+	}*
 	//TINY DRONE TYPE
 	{
 		ToggleID = "tinydronetype"
