@@ -372,12 +372,38 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					GreenFrom = CoolingTween
 					BlueFrom = Lerp
 				}
+				DroneBuildTrigger
+				{
+					Type = ToggleTrigger
+					Toggle = Mk1Storage
+					TriggerWhenOn = true
+					TriggerWhenOff = false
+				}
+				DroneBuildUnTrigger
+				{
+					Type = ToggleTrigger
+					Toggle = Mk1Storage
+					TriggerWhenOn = false
+					TriggerWhenOff = true
+				}
+				DroneBuildVisualUnTrigger
+				{
+					Type = DelayTrigger
+					Trigger = DroneBuildUnTrigger
+					Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+				}
+				DroneBuildVisualToggle // fixes 1 tick visual staying
+				{
+					Type = TriggeredToggle
+					OnTrigger = DroneBuildTrigger
+					OffTrigger = DroneBuildVisualUnTrigger
+				}
 				DroneBuildSprite
 				{
 					Type = Graphics
 					Location = [.5, .5]
 					Rotation = -90d
-					OperationalToggle = Mk1Storage
+					OperationalToggle = DroneBuildVisualToggle
 					InvertOperationalToggle = true
 					GetColorFrom = ColorLevel
 					OperationalDoodad
@@ -711,12 +737,38 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					GreenFrom = CoolingTween
 					BlueFrom = Lerp
 				}
+				DroneBuildTrigger
+				{
+					Type = ToggleTrigger
+					Toggle = Mk2Storage
+					TriggerWhenOn = true
+					TriggerWhenOff = false
+				}
+				DroneBuildUnTrigger
+				{
+					Type = ToggleTrigger
+					Toggle = Mk2Storage
+					TriggerWhenOn = false
+					TriggerWhenOff = true
+				}
+				DroneBuildVisualUnTrigger
+				{
+					Type = DelayTrigger
+					Trigger = DroneBuildUnTrigger
+					Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+				}
+				DroneBuildVisualToggle // fixes 1 tick visual staying
+				{
+					Type = TriggeredToggle
+					OnTrigger = DroneBuildTrigger
+					OffTrigger = DroneBuildVisualUnTrigger
+				}
 				DroneBuildSprite
 				{
 					Type = Graphics
 					Location = [.5, .5]
 					Rotation = -90d
-					OperationalToggle = Mk2Storage
+					OperationalToggle = DroneBuildVisualToggle
 					InvertOperationalToggle = true
 					GetColorFrom = ColorLevel
 					OperationalDoodad
@@ -1475,12 +1527,38 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					GreenFrom = CoolingTween
 					BlueFrom = Lerp
 				}
+				DroneBuildTrigger
+				{
+					Type = ToggleTrigger
+					Toggle = SparkerStorage
+					TriggerWhenOn = true
+					TriggerWhenOff = false
+				}
+				DroneBuildUnTrigger
+				{
+					Type = ToggleTrigger
+					Toggle = SparkerStorage
+					TriggerWhenOn = false
+					TriggerWhenOff = true
+				}
+				DroneBuildVisualUnTrigger
+				{
+					Type = DelayTrigger
+					Trigger = DroneBuildUnTrigger
+					Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+				}
+				DroneBuildVisualToggle // fixes 1 tick visual staying
+				{
+					Type = TriggeredToggle
+					OnTrigger = DroneBuildTrigger
+					OffTrigger = DroneBuildVisualUnTrigger
+				}
 				DroneBuildSprite
 				{
 					Type = Graphics
 					Location = [.5, .5]
 					Rotation = -90d
-					OperationalToggle = SparkerStorage
+					OperationalToggle = DroneBuildVisualToggle
 					InvertOperationalToggle = true
 					GetColorFrom = ColorLevel
 					OperationalDoodad

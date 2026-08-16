@@ -208,12 +208,38 @@ Components
 		GreenFrom = CoolingTween
 		BlueFrom = Lerp
 	}
+	DroneBuildTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = LaserStorage
+		TriggerWhenOn = true
+		TriggerWhenOff = false
+	}
+	DroneBuildUnTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = LaserStorage
+		TriggerWhenOn = false
+		TriggerWhenOff = true
+	}
+	DroneBuildVisualUnTrigger
+	{
+		Type = DelayTrigger
+		Trigger = DroneBuildUnTrigger
+		Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+	}
+	DroneBuildVisualToggle // fixes 1 tick visual staying
+	{
+		Type = TriggeredToggle
+		OnTrigger = DroneBuildTrigger
+		OffTrigger = DroneBuildVisualUnTrigger
+	}
 	DroneBuildSprite
 	{
 		Type = Graphics
 		Location = [1, 1]
 		Rotation = -90d
-		OperationalToggle = LaserStorage
+		OperationalToggle = DroneBuildVisualToggle
 		InvertOperationalToggle = true
 		GetColorFrom = ColorLevel
 		OperationalDoodad
@@ -372,10 +398,18 @@ Components
 
 Stats
 {
-	NameKey = "StatCategories/Laser_Cannon_Drone"
+	NameKey = "StatCategories/LaserSmall_Drone"
 	Stats
 	{
 		DroneConstructionTime = &~/Components/BuildProgress/Duration
+		NotROF = 1 / (&DroneConstructionTime)
+		CircuitUse = (&~/Components/CircuitReq/ToggleOnResources)
+		CircuitPerSecond = (&CircuitUse) * (&NotROF)
+		DroneElectronicCircuitUse = [&../CircuitUse, &../CircuitPerSecond]
+		SteelUse = (&~/Components/SteelReq/ToggleOnResources)
+		SteelPerSecond = (&SteelUse) * (&NotROF)
+		DroneSteelUse = [&../SteelUse, &../SteelPerSecond]
+		PowerUsageContinuous = (&~/Components/BuildingPowerDrain/From/0/Quantity) / (&~/Components/BuildingPowerDrain/Interval) / 1000
 		/* DamagePerSecond = (&DamagePerShot) * (&ROF)
 		Damage = [&../DamagePerShot, &../DamagePerSecond]
 		ROF = 1 / (&~/Part/Components/ShootAlternatingComponents_NonOverclocked/Components/FireTimer/Duration)

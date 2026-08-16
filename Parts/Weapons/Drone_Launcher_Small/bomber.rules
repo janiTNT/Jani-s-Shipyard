@@ -251,12 +251,38 @@ Components
 		GreenFrom = CoolingTween
 		BlueFrom = Lerp
 	}
+	DroneBuildTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = BomberStorage
+		TriggerWhenOn = true
+		TriggerWhenOff = false
+	}
+	DroneBuildUnTrigger
+	{
+		Type = ToggleTrigger
+		Toggle = BomberStorage
+		TriggerWhenOn = false
+		TriggerWhenOff = true
+	}
+	DroneBuildVisualUnTrigger
+	{
+		Type = DelayTrigger
+		Trigger = DroneBuildUnTrigger
+		Delay = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+	}
+	DroneBuildVisualToggle // fixes 1 tick visual staying
+	{
+		Type = TriggeredToggle
+		OnTrigger = DroneBuildTrigger
+		OffTrigger = DroneBuildVisualUnTrigger
+	}
 	DroneBuildSprite
 	{
 		Type = Graphics
 		Location = [1, 1]
 		Rotation = -90d
-		OperationalToggle = BomberStorage
+		OperationalToggle = DroneBuildVisualToggle
 		InvertOperationalToggle = true
 		GetColorFrom = ColorLevel
 		OperationalDoodad
