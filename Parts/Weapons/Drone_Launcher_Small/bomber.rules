@@ -110,7 +110,7 @@ Components
 		Type = ValueLerp
 		InputValue = PolledValue
 		InputRange = [1, 0]
-		OutputRange = [0.15, 0.75]
+		OutputRange = [0.18, 0.75]
 		ClampOutput = true
 	}
 
