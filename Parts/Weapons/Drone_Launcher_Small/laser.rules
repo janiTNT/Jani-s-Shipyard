@@ -159,6 +159,21 @@ Components
 		TargetLeadPrediction = false
 		Recoil = 200
 	}
+	
+	FullStorageEffect
+	{
+		Type = ToggleEffects
+		Toggle = LaserStorage
+		ToggledOnMediaEffects
+		[
+			: /BASE_SOUNDS/AudioInterior
+			{
+				RandomSounds = ["./data/ships/terran/missile_launcher/sounds/launcher_ready_01.wav",
+								"./data/ships/terran/missile_launcher/sounds/launcher_ready_02.wav",
+								"./data/ships/terran/missile_launcher/sounds/launcher_ready_03.wav"]
+			}
+		]
+	}
 
 	LaunchEffect
 	{
