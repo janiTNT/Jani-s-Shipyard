@@ -194,6 +194,135 @@ Components
 		]
 	}
 	
+	BuildingSlider
+	{
+		Type = TransformLerp
+		ValueFrom = PolledValue
+		StartLocation = [1, 0.25]
+		EndLocation = [1, 1.75]
+	}
+	
+	/* DroneBuildArmSprite
+	{
+		Type = Graphics
+		Location = [0, 0.05]
+		//Rotation = -90d
+		ChainedTo = BuildingSlider
+		OperationalToggle = DroneBuildVisualToggle
+		InvertOperationalToggle = true
+		OperationalDoodad
+		{
+			Layer = "doodads_high"
+			DamageLevels
+			[
+				{
+					File = "builderbar.png"
+					//NormalsFile = "laser_folded_n.png"
+					Size = [2, 1]
+				}
+			]
+		}
+	}*/
+	 
+	BuildEffects
+	{
+		Type = ContinuousEffects
+		Location = [0, 0]
+		Rotation = -90d
+		ChainedTo = BuildingSlider
+		OperationalToggle = CanBuild
+		MediaEffects
+		[
+			/*{
+				Type = Beam
+				Sprite
+				{
+					Texture
+					{
+						File = "./data/crew/particles/construction_beam.png"
+						SampleMode = Linear
+						MipLevels = 1
+						UVMode = Clamp
+					}
+					Shader = "./data/crew/construction_beam.shader"
+					_gradientPow = 0.5
+					_gradientIntensity = 1
+					_endCapSize = .125
+					_startCapSize = .125
+					_hotColor = [0, 255, 255, 255]
+					_coldColor = [0, 31, 255, 255]
+					_gradientColor = [213, 255, 255, 255]
+					Size = [100%, .2]
+					VertexColor = [255, 255, 255, 255]
+					TargetBlendMode
+					{
+						SourceRgbFactor = SourceAlpha
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = InverseDestAlpha
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+				FadeInTime = .1
+				FadeOutTime = .1
+				RandomTimeOffset = [0, 0]
+				Bucket = Upper1
+			}
+			// Beam lighting.
+			{
+				Type = Beam
+				Sprite
+				{
+					Texture
+					{
+						File = "./Data/common_effects/particles/blob.png"
+						MipLevels = max
+						SampleMode = Linear
+					}
+					Shader = "./Data/common_effects/fancy_beam_light.shader"
+					Size = [100%, 0.3]
+					_extraBeginLength = (&Size/1) / 2
+					_extraEndLength = (&Size/1) / 2
+					VertexColor = [0, 94, 255, 255]
+					_z = 0.4
+					_litReflectiveStrength = 8
+					_litAdditiveStrength = 0
+					_unlitAdditiveStrength = 0.25
+					_nrmlStrengthLimit = 0.2
+					TargetBlendMode
+					{
+						SourceRgbFactor = InverseDestColor
+						DestRgbFactor = One
+						RgbOperator = Add
+						SourceAlphaFactor = Zero
+						DestAlphaFactor = One
+						AlphaOperator = Add
+					}
+				}
+				Bucket = Upper4
+				IsLight = true
+				FadeInTime = .1
+				FadeOutTime = .1
+			}*/
+			
+			&<particles/construction_beam_hit_sparks.rules>
+			&<particles/construction_beam_hit_smoke.rules>
+			&<particles/construction_beam_hit_flash.rules>
+			
+			: /BASE_SOUNDS/AudioExteriorDetail
+			{
+				Sound = "./data/crew/construction.wav"
+				Volume = 0.15
+				//MaxConcurrentVolume = &Volume
+				MaxConcurrent = 1
+				//SpeedVariation = .25
+				RampUpTime = .5
+				RampDownTime = .5
+			}
+		]
+	}
+	
 	DroneSprite
 	{
 		Type = ResourceSprites

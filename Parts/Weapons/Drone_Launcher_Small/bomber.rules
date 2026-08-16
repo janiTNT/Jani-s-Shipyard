@@ -236,6 +236,44 @@ Components
 		]
 	}
 	
+	BuildingSlider
+	{
+		Type = TransformLerp
+		ValueFrom = PolledValue
+		StartLocation = [1, 0.25]
+		EndLocation = [1, 1.75]
+	}
+	
+	BuildEffectsA
+	{
+		Type = ContinuousEffects
+		Location = [0.25, 0]
+		Rotation = -90d
+		ChainedTo = BuildingSlider
+		OperationalToggle = CanBuild
+		MediaEffects
+		[
+			&<./data/crew/particles/construction_beam_hit_sparks.rules>
+			&<./data/crew/particles/construction_beam_hit_smoke.rules>
+			&<./data/crew/particles/construction_beam_hit_flash.rules>
+			
+			: /BASE_SOUNDS/AudioExteriorDetail
+			{
+				Sound = "./data/crew/construction.wav"
+				Volume = 0.15
+				//MaxConcurrentVolume = &Volume
+				MaxConcurrent = 1
+				//SpeedVariation = .25
+				RampUpTime = .5
+				RampDownTime = .5
+			}
+		]
+	}
+	BuildEffectsB : BuildEffectsA
+	{
+		Location = [-0.25,0]
+	}
+	
 	DroneSprite
 	{
 		Type = ResourceSprites
