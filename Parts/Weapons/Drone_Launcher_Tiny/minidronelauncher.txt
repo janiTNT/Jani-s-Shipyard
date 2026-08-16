@@ -164,7 +164,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					OperationalToggle = IsOperational
 					ResourceType = fake
 					MaxResources = 1
-					DelayBeforeReadyToUse = 0.5
+					//DelayBeforeReadyToUse = 0.5
 					//DropResourcesWhenDestroyed = true
 					//DropResourcesWhenRemoved = true
 					InitToMaxResources = 0
@@ -240,8 +240,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				BuiltConverter
 				{
-					Type = ResourceConverter
-					OperationalToggle = BuildProgress
+					Type = TriggeredResourceConverter
+					Trigger = BuildProgress
 					From
 					[
 						{
@@ -255,7 +255,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					ToStorage = Mk1Storage
 					ToQuantity = 1
-					Interval = .15
 				}
 				ConvertEffects
 				{
@@ -504,7 +503,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					OperationalToggle = IsOperational
 					ResourceType = fake
 					MaxResources = 1
-					DelayBeforeReadyToUse = 0.5
+					//DelayBeforeReadyToUse = 0.5
 					//DropResourcesWhenDestroyed = true
 					//DropResourcesWhenRemoved = true
 					InitToMaxResources = 0
@@ -580,8 +579,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				BuiltConverter
 				{
-					Type = ResourceConverter
-					OperationalToggle = BuildProgress
+					Type = TriggeredResourceConverter
+					Trigger = BuildProgress
 					From
 					[
 						{
@@ -595,7 +594,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					ToStorage = Mk2Storage
 					ToQuantity = 1
-					Interval = .15
 				}
 				ConvertEffects
 				{
@@ -1269,7 +1267,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					OperationalToggle = IsOperational
 					ResourceType = fake
 					MaxResources = 1
-					DelayBeforeReadyToUse = 0.5
+					//DelayBeforeReadyToUse = 0.5
 					//DropResourcesWhenDestroyed = true
 					//DropResourcesWhenRemoved = true
 					InitToMaxResources = 0
@@ -1345,8 +1343,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				BuiltConverter
 				{
-					Type = ResourceConverter
-					OperationalToggle = BuildProgress
+					Type = TriggeredResourceConverter
+					Trigger = BuildProgress
 					From
 					[
 						{
@@ -1360,7 +1358,6 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					]
 					ToStorage = SparkerStorage
 					ToQuantity = 1
-					Interval = .15
 				}
 				ConvertEffects
 				{

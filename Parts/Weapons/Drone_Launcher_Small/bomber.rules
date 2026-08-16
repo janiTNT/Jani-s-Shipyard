@@ -6,7 +6,7 @@ Components
 		OperationalToggle = IsOperational
 		ResourceType = fake
 		MaxResources = 1
-		DelayBeforeReadyToUse = 0.5
+		//DelayBeforeReadyToUse = 0.5
 		//DropResourcesWhenDestroyed = true
 		//DropResourcesWhenRemoved = true
 		InitToMaxResources = 0
@@ -88,7 +88,7 @@ Components
 			}
 		]
 		OperationalToggle = CanBuild
-		Interval = 0.5
+		Interval = 0.75
 	}
 	
 	BuildProgress
@@ -116,8 +116,8 @@ Components
 
 	BuiltConverter
 	{
-		Type = ResourceConverter
-		OperationalToggle = BuildProgress
+		Type = TriggeredResourceConverter
+		Trigger = BuildProgress
 		From
 		[
 			{
@@ -131,7 +131,6 @@ Components
 		]
 		ToStorage = BomberStorage
 		ToQuantity = 1
-		Interval = .15
 	}
 	
 	Weapon

@@ -82,8 +82,8 @@ Components
 
 	BuiltConverter
 	{
-		Type = ResourceConverter
-		OperationalToggle = BuildProgress
+		Type = TriggeredResourceConverter
+		Trigger = BuildProgress
 		From
 		[
 			{
@@ -97,7 +97,6 @@ Components
 		]
 		ToStorage = LaserStorage
 		ToQuantity = 1
-		Interval = .15
 	}
 	
 	Weapon
