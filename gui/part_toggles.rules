@@ -461,7 +461,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 				{
 					Texture
 					{
-						File = "../Resources/	 Bar/icon.png"
+						File = "../Resources/Cosmic	 Bar/icon.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}
