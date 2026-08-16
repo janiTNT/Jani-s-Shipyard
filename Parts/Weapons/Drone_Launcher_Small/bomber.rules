@@ -95,7 +95,7 @@ Components
 	{
 		Type = Timer
 		OperationalToggle = CanBuild
-		Duration = 12
+		Duration = 8
 		AutoStart = true
 		StartTrigger = Emitter
 	}
