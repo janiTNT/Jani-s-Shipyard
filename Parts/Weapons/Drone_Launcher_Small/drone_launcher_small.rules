@@ -511,9 +511,11 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	{
 		CrewRequired = &~/Part/Components/PartCrew/Crew
 		
-		SteelCapacity = 12		
-		RecPower = 0.6
-		RecCrew = (&CrewRequired) + (&RecPower) + 0.16 * 1.2 * 4
+		SteelCapacity = &~/Part/Components/SteelStorage/MaxResources
+		ElectronicCircuitCapacity = &~/Part/Components/ElectronicCircuitStorage/MaxResources
+		RecPower = &PowerUsageContinuous
+		PowerUsageContinuous = (&<laser.rules>/Components/BuildingPowerDrain/From/0/Quantity) / (&<laser.rules>/Components/BuildingPowerDrain/Interval) / 1000
+		RecCrew = (&CrewRequired) + (&RecPower) + (&<laser.rules>/DroneStats/Stats/NotROF) * (&<laser.rules>/DroneStats/Stats/SteelUse) * 4
 		//RecCrew = (&CrewRequired) + (&<he/missile_launcher_he.rules>/MissileStats/Stats/ROF) * (&<he/missile_launcher_he.rules>/MissileStats/Stats/MissileParts) * 4
 		//RecCrew = (&CrewRequired) + 0.16 * 1.2 * 4
 	}
@@ -521,8 +523,9 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	
 	StatsByCategory
 	[
-		&<laser.rules>/Stats
+		&<laser.rules>/DroneStats
+		&<bomber.rules>/DroneStats
 	]
 
-	StatsNotesKey = "Stats/DroneLauncherNotes"
+	//StatsNotesKey = "Stats/DroneLauncherNotes"
 }

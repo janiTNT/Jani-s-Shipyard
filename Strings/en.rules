@@ -143,11 +143,11 @@ Parts
 	
 	DroneLauncherTiny = "Tiny Drone Launcher"
 	DroneLauncherTinyIcon = "T. Drones"
-	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates and circuits into Tiny Class Drones.\nOnce built, you can not get your resources back."; //\n<gray><b>The First iteration.</b> Research this technology further.</gray>
+	DroneLauncherTinyDesc = "Your Engineers have created small, single use Weaponized Drones that can fly fully autonomously to attack and destroy vessels.\n\nUses power and 3D printer technology to weld steel plates and circuits into Tiny Class Drones.\nOnce built, you can not get your resources back."\; //\n<gray><b>The First iteration.</b> Research this technology further.</gray>
 	
 	DroneLauncherSmall = "Small Drone Launcher"
 	DroneLauncherSmallIcon = "S. Drones"
-	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back.\n\n"
+	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back."
 	/* "<b>Laser Cannon Drone</b>\n\n"\
 	"Bigger. Better. Stronger. a severe upgrade in laser technology, Built with reverse engineering from competing brands, and reckless overclocking.\n\n"\
 	"<b>Laser Cannon Drone Launcher:</b>\n"\
@@ -1488,8 +1488,17 @@ Stats
 	InserterPowerUsageFmt = "<white>Power Use:</white> <good>{0:0.###}</good><gray>/transfer (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	
 	DroneConstructionTimeFmt = "<white>Production Time:</white> <good>{0:n0}</good>"
-	DroneElectronicCircuitUseFmt = "<white>Electronic Circuit Use:</white> <good>{0:0.###}</good><gray>/Drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
-	DroneSteelUseFmt = "<white>Steel Use:</white> <good>{0:0.###}</good><gray>/Drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	DroneElectronicCircuitUseFmt = "<white>Electronic Circuit Use:</white> <good>{0:0.###}</good><gray>/drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	DroneSteelUseFmt = "<white>Steel Use:</white> <good>{0:0.###}</good><gray>/drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	
+	DroneDamageFmt = "<white>Damage:</white> <good>{0:n0}</good><gray>/drone shot\n(</gray><good>{1:n0}</good><gray>/all shots) (</gray><good>{2:n0}</good><gray>/launch/sec)</gray>"
+	MaxDroneDamageFmt = "<white>Max Damage:</white> <good>{0:n0}</good><gray>/drone shot\n(</gray><good>{1:n0}</good><gray>/all shots) (</gray><good>{2:n0}</good><gray>/launch/sec)</gray>"
+	
+	DroneMissileUseFmt = "<white>Missile Parts Use:</white> <good>{0:0.###}</good><gray>/drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
+	
+	DroneRangeFmt = "<white>Range:</white> <good>{0:n0}</good><gray> meters (</gray><good>{1:n0}</good><gray>) at target</gray>"
+	
+	DroneHealthFmt = "<white>Durability:</white> <good>{0:n0}</good> <gray>(</gray><good>{1:n0}</good><gray> shots max)</gray>"
 	
 	InserterHandSizeFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Hand</good><gray>)</gray>"
 	InserterHandSizeStacksFmt = "<white>Inserter Hand Capacity:</white> <good>{0}</good><gray>/transfer (</gray><good>Stack</good><gray>)</gray>"
@@ -1560,6 +1569,7 @@ StatCategories
 	SingleCanisterThermal = "Thermal Canister"
 	
 	LaserSmall_Drone = "Laser Cannon Drone"
+	BomberSmall_Drone = "Bomber Basic Drone"
 }
 CombatDifficulty
 {

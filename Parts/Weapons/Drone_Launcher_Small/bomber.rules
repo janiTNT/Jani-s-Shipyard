@@ -95,7 +95,8 @@ Components
 	{
 		Type = Timer
 		OperationalToggle = CanBuild
-		Duration = 8
+		BuildTime = 8
+		Duration = (&BuildTime) - 1 / (&/Simulation/PhysicsUpdatesPerSecond)
 		AutoStart = true
 		StartTrigger = Emitter
 	}
@@ -447,6 +448,41 @@ Components
 					Size = [1, 1]
 				}
 			}
+		]
+	}
+}
+DroneStats
+{
+	NameKey = "StatCategories/BomberSmall_Drone"
+	Stats
+	{
+		DroneConstructionTime = &~/Components/BuildProgress/BuildTime
+		NotROF = 1 / (&DroneConstructionTime)
+		CircuitUse = (&~/Components/CircuitReq/ToggleOnResources)
+		CircuitPerSecond = (&CircuitUse) * (&NotROF)
+		DroneElectronicCircuitUse = [&../CircuitUse, &../CircuitPerSecond]
+		
+		MissileUse = (&~/Components/MissileStorage/ToggleOnResources)
+		MissilePerSecond = (&MissileUse) * (&NotROF)
+		DroneMissileUse = [&../MissileUse, &../MissilePerSecond]
+		
+		SteelUse = (&~/Components/SteelReq/ToggleOnResources)
+		SteelPerSecond = (&SteelUse) * (&NotROF)
+		DroneSteelUse = [&../SteelUse, &../SteelPerSecond]
+		//PowerUsageContinuous = (&~/Components/BuildingPowerDrain/From/0/Quantity) / (&~/Components/BuildingPowerDrain/Interval) / 1000
+		
+		DamageHit = &<Shots/Bomber/BomberShot.rules>/Components/Hit/HitOperational/HitEffects/0/TotalDamage/BaseValue
+		DamageArea = &<Shots/Bomber/BomberShot.rules>/Components/Hit/HitOperational/HitEffects/0/Radius
+		MaxShots = 4
+		DamageTotal = (&DamageHit)*(&MaxShots)
+		DamageTotalDPS = (&DamageTotal) * (&NotROF)
+		
+		MaxDroneDamage = [&../DamageHit, &../DamageTotal, &../DamageTotalDPS]
+		DroneRange = [&~/Components/Emitter/Bullet/Range, &~/Components/Emitter/Bullet/Components/DeathByEnemyProximity/Range]
+		DroneHealth
+		[
+			&~/Components/Emitter/Bullet/Components/Targetable/Health
+			&../MaxShots
 		]
 	}
 }

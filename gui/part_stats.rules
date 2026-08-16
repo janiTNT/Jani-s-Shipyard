@@ -27,6 +27,26 @@ PartStats
 		ID = DroneSteelUse
 		FormatKey = "Stats/DroneSteelUseFmt"
 	}
+	{
+		ID = DroneMissileUse
+		FormatKey = "Stats/DroneMissileUseFmt"
+	}
+	{
+		ID = DroneHealth
+		FormatKey = "Stats/DroneHealthFmt"
+	}
+	{
+		ID = DroneDamage
+		FormatKey = "Stats/DroneDamageFmt"
+	}
+	{
+		ID = MaxDroneDamage
+		FormatKey = "Stats/MaxDroneDamageFmt"
+	}
+	{
+		ID = DroneRange
+		FormatKey = "Stats/DroneRangeFmt"
+	}
 	
 	{
 		ID = InserterSwingSpeed
