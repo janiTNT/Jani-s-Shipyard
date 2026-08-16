@@ -617,7 +617,7 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 				}
 			}
 		]
-	}*
+	}
 	//TINY DRONE TYPE
 	{
 		ToggleID = "tinydronetype"
