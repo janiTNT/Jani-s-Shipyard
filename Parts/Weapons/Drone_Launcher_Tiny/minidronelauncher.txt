@@ -219,7 +219,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = CanBuild
-					Duration = 6
+					BuildTime = 6
+					Duration = (&BuildTime) - 1 / (&/Simulation/PhysicsUpdatesPerSecond)
 					AutoStart = true
 					StartTrigger = Emitter
 				}
@@ -240,8 +241,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				BuiltConverter
 				{
-					Type = TriggeredResourceConverter
-					Trigger = BuildProgress
+					Type = ResourceConverter
+					Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+					OperationalToggle = BuildProgress
 					From
 					[
 						{
@@ -584,7 +586,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = CanBuild
-					Duration = 8
+					BuildTime = 8
+					Duration = (&BuildTime) - 1 / (&/Simulation/PhysicsUpdatesPerSecond)
 					AutoStart = true
 					StartTrigger = Emitter
 				}
@@ -605,8 +608,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				BuiltConverter
 				{
-					Type = TriggeredResourceConverter
-					Trigger = BuildProgress
+					Type = ResourceConverter
+					Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+					OperationalToggle = BuildProgress
 					From
 					[
 						{
@@ -984,7 +988,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				BuiltConverter
 				{
 					Type = ResourceConverter
-					OperationalToggle = CanBuild
+					Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+					OperationalToggle = BuildProgress
 					From
 					[
 						{
@@ -1374,7 +1379,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Type = Timer
 					OperationalToggle = CanBuild
-					Duration = 2.5
+					BuildTime = 2.5
+					Duration = (&BuildTime) - 1 / (&/Simulation/PhysicsUpdatesPerSecond)
 					AutoStart = true
 					StartTrigger = Emitter
 				}
@@ -1395,8 +1401,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				
 				BuiltConverter
 				{
-					Type = TriggeredResourceConverter
-					Trigger = BuildProgress
+					Type = ResourceConverter
+					Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+					OperationalToggle = BuildProgress
 					From
 					[
 						{
