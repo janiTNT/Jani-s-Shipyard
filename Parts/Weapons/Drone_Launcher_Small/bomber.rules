@@ -116,8 +116,9 @@ Components
 
 	BuiltConverter
 	{
-		Type = TriggeredResourceConverter
-		Trigger = BuildProgress
+		Type = ResourceConverter
+		Interval = 1 / (&/Simulation/PhysicsUpdatesPerSecond)
+		OperationalToggle = BuildProgress
 		From
 		[
 			{
