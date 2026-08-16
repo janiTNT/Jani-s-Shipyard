@@ -147,8 +147,8 @@ Parts
 	
 	DroneLauncherSmall = "Small Drone Launcher"
 	DroneLauncherSmallIcon = "S. Drones"
-	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back.\n\n"\
-	"<b>Laser Cannon Drone</b>\n\n"\
+	DroneLauncherSmallDesc = "Improved form factor drone launcher can launch larger, less compact drones.\nOnce built, you can not get your resources back.\n\n"
+	/* "<b>Laser Cannon Drone</b>\n\n"\
 	"Bigger. Better. Stronger. a severe upgrade in laser technology, Built with reverse engineering from competing brands, and reckless overclocking.\n\n"\
 	"<b>Laser Cannon Drone Launcher:</b>\n"\
 	"<white>Build Time:</white> <good>6</good> <gray>sec</gray>\n"\
@@ -163,7 +163,7 @@ Parts
 	"<white>Drone Damage:</white> <good>1000</good><gray>/shot (</gray><good>2000</good><gray>/sec)</gray>\n"\
 	"<white>Shots:</white><good> 30</good>\n"\
 	"<white>Durability:</white><good> 2500</good>\n"\
-	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>";//\n<gray><b>The Second iteration.</b> You're getting somewhere with this.</gray>
+	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"; */
 	
 	DroneLauncherLarge = "Medium Drone Launcher"
 	DroneLauncherLargeIcon = "M. Drones"
@@ -1558,6 +1558,8 @@ StatCategories
 	InserterFastInsertion = "Rapid Insertion Mode"
 	InserterPowerRegeneration = "Inserter Recharging Mode"
 	SingleCanisterThermal = "Thermal Canister"
+	
+	LaserSmall_Drone = "Laser Cannon Drone"
 }
 CombatDifficulty
 {
