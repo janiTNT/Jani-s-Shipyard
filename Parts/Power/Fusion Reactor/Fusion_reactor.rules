@@ -248,7 +248,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			SuppliesResources = true
 			MinResourcesPickUp = 6000
 			MaxResourcesPickUp = 6000
-			InitPickUp = 4001
+			InitPickUp = 5001
 			PickUpRate = 1000 / 2.0
 			ExpectedResourceGenerationRate = { BaseValue = 12000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ExpectedResourceGenerationToggle = IsProducing

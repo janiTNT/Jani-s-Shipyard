@@ -143,181 +143,255 @@ NestedNuggetSprites
 		}
 	]
 	
-	// 4x size.
+	// Vanilla 4x Size.
 	[
 		{
-			File = "battery_4_fill1.png"
+			File = "./Data/resources/battery/battery_huge_fill1.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge_fill2.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge_fill3.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge_fill4.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge_fill5.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge_fill6.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge_fill7.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "./Data/resources/battery/battery_huge.png"
+			NormalsFile = "./Data/resources/battery/battery_huge_normals.png"
+			Size = [1, 1]
+			Offset = [17/64, 0]
+			UVRotation = 3
+		}
+	]
+
+	// 5x sprites by RustyDios.
+	[
+		{
+			File = "battery_super_fill1.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4_fill2.png"
+			File = "battery_super_fill2.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4_fill3.png"
+			File = "battery_super_fill3.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4_fill4.png"
+			File = "battery_super_fill4.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4_fill5.png"
+			File = "battery_super_fill5.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4_fill6.png"
+			File = "battery_super_fill6.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4_fill7.png"
+			File = "battery_super_fill7.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_4.png"
-			NormalsFile = "./Data/resources/battery/battery_med_normals.png"
+			File = "battery_super_fill8.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill9.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill10.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill11.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill12.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill13.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill14.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill15.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill16.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill17.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill18.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super_fill19.png"
+			Size = [1, 1]
+			Offset = [16/64, 0]
+			UVRotation = 3
+		}
+		{
+			File = "battery_super.png"
+			NormalsFile = "battery_super_normals.png"
 			Size = [1, 1]
 			Offset = [16/64, 0]
 			UVRotation = 3
 		}
 	]
-	// 5x size can be same as 4x I suppose
+
+	// 6x size by RUstyDios.
 	[
 		{
-			File = "battery_4_fill1.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4_fill2.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4_fill3.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4_fill4.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4_fill5.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4_fill6.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4_fill7.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-		{
-			File = "battery_4.png"
-			NormalsFile = "./Data/resources/battery/battery_med_normals.png"
-			Size = [1, 1]
-			Offset = [16/64, 0]
-			UVRotation = 3
-		}
-	]
-	// 6x size.
-	[
-		{
-			File = "battery_6_fill1.png"
+			File = "battery_mega_fill1.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill2.png"
+			File = "battery_mega_fill2.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill3.png"
+			File = "battery_mega_fill3.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill4.png"
+			File = "battery_mega_fill4.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill5.png"
+			File = "battery_mega_fill5.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill6.png"
+			File = "battery_mega_fill6.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill7.png"
+			File = "battery_mega_fill7.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill8.png"
+			File = "battery_mega_fill8.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill9.png"
+			File = "battery_mega_fill9.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill10.png"
+			File = "battery_mega_fill10.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6_fill11.png"
+			File = "battery_mega_fill11.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
 		}
 		{
-			File = "battery_6.png"
-			NormalsFile = "./Data/resources/battery/battery_large_normals.png"
+			File = "battery_mega.png"
+			NormalsFile = "battery_mega_normals.png"
 			Size = [1, 1]
 			Offset = [17/64, 0]
 			UVRotation = 3
