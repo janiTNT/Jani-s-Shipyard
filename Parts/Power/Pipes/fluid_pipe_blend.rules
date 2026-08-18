@@ -1,0 +1,100 @@
+HUB
+{
+	SituationCode = "0000"
+	AllowRotation = false
+}
+STUB
+{
+	SituationCode = "0010"
+}
+STRAIGHT
+{
+	SituationCode = "1010"
+}
+CORNER
+{
+	SituationCode = "0110"
+}
+SPLIT_3WAY
+{
+	SituationCode = "1110"
+}
+SPLIT_4WAY
+{
+	SituationCode = "1111"
+}
+
+BASE_BLEND_SPRITES
+{
+	Type = ToggledBlendSprites
+	Location = [0.5, 0.5]
+	SituationToggles
+	[
+		Port_Up
+		Port_Right
+		Port_Down
+		Port_Left
+	]
+}
+
+FloorBlendSprites : BASE_BLEND_SPRITES
+{
+	Layer = "doodads_low"
+	AmbiguousSprites
+	[
+		: ~/HUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "pipe1.png"
+				}
+			]
+		}
+		: ~/STUB
+		{
+			DamageLevelSprites 
+			[
+				{
+					File = "pipe1.png"
+				}
+			]
+		}
+		: ~/STRAIGHT
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe1.png"
+				}
+			]
+		}
+		: ~/CORNER
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe2.png"
+				}
+			]
+		}
+		: ~/SPLIT_3WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe3.png"
+				}
+			]
+		}
+		: ~/SPLIT_4WAY
+		{
+			DamageLevelSprites
+			[
+				{
+					File = "pipe4.png"
+				}
+			]
+		}
+	]
+}

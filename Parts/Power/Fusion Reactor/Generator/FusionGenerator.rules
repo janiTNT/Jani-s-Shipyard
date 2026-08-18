@@ -1,0 +1,188 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/PowerStorage"
+	IconNameKey = "Parts/PowerStorageIcon"
+	ID = janiTNT.reactorstorage // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Power"
+	DescriptionKey = "Parts/PowerStorageDesc"
+	Resources
+	[
+		[steel, 32]
+		[coil, 22]
+	]
+	Size = [3, 5]
+	MaxHealth = 4000
+	TypeCategories = [provides_power, storage]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	IgnoreRotationForMirroredSelection = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "reactor_output_template.png"
+			SampleMode = Linear
+		}
+		Size = [56, 56]
+	}
+	Components : ^/0/Components
+	{
+		Port_Fusion_Up0
+		{
+			Type = NetworkPort
+			Types = [ fusionconfined, fusion_in ]
+			CompatibleTypes = [ fusion_out, fusion_passthrough ]
+			Location = [0,0]
+			Direction = Up
+			RouteSource = NetworkedFusionBuffer
+			RouteEndpoint = NetworkedFusionBuffer  
+			//BlueprintRouteSource = BlueprintNetworkNode
+			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "FusionPortIn"
+				RouteLine = "FusionLine"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+		}
+		Port_Fusion_Up1 : Port_Fusion_Up0
+		{
+			Location = [2,0]
+		}
+		
+		Port_Fusion_Left0 : Port_Fusion_Up0
+		{
+			Location = [0,2]
+			Direction = Left
+			Types = [ fusionconfined, fusion_out ]
+			CompatibleTypes = [ fusion_in, fusion_passthrough ]
+			Overlay
+			{
+				OverlayIcon = "FusionPortOut"
+				RouteLine = "FusionLine"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+		}
+		Port_Fusion_Left1 : Port_Fusion_Left0
+		{
+			Location = [0,3]
+		}
+		
+		Port_Fusion_Right0 : Port_Fusion_Left0
+		{
+			Location = [2,2]
+			Direction = Right
+		}
+		Port_Fusion_Right1 : Port_Fusion_Right0
+		{
+			Location = [2,3]
+		}
+		
+		Port_Fusion_Down : Port_Fusion_Left0
+		{
+			Location = [1,4]
+			Direction = Down
+		}
+		
+		Port_Coolant_Down0
+		{
+			Type = NetworkPort
+			Types = [ hot_coolant_fusion ]
+			Location = [0,4]
+			Direction = Down
+			RouteSource = NetworkedFusionBuffer
+			RouteEndpoint = NetworkedFusionBuffer  
+			//BlueprintRouteSource = BlueprintNetworkNode
+			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "HotCoolantPortOut"
+				RouteLine = "HotCoolantLine"
+				DrawRouteHub = false
+				//ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+		}
+		Port_Coolant_Down1 : Port_Coolant_Down0
+		{
+			Location = [2,4]
+		}
+		
+		Router
+		{
+			Type = NetworkRouter
+			RouteGenerators
+			[
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkedFusionBuffer, NetworkFusionOutput, 0]
+					]
+				}
+			]
+		}
+		
+		NetworkFusionOutput
+		{
+			Type = NetworkResourceOutput
+			ResourceType = janitnt.reactorplasma
+			Mode = DistributeProportionallyByAvailable
+			Categories = [ fusion_receiver ]
+		}
+		
+		BlueprintNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+		}
+		
+		NetworkedFusionBuffer
+		{
+			Type = NetworkResourceStore
+			ResourceType = janitnt.reactorplasma
+			ResourceStorage = PlasmaBuffer
+			Categories = [ thermal_storage ]
+		}
+
+		PlasmaBuffer
+		{
+			Type = ResourceStorage
+			ResourceType = janitnt.reactorplasma
+			MaxResources = 1000
+			InitToMaxResources = 0
+			//IgnoreResourcesForInitToMax = true
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 2.5]
+			//OperationalToggle = IsOperational
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "reactor_output_template.png"
+						Size = [3, 5]
+					}
+				]
+			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "walls_stolen.png"
+			UVRotation = 2
+			Size = [3, 5]
+		}
+	}
+}

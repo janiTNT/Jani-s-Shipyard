@@ -64,6 +64,10 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			
 			&<Parts/Power/Reactoraux/reac.txt>/Part
 			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part
+			&<Parts/Power/Fusion Reactor/Generator/FusionGenerator.rules>/Part
+			&<Parts/Power/Pipes/hot_pipe.rules>/Part
+			&<Parts/Power/Pipes/cold_pipe.rules>/Part
+			&<Parts/Power/Cooling Plant/ChemicalPlant.rules>/Part
 			//&<Parts/Power/Radiator/Radiator.txt>/Part //GONE
 			&<Parts/Power/Port/port.rules>/Part
 			
@@ -408,6 +412,18 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 		Action = AddMany
 		AddTo = "<./Data/gui/game/parts/part_triggers.rules>/PartTriggers"
 		ManyToAdd = &<gui/part_triggers.rules>/PartTriggers
+	}
+	{	Action = Overrides
+
+		OverrideIn = "<./Data/gui/game/parts/networks/part_networks.rules>/OverlayIcons"
+		
+		Overrides = &<gui/part_networks.rules>/OverlayIcons
+	}
+	{	Action = Overrides
+
+		OverrideIn = "<./Data/gui/game/parts/networks/part_networks.rules>/RouteLines"
+		
+		Overrides = &<gui/part_networks.rules>/RouteLines
 	}
 	{	Action = AddMany
 

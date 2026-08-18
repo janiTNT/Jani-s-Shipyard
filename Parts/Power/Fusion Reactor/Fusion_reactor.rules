@@ -273,6 +273,35 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
+		NetworkPlasmaInput
+		{
+			Type = NetworkResourceInput
+			ResourceType = janitnt.reactorplasma
+			Mode = DistributeProportionallyByAvailable
+		}
+		
+		MoverTest
+		{
+			Type = ResourceConverter
+			OperationalToggle = PlasmaStorage
+			From
+			[
+				{
+					Storage = PlasmaStorage
+					Quantity = 10
+					MinQuantityForConversion = 1
+				}
+			]
+			To
+			[
+				{
+					Storage = NetworkPlasmaInput
+					Quantity =  10
+				}
+			]
+			Interval = .25
+		}
+		
 		PlasmaStorage
 		{
 			Type = ResourceStorage
@@ -427,13 +456,89 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 						[NetworkHeatInput, NetworkedHeatStorage, 0]
 					]
 				}
+				{
+					Type = Simple
+					Routes
+					[
+						[Port_Fusion_Up0, NetworkPlasmaInput, 0]
+					]
+				}
 			]
 		}
 		
-		BlueprintNetworkNode
+		/* BlueprintNetworkNode
 		{
 			Type = NetworkBasicNode
 			IncludeInBlueprints = true
+		} */
+		Port_Fusion_Up0
+		{
+			Type = NetworkPort
+			Types = [ fusionconfined, fusion_out, fusion_passthrough ]
+			CompatibleTypes = [ fusion_in, fusionconfined ]
+			Location = [1,0]
+			Direction = Up
+			RouteSource = NetworkPlasmaInput
+			RouteEndpoint = NetworkPlasmaInput  
+			//BlueprintRouteSource = BlueprintNetworkNode
+			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "FusionPortPassThrough"
+				RouteLine = "FusionLine"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+		}
+		Port_Fusion_Up1 : Port_Fusion_Up0
+		{
+			Location = [4,0]
+		}
+		Port_Fusion_Down1 : Port_Fusion_Up0
+		{
+			Direction = Down
+			Location = [1,5]
+		}
+		Port_Fusion_Down2 : Port_Fusion_Down1
+		{
+			Direction = Down
+			Location = [4,5]
+		}
+		
+		Port_Coolant_Right0
+		{
+			Type = NetworkPort
+			Types = [ cold_coolant_fusion ]
+			Location = [5,1]
+			Direction = Right
+			RouteSource = NetworkPlasmaInput
+			RouteEndpoint = NetworkPlasmaInput  
+			//BlueprintRouteSource = BlueprintNetworkNode
+			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ColdCoolantPortPassThrough"
+				RouteLine = "CoolantLine"
+				DrawRouteHub = false
+				//ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+		}
+		Port_Coolant_Right1 : Port_Coolant_Right0
+		{
+			Location = [5,4]
+		}
+		Port_Coolant_Left1 : Port_Coolant_Right0
+		{
+			Direction = Left
+			Location = [0,1]
+		}
+		Port_Coolant_Left2 : Port_Coolant_Left1
+		{
+			Location = [0,4]
 		}
 		Port_Thermal_Up0
 		{
@@ -442,9 +547,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [0,0]
 			Direction = Up
 			RouteSource = NetworkHeatInput
-			RouteEndpoint = NetworkHeatInput
-			BlueprintRouteSource = BlueprintNetworkNode
-			BlueprintRouteEndpoint = BlueprintNetworkNode
+			RouteEndpoint = NetworkHeatInput  
+			//BlueprintRouteSource = BlueprintNetworkNode
+			//BlueprintRouteEndpoint = BlueprintNetworkNode
 			Overlay
 			{
 				OverlayIcon = "ThermalPort"

@@ -1,0 +1,100 @@
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/HeatPipeAdaptive"
+	IconNameKey = "Parts/HeatPipeAdaptive"
+	ID = janiTNT.cold_coolant_pipe_adaptive
+	SelectionTypeID = cold_coolant_pipe
+	EditorGroup = "Power"
+	DescriptionKey = "Parts/HeatPipeAdaptiveDesc"
+	Resources
+	[
+		[steel, 4]
+		[coil, 2]
+	]
+	Size = [1, 1]
+	IsRotateable = false
+	IsFlippable = false
+	SelectionPriority = 0
+	MaxHealth = 1000
+	TypeCategories = [ heat_management ]
+	ReceivableBuffs : ^/0/ReceivableBuffs []
+	AllowedDoorLocations = []
+	GeneratorRequiresDoor = false
+	CrewSpeedFactor = 0
+	EditorIcon
+	{
+		Texture
+		{
+			File = "pipe1.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	{
+		Port_Up
+		{
+			Type = NetworkPort
+			Location = [0, 0]
+			Direction = Up
+			Types = [ cold_coolant_fusion ]
+			RouteSource = BaseNetworkNode
+			RouteEndpoint = BaseNetworkNode
+			BlueprintRouteSource = BaseNetworkNode
+			BlueprintRouteEndpoint = BaseNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ColdCoolantPortPassThrough"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "CoolantLine"
+				DrawRouteHub = false
+			}
+		}
+		Port_Right : Port_Up
+		{
+			Direction = Right
+		}
+		Port_Down : Port_Up
+		{
+			Direction = Down
+		}
+		Port_Left : Port_Up
+		{
+			Direction = Left
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/SmallPartDestroyedDry
+			Location = [.5, .5]
+		}
+		
+		BaseNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+			IncludeInPhysical = true
+		}
+		
+		FloorBlendSprites : <fluid_pipe_blend.rules>/FloorBlendSprites {}
+
+		BlueprintBlendSprites : <fluid_pipe_blend.rules>/FloorBlendSprites {
+			Type = BlueprintToggledBlendSprites
+		}
+		
+		Graphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "floors"
+				RandomUVRotation = true
+				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+		}
+	}
+}

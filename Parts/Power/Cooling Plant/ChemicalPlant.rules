@@ -1,0 +1,612 @@
+HEAT_TO_RESOURCE = &<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO
+HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
+
+HEAT_PER_SECOND = 1000
+
+Part : <./data/ships/terran/base_part_terran.rules>/Part
+{
+	NameKey = "Parts/ChemicalPlant"
+	IconNameKey = "Parts/ChemicalPlantIcon"
+	ID = janiTNT.ChemicalPlantCooling // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorGroup = "Production"
+	DescriptionKey = "Parts/ChemicalPlantDesc"
+	Resources
+	[
+		[steel, 160]
+		[coil2, 120]
+	]
+	Size = [3, 3]
+	IsFlippable = true
+	SelectionPriority = 1
+	MaxHealth = 16000
+	TypeCategories
+	[
+	uses_power
+	]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Factory]
+	ForceManhattanPathInPart = true
+	HasNonContiguousPathing = true
+	AllowedDoorLocations
+	[
+		[-1, 1]
+		[1, 3]
+		[3, 1]
+	]
+	BlockedTravelCells
+	[
+		[1, 1]
+		[1, 0]
+		
+		[0, 0]
+		[2, 0]
+		[2, 2]
+		[0, 2]
+	]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [64, 64]
+	}
+	Components : ^/0/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [PowerToggle, BatteryStorage]
+			Mode = All
+		}
+
+		PowerToggle
+		{
+			Type = UIToggle
+			ToggleID = "on_off"
+			Default = 1
+			RequiresCommand = false
+		}
+
+		CommandConsumer
+		{
+			Type = CommandConsumer
+			OperationalToggle = PowerToggle
+			CommandPoints = 4
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 4000
+			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
+		}
+		BatteryConsumer
+		{
+			Type = ResourceConsumer
+			ResourceType = battery
+			Storage = BatteryStorage
+			DefaultPriority = &/PRIORITIES/Factory_Supply
+			ResupplyThreshold = 500
+			OperationalToggle = PowerToggle
+		}
+		
+		ResourceConverter
+		{
+			Type = ResourceConverter
+			OperationalToggle = IsOperational
+			HEAT_PER_INTERVAL = (&~/HEAT_PER_SECOND) * (&Interval/BaseValue)
+			ToStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
+			From
+			[
+			    {
+			        Storage = BatteryStorage
+			        Quantity = 200
+			        MinQuantityForConversion = 1
+			    }
+			]
+			To
+			[
+				{
+					Storage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
+					Quantity
+					{
+						BaseValue = ceil((&../../../HEAT_PER_INTERVAL) * (&~/HEAT_TO_RESOURCE))
+					}
+				}
+			]
+			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
+		}
+
+		ConvertEffects
+		{
+			Type = TriggeredEffects
+			Trigger = ResourceConverter
+			Location = [1.5, 1.5]
+			MediaEffects
+			[
+				: /BASE_SOUNDS/AudioInterior
+				{
+					//Sound = "../factory_ammo/bullet_create.wav"
+					//Volume = .75
+					Sound = "./data/common_effects/sounds/metal_deliver.wav"
+					Volume = 0.8
+					Speed = .5
+					SpeedVariation = .05
+				}
+			]
+		}
+		
+		Port_Coolant_Up0
+		{
+			Type = NetworkPort
+			Types = [ hot_coolant_fusion ]
+			Location = [0,0]
+			Direction = Up
+			RouteSource = BaseNetworkNode
+			//RouteEndpoint = BaseNetworkNode  
+			BlueprintRouteSource = BaseNetworkNode
+			//BlueprintRouteEndpoint = BaseNetworkNode
+			Overlay
+			{
+				OverlayIcon = "HotCoolantPortIn"
+				RouteLine = "HotCoolantLine"
+				DrawRouteHub = false
+				//ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+		}
+		Port_Coolant_Up1 : Port_Coolant_Up0
+		{
+			Location = [2,0]
+		}
+		
+		Port_Coolant_Down0 : Port_Coolant_Up0
+		{
+			Location = [0,2]
+			Types = [ cold_coolant_fusion ]
+			Overlay
+			{
+				OverlayIcon = "ColdCoolantPortOut"
+				RouteLine = "CoolantLine"
+				DrawRouteHub = false
+				//ConnectedEdgeIcon = "FusionPortDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 0, 255, 61]
+			}
+			Direction = Down
+		}
+		
+		Port_Coolant_Down1 : Port_Coolant_Down0
+		{
+			Location = [2,2]
+			Direction = Down
+		}
+		
+		NetworkHeatInput = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/NetworkHeatInput
+		OverflowHeatStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage
+		HeatDistributionStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/HeatDistributionStorage
+		
+		Port_Thermal_Left
+		{
+			Type = NetworkPort
+			Types = [ thermal ]
+			Location = [0,1]
+			Direction = Left
+			RouteSource = NetworkHeatInput
+			//RouteEndpoint = NetworkHeatInput  
+			BlueprintRouteSource = BaseNetworkNode
+			//BlueprintRouteEndpoint = BaseNetworkNode
+			Overlay
+			{
+				OverlayIcon = "ThermalPort"
+				RouteLine = "Thermal"
+				DrawRouteHub = false
+				ConnectedEdgeIcon = "ThermalDot"
+				HighlightPartOnPrimaryConnection = true
+    			PartHighlightColor = [255, 217, 0, 61]
+			}
+		}
+		Port_Thermal_Down : Port_Thermal_Left
+		{
+			Direction = Down
+			Location = [1,2]
+		}
+		Port_Thermal_Right : Port_Thermal_Left
+		{
+			Direction = Right
+			Location = [2,1]
+		}
+		
+		BaseNetworkNode
+		{
+			Type = NetworkBasicNode
+			IncludeInBlueprints = true
+			IncludeInPhysical = true
+		}
+
+		BuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = Factory
+			BuffAmount = 25%
+			GridDistance = 1
+			OperationalToggle = BatteryStorage
+		}
+
+		Graphics
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			DoodadToggle = ResourceConverter
+			Floor
+			{
+				Layer = "floors"
+				DamageLevels
+				[
+					{
+						File = "floor.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			ToggleOnDoodad
+			{
+				Layer = "doors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_on1.png"
+							"doodads_on2.png"
+							"doodads_on3.png"
+							"doodads_on4.png"
+							"doodads_on5.png"
+							"doodads_on6.png"
+							"doodads_on7.png"
+							"doodads_on8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+					}
+				]
+			}
+			ToggleOffDoodad
+			{
+				Layer = "doors"
+				Offset = [0, 0]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"doodads_idle1.png"
+							"doodads_idle2.png"
+							"doodads_idle3.png"
+							"doodads_idle4.png"
+							"doodads_idle3.png"
+							"doodads_idle2.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125
+						AnimationStartTime = WhenSpawned
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				Offset = [0, -.5]
+				DamageLevels
+				[
+					{
+						File = "doodads_off.png"
+						Size = [2, 1]
+					}
+				]
+			}
+			Walls
+			{
+				Layer = "walls"
+				DamageLevels
+				[
+					{
+						File = "walls.png"
+						Size = [3, 3]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights.png"
+						Size = [3, 3]
+						VertexColor = [80/2, 255/2, 255/2]
+					}
+				]
+			}
+			Roof
+			{
+				Layer = "walls"
+				Offset = [0, -0.5]
+				DamageLevels
+				[
+					{
+						File = "topmachine.png"
+						Size = [3, 2]
+					}
+				]
+			}
+			/*OperationalRoofDoodad
+			{
+				Layer = "roof_doodads"
+				Offset = [0, 1.5]
+				DamageLevels
+				[
+					{
+						File = "roof_glows.png"
+						Size = [4, 1]
+					}
+					{
+						File = "roof_glows_33.png"
+						Size = [4, 1]
+					}
+					{
+						File = "roof_glows_66.png"
+						Size = [4, 1]
+					}
+				]
+			}*/
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [-85/64, -57/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [80*1.4, 255*1.4, 255*1.4]
+					}
+				]
+			}
+		}
+		
+		RoofDoorOpenToggle
+		{
+			Type = CrewDestinationProximityToggle
+			Distance = 3
+		}
+		RoofDoorSprite
+		{
+			Type = OpenCloseSprite
+			Location = [2, 2]
+			OperationalToggle = RoofDoorOpenToggle
+			Layer = "roofs"
+			OpenDamageLevels = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/RoofDoorSprite/OpenDamageLevels
+			ClosedDamageLevels = &<./Data/ships/terran/factory_tristeel/factory_tristeel.rules>/Part/Components/RoofDoorSprite/ClosedDamageLevels
+		}
+
+		Graphics2
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = IsOperational
+			OperationalRoofLighting
+			{
+				Layer = "roof_lights_fancy"
+				Offset = [62/64, -57/64]
+				DamageLevels
+				[
+					{
+						File = "./Data/ships/common/light_blob.png"
+						Size = [6, 6]
+						Z = .5 // Controls the "height" of the light for the purposes of normal mapping. Set to -1 (or any negative number) to disable normal lighting for this light.
+						VertexColor = [80*1.4, 255*1.4, 255*1.4]
+					}
+				]
+			}
+		}
+		
+		GraphicsColored
+		{
+			Type = Graphics
+			Location = [1.5, 1.5]
+			OperationalToggle = ResourceConverter
+			OperationalDoodad
+			{
+				Layer = "doodads_low" //Wall layer so the cosmilte is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				Offset = [0, -(0.5)+(2/64)]
+				DamageLevels
+				[
+					{
+						File = "fluid.png"
+						Size = [2, 2]
+						RotSpeed = 420d
+						VertexColor = [80/2, 255/2, 255/2]
+					}
+				]
+			}
+			OperationalLighting
+			{
+				Layer = "doodads_low" //Wall layer so the cosmilte is show on top of the exit belt which use the doodad_low layer and under the crew sprite
+				Offset = [0, -(0.5)+(2/64)]
+				DamageLevels
+				[
+					{
+						File = "fluid.png"
+						Size = [2, 2]
+						RotSpeed = 420d * 1.3145356
+						VertexColor = [80/2, 255/2, 255/2]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "doodads_high" 
+				Offset = [0, -(0.5)]
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"fumes1.png"
+							"fumes2.png"
+							"fumes3.png"
+							"fumes4.png"
+							"fumes5.png"
+							"fumes6.png"
+							"fumes7.png"
+							"fumes8.png"
+						]
+						Size = [2, 2]
+						AnimationInterval = 0.125 / 1.25
+						AnimationStartTime = WhenSpawned
+						VertexColor = [80, 255, 255]
+					}
+				]
+			}
+		}
+
+		/*BatterySprites
+		{
+			Type = ResourceSprites
+			Location = [3, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			RangeLow = 0
+			RangeHigh = 3000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries2.png"
+					Size = [1, 2]
+				}
+				{
+					File = "batteries3.png"
+					Size = [1, 2]
+				}
+			]
+		}
+		
+		BatterySprites2
+		{
+			Type = ResourceSprites
+			Location = [1, 2]
+			ResourceStorage = BatteryStorage
+			Layer = "doodads_high"
+			RangeLow = 3000
+			RangeHigh = 6000
+			ResourceLevels
+			[
+				{
+					File = "batteries1.png"
+					MirrorU = true
+					Size = [1, 2]
+				}
+				{
+					File = "batteries2.png"
+					MirrorU = true
+					Size = [1, 2]
+				}
+				{
+					File = "batteries3.png"
+					MirrorU = true
+					Size = [1, 2]
+				}
+			]
+		}
+*/
+		OperationEffects
+		{
+			Type = ToggleEffects
+			Location = [1.5, 1.5]
+			Toggle = IsOperational
+			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
+			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
+		}
+
+		DestroyedEffects
+		{
+			Type = DeathEffects
+			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
+			Location = [1.5, 1.5]
+		}
+
+		Indicators
+		{
+			Type = IndicatorSprites
+			Location = [1.5, 1.5]
+			Layer = "indicators"
+			Indicators
+			[
+				// Turned off.
+				{
+					Toggle = PowerToggle
+					AtlasSprite
+					{
+						File = &/INDICATORS/PowerOff
+						Size = [1, 1]
+					}
+				}
+
+				// Out of power.
+				{
+					Toggle = BatteryStorage
+					AtlasSprite
+					{
+						File = &/INDICATORS/NoPower
+						Size = [1, 1]
+					}
+				}
+			]
+		}
+		
+		HeatGenerationValue { Type = BuffableValue; 
+			Value
+			{ 
+				BaseValue=&~/HEAT_PER_SECOND; BuffType=Factory; BuffMode=Multiply
+			}
+			IncludeInBlueprints = true
+		}
+		HeatGenerationStatProvider
+		{
+			Type = StatProvider
+			Stat = HeatGeneration
+			//OperationalToggle = OverclockModeToggle
+			ValueFrom = HeatGenerationValue
+		}
+
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "icon.png"
+			Size = [3, 3]
+		}
+	}
+
+	Stats
+	{
+		/*PowerPerSteel = 750 / 1 / 1000
+		PowerPerSecond = 750 / 3 / 1000
+		SteelPowerUsage = [&../PowerPerSteel, &../PowerPerSecond]
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
+		FactoryBuff = (&~/Part/Components/BuffProvider/BuffAmount) * 100
+
+		RecPower = &PowerPerSecond
+		RecCrew = (&RecPower) * 4*/
+	}
+}

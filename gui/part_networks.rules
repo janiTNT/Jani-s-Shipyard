@@ -1,0 +1,238 @@
+OverlayIcons
+{
+	FusionPortOut
+	{
+		Sprite
+		{
+			File = "port_arrow_base.png"
+			VertexColor = [255, 0, 255, 255]
+			Size = [0.5, 0.5]
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	FusionPortIn
+	{
+		Sprite
+		{
+			File = "port_arrow_base.png"
+			VertexColor = [255, 0, 255, 192]
+			Size = [0.5, 0.5]
+			UVRotation = 2
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	FusionPortPassThrough
+	{
+		Sprite
+		{
+			File = "port_arrowdouble_base.png"
+			VertexColor = [255, 0, 255, 255]
+			Size = [0.5, 1]
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	FusionPortDot
+	{
+		Sprite
+		{
+			File = "fusion_icon_circle.png"
+			VertexColor = [255, 0, 255, 90]
+			Size = [1.6, 0.8]
+		}
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	ColdCoolantPortPassThrough
+	{
+		Sprite
+		{
+			File = "port_arrowdouble_base.png"
+			VertexColor = [0, 143, 255, 255]
+			Size = [0.4, 0.95]
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	ColdCoolantPortOut
+	{
+		Sprite
+		{
+			File = "port_arrow_base.png"
+			VertexColor = [0, 143, 255, 255]
+			Size = [0.4, 0.4]
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	HotCoolantPortOut
+	{
+		Sprite
+		{
+			File = "port_arrow_base.png"
+			VertexColor = [255, 128, 0, 255]
+			Size = [0.6, 0.6]
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+	HotCoolantPortIn
+	{
+		Sprite
+		{
+			File = "port_arrow_base.png"
+			VertexColor = [255, 128, 0, 192]
+			Size = [0.6, 0.6]
+			UVRotation = 2
+		}
+		EdgeOffset = -(&Sprite/Size/0) * 24/64
+		RouteLineOffset = (&EdgeOffset) - (&Sprite/Size/0) * 16/64
+		DrawLineToEdgeWhenConnected = true
+		UnroutableColorFactor = [255, 255, 255, 170]
+	}
+}
+RouteLines
+{
+	FusionLine
+    {
+    	Type = CappedLine
+    	RenderToSeparateTexture = true
+    	LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    			UMode = Wrap
+    		}
+    		Shader = "./Data/gui/line_split_channel.shader"
+    		_baseColor = [255, 0, 255, 100]
+    		_glowColor = [255, 25, 200, 100]
+    		TargetBlendMode = Max
+    	}
+    	BeginCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap_flipped.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	BeginCapSize = [(&../LineThickness) / 2, (&../LineThickness)]
+    	EndCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	EndCapSize = &BeginCapSize
+    	LineThickness = 0.8
+    	LineUPerLength = 0.8 / (&LineThickness)
+    	ColorFactor = [255, 255, 255, 255]
+    	UnroutableColorFactor = [255, 255, 255, 90]
+    }
+	CoolantLine
+    {
+    	Type = CappedLine
+    	RenderToSeparateTexture = true
+    	LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    			UMode = Wrap
+    		}
+    		Shader = "./Data/gui/line_split_channel.shader"
+    		_baseColor = [0, 143, 255, 255]
+    		_glowColor = [0, 143, 255, 255]
+    		TargetBlendMode = Max
+    	}
+    	BeginCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap_flipped.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	BeginCapSize = [(&../LineThickness) / 2, (&../LineThickness)]
+    	EndCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	EndCapSize = &BeginCapSize
+    	LineThickness = 0.6
+    	LineUPerLength = 0.8 / (&LineThickness)
+    	ColorFactor = [255, 255, 255, 255]
+    	UnroutableColorFactor = [255, 255, 255, 90]
+    }
+	HotCoolantLine
+    {
+    	Type = CappedLine
+    	RenderToSeparateTexture = true
+    	LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    			UMode = Wrap
+    		}
+    		Shader = "./Data/gui/line_split_channel.shader"
+    		_baseColor = [255, 128, 0, 255]
+    		_glowColor = [255, 128, 0, 255]
+    		TargetBlendMode = Max
+    	}
+    	BeginCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap_flipped.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+		BeginCapSize = [(&../LineThickness) / 2, (&../LineThickness)]
+    	EndCapSprite : LineSprite
+    	{
+    		Texture
+    		{
+    			File = "./Data/gui/line_split_channel_endcap.png"
+    			SampleMode = Linear
+    			MipLevels = max
+    		}
+    	}
+    	EndCapSize = &BeginCapSize
+    	LineThickness = 0.75
+    	LineUPerLength = 0.8 / (&LineThickness)
+    	ColorFactor = [255, 255, 255, 255]
+    	UnroutableColorFactor = [255, 255, 255, 90]
+    }
+}
