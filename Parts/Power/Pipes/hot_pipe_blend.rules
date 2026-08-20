@@ -47,7 +47,7 @@ FloorBlendSprites : BASE_BLEND_SPRITES
 			DamageLevelSprites 
 			[
 				{
-					File = "pipe1.png"
+					File = "pipe_hot1.png"
 				}
 			]
 		}
@@ -56,7 +56,7 @@ FloorBlendSprites : BASE_BLEND_SPRITES
 			DamageLevelSprites 
 			[
 				{
-					File = "pipe1.png"
+					File = "pipe_hot1.png"
 				}
 			]
 		}
@@ -65,7 +65,7 @@ FloorBlendSprites : BASE_BLEND_SPRITES
 			DamageLevelSprites
 			[
 				{
-					File = "pipe1.png"
+					File = "pipe_hot1.png"
 				}
 			]
 		}
@@ -74,7 +74,7 @@ FloorBlendSprites : BASE_BLEND_SPRITES
 			DamageLevelSprites
 			[
 				{
-					File = "pipe2.png"
+					File = "pipe_hot2.png"
 				}
 			]
 		}
@@ -83,7 +83,7 @@ FloorBlendSprites : BASE_BLEND_SPRITES
 			DamageLevelSprites
 			[
 				{
-					File = "pipe3.png"
+					File = "pipe_hot3.png"
 				}
 			]
 		}
@@ -92,7 +92,7 @@ FloorBlendSprites : BASE_BLEND_SPRITES
 			DamageLevelSprites
 			[
 				{
-					File = "pipe4.png"
+					File = "pipe_hot4.png"
 				}
 			]
 		}

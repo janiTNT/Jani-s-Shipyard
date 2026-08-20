@@ -78,9 +78,9 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			IncludeInPhysical = true
 		}
 		
-		FloorBlendSprites : <fluid_pipe_blend.rules>/FloorBlendSprites {}
+		FloorBlendSprites : <cold_pipe_blend.rules>/FloorBlendSprites {}
 
-		BlueprintBlendSprites : <fluid_pipe_blend.rules>/FloorBlendSprites {
+		BlueprintBlendSprites : <cold_pipe_blend.rules>/FloorBlendSprites {
 			Type = BlueprintToggledBlendSprites
 		}
 		
