@@ -298,6 +298,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Storage = NetworkPlasmaInput
 					Quantity =  10
 				}
+				{
+					Storage = NetworkHotCoolantInput
+					Quantity =  10
+				}
 			]
 			Interval = .25
 		}
@@ -461,6 +465,14 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Routes
 					[
 						[Port_Fusion_Up0, NetworkPlasmaInput, 0]
+						[NetworkHotCoolantInput, NetworkPlasmaInput, 0]
+					]
+				}
+				{
+					Type = Bidirectional
+					Routes
+					[
+						[NetworkCoolantOutput, NetworkedCoolantReceiver, 0]
 					]
 				}
 			]
@@ -507,14 +519,47 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Location = [4,5]
 		}
 		
+		NetworkHotCoolantInput
+		{
+			Type = NetworkResourceInput
+			ResourceType = fake
+			Mode = DistributeProportionallyByAvailable
+			Categories = [ hot_coolant_fusion_storage ]
+		}
+		
+		NetworkCoolantOutput
+		{
+			Type = NetworkResourceOutput
+			ResourceType = fake
+			Mode = DistributeProportionallyByAvailable
+			Categories = [ cold_coolant_fusion_storage ]
+		}
+		
+		NetworkedCoolantReceiver
+		{
+			Type = NetworkResourceStore
+			ResourceType = fake
+			ResourceStorage = CoolantStorage
+			Categories = [ cold_coolant_fusion_storage ]
+		}
+		
+		CoolantStorage
+		{
+			Type = ResourceStorage
+			ResourceType = fake
+			MaxResources = 4000
+			InitToMaxResources = 0
+			//IgnoreResourcesForInitToMax = true
+		}
+		
 		Port_Coolant_Right0
 		{
 			Type = NetworkPort
 			Types = [ cold_coolant_fusion ]
 			Location = [5,1]
 			Direction = Right
-			RouteSource = NetworkPlasmaInput
-			RouteEndpoint = NetworkPlasmaInput  
+			RouteSource = NetworkCoolantOutput
+			RouteEndpoint = NetworkCoolantOutput  
 			//BlueprintRouteSource = BlueprintNetworkNode
 			//BlueprintRouteEndpoint = BlueprintNetworkNode
 			Overlay

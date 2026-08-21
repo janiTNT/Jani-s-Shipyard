@@ -66,7 +66,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Power/Fusion Reactor/Fusion_Reactor.rules>/Part
 			&<Parts/Power/Fusion Reactor/Generator/FusionGenerator.rules>/Part
 			&<Parts/Power/Pipes/hot_pipe.rules>/Part
+			&<Parts/Power/Pipes/hot_pipe_jump.rules>/Part
 			&<Parts/Power/Pipes/cold_pipe.rules>/Part
+			&<Parts/Power/Pipes/cold_pipe_jump.rules>/Part
 			&<Parts/Power/Cooling Plant/ChemicalPlant.rules>/Part
 			//&<Parts/Power/Radiator/Radiator.txt>/Part //GONE
 			&<Parts/Power/Port/port.rules>/Part

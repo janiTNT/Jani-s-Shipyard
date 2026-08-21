@@ -2,7 +2,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/HeatPipeAdaptive"
 	IconNameKey = "Parts/HeatPipeAdaptive"
-	ID = janiTNT.hot_coolant_pipe_adaptive
+	ID = janiTNT.hot_coolant_pipe_jump
 	SelectionTypeID = hot_coolant_pipe
 	EditorGroup = "Power"
 	DescriptionKey = "Parts/HeatPipeAdaptiveDesc"
@@ -12,7 +12,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[coil, 2]
 	]
 	Size = [1, 1]
-	IsRotateable = false
+	IsRotateable = true
 	IsFlippable = false
 	SelectionPriority = 0
 	MaxHealth = 1000
@@ -25,7 +25,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	{
 		Texture
 		{
-			File = "pipe_hot1.png"
+			File = "pipe_hot5.png"
 			SampleMode = Linear
 		}
 		Size = [32, 32]
@@ -37,7 +37,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = NetworkPort
 			Location = [0, 0]
 			Direction = Up
-			Types = [ hot_coolant_fusion ]
+			Types = [ hot_coolant_fusion, hot_coolant_fusion_underground ]
+			CompatibleTypes = [ hot_coolant_fusion_underground_end ]
 			RouteSource = BaseNetworkNode
 			RouteEndpoint = BaseNetworkNode
 			BlueprintRouteSource = BaseNetworkNode
@@ -51,17 +52,47 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				DrawRouteHub = false
 			}
 		}
-		Port_Right : Port_Up
+		Port_Up1 : Port_Up
 		{
-			Direction = Right
+			Location = [0, -1]
 		}
-		Port_Down : Port_Up
+		Port_Up2 : Port_Up1
 		{
+			Location = [0, -2]
+		}
+		Port_Up3 : Port_Up1
+		{
+			Location = [0, -3]
+		}
+		Port_Up4 : Port_Up1
+		{
+			Location = [0, -4]
+		}
+		Port_Self : Port_Up
+		{
+			Location = [0, 0]
+			Types = [ hot_coolant_fusion, hot_coolant_fusion_underground_end ]
+			CompatibleTypes = [ hot_coolant_fusion_underground ]
+			//Direction = Down
+		}
+		Port_Down
+		{
+			Type = NetworkPort
 			Direction = Down
-		}
-		Port_Left : Port_Up
-		{
-			Direction = Left
+			Location = [0, 0]
+			Types = [ hot_coolant_fusion ]
+			RouteSource = BaseNetworkNode
+			RouteEndpoint = BaseNetworkNode
+			BlueprintRouteSource = BaseNetworkNode
+			BlueprintRouteEndpoint = BaseNetworkNode
+			Overlay
+			{
+				OverlayIcon = "HotCoolantPortOut"
+				IconDrawMode = Never
+				RouteDrawMode = Connected
+				RouteLine = "HotCoolantLine"
+				DrawRouteHub = false
+			}
 		}
 
 		DestroyedEffects
@@ -78,12 +109,6 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			IncludeInPhysical = true
 		}
 		
-		FloorBlendSprites : <hot_pipe_blend.rules>/FloorBlendSprites {}
-
-		BlueprintBlendSprites : <hot_pipe_blend.rules>/FloorBlendSprites {
-			Type = BlueprintToggledBlendSprites
-		}
-		
 		Graphics
 		{
 			Type = Graphics
@@ -93,6 +118,16 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				Layer = "floors"
 				RandomUVRotation = true
 				DamageLevels = &/JANI_COMMON/WallMassDamageLevels
+			}
+			Walls
+			{
+				Layer = "doodads_low"
+				DamageLevels
+				[
+					{
+						File = "pipe_hot5.png"
+					}
+				]
 			}
 			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
 		}
