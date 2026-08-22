@@ -199,14 +199,15 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				{
 					Storage = PlasmaStorage
 					Quantity = 100 * 50
-					MinQuantityForConversion = 10
+					MinQuantityForConversion = 100 * 50
 				}
 			]
 			To
 			[
 				{
 					Storage = BatteryStorage
-					Quantity =  { BaseValue=1000; BuffType=ElectronDebuff; BuffMode=Multiply; }
+					Quantity =  { BaseValue=6000; BuffType=ElectronDebuff; BuffMode=Multiply; }
+					MinQuantityForConversion = { BaseValue=6000; BuffType=ElectronDebuff; BuffMode=Multiply; }
 				}
 			]
 			//MinFromQuantityForConversion = 1000
@@ -222,13 +223,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 8000 * 4
+			MaxResources = 8000 * 6
 			StartingResources = 0
 			SuppliesResources = true
 			MinResourcesPickUp = 6000
 			MaxResourcesPickUp = 6000
 			InitPickUp = 5001
-			PickUpRate = 1000 / 2.0
+			PickUpRate = 1000 / 1.5
 			ExpectedResourceGenerationRate = { BaseValue = 1000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ExpectedResourceGenerationToggle = PlasmaStorage
 			DropResourcesWhenDestroyed = false
@@ -259,5 +260,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			UVRotation = 2
 			Size = [3, 5]
 		}
+	}
+	Stats
+	{
+		PowerGeneration = (&~/Part/Components/BatteryProducer/To/0/Quantity/BaseValue) / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
+		BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
+		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 	}
 }

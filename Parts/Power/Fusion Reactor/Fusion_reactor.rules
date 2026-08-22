@@ -290,7 +290,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Storage = PlasmaStorage
 					Quantity = 200 * 50
-					MinQuantityForConversion = 1
+					MinQuantityForConversion = 200 * 50
 				}
 			]
 			To
@@ -298,6 +298,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Storage = NetworkPlasmaInput
 					Quantity =  200 * 50
+					MinQuantityForConversion = 200 * 50
 				}
 			]
 			Interval = .25
