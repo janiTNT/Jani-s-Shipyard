@@ -131,5 +131,11 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			}
 			Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
 		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "pipe_hot5.png"
+			Size = [1, 1]
+		}
 	}
 }

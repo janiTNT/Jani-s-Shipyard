@@ -33,15 +33,17 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			CompatibleTypes = [ fusion_out, fusion_passthrough ]
 			Location = [0,0]
 			Direction = Up
-			RouteSource = NetworkedFusionBuffer
-			RouteEndpoint = NetworkedFusionBuffer  
-			//BlueprintRouteSource = BlueprintNetworkNode
+			RouteSource = NetworkedFusionStorage
+			RouteEndpoint = NetworkedFusionStorage  
+			BlueprintRouteSource = BlueprintNetworkNode
 			//BlueprintRouteEndpoint = BlueprintNetworkNode
 			Overlay
 			{
 				OverlayIcon = "FusionPortIn"
 				RouteLine = "FusionLine"
 				DrawRouteHub = false
+				RouteDrawMode = Connected
+				IconDrawMode = Always
 				ConnectedEdgeIcon = "FusionPortDot"
 				HighlightPartOnPrimaryConnection = true
     			PartHighlightColor = [255, 0, 255, 61]
@@ -63,6 +65,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				OverlayIcon = "FusionPortOut"
 				RouteLine = "FusionLine"
 				DrawRouteHub = false
+				RouteDrawMode = Connected
+				IconDrawMode = Always
 				ConnectedEdgeIcon = "FusionPortDot"
 				HighlightPartOnPrimaryConnection = true
     			PartHighlightColor = [255, 0, 255, 61]
@@ -95,15 +99,17 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Types = [ hot_coolant_fusion ]
 			Location = [0,4]
 			Direction = Down
-			RouteSource = NetworkedFusionBuffer
-			RouteEndpoint = NetworkedFusionBuffer  
-			//BlueprintRouteSource = BlueprintNetworkNode
-			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			RouteSource = NetworkedFusionStorage
+			//RouteEndpoint = NetworkedFusionStorage  
+			BlueprintRouteSource = BlueprintNetworkNodeCoolant
+			//BlueprintRouteEndpoint = BlueprintNetworkNodeCoolant
 			Overlay
 			{
 				OverlayIcon = "HotCoolantPortOut"
 				RouteLine = "HotCoolantLine"
 				DrawRouteHub = false
+				RouteDrawMode = Never
+				IconDrawMode = Always
 				//ConnectedEdgeIcon = "FusionPortDot"
 				HighlightPartOnPrimaryConnection = true
     			PartHighlightColor = [255, 0, 255, 61]
@@ -123,7 +129,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					Type = Bidirectional
 					Routes
 					[
-						[NetworkedFusionBuffer, NetworkFusionOutput, 0]
+						[NetworkedFusionStorage, NetworkFusionOutput, 0]
 					]
 				}
 			]
@@ -137,27 +143,96 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Categories = [ fusion_receiver ]
 		}
 		
+		BlueprintNetworkNodeCoolant = &BlueprintNetworkNode
+		
 		BlueprintNetworkNode
 		{
 			Type = NetworkBasicNode
 			IncludeInBlueprints = true
 		}
 		
-		NetworkedFusionBuffer
+		NetworkedFusionStorage
 		{
 			Type = NetworkResourceStore
 			ResourceType = janitnt.reactorplasma
-			ResourceStorage = PlasmaBuffer
+			ResourceStorage = PlasmaStorage
 			Categories = [ thermal_storage ]
 		}
+		
+		PlasmaProgressBar
+		{
+			Type = ProgressBar
+			//OperationalToggle = IsOperational
+			ShowProgressFor = PlasmaStorage
+			LowColor = [80, 25, 128]
+			HighColor = [190, 50, 255]
+			FullColor = [190, 130, 255]
+			Height = 10
+		}
+		
+		BatteryProgressBar
+		{
+			Type = ProgressBar
+			//OperationalToggle = IsOperational
+			ShowProgressFor = BatteryStorage
+			LowColor = [0, 255, 40]
+			HighColor = [0, 255, 0]
+			FullColor = [52, 255, 52]
+			Height = 5
+		}
 
-		PlasmaBuffer
+		PlasmaStorage
 		{
 			Type = ResourceStorage
 			ResourceType = janitnt.reactorplasma
-			MaxResources = 1000
+			MaxResources = 800 * 50
 			InitToMaxResources = 0
 			//IgnoreResourcesForInitToMax = true
+		}
+		
+		BatteryProducer
+		{
+			Type = ResourceConverter
+			OperationalToggle = PlasmaStorage
+			From
+			[
+				{
+					Storage = PlasmaStorage
+					Quantity = 100 * 50
+					MinQuantityForConversion = 10
+				}
+			]
+			To
+			[
+				{
+					Storage = BatteryStorage
+					Quantity =  { BaseValue=1000; BuffType=ElectronDebuff; BuffMode=Multiply; }
+				}
+			]
+			//MinFromQuantityForConversion = 1000
+			//PLEASE EDIT FOR STATS
+			
+			//heat = 2000 per second
+			
+			//ALSO EDIT EXPECTED AMMO GEN 
+			Interval = .25
+		}
+		
+		BatteryStorage
+		{
+			Type = ResourceStorage
+			ResourceType = battery
+			MaxResources = 8000 * 4
+			StartingResources = 0
+			SuppliesResources = true
+			MinResourcesPickUp = 6000
+			MaxResourcesPickUp = 6000
+			InitPickUp = 5001
+			PickUpRate = 1000 / 2.0
+			ExpectedResourceGenerationRate = { BaseValue = 1000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
+			ExpectedResourceGenerationToggle = PlasmaStorage
+			DropResourcesWhenDestroyed = false
+			DropResourcesWhenRemoved = false
 		}
 		
 		Graphics

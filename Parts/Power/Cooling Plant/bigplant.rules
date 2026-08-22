@@ -7,7 +7,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/ChemicalPlant"
 	IconNameKey = "Parts/ChemicalPlantIcon"
-	ID = janiTNT.ChemicalPlantCooling // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	ID = janiTNT.ChemicalPlantCooling_Big // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
 	EditorGroup = "Production"
 	DescriptionKey = "Parts/ChemicalPlantDesc"
 	Resources
@@ -15,7 +15,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[steel, 160]
 		[coil2, 120]
 	]
-	Size = [3, 3]
+	Size = [5, 5]
 	IsFlippable = true
 	SelectionPriority = 1
 	MaxHealth = 16000
@@ -29,10 +29,15 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	AllowedDoorLocations
 	[
 		[-1, 1]
-		[1, 3]
-		[3, 1]
+		[-1, 2]
+		[-1, 3]
+		[5, 1]
+		[5, 2]
+		[5, 3]
+		[1, 5]
+		[3, 5]
 	]
-	BlockedTravelCells
+	/* BlockedTravelCells
 	[
 		[1, 1]
 		[1, 0]
@@ -41,7 +46,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		[2, 0]
 		[2, 2]
 		[0, 2]
-	]
+	] */
 	EditorIcon
 	{
 		Texture
@@ -49,7 +54,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			File = "icon.png"
 			SampleMode = Linear
 		}
-		Size = [64, 64]
+		Size = [89, 89]
 	}
 	Components : ^/0/Components
 	{
@@ -146,7 +151,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = TriggeredEffects
 			Trigger = ResourceConverter
-			Location = [1.5, 1.5]
+			Location = [2.5, 2.5]
 			MediaEffects
 			[
 				: /BASE_SOUNDS/AudioInterior
@@ -185,10 +190,14 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Location = [2,0]
 		}
+		Port_Coolant_Up2 : Port_Coolant_Up0
+		{
+			Location = [4,0]
+		}
 		
 		Port_Coolant_Down0 : Port_Coolant_Up0
 		{
-			Location = [0,2]
+			Location = [0,4]
 			Types = [ cold_coolant_fusion ]
 			RouteSource = NetworkCoolantInput
 			RouteEndpoint = NetworkCoolantInput  
@@ -208,8 +217,12 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		
 		Port_Coolant_Down1 : Port_Coolant_Down0
 		{
-			Location = [2,2]
-			Direction = Down
+			Location = [2,4]
+		}
+		
+		Port_Coolant_Down2 : Port_Coolant_Down0
+		{
+			Location = [4,4]
 		}
 		
 		BatteryProgressBar
@@ -290,7 +303,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		
 		OverheatEffects = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects
 		
-		Port_Thermal_Left
+		Port_Thermal_Left1
 		{
 			Type = NetworkPort
 			Types = [ thermal ]
@@ -310,40 +323,58 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
     			PartHighlightColor = [255, 217, 0, 61]
 			}
 		}
-		Port_Thermal_Down1 : Port_Thermal_Left
+		Port_Thermal_Left2 : Port_Thermal_Left1
 		{
-			Direction = Down
 			Location = [0,2]
 		}
-		Port_Thermal_Down2 : Port_Thermal_Left
+		Port_Thermal_Left3 : Port_Thermal_Left1
+		{
+			Location = [0,3]
+		}
+		Port_Thermal_Down1 : Port_Thermal_Left1
 		{
 			Direction = Down
-			Location = [1,2]
-		}
-		Port_Thermal_Down3 : Port_Thermal_Left
+			Location = [1,4]
+		}/* 
+		Port_Thermal_Down2 : Port_Thermal_Left1
 		{
 			Direction = Down
-			Location = [2,2]
+			Location = [2,4]
+		} */
+		Port_Thermal_Down2 : Port_Thermal_Left1
+		{
+			Direction = Down
+			Location = [3,4]
 		}
-		Port_Thermal_Right : Port_Thermal_Left
+		Port_Thermal_Right1 : Port_Thermal_Left1
 		{
 			Direction = Right
-			Location = [2,1]
+			Location = [4,1]
 		}
-		Port_Thermal_Up1 : Port_Thermal_Left
+		Port_Thermal_Right2 : Port_Thermal_Left1
 		{
-			Direction = Up
-			Location = [0,0]
+			Direction = Right
+			Location = [4,2]
 		}
-		Port_Thermal_Up2 : Port_Thermal_Left
+		Port_Thermal_Right3 : Port_Thermal_Left1
+		{
+			Direction = Right
+			Location = [4,3]
+		}
+		Port_Thermal_Up1 : Port_Thermal_Left1
 		{
 			Direction = Up
 			Location = [1,0]
 		}
-		Port_Thermal_Up3 : Port_Thermal_Left
+		/* Port_Thermal_Up2 : Port_Thermal_Left1
 		{
 			Direction = Up
 			Location = [2,0]
+		} */
+		Port_Thermal_Up2 : Port_Thermal_Left1
+		{
+			Direction = Up
+			Location = [3,0]
 		}
 		
 		BaseNetworkNode
@@ -365,7 +396,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		Graphics
 		{
 			Type = Graphics
-			Location = [1.5, 1.5]
+			Location = [2.5, 2.5]
 			OperationalToggle = IsOperational
 			DoodadToggle = ResourceConverter
 			Floor
@@ -375,7 +406,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "floor.png"
-						Size = [3, 3]
+						Size = [5, 5]
 					}
 				]
 			}
@@ -397,7 +428,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 							"doodads_on7.png"
 							"doodads_on8.png"
 						]
-						Size = [2, 2]
+						Size = [3, 3]
 						AnimationInterval = 0.125
 					}
 				]
@@ -418,7 +449,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 							"doodads_idle3.png"
 							"doodads_idle2.png"
 						]
-						Size = [2, 2]
+						Size = [3, 3]
 						AnimationInterval = 0.125
 						AnimationStartTime = WhenSpawned
 					}
@@ -432,7 +463,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "doodads_off.png"
-						Size = [2, 1]
+						Size = [3, 1.5]
 					}
 				]
 			}
@@ -443,7 +474,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "walls.png"
-						Size = [3, 3]
+						Size = [5, 5]
 					}
 				]
 			}
@@ -454,7 +485,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "lights.png"
-						Size = [3, 3]
+						Size = [5, 5]
 						VertexColor = [80/2, 255/2, 255/2]
 					}
 				]
@@ -467,7 +498,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "topmachine.png"
-						Size = [3, 2]
+						Size = [4, 2.5]
 					}
 				]
 			}
@@ -546,7 +577,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		GraphicsColored
 		{
 			Type = Graphics
-			Location = [1.5, 1.5]
+			Location = [2.5, 2.5]
 			OperationalToggle = ResourceConverter
 			OperationalDoodad
 			{
@@ -556,7 +587,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "fluid.png"
-						Size = [2, 2]
+						Size = [3, 3]
 						RotSpeed = 420d
 						VertexColor = [80/2, 255/2, 255/2]
 					}
@@ -570,7 +601,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 				[
 					{
 						File = "fluid.png"
-						Size = [2, 2]
+						Size = [3, 3]
 						RotSpeed = 420d * 1.3145356
 						VertexColor = [80/2, 255/2, 255/2]
 					}
@@ -594,7 +625,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 							"fumes7.png"
 							"fumes8.png"
 						]
-						Size = [2, 2]
+						Size = [3, 3]
 						AnimationInterval = 0.125 / 1.25
 						AnimationStartTime = WhenSpawned
 						VertexColor = [80, 255, 255]
@@ -659,7 +690,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		OperationEffects
 		{
 			Type = ToggleEffects
-			Location = [1.5, 1.5]
+			Location = [2.5, 2.5]
 			Toggle = IsOperational
 			ToggledOnMediaEffects = &/COMMON_EFFECTS/MachinesOn
 			ToggledOffMediaEffects = &/COMMON_EFFECTS/MachinesOff
@@ -669,13 +700,13 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = DeathEffects
 			MediaEffects = &/COMMON_EFFECTS/HugePartDestroyed
-			Location = [1.5, 1.5]
+			Location = [2.5, 2.5]
 		}
 
 		Indicators
 		{
 			Type = IndicatorSprites
-			Location = [1.5, 1.5]
+			Location = [2.5, 2.5]
 			Layer = "indicators"
 			Indicators
 			[
@@ -720,7 +751,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = BlueprintSprite
 			File = "icon.png"
-			Size = [3, 3]
+			Size = [5, 5]
 		}
 	}
 

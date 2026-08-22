@@ -131,7 +131,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			LowColor = [255, 0, 40]
 			HighColor = [255, 100, 100]
 			FullColor = [255, 0, 0]
-			Height = 25
+			Height = 5
 		}
 		
 		PlasmaProgressBar
@@ -142,6 +142,17 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			LowColor = [80, 25, 128]
 			HighColor = [190, 50, 255]
 			FullColor = [190, 130, 255]
+			Height = 10
+		}
+		
+		ColdCoolantProgressBar
+		{
+			Type = ProgressBar
+			OperationalToggle = IsOperational
+			ShowProgressFor = CoolantStorage
+			LowColor = [80, 25, 128]
+			HighColor = [0, 50, 255]
+			FullColor = [0, 130, 255]
 			Height = 10
 		}
 		
@@ -243,19 +254,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = battery
-			MaxResources = 192000 // 64000
-			StartingResources = 0
-			SuppliesResources = true
-			MinResourcesPickUp = 6000
-			MaxResourcesPickUp = 6000
-			InitPickUp = 5001
-			PickUpRate = 1000 / 2.0
-			ExpectedResourceGenerationRate = { BaseValue = 12000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
-			ExpectedResourceGenerationToggle = IsProducing
-			SuppliesResourcesToggle = IsProducing
-			IsIntermediateStorage = true
-			ToggleOnResources = 12001
-			ToggleOffResources = 12000
+			MaxResources = 16000
+			ToggleOnResources = 7001
+			ToggleOffResources = 0
 			DropResourcesWhenDestroyed = false
 			DropResourcesWhenRemoved = false
 		}
@@ -268,8 +269,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ResourceType = battery
 			Storage = BatteryStorage
 			DefaultPriority = &/PRIORITIES/Factory_Supply
-			ResupplyThreshold = 64000
-			OperationalToggle = TurnOffRefeeding
+			//ResupplyThreshold = 7001
+			//OperationalToggle = TurnOffRefeeding
 			ReceiveResourceMediaEffects = &/COMMON_EFFECTS/PowerDeliver
 		}
 		
@@ -280,7 +281,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Mode = DistributeProportionallyByAvailable
 		}
 		
-		MoverTest
+		BufferMover
 		{
 			Type = ResourceConverter
 			OperationalToggle = PlasmaStorage
@@ -288,7 +289,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = PlasmaStorage
-					Quantity = 10
+					Quantity = 200 * 50
 					MinQuantityForConversion = 1
 				}
 			]
@@ -296,11 +297,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = NetworkPlasmaInput
-					Quantity =  10
-				}
-				{
-					Storage = NetworkHotCoolantInput
-					Quantity =  10
+					Quantity =  200 * 50
 				}
 			]
 			Interval = .25
@@ -310,12 +307,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Type = ResourceStorage
 			ResourceType = janitnt.reactorplasma
-			MaxResources = 8000
-			ToggleOnResources = 6000
+			MaxResources = 8000 * 50
+			ToggleOnResources = 600 * 50
 			ToggleOffResources = 0
 			StartingResources = 0
-			InitToMaxResources = 5000
-			InitToMaxResourcesPVP = 5000
+			InitToMaxResources = 500 * 50
+			InitToMaxResourcesPVP = 500 * 50
 			DropResourcesWhenDestroyed = false
 			DropResourcesWhenRemoved = false
 		}
@@ -331,12 +328,12 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			DropResourcesWhenRemoved = false
 		}
 		
-		IsProducingHeat
+		/* IsProducingHeat
 		{
 			Type = MultiToggle
 			Toggles = [PlasmaProducer, BatteryProducer, HasPlasma]
 			Mode = Any
-		}
+		} */
 		
 		ActivityBuff
 		{
@@ -345,7 +342,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			BuffMultiplier = PlasmaStorage
 		}
 		
-		GenerationHeatProducer
+		/* GenerationHeatProducer
 		{
 			Type = ResourceConverter
 			OperationalToggle = IsProducingHeat
@@ -358,7 +355,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 			ToStorage = &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/HEAT_TARGET_STORAGE
 			Interval = 0.5
-		}
+		} */
 		
 		HeatStorage
 		{
@@ -478,11 +475,11 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			]
 		}
 		
-		/* BlueprintNetworkNode
+		BlueprintNetworkNodeFusion
 		{
 			Type = NetworkBasicNode
 			IncludeInBlueprints = true
-		} */
+		}
 		Port_Fusion_Up0
 		{
 			Type = NetworkPort
@@ -492,13 +489,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Direction = Up
 			RouteSource = NetworkPlasmaInput
 			RouteEndpoint = NetworkPlasmaInput  
-			//BlueprintRouteSource = BlueprintNetworkNode
-			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			BlueprintRouteSource = BlueprintNetworkNodeFusion
+			//BlueprintRouteEndpoint = BlueprintNetworkNodeFusion
 			Overlay
 			{
 				OverlayIcon = "FusionPortPassThrough"
 				RouteLine = "FusionLine"
 				DrawRouteHub = false
+				RouteDrawMode = Connected
+				IconDrawMode = Always
 				ConnectedEdgeIcon = "FusionPortDot"
 				HighlightPartOnPrimaryConnection = true
     			PartHighlightColor = [255, 0, 255, 61]
@@ -552,6 +551,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//IgnoreResourcesForInitToMax = true
 		}
 		
+		BlueprintNetworkNodeCoolant = &BlueprintNetworkNodeFusion
+		
 		Port_Coolant_Right0
 		{
 			Type = NetworkPort
@@ -560,13 +561,15 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Direction = Right
 			RouteSource = NetworkCoolantOutput
 			RouteEndpoint = NetworkCoolantOutput  
-			//BlueprintRouteSource = BlueprintNetworkNode
-			//BlueprintRouteEndpoint = BlueprintNetworkNode
+			BlueprintRouteSource = BlueprintNetworkNodeCoolant
+			//BlueprintRouteEndpoint = BlueprintNetworkNodeCoolant
 			Overlay
 			{
 				OverlayIcon = "ColdCoolantPortPassThrough"
 				RouteLine = "CoolantLine"
 				DrawRouteHub = false
+				RouteDrawMode = Connected
+				IconDrawMode = Always
 				//ConnectedEdgeIcon = "FusionPortDot"
 				HighlightPartOnPrimaryConnection = true
     			PartHighlightColor = [255, 0, 255, 61]
@@ -585,7 +588,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		{
 			Location = [0,4]
 		}
-		Port_Thermal_Up0
+		/* Port_Thermal_Up0
 		{
 			Type = NetworkPort
 			Types = [ thermal ]
@@ -699,7 +702,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		Port_Thermal_Down5 : Port_Thermal_Down0
 		{
 			Location = [5,5]
-		}
+		} */
 		
 		OverheatEffects
 		{
@@ -718,18 +721,26 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = BatteryStorage
-					Quantity = 1000
+					Quantity = 250
 				}
 				{
 					Storage = HyperiumSplitter
 					Quantity = 1
 				}
+				{
+					Storage = NetworkCoolantOutput
+					Quantity = 100
+				}
 			]
 			To
 			[
 				{
-					Storage = PlasmaStorage
-					Quantity = 40
+					Storage = PlasmaGeneratingStorages
+					Quantity = 200 * 50
+				}
+				{
+					Storage = NetworkHotCoolantInput
+					Quantity = 100
 				}
 			]
 			MinFromQuantityForConversion = 1000
@@ -738,10 +749,18 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			//heat = 1000 per second
 			
 			//ALSO EDIT EXPECTED AMMO GEN 
-			Interval = .1
+			Interval = .25
 		}
 		
-		BatteryProducer
+		PlasmaGeneratingStorages
+		{
+			Type = MultiResourceStorage
+			ResourceType = janitnt.reactorplasma
+			ResourceStorages = [ NetworkPlasmaInput, PlasmaStorage ]
+			AddMode = InOrder
+		}
+		
+/* 		BatteryProducer
 		{
 			Type = ResourceConverter
 			OperationalToggle = PlasmaStorage
@@ -767,9 +786,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			
 			//ALSO EDIT EXPECTED AMMO GEN 
 			Interval = .1
-		}
+		} */
 		
-		PermanentPlasmaDrain
+		/* PermanentPlasmaDrain
 		{
 			Type = ResourceConverter
 //			OperationalToggle = PlasmaStorage
@@ -788,7 +807,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			
 			//ALSO EDIT EXPECTED AMMO GEN 
 			Interval = .1
-		}
+		} */
 		Graphics
 		{
 			Type = Graphics
@@ -889,9 +908,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		PlasmaSprites
 		{
-			Type = ResourceSprites
+			Type = ValueSprites
 			Location = [3, 3]
-			ResourceStorage = PlasmaStorage
+			ValueFrom = PlasmaStorage
 			Layer = "doodads_low"
 			//HasZeroAmmoSprite = true
 			ResourceLevels
@@ -955,9 +974,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 		}
 		CoreSprites
 		{
-			Type = ResourceSprites
+			Type = ValueSprites
 			Location = [3, 3]
-			ResourceStorage = PlasmaStorage
+			ValueFrom = VisualActivityIntensity
 			Layer = "doodads_low"
 			HasZeroResourceSprite = true
 			ResourceLevels
@@ -1223,12 +1242,21 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			File = "./Data/ships/terran/reactor_large/blueprints.png"
 			Size = [6, 6]
 		}
+		VisualActivityIntensity
+		{
+			Type = ValueTween
+			OffValue = 0
+			OnValue = 1
+			OnTweenDuration = 5
+			OffTweenDuration = 5
+			IsOnToggle = PlasmaProducer
+		}
 		ReactorHum
 		{
 			Type = ContinuousEffects
 			Location = [3, 3]
 			OperationalToggle = PowerToggle
-			FactorMediaEffectsIntensityWith = PlasmaStorage
+			FactorMediaEffectsIntensityWith = VisualActivityIntensity
 			IncludeWhenUnderConstruction = false
 			MediaEffects
 			[
@@ -1239,8 +1267,8 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 					Speed = 0.9
 					//SpeedVariation = .1
 					MaxConcurrent = 0
-					VolumeOverIntensity = 1
-					SpeedOverIntensity = [0, 1]
+					VolumeOverIntensity = [0, 1]
+					SpeedOverIntensity = [0.6, 1.2]
 					DynamicVolume : ^/0/DynamicVolume
 					{
 						ExteriorVolume = .5
@@ -1328,6 +1356,31 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			}
 		}
 		
+		/* PlamsaCapacityValueColor
+		{
+			Type = ValueColor
+			AlphaFrom = PlasmaStorage
+		}
+
+		PlasmaGraphics
+		{
+			Type = Graphics
+			Location = [3, 3]
+			GetColorFrom = PlamsaCapacityValueColor
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "filllevel.png"
+						Size = [6, 6]
+						
+					}
+				]
+			}
+		} */
+		
 		
 		Indicators
 		{
@@ -1377,9 +1430,9 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	}
 	Stats
 	{
-		PowerGeneration = 12000 / (&~/Part/Components/BatteryProducer/Interval) / 1000
-		BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
-		BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
+		//PowerGeneration = 12000 / (&~/Part/Components/BatteryProducer/Interval) / 1000
+		//BatterySize = (&~/Part/Components/BatteryStorage/MaxResourcesPickUp) / 1000
+		//BatteryFillTime = 1000 / (&~/Part/Components/BatteryStorage/PickUpRate)
 		PowerCapacity = (&~/Part/Components/BatteryStorage/MaxResources) / 1000
 		HeatCapacity = (&~/Part/Components/HeatStorage/MaxResources) / (&<./Data/statuses/heat/heat.rules>/STATUS_TO_RESOURCE_RATIO)
 		HeatGeneration = (&~/HEAT_PER_SECOND)
