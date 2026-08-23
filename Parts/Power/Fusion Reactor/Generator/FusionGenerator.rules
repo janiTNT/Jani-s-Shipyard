@@ -5,7 +5,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/PowerStorage"
 	IconNameKey = "Parts/PowerStorageIcon"
 	ID = janiTNT.reactorstorage // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Power"
+	//EditorGroup = "Power"
+	EditorParentParts = [ "janiTNT.FusionReactorLarge" ]
 	DescriptionKey = "Parts/PowerStorageDesc"
 	Resources
 	[

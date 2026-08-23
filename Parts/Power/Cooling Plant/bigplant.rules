@@ -8,7 +8,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/ChemicalPlant"
 	IconNameKey = "Parts/ChemicalPlantIcon"
 	ID = janiTNT.ChemicalPlantCooling_Big // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
-	EditorGroup = "Production"
+	//EditorGroup = "Production"
+	EditorParentParts = [ "janiTNT.FusionReactorLarge" ]
 	DescriptionKey = "Parts/ChemicalPlantDesc"
 	Resources
 	[

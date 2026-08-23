@@ -4,7 +4,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	IconNameKey = "Parts/HeatPipeAdaptive"
 	ID = janiTNT.hot_coolant_pipe_jump
 	SelectionTypeID = hot_coolant_pipe
-	EditorGroup = "Power"
+	//EditorGroup = "Power"
+	EditorParentParts = [ "janiTNT.FusionReactorLarge" ]
 	DescriptionKey = "Parts/HeatPipeAdaptiveDesc"
 	Resources
 	[
