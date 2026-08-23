@@ -111,7 +111,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = NetworkCoolantInput
-					Quantity = 200
+					Quantity = 400
 					MinQuantityForConversion = 1
 				}
 			]
@@ -132,7 +132,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			    }
 				{
 					Storage = HotCoolantStorage
-					Quantity = 200
+					Quantity = 400
+					MinQuantityForConversion = 400
 				}
 			]
 			Interval = { BaseValue=1; BuffType=Factory; BuffMode=Divide; }
@@ -252,8 +253,8 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Type = ResourceStorage
 			ResourceType = fake
 			MaxResources = 4000
-			ToggleOnResources = 200
-			ToggleOffResources = 199
+			ToggleOnResources = 400
+			ToggleOffResources = 399
 			InitToMaxResources = 0
 			//IgnoreResourcesForInitToMax = true
 		}

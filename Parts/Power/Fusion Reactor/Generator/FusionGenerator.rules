@@ -1,3 +1,5 @@
+NO_COOLANT_PENALTY = 500%
+
 Part : <./data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/PowerStorage"
@@ -99,7 +101,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			Types = [ hot_coolant_fusion ]
 			Location = [0,4]
 			Direction = Down
-			RouteSource = NetworkedFusionStorage
+			RouteSource = NetworkHotCoolantSystemInput
 			//RouteEndpoint = NetworkedFusionStorage  
 			BlueprintRouteSource = BlueprintNetworkNodeCoolant
 			//BlueprintRouteEndpoint = BlueprintNetworkNodeCoolant
@@ -130,9 +132,58 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 					Routes
 					[
 						[NetworkedFusionStorage, NetworkFusionOutput, 0]
+						[NetworkedFusionStorage, NetworkFusionOutput, 0]
+						[NetworkedFusionStorage, NetworkFusionOutput, 0]
+						[NetworkedFusionStorage, NetworkFusionOutput, 0]
+						[NetworkHotCoolantOutput, NetworkFusionOutput, 0]
+						[NetworkedHotCoolantReceiver, NetworkFusionOutput, 0]
 					]
 				}
 			]
+		}
+		
+		NetworkHotCoolantSystemInput
+		{
+			Type = NetworkResourceInput
+			ResourceType = fake
+			Mode = DistributeProportionallyByAvailable
+			Categories = [ hot_coolant_fusion_storage ]
+		}
+		
+		NetworkHotCoolantOutput
+		{
+			Type = NetworkResourceOutput
+			ResourceType = fake
+			Mode = DistributeProportionallyByAvailable
+			Categories = [ hot_coolant_fusion_ultraheated ]
+		}
+		
+		NetworkedHotCoolantReceiver
+		{
+			Type = NetworkResourceStore
+			ResourceType = fake
+			ResourceStorage = MultiCoolantStorage
+			Categories = [ hot_coolant_fusion_ultraheated ]
+		}
+		
+		OverflowHeatStorage : &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverflowHeatStorage
+		{
+			//ProvidedValuePerResource = (&<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO)
+			ProvidedValuePerResource = ((&<../../Cooling Plant/bigplant.rules>/Part/Components/ConversionHeatProducer/HEAT_PER_INTERVAL)/(&<../../Cooling Plant/bigplant.rules>/Part/Components/ResourceConverter/From/1/Quantity)) * (&~/NO_COOLANT_PENALTY)
+		}
+	
+		MultiCoolantStorage
+		{
+			Type = MultiResourceStorage
+			ResourceType = fake
+			ResourceStorages = [ NetworkHotCoolantSystemInput, OverflowHeatStorage ]
+			AddMode = InOrder
+			RemoveMode = InReverseOrder
+		}
+		
+		OverheatEffects : &<./Data/ships/terran/base_part_terran_overclock.rules>/Part/Components/OverheatEffects
+		{
+			Location = [1.5, 2.5]
 		}
 		
 		NetworkFusionOutput
@@ -230,7 +281,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 			MaxResourcesPickUp = 6000
 			InitPickUp = 5001
 			PickUpRate = 1000 / 1.5
-			ExpectedResourceGenerationRate = { BaseValue = 1000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
+			ExpectedResourceGenerationRate = { BaseValue = 6000 / (&../../BatteryProducer/Interval); BuffType=ElectronDebuff; BuffMode=Multiply; }
 			ExpectedResourceGenerationToggle = PlasmaStorage
 			DropResourcesWhenDestroyed = false
 			DropResourcesWhenRemoved = false

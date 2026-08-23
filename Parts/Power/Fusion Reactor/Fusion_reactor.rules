@@ -26,7 +26,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	CrewSpeedFactor = 1
 	SelectionTypeID = "reactors"
 	CrewCongestedSpeedFactor = .5
-	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula, ThermalActivity]
+	ReceivableBuffs : ^/0/ReceivableBuffs [ElectronDebuff, ElectronNebula, FusionReactorConnectivityBuff]
 	MaxHealth = 8000
 	TypeCategories = [uses_power, thermal, provides_power, reactor, heat_management]
 	SignificanceToggle = ScorchedToggle
@@ -289,16 +289,16 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = PlasmaStorage
-					Quantity = 200 * 50
-					MinQuantityForConversion = 200 * 50
+					Quantity = { BaseValue = (200 * 50); BuffType=FusionReactorConnectivityBuff; BuffMode=Multiply; }
+					MinQuantityForConversion = { BaseValue = (200 * 50); BuffType=FusionReactorConnectivityBuff; BuffMode=Multiply; }
 				}
 			]
 			To
 			[
 				{
 					Storage = NetworkPlasmaInput
-					Quantity =  200 * 50
-					MinQuantityForConversion = 200 * 50
+					Quantity = { BaseValue = (200 * 50); BuffType=FusionReactorConnectivityBuff; BuffMode=Multiply; }
+					MinQuantityForConversion = { BaseValue = (200 * 50); BuffType=FusionReactorConnectivityBuff; BuffMode=Multiply; }
 				}
 			]
 			Interval = .25
@@ -524,7 +524,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			Type = NetworkResourceInput
 			ResourceType = fake
 			Mode = DistributeProportionallyByAvailable
-			Categories = [ hot_coolant_fusion_storage ]
+			Categories = [ hot_coolant_fusion_ultraheated ]
 		}
 		
 		NetworkCoolantOutput
@@ -723,6 +723,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Storage = BatteryStorage
 					Quantity = 250
+					MinQuantityForConversion = 250
 				}
 				{
 					Storage = HyperiumSplitter
@@ -731,6 +732,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Storage = NetworkCoolantOutput
 					Quantity = 100
+					MinQuantityForConversion = 100
 				}
 			]
 			To
@@ -742,9 +744,10 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Storage = NetworkHotCoolantInput
 					Quantity = 100
+					MinQuantityForConversion = 100
 				}
 			]
-			MinFromQuantityForConversion = 1000
+			//MinFromQuantityForConversion = 1000
 			//PLEASE EDIT FOR STATS
 			
 			//heat = 1000 per second
