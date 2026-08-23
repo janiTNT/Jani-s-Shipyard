@@ -470,3 +470,27 @@ Ion_stormNebula_JS
 	CombineMode = Max
 	BaseValue = 0%
 }
+
+
+FusionReactorConnectivityBuff
+{
+	CombineMode = Add
+	BaseValue = 100%
+
+	Icon
+	{
+		Texture
+		{
+			File = "buff_sensor_upgrade.png"
+			MipLevels = 2
+			SampleMode = Linear
+		}
+		Size = [3, 3]
+	}
+	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
+	IconTextMultiply = 100
+	IconTextAdd = -100
+
+ 	RectBorderColor = [255, 90, 25, 190]
+	RectFillColor = [10, 212, 98, 64]
+}

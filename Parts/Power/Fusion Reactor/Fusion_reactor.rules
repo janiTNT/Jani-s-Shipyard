@@ -3,6 +3,8 @@ HEAT_TO_STATUS = &<./Data/statuses/heat/heat.rules>/RESOURCE_TO_STATUS_RATIO
 
 HEAT_PER_SECOND = 5800
 
+REACTOR_IDS = [janiTNT.FusionReactorLarge]
+
 Part : <./Data/ships/terran/base_part_terran.rules>/Part
 {
 	NameKey = "Parts/FusionReactorLarge"
@@ -327,6 +329,190 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			ToggleOffResources = 0
 			DropResourcesWhenDestroyed = false
 			DropResourcesWhenRemoved = false
+		}
+		
+		FusionBuffProvider
+		{
+			Type = GridBuffProvider
+			BuffType = FusionReactorConnectivityBuff
+			BuffAmount = 100%
+			GridDistance = 1
+			OperationalToggle = IsOperational
+			Criterias
+			[
+				// TOP
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 0
+					Right = 6
+					Bottom = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 0
+					Right = 6
+					Bottom = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = -3
+					Right = 3
+					Bottom = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = -3
+					Right = 3
+					Bottom = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 3
+					Right = 9
+					Bottom = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 3
+					Right = 9
+					Bottom = 0
+				}
+				// BOTTOM
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 0
+					Right = 6
+					Top = 6
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 0
+					Right = 6
+					Top = 6
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = -3
+					Right = 3
+					Top = 6
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = -3
+					Right = 3
+					Top = 6
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 3
+					Right = 9
+					Top = 6
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 3
+					Right = 9
+					Top = 6
+				}
+				// LEFT
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 6
+					Bottom = 3
+					Top = -3
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 6
+					Bottom = 3
+					Top = -3
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 6
+					Bottom = 6
+					Top = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 6
+					Bottom = 6
+					Top = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Left = 6
+					Bottom = 9
+					Top = 3
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Left = 6
+					Bottom = 9
+					Top = 3
+				}
+				// Right
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Right = 0
+					Bottom = 3
+					Top = -3
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Right = 0
+					Bottom = 3
+					Top = -3
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Right = 0
+					Bottom = 6
+					Top = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Right = 0
+					Bottom = 6
+					Top = 0
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 0
+					Right = 0
+					Bottom = 9
+					Top = 3
+				}
+				{
+					IDs = &~/REACTOR_IDS
+					Rot = 2
+					Right = 0
+					Bottom = 9
+					Top = 3
+				}
+			]
 		}
 		
 		/* IsProducingHeat
@@ -739,7 +925,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 			[
 				{
 					Storage = PlasmaGeneratingStorages
-					Quantity = 200 * 50
+					Quantity = { BaseValue = (200 * 50); BuffType=FusionReactorConnectivityBuff; BuffMode=Multiply; }
 				}
 				{
 					Storage = NetworkHotCoolantInput
