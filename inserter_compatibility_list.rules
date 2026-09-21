@@ -299,4 +299,57 @@ Actions : <Tutorials/Inserters/T/T.rules>/A //THIS CODE IS FROM AEPHIEX, I HAVE 
 			}
 		}
 	}
+	
+	// ####################################################################################################
+	// # Aephiex Own Mod. One of the forks of it.
+	// ####################################################################################################
+	
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3518651199/terran/storage_missile_he/storage_missile_he.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueHEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ HEMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3518651199/terran/storage_missile_nuke/storage_missile_nuke.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueNUKEMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ NukeMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
+	{
+		Action = Overrides
+		OverrideIn = "<../../../workshop/content/799600/3518651199/terran/storage_missile_emp/storage_missile_emp.rules>/Part/Components"
+		IgnoreIfNotExisting = true
+		Overrides
+		{
+			TrueEMPMissileStorage
+			{
+				Type = MultiResourceStorage
+				ResourceType = missile_part_he
+				ResourceStorages = [ EMPMissileStorage__Aephiex ]
+				AddMode = PrioritizeLeastEmptyCapacity
+				RemoveMode = PrioritizeMostEmptyCapacity
+			}
+		}
+	}
 ]
