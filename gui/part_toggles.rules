@@ -708,13 +708,13 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			}
 			// Cannon
 			{
-				ChoiceID = "DroneMedCannon"
-				ButtonToolTipKey = "PartToggles/DroneMedCannon"
+				ChoiceID = "DroneSmallBomber"
+				ButtonToolTipKey = "PartToggles/DroneSmallBomber"
 				ButtonSprite
 				{
 					Texture
 					{
-						File = "sdrone_type2.png"
+						File = "sdrone_type_bomber.png"
 						MipLevels = 2
 						SampleMode = Linear
 					}

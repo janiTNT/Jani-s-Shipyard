@@ -1155,6 +1155,7 @@ Inputs
 		DroneSmallLaser = "Select Drone: Small Laser"
 		DroneMedCannon = "Select Drone: Med Cannon"
 		DroneEletroCannon = "Select Drone: EletroCannon"
+		DroneSmallBomber = "Select Drone: Small Bomber"
 		
 		Laserdrone = "Select Drone: Laser"
 		Bulletdrone = "Select Drone: Bullet"
@@ -1354,6 +1355,25 @@ PartToggles
 	"<white>Durability:</white><good> 2500</good>\n"\
 	"<white>Drone ROF:</white><good> 2</good><gray>/sec</gray>"
 	
+	DroneSmallBomber = "<b>Small Bomber Drone</b>\n\n"\
+	"A heavy drone with slow fire rate, launching unguided bombs at targets from missile parts.\n\n"\
+	"<b>Small Bomber Drone Launcher:</b>\n"\
+	"<white>Build Time:</white> <good>8</good> <gray>sec</gray>\n"\
+	"<img name='resource.steel'/> <good>8</good> Steel <gray>(</gray><good>1</good><gray>/sec)</gray>\n"\
+	"<img name='resource.missile_part_he'/> <good>16</good> Missile Parts<gray>(</gray><good>2</good><gray>/sec)</gray>\n"\
+	"<img name='resource.janitnt.circuit1'/> <good>10</good> Electronic Circuit <gray>(</gray><good>1,25</good><gray>/sec)</gray>\n"\
+	"<img name='resource.battery'/> <good>5,3</good> Power <gray>(</gray><good>0,6</good><gray>/sec)</gray>\n"\
+	"<white>Range:</white> <good>500</good> <gray>metres</gray>\n"\
+	"<white>Launcher Raw Max DMG:</white> <good>100.000</good><gray>/shot (</gray><good>12.500</good><gray>/sec)</gray>\n"\
+	"<gray>(How much potential damage a single launch has, ignoring explosive damage losses)</gray>\n\n"\
+	"<b>Small Bomber Drone:</b>\n"\
+	"<white>Drone Range:</white> <good>190</good> <gray>metres</gray>\n"\
+	"<white>Drone Max Damage:</white> <good>25.000</good><gray>/shot (</gray><good>5.000</good><gray>/sec)</gray>\n"\
+	"<white>Drone Damage Area:</white> <good>4</good><gray> meter radius</gray>\n"\
+	"<white>Shots:</white><good> 4</good>\n"\
+	"<white>Durability:</white><good> 4000</good>\n"\
+	"<white>Drone ROF:</white><good> 0,2</good><gray>/sec</gray>"
+	
 	DroneMedCannon = "<b>Standard Cannon Drone</b>\n\n"\
 	"A Standard cannon with a slightly smaller caliber, but stacks way much firepower due to ignoring safety limits.\n\n"\
 	"<b>Standard Cannon Drone Launcher:</b>\n"\
@@ -1496,7 +1516,7 @@ Stats
 	
 	DroneMissileUseFmt = "<white>Missile Parts Use:</white> <good>{0:0.###}</good><gray>/drone (</gray><good>{1:0.###}</good><gray>/sec)</gray>"
 	
-	DroneRangeFmt = "<white>Range:</white> <good>{0:n0}</good><gray> meters (</gray><good>{1:n0}</good><gray>) at target</gray>"
+	DroneRangeFmt = "<white>Range:</white> <good>{0:n0}</good><gray> meters (</gray><good>{1:n0}</good><gray> at target)</gray>"
 	
 	DroneHealthFmt = "<white>Durability:</white> <good>{0:n0}</good> <gray>(</gray><good>{1:n0}</good><gray> shots max)</gray>"
 	
