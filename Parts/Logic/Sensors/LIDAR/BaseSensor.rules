@@ -123,12 +123,12 @@ Part
 			ToggleID = "skipydog_detect_friendlies_toggle"
 			Default = 0
 		}
-		Targeter
+		/* Targeter
 		{
 			Type = UITargeter
 			TargeterID = skipydog_sensor_aim
 			Weapons = [Turret]
-		}
+		} */
 		InvertInput
 		{
 			Type = UIToggle
@@ -146,7 +146,7 @@ Part
 		FriendlyTrigger
 		{
 			Type = MultiToggle
-			Toggles = [EnemyTriggerInvert, FriendlyDetector]
+			Toggles = [EnemyTriggerInvert, /*FriendlyDetector*/]
 			Mode = All
 			Invert = false
 		}
@@ -160,7 +160,7 @@ Part
 		EffectsTrigger
 		{
 			Type = MultiToggle
-			Toggles = [EnemyTrigger, FriendlyTrigger]
+			Toggles = [EnemyTrigger/*, FriendlyTrigger*/]
 			Mode = Any
 			Invert = true
 		}
@@ -208,27 +208,37 @@ Part
 			Rotation = -90d// Relative to unrotated part.
 			FireInterval = .2
 			FiringArc = 360d
-			RotateSpeed = 20d
-			FireThresholdAngle = 1d
+			ValidArc = 360d
+			DefaultWeaponCoverage
+			{
+				Arc = [-45d, 90d]
+				Range = 200
+			}
+			RotateSpeed = 3600d
+			FireThresholdAngle = 0d
+			TargetSearchesPerSecond = 4 // faster
 			AutoFireToggle = AutoFireToggle
-			IgnoreSourceShipLOSChecks = true
+			IgnoreFriendlyShipLowLOSChecks = true
+			IgnoreFriendlyShipHighLOSChecks = true
 			AIFirepowerRating = 0
-			TargetingEmitter = EnemyDetector
-			SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
-			SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
-			SaveShipRelativeTargets = true
-			HoldTargetAfterCancel = 5
+			AllowDirectControl = false
+			Emitter = EnemyDetector
+			//SuppressWholeShipTargetOverlaysWhenTargetingShipRelativePoints = true
+			//SuppressShipWideExplicitTargetsWhenTargetingShipRelativePoints = true
+			//SaveShipRelativeTargets = true
+			//HoldTargetAfterCancel = 0.5
+			InstantSearchesAfterTargetLost = 5
 			FirePermissionToggle = FireModeToggle
 
 			AutoTargets
 			[
-				//{
-					//TargetType = ShipParts
-					//Toggle = AutoTargetToggle
-				//}
+				{
+					TargetType = ShipParts
+					Toggle = AutoTargetToggle
+				}
 			]
 		}
-		EnemySensor
+		/* EnemySensor
 		{
 			Type = FixedWeapon
 			ChainedTo = Turret
@@ -251,21 +261,21 @@ Part
 				TargetType = ShipParts
 				Toggle = AutoTargetToggle
 			}
-		}
+		} */
 
 		EnemyDetector : <sensorbeam.rules>
 		{
 			Type = BeamEmitter
-			ChainedTo = EnemySensor
-			FireTrigger = EnemySensor
-			GetTargetFrom = EnemySensor
+			ChainedTo = Turret
+			FireTrigger = Turret
+			GetTargetFrom = Turret
 			Duration = .2
 			SourceShipCollisions = false
 			FriendlyShipLowCollisions = false
 			FriendlyShipHighCollisions = false
 		}
 
-		FriendlySensor
+		/* FriendlySensor
 		{
 			Type = FixedWeapon
 			ChainedTo = Turret
@@ -310,7 +320,7 @@ Part
 			Duration = .2
 			FriendlyShipLowCollisions = false
 			FriendlyShipHighCollisions = false
-		}
+		} */
 
 		/*EffectSensor
 		{

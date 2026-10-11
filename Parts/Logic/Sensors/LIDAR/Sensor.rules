@@ -56,7 +56,7 @@ Part : <../../baselogicpart.rules>/Part
 			ToggleOn = false
 		}
 		
-		FriendlySensor : <BaseSensor.rules>/Part/Components/FriendlySensor
+		/* FriendlySensor : <BaseSensor.rules>/Part/Components/FriendlySensor
 		{
 			IgnoreFriendlyShipLowLOSChecks = &../../IgnoreOwnShip
 			IgnoreFriendlyShipHighLOSChecks = &../../IgnoreOwnShip
@@ -65,7 +65,7 @@ Part : <../../baselogicpart.rules>/Part
 		{
 			IgnoreFriendlyShipLowLOSChecks = &../../IgnoreOwnShip
 			IgnoreFriendlyShipHighLOSChecks = &../../IgnoreOwnShip
-		}
+		} */
 		//-----------------------------------------------------------------
 		BaseGraphics
 		{

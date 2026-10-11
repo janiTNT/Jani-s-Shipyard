@@ -1372,7 +1372,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					VertexColor = [102, 102, 255, 127]
 				}
 			}
-			// Sensor
+			/* // Sensor
 			{
 				TargeterID = "skipydog_sensor_aim"
 				DefaultHotkey = [PlatformCmdCtrl, P]
@@ -1401,7 +1401,7 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 					HotSpot = [8, 8]
 					Scale = .5
 				}
-			}
+			} */
 		]
 	}
 	{

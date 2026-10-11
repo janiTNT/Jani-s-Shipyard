@@ -1,6 +1,6 @@
 ReceivableBuffs = [Improve_Sensor_Range]
-Range = { BaseValue=1; BuffType=Improve_Sensor_Range; BuffMode=Add; }
-IdealRange = [{ BaseValue=1; BuffType=Improve_Sensor_Range; BuffMode=Add; }]
+Range = 2000
+IdealRange = 2000
 Width = .5
 HitInterval = .1
 PenetratesStructure = false
