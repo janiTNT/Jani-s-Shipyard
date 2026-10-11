@@ -200,6 +200,8 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 		{
 			Type = ContinuousEffects
 			ChainedTo = MainThruster
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			Location = [0, 0]
 			FactorMediaEffectsIntensityWith = MainThruster
 			IntensityTweenDuration = 0.1
@@ -209,12 +211,22 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			[
 				&<particles/thruster_heat_med.rules>
 
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					Sound = "./data/ships/terran/thruster_med/sounds/standard_thruster_loop_01.wav"
+					Volume = 1
+					Db = 1.5
+					Speed = 1
+					MaxConcurrentVolume = 1
+				}
+				
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
 					Sound = "./data/ships/terran/thruster_med/sounds/standard_thruster_loop_02.wav"
-					Volume = .25
-					Db = 5
+					Volume = 1
+					Db = 2.5
 					Speed = 1
+					MaxConcurrentVolume = 1
 				}
 			]
 			EndMediaEffects
@@ -230,6 +242,51 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
+		
+		Overclock_ThrustEffects : ThrustEffects
+		{
+			InvertOperationalToggle = false
+			MediaEffects
+			[
+				// Particles
+				&../^/0/MediaEffects/0
+
+				// SFX loop
+				: ../^/0/MediaEffects/1
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+				: ../^/0/MediaEffects/2
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					RandomSounds
+					[
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_01.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_02.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_03.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_04.wav"
+					]
+					Db = -2
+				}
+			]
+			EndMediaEffects
+			[
+				: ../^/0/EndMediaEffects/0
+				{
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+			]
+		}
 
 		BurstTrigger
 		{
@@ -238,7 +295,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			MinAmount = .5
 		}
 
-		BurstEffects
+		/* BurstEffects
 		{
 			Type = TriggeredEffects
 			ChainedTo = MainThruster
@@ -258,7 +315,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 					SpeedVariation = .1
 				}
 			]
-		}
+		} */
 		
 		PeakHeatGenerationStatValue
 		{

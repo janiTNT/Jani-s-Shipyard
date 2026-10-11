@@ -201,6 +201,8 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 			Type = ContinuousEffects
 			ChainedTo = MainThruster
 			Location = [0, 0]
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			FactorMediaEffectsIntensityWith = MainThruster
 			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
@@ -212,9 +214,10 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 				: /COMMON_SOUNDS/ThrusterRumble
 				{
 					Sound = "./data/ships/terran/thruster_small/sounds/small_thruster_loop.wav"
-					Volume = .25
+					Volume = 1
 					Speed = 1
 					Db = 5
+					MaxConcurrentVolume = 1.5
 				}
 			]
 			EndMediaEffects
@@ -230,8 +233,47 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 				}
 			]
 		}
+		
+		Overclock_ThrustEffects : ThrustEffects
+		{
+			InvertOperationalToggle = false
+			MediaEffects
+			[
+				// Particles
+				&../^/0/MediaEffects/0
 
-		BurstEffects
+				// SFX loop
+				: ../^/0/MediaEffects/1
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					RandomSounds
+					[
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_01.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_02.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_03.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_04.wav"
+					]
+					Db = -2
+				}
+			]
+			EndMediaEffects
+			[
+				: ../^/0/EndMediaEffects/0
+				{
+					Speed = (&^/0/Speed) * (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+			]
+		}
+
+		/* BurstEffects
 		{
 			Type = TriggeredEffects
 			ChainedTo = MainThruster
@@ -251,7 +293,7 @@ Part : <./data/ships/terran/base_part_terran_overclock.rules>/Part
 					SpeedVariation = .1
 				}
 			]
-		}
+		} */
 		
 		PeakHeatGenerationStatValue
 		{

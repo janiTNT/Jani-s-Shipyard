@@ -204,6 +204,8 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 			Type = ContinuousEffects
 			ChainedTo = MainThruster
 			Location = [0, 0]
+			OperationalToggle = IsOverclocked
+			InvertOperationalToggle = true
 			FactorMediaEffectsIntensityWith = MainThruster
 			IntensityTweenDuration = 0.1
 			MinMediaEffectsIntensity = 1%
@@ -216,14 +218,18 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 				{
 					Sound = "./data/ships/terran/thruster_huge/sounds/huge_thruster_loop_01.wav"
 					Speed = 1
+					Db = -2
 					Volume = 1
+					MaxConcurrentVolume = 1
 				}
 
 				: /COMMON_SOUNDS/ThrusterRumbleFadeIn
 				{
 					Sound = "./data/ships/terran/thruster_huge/sounds/huge_thruster_loop_02.wav"
 					Speed = 1
+					Db = -2
 					Volume = 1
+					MaxConcurrentVolume = 1
 				}
 			]
 			EndMediaEffects
@@ -235,6 +241,52 @@ Part : &<./Data/ships/terran/base_part_terran.rules>/Part
 					Volume = 1
 					Speed = 1
 					SpeedVariation = .1
+				}
+			]
+		}
+		
+		Overclock_ThrustEffects : ThrustEffects
+		{
+			InvertOperationalToggle = false
+			MediaEffects
+			[
+				// Particles
+				&../^/0/MediaEffects/0
+
+				// SFX loop
+				: ../^/0/MediaEffects/1
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+				: ../^/0/MediaEffects/2
+				{
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+				}
+
+				: /COMMON_SOUNDS/ThrusterRumble
+				{
+					RandomSounds
+					[
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_01.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_02.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_03.wav"
+						"./data/ships/terran/thruster_small/sounds/thruster_overclocked_04.wav"
+					]
+					Speed = 2.5
+					Db = -5
+				}
+			]
+			EndMediaEffects
+			[
+				: ../^/0/EndMediaEffects/0
+				{
+					Speed = (&~/OVERCLOCK/AUDIO_SPEED_FACTOR)
+					Volume = (&^/0/Volume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
+					// MaxConcurrentVolume = (&^/0/MaxConcurrentVolume) * db2vol("&~/OVERCLOCK/AUDIO_VOLUME_DB")
 				}
 			]
 		}
