@@ -803,9 +803,9 @@ Parts
 	Pulse_ThrusterHuge8x7Icon = "Haul. Repulser (8)"
 	Pulse_ThrusterHuge8x7Desc = "A Combination of 8x7 Hauler thrusters and Repulser Thrusters. Works just like their counterparts, larger, has a shifted exclusion zone, and just as inneficient."
 	
-	Logic_Sensor = "LIDAR Enemy Roof Logic Sensor"
-	Logic_SensorIcon = "LIDAR Enemy Sensor"
-	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. The number toggles define the maximum detection range and by default is 0 and will detect nothing. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation like a ion beam.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</gray>"\
+	Logic_Sensor = "Enemy Roof Logic Sensor"
+	Logic_SensorIcon = "Enemy Sensor"
+	Logic_SensorDesc = "A simple logic sensor capable of detecting only enemy ships. Emits a logic signal if any enemy is noticed in it's line of sight and range. configurable rotation and target arcs like a ion prism.\n<gray>Supposed to also have a toggle for friendlies, but due to game changes the roof versions cannot detect friendlies correctly.</gray>"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	Logic_Comparator = "Value Comparator"
