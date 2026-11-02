@@ -1,5 +1,4 @@
 Part : <../baselogicpart.rules>/Part
-<basicspeaker.rules>/Part
 {
 	NameKey = "Parts/LogicSoundSpeakerLooping"
 	IconNameKey = "Parts/LogicSoundSpeakerLoopingIcon"
@@ -628,6 +627,12 @@ Part : <../baselogicpart.rules>/Part
 					}
 				]
 			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
 		}
 	}
 	StatsNotesKey = "Stats/SpeakerblockNotes"
