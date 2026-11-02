@@ -1050,7 +1050,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 
 				: /BASE_SOUNDS/AudioExterior
 				{
-					Sound = "./data/ships/terran/cannon_deck/shoot.wav"
+					Sound = "./data/ships/terran/cannon_deck/sounds/deck_cannon_overclocked_shot.wav"
 					SpeedVariation = .25
 					MaxConcurrent = 20
 				}
