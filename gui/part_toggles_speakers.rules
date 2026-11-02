@@ -1,0 +1,343 @@
+PartToggles
+[
+	// auto envelope types
+	{
+		ToggleID = "speaker_noloop_types"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Piano
+			{
+				ChoiceID = "speakertype_Piano"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_Piano"
+			}
+			// Vibraphone
+			{
+				ChoiceID = "speakertype_Vibraphone"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_Vibraphone"
+			}
+			// Whoopie Bass
+			{
+				ChoiceID = "speakertype_WhoopieBass"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_WhoopieBass"
+			}
+			// Tangerine Dream
+			{
+				ChoiceID = "speakertype_TangerineDream"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_TangerineDream"
+			}
+			// Meow
+			{
+				ChoiceID = "speakertype_Meow"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_Meow"
+			}
+			// Guitar1
+			{
+				ChoiceID = "speakertype_Guitar1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons6.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_Guitar1"
+			}
+			// Distortion Guitar
+			{
+				ChoiceID = "speakertype_Guitar2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons7.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_Guitar2"
+			}
+		]
+	}
+	// Looping types
+	{
+		ToggleID = "speaker_loop_types"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			// Sine
+			{
+				ChoiceID = "speakertype_sine"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons_loop1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_sine"
+			}
+			// Square
+			{
+				ChoiceID = "speakertype_square"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons_loop2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakertype_square"
+			}
+			// Pad1
+			{
+				ChoiceID = "speakertype_Pad1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons_loop3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				Mode = 100
+				ButtonToolTipKey = "PartToggles/speakertype_Pad1"
+			}
+			// BorealisPad
+			{
+				ChoiceID = "speakertype_BorealisPad"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons_loop4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				Mode = 101
+				ButtonToolTipKey = "PartToggles/speakertype_BorealisPad"
+			}
+			// IndustrialAlarm
+			{
+				ChoiceID = "speakertype_IndustrialAlarm"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speakericons/speakericons_loop5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				Mode = 200
+				ButtonToolTipKey = "PartToggles/speakertype_IndustrialAlarm"
+			}
+		]
+	}
+	// Volume slider
+	{
+		ToggleID = "speaker_volumelevel"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "speakerVol1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speaker_volume1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerVol1"
+			}
+			{
+				ChoiceID = "speakerVol2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speaker_volume2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerVol2"
+			}
+			{
+				ChoiceID = "speakerVol3"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speaker_volume3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerVol3"
+			}
+		]
+	}
+	// Pitch bending ramp
+	{
+		ToggleID = "speaker_pitchbendinglevel"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "speakerRamp1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "pitchslope1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerRamp1"
+			}
+			{
+				ChoiceID = "speakerRamp2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "pitchslope2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerRamp2"
+			}
+			{
+				ChoiceID = "speakerRamp3"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "pitchslope3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerRamp3"
+			}
+		]
+	}
+	// Sound Range
+	{
+		ToggleID = "speaker_soundrange"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "speakerRangeLocal"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speaker_range1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/speakerRangeLocal"
+			}
+			{
+				ChoiceID = "speakerRangeGlobal"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "speaker_range2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [255, 4, 0]
+				}
+				ButtonToolTipKey = "PartToggles/speakerRangeGlobal"
+			}
+		]
+	}
+]

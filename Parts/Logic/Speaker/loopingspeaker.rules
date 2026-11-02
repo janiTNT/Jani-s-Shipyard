@@ -1,0 +1,634 @@
+Part : <../baselogicpart.rules>/Part
+<basicspeaker.rules>/Part
+{
+	NameKey = "Parts/LogicSoundSpeakerLooping"
+	IconNameKey = "Parts/LogicSoundSpeakerLoopingIcon"
+	ID = janiTNT.logic_speaker_looping // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorParentParts = [ "janiTNT.logic_speaker_basic" ]
+	DescriptionKey = "Parts/LogicSoundSpeakerLoopingDesc"
+	Resources
+	[
+		[steel, 4]
+		[janitnt.circuit1, 4]
+		[coil, 1]
+	]
+	TypeCategories = [logic, speaker]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, AdvS_Setting, AdvS_Setting_Second, PitchBendingBuff, SpeakerVolumeBuff]
+	SelectionTypeID = "soundspeaker_looping"
+	IsRotateable = false
+	SelectionPriority = 1
+	Size = [1, 1]
+	ForceBrushCompatibility = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LocalRangeToggled, GlobalRangeToggled]
+			Mode = Any
+		}
+
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = LogicAlternativeA
+		}
+		
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Cyan
+		}
+		VolumeSlider
+		{
+			Type = UIToggle
+			ToggleID = "speaker_volumelevel"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}		
+		LowVolume
+		{
+			Type = ModeToggle
+			Mode = VolumeSlider
+			OnMode = 0
+		}
+		VolumeLowProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SpeakerVolumeBuff
+			OperationalToggle = LowVolume
+			BuffAmount = 0.3
+		}		
+		MedVolume
+		{
+			Type = ModeToggle
+			Mode = VolumeSlider
+			OnMode = 1
+		}
+		VolumeMedProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SpeakerVolumeBuff
+			OperationalToggle = MedVolume
+			BuffAmount = 1
+		}		
+		HighVolume
+		{
+			Type = ModeToggle
+			Mode = VolumeSlider
+			OnMode = 2
+		}
+		VolumeHighProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SpeakerVolumeBuff
+			OperationalToggle = HighVolume
+			BuffAmount = 2.5
+		}
+		RangeSlider
+		{
+			Type = UIToggle
+			ToggleID = "speaker_soundrange"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		LocalRangeToggled
+		{
+			Type = MultiToggle
+			Toggles = [XorFinal, {Toggle = RangeSlider, invert = true}]
+			Mode = All
+		}
+		GlobalRangeToggled
+		{
+			Type = MultiToggle
+			Toggles = [XorFinal, {Toggle = RangeSlider, invert = false}]
+			Mode = All
+		}
+		Two
+		{
+			Type = StaticValue
+			Value = 2 // baseline
+		}
+		TuningBaseBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			BuffAmount = 12
+		}
+		Tuning//12ToneEqualTemperament
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 1/12
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = AdvS_Setting_Second
+						ModificationMode = Multiply
+					}
+				]
+			}
+		}
+		PitchBending
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 0
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = LogicAlternativeB
+						Scale = 1/12
+						ModificationMode = Add
+					}
+					{
+						Type = ScaledBuff
+						BuffType = LogicAlternativeC
+						Scale = 1/12
+						ModificationMode = Subtract
+					}
+					{
+						Type = ScaledBuff
+						BuffType = LogicAlternativeD
+						Scale = 12/12
+						ModificationMode = Add
+					}
+				]
+			}
+		}
+		PitchBendingSmoothed
+		{
+			Type = SmoothedValue
+			ValueSource = PitchBending
+			MaxDelta
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = PitchBendingBuff
+						ModificationMode = Multiply
+					}
+				]
+			}
+		}
+		NotePlusBend
+		{
+			Type = MultiValue
+			Values = [Tuning, PitchBendingSmoothed]
+			Mode = Add
+		}
+		FinalTuning
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = Two
+			ValueTwo = NotePlusBend
+			//IncludeInBlueprints = All
+		}
+
+		InstrumentType
+		{
+			Type = UIToggle
+			ToggleID = "speaker_loop_types"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		
+		SineToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 0
+		}
+		SineComponents
+		{
+			Type = ToggledComponents
+			Toggle = SineToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				SineSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/sine.wav"
+							Volume = { BaseValue=0.15; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = .8
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalSineSoundEffectss : &SineSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/sine.wav"
+							Volume = { BaseValue=0.15; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^3 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		SquareToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 1
+		}
+		SquareComponents
+		{
+			Type = ToggledComponents
+			Toggle = SquareToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				SquareSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/square.wav"
+							Volume = { BaseValue=0.1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 36+12]
+							IntensityBounds = [0, 36+12]
+							Speed = 1 / 2^2 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = .8
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalSquareSoundEffects : &SquareSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/square.wav"
+							Volume = { BaseValue=0.1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 36+12]
+							IntensityBounds = [0, 36+12]
+							Speed = 1 / 2^2 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		Pad1Toggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 100
+		}
+		Pad1Components
+		{
+			Type = ToggledComponents
+			Toggle = Pad1Toggle
+			IncludeInBlueprints = true
+			Components
+			{
+				Pad1SoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/537911__arseniiv__110hz_minus3and5.wav" // the usual
+							Volume = { BaseValue=0.8; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2
+							MaxConcurrent = 0
+							//RampUpTime = 1
+							RampDownTime = 0.5
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalPad1SoundEffects : &Pad1SoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/537911__arseniiv__110hz_minus3and5.wav" // the usual
+							Volume = { BaseValue=0.8; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		BorealisPadToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 101
+		}
+		BorealisPadComponents
+		{
+			Type = ToggledComponents
+			Toggle = BorealisPadToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				BorealisPadSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/861020__formaudioworks__pad_loop_borealis.wav" // the usual
+							Volume = { BaseValue=0.6; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2
+							MaxConcurrent = 0
+							//RampUpTime = 1
+							RampDownTime = 0.5
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalBorealisPadSoundEffects : &BorealisPadSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/861020__formaudioworks__pad_loop_borealis.wav"
+							Volume = { BaseValue=0.6; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		IndustrialAlarmToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 200
+		}
+		IndustrialAlarmComponents
+		{
+			Type = ToggledComponents
+			Toggle = IndustrialAlarmToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				IndustrialAlarmSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/520200__latranz__industrial-alarm.wav" // the usual
+							Volume = { BaseValue=0.75; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^1
+							MaxConcurrent = 0
+							//RampUpTime = 1
+							RampDownTime = 0.05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalIndustrialAlarmSoundEffects : &IndustrialAlarmSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/520200__latranz__industrial-alarm.wav"
+							Volume = { BaseValue=0.75; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"active1.png"
+							"active2.png"
+							"active3.png"
+						]
+						AnimationInterval = 0.075
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "idle.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights2.png"
+							"lights3.png"
+						]
+						AnimationInterval = 0.1
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+	}
+	StatsNotesKey = "Stats/SpeakerblockNotes"
+}

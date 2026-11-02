@@ -202,6 +202,8 @@ AdvS_Setting_Second = &AdvS_Bare_Base
 AdvS_Setting_Third = &AdvS_Bare_Base
 AdvS_Rotate_Check = &AdvS_Bare_Base
 AdvS_Arc_Sensor_Limit = &AdvS_Bare_Base
+PitchBendingBuff = &AdvS_Bare_Base
+SpeakerVolumeBuff = &AdvS_Bare_Base
 Logic2 = &AdvS_Bare_Base
 RampUpJani
 {

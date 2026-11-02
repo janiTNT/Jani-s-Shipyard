@@ -637,6 +637,14 @@ Parts
 	Logic_Jump_Wire_Desc = "Configurable distance spacing logic wire."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
+	LogicSoundSpeaker = "Logic Speaker Block"
+	LogicSoundSpeakerIcon = "Speaker"
+	LogicSoundSpeakerDesc = "Emits a sound when receiving a logic signal. Has several instruments, and pitch of notes can be changed by increasing the number configuration, raising by a semitone each. Global sound range plays everywhere if your ship is visible. "
+	
+	LogicSoundSpeakerLooping = "Logic Looping Speaker Block"
+	LogicSoundSpeakerLoopingIcon = "Loop Speaker"
+	LogicSoundSpeakerLoopingDesc = "Constantly emits a sound when receiving a logic signal. Has a variety of instruments and noises, and pitch of notes can be changed by increasing the number configuration, raising by a semitone each. Global sound range plays everywhere if your ship is visible. "
+	
 	LogicRoofLight = "Logic Controlled Roof Light"
 	LogicRoofLightIcon = "Logic Light"
 	LogicRoofLightDesc = "A Roof Light that is logic controlled."\
@@ -1097,6 +1105,31 @@ Inputs
 		advships_widths_Eight = "Width 9"
 		advships_widths_nine = "Width 10"
 		
+		speakertype_Piano = "Speaker instrument : Piano"
+		speakertype_Vibraphone = "Speaker instrument : Vibraphone"
+		speakertype_WhoopieBass = "Speaker instrument : Whoopie Bass"
+		speakertype_TangerineDream = "Speaker instrument : Tangerine Dream"
+		speakertype_Meow = "Speaker instrument : Meow"
+		speakertype_Guitar1 = "Speaker instrument : Guitar 1"
+		speakertype_Guitar2 = "Speaker instrument : Distortion Guitar"
+		
+		speakertype_sine = "Speaker instrument : Sine Wave"
+		speakertype_square = "Speaker instrument : Square Wave"
+		speakertype_Pad1 = "Speaker instrument : Pad 1"
+		speakertype_BorealisPad = "Speaker instrument : Borealis Pad"
+		speakertype_IndustrialAlarm = "Speaker instrument : Industrial Alarm"
+		
+		speakerRangeLocal = "Speaker Range: Local"
+		speakerRangeGlobal = "Speaker Range: Global"
+		
+		speakerVol1 = "Speaker Volume : Low"
+		speakerVol2 = "Speaker Volume : Medium"
+		speakerVol3 = "Speaker Volume : High"
+		
+		speakerRamp1 = "Speaker Pitch Bending : Slow"
+		speakerRamp2 = "Speaker Pitch Bending : Normal"
+		speakerRamp3 = "Speaker Pitch Bending : Instant"
+		
 		corridor_blank = "Blank Corridor"
 		corridor_window = "Windowed Corridor"
 		corridor_vent = "Vent Roof Corridor"
@@ -1293,6 +1326,31 @@ PartToggles
 	logic_alt_c = "Logic Alt Signal C\n<gray>Alt signals only affect certain parts that require multiple inputs, such as thrusters</gray>"
 	logic_alt_d = "Logic Alt Signal D\n<gray>Alt signals only affect certain parts that require multiple inputs, such as thrusters</gray>"
 	logic_alt_overclock = "Logic Overclocking Signal\n<gray>Toggles overclock on compatible logic parts.</gray>"
+	
+	speakertype_Piano = "Piano"
+	speakertype_Vibraphone = "Vibraphone"
+	speakertype_WhoopieBass = "Whoopie Bass"
+	speakertype_TangerineDream = "Tangerine Dream"
+	speakertype_Meow = "Meow"
+	speakertype_Guitar1 = "Guitar 1"
+	speakertype_Guitar2 = "Distortion Guitar"
+	
+	speakertype_sine = "Sine Wave"
+	speakertype_square = "Square Wave"
+	speakertype_Pad1 = "Pad 1"
+	speakertype_BorealisPad = "Borealis Pad"
+	speakertype_IndustrialAlarm = "Industrial Alarm\n(Default : 12)"
+	
+	speakerRangeLocal = "Local Audio Range"
+	speakerRangeGlobal = "Global Audio Range\n(This might be ill-advised to use)"
+	
+	speakerVol1 = "Low Volume"
+	speakerVol2 = "Normal Volume"
+	speakerVol3 = "High Volume"
+	
+	speakerRamp1 = "Slow Pitch Bending"
+	speakerRamp2 = "Normal Pitch Bending"
+	speakerRamp3 = "Instant Pitch Bending"
 	
 	Ammos = "Ammo Category"
 	Builds = "Construction Category"
@@ -1571,6 +1629,13 @@ Stats
 	"<gray>Signal C: Unused</gray>\n"\
 	"<gray>Signal D: Unused</gray>\n"\
 	"<white>Overclock:</white> <bad>Overclocking toggle</bad>"
+	
+	SpeakerblockNotes = "<b>Logic signal inputs:</b>\n"\
+	"<white>Signal A:</white> <good>Toggle sound</good>\n"\
+	"<white>Signal B:</white> <good>Pitch bend: +1 semitone/signal</good>\n"\
+	"<white>Signal C:</white> <good>Pitch bend: - 1 semitone/signal</good>\n"\
+	"<white>Signal D:</white> <good>Pitch bend: +1 octave/signal</good>\n"\
+	"<gray>Overclock: Unused</gray>"
 }
 StatCategories
 {

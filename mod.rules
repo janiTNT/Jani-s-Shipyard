@@ -314,6 +314,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Sensors/HullSensor/Hull_Sensor.rules>/Part
 			
 			//Outputs
+			&<Parts/Logic/speaker/basicspeaker.rules>/Part
+			&<Parts/Logic/speaker/loopingspeaker.rules>/Part
+			
 			&<Parts/Logic/Lights/roof_light/roof_light_logic.rules>/Part
 			//&<Parts/Logic/Lights/Light Panels/panel.rules>/Part
 			&<Parts/Logic/Lights/Light Panels/panel_small_square.rules>/Part

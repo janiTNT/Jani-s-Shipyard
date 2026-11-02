@@ -3,7 +3,7 @@ PartTriggers
 	// BitFlip
 	{
 		TriggerID = "janilogicflip"
-		DefaultHotkey = [PlatformCmdCtrl, Shift, B]
+		DefaultHotkey = [T]
 		ButtonToolTipKey = "PartTriggers/LogicFlip"
 		ButtonSprite
 		{

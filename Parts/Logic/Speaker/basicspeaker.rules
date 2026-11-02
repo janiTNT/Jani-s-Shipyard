@@ -1,0 +1,909 @@
+Part : <../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicSoundSpeaker"
+	IconNameKey = "Parts/LogicSoundSpeakerIcon"
+	ID = janiTNT.logic_speaker_basic // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	//EditorParentParts = [ "janiTNT.roof_panel_logic_square_small" ]
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/LogicSoundSpeakerDesc"
+	Resources
+	[
+		[steel, 4]
+		[janitnt.circuit1, 4]
+		[coil, 1]
+	]
+	TypeCategories = [logic, speaker]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third, PitchBendingBuff, SpeakerVolumeBuff] // ignore third
+	SelectionTypeID = "soundspeaker"
+	IsRotateable = false
+	SelectionPriority = 1
+	Size = [1, 1]
+	ForceBrushCompatibility = true
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	{
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LocalRangeToggled, GlobalRangeToggled]
+			Mode = Any
+		}
+
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = LogicAlternativeA
+		}
+		
+		InvertInput
+		{
+			Type = UIToggle
+			ToggleID = "skipydog_invert_input_toggle"
+			Default = 0
+		}
+//|||||||||||||||||||||||| XOR ||||||||||||||||||||||||
+		XorToggle1
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = true
+			Mode = Any
+		}
+		XorToggle2
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal, InvertInput]
+			Invert = false
+			Mode = All
+		}
+		XorFinal
+		{
+			Type = MultiToggle
+			Toggles = [XorToggle2, XorToggle1]
+			Invert = true
+			Mode = Any
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Cyan
+		}
+		VolumeSlider
+		{
+			Type = UIToggle
+			ToggleID = "speaker_volumelevel"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}		
+		LowVolume
+		{
+			Type = ModeToggle
+			Mode = VolumeSlider
+			OnMode = 0
+		}
+		VolumeLowProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SpeakerVolumeBuff
+			OperationalToggle = LowVolume
+			BuffAmount = 0.3
+		}		
+		MedVolume
+		{
+			Type = ModeToggle
+			Mode = VolumeSlider
+			OnMode = 1
+		}
+		VolumeMedProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SpeakerVolumeBuff
+			OperationalToggle = MedVolume
+			BuffAmount = 1
+		}		
+		HighVolume
+		{
+			Type = ModeToggle
+			Mode = VolumeSlider
+			OnMode = 2
+		}
+		VolumeHighProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = SpeakerVolumeBuff
+			OperationalToggle = HighVolume
+			BuffAmount = 2.5
+		}
+		PitchBendingSlider
+		{
+			Type = UIToggle
+			ToggleID = "speaker_pitchbendinglevel"
+			Default = 1
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}		
+		SlowPitchBending
+		{
+			Type = ModeToggle
+			Mode = PitchBendingSlider
+			OnMode = 0
+		}
+		SlowPitchBendingProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = PitchBendingBuff
+			OperationalToggle = SlowPitchBending
+			BuffAmount = 0.25
+		}		
+		MedPitchBending
+		{
+			Type = ModeToggle
+			Mode = PitchBendingSlider
+			OnMode = 1
+		}
+		MedPitchBendingProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = PitchBendingBuff
+			OperationalToggle = MedPitchBending
+			BuffAmount = 1
+		}		
+		InstantPitchBending
+		{
+			Type = ModeToggle
+			Mode = PitchBendingSlider
+			OnMode = 2
+		}
+		InstantPitchBendingProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = PitchBendingBuff
+			OperationalToggle = InstantPitchBending
+			BuffAmount = 3000
+		}
+		RangeSlider
+		{
+			Type = UIToggle
+			ToggleID = "speaker_soundrange"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		LocalRangeToggled
+		{
+			Type = MultiToggle
+			Toggles = [TimedSustain, XorFinal, {Toggle = RangeSlider, invert = true}]
+			Mode = All
+		}
+		GlobalRangeToggled
+		{
+			Type = MultiToggle
+			Toggles = [TimedSustain, XorFinal, {Toggle = RangeSlider, invert = false}]
+			Mode = All
+		}
+		
+		Two
+		{
+			Type = StaticValue
+			Value = 2 // baseline
+		}
+		TuningBaseBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Second
+			BuffAmount = 12
+		}
+		Tuning//12ToneEqualTemperament
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 1/12
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = AdvS_Setting_Second
+						ModificationMode = Multiply
+					}
+				]
+			}
+		}
+		PitchBending
+		{
+			Type = BuffableValue
+			Value
+			{
+				BaseValue = 0
+				Modifiers
+				[
+					{
+						Type = ScaledBuff
+						BuffType = LogicAlternativeB
+						Scale = 1/12
+						ModificationMode = Add
+					}
+					{
+						Type = ScaledBuff
+						BuffType = LogicAlternativeC
+						Scale = 1/12
+						ModificationMode = Subtract
+					}
+					{
+						Type = ScaledBuff
+						BuffType = LogicAlternativeD
+						Scale = 12/12
+						ModificationMode = Add
+					}
+				]
+			}
+		}
+		PitchBendingSmoothed
+		{
+			Type = SmoothedValue
+			ValueSource = PitchBending
+			MaxDelta
+			{
+				BaseValue = 1
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = PitchBendingBuff
+						ModificationMode = Multiply
+					}
+				]
+			}
+		}
+		NotePlusBend
+		{
+			Type = MultiValue
+			Values = [Tuning, PitchBendingSmoothed]
+			Mode = Add
+		}
+		FinalTuning
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = Two
+			ValueTwo = NotePlusBend
+			//IncludeInBlueprints = All
+		}
+		TimerTiming
+		{
+			Type = SelfBuffProvider
+			BuffType = AdvS_Setting_Third
+			BuffAmount = 1
+			BuffMultiplier = FinalTuning
+		}
+		TimerActivator
+		{
+			Type = ToggleTrigger
+			Toggle = XorFinal
+			TriggerWhenOff = false
+			TriggerWhenOn = true
+		}
+		TimerDeactivate
+		{
+			Type = ToggleTrigger
+			Toggle = XorFinal
+			TriggerWhenOff = true
+			TriggerWhenOn = false
+		}
+		TimerActivatorAndResets
+		{
+			Type = MultiTrigger
+			Triggers = [ TimerActivator, TimerDeactivate ]
+		}
+		StopBeforeLoopTimerProxy
+		{
+			Type = TriggerProxy
+			ComponentID = StopBeforeLoopTimer
+		}
+		TimedSustain
+		{
+			Type = TriggeredToggle
+			OnTrigger = TimerActivator
+			OffTrigger = StopBeforeLoopTimerProxy
+			StartsOn = false
+		}
+		
+		InstrumentType
+		{
+			Type = UIToggle
+			ToggleID = "speaker_noloop_types"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		
+		PianoToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 0
+		}
+		PianoComponents
+		{
+			Type = ToggledComponents
+			Toggle = PianoToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 10 * 2^3  // hopefully cant edge case
+					}
+				}
+				PianoSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/277070__beskhu__48-c3.wav" // piano basic
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^3 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							//MaxConcurrentVolume = .8
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalPianoSoundEffects : &PianoSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/277070__beskhu__48-c3.wav" // piano basic
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^3 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		VibraphoneToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 1
+		}
+		VibraphoneComponents
+		{
+			Type = ToggledComponents
+			Toggle = VibraphoneToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 1 * 2^3  // hopefully cant edge case
+					}
+				}
+				VibraphoneSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/593543__jonwalter43__ep-322_one_shot_vibraphone_c_low_mf_stacato_02.wav" // the usual
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^3 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalVibraphoneSoundEffects : &VibraphoneSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/593543__jonwalter43__ep-322_one_shot_vibraphone_c_low_mf_stacato_02.wav" // the usual
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^3 // c1
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		WhoopieBassToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 2
+		}
+		WhoopieBassComponents
+		{
+			Type = ToggledComponents
+			Toggle = WhoopieBassToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 0.7 * 2^2  // hopefully cant edge case
+					}
+				}
+				WhoopieBassSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/315594__modularsamples__whoopie-bass-c3.wav" // funky sample
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c2
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalWhoopieBassSoundEffects : &WhoopieBassSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/315594__modularsamples__whoopie-bass-c3.wav" // funky sample
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c2
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		TangerineDreamToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 3
+		}
+		TangerineDreamComponents
+		{
+			Type = ToggledComponents
+			Toggle = TangerineDreamToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 1.25 * 2^2  // hopefully cant edge case
+					}
+				}
+				TangerineDreamSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/flstudio_Sytrus_Tangerine_Dream.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c3
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalTangerineDreamSoundEffects : &TangerineDreamSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/flstudio_Sytrus_Tangerine_Dream.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c3
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		MeowToggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 4
+		}
+		MeowComponents
+		{
+			Type = ToggledComponents
+			Toggle = MeowToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 0.3 * 2^2  // hopefully cant edge case
+					}
+				}
+				MeowSoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/meow.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c2 kinda
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalMeowSoundEffects : &MeowSoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/meow.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^2 // c2 kinda
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		Guitar1Toggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 5
+		}
+		Guitar1Components
+		{
+			Type = ToggledComponents
+			Toggle = Guitar1Toggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 7 * 2^((1/12) * (36-8))  // hopefully cant edge case
+					}
+				}
+				Guitar1SoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/736935__sirbagel__bass-guitar-single-ga-note.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^((1/12) * (36-8)) // c1 kinda, its also in g#
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalGuitar1SoundEffects : &Guitar1SoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/736935__sirbagel__bass-guitar-single-ga-note.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^((1/12) * (36-8)) // c1 kinda, its also in g#
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		Guitar2Toggle
+		{
+			Type = ModeToggle
+			Mode = InstrumentType
+			OnMode = 6
+		}
+		Guitar2Components
+		{
+			Type = ToggledComponents
+			Toggle = Guitar2Toggle
+			IncludeInBlueprints = true
+			Components
+			{
+				StopBeforeLoopTimer : ~/TimerBase
+				{
+					Duration : ~/TimerBase/Duration
+					{
+						BaseValue = 9 * 2^2  // hopefully cant edge case
+					}
+				}
+				Guitar2SoundEffects
+				{
+					Type = ContinuousEffects
+					Location = [0.5, 0.5]
+					OperationalToggle = LocalRangeToggled
+					FactorMediaEffectsIntensityWith = FinalTuning//12ToneEqualTemperament
+					//IntensityTweenDuration = 0.1
+					ParentToShip = true
+					UpdateMediaBuffs = true
+					MediaEffects
+					[
+						: /BASE_SOUNDS/AudioExterior
+						{
+							Sound = "sounds/249607__staticpony1__guitar-2.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^(2)
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+							MaxConcurrentVolume = 4
+							//IgnoreIntensity = true
+						}
+					]
+				}
+				GlobalGuitar2SoundEffects : &Guitar2SoundEffects
+				{
+					OperationalToggle = GlobalRangeToggled
+					MediaEffects
+					[
+						//: /BASE_SOUNDS/AudioExteriorLongRange
+						{
+							Type = Audio
+							Sound = "sounds/249607__staticpony1__guitar-2.wav" // dark darker yet darker
+							Volume = { BaseValue=1; BuffType=SpeakerVolumeBuff; BuffMode=Multiply; }
+							VolumeOverIntensity = [1, 1]
+							SpeedOverIntensity = [0, 99+12]
+							IntensityBounds = [0, 99+12]
+							Speed = 1 / 2^(2)
+							MaxConcurrent = 0
+							RampDownTime = .05
+							OnlyWhenInSight = false
+						}
+					]
+				}
+			}
+		}
+		
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"active1.png"
+							"active2.png"
+							"active3.png"
+						]
+						AnimationInterval = 0.075
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "idle.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						AnimationFiles
+						[
+							"lights2.png"
+							"lights3.png"
+						]
+						AnimationInterval = 0.1
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "lights1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+	}
+	StatsNotesKey = "Stats/SpeakerblockNotes"
+}
+TimerBase
+{
+	Type = Timer
+	Duration
+	{
+		BaseValue = 10 * 2^3  // hopefully cant edge case
+		Modifiers
+		[
+			{
+				Type = Buff
+				BuffType = AdvS_Setting_Third
+				ModificationMode = Divide
+			}
+		]
+	}
+	StartTrigger = TimerActivator
+	//StopTrigger = Overclock_OnPartDestroying
+	ResetTrigger = TimerActivatorAndResets
+	StartExpired = true
+}
