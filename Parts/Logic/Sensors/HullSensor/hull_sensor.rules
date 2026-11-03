@@ -314,6 +314,44 @@ Part : <../../baselogicpart.rules>/Part
 			}
 		}
 		
+		/* StructuralIntegrityToggle
+		{
+			Type = ModeToggle
+			Mode = HullSensorMode
+			OnMode = 6
+		}
+		StructuralIntegrityComponents
+		{
+			Type = ToggledComponents
+			Toggle = StructuralIntegrityToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				ValueProxy
+				{
+					Type = TileScoreValue
+					Region
+					{
+						Type = EdgeDistance
+						Distance = 5
+					}
+					EmptyTileScore = 0.01
+					RegionHighlightID = "HeatExchangerArea"
+				}
+			}
+		}
+		
+		VisualCoolerBuff
+		{
+			Type = CircleBuffProvider
+			BuffType = JaniCRAM_CoolingSpeedBuff // temp
+			BuffRadius = 5
+			BlueprintsOnly = true // Only for display purposes.
+			OperationalToggle = StructuralIntegrityToggle
+			BuffAmount = 0
+			ShowBuffRange = true
+		} */
+		
 		NebulaLevelToggle
 		{
 			Type = ModeToggle
