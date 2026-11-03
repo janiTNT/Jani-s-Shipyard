@@ -13,6 +13,7 @@ Part : <../../baselogicpart.rules>/Part
 	Size = [1, 1]
 	SelectionPriority = 1
 	SelectionTypeByRotation = true
+	MaxHealth = 1000
 	TypeCategories = [sensor, logic, non_flammable]
 	ReceivableBuffs : ^/0/ReceivableBuffs 
 	[

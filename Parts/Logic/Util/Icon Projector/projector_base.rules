@@ -238,7 +238,7 @@ Part : <../../baselogicpart.rules>/Part
 							"top projection4.png"
 						]
 						AnimationInterval = 0.1
-						Size = [1, 1]
+						Size = [0.5, 0.5]
 					}
 				]
 			}
