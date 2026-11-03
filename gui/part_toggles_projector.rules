@@ -1,0 +1,647 @@
+PartToggles
+[
+	// Rotation Choices
+	{
+		ToggleID = "projector_rotation"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "projectorrot0"
+				ButtonToolTipKey = "PartToggles/projectorrot0"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "rotation icon1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "projectorrot1"
+				ButtonToolTipKey = "PartToggles/projectorrot1"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "rotation icon2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "projectorrot2"
+				ButtonToolTipKey = "PartToggles/projectorrot2"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "rotation icon3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+			{
+				ChoiceID = "projectorrot3"
+				ButtonToolTipKey = "PartToggles/projectorrot3"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "rotation icon4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+	// Icon Choices
+	{
+		ToggleID = "projector_image_choices"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			/* {
+				ChoiceID = "projectorchoice_0_none"
+				ButtonToolTipKey = none
+				Mode = 100
+			} */
+			{
+				ChoiceID = "projectorchoice0_0"
+				ButtonToolTipKey = faction_cabal
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/faction_cabal.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 0
+			}
+			{
+				ChoiceID = "projectorchoice0_1"
+				ButtonToolTipKey = faction_fringe
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/faction_fringe.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 1
+			}
+			{
+				ChoiceID = "projectorchoice0_2"
+				ButtonToolTipKey = faction_imperium
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/faction_imperium.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 2
+			}
+			{
+				ChoiceID = "projectorchoice0_3"
+				ButtonToolTipKey = faction_io
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/faction_io.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 3
+			}
+			{
+				ChoiceID = "projectorchoice0_4"
+				ButtonToolTipKey = faction_monolith
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/faction_monolith.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 4
+			}
+			{
+				ChoiceID = "projectorchoice0_5"
+				ButtonToolTipKey = icon_biohazard
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_biohazard.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 5
+			}
+			{
+				ChoiceID = "projectorchoice0_6"
+				ButtonToolTipKey = icon_credit
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_credit.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 6
+			}
+			{
+				ChoiceID = "projectorchoice0_7"
+				ButtonToolTipKey = icon_fire
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_fire.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 7
+			}
+			{
+				ChoiceID = "projectorchoice0_8"
+				ButtonToolTipKey = icon_gasmask
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_gasmask.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 8
+			}
+		]
+	}
+	// Icon Choices 2
+	{
+		ToggleID = "projector_image_choices2"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "projectorchoice1_0"
+				ButtonToolTipKey = icon_hand_stop
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_hand_stop.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 0
+			}
+			{
+				ChoiceID = "projectorchoice1_1"
+				ButtonToolTipKey = icon_lightning
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_lightning.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 1
+			}
+			{
+				ChoiceID = "projectorchoice1_2"
+				ButtonToolTipKey = icon_magnet
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_magnet.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 2
+			}
+			{
+				ChoiceID = "projectorchoice1_3"
+				ButtonToolTipKey = icon_nuclear
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_nuclear.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 3
+			}
+			{
+				ChoiceID = "projectorchoice1_4"
+				ButtonToolTipKey = icon_omega
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_omega.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 4
+			}
+			{
+				ChoiceID = "projectorchoice1_5"
+				ButtonToolTipKey = icon_shield_1
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_shield_1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 5
+			}
+			{
+				ChoiceID = "projectorchoice1_6"
+				ButtonToolTipKey = icon_shield_2
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_shield_2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 6
+			}
+			{
+				ChoiceID = "projectorchoice1_7"
+				ButtonToolTipKey = icon_skull_1
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_skull_1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 7
+			}
+			{
+				ChoiceID = "projectorchoice1_8"
+				ButtonToolTipKey = icon_skull_2
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_skull_2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 8
+			}
+		]
+	}
+	// Icon Choices 3
+	{
+		ToggleID = "projector_image_choices3"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "projectorchoice2_0"
+				ButtonToolTipKey = icon_smiley
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_smiley.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 0
+			}
+			{
+				ChoiceID = "projectorchoice2_1"
+				ButtonToolTipKey = icon_star
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_star.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 1
+			}
+			{
+				ChoiceID = "projectorchoice2_2"
+				ButtonToolTipKey = icon_targetor
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_targetor.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 2
+			}
+			{
+				ChoiceID = "projectorchoice2_3"
+				ButtonToolTipKey = icon_wrenches
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_wrenches.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 3
+			}
+			{
+				ChoiceID = "projectorchoice2_4"
+				ButtonToolTipKey = icon_yinyang
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_yinyang.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 4
+			}
+			{
+				ChoiceID = "projectorchoice2_5"
+				ButtonToolTipKey = icon_arrow_bars
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_bars.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 5
+			}
+			{
+				ChoiceID = "projectorchoice2_6"
+				ButtonToolTipKey = icon_arrow_chevrons
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_chevrons.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 6
+			}
+			{
+				ChoiceID = "projectorchoice2_7"
+				ButtonToolTipKey = icon_arrow_head
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_head.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 7
+			}
+			{
+				ChoiceID = "projectorchoice2_8"
+				ButtonToolTipKey = icon_arrow_head_split
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_head_split.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 8
+			}
+		]
+	}
+	
+	// Icon Choices 4
+	{
+		ToggleID = "projector_image_choices4"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "projectorchoice3_0"
+				ButtonToolTipKey = icon_arrow_hollow_thick
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_hollow_thick.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 0
+			}
+			{
+				ChoiceID = "projectorchoice3_1"
+				ButtonToolTipKey = icon_arrow_hollow_thin
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_hollow_thin.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 1
+			}
+			{
+				ChoiceID = "projectorchoice3_2"
+				ButtonToolTipKey = icon_arrow_thick
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_thick.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 2
+			}
+			{
+				ChoiceID = "projectorchoice3_3"
+				ButtonToolTipKey = icon_arrow_thin
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_thin.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 3
+			}
+			{
+				ChoiceID = "projectorchoice3_4"
+				ButtonToolTipKey = icon_arrow_thin_double
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_thin_double.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 4
+			}
+			{
+				ChoiceID = "projectorchoice3_5"
+				ButtonToolTipKey = icon_arrow_turn
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/icons/icon_arrow_turn.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 5
+			}
+			{
+				ChoiceID = "projectorchoice3_6"
+				ButtonToolTipKey = shape_x_1
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/shapes/shape_x_1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 6
+			}
+			{
+				ChoiceID = "projectorchoice3_7"
+				ButtonToolTipKey = shape_chevron_0
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/shapes/shape_chevron_0.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 7
+			}
+			{
+				ChoiceID = "projectorchoice3_8"
+				ButtonToolTipKey = box
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "./data/roof_decals/straights/box.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+				Mode = 8
+			}
+		]
+	}
+	// Ship Icon Override mode
+	{
+		ToggleID = "projector_image_shipoverride"
+		Style = Switch
+		Choices
+		[
+			// Off
+			{
+				ChoiceID = "projector_override_off"
+				ButtonToolTipKey = "PartToggles/projector_override_off"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "projector_override1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+
+			// On
+			{
+				ChoiceID = "projector_override_on"
+				ButtonToolTipKey = "PartToggles/projector_override_on"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "projector_override2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+				}
+			}
+		]
+	}
+]

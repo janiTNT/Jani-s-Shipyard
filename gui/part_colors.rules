@@ -74,5 +74,46 @@ PartColors
 		ShowInEditor = true
 		ValueRange = [0, 1]
 		SaturationRange = [0, 1]
+	}/* 
+	// Pure Color + Transparency
+	{
+		ColorID = "true_color_fullrange_transparent"
+		ButtonToolTipKey = "PartColors/FullColor"
+		ColoredSprite
+		{
+			Texture
+			{
+				File = "./data/gui/game/parts/pick_color.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
+		SortOrder = 99
+		ShowInEditor = true
+		ValueRange = [0, 1]
+		SaturationRange = [0, 1]
+		AlphaRange = [0, 1]
+	} */
+	// Color transparent
+	{
+		ColorID = "projector_color"
+		ButtonToolTipKey = "PartColors/FullColor"
+		ColoredSprite
+		{
+			Texture
+			{
+				File = "./data/gui/game/parts/pick_color.png"
+				MipLevels = 2
+				SampleMode = Linear
+			}
+		}
+		ColorChangeSound = &<./Data/gui/widgets.rules>/DynamicWidget/InputStateAudio/PressedSound
+		SortOrder = 99
+		ShowInEditor = true
+		AllowAlpha = true
+		ValueRange = [0, 1]
+		SaturationRange = [0, 1]
+		AlphaRange = [0, 1]
 	}
 ]

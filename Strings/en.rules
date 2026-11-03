@@ -670,6 +670,13 @@ Parts
 	LogicRoofPanelWedgeDesc = "Triangular Wedge light panel using the latest in light emitting diode (LED) Technologies (that existed for 300 years.). Logic controlled. but can be manually toggled."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
+	Logic_Icon_Projector = "Icon Projector"
+	Logic_Icon_ProjectorIcon = "Projector"
+	Logic_Icon_Projector2Icon = "Projector 2"
+	Logic_Icon_Projector3Icon = "Projector 3"
+	Logic_Icon_Projector4Icon = "Projector 4"
+	Logic_Icon_ProjectorDesc = "Projects a icon at a configurable distance from the origin. Can be logic controlled, and choose from a variety of icons.\n\n<good>Also check out the Holograms mod by Quixotic!</good>"
+	
 	LogicTBm = "Logic Tractor Beam (Small)"
 	LogicTBmIcon = "Logic TB"
 	LogicTBmDesc = "A Modified version of a turret of the resource collector to act as a miniature tractor beam that is logic controlled. can have a target or just a fixed direction.\n<bad>Has no doors and cannot be manually powered, requires a Power Port instead.</bad>"

@@ -1,0 +1,304 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/Logic_Icon_Projector"
+	IconNameKey = "Parts/Logic_Icon_Projector2Icon"
+	ID = janiTNT.icon_projector2 // Part IDs must always be in the form of "author_name.part_name". If making your own mod, do *not* use "cosmoteer" as your author name, because it may conflict with future vanilla parts.
+	EditorParentParts = [ "janiTNT.icon_projector" ]
+	DescriptionKey = "Parts/Logic_Icon_ProjectorDesc"
+	Resources
+	[
+		[steel, 4]
+		[janitnt.circuit1, 8]
+	]
+	Size = [1, 1]
+	SelectionPriority = 1
+	SelectionTypeByRotation = true
+	TypeCategories = [sensor, logic, non_flammable]
+	ReceivableBuffs : ^/0/ReceivableBuffs 
+	[
+	Logic
+	] 
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+	Components : <projector_base.rules>/Part/Components
+	{
+		IconToggle
+		{
+			Type = UIToggle
+			ToggleID = "projector_image_choices2"
+			Default = 0
+		}
+		
+		Icon0Toggle
+		{
+			Type = ModeToggle
+			Mode = IconToggle
+			OnMode = 0
+		}
+		
+		Icon0Components
+		{
+			Type = ToggledComponents
+			Toggle = Icon0Toggle
+			Graphic = "./Data/roof_decals/icons/icon_hand_stop.png"
+			Components
+			{
+				Projection1
+				{
+					Type = Graphics
+					Location = [0, 0]
+					ChainedTo = ChainedProxy
+					OperationalToggle = IsOperational
+					DoodadToggle = Width1Toggle
+					ShowToggledDoodadsWhenNotOperational = false
+					GetColorFrom = ColorPicker
+					Size = 1
+					ToggleOnDoodad
+					{
+						Layer = "roof_doodads"
+						DamageLevels
+						[
+							{
+								File = &../../../../../:/Graphic
+								Size = [(&../../../../:/Size), (&../../../../:/Size)]
+							}
+						]
+					}
+				}
+				Projection2 : &Projection1
+				{
+					DoodadToggle = Width2Toggle
+					Size = 2
+				}
+				Projection3 : &Projection1
+				{
+					DoodadToggle = Width3Toggle
+					Size = 3
+				}
+				Projection4 : &Projection1
+				{
+					DoodadToggle = Width4Toggle
+					Size = 4
+				}
+				ProjectingCustomShipIcon
+				{
+					Type = CustomShipIcon
+					OperationalToggle = IsOverridingIcon
+					Icon
+					{
+						Size = [48, 48]
+						Texture
+						{
+							File = &../../../../Graphic
+							SampleMode = Linear
+							MipLevels = max
+						}
+					}
+					Weight = 1
+					PulseInterval = 1
+					PulseColor = [255, 255, 255, 64]
+					ShowAtZoom = 5
+				}
+			}
+		}
+		
+		Icon1Toggle : &Icon0Toggle
+		{
+			OnMode = 1
+		}
+		
+		Icon1Components : &Icon0Components
+		{
+			Toggle = Icon1Toggle
+			Graphic = "./Data/roof_decals/icons/icon_lightning.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon2Toggle : &Icon0Toggle
+		{
+			OnMode = 2
+		}
+		
+		Icon2Components : &Icon0Components
+		{
+			Toggle = Icon2Toggle
+			Graphic = "./Data/roof_decals/icons/icon_magnet.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon3Toggle : &Icon0Toggle
+		{
+			OnMode = 3
+		}
+		
+		Icon3Components : &Icon0Components
+		{
+			Toggle = Icon3Toggle
+			Graphic = "./Data/roof_decals/icons/icon_nuclear.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon4Toggle : &Icon0Toggle
+		{
+			OnMode = 4
+		}
+		
+		Icon4Components : &Icon0Components
+		{
+			Toggle = Icon4Toggle
+			Graphic = "./Data/roof_decals/icons/icon_omega.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon5Toggle : &Icon0Toggle
+		{
+			OnMode = 5
+		}
+		
+		Icon5Components : &Icon0Components
+		{
+			Toggle = Icon5Toggle
+			Graphic = "./Data/roof_decals/icons/icon_shield_1.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon6Toggle : &Icon0Toggle
+		{
+			OnMode = 6
+		}
+		
+		Icon6Components : &Icon0Components
+		{
+			Toggle = Icon6Toggle
+			Graphic = "./Data/roof_decals/icons/icon_shield_2.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon7Toggle : &Icon0Toggle
+		{
+			OnMode = 7
+		}
+		
+		Icon7Components : &Icon0Components
+		{
+			Toggle = Icon7Toggle
+			Graphic = "./Data/roof_decals/icons/icon_skull_1.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+		
+		Icon8Toggle : &Icon0Toggle
+		{
+			OnMode = 8
+		}
+		
+		Icon8Components : &Icon0Components
+		{
+			Toggle = Icon8Toggle
+			Graphic = "./Data/roof_decals/icons/icon_skull_2.png"
+			Components : &^/0/Components
+			{
+				ProjectingCustomShipIcon : &^/0/ProjectingCustomShipIcon
+				{
+					Icon : &^/0/Icon
+					{
+						Texture : &^/0/Texture
+						{
+							File = &../../../../Graphic // for some reason bugged
+						}
+					}
+				}
+			}
+		}
+	}
+}

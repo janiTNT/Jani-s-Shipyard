@@ -1,6 +1,7 @@
 PartToggles : &<part_toggles_comparator.rules>/PartToggles
 &<part_toggles_hullsensor.rules>/PartToggles
 &<part_toggles_speakers.rules>/PartToggles
+&<part_toggles_projector.rules>/PartToggles
 [
 	// Fabricator type
 	{
