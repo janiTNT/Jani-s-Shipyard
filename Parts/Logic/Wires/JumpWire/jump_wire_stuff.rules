@@ -19,6 +19,7 @@ Part
 		{
 			Type = ToggledComponents
 			Toggle = ZeroLengthToggle_L
+			Range = 0
 			Components
 			{
 				BuffProviderLogic
@@ -27,7 +28,7 @@ Part
 					OperationalToggle = LogicSignal
 					BuffType = Logic
 					BuffAmount = 1
-					BuffArea = [0, -2, 1, 1]
+					BuffArea = [0, (-2) - (&../../../:/Range), 1, 1]
 				}
 				SignalAComponents
 				{
@@ -92,7 +93,7 @@ Part
 				EndGraphics
 				{
 					Type = Graphics
-					Location = [0.5, -1.5]
+					Location = [0.5, -1.5 - (&../../../:/Range)]
 					OperationalToggle = LogicSignal
 					Walls
 					{
@@ -135,11 +136,6 @@ Part
 						]
 					}
 				}
-			}
-			IncludeInBlueprintsInToggleMode
-			{
-				ToggleID = advships_length_value
-				Mode = 0
 			}
 		}
 
@@ -149,132 +145,10 @@ Part
 			Mode = LengthSelect
 			OnMode = 1
 		}
-		OneLength_L
+		OneLength_L : ZeroLength_L
 		{
-			Type = ToggledComponents
 			Toggle = OneLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -3, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -2.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
-			IncludeInBlueprintsInToggleMode
-			{
-				ToggleID = advships_length_value
-				Mode = 1
-			}
+			Range = 1
 		}
 
 		TwoLengthToggle_L
@@ -283,132 +157,10 @@ Part
 			Mode = LengthSelect
 			OnMode = 2
 		}
-		TwoLength_L
+		TwoLength_L : ZeroLength_L
 		{
-			Type = ToggledComponents
 			Toggle = TwoLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -4, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -3.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
-			IncludeInBlueprintsInToggleMode
-			{
-				ToggleID = advships_length_value
-				Mode = 2
-			}
+			Range = 2
 		}
 
 		ThreeLengthToggle_L
@@ -417,132 +169,10 @@ Part
 			Mode = LengthSelect
 			OnMode = 3
 		}
-		ThreeLength_L
+		ThreeLength_L : ZeroLength_L
 		{
-			Type = ToggledComponents
 			Toggle = ThreeLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -5, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -4.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
-			IncludeInBlueprintsInToggleMode
-			{
-				ToggleID = advships_length_value
-				Mode = 3
-			}
+			Range = 3
 		}
 
 		FourLengthToggle_L
@@ -551,127 +181,10 @@ Part
 			Mode = LengthSelect
 			OnMode = 4
 		}
-		FourLength_L
+		FourLength_L : ZeroLength_L
 		{
-			Type = ToggledComponents
 			Toggle = FourLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -6, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -5.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
+			Range = 4
 		}
 		FiveLengthToggle_L
 		{
@@ -679,127 +192,11 @@ Part
 			Mode = LengthSelect
 			OnMode = 5
 		}
-		FiveLength_L
+		FiveLength_L : ZeroLength_L
 		{
 			Type = ToggledComponents
 			Toggle = FiveLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -7, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -6.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
+			Range = 5
 		}
 		SixLengthToggle_L
 		{
@@ -807,127 +204,11 @@ Part
 			Mode = LengthSelect
 			OnMode = 6
 		}
-		SixLength_L
+		SixLength_L : ZeroLength_L
 		{
 			Type = ToggledComponents
 			Toggle = SixLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -8, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -7.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
+			Range = 6
 		}
 		SevenLengthToggle_L
 		{
@@ -935,127 +216,11 @@ Part
 			Mode = LengthSelect
 			OnMode = 7
 		}
-		SevenLength_L
+		SevenLength_L : ZeroLength_L
 		{
 			Type = ToggledComponents
 			Toggle = SevenLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -9, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -8.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
+			Range = 7
 		}
 		EightLengthToggle_L
 		{
@@ -1063,127 +228,11 @@ Part
 			Mode = LengthSelect
 			OnMode = 8
 		}
-		EightLength_L
+		EightLength_L : ZeroLength_L
 		{
 			Type = ToggledComponents
 			Toggle = EightLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -10, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -9.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
+			Range = 8
 		}
 		NineLengthToggle_L
 		{
@@ -1191,127 +240,11 @@ Part
 			Mode = LengthSelect
 			OnMode = 9
 		}
-		NineLength_L
+		NineLength_L : ZeroLength_L
 		{
 			Type = ToggledComponents
 			Toggle = NineLengthToggle_L
-			Components
-			{
-				BuffProviderLogic
-				{
-					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
-					BuffType = Logic
-					BuffAmount = 1
-					BuffArea = [0, -11, 1, 1]
-				}
-				SignalAComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalAToggle
-					Components
-					{
-						BuffProviderLogicA : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeA
-						}
-					}
-				}
-				SignalBComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalBToggle
-					Components
-					{
-						BuffProviderLogicB : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeB
-						}
-					}
-				}
-				SignalCComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalCToggle
-					Components
-					{
-						BuffProviderLogicC : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeC
-						}
-					}
-				}
-				SignalDComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalDToggle
-					Components
-					{
-						BuffProviderLogicD : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeD
-						}
-					}
-				}
-				SignalOverclockComponents
-				{
-					Type = ToggledComponents
-					Toggle = SignalOverclockToggle
-					Components
-					{
-						BuffProviderLogicOverclock : ../../../Components/BuffProviderLogic
-						{
-							BuffType = LogicAlternativeOverclock
-						}
-					}
-				}
-				EndGraphics
-				{
-					Type = Graphics
-					Location = [0.5, -10.5]
-					OperationalToggle = LogicSignal
-					Walls
-					{
-						Layer = "doors"
-						DamageLevels
-						[
-							{
-								File = "end.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-				ColoredEndGraphics
-				{
-					Type = Graphics
-					Location = &../EndGraphics/Location
-					OperationalToggle = LogicSignal
-					GetColorFrom = ColorPicker
-					OperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms2.png"
-								Size = [1, 1]
-							}
-						]
-					}
-					NonOperationalDoodad
-					{
-						Layer = "doodads_high"
-						DamageLevels
-						[
-							{
-								File = "doomoms1.png"
-								Size = [1, 1]
-							}
-						]
-					}
-				}
-			}
+			Range = 9
 		}
 		BlueprintsCapOne
 		{

@@ -103,3 +103,22 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 		}
 	}
 }
+Floor_Advanced
+{
+	Layer = "floors"
+	DamageLevels
+	[
+		{
+			File = "advancedfloor1.png"
+			Size = [1, 1]
+		}
+		{
+			File = "advancedfloor2.png"
+			Size = [1, 1]
+		}
+		{
+			File = "advancedfloor3.png"
+			Size = [1, 1]
+		}
+	]
+}

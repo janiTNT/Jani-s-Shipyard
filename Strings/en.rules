@@ -634,8 +634,12 @@ Parts
 	
 	Logic_Jump_Wire = "Logic Jump Wire"
 	Logic_Jump_Wire_Icon = "Jump Wire"
-	Logic_Jump_Wire_Desc = "Configurable distance spacing logic wire."\
+	Logic_Jump_Wire_Desc = "Configurable distance spacing logic wire. Can reach distances of 2-11"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
+	
+	Logic_Jump_Wire_Superlong = "Logic Advanced Jump Wire"
+	Logic_Jump_Wire_SuperlongIcon = "Jump Wire (5x)"
+	Logic_Jump_Wire_SuperlongDesc = "Configurable distance spacing logic wire. Can reach distances of 12-57 with the configuration jumping every 5 tiles."
 	
 	LogicSoundSpeaker = "Logic Speaker Block"
 	LogicSoundSpeakerIcon = "Speaker"
