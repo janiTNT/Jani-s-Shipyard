@@ -679,7 +679,7 @@ Parts
 	Logic_Icon_Projector2Icon = "Projector 2"
 	Logic_Icon_Projector3Icon = "Projector 3"
 	Logic_Icon_Projector4Icon = "Projector 4"
-	Logic_Icon_ProjectorDesc = "Projects a icon at a configurable distance from the origin. Can be logic controlled, and choose from a variety of icons.\n\n<good>Also check out the Holograms mod by Quixotic!</good>"
+	Logic_Icon_ProjectorDesc = "Projects a icon at a configurable distance from the origin at the upper layer of the ship. Can be logic controlled, and choose from a variety of icons, rotations, sizes, colors, and can choose to override the icon of the ship in map view to a white version of the icon.\n\n<good>Also check out the Holograms mod by Quixotic!</good>"
 	
 	LogicTBm = "Logic Tractor Beam (Small)"
 	LogicTBmIcon = "Logic TB"
