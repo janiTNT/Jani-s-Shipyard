@@ -14,5 +14,5 @@ HudIcon
 		SampleMode = Linear
 	}
 	Size = [20, 20]
-	VertexColor = [255, 255, 255, 12]
+	VertexColor = [255, 180, 180, 80]
 }

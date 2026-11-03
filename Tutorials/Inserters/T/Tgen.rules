@@ -1,14 +1,14 @@
 Type = None
 Tags = [T_anomP]
 Count = [1]
-SpawnChance = 0.1
+SpawnChance = 0.25
 //SpawnChance = 1
 //SpawnChance = 0
 Conditions
 {
 	//RequireSpawnFlags = [no_sun, supernova_nebulas]
 	IsInitNode=false
-	MinTier = 6
+	MinTier = 3
 }
 SubSpawners
 [
@@ -120,7 +120,7 @@ RandomMedium
 		// POI
 		{
 			Type = Doodads
-			SpawnChance = 0.85
+			SpawnChance = 1
 			DoodadType = janiTNT.poi_unknown2
 			Tags = [poi_xxxx]
 			AutoRemoveWhenDiscovered = true
@@ -218,7 +218,7 @@ RandomLarge
 		// POI
 		{
 			Type = Doodads
-			SpawnChance = 0.75
+			SpawnChance = 1
 			DoodadType = janiTNT.poi_unknown2
 			Tags = [poi_xxxx]
 			AutoRemoveWhenDiscovered = true
