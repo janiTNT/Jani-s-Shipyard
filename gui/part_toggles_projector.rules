@@ -610,6 +610,7 @@ PartToggles
 	// Ship Icon Override mode
 	{
 		ToggleID = "projector_image_shipoverride"
+		ShowInEditor = true
 		Style = Switch
 		Choices
 		[

@@ -1133,6 +1133,14 @@ Inputs
 		speakerRangeLocal = "Speaker Range: Local"
 		speakerRangeGlobal = "Speaker Range: Global"
 		
+		projector_override_off = "Projector: Ship icon override: off"
+		projector_override_on = "Projector: Ship icon override: on"
+		
+		projectorrot0 = "Projector: 0 degree rotation"
+		projectorrot1 = "Projector: 90 degrees rotation"
+		projectorrot2 = "Projector: 180 degrees rotation"
+		projectorrot3 = "Projector: 270 degrees rotation"
+		
 		speakerVol1 = "Speaker Volume : Low"
 		speakerVol2 = "Speaker Volume : Medium"
 		speakerVol3 = "Speaker Volume : High"
@@ -1362,6 +1370,14 @@ PartToggles
 	speakerRamp1 = "Slow Pitch Bending"
 	speakerRamp2 = "Normal Pitch Bending"
 	speakerRamp3 = "Instant Pitch Bending"
+	
+	projector_override_off = "Ship icon override: off"
+	projector_override_on = "Ship icon override: on"
+	
+	projectorrot0 = "0 degree rotation"
+	projectorrot1 = "90 degrees rotation"
+	projectorrot2 = "180 degrees rotation"
+	projectorrot3 = "270 degrees rotation"
 	
 	Ammos = "Ammo Category"
 	Builds = "Construction Category"
