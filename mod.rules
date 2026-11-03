@@ -11,7 +11,7 @@ Version = "Modern 1.24.3"
 //Version = "Modern 1.21(quickpatch)"
 //Logo = "evil jani.png"
 Logo = "small_icon.png"
-CompatibleGameVersions = ["0.30.0", "0.30.1", "0.30.2", "0.30.3", "0.30.4", "0.30.5", "0.30.6", "0.30.7", "0.30.8", "0.30.9", "0.30.10", "0.30.11", "0.30.12", "0.30.13", "0.30.14", "0.30.15"]
+CompatibleGameVersions = ["0.30.5", "0.30.6", "0.30.7", "0.30.8", "0.30.9", "0.30.10", "0.30.11", "0.30.12", "0.30.13", "0.30.14", "0.30.15"]
 ModifiesMultiplayer = true
 Description = "Adds a lot of content i have made, hope you enjoy!\n\n"\
 " - Mod previously known as Juan's Workshop or Juans Shipyard\n"\
