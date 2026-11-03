@@ -288,36 +288,25 @@ Part : <../baselogicpart.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = FinalTuning
 		}
-		TimerActivator
-		{
-			Type = ToggleTrigger
-			Toggle = XorFinal
-			TriggerWhenOff = false
-			TriggerWhenOn = true
-		}
-		TimerDeactivate
+		XorChanged
 		{
 			Type = ToggleTrigger
 			Toggle = XorFinal
 			TriggerWhenOff = true
-			TriggerWhenOn = false
-		}
-		TimerActivatorAndResets
-		{
-			Type = MultiTrigger
-			Triggers = [ TimerActivator, TimerDeactivate ]
+			TriggerWhenOn = true
 		}
 		StopBeforeLoopTimerProxy
 		{
-			Type = TriggerProxy
+			Type = ValueProxy
 			ComponentID = StopBeforeLoopTimer
 		}
 		TimedSustain
 		{
-			Type = TriggeredToggle
-			OnTrigger = TimerActivator
-			OffTrigger = StopBeforeLoopTimerProxy
-			StartsOn = false
+			Type = ThresholdToggle
+			ValueFrom = StopBeforeLoopTimerProxy
+			MinAmount = 0
+			MaxAmount = 0.9999999
+			//Invert = true
 		}
 		
 		InstrumentType
@@ -342,11 +331,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 10 * 2^3  // hopefully cant edge case
+						BaseValue = 1 / (10 * 2^3)  // hopefully cant edge case
 					}
 				}
 				PianoSoundEffects
@@ -412,11 +401,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 1 * 2^3  // hopefully cant edge case
+						BaseValue = 1 / (1 * 2^3)  // hopefully cant edge case
 					}
 				}
 				VibraphoneSoundEffects
@@ -481,11 +470,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 0.7 * 2^2  // hopefully cant edge case
+						BaseValue = 1 / (0.7 * 2^2)  // hopefully cant edge case
 					}
 				}
 				WhoopieBassSoundEffects
@@ -551,11 +540,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 1.25 * 2^2  // hopefully cant edge case
+						BaseValue = 1 / (1.25 * 2^2)  // hopefully cant edge case
 					}
 				}
 				TangerineDreamSoundEffects
@@ -621,11 +610,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 0.3 * 2^2  // hopefully cant edge case
+						BaseValue = 1 / (0.3 * 2^2)  // hopefully cant edge case
 					}
 				}
 				MeowSoundEffects
@@ -690,11 +679,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 7 * 2^((1/12) * (36-8))  // hopefully cant edge case
+						BaseValue = 1 / (7 * 2^((1/12) * (36-8)))  // hopefully cant edge case
 					}
 				}
 				Guitar1SoundEffects
@@ -759,11 +748,11 @@ Part : <../baselogicpart.rules>/Part
 			IncludeInBlueprints = true
 			Components
 			{
-				StopBeforeLoopTimer : ~/TimerBase
+				StopBeforeLoopTimer : ~/AccumulatorBase
 				{
-					Duration : ~/TimerBase/Duration
+					AccumulationRate : ~/AccumulatorBase/AccumulationRate
 					{
-						BaseValue = 9 * 2^2  // hopefully cant edge case
+						BaseValue = 1 / (9 * 2^2)  // hopefully cant edge case
 					}
 				}
 				Guitar2SoundEffects
@@ -823,7 +812,7 @@ Part : <../baselogicpart.rules>/Part
 			OperationalToggle = IsOperational
 			OperationalDoodad
 			{
-				Layer = "doodads_high"
+				Layer = "doors"
 				DamageLevels
 				[
 					{
@@ -840,7 +829,7 @@ Part : <../baselogicpart.rules>/Part
 			}
 			NonOperationalDoodad
 			{
-				Layer = "doodads_high"
+				Layer = "doors"
 				DamageLevels
 				[
 					{
@@ -912,4 +901,33 @@ TimerBase
 	//StopTrigger = Overclock_OnPartDestroying
 	ResetTrigger = TimerActivatorAndResets
 	StartExpired = true
+}
+AccumulatorBase
+{
+	Type = ValueAccumulator
+	AccumulatingToggle = XorFinal
+	AccumulationRate
+	{
+		BaseValue = 1 / (10 * 2^3)
+		Modifiers
+		[
+			{
+				Type = Buff
+				BuffType = AdvS_Setting_Third
+				ModificationMode = Multiply
+			}
+		]
+	}
+	DissipationRate = 9999
+	AccumulationTriggers
+	[
+		{
+			Trigger = XorChanged
+			Value = 0
+			Operation = Set
+		}
+	]
+	BaseValue = 0
+	MinValue = 0
+	MaxValue = 1
 }
