@@ -593,31 +593,31 @@ Parts
 	
 	LogicWire = "Logic Wire"
 	LogicWireIcon = "Wire"
-	LogicWireDesc = "Transmits a receiving logic signal to another part in front."\
+	LogicWireDesc = "Emits a logic signal to another part in front when activated by a logic signal."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicWireDiag = "Diagonal Logic Wire"
 	LogicWireDiagIcon = "Diag. Wire"
-	LogicWireDiagDesc = "Transmits a receiving logic signal to another part in the diagonal."\
+	LogicWireDiagDesc = "Emits a logic signal to another part in the diagonal when activated by a logic signal."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicGateNot = "Logic NOT Gate"
 	LogicGateNotIcon = "NOT Gate"
-	LogicGateNotDesc = "Transmits a logic signal if not receiving any, Stops transmitting if receiving any signal.\n1 Tick Delay."\
+	LogicGateNotDesc = "Emits a logic signal of 1 if not receiving a logic signal, Stops transmitting if receiving a signal.\n1 Tick Delay."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicGateAND = "Logic AND Gate"
 	LogicGateANDIcon = "AND Gate"
-	LogicGateANDDesc = "Transmits a logic signal if the count of different signals active on the logic gate is equal or higher than the configured count.\nDefault is 0 and requires to be configured higher than 0"\
+	LogicGateANDDesc = "Emits a logic signal of 1 if the count of incoming signals/signal strength active on the logic gate is equal or higher than the configured count.\nDefault is 0 and requires to be configured higher than 0"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicPulseRepeater = "Logic Pulse Repeater"
 	LogicPulseRepeaterIcon = "Repeater"
-	LogicPulseRepeaterDesc = "Transmits a single tick pulse after a configurable delay if it receives a signal. If it re-receives a signal again it will reset the delay. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
+	LogicPulseRepeaterDesc = "Emits a single tick pulse after a configurable delay if it receives a logic signal. If it re-receives a signal again it will reset the delay. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
 	LogicPulseExtender = "Logic Signal Extender"
 	LogicPulseExtenderIcon = "Extender"
-	LogicPulseExtenderDesc = "Outputs when receiving a signal, and continues outputs a signal for additional time when it does not receive a signal. If it re-receives a signal again it will reset the time remaining. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
+	LogicPulseExtenderDesc = "Outputs when receiving a logic signal, and continues outputs a signal for additional time when it does not receive a signal. If it re-receives a signal again it will reset the time remaining. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
 	LogicPulseTimer = "Logic Pulse Timer"
 	LogicPulseTimerIcon = "Timer"
@@ -625,7 +625,7 @@ Parts
 	
 	ValueOperatorLogic = "Logic Multiple Value Operator"
 	ValueOperatorLogicIcon = "Value Operator"
-	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as that signal strength. (A * B = Output)"
+	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as a Logic and Alt signal strength. (A * B = Output)"
 	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
@@ -633,17 +633,17 @@ Parts
 	LogicWireSplitter2Icon = "Logic Splitter [L]"
 	LogicWireSplitter3 = "Logic Wire Splitter 3 Way"
 	LogicWireSplitter3Icon = "Logic Splitter [T]"
-	LogicWireSplitterDesc = "Transmits a receiving logic signal to more than one direction."\
+	LogicWireSplitterDesc = "Emits a logic signal to multiple directions when activated by a logic signal."\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	Logic_Jump_Wire = "Logic Jump Wire"
 	Logic_Jump_Wire_Icon = "Jump Wire"
-	Logic_Jump_Wire_Desc = "Configurable distance spacing logic wire. Can reach distances of 2-11"\
+	Logic_Jump_Wire_Desc = "Configurable distance logic wire. Can reach distances of 2-11"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	Logic_Jump_Wire_Superlong = "Logic Advanced Jump Wire"
 	Logic_Jump_Wire_SuperlongIcon = "Jump Wire (5x)"
-	Logic_Jump_Wire_SuperlongDesc = "Configurable distance spacing logic wire. Can reach distances of 12-57 with the configuration jumping every 5 tiles."
+	Logic_Jump_Wire_SuperlongDesc = "Configurable distance logic wire. Can reach distances of 12-57 with the configuration jumping every 5 tiles."
 	
 	LogicSoundSpeaker = "Logic Speaker Block"
 	LogicSoundSpeakerIcon = "Speaker"
@@ -1296,6 +1296,9 @@ PartToggles
 	SplitterType_Uranium = "<b>Enriched Uranium - Uranium</b>\n\nSet this Cutter to ONLY Split Enriched Uranium back to Uranium\n\nRATIO: 1:4\n\nHotkey: <btn id='PartToggles.splitter_large_type_uranium'/>"
 	splitter_split = "<b>SPLIT</b>"
 	splitter_merge = "<b>MERGE</b>"
+	
+	logic_dontcombine = "<b>Default mode:</b>\nWhen it receives a positive signal, outputs a Logic signal of 1, along with the Alt signal for certain parts."
+	logic_combine = "<b>Combination mode:</b>\nReceives all inputs of any kind and outputs them again."
 	
 	invert_input_no = "Normal Signal"
 	invert_input_yes = "Inverse Signal"
