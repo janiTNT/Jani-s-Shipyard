@@ -641,6 +641,10 @@ Parts
 	Logic_Jump_Wire_Desc = "Configurable distance logic wire. Can reach distances of 2-11"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
+	LogicWireProbe = "Logic Wire Multimiter Probe"
+	LogicWireProbeIcon = "Wire Multimeter"
+	LogicWireProbeDesc = "Reveals the specific signal strength of all signals incoming into the wire as a 3 digit number, being useful to debug your multi-signal logic designs.\nLabel: \n<color r='0' g='183' b='122' a='255'>Alt A,</color>    <color r='10' g='212' b='98' a='255'>Alt B</color>\n<color r='210' g='255' b='48' a='255'>Alt C,</color>    <color r='255' g='46' b='46' a='255'>Alt D</color>\n<color r='122' g='122' b='122' a='255'>Basic,</color> <color r='255' g='0' b='0' a='255'>  Overclock</color>\n\nActs a regular wire."
+	
 	Logic_Jump_Wire_Superlong = "Logic Advanced Jump Wire"
 	Logic_Jump_Wire_SuperlongIcon = "Jump Wire (5x)"
 	Logic_Jump_Wire_SuperlongDesc = "Configurable distance logic wire. Can reach distances of 12-57 with the configuration jumping every 5 tiles."
@@ -1098,6 +1102,9 @@ Inputs
 		logic_alt_d = "Logic Alt Mode D"
 		logic_alt_overclock = "Logic Overclocking Mode"
 		
+		logic_dontcombine = "Dont Combine Signals Wire Mode"
+		logic_combine = "Combine Signals Wire Mode"
+		
 		advships_lengths_zero = "Length 1"
 		advships_lengths_one = "Length 2"
 		advships_lengths_two = "Length 3"
@@ -1297,8 +1304,8 @@ PartToggles
 	splitter_split = "<b>SPLIT</b>"
 	splitter_merge = "<b>MERGE</b>"
 	
-	logic_dontcombine = "<b>Default mode:</b>\nWhen it receives a positive signal, outputs a Logic signal of 1, along with the Alt signal for certain parts."
-	logic_combine = "<b>Combination mode:</b>\nReceives all inputs of any kind and outputs them again."
+	logic_dontcombine = "<b>Default mode:</b>\nWhen it receives a positive Basic signal, outputs a Basic signal of 1 and the Alt signal."
+	logic_combine = "<b>Combination mode:</b>\nTransmits all receiving signals, being able to combine multiple signals of any type."
 	
 	invert_input_no = "Normal Signal"
 	invert_input_yes = "Inverse Signal"
