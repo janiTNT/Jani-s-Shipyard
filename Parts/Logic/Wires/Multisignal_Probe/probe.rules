@@ -1,0 +1,415 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/LogicWireProbe"
+	IconNameKey = "Parts/LogicWireProbeIcon"
+	ID = janiTNT.Signal_Probe
+	EditorParentParts = [ "Skipydog.Logic_Wire" ]
+	SelectionTypeID = "logic_wire"
+	DescriptionKey = "Parts/LogicWireProbeDesc"
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, LogicAlternativeOverclock]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : <../Wire1/Wire1.rules>/Part/Components
+	{
+		LogicInputAValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add }
+		}
+		LogicInputBValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add }
+		}
+		LogicInputCValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add }
+		}
+		LogicInputDValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add }
+		}
+		LogicInputValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=Logic; BuffMode=Add }
+		}
+		LogicInputOverclockValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add }
+		}/* 
+		OneDigitToggleA
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicInputAValue
+			MinAmount = 0
+			MaxAmount = 10
+		}
+		
+		OneDigitA
+		{
+			Type = MultiToggle
+			Toggles = [OneDigitToggleA, IsOperational]
+			Mode = All
+		}
+		
+		TwoDigitA
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicInputAValue
+			MinAmount = 10
+			MaxAmount = 100
+		}
+		
+		ThreeDigitA
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicInputAValue
+			MinAmount = 100
+			MaxAmount = 1000 
+		} */
+		
+		/* OneDigitAComponents
+		{
+			Type = ToggledComponents
+			Toggle = OneDigitA
+			IncludeInBlueprints = false
+			Components
+			{
+				A_Integers_Sprite : &~/Integers_Sprite_Base
+				{
+					Location = [.5, .85]
+					Modulus = 10
+				}
+			}
+		} */
+		
+		/* A_Integers_Sprite : &~/Integers_Sprite_Base
+		{
+			Location = [.5, .85]
+			Modulus = 10
+		} */
+		
+		/* TwoDigitAComponents
+		{
+			Type = ToggledComponents
+			Toggle = TwoDigitA
+			IncludeInBlueprints = false
+			Components
+			{
+				A_Integers_Sprite2 : &~/Integers_Sprite_Base
+				{
+					Location = [.5+(4/64), .85]
+					Modulus = 10
+					RangeLow = 0
+					RangeHigh = 9
+				}
+				A_Integers_10_Sprite2 : &~/Integers_Sprite_Base
+				{
+					Location = [.5-(4/64), .85]
+					Modulus = 100
+					RangeLow = 0
+					RangeHigh = 90
+				}
+			}
+		}
+		
+		ThreeDigitAComponents
+		{
+			Type = ToggledComponents
+			Toggle = ThreeDigitA
+			IncludeInBlueprints = false
+			Components
+			{
+				A_Integers_Sprite3 : &~/Integers_Sprite_Base
+				{
+					Location = [.5+(8/64), .85]
+					Modulus = 10
+					RangeLow = 0
+					RangeHigh = 9
+				}
+				A_Integers_10_Sprite3 : &~/Integers_Sprite_Base
+				{
+					Location = [.5, .85]
+					Modulus = 100
+					RangeLow = 0
+					RangeHigh = 90
+				}
+				A_Integers_100_Sprite3 : &~/Integers_Sprite_Base
+				{
+					Location = [.5-(8/64), .85]
+					Modulus = 1000
+					RangeLow = 0
+					RangeHigh = 900
+				}
+			}
+		} */
+		
+		A_Integers_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5+(8/64)-(13/64), .5-(17/64)]
+			Modulus = 10
+			Range = [0, 9]
+		}
+		A_Integers_10_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5-(13/64), .5-(17/64)]
+			Modulus = 100
+			Range = [0, 90]
+		}
+		A_Integers_100_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5-(8/64)-(13/64), .5-(17/64)]
+			Modulus = 1000
+			Range = [0, 900]
+		}
+		
+		B_Integers_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5+(8/64)+(13/64), .5-(17/64)]
+			ValueFrom = LogicInputBValue
+			Modulus = 10
+			Range = [0, 9]
+		}
+		B_Integers_10_Sprite3 : &B_Integers_Sprite3
+		{
+			Location = [.5+(13/64), .5-(17/64)]
+			Modulus = 100
+			Range = [0, 90]
+		}
+		B_Integers_100_Sprite3 : &B_Integers_Sprite3
+		{
+			Location = [.5-(8/64)+(13/64), .5-(17/64)]
+			Modulus = 1000
+			Range = [0, 900]
+		}
+		
+		C_Integers_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5+(8/64)-(13/64), .5]
+			ValueFrom = LogicInputCValue
+			Modulus = 10
+			Range = [0, 9]
+		}
+		C_Integers_10_Sprite3 : &C_Integers_Sprite3
+		{
+			Location = [.5-(13/64), .5]
+			Modulus = 100
+			Range = [0, 90]
+		}
+		C_Integers_100_Sprite3 : &C_Integers_Sprite3
+		{
+			Location = [.5-(8/64)-(13/64), .5]
+			Modulus = 1000
+			Range = [0, 900]
+		}
+		
+		D_Integers_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5+(8/64)+(13/64), .5]
+			ValueFrom = LogicInputDValue
+			Modulus = 10
+			Range = [0, 9]
+		}
+		D_Integers_10_Sprite3 : &D_Integers_Sprite3
+		{
+			Location = [.5+(13/64), .5]
+			Modulus = 100
+			Range = [0, 90]
+		}
+		D_Integers_100_Sprite3 : &D_Integers_Sprite3
+		{
+			Location = [.5-(8/64)+(13/64), .5]
+			Modulus = 1000
+			Range = [0, 900]
+		}
+		
+		Regular_Integers_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5+(8/64)-(13/64), .5+(17/64)]
+			//LightColorLight = [0, 0, 0]
+			ValueFrom = LogicInputValue
+			Modulus = 10
+			Range = [0, 9]
+		}
+		Regular_Integers_10_Sprite3 : &Regular_Integers_Sprite3
+		{
+			Location = [.5-(13/64), .5+(17/64)]
+			Modulus = 100
+			Range = [0, 90]
+		}
+		Regular_Integers_100_Sprite3 : &Regular_Integers_Sprite3
+		{
+			Location = [.5-(8/64)-(13/64), .5+(17/64)]
+			Modulus = 1000
+			Range = [0, 900]
+		}
+		
+		Overclock_Integers_Sprite3 : &~/Integers_Sprite_Base
+		{
+			Location = [.5+(8/64)+(13/64), .5+(17/64)]
+			LightColorLight = [128, 0, 0]
+			ValueFrom = LogicInputOverclockValue
+			Modulus = 10
+			Range = [0, 9]
+		}
+		Overclock_Integers_10_Sprite3 : &Overclock_Integers_Sprite3
+		{
+			Location = [.5+(13/64), .5+(17/64)]
+			Modulus = 100
+			Range = [0, 90]
+		}
+		Overclock_Integers_100_Sprite3 : &Overclock_Integers_Sprite3
+		{
+			Location = [.5-(8/64)+(13/64), .5+(17/64)]
+			Modulus = 1000
+			Range = [0, 900]
+		}
+		
+		ColoredGraphics : ^/0/ColoredGraphics
+		{
+			OperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			//OperationalToggle = IsOperational
+			/* NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "panel_off.png"
+						Size = [1, 1]
+					}
+				]
+			} */
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "panel_on.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+	}
+}
+Integers_Sprite_Base
+{
+	Type = ValueSprites
+	Location = [.5+(16/64), .8]
+	ValueFrom = LogicInputAValue
+	OperationalToggle = IsOperational
+	Layer = "fire"
+	HasZeroResourceSprite = true
+	Modulus = 10
+	Round = Down
+	Range = [0, 9]
+	LightColorLight = [0, 0, 0]
+	ResourceLevels
+	[
+		{
+			File = "digit0.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit1.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit2.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit3.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit4.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit5.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit6.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit7.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit8.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+		{
+			File = "digit9.png"
+			Size = [1, 1]
+			VertexColor = &../../:/LightColorLight
+		}
+	]
+}

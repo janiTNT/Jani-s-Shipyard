@@ -285,6 +285,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Wires/Split1/Split1.rules>/Part
 			&<Parts/Logic/Wires/Split2/Split2.rules>/Part
 			&<Parts/Logic/Wires/Split3/Split3.rules>/Part
+			
+			&<Parts/Logic/Wires/Multisignal_Probe/probe.rules>/Part
+			
 			&<Parts/Logic/Wires/JumpWire/logic_jump_wire.rules>/Part
 			&<Parts/Logic/Wires/JumpWire/logic_jump_wire_extreme.rules>/Part
 			//&<Parts/Logic/Wires/Wireless/Transmitter/transmitter.rules>/Part
