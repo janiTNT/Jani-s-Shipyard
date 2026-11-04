@@ -13,6 +13,7 @@ Part
 		{
 			Type = BuffToggle
 			BuffType = Logic
+			MinBuffValue = 1 //fix so zero value does not activate
 		}
 		InvertInput
 		{

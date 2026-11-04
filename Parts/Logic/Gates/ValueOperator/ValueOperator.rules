@@ -96,11 +96,12 @@ Part : <../../baselogicpart.rules>/Part
 			Size = [1, 1]
 			//Offset = [0, -0.5]
 		} */
-		LogicSignal
+		/* LogicSignal
 		{
 			Type = BuffToggle
 			BuffType = Logic
-		}
+			MinBuffValue = 1 //fix so zero value does not activate
+		} */
 		LogicInputAValue
 		{
 			Type = BuffableValue

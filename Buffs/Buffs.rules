@@ -91,9 +91,9 @@ Logic
 		}
 		Size = [1, 1]
 	}
-	IconTextFormatKey = "Buff/Connected"
+	/* IconTextFormatKey = "Buff/Connected"
 	IconTextMultiply = 1
-	IconTextAdd = 0
+	IconTextAdd = 0 */
 
 	RectBorderColor = [0, 255, 84, 160]
 	RectFillColor = [0, 255, 84, 64]
