@@ -623,6 +623,10 @@ Parts
 	LogicPulseTimerIcon = "Timer"
 	LogicPulseTimerDesc = "Repeatedly outputs a single tick pulse with a configurable time in ticks. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
+	ValueOperatorLogic = "Logic Multiple Value Operator"
+	ValueOperatorLogicIcon = "Value Operator"
+	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as that signal strength. (A * B = Output)"
+	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
 	LogicWireSplitter2 = "Logic Wire Splitter (90)"

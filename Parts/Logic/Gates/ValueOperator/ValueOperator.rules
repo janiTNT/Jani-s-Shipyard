@@ -1,0 +1,604 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/ValueOperatorLogic"
+	IconNameKey = "Parts/ValueOperatorLogicIcon"
+	ID = janiTNT.ValueOperatorLogic
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/ValueOperatorLogicDesc"
+	Resources
+	[
+		[steel, 2]
+		[janitnt.circuit1, 8]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	<../../base_outputlogicpart.rules>/Base
+	{
+		SignalAComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalAToggle
+			Components
+			{
+				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+			}
+		}
+		SignalBComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalBToggle
+			Components
+			{
+				BuffProviderLogicB : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
+			}
+		}
+		SignalCComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalCToggle
+			Components
+			{
+				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+			}
+		}
+		SignalDComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalDToggle
+			Components
+			{
+				BuffProviderLogicD : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
+			}
+		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
+			}
+		}
+		/* NumberSelectOnes : ^/1/NumberSelectOnes
+		{
+			Default = 1
+		} */
+		/* Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		} */
+		LogicSignal
+		{
+			Type = BuffToggle
+			BuffType = Logic
+		}
+		LogicInputAValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add; }
+		}
+		LogicInputBValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add; }
+		}
+		ValueOperatorMode
+		{
+			Type = UIToggle
+			ToggleID = "logic_valueoperator_mode"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		/* LogicOperator
+		{
+			Type = ValueOperation
+			Operator = Power
+			ValueOne = LogicInputAValue
+			ValueTwo = LogicInputBValue
+			NaNFallbackValue = 0
+		} */
+		AddToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 0
+		}
+		AddComponents
+		{
+			Type = ToggledComponents
+			Toggle = AddToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = MultiValue
+					Values = [LogicInputAValue, LogicInputBValue]
+					Mode = Add
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "plus.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		SubtractToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 1
+		}
+		SubtractComponents
+		{
+			Type = ToggledComponents
+			Toggle = SubtractToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = ValueOperation
+					Operator = Subtract
+					ValueOne = LogicInputAValue
+					ValueTwo = LogicInputBValue
+					NaNFallbackValue = 0
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "subtract.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		MultiplyToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 2
+		}
+		MultiplyComponents
+		{
+			Type = ToggledComponents
+			Toggle = MultiplyToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = MultiValue
+					Values = [LogicInputAValue, LogicInputBValue]
+					Mode = Multiply
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "multiply.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		DivideToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 3
+		}
+		DivideComponents
+		{
+			Type = ToggledComponents
+			Toggle = DivideToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = ValueOperation
+					Operator = Divide
+					ValueOne = LogicInputAValue
+					ValueTwo = LogicInputBValue
+					NaNFallbackValue = 0
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "divide.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		PowerOperationToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 4
+		}
+		PowerComponents
+		{
+			Type = ToggledComponents
+			Toggle = PowerOperationToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = ValueOperation
+					Operator = Power
+					ValueOne = LogicInputAValue
+					ValueTwo = LogicInputBValue
+					NaNFallbackValue = 0
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "exponent.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		ModuloToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 5
+		}
+		ModuloComponents
+		{
+			Type = ToggledComponents
+			Toggle = ModuloToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = ValueOperation
+					Operator = Modulo
+					ValueOne = LogicInputAValue
+					ValueTwo = LogicInputBValue
+					NaNFallbackValue = 0
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "modulo.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		MinToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 6
+		}
+		MinComponents
+		{
+			Type = ToggledComponents
+			Toggle = MinToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = MultiValue
+					Values = [LogicInputAValue, LogicInputBValue]
+					Mode = Min
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "min.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		MaxToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 7
+		}
+		MaxComponents
+		{
+			Type = ToggledComponents
+			Toggle = MaxToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = MultiValue
+					Values = [LogicInputAValue, LogicInputBValue]
+					Mode = Max
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "max.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		AverageToggle
+		{
+			Type = ModeToggle
+			Mode = ValueOperatorMode
+			OnMode = 8
+		}
+		AverageComponents
+		{
+			Type = ToggledComponents
+			Toggle = AverageToggle
+			IncludeInBlueprints = true
+			Components
+			{
+				LogicOperator
+				{
+					Type = MultiValue
+					Values = [LogicInputAValue, LogicInputBValue]
+					Mode = Average
+				}
+				LightIconing
+				{
+					Type = Sprite
+					Location = [0.5, 0.5]
+					Layer = "lights_add"
+					AtlasSprite
+					{
+						File = "average.png"
+						Size = [1, 1]
+					}
+				}
+			}
+		}
+		LogicOperatorProxy
+		{
+			Type = ValueProxy
+			ComponentID = LogicOperator
+		}
+		LogicOutputValue
+		{
+			Type = PolledValue
+			ValueSource = LogicOperatorProxy
+			DefaultValue = 0
+		}
+		BuffProviderLogic
+		{
+			Type = AreaBuffProvider
+			OperationalToggle = IsOperational
+			BuffType = Logic
+			ChainsFromBuffType = &BuffType
+			BuffAmount = 1
+			BuffArea = [0, -1, 1, 1]
+			BuffMultiplier = LogicOutputValue
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		IsOperational
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicOutputValue
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+		PolledValueA
+		{
+			Type = PolledValue
+			ValueSource = LogicInputAValue
+			DefaultValue = 0
+		}
+		LerpA
+		{
+			Type = ValueLerp
+			InputValue = PolledValueA
+			InputRange = [0, 4]
+			OutputRange = [0, 1]
+			ClampOutput = true
+		}
+		ColorLevelA
+		{
+			Type = ValueColor
+			AlphaFrom = LerpA
+		}
+		LightAGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			GetColorFrom = ColorLevelA
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "side_lights.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+		
+		PolledValueB : PolledValueA
+		{
+			ValueSource = LogicInputBValue
+		}
+		LerpB : LerpA
+		{
+			InputValue = PolledValueB
+		}
+		ColorLevelB : ColorLevelA
+		{
+			AlphaFrom = LerpB
+		}
+		LightBGraphics : LightAGraphics
+		{
+			GetColorFrom = ColorLevelB
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "side_lights.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+						MirrorU = true
+					}
+				]
+			}
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "wire_doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "wire_doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "valueoperator2.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "valueoperator1.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "../Repeaters/wire.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		BaseGraphics : ^/0/BaseGraphics
+		{
+			Floor = &<../../baselogicpart.rules>/Floor_Combined
+		}
+	}
+}

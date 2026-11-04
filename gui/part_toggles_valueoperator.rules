@@ -1,0 +1,138 @@
+PartToggles
+[
+	// auto envelope types
+	{
+		ToggleID = "logic_valueoperator_mode"
+		Style = Popout
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "valueoperator_add"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_add"
+			}
+			{
+				ChoiceID = "valueoperator_subtract"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_subtract"
+			}
+			{
+				ChoiceID = "valueoperator_multiply"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_multiply"
+			}
+			{
+				ChoiceID = "valueoperator_divide"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles4.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_divide"
+			}
+			{
+				ChoiceID = "valueoperator_exponent"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles5.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_exponent"
+			}
+			{
+				ChoiceID = "valueoperator_modulo"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles6.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_modulo"
+			}
+			{
+				ChoiceID = "valueoperator_min"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles7.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_min"
+			}
+			{
+				ChoiceID = "valueoperator_max"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles8.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_max"
+			}
+			{
+				ChoiceID = "valueoperator_average"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "Operators/operatortoggles9.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+				ButtonToolTipKey = "PartToggles/valueoperator_average"
+			}
+		]
+	}
+]

@@ -299,6 +299,8 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Gates/Repeaters/extender.rules>/Part
 			&<Parts/Logic/Gates/Repeaters/timer.rules>/Part
 			
+			&<Parts/Logic/Gates/ValueOperator/ValueOperator.rules>/Part
+			
 			// Sensors
 			&<Parts/Logic/Sensors/LIDAR/Sensor.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/comparator.rules>/Part
