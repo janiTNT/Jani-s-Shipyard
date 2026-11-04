@@ -57,6 +57,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 		{
 			Type = BuffToggle
 			BuffType = LogicAlternativeOverclock
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		Triggered
 		{
@@ -68,6 +69,7 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 		{
 			Type = BuffToggle
 			BuffType = LogicAlternativeA
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		InvertInput
 		{

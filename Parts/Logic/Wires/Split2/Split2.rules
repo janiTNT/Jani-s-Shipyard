@@ -113,7 +113,7 @@ Part : <../../baselogicpart.rules>/Part
 		BuffProviderLogic
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = IsOperational
+			OperationalToggle = OperationalNotCombined
 			BuffType = Logic
 			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
@@ -122,11 +122,88 @@ Part : <../../baselogicpart.rules>/Part
 		BuffProviderLogic2
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = IsOperational
+			OperationalToggle = OperationalNotCombined
 			BuffType = Logic
 			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [0, 1, 1, 1]
+		}
+		CombineType
+		{
+			Type = UIToggle
+			ToggleID = "logic_signal_unique_or_combined"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		CombinationComponents
+		{
+			Type = ToggledComponents
+			Toggle = CombineType
+			IncludeInBlueprints = false
+			Components
+			{
+				CombinationBuffProviderLogic : &../../BuffProviderLogic
+				{
+					OperationalToggle = CombineType
+					BuffAmount = { BaseValue=0; BuffType=Logic; BuffMode=Add }
+				}
+				CombinationBuffProviderLogic2 : &../../BuffProviderLogic2
+				{
+					OperationalToggle = CombineType
+					BuffAmount = { BaseValue=0; BuffType=Logic; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicA : &CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicA2 : &CombinationBuffProviderLogic2
+				{
+					BuffType = LogicAlternativeA
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicB : &CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicB2 : &CombinationBuffProviderLogic2
+				{
+					BuffType = LogicAlternativeB
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicC : &CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicC2 : &CombinationBuffProviderLogic2
+				{
+					BuffType = LogicAlternativeC
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicD : &CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicD2 : &CombinationBuffProviderLogic2
+				{
+					BuffType = LogicAlternativeD
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicOverclock : &CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add }
+				}
+				CombinationBuffProviderLogicOverclock2 : &CombinationBuffProviderLogic2
+				{
+					BuffType = LogicAlternativeOverclock
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add }
+				}
+			}
 		}
 		IsOperational
 		{
@@ -135,11 +212,17 @@ Part : <../../baselogicpart.rules>/Part
 			Invert = false
 			Mode = All
 		}
+		OperationalNotCombined
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, {Toggle = CombineType, invert = true}]
+			Mode = All
+		}
 		LogicSignal
 		{
 			Type = BuffToggle
 			BuffType = Logic
-			MinBuffValue = 1 //fix so zero value does not activate
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		ColorPicker
 		{
@@ -195,6 +278,10 @@ Part : <../../baselogicpart.rules>/Part
 					}
 				]
 			}
+		}
+		BaseGraphics : <../../baselogicpart.rules>/BaseGraphics_ToggleCombine
+		{
+			OperationalToggle = CombineType
 		}
 	}
 }

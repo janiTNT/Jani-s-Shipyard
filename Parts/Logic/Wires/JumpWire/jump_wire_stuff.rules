@@ -26,11 +26,50 @@ Part
 				BuffProviderLogic
 				{
 					Type = AreaBuffProvider
-					OperationalToggle = LogicSignal
+					OperationalToggle = OperationalNotCombined
 					BuffType = Logic
 					ChainsFromBuffType = &BuffType
 					BuffAmount = 1
 					BuffArea = [0, (-2) - (&../../../:/Range), 1, 1]
+				}
+				CombinationComponents
+				{
+					Type = ToggledComponents
+					Toggle = CombineType
+					IncludeInBlueprints = false
+					Components
+					{
+						CombinationBuffProviderLogic : &../../BuffProviderLogic
+						{
+							OperationalToggle = CombineType
+							BuffAmount = { BaseValue=0; BuffType=Logic; BuffMode=Add }
+						}
+						CombinationBuffProviderLogicA : &CombinationBuffProviderLogic
+						{
+							BuffType = LogicAlternativeA
+							BuffAmount = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add }
+						}
+						CombinationBuffProviderLogicB : &CombinationBuffProviderLogic
+						{
+							BuffType = LogicAlternativeB
+							BuffAmount = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add }
+						}
+						CombinationBuffProviderLogicC : &CombinationBuffProviderLogic
+						{
+							BuffType = LogicAlternativeC
+							BuffAmount = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add }
+						}
+						CombinationBuffProviderLogicD : &CombinationBuffProviderLogic
+						{
+							BuffType = LogicAlternativeD
+							BuffAmount = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add }
+						}
+						CombinationBuffProviderLogicOverclock : &CombinationBuffProviderLogic
+						{
+							BuffType = LogicAlternativeOverclock
+							BuffAmount = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add }
+						}
+					}
 				}
 				SignalAComponents
 				{

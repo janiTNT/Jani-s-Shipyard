@@ -14,6 +14,7 @@ Part : <../../baselogicpart.rules>/Part
 	]
 	Size = [1, 1]
 	SelectionPriority = 1
+	MaxHealth = 1000
 	SelectionTypeByRotation = true
 	SelectionTypeID = "sensor"
 	TypeCategories = [sensor, logic, non_flammable]

@@ -7,7 +7,7 @@ Part : <../../baselogicpart.rules>/Part
 	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/Logic_Jump_Wire_SuperlongDesc"
 	Size = [1, 1]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, LogicAlternativeOverclock]
 	Resources
 	[
 		[steel, 2]
@@ -34,11 +34,18 @@ Part : <../../baselogicpart.rules>/Part
 			File = "blueprints.png"
 			Size = [1, 1]
 		}
+		IsOperational
+		{
+			Type = MultiToggle
+			Toggles = [LogicSignal]
+			Invert = false
+			Mode = All
+		}
 		LogicSignal
 		{
 			Type = BuffToggle
 			BuffType = Logic
-			MinBuffValue = 1 //fix so zero value does not activate
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		ColorPicker
 		{
@@ -46,12 +53,26 @@ Part : <../../baselogicpart.rules>/Part
 			ColorID = "logiccolor"
 			Default = Green
 		}
+		CombineType
+		{
+			Type = UIToggle
+			ToggleID = "logic_signal_unique_or_combined"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		OperationalNotCombined
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, {Toggle = CombineType, invert = true}]
+			Mode = All
+		}
 		//-----------------------------------------------------------------
 		ColoredGraphics
 		{
 			Type = Graphics
 			Location = [0.5, 0.5]
-			OperationalToggle = LogicSignal
+			OperationalToggle = IsOperational
 			GetColorFrom = ColorPicker
 			OperationalDoodad
 			{
@@ -95,10 +116,10 @@ Part : <../../baselogicpart.rules>/Part
 					}
 				]
 			}
-		}	
-		BaseGraphics : ^/0/BaseGraphics
+		}
+		BaseGraphics : <../../baselogicpart.rules>/BaseGraphics_ToggleCombineAdvanced
 		{
-			Floor = &<../../baselogicpart.rules>/Floor_Advanced
+			OperationalToggle = CombineType
 		}
 	}
 }

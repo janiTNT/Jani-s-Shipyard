@@ -4,6 +4,7 @@ Part : <../../../baselogicpart.rules>/Part
 	IconNameKey = "Parts/LogicPiston1x1Icon"
 	ID = janiTNT.Logic_Piston_1x1
 	EditorGroup = "Logic"
+	MaxHealth = 1000
 	DescriptionKey = "Parts/LogicPiston1x1Desc"
 	Resources
 	[
@@ -90,7 +91,7 @@ Part : <../../../baselogicpart.rules>/Part
 		{
 			Type = BuffToggle
 			BuffType = Logic
-			MinBuffValue = 1 //fix so zero value does not activate
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		BaseGraphics
 		{

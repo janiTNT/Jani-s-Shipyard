@@ -14,7 +14,7 @@ Part : <./data/ships/terran/base_part_terran.rules>/Part
 	AIValueFactor = 0
 	Size = [1, 1]
 	Flammable = false
-	MaxHealth = 800
+	MaxHealth = 500
 	CreatePartPerTileWhenGrabbed = ""
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	TypeCategories = [logic, non_flammable]
@@ -179,6 +179,50 @@ BaseGraphics_ToggleCombine
 			}
 			{
 				File = "combinationfloor3.png"
+				Size = [1, 1]
+			}
+		]
+	}
+	Roof = &<./Data/ships/terran/corridor/corridor.rules>/Part/Components/Graphics/Roof
+}
+BaseGraphics_ToggleCombineAdvanced
+{
+	Type = Graphics
+	Location = [0.5, 0.5]
+	NonOperationalDoodad // This is needed so that armor shows up in ship ghosts.
+	{
+		Layer = "floors"
+		DamageLevels
+		[
+			{
+				File = "advancedfloor1.png"
+				Size = [1, 1]
+			}
+			{
+				File = "advancedfloor2.png"
+				Size = [1, 1]
+			}
+			{
+				File = "advancedfloor3.png"
+				Size = [1, 1]
+			}
+		]
+	}
+	OperationalDoodad
+	{
+		Layer = "floors"
+		DamageLevels
+		[
+			{
+				File = "advanced_combinationfloor1.png"
+				Size = [1, 1]
+			}
+			{
+				File = "advanced_combinationfloor2.png"
+				Size = [1, 1]
+			}
+			{
+				File = "advanced_combinationfloor3.png"
 				Size = [1, 1]
 			}
 		]

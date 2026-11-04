@@ -282,7 +282,7 @@ Part : <../../baselogicpart.rules>/Part
 		{
 			OperationalDoodad
 			{
-				Layer = "doors"
+				Layer = "doodads_high"
 				DamageLevels
 				[
 					{
@@ -294,7 +294,7 @@ Part : <../../baselogicpart.rules>/Part
 			}
 			NonOperationalDoodad
 			{
-				Layer = "doors"
+				Layer = "doodads_high"
 				DamageLevels
 				[
 					{

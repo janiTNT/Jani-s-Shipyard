@@ -59,11 +59,13 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 		{
 			Type = BuffToggle
 			BuffType = LogicAlternativeOverclock
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		LogicAlternativeBSignal
 		{
 			Type = BuffToggle
 			BuffType = LogicAlternativeB
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		
 		BoostActivator
@@ -107,6 +109,7 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 		{
 			Type = BuffToggle
 			BuffType = LogicAlternativeA
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		InvertInput
 		{

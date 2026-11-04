@@ -158,7 +158,7 @@ Part : <../../baselogicpart.rules>/Part
 		{
 			Type = BuffToggle
 			BuffType = Logic
-			MinBuffValue = 1 //fix so zero value does not activate
+			MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 		}
 		ColorPicker
 		{
