@@ -96,6 +96,7 @@ Part
 			Type = AreaBuffProvider
 			OperationalToggle = CanOutput
 			BuffType = Logic
+			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [0, 1, 1, 1]
 		}

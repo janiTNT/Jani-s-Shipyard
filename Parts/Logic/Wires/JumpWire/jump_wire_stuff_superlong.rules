@@ -27,6 +27,7 @@ Part
 					Type = AreaBuffProvider
 					OperationalToggle = LogicSignal
 					BuffType = Logic
+					ChainsFromBuffType = &BuffType
 					BuffAmount = 1
 					BuffArea = [0, (-2) - (&../../../:/Range), 1, 1]
 				}

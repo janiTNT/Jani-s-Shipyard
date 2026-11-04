@@ -150,6 +150,7 @@ Part : <../../baselogicpart.rules>/Part
 			OperationalToggle = OutputSignal
 			BuffType = Logic
 			BuffAmount = 1
+			ChainsFromBuffType = &BuffType
 			BuffArea = [0, 1, 1, 1]
 		}
 		BuffProviderLogic2
@@ -158,6 +159,7 @@ Part : <../../baselogicpart.rules>/Part
 			OperationalToggle = Maxed
 			BuffType = Logic
 			BuffAmount = 1
+			ChainsFromBuffType = &BuffType
 			BuffArea = [-1, 0, 3, 1]
 		}
 		ColoredGraphics

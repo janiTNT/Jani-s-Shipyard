@@ -1303,6 +1303,43 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			}
 		]
 	}
+	// Logic mode toggles
+	{
+		ToggleID = "logic_signal_unique_or_combined"
+		Style = CycledButton
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "logic_dontcombine"
+				ButtonToolTipKey = "PartToggles/logic_dontcombine"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "signal combinations1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [0, 183, 255]
+				}
+			}
+			{
+				ChoiceID = "logic_combine"
+				ButtonToolTipKey = "PartToggles/logic_combine"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "signal combinations2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [0, 183, 255]
+				}
+			}
+		]
+	}
 	// Fluid Type
 	{
 		ToggleID = "fluid_type"

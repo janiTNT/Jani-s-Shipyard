@@ -113,6 +113,7 @@ Part : <../../baselogicpart.rules>/Part
 			Type = AreaBuffProvider
 			OperationalToggle = IsOperational
 			BuffType = Logic
+			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [1, 0, 1, 1]
 		}
@@ -121,6 +122,7 @@ Part : <../../baselogicpart.rules>/Part
 			Type = AreaBuffProvider
 			OperationalToggle = IsOperational
 			BuffType = Logic
+			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [-1, 0, 1, 1]
 		}
