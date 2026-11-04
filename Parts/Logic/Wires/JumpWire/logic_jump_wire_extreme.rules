@@ -3,7 +3,7 @@ Part : <../../baselogicpart.rules>/Part
 	NameKey = "Parts/Logic_Jump_Wire_Superlong"
 	IconNameKey = "Parts/Logic_Jump_Wire_SuperlongIcon"
 	ID = janiTNT.logic_jump_wire_superlong
-	EditorParentParts = [ "Skipydog.logic_jump_wire" ]
+	EditorParentParts = [ "Skipydog.Logic_Wire" ]
 	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/Logic_Jump_Wire_SuperlongDesc"
 	Size = [1, 1]
