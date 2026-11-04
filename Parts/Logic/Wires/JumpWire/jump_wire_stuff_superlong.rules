@@ -19,6 +19,7 @@ Part
 		{
 			Type = ToggledComponents
 			Toggle = ZeroLengthToggle_L
+			IncludeInBlueprints = Dynamic
 			Range = 10
 			Components
 			{

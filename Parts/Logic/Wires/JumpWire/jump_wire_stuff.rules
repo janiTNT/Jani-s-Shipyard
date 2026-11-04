@@ -18,6 +18,7 @@ Part
 		ZeroLength_L
 		{
 			Type = ToggledComponents
+			IncludeInBlueprints = Dynamic
 			Toggle = ZeroLengthToggle_L
 			Range = 0
 			Components
