@@ -718,7 +718,7 @@ Parts
 	
 	LogicGateBulb = "Logic Toggling Bulb"
 	LogicGateBulbIcon = "Logic Bulb"
-	LogicGateBulbDesc = "Flips its signal based on a input or manual trigger. useful for counters and manual buttons."
+	LogicGateBulbDesc = "Flips its signal based on a input or manual trigger. useful for counters and manual buttons.\nWhen set to combination mode, outputs a set static value instead of 1, but does not combine any signals."
 	
 	ShieldOvercharger = "Artificial Zoltan Shield Overcharger"
 	ShieldOverchargerIcon = "Zoltan S. Over."

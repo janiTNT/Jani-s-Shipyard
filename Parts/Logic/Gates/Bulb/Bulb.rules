@@ -12,7 +12,7 @@ Part : <../../baselogicpart.rules>/Part
 		[janitnt.circuit1, 3]
 	]
 	Size = [1, 1]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third]
 	EditorIcon
 	{
 		Texture
@@ -24,6 +24,9 @@ Part : <../../baselogicpart.rules>/Part
 	}
 
 	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	&/JANI_COMMON/SettingsHundreds/Part/Components
 	<../../base_outputlogicpart.rules>/Base
 	{
 		SignalAComponents
@@ -33,6 +36,10 @@ Part : <../../baselogicpart.rules>/Part
 			Components
 			{
 				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+				CombinationBuffProviderLogicA : ~/Part/Components/CombinationBuffProviderLogic
 				{
 					BuffType = LogicAlternativeA
 				}
@@ -48,6 +55,10 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeB
 				}
+				CombinationBuffProviderLogicB : ~/Part/Components/CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
 			}
 		}
 		SignalCComponents
@@ -57,6 +68,10 @@ Part : <../../baselogicpart.rules>/Part
 			Components
 			{
 				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+				CombinationBuffProviderLogicC : ~/Part/Components/CombinationBuffProviderLogic
 				{
 					BuffType = LogicAlternativeC
 				}
@@ -72,6 +87,10 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeD
 				}
+				CombinationBuffProviderLogicD : ~/Part/Components/CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
 			}
 		}
 		SignalOverclockComponents
@@ -84,7 +103,41 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeOverclock
 				}
+				CombinationBuffProviderLogicOverclock : ~/Part/Components/CombinationBuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
 			}
+		}
+		CombineType
+		{
+			Type = UIToggle
+			ToggleID = "logic_signal_unique_or_combined"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		NumberSelectOnes : ^/1/NumberSelectOnes
+		{
+			VisibilityToggle = CombineType
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+			//AvailableChoices = [1,2,3,4,5,6,7,8,9]
+			Default = 1
+		}
+		NumberSelectTens : ^/2/NumberSelectTens
+		{
+			VisibilityToggle = CombineType
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+			Default = 0
+		}
+		NumberSelectHunds : ^/3/NumberSelectHunds
+		{
+			VisibilityToggle = CombineType
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+			Default = 0
 		}
 		Blueprints
 		{
@@ -100,14 +153,31 @@ Part : <../../baselogicpart.rules>/Part
 			Invert = false
 			Mode = All
 		}
+		OperationalNotCombined
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, {Toggle = CombineType, invert = true}]
+			Mode = All
+		}
+		OperationalCombined
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, CombineType]
+			Mode = All
+		}
 		BuffProviderLogic
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = IsOperational
+			OperationalToggle = OperationalNotCombined
 			BuffType = Logic
 			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [0, -1, 1, 1]
+		}
+		CombinationBuffProviderLogic : &BuffProviderLogic
+		{
+			OperationalToggle = OperationalCombined
+			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add }
 		}
 		LogicTrigger
 		{
