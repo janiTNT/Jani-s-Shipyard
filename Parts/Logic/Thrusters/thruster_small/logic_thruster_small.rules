@@ -111,7 +111,7 @@ Part : <./data/ships/terran/thruster_small/thruster_small.rules>/Part
 		{
 			Type = SelfBuffProvider
 			BuffType = RampUpJani  //used as divide by the fixed weapon fire rate
-			BuffAmount = 1
+			BuffAmount = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add; MaxValue = 1, MinValue = 0}
 			OperationalToggle = Triggered
 		}	
 		EngineBuffMultiplier

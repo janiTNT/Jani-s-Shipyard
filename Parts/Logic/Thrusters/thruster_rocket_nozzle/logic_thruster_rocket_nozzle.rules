@@ -133,7 +133,106 @@ Part : <./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>
 			DissipationRate = { BaseValue=1 / (&<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustDecreaseTime/BaseValue); BuffType=RocketThrust; BuffMode=Multiply; }
 			BaseValue = 0
 			MinValue = 0
+			MaxValue : &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Components/MainThruster/MaxActivation
+			{
+				Modifiers// : &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Components/MainThruster/MaxActivation/Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = RampUpJani
+						ModificationMode = Multiply
+						//MaxValue = 1
+						//MinValue = 0
+					}
+				]
+			}
+		}
+		IntermediaryBuff
+		{
+			Type = SelfBuffProvider
+			BuffType = RampUpJani  //used as divide by the fixed weapon fire rate
+			BuffAmount = 1
+			BuffMultiplier = RampupValueSelector
+		}
+		RampupValueSelector
+		{
+			Type = MultiValue
+			Values = [BuffableLogicASignal, RampDownTween]
+			Mode = Max
+		}
+		BuffableLogicASignal
+		{
+			Type = BuffableValue
+			Value// = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add; }
+			{
+				BaseValue = 1
+				Modifiers// : &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Components/MainThruster/MaxActivation/Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = LogicAlternativeA
+						ModificationMode = Multiply
+						MaxValue = 1
+						MinValue = 0
+					}
+					{
+						Type = Buff
+						BuffType = RocketThrust
+						ModificationMode = Multiply
+					}
+				]
+			}
+		}
+		False
+		{
+			Type = StaticToggle
+			ToggleOn = "false"
+		}
+		RampDownTween
+		{
+			Type = ValueAccumulator
+			AccumulatingToggle = False
+			AccumulationRate = (&/Simulation/PhysicsUpdatesPerSecond)
+			NonOperationalBehaviour = Dissipate
+			DissipationRate = { BaseValue=1 / (&<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/ThrustDecreaseTime/BaseValue); BuffType=RocketThrust; BuffMode=Multiply; }
+			BaseValue = 0
+			MinValue
+			{
+				BaseValue = 0
+				Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = LogicAlternativeA
+						ModificationMode = Add
+						MaxValue = 1
+						MinValue = 0
+					}
+					{
+						Type = Buff
+						BuffType = RocketThrust
+						ModificationMode = Multiply
+					}
+				]
+			}
 			MaxValue = &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Components/MainThruster/MaxActivation
+			/* {
+				Modifiers// : &<./data/ships/terran/thruster_rocket_nozzle/thruster_rocket_nozzle.rules>/Part/Components/MainThruster/MaxActivation/Modifiers
+				[
+					{
+						Type = Buff
+						BuffType = RocketThrust
+						ModificationMode = Multiply
+					}
+					{
+						Type = Buff
+						BuffType = RampUpJani
+						ModificationMode = Multiply
+						//MaxValue = 1
+						//MinValue = 0
+					}
+				]
+			} */
 		}
 
 		Blueprints

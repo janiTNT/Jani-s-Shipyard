@@ -150,10 +150,26 @@ Part : <./data/ships/terran/thruster_med/thruster_med.rules>/Part
 					}
 				]
 			}
-			DissipationRate = (&/Simulation/PhysicsUpdatesPerSecond) * (&<./data/ships/terran/thruster_med/thruster_med.rules>/Part/ThrustIncreaseTime/BaseValue) // &<./data/ships/terran/thruster_med/thruster_med.rules>/Part/ThrustDecreaseTime
+			DissipationRate = infinity
 			BaseValue = 0
 			MinValue = 0
-			MaxValue = &<./data/ships/terran/thruster_med/thruster_med.rules>/Part/Components/MainThruster/MaxActivation
+			MaxValue : &<./data/ships/terran/thruster_med/thruster_med.rules>/Part/Components/MainThruster/MaxActivation
+			{
+				Inheritme
+				[
+					{
+						Type = Buff
+						BuffType = LogicAlternativeA
+						ModificationMode = Multiply
+						MaxValue = 1
+						MinValue = 0
+					}
+				]
+				Modifiers : &Inheritme
+				&<./data/ships/terran/thruster_med/thruster_med.rules>/Part/Components/MainThruster/MaxActivation/Modifiers
+				[
+				]
+			}
 		}
 
 		Blueprints

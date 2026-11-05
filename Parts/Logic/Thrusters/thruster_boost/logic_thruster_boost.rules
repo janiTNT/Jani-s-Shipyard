@@ -204,10 +204,26 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 							}
 						]
 					}
-					DissipationRate = (&/Simulation/PhysicsUpdatesPerSecond) * (&<./data/ships/terran/thruster_boost/thruster_boost.rules>/Part/ThrustIncreaseTime/BaseValue) // &<./data/ships/terran/thruster_boost/thruster_boost.rules>/Part/ThrustDecreaseTime
+					DissipationRate = infinity
 					BaseValue = 0
 					MinValue = 0
-					MaxValue = &<./data/ships/terran/thruster_boost/thruster_boost.rules>/Part/Components/BoostOffComponents/Components/MainThruster/MaxActivation
+					MaxValue : &<./data/ships/terran/thruster_boost/thruster_boost.rules>/Part/Components/BoostOffComponents/Components/MainThruster/MaxActivation
+					{
+						Inheritme
+						[
+							{
+								Type = Buff
+								BuffType = LogicAlternativeA
+								ModificationMode = Multiply
+								MaxValue = 1
+								MinValue = 0
+							}
+						]
+						Modifiers : &Inheritme
+						&<./data/ships/terran/thruster_med/thruster_med.rules>/Part/Components/MainThruster/MaxActivation/Modifiers
+						[
+						]
+					}
 				}
 			}
 		}
@@ -250,7 +266,7 @@ Part : <./data/ships/terran/thruster_boost/thruster_boost.rules>/Part
 				{
 					Type = SelfBuffProvider
 					BuffType = RampUpJaniFinal  //used as divide by the fixed weapon fire rate
-					BuffAmount = 1
+					BuffAmount = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add; MaxValue = 1, MinValue = 0}
 					BuffMultiplier = EngineBuffMultiplier
 					OperationalToggle = Triggered
 				}
