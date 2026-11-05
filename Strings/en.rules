@@ -625,7 +625,7 @@ Parts
 	
 	ValueOperatorLogic = "Logic Value Operator"
 	ValueOperatorLogicIcon = "Value Operator"
-	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as a Logic and Alt signal strength. (A * B = Output)"
+	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as a Logic and Alt signal strength. (A * B = Output)\nHas 1 tick delay to process values, preventing looping crashes."
 	
 	ValueSmootherLogic = "Logic Value Smoother"
 	ValueSmootherLogicIcon = "Value Smoother"
