@@ -20,35 +20,80 @@ Part : <../../baselogicpart.rules>/Part
 
 	Components : <../Wire1/Wire1.rules>/Part/Components
 	{
-		LogicInputAValue
+		DecimalsToggle
+		{
+			Type = UIToggle
+			ToggleID = "logic_multimiter_decimals"
+			Default = 0
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		One { Type = StaticValue; Value = 1; }
+		OneThousand { Type = StaticValue; Value = 1000; }
+		Multiplier
+		{
+			Type = ToggleValueSelector
+			Toggle = DecimalsToggle
+			//BlueprintToggle = True
+			ToggleOnValue = OneThousand
+			ToggleOffValue = One
+			//IncludeInBlueprints = true
+		}
+		LogicInputABuffableValue
 		{
 			Type = BuffableValue
 			Value = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add }
 		}
-		LogicInputBValue
+		LogicInputAValue
+		{
+			Type = MultiValue
+			Values = [LogicInputABuffableValue, Multiplier]
+			Mode = Multiply
+		}
+		LogicInputBBuffableValue
 		{
 			Type = BuffableValue
 			Value = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add }
 		}
-		LogicInputCValue
+		LogicInputBValue : LogicInputAValue
+		{
+			Values = [LogicInputBBuffableValue, Multiplier]
+		}
+		LogicInputCBuffableValue
 		{
 			Type = BuffableValue
 			Value = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add }
 		}
-		LogicInputDValue
+		LogicInputCValue : LogicInputAValue
+		{
+			Values = [LogicInputCBuffableValue, Multiplier]
+		}
+		LogicInputDBuffableValue
 		{
 			Type = BuffableValue
 			Value = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add }
 		}
-		LogicInputValue
+		LogicInputDValue : LogicInputAValue
+		{
+			Values = [LogicInputDBuffableValue, Multiplier]
+		}
+		LogicInputBuffableValue
 		{
 			Type = BuffableValue
 			Value = { BaseValue=0; BuffType=Logic; BuffMode=Add }
 		}
-		LogicInputOverclockValue
+		LogicInputValue : LogicInputAValue
+		{
+			Values = [LogicInputBuffableValue, Multiplier]
+		}
+		LogicInputOverclockBuffableValue
 		{
 			Type = BuffableValue
 			Value = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add }
+		}
+		LogicInputOverclockValue : LogicInputAValue
+		{
+			Values = [LogicInputOverclockBuffableValue, Multiplier]
 		}/* 
 		OneDigitToggleA
 		{
@@ -309,19 +354,19 @@ Part : <../../baselogicpart.rules>/Part
 		{
 			Type = Graphics
 			Location = [0.5, 0.5]
-			//OperationalToggle = IsOperational
-			/* NonOperationalDoodad
+			OperationalToggle = DecimalsToggle
+			OperationalDoodad
 			{
-				Layer = "doodads_high"
+				Layer = "fire"
 				DamageLevels
 				[
 					{
-						File = "panel_off.png"
+						File = "decimal.png"
 						Size = [1, 1]
 					}
 				]
-			} */
-			OperationalDoodad
+			}
+			Walls
 			{
 				Layer = "doodads_high"
 				DamageLevels
@@ -344,6 +389,13 @@ Part : <../../baselogicpart.rules>/Part
 					}
 				]
 			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
 		}
 	}
 }

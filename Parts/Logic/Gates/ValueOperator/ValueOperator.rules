@@ -89,13 +89,13 @@ Part : <../../baselogicpart.rules>/Part
 		{
 			Default = 1
 		} */
-		/* Blueprints
+		 Blueprints
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
-		} */
+		}
 		/* LogicSignal
 		{
 			Type = BuffToggle

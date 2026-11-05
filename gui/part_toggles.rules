@@ -1340,6 +1340,43 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			}
 		]
 	}
+	// Logic Multimiter Decimal Integer choice
+	{
+		ToggleID = "logic_multimiter_decimals"
+		Style = CycledButton
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "logic_display_integers"
+				ButtonToolTipKey = "PartToggles/logic_display_integers"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "number_and_decimals1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+			{
+				ChoiceID = "logic_display_decimals"
+				ButtonToolTipKey = "PartToggles/logic_display_decimals"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "number_and_decimals2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					VertexColor = [0, 183, 255]
+				}
+			}
+		]
+	}
 	// Fluid Type
 	{
 		ToggleID = "fluid_type"

@@ -1307,6 +1307,9 @@ PartToggles
 	logic_dontcombine = "<b>Default mode:</b>\nWhen it receives a positive Basic signal, outputs a Basic signal of 1 and the Alt signal."
 	logic_combine = "<b>Combination mode:</b>\nTransmits all receiving signals, being able to combine multiple signals of any type."
 	
+	logic_display_integers = "<b>Show integers</b>\nShows 3 digits of the incoming values."
+	logic_display_decimals = "<b>Show decimals</b>\nShows 3 decimal of the incoming values. (by multiplying the incoming value by 1000)"
+	
 	invert_input_no = "Normal Signal"
 	invert_input_yes = "Inverse Signal"
 	
