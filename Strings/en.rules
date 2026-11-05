@@ -627,6 +627,10 @@ Parts
 	ValueOperatorLogicIcon = "Value Operator"
 	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as a Logic and Alt signal strength. (A * B = Output)"
 	
+	ValueSmootherLogic = "Logic Value Smoother"
+	ValueSmootherLogicIcon = "Value Smoother"
+	ValueSmootherLogicDesc = "Linearly increases or decreases output values smoothly over time until it matches the input.\nValue change speed (delta) is (0.1 * Configuration)/s, Incresing by 1 every 10 seconds at config speed of 1."
+	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
 	LogicWireSplitter2 = "Logic Wire Splitter (90)"

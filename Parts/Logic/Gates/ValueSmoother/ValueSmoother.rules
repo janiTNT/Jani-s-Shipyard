@@ -1,0 +1,460 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/ValueSmootherLogic"
+	IconNameKey = "Parts/ValueSmootherLogicIcon"
+	ID = janiTNT.ValueSmootherLogic
+	EditorGroup = "Logic"
+	DescriptionKey = "Parts/ValueSmootherLogicDesc"
+	Resources
+	[
+		[steel, 2]
+		[janitnt.circuit1, 4]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, LogicAlternativeOverclock, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	&/JANI_COMMON/SettingsHundreds/Part/Components 
+	{
+		CombinationBuffProviderLogic
+		{
+			BuffAmount = 1
+			BuffMultiplier = LogicOutputValue
+			Type = AreaBuffProvider
+			//OperationalToggle = OperationalNotCombined
+			BuffType = Logic
+			ChainsFromBuffType = &:/BuffType
+			BuffArea = [0, -1, 1, 1]
+			//BlueprintOverlayToggle = CombineType
+			//InvertBlueprintOverlayToggle = true
+		}
+		CombinationBuffProviderLogicA : &CombinationBuffProviderLogic
+		{
+			BuffType = LogicAlternativeA
+			BuffAmount = 1
+			BuffMultiplier = LogicOutputValueA
+		}
+		CombinationBuffProviderLogicB : &CombinationBuffProviderLogic
+		{
+			BuffType = LogicAlternativeB
+			BuffAmount = 1
+			BuffMultiplier = LogicOutputValueB
+		}
+		CombinationBuffProviderLogicC : &CombinationBuffProviderLogic
+		{
+			BuffType = LogicAlternativeC
+			BuffAmount = 1
+			BuffMultiplier = LogicOutputValueC
+		}
+		CombinationBuffProviderLogicD : &CombinationBuffProviderLogic
+		{
+			BuffType = LogicAlternativeD
+			BuffAmount = 1
+			BuffMultiplier = LogicOutputValueD
+		}
+		CombinationBuffProviderLogicOverclock : &CombinationBuffProviderLogic
+		{
+			BuffType = LogicAlternativeOverclock
+			BuffAmount = 1
+			BuffMultiplier = LogicOutputValueOverclock
+		}
+		/* Blueprints
+		{
+			Type = BlueprintSprite
+			File = "blueprints.png"
+			Size = [1, 1]
+			//Offset = [0, -0.5]
+		} */
+		LogicInputValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=Logic; BuffMode=Add; }
+		}
+		LogicInputValueA
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add; }
+		}
+		LogicInputValueB
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add; }
+		}
+		LogicInputValueC
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add; }
+		}
+		LogicInputValueD
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add; }
+		}
+		LogicInputValueOverclock
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add; }
+		}
+		Zero { Type = StaticValue; Value = 0; }
+		NotanumberFixer
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = LogicInputValue
+			ValueTwo = Zero
+			NaNFallbackValue = 0
+			MaxValue = 2^127
+			MinValue = -2^127
+		}
+		LogicOutputValue
+		{
+			Type = SmoothedValue
+			ValueSource = NotanumberFixer
+			MaxDelta = { BaseValue=0.1; BuffType=AdvS_Setting_Third; BuffMode=Multiply }
+		}
+		NotanumberFixerA : &NotanumberFixer
+		{
+			ValueOne = LogicInputValueA
+		}
+		LogicOutputValueA : &LogicOutputValue
+		{
+			ValueSource = NotanumberFixerA
+		}
+		NotanumberFixerB : &NotanumberFixer
+		{
+			ValueOne = LogicInputValueB
+		}
+		LogicOutputValueB : &LogicOutputValue
+		{
+			ValueSource = NotanumberFixerB
+		}
+		NotanumberFixerC : &NotanumberFixer
+		{
+			ValueOne = LogicInputValueC
+		}
+		LogicOutputValueC : &LogicOutputValue
+		{
+			ValueSource = NotanumberFixerC
+		}
+		NotanumberFixerD : &NotanumberFixer
+		{
+			ValueOne = LogicInputValueD
+		}
+		LogicOutputValueD : &LogicOutputValue
+		{
+			ValueSource = NotanumberFixerD
+		}
+		NotanumberFixerOverclock : &NotanumberFixer
+		{
+			ValueOne = LogicInputValueOverclock
+		}
+		LogicOutputValueOverclock : &LogicOutputValue
+		{
+			ValueSource = NotanumberFixerOverclock
+		}
+		Modulo { Type = StaticValue; Value = 2; }
+		VisualModulo
+		{
+			Type = ValueOperation
+			Operator = Modulo
+			ValueOne = LogicOutputValue
+			ValueTwo = Modulo
+			NaNFallbackValue = 0
+			MaxValue = 2^127
+			MinValue = -2^127
+		}
+		VisualModuloA : &VisualModulo
+		{
+			ValueOne = LogicOutputValueA
+			//ValueTwo = LogicOutputValueA
+		}
+		VisualModuloB : &VisualModulo
+		{
+			ValueOne = LogicOutputValueB
+			//ValueTwo = LogicOutputValueB
+		}
+		VisualModuloC : &VisualModulo
+		{
+			ValueOne = LogicOutputValueC
+			//ValueTwo = LogicOutputValueC
+		}
+		VisualModuloD : &VisualModulo
+		{
+			ValueOne = LogicOutputValueD
+			//ValueTwo = LogicOutputValueD
+		}
+		VisualModuloOverclock : &VisualModulo
+		{
+			ValueOne = LogicOutputValueOverclock
+			//ValueTwo = LogicOutputValueOverclock
+		}
+		VisualLerp
+		{
+			Type = ValueLerp
+			InputValue = VisualModulo
+			InputRange = [0, 2]
+			OutputRange = [0, 1]
+			ClampOutput = true
+		}
+		VisualLerpA : &VisualLerp
+		{
+			InputValue = VisualModuloA
+		}
+		VisualLerpB : &VisualLerp
+		{
+			InputValue = VisualModuloB
+		}
+		VisualLerpC : &VisualLerp
+		{
+			InputValue = VisualModuloC
+		}
+		VisualLerpD : &VisualLerp
+		{
+			InputValue = VisualModuloD
+		}
+		VisualLerpOverclock : &VisualLerp
+		{
+			InputValue = VisualModuloOverclock
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		IsOperational
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicOutputValue
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+		RotationLerpDefined
+		{
+			Type = TransformLerp
+			Location = [0.5, 0.5]
+			StartRotation = -89.5d
+			EndRotation = 89.5d
+			ValueFrom = VisualLerp
+		}
+		RotationLerpDefined2 : &RotationLerpDefined
+		{
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefined
+			ValueFrom = VisualLerp
+		}
+		LightGraphics
+		{
+			Type = Graphics
+			ChainedTo = RotationLerpDefined2
+			OperationalDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "basic.png"
+						Size = [1, 1]
+						Offset = [0, 0]
+					}
+				]
+			}
+		}
+		RotationLerpDefinedA : &RotationLerpDefined
+		{
+			ValueFrom = VisualLerpA
+		}
+		RotationLerpDefined2A : &RotationLerpDefined2
+		{
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefinedA
+			ValueFrom = VisualLerpA
+		}
+		LightGraphicsA : &LightGraphics
+		{
+			ChainedTo = RotationLerpDefined2A
+			OperationalDoodad : ^/0/OperationalDoodad
+			{
+				DamageLevels
+				[
+					{
+						File = "A.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		RotationLerpDefinedB : &RotationLerpDefined
+		{
+			ValueFrom = VisualLerpB
+		}
+		RotationLerpDefined2B : &RotationLerpDefined2
+		{
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefinedB
+			ValueFrom = VisualLerpB
+		}
+		LightGraphicsB : &LightGraphics
+		{
+			ChainedTo = RotationLerpDefined2B
+			OperationalDoodad : ^/0/OperationalDoodad
+			{
+				DamageLevels
+				[
+					{
+						File = "B.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		RotationLerpDefinedC : &RotationLerpDefined
+		{
+			ValueFrom = VisualLerpC
+		}
+		RotationLerpDefined2C : &RotationLerpDefined2
+		{
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefinedC
+			ValueFrom = VisualLerpC
+		}
+		LightGraphicsC : &LightGraphics
+		{
+			ChainedTo = RotationLerpDefined2C
+			OperationalDoodad : ^/0/OperationalDoodad
+			{
+				DamageLevels
+				[
+					{
+						File = "C.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		RotationLerpDefinedD : &RotationLerpDefined
+		{
+			ValueFrom = VisualLerpD
+		}
+		RotationLerpDefined2D : &RotationLerpDefined2
+		{
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefinedD
+			ValueFrom = VisualLerpD
+		}
+		LightGraphicsD : &LightGraphics
+		{
+			ChainedTo = RotationLerpDefined2D
+			OperationalDoodad : ^/0/OperationalDoodad
+			{
+				DamageLevels
+				[
+					{
+						File = "D.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		RotationLerpDefinedOverclock : &RotationLerpDefined
+		{
+			ValueFrom = VisualLerpOverclock
+		}
+		RotationLerpDefined2Overclock : &RotationLerpDefined2
+		{
+			Location = [0, 0]
+			ChainedTo = RotationLerpDefinedOverclock
+			ValueFrom = VisualLerpOverclock
+		}
+		LightGraphicsOverclock : &LightGraphics
+		{
+			ChainedTo = RotationLerpDefined2Overclock
+			OperationalDoodad : ^/0/OperationalDoodad
+			{
+				DamageLevels
+				[
+					{
+						File = "Overclock.png"
+						Size = [1, 1]
+					}
+				]
+			}
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../../Wires/Multisignal_probe/doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../../Wires/Multisignal_probe/doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			//OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "doodad.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "wire.png"
+						Size = [1, 2]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		BaseGraphics : ^/0/BaseGraphics
+		{
+			Floor = &<../../baselogicpart.rules>/Floor_Combined
+		}
+	}
+}
