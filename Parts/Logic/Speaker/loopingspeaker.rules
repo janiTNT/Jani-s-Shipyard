@@ -125,6 +125,53 @@ Part : <../baselogicpart.rules>/Part
 			OperationalToggle = HighVolume
 			BuffAmount = 2.5
 		}
+		PitchBendingSlider
+		{
+			Type = UIToggle
+			ToggleID = "speaker_pitchbendinglevel"
+			Default = 1
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}		
+		SlowPitchBending
+		{
+			Type = ModeToggle
+			Mode = PitchBendingSlider
+			OnMode = 0
+		}
+		SlowPitchBendingProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = PitchBendingBuff
+			OperationalToggle = SlowPitchBending
+			BuffAmount = 0.25
+		}		
+		MedPitchBending
+		{
+			Type = ModeToggle
+			Mode = PitchBendingSlider
+			OnMode = 1
+		}
+		MedPitchBendingProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = PitchBendingBuff
+			OperationalToggle = MedPitchBending
+			BuffAmount = 1
+		}		
+		InstantPitchBending
+		{
+			Type = ModeToggle
+			Mode = PitchBendingSlider
+			OnMode = 2
+		}
+		InstantPitchBendingProvider
+		{
+			Type = SelfBuffProvider
+			BuffType = PitchBendingBuff
+			OperationalToggle = InstantPitchBending
+			BuffAmount = 3000
+		}
 		RangeSlider
 		{
 			Type = UIToggle
