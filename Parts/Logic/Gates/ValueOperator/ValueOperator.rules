@@ -119,6 +119,7 @@ Part : <../../baselogicpart.rules>/Part
 			Default = 0
 			AlwaysAllowInBuildMode = true
 			RequiresCommand = false
+			AvailableChoices = [0,1,2,3,4,5,6,7]
 		}
 		/* LogicOperator
 		{

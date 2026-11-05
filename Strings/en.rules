@@ -623,7 +623,7 @@ Parts
 	LogicPulseTimerIcon = "Timer"
 	LogicPulseTimerDesc = "Repeatedly outputs a single tick pulse with a configurable time in ticks. Has a minimum of 1 tick of delay.\n<gray>30 ticks equals one second unless a mod changes this.</gray>"
 	
-	ValueOperatorLogic = "Logic Multiple Value Operator"
+	ValueOperatorLogic = "Logic Value Operator"
 	ValueOperatorLogicIcon = "Value Operator"
 	ValueOperatorLogicDesc = "Runs a signal operation (such as multiplication) on the total value/strength of incoming \"A\" and \"B\" Signal types, outputs the result as a Logic and Alt signal strength. (A * B = Output)"
 	
@@ -1380,6 +1380,16 @@ PartToggles
 	speakertype_Pad1 = "Pad 1"
 	speakertype_BorealisPad = "Borealis Pad"
 	speakertype_IndustrialAlarm = "Industrial Alarm\n(Default : 12)"
+	
+	valueoperator_add = "<b>Add</b>\nAdds the value of the two inputs."
+	valueoperator_subtract = "<b>Subtract</b>\nSubtracts the value of B from A"
+	valueoperator_multiply = "<b>Multiply</b>\nMultiplies A by B"
+	valueoperator_divide = "<b>Divide</b>\nDivides A by B, outputting the result"
+	valueoperator_exponent = "<b>Exponent</b>\nRaises A to the power of B"
+	valueoperator_modulo = "<b>Modulo</b>\nDivides A by by B, outputting the remainder."
+	valueoperator_min = "<b>Min</b>\nOutputs the smallest of the two numbers."
+	valueoperator_max = "<b>Max</b>\nOutputs the highest of the two numbers."
+	valueoperator_average = "<b>Average</b>\nAverages the two numbers."
 	
 	speakerRangeLocal = "Local Audio Range"
 	speakerRangeGlobal = "Global Audio Range\n(This might be ill-advised to use)"
