@@ -431,9 +431,9 @@ Part : <../../baselogicpart.rules>/Part
 		}
 		LogicOutputValue
 		{
-			Type = PolledValue
+			Type = SmoothedValue
 			ValueSource = LogicOperatorProxy
-			DefaultValue = 0
+			MaxDelta = infinity
 		}
 		BuffProviderLogic
 		{
