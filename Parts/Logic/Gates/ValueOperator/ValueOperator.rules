@@ -429,10 +429,21 @@ Part : <../../baselogicpart.rules>/Part
 			Type = ValueProxy
 			ComponentID = LogicOperator
 		}
+		Zero { Type = StaticValue; Value = 0; }
+		NotanumberFixer
+		{
+			Type = ValueOperation
+			Operator = Subtract
+			ValueOne = LogicOperatorProxy
+			ValueTwo = Zero
+			NaNFallbackValue = 0
+			MaxValue = 2^127
+			MinValue = -2^127
+		}
 		LogicOutputValue
 		{
 			Type = SmoothedValue
-			ValueSource = LogicOperatorProxy
+			ValueSource = NotanumberFixer
 			MaxDelta = infinity
 		}
 		BuffProviderLogic
