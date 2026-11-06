@@ -3,7 +3,7 @@ Part : <../../baselogicpart.rules>/Part
 	NameKey = "Parts/ValueSmootherLogic"
 	IconNameKey = "Parts/ValueSmootherLogicIcon"
 	ID = janiTNT.ValueSmootherLogic
-	EditorGroup = "Logic"
+	EditorParentParts = [ "janiTNT.ValueOperatorLogic" ]
 	DescriptionKey = "Parts/ValueSmootherLogicDesc"
 	Resources
 	[

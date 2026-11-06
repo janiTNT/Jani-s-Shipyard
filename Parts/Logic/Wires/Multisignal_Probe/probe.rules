@@ -3,7 +3,7 @@ Part : <../../baselogicpart.rules>/Part
 	NameKey = "Parts/LogicWireProbe"
 	IconNameKey = "Parts/LogicWireProbeIcon"
 	ID = janiTNT.Signal_Probe
-	EditorParentParts = [ "Skipydog.Logic_Wire" ]
+	EditorParentParts = [ "Skipydog.Logic_Wire", ["janiTNT.ValueOperatorLogic", 1] ]
 	SelectionTypeID = "logic_wire"
 	DescriptionKey = "Parts/LogicWireProbeDesc"
 	Size = [1, 1]
