@@ -718,7 +718,7 @@ Parts
 	
 	LogicGateBulb = "Logic Toggling Bulb"
 	LogicGateBulbIcon = "Logic Bulb"
-	LogicGateBulbDesc = "Flips its signal based on a input or manual trigger. useful for counters and manual buttons.\nWhen set to combination mode, outputs a set static value instead of 1, but does not combine any signals."
+	LogicGateBulbDesc = "Flips its signal based on a input or manual trigger. useful for counters and manual buttons.\nWhen set to Numeric Mode, outputs a set static value instead of 1, does not combine any signals."
 	
 	ShieldOvercharger = "Artificial Zoltan Shield Overcharger"
 	ShieldOverchargerIcon = "Zoltan S. Over."
@@ -1313,7 +1313,7 @@ PartToggles
 	
 	logic_gate_regular_output = "<b>Default mode:</b>\nWhen the conditions are met, outputs a Basic signal with the Alt signal of 1 .\nParts may have different options in this toggle."
 	logic_gate_numeric_output = "<b>Numeric mode:</b>\nWhen the conditions are met, outputs a Basic signal and the Alt signal of the set value."
-	logic_gate_value_output = "<b>Value mode:</b>\nOperates on the incoming values directly and outputs the results.\nCheck part description for details"
+	logic_gate_value_output = "<b>Value mode:</b>\nOperates on the incoming values directly and outputs the results.\nCheck part description for details."
 	
 	logic_display_integers = "<b>Show integers</b>\nShows 3 digits of the incoming values."
 	logic_display_decimals = "<b>Show decimals</b>\nShows 3 decimals of the incoming value, instead of showing the integers. (by multiplying the incoming value by 1000)"
