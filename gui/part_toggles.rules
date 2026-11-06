@@ -1340,6 +1340,57 @@ PartToggles : &<part_toggles_comparator.rules>/PartToggles
 			}
 		]
 	}
+	// Logic gate mode toggles
+	{
+		ToggleID = "logic_gate_output_variation"
+		Style = CycledButton
+		ShowInEditor = true
+		Choices
+		[
+			{
+				ChoiceID = "logic_gate_regular_output"
+				ButtonToolTipKey = "PartToggles/logic_gate_regular_output"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "gate_output_modes1.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [0, 183, 255]
+				}
+			}
+			{
+				ChoiceID = "logic_gate_numeric_output"
+				ButtonToolTipKey = "PartToggles/logic_gate_numeric_output"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "gate_output_modes2.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [0, 183, 255]
+				}
+			}
+			{
+				ChoiceID = "logic_gate_value_output"
+				ButtonToolTipKey = "PartToggles/logic_gate_value_output"
+				ButtonSprite
+				{
+					Texture
+					{
+						File = "gate_output_modes3.png"
+						MipLevels = 2
+						SampleMode = Linear
+					}
+					//VertexColor = [0, 183, 255]
+				}
+			}
+		]
+	}
 	// Logic Multimiter Decimal Integer choice
 	{
 		ToggleID = "logic_multimiter_decimals"

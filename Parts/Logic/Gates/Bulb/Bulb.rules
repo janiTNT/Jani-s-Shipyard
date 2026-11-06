@@ -39,7 +39,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeA
 				}
-				CombinationBuffProviderLogicA : ~/Part/Components/CombinationBuffProviderLogic
+				NumericalBuffProviderLogicA : ~/Part/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeA
 				}
@@ -55,7 +55,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeB
 				}
-				CombinationBuffProviderLogicB : ~/Part/Components/CombinationBuffProviderLogic
+				NumericalBuffProviderLogicB : ~/Part/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeB
 				}
@@ -71,7 +71,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeC
 				}
-				CombinationBuffProviderLogicC : ~/Part/Components/CombinationBuffProviderLogic
+				NumericalBuffProviderLogicC : ~/Part/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeC
 				}
@@ -87,7 +87,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeD
 				}
-				CombinationBuffProviderLogicD : ~/Part/Components/CombinationBuffProviderLogic
+				NumericalBuffProviderLogicD : ~/Part/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeD
 				}
@@ -103,23 +103,24 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeOverclock
 				}
-				CombinationBuffProviderLogicOverclock : ~/Part/Components/CombinationBuffProviderLogic
+				NumericalBuffProviderLogicOverclock : ~/Part/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeOverclock
 				}
 			}
 		}
-		CombineType
+		GateOutputType
 		{
 			Type = UIToggle
-			ToggleID = "logic_signal_unique_or_combined"
+			ToggleID = "logic_gate_output_variation"
 			Default = 0
+			AvailableChoices = [0, 1]
 			AlwaysAllowInBuildMode = true
 			RequiresCommand = false
 		}
 		NumberSelectOnes : ^/1/NumberSelectOnes
 		{
-			VisibilityToggle = CombineType
+			VisibilityToggle = GateOutputType
 			//AlwaysAllowInBuildMode = false
 			//OperationalToggle = NumberSelectVisibility
 			//AvailableChoices = [1,2,3,4,5,6,7,8,9]
@@ -127,14 +128,14 @@ Part : <../../baselogicpart.rules>/Part
 		}
 		NumberSelectTens : ^/2/NumberSelectTens
 		{
-			VisibilityToggle = CombineType
+			VisibilityToggle = GateOutputType
 			//AlwaysAllowInBuildMode = false
 			//OperationalToggle = NumberSelectVisibility
 			Default = 0
 		}
 		NumberSelectHunds : ^/3/NumberSelectHunds
 		{
-			VisibilityToggle = CombineType
+			VisibilityToggle = GateOutputType
 			//AlwaysAllowInBuildMode = false
 			//OperationalToggle = NumberSelectVisibility
 			Default = 0
@@ -153,30 +154,30 @@ Part : <../../baselogicpart.rules>/Part
 			Invert = false
 			Mode = All
 		}
-		OperationalNotCombined
+		OperationalNotNumerical
 		{
 			Type = MultiToggle
-			Toggles = [IsOperational, {Toggle = CombineType, invert = true}]
+			Toggles = [IsOperational, {Toggle = GateOutputType, invert = true}]
 			Mode = All
 		}
-		OperationalCombined
+		OperationalNumerical
 		{
 			Type = MultiToggle
-			Toggles = [IsOperational, CombineType]
+			Toggles = [IsOperational, GateOutputType]
 			Mode = All
 		}
 		BuffProviderLogic
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = OperationalNotCombined
+			OperationalToggle = OperationalNotNumerical
 			BuffType = Logic
 			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [0, -1, 1, 1]
 		}
-		CombinationBuffProviderLogic : &BuffProviderLogic
+		NumericalBuffProviderLogic : &BuffProviderLogic
 		{
-			OperationalToggle = OperationalCombined
+			OperationalToggle = OperationalNumerical
 			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add }
 		}
 		LogicTrigger
