@@ -69,13 +69,13 @@ Part : <../../baselogicpart.rules>/Part
 			BuffAmount = 1
 			BuffMultiplier = LogicOutputValueOverclock
 		}
-		/* Blueprints
+		Blueprints
 		{
 			Type = BlueprintSprite
 			File = "blueprints.png"
 			Size = [1, 1]
 			//Offset = [0, -0.5]
-		} */
+		}
 		LogicInputValue
 		{
 			Type = BuffableValue
