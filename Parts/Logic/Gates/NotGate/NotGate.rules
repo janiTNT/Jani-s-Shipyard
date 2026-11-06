@@ -11,7 +11,7 @@ Part : <../../baselogicpart.rules>/Part
 		[janitnt.circuit1, 2]
 	]
 	Size = [1, 1]
-	ReceivableBuffs : ^/0/ReceivableBuffs [Logic]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, LogicAlternativeOverclock, AdvS_Setting, AdvS_Setting_Second, AdvS_Setting_Third]
 	EditorIcon
 	{
 		Texture
@@ -23,6 +23,9 @@ Part : <../../baselogicpart.rules>/Part
 	}
 
 	Components : ^/0/Components
+	&/JANI_COMMON/SettingsOnes/Part/Components
+	&/JANI_COMMON/SettingsTens/Part/Components
+	&/JANI_COMMON/SettingsHundreds/Part/Components
 	<../../base_outputlogicpart.rules>/Base
 	{
 		SignalAComponents
@@ -32,6 +35,10 @@ Part : <../../baselogicpart.rules>/Part
 			Components
 			{
 				BuffProviderLogicA : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeA
+				}
+				NumericBuffProviderLogicA : ~/Part/Components/NumericalComponents/Components/NumericBuffProviderLogic
 				{
 					BuffType = LogicAlternativeA
 				}
@@ -47,6 +54,10 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeB
 				}
+				NumericBuffProviderLogicB : ~/Part/Components/NumericalComponents/Components/NumericBuffProviderLogic
+				{
+					BuffType = LogicAlternativeB
+				}
 			}
 		}
 		SignalCComponents
@@ -56,6 +67,10 @@ Part : <../../baselogicpart.rules>/Part
 			Components
 			{
 				BuffProviderLogicC : ~/Part/Components/BuffProviderLogic
+				{
+					BuffType = LogicAlternativeC
+				}
+				NumericBuffProviderLogicC : ~/Part/Components/NumericalComponents/Components/NumericBuffProviderLogic
 				{
 					BuffType = LogicAlternativeC
 				}
@@ -71,6 +86,10 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeD
 				}
+				NumericBuffProviderLogicD : ~/Part/Components/NumericalComponents/Components/NumericBuffProviderLogic
+				{
+					BuffType = LogicAlternativeD
+				}
 			}
 		}
 		SignalOverclockComponents
@@ -83,7 +102,42 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeOverclock
 				}
+				NumericBuffProviderLogicOverclock : ~/Part/Components/NumericalComponents/Components/NumericBuffProviderLogic
+				{
+					BuffType = LogicAlternativeOverclock
+				}
 			}
+		}
+		GateOutputType
+		{
+			Type = UIToggle
+			ToggleID = "logic_gate_output_variation"
+			Default = 0
+			ToggledOnChoices = [1]
+			AlwaysAllowInBuildMode = true
+			RequiresCommand = false
+		}
+		NumberSelectOnes : ^/1/NumberSelectOnes
+		{
+			VisibilityToggle = GateOutputType
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+			//AvailableChoices = [1,2,3,4,5,6,7,8,9]
+			Default = 1
+		}
+		NumberSelectTens : ^/2/NumberSelectTens
+		{
+			VisibilityToggle = GateOutputType
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+			Default = 0
+		}
+		NumberSelectHunds : ^/3/NumberSelectHunds
+		{
+			VisibilityToggle = GateOutputType
+			//AlwaysAllowInBuildMode = false
+			//OperationalToggle = NumberSelectVisibility
+			Default = 0
 		}
 		Blueprints
 		{
@@ -99,14 +153,205 @@ Part : <../../baselogicpart.rules>/Part
 			Invert = true
 			Mode = All
 		}
+		OperationalNotCombined
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, {Toggle = GateOutputType, invert = true}, {Toggle = ValueModeToggle, invert = true}]
+			Mode = All
+		}
+		OperationalNumerical
+		{
+			Type = MultiToggle
+			Toggles = [IsOperational, GateOutputType]
+			Mode = All
+		}
+		/* OutputCombinationOperational
+		{
+			Type = MultiToggle
+			Toggles = [OperationalNumerical, ValueModeToggle]
+			Mode = Any
+		} */
 		BuffProviderLogic
 		{
 			Type = AreaBuffProvider
-			OperationalToggle = IsOperational
+			OperationalToggle = OperationalNotCombined
 			BuffType = Logic
 			ChainsFromBuffType = &BuffType
 			BuffAmount = 1
 			BuffArea = [0, -1, 1, 1]
+		}
+		NumericalComponents
+		{
+			Type = ToggledComponents
+			Toggle = GateOutputType
+			Components
+			{
+				NumericBuffProviderLogic : &../../BuffProviderLogic
+				{
+					OperationalToggle = OperationalNumerical
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add }
+				}
+			}
+		}
+		ValueModeToggle
+		{
+			Type = ModeToggle
+			Mode = GateOutputType
+			OnMode = 2
+		}
+		ValueComponents
+		{
+			Type = ToggledComponents
+			Toggle = ValueModeToggle
+			IncludeInBlueprints = false
+			Components
+			{
+				Zero { Type = StaticValue; Value = 0; }
+				NotanumberFixer
+				{
+					Type = ValueOperation
+					Operator = Subtract
+					ValueOne = ValueModeOutput
+					ValueTwo = Zero
+					NaNFallbackValue = 0
+					MaxValue = 2^127
+					MinValue = -2^127
+				}
+				NotanumberFixerA : &NotanumberFixer
+				{
+					ValueOne = ValueModeOutputA
+				}
+				NotanumberFixerB : &NotanumberFixer
+				{
+					ValueOne = ValueModeOutputB
+				}
+				NotanumberFixerC : &NotanumberFixer
+				{
+					ValueOne = ValueModeOutputC
+				}
+				NotanumberFixerD : &NotanumberFixer
+				{
+					ValueOne = ValueModeOutputD
+				}
+				NotanumberFixerOverclock : &NotanumberFixer
+				{
+					ValueOne = ValueModeOutputOverclock
+				}
+				LogicOutputValue
+				{
+					Type = SmoothedValue
+					ValueSource = NotanumberFixer
+					MaxDelta = infinity
+				}
+				LogicOutputValueA : &LogicOutputValue
+				{
+					ValueSource = NotanumberFixerA
+				}
+				LogicOutputValueB : &LogicOutputValue
+				{
+					ValueSource = NotanumberFixerB
+				}
+				LogicOutputValueC : &LogicOutputValue
+				{
+					ValueSource = NotanumberFixerC
+				}
+				LogicOutputValueD : &LogicOutputValue
+				{
+					ValueSource = NotanumberFixerD
+				}
+				LogicOutputValueOverclock : &LogicOutputValue
+				{
+					ValueSource = NotanumberFixerOverclock
+				}
+				LogicInputValue
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=Logic; BuffMode=Add; }
+				}
+				ValueModeOutput
+				{
+					Type = MultiValue
+					Values = [LogicInputValue]
+					Mode = Add
+					Invert = true
+				}
+				LogicInputValueA
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=LogicAlternativeA; BuffMode=Add; }
+				}
+				ValueModeOutputA : &ValueModeOutput
+				{
+					Values = [LogicInputValueA]
+				}
+				LogicInputValueB
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add; }
+				}
+				ValueModeOutputB : &ValueModeOutput
+				{
+					Values = [LogicInputValueB]
+				}
+				LogicInputValueC
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=LogicAlternativeC; BuffMode=Add; }
+				}
+				ValueModeOutputC : &ValueModeOutput
+				{
+					Values = [LogicInputValueC]
+				}
+				LogicInputValueD
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=LogicAlternativeD; BuffMode=Add; }
+				}
+				ValueModeOutputD : &ValueModeOutput
+				{
+					Values = [LogicInputValueD]
+				}
+				LogicInputValueOverclock
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=LogicAlternativeOverclock; BuffMode=Add; }
+				}
+				ValueModeOutputOverclock : &ValueModeOutput
+				{
+					Values = [LogicInputValueOverclock]
+				}
+				ValueBuffProviderLogic : &../../BuffProviderLogic
+				{
+					OperationalToggle = ValueModeToggle
+					BuffAmount = 1
+					BuffMultiplier = LogicOutputValue
+				}
+				ValueBuffProviderLogicA : &ValueBuffProviderLogic
+				{
+					BuffMultiplier = LogicOutputValueA
+					BuffType = LogicAlternativeA
+				}
+				ValueBuffProviderLogicB : &ValueBuffProviderLogic
+				{
+					BuffMultiplier = LogicOutputValueB
+					BuffType = LogicAlternativeB
+				}
+				ValueBuffProviderLogicC : &ValueBuffProviderLogic
+				{
+					BuffMultiplier = LogicOutputValueC
+					BuffType = LogicAlternativeC
+				}
+				ValueBuffProviderLogicD : &ValueBuffProviderLogic
+				{
+					BuffMultiplier = LogicOutputValueD
+					BuffType = LogicAlternativeD
+				}
+				ValueBuffProviderLogicOverclock : &ValueBuffProviderLogic
+				{
+					BuffMultiplier = LogicOutputValueOverclock
+					BuffType = LogicAlternativeOverclock
+				}
+			}
 		}
 		LogicStorage
 		{
@@ -213,6 +458,10 @@ Part : <../../baselogicpart.rules>/Part
 					}
 				]
 			}
+		}
+		BaseGraphics : <../../baselogicpart.rules>/BaseGraphics_ToggleCombine
+		{
+			OperationalToggle = ValueModeToggle
 		}
 	}
 }

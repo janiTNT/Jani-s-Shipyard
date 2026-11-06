@@ -603,7 +603,7 @@ Parts
 	
 	LogicGateNot = "Logic NOT Gate"
 	LogicGateNotIcon = "NOT Gate"
-	LogicGateNotDesc = "Emits a logic signal of 1 if not receiving a logic signal, Stops transmitting if receiving a signal.\n1 Tick Delay."\
+	LogicGateNotDesc = "Emits a logic signal of 1 if not receiving a logic signal, Stops transmitting if receiving a signal.\n1 Tick Delay.\n\nWhen set to Numeric mode, outputs a set value when active.\n\nWhen set to Value mode, Inverts all values individually and outputs them.\n(1 - Input) = Output"\
 	"\n<s14><color r='80' g='80' b='220' a='255'>Ported From Advanced Ship Systems by skipydog.</color></s14>"
 	
 	LogicGateAND = "Logic AND Gate"

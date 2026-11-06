@@ -39,7 +39,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeA
 				}
-				NumericalBuffProviderLogicA : ~/Part/Components/NumericalBuffProviderLogic
+				NumericalBuffProviderLogicA : ~/Part/Components/NumericalComponents/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeA
 				}
@@ -55,7 +55,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeB
 				}
-				NumericalBuffProviderLogicB : ~/Part/Components/NumericalBuffProviderLogic
+				NumericalBuffProviderLogicB : ~/Part/Components/NumericalComponents/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeB
 				}
@@ -71,7 +71,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeC
 				}
-				NumericalBuffProviderLogicC : ~/Part/Components/NumericalBuffProviderLogic
+				NumericalBuffProviderLogicC : ~/Part/Components/NumericalComponents/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeC
 				}
@@ -87,7 +87,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeD
 				}
-				NumericalBuffProviderLogicD : ~/Part/Components/NumericalBuffProviderLogic
+				NumericalBuffProviderLogicD : ~/Part/Components/NumericalComponents/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeD
 				}
@@ -103,7 +103,7 @@ Part : <../../baselogicpart.rules>/Part
 				{
 					BuffType = LogicAlternativeOverclock
 				}
-				NumericalBuffProviderLogicOverclock : ~/Part/Components/NumericalBuffProviderLogic
+				NumericalBuffProviderLogicOverclock : ~/Part/Components/NumericalComponents/Components/NumericalBuffProviderLogic
 				{
 					BuffType = LogicAlternativeOverclock
 				}
@@ -175,10 +175,18 @@ Part : <../../baselogicpart.rules>/Part
 			BuffAmount = 1
 			BuffArea = [0, -1, 1, 1]
 		}
-		NumericalBuffProviderLogic : &BuffProviderLogic
+		NumericalComponents
 		{
-			OperationalToggle = OperationalNumerical
-			BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add }
+			Type = ToggledComponents
+			Toggle = GateOutputType
+			Components
+			{
+				NumericalBuffProviderLogic : &../../BuffProviderLogic
+				{
+					OperationalToggle = OperationalNumerical
+					BuffAmount = { BaseValue=0; BuffType=AdvS_Setting_Third; BuffMode=Add }
+				}
+			}
 		}
 		LogicTrigger
 		{
