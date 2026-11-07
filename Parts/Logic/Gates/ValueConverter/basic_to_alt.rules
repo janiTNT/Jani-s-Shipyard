@@ -1,0 +1,430 @@
+Part : <../../baselogicpart.rules>/Part
+{
+	NameKey = "Parts/BasicToAltLogicConverter"
+	IconNameKey = "Parts/BasicToAltLogicConverterIcon"
+	ID = janiTNT.BasicToAlt_LogicConverter
+	EditorParentParts = [ "janiTNT.AltToBasic_LogicConverter" ]
+	DescriptionKey = "Parts/BasicToAltLogicConverterDesc"
+	Resources
+	[
+		[steel, 2]
+		[janitnt.circuit1, 3]
+	]
+	Size = [1, 1]
+	ReceivableBuffs : ^/0/ReceivableBuffs [Logic, LogicAlternativeA, LogicAlternativeB, LogicAlternativeC, LogicAlternativeD, LogicAlternativeOverclock]
+	EditorIcon
+	{
+		Texture
+		{
+			File = "icon_basictoalt.png"
+			SampleMode = Linear
+		}
+		Size = [32, 32]
+	}
+
+	Components : ^/0/Components
+	<../../base_outputlogicpart.rules>/Base
+	{
+		SignalAComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalAToggle
+			Components
+			{
+				BuffProviderLogicA : &../../BuffProviderLogicBlueprints
+				{
+					BuffType = LogicAlternativeA
+					BlueprintsOnly = false
+				}
+				InputGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					OperationalToggle = IsOperational
+					OperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [0, 183, 255]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [0* 0.5, 183* 0.5, 255* 0.5]
+							}
+						]
+					}
+				}
+			}
+		}
+		SignalBComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalBToggle
+			Components
+			{
+				BuffProviderLogicB : &../../BuffProviderLogicBlueprints
+				{
+					BuffType = LogicAlternativeB
+					BlueprintsOnly = false
+				}
+				LogicInputValue
+				{
+					Type = BuffableValue
+					Value = { BaseValue=0; BuffType=LogicAlternativeB; BuffMode=Add; }
+				}
+				InputGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					OperationalToggle = IsOperational
+					OperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [10, 212, 98]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [10* 0.5, 212* 0.5, 98* 0.5]
+							}
+						]
+					}
+				}
+			}
+		}
+		SignalCComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalCToggle
+			Components
+			{
+				BuffProviderLogicC : &../../BuffProviderLogicBlueprints
+				{
+					BuffType = LogicAlternativeC
+					BlueprintsOnly = false
+				}
+				InputGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					OperationalToggle = IsOperational
+					OperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [210, 255, 48]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [210* 0.5, 255* 0.5, 48* 0.5]
+							}
+						]
+					}
+				}
+			}
+		}
+		SignalDComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalDToggle
+			Components
+			{
+				BuffProviderLogicD : &../../BuffProviderLogicBlueprints
+				{
+					BuffType = LogicAlternativeD
+					BlueprintsOnly = false
+				}
+				InputGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					OperationalToggle = IsOperational
+					OperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [255, 46, 46]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [255* 0.5, 46* 0.5, 46* 0.5]
+							}
+						]
+					}
+				}
+			}
+		}
+		SignalOverclockComponents
+		{
+			Type = ToggledComponents
+			Toggle = SignalOverclockToggle
+			Components
+			{
+				BuffProviderLogicOverclock : &../../BuffProviderLogicBlueprints
+				{
+					BuffType = LogicAlternativeOverclock
+					BlueprintsOnly = false
+				}
+				InputGraphics
+				{
+					Type = Graphics
+					Location = [0.5, 0.5]
+					OperationalToggle = IsOperational
+					OperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [255, 4, 0]
+							}
+						]
+					}
+					NonOperationalDoodad
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_input.png"
+								Size = [1, 1]
+								VertexColor = [255* 0.5, 4* 0.5, 0* 0.5]
+							}
+						]
+					}
+					Floor
+					{
+						Layer = "lights_add"
+						DamageLevels
+						[
+							{
+								File = "basic_to_alt_output.png"
+								Size = [1, 1]
+								VertexColor = [255 * 0.75, 0 * 0.75, 0 * 0.75]
+							}
+						]
+					}
+				}
+			}
+		}
+		LogicOutputValue
+		{
+			Type = BuffableValue
+			Value = { BaseValue=0; BuffType=Logic; BuffMode=Add; }
+		}
+		ColorPicker
+		{
+			Type = UIColor
+			ColorID = "logiccolor"
+			Default = Green
+		}
+		IsOperational
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicOutputValue
+			MinAmount = 0
+			MaxAmount = 0
+			Invert = true
+		}
+		BuffProviderLogicBlueprints
+		{
+			Type = AreaBuffProvider
+			//OperationalToggle = OperationalNotCombined
+			BuffType = Logic
+			ChainsFromBuffType = &BuffType
+			BlueprintsOnly = true
+			BuffAmount = 1
+			BuffArea = [0, -1, 1, 1]
+			BuffMultiplier = LogicOutputValue
+		}
+		ColoredGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			OperationalToggle = IsOperational
+			GetColorFrom = ColorPicker
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../../Wires/Multisignal_probe/doodads2.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			NonOperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "../../Wires/Multisignal_probe/doodads1.png"
+						Size = [1, 1]
+						Offset = [0, -0.25]
+					}
+				]
+			}
+			OperationalRoofDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "basic_to_alt_output.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			NonOperationalRoofDoodad
+			{
+				Layer = "lights_add"
+				DamageLevels
+				[
+					{
+						File = "basic_to_alt_output.png"
+						Size = [1, 1]
+						VertexColor = [255 * 0.5, 255 * 0.5, 255 * 0.5]
+					}
+				]
+			}
+		}
+		WireGraphics
+		{
+			Type = Graphics
+			Location = [0.5, 0.5]
+			//OperationalToggle = IsOperational
+			OperationalDoodad
+			{
+				Layer = "doodads_high"
+				DamageLevels
+				[
+					{
+						File = "basic_to_alt.png"
+						Size = [1, 1]
+					}
+				]
+			}
+			Floor // This is needed so that armor shows up in ship ghosts.
+			{
+				Layer = "doors"
+				DamageLevels
+				[
+					{
+						File = "../Repeaters/wire.png"
+						Size = [1, 1]
+						Offset = [0, -0.5]
+					}
+				]
+			}
+		}
+		Blueprints
+		{
+			Type = BlueprintSprite
+			File = "basic_to_alt_blueprints1.png"
+			Size = [1, 1]
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = logic_alternative_togglemode
+				Mode = 0
+			}
+		}
+		BlueprintsB : &Blueprints
+		{
+			File = "basic_to_alt_blueprints2.png"
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = logic_alternative_togglemode
+				Mode = 1
+			}
+		}
+		BlueprintsC : &Blueprints
+		{
+			File = "basic_to_alt_blueprints3.png"
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = logic_alternative_togglemode
+				Mode = 2
+			}
+		}
+		BlueprintsD : &Blueprints
+		{
+			File = "basic_to_alt_blueprints4.png"
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = logic_alternative_togglemode
+				Mode = 3
+			}
+		}
+		BlueprintsOverclock : &Blueprints
+		{
+			File = "basic_to_alt_blueprints5.png"
+
+			ShowOnlyInToggleMode
+			{
+				ToggleID = logic_alternative_togglemode
+				Mode = 4
+			}
+		}
+		BaseGraphics : ^/0/BaseGraphics
+		{
+			Floor = &<../../baselogicpart.rules>/Floor_Combined
+		}
+	}
+}

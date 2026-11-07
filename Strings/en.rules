@@ -631,6 +631,14 @@ Parts
 	ValueSmootherLogicIcon = "Value Smoother"
 	ValueSmootherLogicDesc = "Linearly increases or decreases output values smoothly over time until it matches the input.\nValue change speed (delta) is (0.1 * Configuration)/s, Incresing by 1 every 10 seconds at config speed of 1."
 	
+	AltToBasicLogicConverter = "Alt signal to Basic signal Logic Converter"
+	AltToBasicLogicConverterIcon = "Alt to Basic"
+	AltToBasicLogicConverterDesc = "Exclusively receives one type of Alt signal and outputs the value of that signal as a Basic signal, does not output any Basic signal.\nCan be used to convert any signal to another when paired with the Basic to Alt converter."
+	
+	BasicToAltLogicConverter = "Basic signal to Alt signal Logic Converter"
+	BasicToAltLogicConverterIcon = "Basic to Alt"
+	BasicToAltLogicConverterDesc = "Exclusively receives Basic signal, outputting the value of the signal as a type of Alt signal.\nCan be used to convert any signal to another when paired with the Alt to Basic converter."
+	
 	LogicWireSplitter1 = "Logic Wire Splitter (180)"
 	LogicWireSplitter1Icon = "Logic Splitter [-]"
 	LogicWireSplitter2 = "Logic Wire Splitter (90)"

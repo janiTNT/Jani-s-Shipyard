@@ -305,6 +305,9 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 			&<Parts/Logic/Gates/ValueOperator/ValueOperator.rules>/Part
 			&<Parts/Logic/Gates/ValueSmoother/ValueSmoother.rules>/Part
 			
+			&<Parts/Logic/Gates/ValueConverter/alt_to_basic.rules>/Part
+			&<Parts/Logic/Gates/ValueConverter/basic_to_alt.rules>/Part
+			
 			// Sensors
 			&<Parts/Logic/Sensors/LIDAR/Sensor.rules>/Part
 			&<Parts/Logic/Sensors/Comparator/comparator.rules>/Part
