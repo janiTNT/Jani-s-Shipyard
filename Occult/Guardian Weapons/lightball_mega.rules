@@ -366,7 +366,7 @@ Part : <../base_part_occult.rules>/Part
 			Rotation = -90d// Relative to unrotated part.
 			OperationalToggle = IsOperational
 			AutoFireToggle = AutoFireToggle
-			FireInterval = 3.2
+			FireInterval = 4
 			FiringArc = 360d
 			RotateSpeed = 360d
 			FireThresholdAngle = 1d
@@ -419,7 +419,7 @@ Part : <../base_part_occult.rules>/Part
 			FireDelay = .2
 			Bullet = &<shots/biggershotbolt.rules>
 			Spread = [-3.5d, 3.5d]
-			Burst = 6
+			Burst = 2
 			BurstDelay = .2
 		}
 

@@ -2,7 +2,7 @@ ID = "janiTNT.GuardianBoltLargerer"
 Range = 350
 IdealRange = [90, 200]
 IdealRadius = [5, 50]
-Speed = 250
+Speed = 190
 
 Components
 {	
