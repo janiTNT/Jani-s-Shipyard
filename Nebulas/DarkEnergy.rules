@@ -1,7 +1,7 @@
 ID = janiTNT.DarkEnergy
 ToolTipKey = "Nebulas/JaniDarkEnergy"
 DefaultLogicalFeather = 100
-DefaultVisualFeather = [80, 1700]
+DefaultVisualFeather = [400, 1700]
 DefaultVisualFeatherOverZoom = [1, 2000]
 DefaultVisualFeatherOverZoomExponent = 0.5
 SharpCurveEdges = 8
