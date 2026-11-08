@@ -18,7 +18,7 @@ Part : <base_part_occult.rules>/Part
 	ContinuingPenetrationResistance = 2 * 7
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 0%
-	DamageResistances = {explosive = 100%, default = 99%}
+	DamageResistances = {explosive = 100%, default = 100%}
 	GenerateRectCollider = false
 	IsExternal = true
 	ExternalWalls = [None]
