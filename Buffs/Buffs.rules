@@ -123,7 +123,7 @@ LogicAlternativeOverclock
 	CombineMode = Add
 	BaseValue = 0
 }
-JaniOrbDetectionCosmiliteBoss
+JaniWeakpointDetector
 {
 	CombineMode = Add
 	Multiplier = 100%
@@ -136,23 +136,9 @@ JaniOrbDetectionCosmiliteBoss
 	IconTextAdd = -100
 	ShowIconTextForZeroValue = false
 }
-JaniWeakpointDetector = &JaniOrbDetectionCosmiliteBoss
-JaniCosmilitebossShouldHaveNoOrbs = &JaniOrbDetectionCosmiliteBoss
-JaniExistingSigilDetectionBoss = &JaniOrbDetectionCosmiliteBoss
-JaniWeaponsDisabledBoss = &JaniOrbDetectionCosmiliteBoss
-JaniWeaponsDisabledBossSecondary = &JaniOrbDetectionCosmiliteBoss
-JaniOrbDetectionBrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
-JaniPhase2BrimstoneBoss = &JaniOrbDetectionCosmiliteBoss
-JaniAstralRangeRamp {}
-
-JaniOrbDetectionAstralBoss = &JaniOrbDetectionCosmiliteBoss
-
-JaniBossEnraged
-{
-	CombineMode = Add
-	Exponent = 1
-	BaseValue = 100%
-}
+JaniCosmilitebossShouldHaveNoOrbs = &JaniWeakpointDetector
+JaniWeaponsDisabledBoss = &JaniWeakpointDetector
+JaniWeaponsDisabledBossSecondary = &JaniWeakpointDetector
 
 OverchargerRateReducer
 {
@@ -364,38 +350,6 @@ JaniCRAM_IntakeConnection
 	RectBorderColor = [84, 255, 0, 100]
 	RectFillColor = [0, 255, 0, 32]
 }
-
-Jani_BossArmorHealthBonus //Armor Stage 2
-{
-	CombineMode = Add
-	Exponent = .4
-	BaseValue = 0%
-	
-	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
-	IconTextMultiply = 100
-	IconTextAdd = 0
-	ShowIconTextForZeroValue = false
-	
-	MinValue = 0%
-	MaxValue = 80%//max
-}
-
-
-Jani_BossProfanedHealthBonus //Armor Stage 2
-{
-	CombineMode = Add
-	BaseValue = 90%
-	
-	IconTextFormatKey = "BuildBox/BuffPercentageFmt"
-	IconTextMultiply = 100
-	IconTextAdd = 0
-	ShowIconTextForZeroValue = false
-	
-	MinValue = 0%
-	MaxValue = 90%//max
-}
-
-
 
 CursedMana_Provided // Checks Provided Mana
 {
