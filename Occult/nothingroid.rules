@@ -12,7 +12,7 @@ Part : <base_part_occult.rules>/Part
 	]*/
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Density = 3
-	MaxHealth = 64000
+	MaxHealth = 64000 * 32
 	TypeCategories = [nothing, non_flammable]
 	InitialPenetrationResistance = 2 * 7
 	ContinuingPenetrationResistance = 2 * 7
@@ -114,6 +114,7 @@ Part : <base_part_occult.rules>/Part
 				{
 					Type = Damage
 					Damage = 99999999
+					DamageType = unfathomable
 					Filter
 					{
 						Friendlies = true
