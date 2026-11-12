@@ -81,14 +81,6 @@ PartStats
 		FormatKey = "Stats/DrainTimeFmt"
 	}
 	{
-		ID = JSThrusterHyperiumUsage
-		FormatKey = "Stats/JSThrusterHyperiumUsageFmt"
-	}
-	{
-		ID = JSBoostedHyperiumUsageContinuous
-		FormatKey = "Stats/JSBoostedHyperiumUsageContinuousFmt"
-	}
-	{
 		ID = CursedManaAvailible
 		FormatKey = "Stats/CursedManaAvailibleFmt"
 	}

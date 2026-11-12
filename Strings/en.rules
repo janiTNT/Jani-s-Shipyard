@@ -1656,9 +1656,6 @@ Stats
 	
 	EngineRoomBuffEffectivenessFmt = "<white>Engine Room Effectiveness:</white> <good>{0:0}</good><gray>%</gray>"
 	
-	JSThrusterHyperiumUsageFmt = "<white>Hyperium Use:</white> <good>{0:0.##}</good><gray>/sec (100% thrust)</gray>"
-	JSBoostedHyperiumUsageContinuousFmt = "<zero>Hyperium Use:</zero> <good>{0:0.##}</good><gray>/sec (continuous)</gray>"
-	
 	GoldiumProductionFmt = "<white>Production Rate:</white> <good>{0:0.##}</good><gray> goldium/sec</gray>"
 	GoldiumCapacityFmt = "<white>Goldium Capacity:</white> <good>{0}</good>"
 	GoldiumGoldUsageFmt = "<white>Gold Use:</white> <good>{0:0.##}</good><gray>/goldium (</gray><good>{1:0.##}</good><gray>/sec)</gray>"
