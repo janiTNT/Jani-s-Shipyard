@@ -1236,6 +1236,14 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 						AvoidableDoodadBuffer = 100
 					}
 					{
+						Type = SelfRepair
+						RepairChecksPerTick = 0
+						RepairDamaged = false
+						RebuildDestroyed = false
+						AllowPartialRepair = false
+						AllowPartialRebuild = false
+					}// this does nothing apparently
+					{
 						Type = AggroEnemies
 						TargetSwitchThresholdFactor = 1.7
 						TargetDistanceFactorExponent = 1
@@ -1271,6 +1279,20 @@ Actions : &<inserter_compatibility_list.rules>/Actions
 						TargetSwitchThresholdFactor = 2
 						TargetValueFactorPerPenetrationDist = .75
 					}
+				]
+				
+				CommsModules
+				[
+					{
+						Type = "Dialogue"
+						DefaultChanceToConsiderSurrenderingToPlayer = 0  //Chance that the ai will surrender to the player
+						ChanceToConsiderAcceptingSurrenderFromPlayer = 0 //Even if the damage value isn't that different, ai will still accept surrender
+						ChanceToConsiderOfferingSurrender = 0  // If the ai is willing to surrender, this is the chance that the AI will offer surrender. Sometimes they will be willing to surrender without offering
+						ChanceToConsiderDemandingSurrender = 0  //Chance that ai will ask the player to surrender
+						ValueRatioDifferenceRangeToSurrender = [10%, 40%] //The lower this is, the less likely ai will surrender.  The value is random between the range.
+						PlayerSurrenderPayoutMultiple = 7.5% //When the player pays for damage caused, calculated by chance of dropping rare (10-15) and in between price of selling (0.5-1)
+						AISurrenderPayoutMultiple = 7.5%  //when ai pays for the loot you no longer get
+					}				
 				]
 			}
 		}
