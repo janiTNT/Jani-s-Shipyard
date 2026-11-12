@@ -73,6 +73,7 @@ Components : &<./data/ships/terran/base_part_terran_overclock.rules>/Part/Compon
 	{
 		Type = BuffToggle
 		BuffType = Logic
+		MinBuffValue = 0.0000000000001 //fix so zero value does not activate
 	}
 
 	PowerToggle
