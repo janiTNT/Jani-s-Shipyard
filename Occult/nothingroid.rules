@@ -13,12 +13,14 @@ Part : <base_part_occult.rules>/Part
 	ReceivableBuffs : ^/0/ReceivableBuffs []
 	Density = 3
 	MaxHealth = 64000 * 32
-	TypeCategories = [nothing, non_flammable]
-	InitialPenetrationResistance = 2 * 7
-	ContinuingPenetrationResistance = 2 * 7
+	HealthType = Structural
+	TypeCategories = [nothing, non_flammable, structure]
+	InitialPenetrationResistance = 0
+	ContinuingPenetrationResistance = 0
+	CellOccupancyFactor = 0.25
 	AIValueFactor = 0
 	ExplosiveDamageAbsorption = 0%
-	DamageResistances = {explosive = 100%, default = 100%}
+	DamageResistances = {explosive = 100%, default = 100%, thermal = 100%, heat = 100%}
 	GenerateRectCollider = false
 	IsExternal = true
 	ExternalWalls = [None]
