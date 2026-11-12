@@ -957,7 +957,7 @@ Parts
 	
 	BulkHeadJani = "Bulkhead"
 	BulkHeadJaniIcon = "Bulkhead"
-	BulkHeadJaniDesc = "Fireproof blast bulkhead thing. Decorative but has explosive resistance."
+	BulkHeadJaniDesc = "Fireproof blast resistant bulkhead."
 	
 	CorridorFactory = "Factory Corridor"
 	CorridorFactoryIcon = "Factory Cor."

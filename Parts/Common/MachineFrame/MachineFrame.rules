@@ -3,7 +3,7 @@ Part : <./Data/ships/terran/base_part_terran.rules>/Part
 	NameKey = "Parts/MachineFrame"
 	IconNameKey = "Parts/MachineFrameIcon"
 	ID = janiTNT.multiblock.machineframe
-	EditorGroups = ["Defenses"]
+	EditorParentParts = [ "janiTNT.multiblock.steelbig" ]
 	DescriptionKey = "Parts/MachineFrameDesc"
 	Resources
 	[

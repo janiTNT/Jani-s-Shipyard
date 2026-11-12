@@ -14,6 +14,12 @@ Part : <./data/ships/base_part.rules>/Part
 	IsFlippable = true
 	IgnoreRotationForMirroredSelection = false
 	CrewSpeedFactor = 0
+	
+	StatusResistances
+	{
+		cosmoteer.heat = 1
+		FrostNovaFan_Maybe.heat = 1
+	}
 
 	SalvageProgressMediaEffectsTimeout = 1
 	SalvageProgressMediaEffects
