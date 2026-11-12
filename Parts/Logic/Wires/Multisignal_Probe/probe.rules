@@ -49,6 +49,7 @@ Part : <../../baselogicpart.rules>/Part
 			Type = MultiValue
 			Values = [LogicInputABuffableValue, Multiplier]
 			Mode = Multiply
+			Abs = true
 		}
 		LogicInputBBuffableValue
 		{
@@ -94,8 +95,99 @@ Part : <../../baselogicpart.rules>/Part
 		LogicInputOverclockValue : LogicInputAValue
 		{
 			Values = [LogicInputOverclockBuffableValue, Multiplier]
-		}/* 
-		OneDigitToggleA
+		}
+		
+		NegativeToggleA
+		{
+			Type = ThresholdToggle
+			ValueFrom = LogicInputABuffableValue
+			MaxAmount = -0.000000001
+		}
+		NegativeToggleB : NegativeToggleA
+		{
+			ValueFrom = LogicInputBBuffableValue
+		}
+		NegativeToggleC : NegativeToggleA
+		{
+			ValueFrom = LogicInputCBuffableValue
+		}
+		NegativeToggleD : NegativeToggleA
+		{
+			ValueFrom = LogicInputDBuffableValue
+		}
+		NegativeToggle : NegativeToggleA
+		{
+			ValueFrom = LogicInputBuffableValue
+		}
+		NegativeToggleOverclock : NegativeToggleA
+		{
+			ValueFrom = LogicInputOverclockBuffableValue
+		}
+		
+		NegativeSpriteA
+		{
+			Type = Sprite
+			OperationalToggle = NegativeToggleA
+			Location = [.5, .5]
+			Layer = "lights_add"
+			AtlasSprite
+			{
+				File = "A.png"
+				Size = [1, 1]
+			}
+		}
+		
+		NegativeSpriteB : NegativeSpriteA
+		{
+			OperationalToggle = NegativeToggleB
+			AtlasSprite
+			{
+				File = "B.png"
+				Size = [1, 1]
+			}
+		}
+		
+		NegativeSpriteC : NegativeSpriteA
+		{
+			OperationalToggle = NegativeToggleC
+			AtlasSprite
+			{
+				File = "C.png"
+				Size = [1, 1]
+			}
+		}
+		
+		NegativeSpriteD : NegativeSpriteA
+		{
+			OperationalToggle = NegativeToggleD
+			AtlasSprite
+			{
+				File = "D.png"
+				Size = [1, 1]
+			}
+		}
+		
+		NegativeSprite : NegativeSpriteA
+		{
+			OperationalToggle = NegativeToggle
+			AtlasSprite
+			{
+				File = "basic.png"
+				Size = [1, 1]
+			}
+		}
+		
+		NegativeSpriteOverclock : NegativeSpriteA
+		{
+			OperationalToggle = NegativeToggleOverclock
+			AtlasSprite
+			{
+				File = "Overclock.png"
+				Size = [1, 1]
+			}
+		}
+		
+		/* OneDigitToggleA
 		{
 			Type = ThresholdToggle
 			ValueFrom = LogicInputAValue
@@ -305,7 +397,7 @@ Part : <../../baselogicpart.rules>/Part
 		Overclock_Integers_Sprite3 : &~/Integers_Sprite_Base
 		{
 			Location = [.5+(8/64)+(13/64), .5+(17/64)]
-			LightColorLight = [128, 0, 0]
+			//LightColorLight = [128, 0, 0, 192]
 			ValueFrom = LogicInputOverclockValue
 			Modulus = 10
 			Range = [0, 9]
@@ -410,7 +502,7 @@ Integers_Sprite_Base
 	Modulus = 10
 	Round = Down
 	Range = [0, 9]
-	LightColorLight = [0, 0, 0]
+	LightColorLight = [0, 0, 0, 192]
 	ResourceLevels
 	[
 		{
